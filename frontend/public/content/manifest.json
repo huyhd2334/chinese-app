@@ -1,0 +1,33 @@
+{
+  "version": "1.0.0",
+  "packs": {
+    "hsk1": {
+      "version": 1,
+      "file": "hsk1.json"
+    },
+    "hsk2": {
+      "version": 1,
+      "file": "hsk2.json"
+    },
+    "hsk3": {
+      "version": 1,
+      "file": "hsk3.json"
+    },
+    "hsk4": {
+      "version": 1,
+      "file": "hsk4.json"
+    },
+    "hsk5": {
+      "version": 1,
+      "file": "hsk5.json"
+    },
+    "hsk6": {
+      "version": 1,
+      "file": "hsk6.json"
+    },
+    "hsk7": {
+      "version": 1,
+      "file": "hsk7.json"
+    }
+  }
+}
