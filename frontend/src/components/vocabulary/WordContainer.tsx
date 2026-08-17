@@ -36,7 +36,7 @@ const WordContainer = ({level, setCount}: WordContainerProps) => {
   }
 
   return (
-    <div className='grid grid-cols-2 md:grid-cols-4 gap-3'>
+    <div className='grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-3'>
        {loading?(<div>Loading......</div>):(
           words.length > 0 ?(
             words.map((w, idx) => (

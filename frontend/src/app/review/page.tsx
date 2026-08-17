@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import useVocab from "../../../hooks/useVocab"
+import Link from "next/link"
 
 export default function ReviewPage() {
   const {loading, cards, loadReview, markKnown, markUnknown, markHard, markEasy} = useVocab()
@@ -30,7 +31,7 @@ export default function ReviewPage() {
 
   if (!cards.length) {
     return (
-      <div className="flex min-h-[70vh] items-center justify-center">
+      <div className="flex min-h-[70vh] items-center justify-center p-8">
         <div className="w-full max-w-md rounded-2xl border bg-white p-10 text-center shadow-sm">
           <div className="mb-4 text-5xl">🎉</div>
           <h1 className="mb-2 text-2xl font-bold">
@@ -39,6 +40,7 @@ export default function ReviewPage() {
           <p className="text-sm text-gray-500">
             Bạn đã hoàn thành tất cả các từ cần ôn.
           </p>
+          <Link className="text-sm text-gray-700 font-semibold hover:underline animate-pulse " href={'/dashboard'}>Check Your Achives</Link>
         </div>
       </div>
     )

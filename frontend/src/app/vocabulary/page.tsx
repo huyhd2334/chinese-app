@@ -20,11 +20,11 @@ const Page = () => {
       <hr className="mx-auto my-4 w-[95%] shrink-0 border-t border-gray-300" />
 
       {/* HSK tabs */}
-      <div className="flex shrink-0 gap-2.5 px-8 pt-4">
+      <div className="flex shrink-0 gap-2.5 px-8 pt-0 sm:pt-4 lg:pt-4">
         {[...Array(levels)].map((_, index) => {
           const lv = index + 1
           return (<button key={lv} onClick={() => setLevel(lv)}
-              className={`border-b-2 border-transparent
+              className={`border-b-2 border-transparent text-sm sm:text-xl lg:text-xl
                 ${level === lv ? "border-b-red-400" : ""}`}
             >
               HSK {lv}
