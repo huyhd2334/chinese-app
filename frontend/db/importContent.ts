@@ -1,4 +1,4 @@
-import { db, type Word } from "./database"
+import { db, type Word, type Reading } from "./database"
 
 export async function importHsk() {
   const response = await fetch(`/content/words.json`)
@@ -10,4 +10,22 @@ export async function importHsk() {
   const words: Word[] = await response.json()
   await db.words.bulkPut(words)
   return words.length
+}
+
+export async function importReading() {
+  const response = await fetch(`/content/reading.json`)
+
+  if (!response.ok) {
+    throw new Error(`Failed to load passages`)
+  }
+
+  const readings: Reading[] = await response.json()
+
+  const data = readings.map(r => ({
+    ...r,
+    completed: false
+  }))
+
+  await db.readings.bulkPut(data)
+  return
 }

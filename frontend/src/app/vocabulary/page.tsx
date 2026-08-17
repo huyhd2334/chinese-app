@@ -24,7 +24,7 @@ const Page = () => {
         {[...Array(levels)].map((_, index) => {
           const lv = index + 1
           return (<button key={lv} onClick={() => setLevel(lv)}
-              className={`border-b-2 border-transparent text-sm sm:text-xl lg:text-xl
+              className={`border-b-2 border-transparent text-sm sm:text-sm lg:text-sm
                 ${level === lv ? "border-b-red-400" : ""}`}
             >
               HSK {lv}
@@ -35,7 +35,7 @@ const Page = () => {
 
       <hr className="mx-auto my-4 w-[95%] shrink-0 border-t border-gray-300" />
 
-      <div className="min-h-0 flex-1 overflow-y-auto px-8 mt-5">
+      <div className="min-h-0 flex-1 overflow-y-auto px-8">
         <WordContainer level={level} setCount={setCount} />
       </div>
 

@@ -42,14 +42,44 @@ export interface Note {
   updatedAt: number
 }
 
+interface Vocabulary {
+  word: string
+  pinyin: string
+  meaning: string
+}
+
+interface Grammar {
+  pattern: string
+  explanation: string
+}
+
+export interface Reading {
+  id: string
+  source: string
+  source_document_id: string
+  passage: string
+  question: string
+  options: string[]
+  answer: string
+  answerIndex: number
+  explanation: string
+  evidence: string
+  vocabulary: Vocabulary[]
+  grammar: Grammar[]
+  completed: boolean
+}
+
+
 export const db = new Dexie("ChineseLearningDB") as Dexie & {
   words: EntityTable<Word, "id">
   reviewItems: EntityTable<ReviewItem, "id">
   notes: EntityTable<Note, "id">
+  readings: EntityTable<Reading, "id">
 }
 
 db.version(1).stores({
   words: "id, hanzi, *hskLevel",
   reviewItems: "id, wordId, status, dueAt, createdAt",
-  notes: "++id, wordId, updatedAt"
+  notes: "++id, wordId, updatedAt",
+  readings: "source_document_id, id"
 })
