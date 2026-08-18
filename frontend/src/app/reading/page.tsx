@@ -1,5 +1,4 @@
 "use client"
-
 import { useEffect, useState } from "react"
 import { readingRepository } from "../../../repositories/readingRepository"
 import type { Reading } from "../../../db/database"

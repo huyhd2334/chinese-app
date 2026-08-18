@@ -5,24 +5,35 @@ import type { Word } from "../../../db/database"
 import Link from 'next/link'
 
 interface WordContainerProps {
-  level: number,
+  level: number
   setCount: React.Dispatch<React.SetStateAction<number>>
+  scrollRef: React.RefObject<HTMLDivElement | null>
 }
 
-const WordContainer = ({level, setCount}: WordContainerProps) => {
+const WordContainer = ({level, setCount, scrollRef}: WordContainerProps) => {
     const {loading,loadingAdd, getHskVocab, addToReview} = useVocab()
     const [words, setWords] = useState<Word[]>([])
     const [addedId, setAddedId] = useState<string | null>(null)
 
-    useEffect(()=>{
-    const handleGetWords = async() => {
+    useEffect(() => {
+      const handleGetWords = async () => {
         const res = await getHskVocab(level)
         setWords(res)
         setCount(res?.length)
+
+        const scroll = sessionStorage.getItem("vocab-scroll")
+
+        if (scroll) {
+          setTimeout(() => {
+            scrollRef.current?.scrollTo(0, Number(scroll))
+            sessionStorage.removeItem("vocab-scroll")
+          }, 100)
+        }
       }
-    handleGetWords()
+
+      handleGetWords()
     }, [level])
-    
+
   const handleAddLearn = async (id: string) => {
     try {
       await addToReview(id)
@@ -44,7 +55,9 @@ const WordContainer = ({level, setCount}: WordContainerProps) => {
                 key={w.id}
                 href={`/vocabulary/${w.id}`}
                 className="flex flex-col border p-3 rounded-xl hover:bg-gray-50"
-                >                
+                onClick={() => {
+                  sessionStorage.setItem("vocab-scroll", String(scrollRef.current?.scrollTop || 0))
+                }}>                
                 <div className='flex flex-row items-end gap-3'>
                     <h3 className='text-3xl md:text-6xl '>{w.hanzi}</h3>
                     <p className='text-sm md:text-xl'>{w.traditional}</p>
@@ -61,7 +74,7 @@ const WordContainer = ({level, setCount}: WordContainerProps) => {
                 <p className='text-sm'>Pinyin: {w.pinyin}</p>
                 <p className='text-sm'>Classifiers: {w.classifiers}</p>
                 <p className='text-sm wrap-break-word'>Meaning: {w.meanings.join(",")}</p>
-                <p>Level: {w.sourceLevels.join(" ")}</p>
+                <p>Pos: {w.partOfSpeech.join(" / ")}</p>
               </Link>
             ))
           ):(<div>'No words found'</div>)
