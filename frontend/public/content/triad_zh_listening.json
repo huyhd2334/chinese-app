@@ -1,0 +1,1370 @@
+[
+  {
+    "id": "group_3_1",
+    "question": "按照要求可以穿衣服吗",
+    "choices": [
+      "可以",
+      "不可以",
+      "不确定",
+      "没有要求"
+    ],
+    "answer": "B",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0049.wav"
+  },
+  {
+    "id": "group_3_2",
+    "question": "按照要求可以穿衣服吗",
+    "choices": [
+      "可以",
+      "不可以",
+      "不确定",
+      "没有要求"
+    ],
+    "answer": "A",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0050.wav"
+  },
+  {
+    "id": "group_14_1",
+    "question": "根据文本，谁将会对这个问题负责？",
+    "choices": [
+      "学生会主席",
+      "学生会",
+      "所有学生",
+      "没有人"
+    ],
+    "answer": "B",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0026.wav"
+  },
+  {
+    "id": "group_14_2",
+    "question": "根据文本，谁在什么时候说会对这个问题负责？",
+    "choices": [
+      "学生会主席，星期五",
+      "学生会，星期四",
+      "所有学生，星期五",
+      "没有人"
+    ],
+    "answer": "A",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0094.wav"
+  },
+  {
+    "id": "group_14_3",
+    "question": "根据文本，这个问题有没有被解决？",
+    "choices": [
+      "是",
+      "否",
+      "不确定",
+      "没有讨论"
+    ],
+    "answer": "C",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0095.wav"
+  },
+  {
+    "id": "group_14_4",
+    "question": "根据文本，谁将会对这个问题负责？",
+    "choices": [
+      "学生会",
+      "所有班级成员",
+      "所有学生",
+      "没有人"
+    ],
+    "answer": "B",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0096.wav"
+  },
+  {
+    "id": "group_16_1",
+    "question": "小明最大概率想表达什么？",
+    "choices": [
+      "字面意义上询问吃饭的事。",
+      "一种问候或关心。",
+      "邀请对方吃饭。",
+      "有歧义。"
+    ],
+    "answer": "B",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0100.wav"
+  },
+  {
+    "id": "group_16_2",
+    "question": "小明最大概率想表达什么？",
+    "choices": [
+      "字面意义上询问吃饭的事。",
+      "一种问候或关心。",
+      "邀请对方吃饭。",
+      "有歧义。"
+    ],
+    "answer": "C",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0101.wav"
+  },
+  {
+    "id": "group_19_1",
+    "question": "妈妈让孩子拿的是什么物品？妈妈当下要做的事情是什么？",
+    "choices": [
+      "拿浇水壶；给阳台的绿植浇水",
+      "拿胶水；修补开裂的花盆",
+      "拿胶水；固定绿植断裂的枝干",
+      "拿浇水壶；给所有绿植批量浇水并整理黄叶"
+    ],
+    "answer": "A",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0107.wav"
+  },
+  {
+    "id": "group_19_2",
+    "question": "妈妈让孩子拿的是什么物品？妈妈当下要做的事情是什么？",
+    "choices": [
+      "拿浇水壶；给阳台的绿植浇水",
+      "拿胶水；修补开裂的花盆",
+      "拿胶水；固定绿植断裂的枝干",
+      "拿浇水壶；给所有绿植批量浇水并整理黄叶"
+    ],
+    "answer": "B",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0108.wav"
+  },
+  {
+    "id": "group_19_3",
+    "question": "妈妈让孩子拿的是什么物品？妈妈当下要做的事情是什么？",
+    "choices": [
+      "拿浇水壶；给阳台的绿植浇水",
+      "拿胶水；修补开裂的花盆",
+      "拿胶水；固定绿植断裂的枝干",
+      "拿浇水壶；给所有绿植批量浇水并整理黄叶"
+    ],
+    "answer": "C",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0108.wav"
+  },
+  {
+    "id": "group_19_4",
+    "question": "妈妈让孩子拿的是什么物品？妈妈当下要做的事情是什么？",
+    "choices": [
+      "拿浇水壶；给阳台的绿植浇水",
+      "拿胶水；修补开裂的花盆",
+      "拿胶水；固定绿植断裂的枝干",
+      "拿浇水壶；给所有绿植批量浇水并整理黄叶"
+    ],
+    "answer": "D",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0109.wav"
+  },
+  {
+    "id": "group_25_1",
+    "question": "该动作已经完成了吗？",
+    "choices": [
+      "动作已经完成",
+      "动作正在进行，尚未完成",
+      "动作尚未开始",
+      "无法确定"
+    ],
+    "answer": "A",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0034.wav"
+  },
+  {
+    "id": "group_25_2",
+    "question": "该动作已经完成了吗？",
+    "choices": [
+      "动作已经完成",
+      "动作正在进行，尚未完成",
+      "动作尚未开始",
+      "无法确定"
+    ],
+    "answer": "B",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0035.wav"
+  },
+  {
+    "id": "group_25_3",
+    "question": "该动作已经完成了吗？",
+    "choices": [
+      "动作已经完成",
+      "动作正在进行，尚未完成",
+      "动作尚未开始",
+      "无法确定"
+    ],
+    "answer": "A",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0036.wav"
+  },
+  {
+    "id": "group_25_4",
+    "question": "该动作已经完成了吗？",
+    "choices": [
+      "动作已经完成",
+      "动作正在进行，尚未完成",
+      "动作尚未开始",
+      "无法确定"
+    ],
+    "answer": "B",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0036.wav"
+  },
+  {
+    "id": "group_34_1",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "衣服尺码偏小，艾玛会找店员更换尺码。",
+      "衣服尺码偏小，艾玛会更换其他款式的衣服。",
+      "拉链卡住，艾玛会调整拉链。",
+      "拉链卡住，艾玛会脱下衣服不再试穿。"
+    ],
+    "answer": "A",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0120.wav"
+  },
+  {
+    "id": "group_34_2",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "衣服尺码偏小，艾玛会找店员更换尺码。",
+      "衣服尺码偏小，艾玛会更换其他款式的衣服。",
+      "拉链卡住，艾玛会调整拉链。",
+      "拉链卡住，艾玛会脱下衣服不再试穿。"
+    ],
+    "answer": "B",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0120.wav"
+  },
+  {
+    "id": "group_34_3",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "衣服尺码偏小，艾玛会找店员更换尺码。",
+      "衣服尺码偏小，艾玛会更换其他款式的衣服。",
+      "拉链卡住，艾玛会调整拉链。",
+      "拉链卡住，艾玛会脱下衣服不再试穿。"
+    ],
+    "answer": "C",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0121.wav"
+  },
+  {
+    "id": "group_34_4",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "衣服尺码偏小，艾玛会找店员更换尺码。",
+      "衣服尺码偏小，艾玛会更换其他款式的衣服。",
+      "拉链卡住，艾玛会调整拉链。",
+      "拉链卡住，艾玛会脱下衣服不再试穿。"
+    ],
+    "answer": "D",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0121.wav"
+  },
+  {
+    "id": "group_36_1",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "器械配重过大，小宇准备调整配重片。",
+      "器械配重过大，小宇准备更换训练器械。",
+      "姿势不舒服，小宇准备调整器械握把。",
+      "姿势不舒服，小宇准备停止训练休息。"
+    ],
+    "answer": "A",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0124.wav"
+  },
+  {
+    "id": "group_36_2",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "器械配重过大，小宇准备调整配重片。",
+      "器械配重过大，小宇准备更换训练器械。",
+      "姿势不舒服，小宇准备调整器械握把。",
+      "姿势不舒服，小宇准备停止训练休息。"
+    ],
+    "answer": "B",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0124.wav"
+  },
+  {
+    "id": "group_36_3",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "器械配重过大，小宇准备调整配重片。",
+      "器械配重过大，小宇准备更换训练器械。",
+      "姿势不舒服，小宇准备调整器械握把。",
+      "姿势不舒服，小宇准备停止训练休息。"
+    ],
+    "answer": "C",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0125.wav"
+  },
+  {
+    "id": "group_36_4",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "器械配重过大，小宇准备调整配重片。",
+      "器械配重过大，小宇准备更换训练器械。",
+      "姿势不舒服，小宇准备调整器械握把。",
+      "姿势不舒服，小宇准备停止训练休息。"
+    ],
+    "answer": "D",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0125.wav"
+  },
+  {
+    "id": "group_38_1",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "包裹太重，迈克准备去取小推车。",
+      "包裹太重，迈克准备将其放入快递柜。",
+      "迈克腿脚不适，准备打电话叫家人帮忙。",
+      "迈克腿脚不适，准备把包裹放在门口。"
+    ],
+    "answer": "A",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0053.wav"
+  },
+  {
+    "id": "group_38_2",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "包裹太重，迈克准备去取小推车。",
+      "包裹太重，迈克准备将其放入快递柜。",
+      "迈克腿脚不适，准备打电话叫家人帮忙。",
+      "迈克腿脚不适，准备把包裹放在门口。"
+    ],
+    "answer": "B",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0053.wav"
+  },
+  {
+    "id": "group_38_3",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "包裹太重，迈克准备去取小推车。",
+      "包裹太重，迈克准备将其放入快递柜。",
+      "迈克腿脚不适，准备打电话叫家人帮忙。",
+      "迈克腿脚不适，准备把包裹放在门口。"
+    ],
+    "answer": "C",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0054.wav"
+  },
+  {
+    "id": "group_38_4",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "包裹太重，迈克准备去取小推车。",
+      "包裹太重，迈克准备将其放入快递柜。",
+      "迈克腿脚不适，准备打电话叫家人帮忙。",
+      "迈克腿脚不适，准备把包裹放在门口。"
+    ],
+    "answer": "D",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0055.wav"
+  },
+  {
+    "id": "group_39_1",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "莉莉犯困，准备趴桌休息。",
+      "莉莉犯困，准备喝水提神。",
+      "莉莉烦躁，准备收拾书本离开。",
+      "莉莉烦躁，准备请教同学问题。"
+    ],
+    "answer": "A",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0056.wav"
+  },
+  {
+    "id": "group_39_2",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "莉莉犯困，准备趴桌休息。",
+      "莉莉犯困，准备喝水提神。",
+      "莉莉烦躁，准备收拾书本离开。",
+      "莉莉烦躁，准备请教同学问题。"
+    ],
+    "answer": "B",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0056.wav"
+  },
+  {
+    "id": "group_39_3",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "莉莉犯困，准备趴桌休息。",
+      "莉莉犯困，准备喝水提神。",
+      "莉莉烦躁，准备收拾书本离开。",
+      "莉莉烦躁，准备请教同学问题。"
+    ],
+    "answer": "C",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0056.wav"
+  },
+  {
+    "id": "group_39_4",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "莉莉犯困，准备趴桌休息。",
+      "莉莉犯困，准备喝水提神。",
+      "莉莉烦躁，准备收拾书本离开。",
+      "莉莉烦躁，准备请教同学问题。"
+    ],
+    "answer": "D",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0056.wav"
+  },
+  {
+    "id": "group_42_1",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "饭菜太多，学生准备更换大碗。",
+      "饭菜太多，学生准备倒掉一些饭菜。",
+      "汤汁易洒，学生准备更换餐盘。",
+      "汤汁易洒，学生准备让工作人员少盛一些。"
+    ],
+    "answer": "A",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0062.wav"
+  },
+  {
+    "id": "group_42_2",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "饭菜太多，学生准备更换大碗。",
+      "饭菜太多，学生准备倒掉一些饭菜。",
+      "汤汁易洒，学生准备更换餐盘。",
+      "汤汁易洒，学生准备让工作人员少盛一些。"
+    ],
+    "answer": "B",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0062.wav"
+  },
+  {
+    "id": "group_42_3",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "饭菜太多，学生准备更换大碗。",
+      "饭菜太多，学生准备倒掉一些饭菜。",
+      "汤汁易洒，学生准备更换餐盘。",
+      "汤汁易洒，学生准备让工作人员少盛一些。"
+    ],
+    "answer": "C",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0062.wav"
+  },
+  {
+    "id": "group_42_4",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "饭菜太多，学生准备更换大碗。",
+      "饭菜太多，学生准备倒掉一些饭菜。",
+      "汤汁易洒，学生准备更换餐盘。",
+      "汤汁易洒，学生准备让工作人员少盛一些。"
+    ],
+    "answer": "D",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0062.wav"
+  },
+  {
+    "id": "group_43_1",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "水温不适，人物准备调节水温阀。",
+      "水温不适，人物准备加冷水兑温。",
+      "水流不适，人物准备调节水量开关。",
+      "水流不适，人物准备检查出水口。"
+    ],
+    "answer": "A",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0063.wav"
+  },
+  {
+    "id": "group_43_2",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "水温不适，人物准备调节水温阀。",
+      "水温不适，人物准备加冷水兑温。",
+      "水流不适，人物准备调节水量开关。",
+      "水流不适，人物准备检查出水口。"
+    ],
+    "answer": "B",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0063.wav"
+  },
+  {
+    "id": "group_43_3",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "水温不适，人物准备调节水温阀。",
+      "水温不适，人物准备加冷水兑温。",
+      "水流不适，人物准备调节水量开关。",
+      "水流不适，人物准备检查出水口。"
+    ],
+    "answer": "C",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0063.wav"
+  },
+  {
+    "id": "group_43_4",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "水温不适，人物准备调节水温阀。",
+      "水温不适，人物准备加冷水兑温。",
+      "水流不适，人物准备调节水量开关。",
+      "水流不适，人物准备检查出水口。"
+    ],
+    "answer": "D",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0063.wav"
+  },
+  {
+    "id": "group_46_1",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "车位过窄，司机准备调整方向盘。",
+      "车位过窄，司机准备更换车位。",
+      "后视镜碍事，司机准备折叠后视镜。",
+      "后视镜碍事，司机准备调整后视镜角度。"
+    ],
+    "answer": "A",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0066.wav"
+  },
+  {
+    "id": "group_46_2",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "车位过窄，司机准备调整方向盘。",
+      "车位过窄，司机准备更换车位。",
+      "后视镜碍事，司机准备折叠后视镜。",
+      "后视镜碍事，司机准备调整后视镜角度。"
+    ],
+    "answer": "B",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0066.wav"
+  },
+  {
+    "id": "group_46_3",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "车位过窄，司机准备调整方向盘。",
+      "车位过窄，司机准备更换车位。",
+      "后视镜碍事，司机准备折叠后视镜。",
+      "后视镜碍事，司机准备调整后视镜角度。"
+    ],
+    "answer": "C",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0066.wav"
+  },
+  {
+    "id": "group_46_4",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "车位过窄，司机准备调整方向盘。",
+      "车位过窄，司机准备更换车位。",
+      "后视镜碍事，司机准备折叠后视镜。",
+      "后视镜碍事，司机准备调整后视镜角度。"
+    ],
+    "answer": "D",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0066.wav"
+  },
+  {
+    "id": "group_47_1",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "花枝过硬，店员准备用剪刀修剪。",
+      "花枝过硬，店员准备更换柔软花枝。",
+      "花瓶过满，店员准备整理花枝。",
+      "花瓶过满，店员准备更换更大花瓶。"
+    ],
+    "answer": "A",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0067.wav"
+  },
+  {
+    "id": "group_47_2",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "花枝过硬，店员准备用剪刀修剪。",
+      "花枝过硬，店员准备更换柔软花枝。",
+      "花瓶过满，店员准备整理花枝。",
+      "花瓶过满，店员准备更换更大花瓶。"
+    ],
+    "answer": "B",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0067.wav"
+  },
+  {
+    "id": "group_47_3",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "花枝过硬，店员准备用剪刀修剪。",
+      "花枝过硬，店员准备更换柔软花枝。",
+      "花瓶过满，店员准备整理花枝。",
+      "花瓶过满，店员准备更换更大花瓶。"
+    ],
+    "answer": "C",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0067.wav"
+  },
+  {
+    "id": "group_47_4",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "花枝过硬，店员准备用剪刀修剪。",
+      "花枝过硬，店员准备更换柔软花枝。",
+      "花瓶过满，店员准备整理花枝。",
+      "花瓶过满，店员准备更换更大花瓶。"
+    ],
+    "answer": "D",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0067.wav"
+  },
+  {
+    "id": "group_50_1",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "支架卡壳，露营者准备调整帐篷支架。",
+      "支架卡壳，露营者准备查看搭建说明书。",
+      "固定不稳，露营者准备加固地钉防风绳。",
+      "固定不稳，露营者准备更换平整搭建位。"
+    ],
+    "answer": "A",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0129.wav"
+  },
+  {
+    "id": "group_50_2",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "支架卡壳，露营者准备调整帐篷支架。",
+      "支架卡壳，露营者准备查看搭建说明书。",
+      "固定不稳，露营者准备加固地钉防风绳。",
+      "固定不稳，露营者准备更换平整搭建位。"
+    ],
+    "answer": "B",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0129.wav"
+  },
+  {
+    "id": "group_50_3",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "支架卡壳，露营者准备调整帐篷支架。",
+      "支架卡壳，露营者准备查看搭建说明书。",
+      "固定不稳，露营者准备加固地钉防风绳。",
+      "固定不稳，露营者准备更换平整搭建位。"
+    ],
+    "answer": "C",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0129.wav"
+  },
+  {
+    "id": "group_50_4",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "支架卡壳，露营者准备调整帐篷支架。",
+      "支架卡壳，露营者准备查看搭建说明书。",
+      "固定不稳，露营者准备加固地钉防风绳。",
+      "固定不稳，露营者准备更换平整搭建位。"
+    ],
+    "answer": "D",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0129.wav"
+  },
+  {
+    "id": "group_51_1",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "规则不懂，玩家准备翻看游戏说明书。",
+      "规则不懂，玩家准备询问队友规则细节。",
+      "局势不利，玩家准备整理手牌选择弃牌。",
+      "局势不利，玩家准备和队友配合换牌。"
+    ],
+    "answer": "A",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0130.wav"
+  },
+  {
+    "id": "group_51_2",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "规则不懂，玩家准备翻看游戏说明书。",
+      "规则不懂，玩家准备询问队友规则细节。",
+      "局势不利，玩家准备整理手牌选择弃牌。",
+      "局势不利，玩家准备和队友配合换牌。"
+    ],
+    "answer": "B",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0130.wav"
+  },
+  {
+    "id": "group_51_3",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "规则不懂，玩家准备翻看游戏说明书。",
+      "规则不懂，玩家准备询问队友规则细节。",
+      "局势不利，玩家准备整理手牌选择弃牌。",
+      "局势不利，玩家准备和队友配合换牌。"
+    ],
+    "answer": "C",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0130.wav"
+  },
+  {
+    "id": "group_51_4",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "规则不懂，玩家准备翻看游戏说明书。",
+      "规则不懂，玩家准备询问队友规则细节。",
+      "局势不利，玩家准备整理手牌选择弃牌。",
+      "局势不利，玩家准备和队友配合换牌。"
+    ],
+    "answer": "D",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0131.wav"
+  },
+  {
+    "id": "group_54_1",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "钓具不适配，垂钓者准备调整鱼漂深度。",
+      "钓具不适配，垂钓者准备更换鱼钩鱼线。",
+      "饵料不诱鱼，垂钓者准备更换鱼饵种类。",
+      "饵料不诱鱼，垂钓者准备补充打窝料。"
+    ],
+    "answer": "A",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0135.wav"
+  },
+  {
+    "id": "group_54_2",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "钓具不适配，垂钓者准备调整鱼漂深度。",
+      "钓具不适配，垂钓者准备更换鱼钩鱼线。",
+      "饵料不诱鱼，垂钓者准备更换鱼饵种类。",
+      "饵料不诱鱼，垂钓者准备补充打窝料。"
+    ],
+    "answer": "B",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0135.wav"
+  },
+  {
+    "id": "group_54_3",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "钓具不适配，垂钓者准备调整鱼漂深度。",
+      "钓具不适配，垂钓者准备更换鱼钩鱼线。",
+      "饵料不诱鱼，垂钓者准备更换鱼饵种类。",
+      "饵料不诱鱼，垂钓者准备补充打窝料。"
+    ],
+    "answer": "C",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0135.wav"
+  },
+  {
+    "id": "group_54_4",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "钓具不适配，垂钓者准备调整鱼漂深度。",
+      "钓具不适配，垂钓者准备更换鱼钩鱼线。",
+      "饵料不诱鱼，垂钓者准备更换鱼饵种类。",
+      "饵料不诱鱼，垂钓者准备补充打窝料。"
+    ],
+    "answer": "D",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0135.wav"
+  },
+  {
+    "id": "group_55_1",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "粉饼不适配，咖啡爱好者准备调整咖啡粉研磨度。",
+      "粉饼不适配，咖啡爱好者准备重新均匀压粉。",
+      "机器异常，咖啡爱好者准备调整萃取压力。",
+      "机器异常，咖啡爱好者准备清洁咖啡机冲煮头。"
+    ],
+    "answer": "A",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0136.wav"
+  },
+  {
+    "id": "group_55_2",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "粉饼不适配，咖啡爱好者准备调整咖啡粉研磨度。",
+      "粉饼不适配，咖啡爱好者准备重新均匀压粉。",
+      "机器异常，咖啡爱好者准备调整萃取压力。",
+      "机器异常，咖啡爱好者准备清洁咖啡机冲煮头。"
+    ],
+    "answer": "B",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0136.wav"
+  },
+  {
+    "id": "group_55_3",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "粉饼不适配，咖啡爱好者准备调整咖啡粉研磨度。",
+      "粉饼不适配，咖啡爱好者准备重新均匀压粉。",
+      "机器异常，咖啡爱好者准备调整萃取压力。",
+      "机器异常，咖啡爱好者准备清洁咖啡机冲煮头。"
+    ],
+    "answer": "C",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0136.wav"
+  },
+  {
+    "id": "group_55_4",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "粉饼不适配，咖啡爱好者准备调整咖啡粉研磨度。",
+      "粉饼不适配，咖啡爱好者准备重新均匀压粉。",
+      "机器异常，咖啡爱好者准备调整萃取压力。",
+      "机器异常，咖啡爱好者准备清洁咖啡机冲煮头。"
+    ],
+    "answer": "D",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0136.wav"
+  },
+  {
+    "id": "group_73_1",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "面临追打，人物准备转身逃跑躲避。",
+      "面临追打，人物准备寻找掩体避险。",
+      "存在误会，人物准备抬手示意解释。",
+      "存在误会，人物准备出示证件证明身份。"
+    ],
+    "answer": "A",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0139.wav"
+  },
+  {
+    "id": "group_73_2",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "面临追打，人物准备转身逃跑躲避。",
+      "面临追打，人物准备寻找掩体避险。",
+      "存在误会，人物准备抬手示意解释。",
+      "存在误会，人物准备出示证件证明身份。"
+    ],
+    "answer": "B",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0139.wav"
+  },
+  {
+    "id": "group_73_3",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "面临追打，人物准备转身逃跑躲避。",
+      "面临追打，人物准备寻找掩体避险。",
+      "存在误会，人物准备抬手示意解释。",
+      "存在误会，人物准备出示证件证明身份。"
+    ],
+    "answer": "C",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0139.wav"
+  },
+  {
+    "id": "group_73_4",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "面临追打，人物准备转身逃跑躲避。",
+      "面临追打，人物准备寻找掩体避险。",
+      "存在误会，人物准备抬手示意解释。",
+      "存在误会，人物准备出示证件证明身份。"
+    ],
+    "answer": "D",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0139.wav"
+  },
+  {
+    "id": "group_75_1",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "卡片异常，乘客准备给交通卡充余额。",
+      "卡片异常，乘客准备更换备用交通卡。",
+      "操作/闸机异常，乘客准备调整刷卡位置。",
+      "操作/闸机异常，乘客准备呼叫工作人员。"
+    ],
+    "answer": "A",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0141.wav"
+  },
+  {
+    "id": "group_75_2",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "卡片异常，乘客准备给交通卡充余额。",
+      "卡片异常，乘客准备更换备用交通卡。",
+      "操作/闸机异常，乘客准备调整刷卡位置。",
+      "操作/闸机异常，乘客准备呼叫工作人员。"
+    ],
+    "answer": "B",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0141.wav"
+  },
+  {
+    "id": "group_75_3",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "卡片异常，乘客准备给交通卡充余额。",
+      "卡片异常，乘客准备更换备用交通卡。",
+      "操作/闸机异常，乘客准备调整刷卡位置。",
+      "操作/闸机异常，乘客准备呼叫工作人员。"
+    ],
+    "answer": "C",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0141.wav"
+  },
+  {
+    "id": "group_75_4",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "卡片异常，乘客准备给交通卡充余额。",
+      "卡片异常，乘客准备更换备用交通卡。",
+      "操作/闸机异常，乘客准备调整刷卡位置。",
+      "操作/闸机异常，乘客准备呼叫工作人员。"
+    ],
+    "answer": "D",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0141.wav"
+  },
+  {
+    "id": "group_76_1",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "操作错误，用户准备添加洗衣液。",
+      "操作错误，用户准备切换强力洗涤模式。",
+      "污渍顽固，用户准备手搓衣物顽固污渍。",
+      "污渍顽固，用户准备更换专用去渍洗涤剂。"
+    ],
+    "answer": "A",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0072.wav"
+  },
+  {
+    "id": "group_76_2",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "操作错误，用户准备添加洗衣液。",
+      "操作错误，用户准备切换强力洗涤模式。",
+      "污渍顽固，用户准备手搓衣物顽固污渍。",
+      "污渍顽固，用户准备更换专用去渍洗涤剂。"
+    ],
+    "answer": "B",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0072.wav"
+  },
+  {
+    "id": "group_76_3",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "操作错误，用户准备添加洗衣液。",
+      "操作错误，用户准备切换强力洗涤模式。",
+      "污渍顽固，用户准备手搓衣物顽固污渍。",
+      "污渍顽固，用户准备更换专用去渍洗涤剂。"
+    ],
+    "answer": "C",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0072.wav"
+  },
+  {
+    "id": "group_76_4",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "操作错误，用户准备添加洗衣液。",
+      "操作错误，用户准备切换强力洗涤模式。",
+      "污渍顽固，用户准备手搓衣物顽固污渍。",
+      "污渍顽固，用户准备更换专用去渍洗涤剂。"
+    ],
+    "answer": "D",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0072.wav"
+  },
+  {
+    "id": "group_79_1",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "车胎异常，用户准备检查内胎漏气情况。",
+      "车胎异常，用户准备更换全新内胎。",
+      "工具异常，用户准备重新卡紧气筒接口。",
+      "工具异常，用户准备更换备用打气筒。"
+    ],
+    "answer": "A",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0074.wav"
+  },
+  {
+    "id": "group_79_2",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "车胎异常，用户准备检查内胎漏气情况。",
+      "车胎异常，用户准备更换全新内胎。",
+      "工具异常，用户准备重新卡紧气筒接口。",
+      "工具异常，用户准备更换备用打气筒。"
+    ],
+    "answer": "B",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0074.wav"
+  },
+  {
+    "id": "group_79_3",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "车胎异常，用户准备检查内胎漏气情况。",
+      "车胎异常，用户准备更换全新内胎。",
+      "工具异常，用户准备重新卡紧气筒接口。",
+      "工具异常，用户准备更换备用打气筒。"
+    ],
+    "answer": "C",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0074.wav"
+  },
+  {
+    "id": "group_79_4",
+    "question": "下列哪个选项是正确的？",
+    "choices": [
+      "车胎异常，用户准备检查内胎漏气情况。",
+      "车胎异常，用户准备更换全新内胎。",
+      "工具异常，用户准备重新卡紧气筒接口。",
+      "工具异常，用户准备更换备用打气筒。"
+    ],
+    "answer": "D",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0074.wav"
+  },
+  {
+    "id": "group_102_1",
+    "question": "根据当地交通法规，救护车是否获准通过交叉路口？目前这辆救护车处于何种状态？",
+    "choices": [
+      "能通过；警示灯闪烁并且警笛拉响",
+      "不能通过；警示灯闪烁并且警笛拉响",
+      "不能通过；警示灯未闪烁并且警笛拉响",
+      "不能通过；警示灯闪烁并且警笛未拉响"
+    ],
+    "answer": "A",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0079.wav"
+  },
+  {
+    "id": "group_102_2",
+    "question": "根据当地交通法规，救护车是否获准通过交叉路口？目前这辆救护车处于何种状态？",
+    "choices": [
+      "能通过；警示灯闪烁并且警笛拉响",
+      "不能通过；警示灯闪烁并且警笛拉响",
+      "不能通过；警示灯未闪烁并且警笛拉响",
+      "不能通过；警示灯闪烁并且警笛未拉响"
+    ],
+    "answer": "C",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0079.wav"
+  },
+  {
+    "id": "group_102_3",
+    "question": "根据当地交通法规，救护车是否获准通过交叉路口？目前这辆救护车处于何种状态？",
+    "choices": [
+      "能通过；警示灯闪烁并且警笛拉响",
+      "不能通过；警示灯闪烁并且警笛拉响",
+      "不能通过；警示灯未闪烁并且警笛拉响",
+      "不能通过；警示灯闪烁并且警笛未拉响"
+    ],
+    "answer": "D",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0080.wav"
+  },
+  {
+    "id": "group_109_1",
+    "question": "根据当地交通法规，校车是否获准通过交叉路口？目前这辆校车处于何种状态？",
+    "choices": [
+      "能通过；警示灯闪烁并且停车牌开启",
+      "不能通过；警示灯闪烁并且停车牌开启",
+      "不能通过；警示灯未闪烁并且停车牌开启",
+      "不能通过；警示灯闪烁并且停车牌未开启"
+    ],
+    "answer": "A",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0001.wav"
+  },
+  {
+    "id": "group_109_2",
+    "question": "根据当地交通法规，校车是否获准通过交叉路口？目前这辆校车处于何种状态？",
+    "choices": [
+      "能通过；警示灯闪烁并且停车牌开启",
+      "不能通过；警示灯闪烁并且停车牌开启",
+      "不能通过；警示灯未闪烁并且停车牌开启",
+      "不能通过；警示灯闪烁并且停车牌未开启"
+    ],
+    "answer": "C",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0001.wav"
+  },
+  {
+    "id": "group_109_3",
+    "question": "根据当地交通法规，校车是否获准通过交叉路口？目前这辆校车处于何种状态？",
+    "choices": [
+      "能通过；警示灯闪烁并且停车牌开启",
+      "不能通过；警示灯闪烁并且停车牌开启",
+      "不能通过；警示灯未闪烁并且停车牌开启",
+      "不能通过；警示灯闪烁并且停车牌未开启"
+    ],
+    "answer": "D",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0002.wav"
+  },
+  {
+    "id": "group_116_1",
+    "question": "根据路标规则，这位司机应该怎么做？",
+    "choices": [
+      "停车等待",
+      "减速通过",
+      "靠边停车观察",
+      "直接加速通过"
+    ],
+    "answer": "C",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0017.wav"
+  },
+  {
+    "id": "group_116_2",
+    "question": "根据路标规则，这位司机应该怎么做？",
+    "choices": [
+      "停车等待",
+      "减速通过",
+      "靠边停车观察",
+      "直接加速通过"
+    ],
+    "answer": "A",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0017.wav"
+  },
+  {
+    "id": "group_116_3",
+    "question": "根据路标规则，这位司机应该怎么做？",
+    "choices": [
+      "停车等待",
+      "减速通过",
+      "靠边停车观察",
+      "直接加速通过"
+    ],
+    "answer": "B",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0018.wav"
+  },
+  {
+    "id": "group_116_4",
+    "question": "根据路标规则，这位司机应该怎么做？",
+    "choices": [
+      "停车等待",
+      "减速通过",
+      "靠边停车观察",
+      "直接加速通过"
+    ],
+    "answer": "C",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0018.wav"
+  },
+  {
+    "id": "group_116_5",
+    "question": "根据路标规则，这位司机应该怎么做？",
+    "choices": [
+      "停车等待",
+      "减速通过",
+      "靠边停车观察",
+      "直接加速通过"
+    ],
+    "answer": "B",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0017.wav"
+  },
+  {
+    "id": "group_116_6",
+    "question": "根据路标规则，这位司机应该怎么做？",
+    "choices": [
+      "停车等待",
+      "减速通过",
+      "靠边停车观察",
+      "直接加速通过"
+    ],
+    "answer": "C",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0017.wav"
+  },
+  {
+    "id": "group_116_7",
+    "question": "根据路标规则，这位司机应该怎么做？",
+    "choices": [
+      "停车等待",
+      "减速通过",
+      "靠边停车观察",
+      "直接加速通过"
+    ],
+    "answer": "C",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0018.wav"
+  },
+  {
+    "id": "group_116_8",
+    "question": "根据路标规则，这位司机应该怎么做？",
+    "choices": [
+      "停车等待",
+      "减速通过",
+      "靠边停车观察",
+      "直接加速通过"
+    ],
+    "answer": "A",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0018.wav"
+  },
+  {
+    "id": "group_118_1",
+    "question": "在音频中，刘女士说的话是什么意思？刘女士的态度发生了什么转变？",
+    "choices": [
+      "真心喜爱这道菜；此前寄予厚望，且期望得到了满足",
+      "真心喜爱这道菜；起初持怀疑态度，但随后感到惊喜",
+      "在说反话；起初就持怀疑态度，结果证实确实难吃",
+      "在说反话；此前寄予厚望，结果却大失所望"
+    ],
+    "answer": "A",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0091.wav"
+  },
+  {
+    "id": "group_118_2",
+    "question": "在音频中，刘女士说的话是什么意思？刘女士的态度发生了什么转变？",
+    "choices": [
+      "真心喜爱这道菜；此前寄予厚望，且期望得到了满足",
+      "真心喜爱这道菜；起初持怀疑态度，但随后感到惊喜",
+      "在说反话；起初就持怀疑态度，结果证实确实难吃",
+      "在说反话；此前寄予厚望，结果却大失所望"
+    ],
+    "answer": "D",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0091.wav"
+  },
+  {
+    "id": "group_118_3",
+    "question": "在音频中，刘女士说的话是什么意思？刘女士的态度发生了什么转变？",
+    "choices": [
+      "真心喜爱这道菜；此前寄予厚望，且期望得到了满足",
+      "真心喜爱这道菜；起初持怀疑态度，但随后感到惊喜",
+      "在说反话；起初就持怀疑态度，结果证实确实难吃",
+      "在说反话；此前寄予厚望，结果却大失所望"
+    ],
+    "answer": "B",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0091.wav"
+  },
+  {
+    "id": "group_118_4",
+    "question": "在音频中，刘女士说的话是什么意思？刘女士的态度发生了什么转变？",
+    "choices": [
+      "真心喜爱这道菜；此前寄予厚望，且期望得到了满足",
+      "真心喜爱这道菜；起初持怀疑态度，但随后感到惊喜",
+      "在说反话；起初就持怀疑态度，结果证实确实难吃",
+      "在说反话；此前寄予厚望，结果却大失所望"
+    ],
+    "answer": "C",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0091.wav"
+  },
+  {
+    "id": "group_120_1",
+    "question": "根据收银员培训手册，应该如何处理这笔交易？",
+    "choices": [
+      "扫商品条码",
+      "录入优惠码",
+      "呼叫主管",
+      "直接结账"
+    ],
+    "answer": "A",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0022.wav"
+  },
+  {
+    "id": "group_120_2",
+    "question": "根据收银员培训手册，应该如何处理这笔交易？",
+    "choices": [
+      "扫商品条码",
+      "录入优惠码",
+      "呼叫主管",
+      "直接结账"
+    ],
+    "answer": "C",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0021.wav"
+  },
+  {
+    "id": "group_120_3",
+    "question": "根据收银员培训手册，应该如何处理这笔交易？",
+    "choices": [
+      "扫商品条码",
+      "录入优惠码",
+      "呼叫主管",
+      "直接结账"
+    ],
+    "answer": "C",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0022.wav"
+  },
+  {
+    "id": "group_120_4",
+    "question": "根据收银员培训手册，应该如何处理这笔交易？",
+    "choices": [
+      "扫商品条码",
+      "录入优惠码",
+      "呼叫主管",
+      "直接结账"
+    ],
+    "answer": "B",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0021.wav"
+  },
+  {
+    "id": "group_120_5",
+    "question": "根据收银员培训手册，应该如何处理这笔交易？",
+    "choices": [
+      "扫商品条码",
+      "录入优惠码",
+      "呼叫主管",
+      "直接结账"
+    ],
+    "answer": "C",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0022.wav"
+  },
+  {
+    "id": "group_120_6",
+    "question": "根据收银员培训手册，应该如何处理这笔交易？",
+    "choices": [
+      "扫商品条码",
+      "录入优惠码",
+      "呼叫主管",
+      "直接结账"
+    ],
+    "answer": "A",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0021.wav"
+  },
+  {
+    "id": "group_120_7",
+    "question": "根据收银员培训手册，应该如何处理这笔交易？",
+    "choices": [
+      "扫商品条码",
+      "录入优惠码",
+      "呼叫主管",
+      "直接结账"
+    ],
+    "answer": "B",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0022.wav"
+  },
+  {
+    "id": "group_120_8",
+    "question": "根据收银员培训手册，应该如何处理这笔交易？",
+    "choices": [
+      "扫商品条码",
+      "录入优惠码",
+      "呼叫主管",
+      "直接结账"
+    ],
+    "answer": "C",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0021.wav"
+  },
+  {
+    "id": "group_121_1",
+    "question": "根据洗衣标识，这件衣服该怎么洗？",
+    "choices": [
+      "只能干洗",
+      "只能烘干",
+      "只能低温熨烫",
+      "只能手洗"
+    ],
+    "answer": "A",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0023.wav"
+  },
+  {
+    "id": "group_121_2",
+    "question": "根据洗衣标识，这件衣服该怎么洗？",
+    "choices": [
+      "只能干洗",
+      "只能烘干",
+      "只能低温熨烫",
+      "只能手洗"
+    ],
+    "answer": "B",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0024.wav"
+  },
+  {
+    "id": "group_121_3",
+    "question": "根据洗衣标识，这件衣服该怎么洗？",
+    "choices": [
+      "只能干洗",
+      "只能烘干",
+      "只能低温熨烫",
+      "只能手洗"
+    ],
+    "answer": "C",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0023.wav"
+  },
+  {
+    "id": "group_121_4",
+    "question": "根据洗衣标识，这件衣服该怎么洗？",
+    "choices": [
+      "只能干洗",
+      "只能烘干",
+      "只能低温熨烫",
+      "只能手洗"
+    ],
+    "answer": "D",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0024.wav"
+  },
+  {
+    "id": "group_121_5",
+    "question": "根据洗衣标识，这件衣服该怎么洗？",
+    "choices": [
+      "只能干洗",
+      "只能烘干",
+      "只能低温熨烫",
+      "只能手洗"
+    ],
+    "answer": "B",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0023.wav"
+  },
+  {
+    "id": "group_121_6",
+    "question": "根据洗衣标识，这件衣服该怎么洗？",
+    "choices": [
+      "只能干洗",
+      "只能烘干",
+      "只能低温熨烫",
+      "只能手洗"
+    ],
+    "answer": "A",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0024.wav"
+  },
+  {
+    "id": "group_121_7",
+    "question": "根据洗衣标识，这件衣服该怎么洗？",
+    "choices": [
+      "只能干洗",
+      "只能烘干",
+      "只能低温熨烫",
+      "只能手洗"
+    ],
+    "answer": "C",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0023.wav"
+  },
+  {
+    "id": "group_121_8",
+    "question": "根据洗衣标识，这件衣服该怎么洗？",
+    "choices": [
+      "只能干洗",
+      "只能烘干",
+      "只能低温熨烫",
+      "只能手洗"
+    ],
+    "answer": "D",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0024.wav"
+  }
+]

@@ -2,7 +2,7 @@
 import { usePathname } from "next/navigation";
 import Link from 'next/link'
 import styles from './sideBar.module.css'
-import { BookText, Eye, Headset, LayoutDashboard, ReceiptText } from "lucide-react";
+import { BookText, Eye, Headset, LayoutDashboard, Puzzle, ReceiptText } from "lucide-react";
 
 const SideBar = () => {
   const pathname = usePathname();
@@ -33,9 +33,9 @@ const SideBar = () => {
           <span className="hidden md:inline">Reading</span>
         </Link>
 
-        <Link href="/listening" title="Listening" className={`${styles.option} ${pathname === "/listening" ? styles.activate : ""} justify-center md:justify-start`}>
-          <Headset />
-          <span className="hidden md:inline">Listening</span>
+        <Link href="/listening" title="Solving puzzles" className={`${styles.option} ${pathname === "/listening" ? styles.activate : ""} justify-center md:justify-start`}>
+          <Puzzle />
+          <span className="hidden md:inline">Solving puzzles</span>
         </Link>
       </nav>
     </aside>

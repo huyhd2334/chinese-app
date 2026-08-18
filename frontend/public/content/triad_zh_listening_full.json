@@ -1,0 +1,2966 @@
+[
+  {
+    "id": "group_3_1",
+    "language": "zh",
+    "question": "按照要求可以穿衣服吗",
+    "context": "上半身只能戴红色领带",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0132.jpg",
+    "image_caption": "一个穿西装的人正在戴一条红色领带",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0049.wav",
+    "audio_caption": "一个人说请按照要求穿好服装",
+    "choices": [
+      "可以",
+      "不可以",
+      "不确定",
+      "没有要求"
+    ],
+    "answer": "B",
+    "answer_option": "option_B",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Temporal",
+        "image": "Semiotic",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_3_2",
+    "language": "zh",
+    "question": "按照要求可以穿衣服吗",
+    "context": "上半身只能戴红色领带",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0132.jpg",
+    "image_caption": "一个穿西装的人正在戴一条红色领带",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0050.wav",
+    "audio_caption": "一个人说,“整理一下你的领带”",
+    "choices": [
+      "可以",
+      "不可以",
+      "不确定",
+      "没有要求"
+    ],
+    "answer": "A",
+    "answer_option": "option_A",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Temporal",
+        "image": "Semiotic",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_14_1",
+    "language": "zh",
+    "question": "根据文本，谁将会对这个问题负责？",
+    "context": "学生会在星期五讨论这个问题",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0146.jpg",
+    "image_caption": "提供一张学生会开会的照片",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0026.wav",
+    "audio_caption": "有人说：我们应该对这个问题负责",
+    "choices": [
+      "学生会主席",
+      "学生会",
+      "所有学生",
+      "没有人"
+    ],
+    "answer": "B",
+    "answer_option": "option_B",
+    "category": {
+      "level": "dual_modal",
+      "modal_category": {
+        "text": "Anaphoric",
+        "image": "Semiotic",
+        "audio": "Indexical"
+      }
+    }
+  },
+  {
+    "id": "group_14_2",
+    "language": "zh",
+    "question": "根据文本，谁在什么时候说会对这个问题负责？",
+    "context": "学生会在星期五讨论这个问题",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0146.jpg",
+    "image_caption": "提供一张学生会开会的照片",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0094.wav",
+    "audio_caption": "有人说：我会对这个问题负责",
+    "choices": [
+      "学生会主席，星期五",
+      "学生会，星期四",
+      "所有学生，星期五",
+      "没有人"
+    ],
+    "answer": "A",
+    "answer_option": "option_A",
+    "category": {
+      "level": "dual_modal",
+      "modal_category": {
+        "text": "Anaphoric",
+        "image": "Semiotic",
+        "audio": "Indexical"
+      }
+    }
+  },
+  {
+    "id": "group_14_3",
+    "language": "zh",
+    "question": "根据文本，这个问题有没有被解决？",
+    "context": "通知说学生会在星期五讨论这个问题。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0149.jpg",
+    "image_caption": "一张日历，这周五的日期上打了一个勾",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0095.wav",
+    "audio_caption": "有人说：我会解决这个问题",
+    "choices": [
+      "是",
+      "否",
+      "不确定",
+      "没有讨论"
+    ],
+    "answer": "C",
+    "answer_option": "option_C",
+    "category": {
+      "level": "dual_modal",
+      "modal_category": {
+        "text": "Anaphoric",
+        "image": "Semiotic",
+        "audio": "Indexical"
+      }
+    }
+  },
+  {
+    "id": "group_14_4",
+    "language": "zh",
+    "question": "根据文本，谁将会对这个问题负责？",
+    "context": "学生会在星期五讨论这个问题",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0115.jpg",
+    "image_caption": "提供一张老师在讲台上说话教室有学生的照片",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0096.wav",
+    "audio_caption": "有人说：我们应该对这个问题负责。声音是一个中年男性的声音，后面还有一些学生的附和声",
+    "choices": [
+      "学生会",
+      "所有班级成员",
+      "所有学生",
+      "没有人"
+    ],
+    "answer": "B",
+    "answer_option": "option_B",
+    "category": {
+      "level": "dual_modal",
+      "modal_category": {
+        "text": "Anaphoric",
+        "image": "Semiotic",
+        "audio": "Indexical"
+      }
+    }
+  },
+  {
+    "id": "group_16_1",
+    "language": "zh",
+    "question": "小明最大概率想表达什么？",
+    "context": "小明说：“你吃了吗？”",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0130.jpg",
+    "image_caption": "两个人在街上相遇，背景有中国传统建筑。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0100.wav",
+    "audio_caption": "有人笑着说：行，那我先走了",
+    "choices": [
+      "字面意义上询问吃饭的事。",
+      "一种问候或关心。",
+      "邀请对方吃饭。",
+      "有歧义。"
+    ],
+    "answer": "B",
+    "answer_option": "option_B",
+    "category": {
+      "level": "dual_modal",
+      "modal_category": {
+        "text": "Pragmatic",
+        "image": "Grounding",
+        "audio": "Indexical"
+      }
+    }
+  },
+  {
+    "id": "group_16_2",
+    "language": "zh",
+    "question": "小明最大概率想表达什么？",
+    "context": "小明说：“你吃了吗？”",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0123.jpg",
+    "image_caption": "两个人在饭店交谈。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0101.wav",
+    "audio_caption": "有人笑着说：可以",
+    "choices": [
+      "字面意义上询问吃饭的事。",
+      "一种问候或关心。",
+      "邀请对方吃饭。",
+      "有歧义。"
+    ],
+    "answer": "C",
+    "answer_option": "option_C",
+    "category": {
+      "level": "dual_modal",
+      "modal_category": {
+        "text": "Pragmatic",
+        "image": "Grounding",
+        "audio": "Indexical"
+      }
+    }
+  },
+  {
+    "id": "group_19_1",
+    "language": "zh",
+    "question": "妈妈让孩子拿的是什么物品？妈妈当下要做的事情是什么？",
+    "context": "周末在家，妈妈在阳台打理绿植，对着客厅里的孩子喊了一句话",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0159.jpg",
+    "image_caption": "阳台场景，花盆里的绿植叶片发蔫、土壤干裂，妈妈手里拿着空的浇水壶，正蹲在花盆旁，旁边没有其他修补工具。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0107.wav",
+    "audio_caption": "妈妈的声音：‘快拿浇水过来’。",
+    "choices": [
+      "拿浇水壶；给阳台的绿植浇水",
+      "拿胶水；修补开裂的花盆",
+      "拿胶水；固定绿植断裂的枝干",
+      "拿浇水壶；给所有绿植批量浇水并整理黄叶"
+    ],
+    "answer": "A",
+    "answer_option": "option_A",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Lexical",
+        "image": "Spatial",
+        "audio": "Phonetic"
+      }
+    }
+  },
+  {
+    "id": "group_19_2",
+    "language": "zh",
+    "question": "妈妈让孩子拿的是什么物品？妈妈当下要做的事情是什么？",
+    "context": "周末在家，妈妈在阳台打理绿植，对着客厅里的孩子喊了一句话，让孩子拿一样东西过来。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0142.jpg",
+    "image_caption": "阳台场景，花盆边缘有明显开裂的缝隙，妈妈手里拿着修补用的胶带，正蹲在花盆旁，旁边没有浇水壶。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0108.wav",
+    "audio_caption": "妈妈的声音：‘快拿胶水过来’。",
+    "choices": [
+      "拿浇水壶；给阳台的绿植浇水",
+      "拿胶水；修补开裂的花盆",
+      "拿胶水；固定绿植断裂的枝干",
+      "拿浇水壶；给所有绿植批量浇水并整理黄叶"
+    ],
+    "answer": "B",
+    "answer_option": "option_B",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Lexical",
+        "image": "Spatial",
+        "audio": "Phonetic"
+      }
+    }
+  },
+  {
+    "id": "group_19_3",
+    "language": "zh",
+    "question": "妈妈让孩子拿的是什么物品？妈妈当下要做的事情是什么？",
+    "context": "周末在家，妈妈在阳台打理绿植，对着客厅里的孩子喊了一句话，让孩子拿一样东西过来。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0120.jpg",
+    "image_caption": "阳台场景，绿植的主干有明显断裂，妈妈手里拿着固定用的扎带，正扶着断裂的枝干，旁边放着空胶水盒。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0108.wav",
+    "audio_caption": "妈妈的声音：‘快拿胶水过来’。",
+    "choices": [
+      "拿浇水壶；给阳台的绿植浇水",
+      "拿胶水；修补开裂的花盆",
+      "拿胶水；固定绿植断裂的枝干",
+      "拿浇水壶；给所有绿植批量浇水并整理黄叶"
+    ],
+    "answer": "C",
+    "answer_option": "option_C",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Lexical",
+        "image": "Spatial",
+        "audio": "Phonetic"
+      }
+    }
+  },
+  {
+    "id": "group_19_4",
+    "language": "zh",
+    "question": "妈妈让孩子拿的是什么物品？妈妈当下要做的事情是什么？",
+    "context": "周末在家，妈妈在阳台打理绿植，对着客厅里的孩子喊了一句话，让孩子拿一样东西过来。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0150.jpg",
+    "image_caption": "阳台场景，多个花盆里的绿植都有黄叶，妈妈手里拿着园艺剪，正整理剪下的黄叶，旁边放着空浇水壶。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0109.wav",
+    "audio_caption": "妈妈的声音：‘快拿浇水过来，顺便把地上收拾了’。",
+    "choices": [
+      "拿浇水壶；给阳台的绿植浇水",
+      "拿胶水；修补开裂的花盆",
+      "拿胶水；固定绿植断裂的枝干",
+      "拿浇水壶；给所有绿植批量浇水并整理黄叶"
+    ],
+    "answer": "D",
+    "answer_option": "option_D",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Lexical",
+        "image": "Spatial",
+        "audio": "Phonetic"
+      }
+    }
+  },
+  {
+    "id": "group_25_1",
+    "language": "zh",
+    "question": "该动作已经完成了吗？",
+    "context": "舞台上布置着鲜花。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0129.jpg",
+    "image_caption": "室内晚会舞台场景，舞台台面上整齐摆放着成片的鲜花，画面右侧堆放着空的鲜花包装纸箱、折叠好的梯子，画面中无任何人物，也无正在进行的动作。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0034.wav",
+    "audio_caption": "背景只有舒缓平稳的晚会开场背景音乐，无纸箱摩擦声、鲜花搬动声、人员交谈声等施工类声音，无任何人声。",
+    "choices": [
+      "动作已经完成",
+      "动作正在进行，尚未完成",
+      "动作尚未开始",
+      "无法确定"
+    ],
+    "answer": "A",
+    "answer_option": "option_A",
+    "category": {
+      "level": "tri_modal",
+      "modal_category": {
+        "text": "Temporal",
+        "image": "Observational",
+        "audio": "Environmental"
+      }
+    }
+  },
+  {
+    "id": "group_25_2",
+    "language": "zh",
+    "question": "该动作已经完成了吗？",
+    "context": "舞台上布置着鲜花。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0161.jpg",
+    "image_caption": "室内舞台场景，舞台台面上只有零散的几束鲜花，画面中堆放着大量未拆封的鲜花花束、打开的剪刀和包装纸，画面中无人物，无明确动作进度线索。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0035.wav",
+    "audio_caption": "背景有持续的纸箱摩擦声、鲜花枝叶的搬动声、人员交谈声，夹杂着剪刀裁剪包装纸的声音，无背景音乐。",
+    "choices": [
+      "动作已经完成",
+      "动作正在进行，尚未完成",
+      "动作尚未开始",
+      "无法确定"
+    ],
+    "answer": "B",
+    "answer_option": "option_B",
+    "category": {
+      "level": "tri_modal",
+      "modal_category": {
+        "text": "Temporal",
+        "image": "Observational",
+        "audio": "Environmental"
+      }
+    }
+  },
+  {
+    "id": "group_25_3",
+    "language": "zh",
+    "question": "该动作已经完成了吗？",
+    "context": "舞台上布置着鲜花。按照安排，鲜花只能放在舞台上或者场馆外",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0161.jpg",
+    "image_caption": "静态的舞台整体画面，仅能看到台面上整齐地摆放着有鲜花，画面外的区域、是否有物料、是否有人物均不可见，无任何动作相关的视觉线索。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0036.wav",
+    "audio_caption": "一个人说外边还有鲜花吗，另一个人说没有",
+    "choices": [
+      "动作已经完成",
+      "动作正在进行，尚未完成",
+      "动作尚未开始",
+      "无法确定"
+    ],
+    "answer": "A",
+    "answer_option": "option_A",
+    "category": {
+      "level": "tri_modal",
+      "modal_category": {
+        "text": "Temporal",
+        "image": "Observational",
+        "audio": "Environmental"
+      }
+    }
+  },
+  {
+    "id": "group_25_4",
+    "language": "zh",
+    "question": "该动作已经完成了吗？",
+    "context": "舞台上布置着鲜花。按照安排，鲜花只能放在舞台上或者场馆外",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0152.jpg",
+    "image_caption": "静态的舞台整体画面，仅能看到台面上凌乱地摆放着有鲜花，画面外的区域、是否有物料、是否有人物均不可见，无任何动作相关的视觉线索。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0036.wav",
+    "audio_caption": "一个人说外边还有鲜花吗，另一个人说没有",
+    "choices": [
+      "动作已经完成",
+      "动作正在进行，尚未完成",
+      "动作尚未开始",
+      "无法确定"
+    ],
+    "answer": "B",
+    "answer_option": "option_B",
+    "category": {
+      "level": "tri_modal",
+      "modal_category": {
+        "text": "Temporal",
+        "image": "Observational",
+        "audio": "Environmental"
+      }
+    }
+  },
+  {
+    "id": "group_34_1",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "艾玛正在服装店选购衣服。当她说“这件穿不上”时，有两种可能的情况：一是衣服尺码偏小，她会找店员更换尺码或者更换其他款式的衣服；二是拉链卡住，她会自己动手调整拉链或者脱下衣服不再试穿。如果她说了其他话，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0067.jpg",
+    "image_caption": "服装店试衣间场景。艾玛站在镜子前试衣服，店员站在旁边拿着一件相同款式的衣服。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0120.wav",
+    "audio_caption": "艾玛无奈地说：“这件穿不上，太小了。”",
+    "choices": [
+      "衣服尺码偏小，艾玛会找店员更换尺码。",
+      "衣服尺码偏小，艾玛会更换其他款式的衣服。",
+      "拉链卡住，艾玛会调整拉链。",
+      "拉链卡住，艾玛会脱下衣服不再试穿。"
+    ],
+    "answer": "A",
+    "answer_option": "option_A",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Anaphoric",
+        "image": "Contextual",
+        "audio": "Prosodic"
+      }
+    }
+  },
+  {
+    "id": "group_34_2",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "艾玛正在服装店选购衣服。当她说“这件穿不上”时，有两种可能的情况：一是衣服尺码偏小，她会找店员更换尺码或者更换其他款式的衣服；二是拉链卡住，她会自己动手调整拉链或者脱下衣服不再试穿。如果她说了其他话，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0068.jpg",
+    "image_caption": "服装店试衣间场景。艾玛站在镜子前试衣服，店员站在旁边拿着一件不同款式的衣服。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0120.wav",
+    "audio_caption": "艾玛无奈地说：“这件穿不上，太小了。”",
+    "choices": [
+      "衣服尺码偏小，艾玛会找店员更换尺码。",
+      "衣服尺码偏小，艾玛会更换其他款式的衣服。",
+      "拉链卡住，艾玛会调整拉链。",
+      "拉链卡住，艾玛会脱下衣服不再试穿。"
+    ],
+    "answer": "B",
+    "answer_option": "option_B",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Anaphoric",
+        "image": "Contextual",
+        "audio": "Prosodic"
+      }
+    }
+  },
+  {
+    "id": "group_34_3",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "艾玛正在服装店选购衣服。当她说“这件穿不上”时，有两种可能的情况：一是衣服尺码偏小，她会找店员更换尺码或者更换其他款式的衣服；二是拉链卡住，她会自己动手调整拉链或者脱下衣服不再试穿。如果她说了其他话，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0131.jpg",
+    "image_caption": "服装店试衣间场景。艾玛捏着卡住的拉链，正在尝试调整。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0121.wav",
+    "audio_caption": "艾玛着急地说：“穿不上，拉链拉不上去了。”",
+    "choices": [
+      "衣服尺码偏小，艾玛会找店员更换尺码。",
+      "衣服尺码偏小，艾玛会更换其他款式的衣服。",
+      "拉链卡住，艾玛会调整拉链。",
+      "拉链卡住，艾玛会脱下衣服不再试穿。"
+    ],
+    "answer": "C",
+    "answer_option": "option_C",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Anaphoric",
+        "image": "Contextual",
+        "audio": "Prosodic"
+      }
+    }
+  },
+  {
+    "id": "group_34_4",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "艾玛正在服装店选购衣服。当她说“这件穿不上”时，有两种可能的情况：一是衣服尺码偏小，她会找店员更换尺码或者更换其他款式的衣服；二是拉链卡住，她会自己动手调整拉链或者脱下衣服不再试穿。如果她说了其他话，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0136.jpg",
+    "image_caption": "服装店试衣间场景。艾玛准备脱下衣服。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0121.wav",
+    "audio_caption": "艾玛失望地说：“穿不上，拉链拉不上去了。”",
+    "choices": [
+      "衣服尺码偏小，艾玛会找店员更换尺码。",
+      "衣服尺码偏小，艾玛会更换其他款式的衣服。",
+      "拉链卡住，艾玛会调整拉链。",
+      "拉链卡住，艾玛会脱下衣服不再试穿。"
+    ],
+    "answer": "D",
+    "answer_option": "option_D",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Anaphoric",
+        "image": "Contextual",
+        "audio": "Prosodic"
+      }
+    }
+  },
+  {
+    "id": "group_36_1",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "小宇在健身房进行力量训练。当他说“举不动了”时，有两种可能的情况：一是器械配重过大，他会调整器械的配重片或者更换训练器械；二是训练姿势不舒服，他会调整器械的握把或者停止训练休息。如果他说了其他话，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0135.jpg",
+    "image_caption": "健身房训练场景。小宇站在力量器械旁，伸手准备调节器械的配重片，握把无调整动作。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0124.wav",
+    "audio_caption": "小宇气喘吁吁地说：“举不动了，这个重量太大了。”",
+    "choices": [
+      "器械配重过大，小宇准备调整配重片。",
+      "器械配重过大，小宇准备更换训练器械。",
+      "姿势不舒服，小宇准备调整器械握把。",
+      "姿势不舒服，小宇准备停止训练休息。"
+    ],
+    "answer": "A",
+    "answer_option": "option_A",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Temporal",
+        "image": "Grounding",
+        "audio": "Prosodic"
+      }
+    }
+  },
+  {
+    "id": "group_36_2",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "小宇在健身房进行力量训练。当他说“举不动了”时，有两种可能的情况：一是器械配重过大，他会调整器械的配重片或者更换训练器械；二是训练姿势不舒服，他会调整器械的握把或者停止训练休息。如果他说了其他话，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0168.jpg",
+    "image_caption": "健身房训练场景。小宇松开器械，看向旁边的其他训练器材，准备更换器械。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0124.wav",
+    "audio_caption": "小宇无奈地说：“举不动了，这个重量太大了。”",
+    "choices": [
+      "器械配重过大，小宇准备调整配重片。",
+      "器械配重过大，小宇准备更换训练器械。",
+      "姿势不舒服，小宇准备调整器械握把。",
+      "姿势不舒服，小宇准备停止训练休息。"
+    ],
+    "answer": "B",
+    "answer_option": "option_B",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Temporal",
+        "image": "Grounding",
+        "audio": "Prosodic"
+      }
+    }
+  },
+  {
+    "id": "group_36_3",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "小宇在健身房进行力量训练。当他说“举不动了”时，有两种可能的情况：一是器械配重过大，他会调整器械的配重片或者更换训练器械；二是训练姿势不舒服，他会调整器械的握把或者停止训练休息。如果他说了其他话，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0141.jpg",
+    "image_caption": "健身房训练场景。小宇双手握住器械握把，正在调节握把的高度和位置。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0125.wav",
+    "audio_caption": "小宇皱着眉说：“举不动了，姿势太难受了。”",
+    "choices": [
+      "器械配重过大，小宇准备调整配重片。",
+      "器械配重过大，小宇准备更换训练器械。",
+      "姿势不舒服，小宇准备调整器械握把。",
+      "姿势不舒服，小宇准备停止训练休息。"
+    ],
+    "answer": "C",
+    "answer_option": "option_C",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Temporal",
+        "image": "Grounding",
+        "audio": "Prosodic"
+      }
+    }
+  },
+  {
+    "id": "group_36_4",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "小宇在健身房进行力量训练。当他说“举不动了”时，有两种可能的情况：一是器械配重过大，他会调整器械的配重片或者更换训练器械；二是训练姿势不舒服，他会调整器械的握把或者停止训练休息。如果他说了其他话，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0139.jpg",
+    "image_caption": "健身房训练场景。小宇离开器械，走到休息区，准备停下训练休息。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0125.wav",
+    "audio_caption": "小宇疲惫地说：“举不动了，姿势太难受了。”",
+    "choices": [
+      "器械配重过大，小宇准备调整配重片。",
+      "器械配重过大，小宇准备更换训练器械。",
+      "姿势不舒服，小宇准备调整器械握把。",
+      "姿势不舒服，小宇准备停止训练休息。"
+    ],
+    "answer": "D",
+    "answer_option": "option_D",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Temporal",
+        "image": "Grounding",
+        "audio": "Prosodic"
+      }
+    }
+  },
+  {
+    "id": "group_38_1",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "迈克在家中接收快递。当他说“拿不了”时，有两种可能的情况：一是快递包裹太重，他会去取小推车或者将其放入快递柜；二是他腿脚不适，会打电话叫家人帮忙或者把包裹放在门口。如果他说了其他话，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0024.jpg",
+    "image_caption": "小区快递接收场景。迈克双手扶着重包裹，准备去取小推车。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0053.wav",
+    "audio_caption": "迈克吃力地说：“拿不了，这个包裹太重了。”",
+    "choices": [
+      "包裹太重，迈克准备去取小推车。",
+      "包裹太重，迈克准备将其放入快递柜。",
+      "迈克腿脚不适，准备打电话叫家人帮忙。",
+      "迈克腿脚不适，准备把包裹放在门口。"
+    ],
+    "answer": "A",
+    "answer_option": "option_A",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Anaphoric",
+        "image": "Grounding",
+        "audio": "Prosodic"
+      }
+    }
+  },
+  {
+    "id": "group_38_2",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "迈克在家中接收快递。当他说“拿不了”时，有两种可能的情况：一是快递包裹太重，他会去取小推车或者将其放入快递柜；二是他腿脚不适，会打电话叫家人帮忙或者把包裹放在门口。如果他说了其他话，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0025.jpg",
+    "image_caption": "小区快递接收场景。迈克拿出手机，准备操作使用快递柜。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0053.wav",
+    "audio_caption": "迈克无奈地说：“拿不了，这个包裹太重了。”",
+    "choices": [
+      "包裹太重，迈克准备去取小推车。",
+      "包裹太重，迈克准备将其放入快递柜。",
+      "迈克腿脚不适，准备打电话叫家人帮忙。",
+      "迈克腿脚不适，准备把包裹放在门口。"
+    ],
+    "answer": "B",
+    "answer_option": "option_B",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Anaphoric",
+        "image": "Grounding",
+        "audio": "Prosodic"
+      }
+    }
+  },
+  {
+    "id": "group_38_3",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "迈克在家中接收快递。当他说“拿不了”时，有两种可能的情况：一是快递包裹太重，他会去取小推车或者将其放入快递柜；二是他腿脚不适，会打电话叫家人帮忙或者把包裹放在门口。如果他说了其他话，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0026.jpg",
+    "image_caption": "小区快递接收场景。迈克一只手扶着腰，另一只手拿着手机，准备拨打电话。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0054.wav",
+    "audio_caption": "迈克虚弱地说：“拿不了，我的腿不舒服。”",
+    "choices": [
+      "包裹太重，迈克准备去取小推车。",
+      "包裹太重，迈克准备将其放入快递柜。",
+      "迈克腿脚不适，准备打电话叫家人帮忙。",
+      "迈克腿脚不适，准备把包裹放在门口。"
+    ],
+    "answer": "C",
+    "answer_option": "option_C",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Anaphoric",
+        "image": "Grounding",
+        "audio": "Prosodic"
+      }
+    }
+  },
+  {
+    "id": "group_38_4",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "迈克在家中接收快递。当他说“拿不了”时，有两种可能的情况：一是快递包裹太重，他会去取小推车或者将其放入快递柜；二是他腿脚不适，会打电话叫家人帮忙或者把包裹放在门口。如果他说了其他话，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0027.jpg",
+    "image_caption": "小区快递接收场景。迈克指向门口，示意快递员将包裹放在那里。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0055.wav",
+    "audio_caption": "迈克叹气说：“拿不了，我的腿不舒服。”",
+    "choices": [
+      "包裹太重，迈克准备去取小推车。",
+      "包裹太重，迈克准备将其放入快递柜。",
+      "迈克腿脚不适，准备打电话叫家人帮忙。",
+      "迈克腿脚不适，准备把包裹放在门口。"
+    ],
+    "answer": "D",
+    "answer_option": "option_D",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Anaphoric",
+        "image": "Grounding",
+        "audio": "Prosodic"
+      }
+    }
+  },
+  {
+    "id": "group_39_1",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "莉莉在教室自习。当她说“学不进去”时，有两种可能的情况：一是犯困疲惫，她会趴在桌上休息或者喝水提神；二是心情烦躁，她会收拾东西离开或者请教同学问题。如果她说了其他话，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0028.jpg",
+    "image_caption": "教室自习场景。莉莉单手撑着头，准备趴在桌子上休息。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0056.wav",
+    "audio_caption": "莉莉困倦地说：“学不进去。”",
+    "choices": [
+      "莉莉犯困，准备趴桌休息。",
+      "莉莉犯困，准备喝水提神。",
+      "莉莉烦躁，准备收拾书本离开。",
+      "莉莉烦躁，准备请教同学问题。"
+    ],
+    "answer": "A",
+    "answer_option": "option_A",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Pragmatic",
+        "image": "Kinematic",
+        "audio": "Prosodic"
+      }
+    }
+  },
+  {
+    "id": "group_39_2",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "莉莉在教室自习。当她说“学不进去”时，有两种可能的情况：一是犯困疲惫，她会趴在桌上休息或者喝水提神；二是心情烦躁，她会收拾东西离开或者请教同学问题。如果她说了其他话，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0029.jpg",
+    "image_caption": "教室自习场景。莉莉伸手去拿桌上的水杯，准备喝水。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0056.wav",
+    "audio_caption": "莉莉疲惫地说：“学不进去。”",
+    "choices": [
+      "莉莉犯困，准备趴桌休息。",
+      "莉莉犯困，准备喝水提神。",
+      "莉莉烦躁，准备收拾书本离开。",
+      "莉莉烦躁，准备请教同学问题。"
+    ],
+    "answer": "B",
+    "answer_option": "option_B",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Pragmatic",
+        "image": "Kinematic",
+        "audio": "Prosodic"
+      }
+    }
+  },
+  {
+    "id": "group_39_3",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "莉莉在教室自习。当她说“学不进去”时，有两种可能的情况：一是犯困疲惫，她会趴在桌上休息或者喝水提神；二是心情烦躁，她会收拾东西离开或者请教同学问题。如果她说了其他话，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0030.jpg",
+    "image_caption": "教室自习场景。莉莉用力合上书本，开始收拾文具。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0056.wav",
+    "audio_caption": "莉莉烦躁地说：“学不进去。”",
+    "choices": [
+      "莉莉犯困，准备趴桌休息。",
+      "莉莉犯困，准备喝水提神。",
+      "莉莉烦躁，准备收拾书本离开。",
+      "莉莉烦躁，准备请教同学问题。"
+    ],
+    "answer": "C",
+    "answer_option": "option_C",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Pragmatic",
+        "image": "Kinematic",
+        "audio": "Prosodic"
+      }
+    }
+  },
+  {
+    "id": "group_39_4",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "莉莉在教室自习。当她说“学不进去”时，有两种可能的情况：一是犯困疲惫，她会趴在桌上休息或者喝水提神；二是心情烦躁，她会收拾东西离开或者请教同学问题。如果她说了其他话，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0031.jpg",
+    "image_caption": "教室自习场景。莉莉站起身，准备向同学请教难题。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0056.wav",
+    "audio_caption": "莉莉着急地说：“学不进去。”",
+    "choices": [
+      "莉莉犯困，准备趴桌休息。",
+      "莉莉犯困，准备喝水提神。",
+      "莉莉烦躁，准备收拾书本离开。",
+      "莉莉烦躁，准备请教同学问题。"
+    ],
+    "answer": "D",
+    "answer_option": "option_D",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Pragmatic",
+        "image": "Kinematic",
+        "audio": "Prosodic"
+      }
+    }
+  },
+  {
+    "id": "group_42_1",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "学生在食堂打饭。当他说“盛不下”时，有两种可能的情况：一是饭菜分量太多，他会更换大碗或者倒掉一些；二是汤汁容易洒出，他会更换餐盘或者让工作人员少盛一些。如果没有出现对应表述或为正常背景音，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0032.jpg",
+    "image_caption": "食堂打饭场景。学生手持空的大碗，准备更换盛菜。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0062.wav",
+    "audio_caption": "学生说：“盛不下。”",
+    "choices": [
+      "饭菜太多，学生准备更换大碗。",
+      "饭菜太多，学生准备倒掉一些饭菜。",
+      "汤汁易洒，学生准备更换餐盘。",
+      "汤汁易洒，学生准备让工作人员少盛一些。"
+    ],
+    "answer": "A",
+    "answer_option": "option_A",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Anaphoric",
+        "image": "Grounding",
+        "audio": "Indexical"
+      }
+    }
+  },
+  {
+    "id": "group_42_2",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "学生在食堂打饭。当他说“盛不下”时，有两种可能的情况：一是饭菜分量太多，他会更换大碗或者倒掉一些；二是汤汁容易洒出，他会更换餐盘或者让工作人员少盛一些。如果没有出现对应表述或为正常背景音，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0033.jpg",
+    "image_caption": "食堂打饭场景。学生将餐盘里多余的饭菜拨回餐盆中。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0062.wav",
+    "audio_caption": "学生说：“盛不下。”",
+    "choices": [
+      "饭菜太多，学生准备更换大碗。",
+      "饭菜太多，学生准备倒掉一些饭菜。",
+      "汤汁易洒，学生准备更换餐盘。",
+      "汤汁易洒，学生准备让工作人员少盛一些。"
+    ],
+    "answer": "B",
+    "answer_option": "option_B",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Anaphoric",
+        "image": "Grounding",
+        "audio": "Indexical"
+      }
+    }
+  },
+  {
+    "id": "group_42_3",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "学生在食堂打饭。当他说“盛不下”时，有两种可能的情况：一是饭菜分量太多，他会更换大碗或者倒掉一些；二是汤汁容易洒出，他会更换餐盘或者让工作人员少盛一些。如果没有出现对应表述或为正常背景音，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0034.jpg",
+    "image_caption": "食堂打饭场景。学生手持新的餐盘，准备替换原有餐盘。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0062.wav",
+    "audio_caption": "学生说：“盛不下。”",
+    "choices": [
+      "饭菜太多，学生准备更换大碗。",
+      "饭菜太多，学生准备倒掉一些饭菜。",
+      "汤汁易洒，学生准备更换餐盘。",
+      "汤汁易洒，学生准备让工作人员少盛一些。"
+    ],
+    "answer": "C",
+    "answer_option": "option_C",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Anaphoric",
+        "image": "Grounding",
+        "audio": "Indexical"
+      }
+    }
+  },
+  {
+    "id": "group_42_4",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "学生在食堂打饭。当他说“盛不下”时，有两种可能的情况：一是饭菜分量太多，他会更换大碗或者倒掉一些；二是汤汁容易洒出，他会更换餐盘或者让工作人员少盛一些。如果没有出现对应表述或为正常背景音，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0035.jpg",
+    "image_caption": "食堂打饭场景。学生抬手示意打饭工作人员少盛一些饭菜。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0062.wav",
+    "audio_caption": "学生说：“盛不下。”",
+    "choices": [
+      "饭菜太多，学生准备更换大碗。",
+      "饭菜太多，学生准备倒掉一些饭菜。",
+      "汤汁易洒，学生准备更换餐盘。",
+      "汤汁易洒，学生准备让工作人员少盛一些。"
+    ],
+    "answer": "D",
+    "answer_option": "option_D",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Anaphoric",
+        "image": "Grounding",
+        "audio": "Indexical"
+      }
+    }
+  },
+  {
+    "id": "group_43_1",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "某人在浴室使用用水设备。当他说“水不舒服”时，有两种可能的情况：一是水温不适，他会调节水温阀门或者添加冷水；二是水流异常，他会调节水量开关或者检查出水口。如果没有出现对应表述或为正常水流声，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0037.jpg",
+    "image_caption": "浴室用水场景。人物伸手调节水温控制阀门。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0063.wav",
+    "audio_caption": "人物说：“水不舒服。”",
+    "choices": [
+      "水温不适，人物准备调节水温阀。",
+      "水温不适，人物准备加冷水兑温。",
+      "水流不适，人物准备调节水量开关。",
+      "水流不适，人物准备检查出水口。"
+    ],
+    "answer": "A",
+    "answer_option": "option_A",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Temporal",
+        "image": "Kinematic",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_43_2",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "某人在浴室使用用水设备。当他说“水不舒服”时，有两种可能的情况：一是水温不适，他会调节水温阀门或者添加冷水；二是水流异常，他会调节水量开关或者检查出水口。如果没有出现对应表述或为正常水流声，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0038.jpg",
+    "image_caption": "浴室用水场景。人物拧动冷水阀门，准备降低水温。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0063.wav",
+    "audio_caption": "人物说：“水不舒服。”",
+    "choices": [
+      "水温不适，人物准备调节水温阀。",
+      "水温不适，人物准备加冷水兑温。",
+      "水流不适，人物准备调节水量开关。",
+      "水流不适，人物准备检查出水口。"
+    ],
+    "answer": "B",
+    "answer_option": "option_B",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Temporal",
+        "image": "Kinematic",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_43_3",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "某人在浴室使用用水设备。当他说“水不舒服”时，有两种可能的情况：一是水温不适，他会调节水温阀门或者添加冷水；二是水流异常，他会调节水量开关或者检查出水口。如果没有出现对应表述或为正常水流声，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0039.jpg",
+    "image_caption": "浴室用水场景。人物调节水流大小控制开关。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0063.wav",
+    "audio_caption": "人物说：“水不舒服。”",
+    "choices": [
+      "水温不适，人物准备调节水温阀。",
+      "水温不适，人物准备加冷水兑温。",
+      "水流不适，人物准备调节水量开关。",
+      "水流不适，人物准备检查出水口。"
+    ],
+    "answer": "C",
+    "answer_option": "option_C",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Temporal",
+        "image": "Kinematic",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_43_4",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "某人在浴室使用用水设备。当他说“水不舒服”时，有两种可能的情况：一是水温不适，他会调节水温阀门或者添加冷水；二是水流异常，他会调节水量开关或者检查出水口。如果没有出现对应表述或为正常水流声，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0040.jpg",
+    "image_caption": "浴室用水场景。人物检查淋浴喷头出水口是否堵塞。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0063.wav",
+    "audio_caption": "人物说：“水不舒服。”",
+    "choices": [
+      "水温不适，人物准备调节水温阀。",
+      "水温不适，人物准备加冷水兑温。",
+      "水流不适，人物准备调节水量开关。",
+      "水流不适，人物准备检查出水口。"
+    ],
+    "answer": "D",
+    "answer_option": "option_D",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Temporal",
+        "image": "Kinematic",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_46_1",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "司机在地下车库停车。当他说“停不进去”时，有两种可能的情况：一是车位过窄，他会调整方向盘或更换车位；二是后视镜影响入位，他会折叠后视镜或调整后视镜角度。如果没有出现对应表述或为正常背景音，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0041.jpg",
+    "image_caption": "车库停车场景。司机手握方向盘，准备微调方向入位。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0066.wav",
+    "audio_caption": "司机说：“停不进去。”",
+    "choices": [
+      "车位过窄，司机准备调整方向盘。",
+      "车位过窄，司机准备更换车位。",
+      "后视镜碍事，司机准备折叠后视镜。",
+      "后视镜碍事，司机准备调整后视镜角度。"
+    ],
+    "answer": "A",
+    "answer_option": "option_A",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Anaphoric",
+        "image": "Spatial",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_46_2",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "司机在地下车库停车。当他说“停不进去”时，有两种可能的情况：一是车位过窄，他会调整方向盘或更换车位；二是后视镜影响入位，他会折叠后视镜或调整后视镜角度。如果没有出现对应表述或为正常背景音，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0042.jpg",
+    "image_caption": "车库停车场景。司机准备换挡驶出，更换其他车位。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0066.wav",
+    "audio_caption": "司机说：“停不进去。”",
+    "choices": [
+      "车位过窄，司机准备调整方向盘。",
+      "车位过窄，司机准备更换车位。",
+      "后视镜碍事，司机准备折叠后视镜。",
+      "后视镜碍事，司机准备调整后视镜角度。"
+    ],
+    "answer": "B",
+    "answer_option": "option_B",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Anaphoric",
+        "image": "Spatial",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_46_3",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "司机在地下车库停车。当他说“停不进去”时，有两种可能的情况：一是车位过窄，他会调整方向盘或更换车位；二是后视镜影响入位，他会折叠后视镜或调整后视镜角度。如果没有出现对应表述或为正常背景音，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0043.jpg",
+    "image_caption": "车库停车场景。司机伸手，准备折叠车外后视镜。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0066.wav",
+    "audio_caption": "司机说：“停不进去。”",
+    "choices": [
+      "车位过窄，司机准备调整方向盘。",
+      "车位过窄，司机准备更换车位。",
+      "后视镜碍事，司机准备折叠后视镜。",
+      "后视镜碍事，司机准备调整后视镜角度。"
+    ],
+    "answer": "C",
+    "answer_option": "option_C",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Anaphoric",
+        "image": "Spatial",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_46_4",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "司机在地下车库停车。当他说“停不进去”时，有两种可能的情况：一是车位过窄，他会调整方向盘或更换车位；二是后视镜影响入位，他会折叠后视镜或调整后视镜角度。如果没有出现对应表述或为正常背景音，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0044.jpg",
+    "image_caption": "车库停车场景。司机调节车内旋钮，调整后视镜角度。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0066.wav",
+    "audio_caption": "司机说：“停不进去。”",
+    "choices": [
+      "车位过窄，司机准备调整方向盘。",
+      "车位过窄，司机准备更换车位。",
+      "后视镜碍事，司机准备折叠后视镜。",
+      "后视镜碍事，司机准备调整后视镜角度。"
+    ],
+    "answer": "D",
+    "answer_option": "option_D",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Anaphoric",
+        "image": "Spatial",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_47_1",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "店员在花店打理插花。当她说“插不好花”时，有两种可能的情况：一是花枝过硬，她会用剪刀修剪或更换软枝；二是花瓶过满，她会整理花枝或更换大花瓶。如果没有出现对应表述或为正常背景音，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0045.jpg",
+    "image_caption": "花店插花场景。店员手持花艺剪，准备修剪花枝末端。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0067.wav",
+    "audio_caption": "店员说：“插不好花。”",
+    "choices": [
+      "花枝过硬，店员准备用剪刀修剪。",
+      "花枝过硬，店员准备更换柔软花枝。",
+      "花瓶过满，店员准备整理花枝。",
+      "花瓶过满，店员准备更换更大花瓶。"
+    ],
+    "answer": "A",
+    "answer_option": "option_A",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Temporal",
+        "image": "Grounding",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_47_2",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "店员在花店打理插花。当她说“插不好花”时，有两种可能的情况：一是花枝过硬，她会用剪刀修剪或更换软枝；二是花瓶过满，她会整理花枝或更换大花瓶。如果没有出现对应表述或为正常背景音，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0046.jpg",
+    "image_caption": "花店插花场景。店员拿起柔软花枝，准备替换原有花枝。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0067.wav",
+    "audio_caption": "店员说：“插不好花。”",
+    "choices": [
+      "花枝过硬，店员准备用剪刀修剪。",
+      "花枝过硬，店员准备更换柔软花枝。",
+      "花瓶过满，店员准备整理花枝。",
+      "花瓶过满，店员准备更换更大花瓶。"
+    ],
+    "answer": "B",
+    "answer_option": "option_B",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Temporal",
+        "image": "Grounding",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_47_3",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "店员在花店打理插花。当她说“插不好花”时，有两种可能的情况：一是花枝过硬，她会用剪刀修剪或更换软枝；二是花瓶过满，她会整理花枝或更换大花瓶。如果没有出现对应表述或为正常背景音，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0047.jpg",
+    "image_caption": "花店插花场景。店员整理花瓶内多余枝叶，调整花束形态。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0067.wav",
+    "audio_caption": "店员说：“插不好花。”",
+    "choices": [
+      "花枝过硬，店员准备用剪刀修剪。",
+      "花枝过硬，店员准备更换柔软花枝。",
+      "花瓶过满，店员准备整理花枝。",
+      "花瓶过满，店员准备更换更大花瓶。"
+    ],
+    "answer": "C",
+    "answer_option": "option_C",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Temporal",
+        "image": "Grounding",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_47_4",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "店员在花店打理插花。当她说“插不好花”时，有两种可能的情况：一是花枝过硬，她会用剪刀修剪或更换软枝；二是花瓶过满，她会整理花枝或更换大花瓶。如果没有出现对应表述或为正常背景音，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0048.jpg",
+    "image_caption": "花店插花场景。店员拿出更大的花瓶，准备替换原有花瓶。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0067.wav",
+    "audio_caption": "店员说：“插不好花。”",
+    "choices": [
+      "花枝过硬，店员准备用剪刀修剪。",
+      "花枝过硬，店员准备更换柔软花枝。",
+      "花瓶过满，店员准备整理花枝。",
+      "花瓶过满，店员准备更换更大花瓶。"
+    ],
+    "answer": "D",
+    "answer_option": "option_D",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Temporal",
+        "image": "Grounding",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_50_1",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "露营者在公园露营搭建帐篷。当他说“搭不起来”时，有两种可能的情况：一是支架结构卡壳，他会调整帐篷支架或者查看搭建说明书；二是帐篷固定不稳，他会加固地钉防风绳或者更换平整搭建位。如果没有出现对应表述或为正常背景音，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0083.jpg",
+    "image_caption": "公园露营场景。露营者双手摆弄帐篷支架，准备调整拼接结构。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0129.wav",
+    "audio_caption": "露营者说：“搭不起来。”",
+    "choices": [
+      "支架卡壳，露营者准备调整帐篷支架。",
+      "支架卡壳，露营者准备查看搭建说明书。",
+      "固定不稳，露营者准备加固地钉防风绳。",
+      "固定不稳，露营者准备更换平整搭建位。"
+    ],
+    "answer": "A",
+    "answer_option": "option_A",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Syntactic",
+        "image": "Spatial",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_50_2",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "露营者在公园露营搭建帐篷。当他说“搭不起来”时，有两种可能的情况：一是支架结构卡壳，他会调整帐篷支架或者查看搭建说明书；二是帐篷固定不稳，他会加固地钉防风绳或者更换平整搭建位。如果没有出现对应表述或为正常背景音，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0084.jpg",
+    "image_caption": "公园露营场景。露营者拿起搭建说明书，准备查看安装步骤。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0129.wav",
+    "audio_caption": "露营者说：“搭不起来。”",
+    "choices": [
+      "支架卡壳，露营者准备调整帐篷支架。",
+      "支架卡壳，露营者准备查看搭建说明书。",
+      "固定不稳，露营者准备加固地钉防风绳。",
+      "固定不稳，露营者准备更换平整搭建位。"
+    ],
+    "answer": "B",
+    "answer_option": "option_B",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Syntactic",
+        "image": "Spatial",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_50_3",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "露营者在公园露营搭建帐篷。当他说“搭不起来”时，有两种可能的情况：一是支架结构卡壳，他会调整帐篷支架或者查看搭建说明书；二是帐篷固定不稳，他会加固地钉防风绳或者更换平整搭建位。如果没有出现对应表述或为正常背景音，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0085.jpg",
+    "image_caption": "公园露营场景。露营者手持地钉锤，准备加固帐篷边角地钉。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0129.wav",
+    "audio_caption": "露营者说：“搭不起来。”",
+    "choices": [
+      "支架卡壳，露营者准备调整帐篷支架。",
+      "支架卡壳，露营者准备查看搭建说明书。",
+      "固定不稳，露营者准备加固地钉防风绳。",
+      "固定不稳，露营者准备更换平整搭建位。"
+    ],
+    "answer": "C",
+    "answer_option": "option_C",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Syntactic",
+        "image": "Spatial",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_50_4",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "露营者在公园露营搭建帐篷。当他说“搭不起来”时，有两种可能的情况：一是支架结构卡壳，他会调整帐篷支架或者查看搭建说明书；二是帐篷固定不稳，他会加固地钉防风绳或者更换平整搭建位。如果没有出现对应表述或为正常背景音，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0086.jpg",
+    "image_caption": "公园露营场景。露营者收起帐篷配件，准备更换搭建位置。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0129.wav",
+    "audio_caption": "露营者说：“搭不起来。”",
+    "choices": [
+      "支架卡壳，露营者准备调整帐篷支架。",
+      "支架卡壳，露营者准备查看搭建说明书。",
+      "固定不稳，露营者准备加固地钉防风绳。",
+      "固定不稳，露营者准备更换平整搭建位。"
+    ],
+    "answer": "D",
+    "answer_option": "option_D",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Syntactic",
+        "image": "Spatial",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_51_1",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "玩家和同伴游玩桌面卡牌桌游。当他说“玩不明白”时，有两种可能的情况：一是游戏规则不清晰，他会翻看游戏说明书或者询问队友规则细节；二是游戏局势不利，他会整理手牌弃牌或者和队友配合换牌。如果没有出现对应表述或为正常背景音，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0087.jpg",
+    "image_caption": "桌面桌游场景。玩家拿起游戏规则说明书，准备翻看查阅。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0130.wav",
+    "audio_caption": "玩家说：“玩不明白。”",
+    "choices": [
+      "规则不懂，玩家准备翻看游戏说明书。",
+      "规则不懂，玩家准备询问队友规则细节。",
+      "局势不利，玩家准备整理手牌选择弃牌。",
+      "局势不利，玩家准备和队友配合换牌。"
+    ],
+    "answer": "A",
+    "answer_option": "option_A",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Syntactic",
+        "image": "Semiotic",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_51_2",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "玩家和同伴游玩桌面卡牌桌游。当他说“玩不明白”时，有两种可能的情况：一是游戏规则不清晰，他会翻看游戏说明书或者询问队友规则细节；二是游戏局势不利，他会整理手牌弃牌或者和队友配合换牌。如果没有出现对应表述或为正常背景音，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0088.jpg",
+    "image_caption": "桌面桌游场景。玩家侧身看向队友，准备开口询问规则。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0130.wav",
+    "audio_caption": "玩家说：“玩不明白。”",
+    "choices": [
+      "规则不懂，玩家准备翻看游戏说明书。",
+      "规则不懂，玩家准备询问队友规则细节。",
+      "局势不利，玩家准备整理手牌选择弃牌。",
+      "局势不利，玩家准备和队友配合换牌。"
+    ],
+    "answer": "B",
+    "answer_option": "option_B",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Syntactic",
+        "image": "Semiotic",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_51_3",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "玩家和同伴游玩桌面卡牌桌游。当他说“玩不明白”时，有两种可能的情况：一是游戏规则不清晰，他会翻看游戏说明书或者询问队友规则细节；二是游戏局势不利，他会整理手牌弃牌或者和队友配合换牌。如果没有出现对应表述或为正常背景音，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0089.jpg",
+    "image_caption": "桌面桌游场景。玩家整理手中卡牌，准备挑选弃牌。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0130.wav",
+    "audio_caption": "玩家说：“玩不明白。”",
+    "choices": [
+      "规则不懂，玩家准备翻看游戏说明书。",
+      "规则不懂，玩家准备询问队友规则细节。",
+      "局势不利，玩家准备整理手牌选择弃牌。",
+      "局势不利，玩家准备和队友配合换牌。"
+    ],
+    "answer": "C",
+    "answer_option": "option_C",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Syntactic",
+        "image": "Semiotic",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_51_4",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "玩家和同伴游玩桌面卡牌桌游。当他说“玩不明白”时，有两种可能的情况：一是游戏规则不清晰，他会翻看游戏说明书或者询问队友规则细节；二是游戏局势不利，他会整理手牌弃牌或者和队友配合换牌。如果没有出现对应表述或为正常背景音，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0090.jpg",
+    "image_caption": "桌面桌游场景。玩家和队友对视，准备交换手牌配合。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0131.wav",
+    "audio_caption": "玩家说：“玩不明白。”",
+    "choices": [
+      "规则不懂，玩家准备翻看游戏说明书。",
+      "规则不懂，玩家准备询问队友规则细节。",
+      "局势不利，玩家准备整理手牌选择弃牌。",
+      "局势不利，玩家准备和队友配合换牌。"
+    ],
+    "answer": "D",
+    "answer_option": "option_D",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Syntactic",
+        "image": "Semiotic",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_54_1",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "垂钓者在公园湖边钓鱼。当他说“钓不上来”时，有两种可能的情况：一是钓具参数不适配，他会调整鱼漂深度或者更换鱼钩鱼线；二是饵料诱鱼效果差，他会更换鱼饵种类或者补充打窝料。如果没有出现对应表述或为正常背景音，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0091.jpg",
+    "image_caption": "公园湖边钓鱼场景。垂钓者手持鱼漂，准备调整鱼漂的深度位置。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0135.wav",
+    "audio_caption": "垂钓者说：\"钓不上来。\"",
+    "choices": [
+      "钓具不适配，垂钓者准备调整鱼漂深度。",
+      "钓具不适配，垂钓者准备更换鱼钩鱼线。",
+      "饵料不诱鱼，垂钓者准备更换鱼饵种类。",
+      "饵料不诱鱼，垂钓者准备补充打窝料。"
+    ],
+    "answer": "A",
+    "answer_option": "option_A",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Syntactic",
+        "image": "Spatial",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_54_2",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "垂钓者在公园湖边钓鱼。当他说“钓不上来”时，有两种可能的情况：一是钓具参数不适配，他会调整鱼漂深度或者更换鱼钩鱼线；二是饵料诱鱼效果差，他会更换鱼饵种类或者补充打窝料。如果没有出现对应表述或为正常背景音，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0092.jpg",
+    "image_caption": "公园湖边钓鱼场景。垂钓者打开钓具配件盒，准备更换鱼钩和鱼线。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0135.wav",
+    "audio_caption": "垂钓者说：\"钓不上来。\"",
+    "choices": [
+      "钓具不适配，垂钓者准备调整鱼漂深度。",
+      "钓具不适配，垂钓者准备更换鱼钩鱼线。",
+      "饵料不诱鱼，垂钓者准备更换鱼饵种类。",
+      "饵料不诱鱼，垂钓者准备补充打窝料。"
+    ],
+    "answer": "B",
+    "answer_option": "option_B",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Syntactic",
+        "image": "Kinematic",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_54_3",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "垂钓者在公园湖边钓鱼。当他说“钓不上来”时，有两种可能的情况：一是钓具参数不适配，他会调整鱼漂深度或者更换鱼钩鱼线；二是饵料诱鱼效果差，他会更换鱼饵种类或者补充打窝料。如果没有出现对应表述或为正常背景音，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0093.jpg",
+    "image_caption": "公园湖边钓鱼场景。垂钓者拿起饵料盒，准备更换当前使用的鱼饵。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0135.wav",
+    "audio_caption": "垂钓者说：\"钓不上来。\"",
+    "choices": [
+      "钓具不适配，垂钓者准备调整鱼漂深度。",
+      "钓具不适配，垂钓者准备更换鱼钩鱼线。",
+      "饵料不诱鱼，垂钓者准备更换鱼饵种类。",
+      "饵料不诱鱼，垂钓者准备补充打窝料。"
+    ],
+    "answer": "C",
+    "answer_option": "option_C",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Syntactic",
+        "image": "Kinematic",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_54_4",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "垂钓者在公园湖边钓鱼。当他说“钓不上来”时，有两种可能的情况：一是钓具参数不适配，他会调整鱼漂深度或者更换鱼钩鱼线；二是饵料诱鱼效果差，他会更换鱼饵种类或者补充打窝料。如果没有出现对应表述或为正常背景音，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0094.jpg",
+    "image_caption": "公园湖边钓鱼场景。垂钓者拿起窝料勺，准备向钓点补充打窝料。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0135.wav",
+    "audio_caption": "垂钓者说：\"钓不上来。\"",
+    "choices": [
+      "钓具不适配，垂钓者准备调整鱼漂深度。",
+      "钓具不适配，垂钓者准备更换鱼钩鱼线。",
+      "饵料不诱鱼，垂钓者准备更换鱼饵种类。",
+      "饵料不诱鱼，垂钓者准备补充打窝料。"
+    ],
+    "answer": "D",
+    "answer_option": "option_D",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Syntactic",
+        "image": "Kinematic",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_55_1",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "咖啡爱好者在家使用意式咖啡机制作咖啡。当他说“萃不出来”时，有两种可能的情况：一是咖啡粉饼不适配，他会调整咖啡粉研磨度或者重新均匀压粉；二是机器状态异常，他会调整萃取压力或者清洁冲煮头。如果没有出现对应表述或为正常背景音，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0095.jpg",
+    "image_caption": "居家咖啡制作场景。咖啡爱好者转动磨豆机旋钮，准备调整咖啡粉的研磨粗细度。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0136.wav",
+    "audio_caption": "咖啡爱好者说：\"萃不出来。\"",
+    "choices": [
+      "粉饼不适配，咖啡爱好者准备调整咖啡粉研磨度。",
+      "粉饼不适配，咖啡爱好者准备重新均匀压粉。",
+      "机器异常，咖啡爱好者准备调整萃取压力。",
+      "机器异常，咖啡爱好者准备清洁咖啡机冲煮头。"
+    ],
+    "answer": "A",
+    "answer_option": "option_A",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Syntactic",
+        "image": "Kinematic",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_55_2",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "咖啡爱好者在家使用意式咖啡机制作咖啡。当他说“萃不出来”时，有两种可能的情况：一是咖啡粉饼不适配，他会调整咖啡粉研磨度或者重新均匀压粉；二是机器状态异常，他会调整萃取压力或者清洁冲煮头。如果没有出现对应表述或为正常背景音，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0096.jpg",
+    "image_caption": "居家咖啡制作场景。咖啡爱好者手持压粉器，准备对手柄内的咖啡粉重新均匀压粉。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0136.wav",
+    "audio_caption": "咖啡爱好者说：\"萃不出来。\"",
+    "choices": [
+      "粉饼不适配，咖啡爱好者准备调整咖啡粉研磨度。",
+      "粉饼不适配，咖啡爱好者准备重新均匀压粉。",
+      "机器异常，咖啡爱好者准备调整萃取压力。",
+      "机器异常，咖啡爱好者准备清洁咖啡机冲煮头。"
+    ],
+    "answer": "B",
+    "answer_option": "option_B",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Syntactic",
+        "image": "Kinematic",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_55_3",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "咖啡爱好者在家使用意式咖啡机制作咖啡。当他说“萃不出来”时，有两种可能的情况：一是咖啡粉饼不适配，他会调整咖啡粉研磨度或者重新均匀压粉；二是机器状态异常，他会调整萃取压力或者清洁冲煮头。如果没有出现对应表述或为正常背景音，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0097.jpg",
+    "image_caption": "居家咖啡制作场景。咖啡爱好者操作咖啡机面板，准备调整萃取压力参数。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0136.wav",
+    "audio_caption": "咖啡爱好者说：\"萃不出来。\"",
+    "choices": [
+      "粉饼不适配，咖啡爱好者准备调整咖啡粉研磨度。",
+      "粉饼不适配，咖啡爱好者准备重新均匀压粉。",
+      "机器异常，咖啡爱好者准备调整萃取压力。",
+      "机器异常，咖啡爱好者准备清洁咖啡机冲煮头。"
+    ],
+    "answer": "C",
+    "answer_option": "option_C",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Syntactic",
+        "image": "Kinematic",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_55_4",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "咖啡爱好者在家使用意式咖啡机制作咖啡。当他说“萃不出来”时，有两种可能的情况：一是咖啡粉饼不适配，他会调整咖啡粉研磨度或者重新均匀压粉；二是机器状态异常，他会调整萃取压力或者清洁冲煮头。如果没有出现对应表述或为正常背景音，则表示一切正常。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0098.jpg",
+    "image_caption": "居家咖啡制作场景。咖啡爱好者拿起清洁刷，准备清洁咖啡机的冲煮头。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0136.wav",
+    "audio_caption": "咖啡爱好者说：\"萃不出来。\"",
+    "choices": [
+      "粉饼不适配，咖啡爱好者准备调整咖啡粉研磨度。",
+      "粉饼不适配，咖啡爱好者准备重新均匀压粉。",
+      "机器异常，咖啡爱好者准备调整萃取压力。",
+      "机器异常，咖啡爱好者准备清洁咖啡机冲煮头。"
+    ],
+    "answer": "D",
+    "answer_option": "option_D",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Syntactic",
+        "image": "Kinematic",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_73_1",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "人物在街头遭遇突发状况。当他喊“别打我！”时，有两种可能的情况：一是确实面临追打风险，他会转身逃跑躲避或者寻找掩体避险；二是存在误会或身份误认，他会抬手示意解释或者出示证件证明身份。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0100.jpg",
+    "image_caption": "街头场景。人物转身快步奔跑，准备躲避潜在的追打风险。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0139.wav",
+    "audio_caption": "人物惊恐喊道：“别打我！”",
+    "choices": [
+      "面临追打，人物准备转身逃跑躲避。",
+      "面临追打，人物准备寻找掩体避险。",
+      "存在误会，人物准备抬手示意解释。",
+      "存在误会，人物准备出示证件证明身份。"
+    ],
+    "answer": "A",
+    "answer_option": "option_A",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Anaphoric",
+        "image": "Contextual",
+        "audio": "Prosodic"
+      }
+    }
+  },
+  {
+    "id": "group_73_2",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "人物在街头遭遇突发状况。当他喊“别打我！”时，有两种可能的情况：一是确实面临追打风险，他会转身逃跑躲避或者寻找掩体避险；二是存在误会或身份误认，他会抬手示意解释或者出示证件证明身份。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0101.jpg",
+    "image_caption": "街头场景。人物快速躲到电线杆后，准备借助掩体规避风险。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0139.wav",
+    "audio_caption": "人物惊恐喊道：“别打我！”",
+    "choices": [
+      "面临追打，人物准备转身逃跑躲避。",
+      "面临追打，人物准备寻找掩体避险。",
+      "存在误会，人物准备抬手示意解释。",
+      "存在误会，人物准备出示证件证明身份。"
+    ],
+    "answer": "B",
+    "answer_option": "option_B",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Anaphoric",
+        "image": "Contextual",
+        "audio": "Prosodic"
+      }
+    }
+  },
+  {
+    "id": "group_73_3",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "人物在街头遭遇突发状况。当他喊“别打我！”时，有两种可能的情况：一是确实面临追打风险，他会转身逃跑躲避或者寻找掩体避险；二是存在误会或身份误认，他会抬手示意解释或者出示证件证明身份。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0102.jpg",
+    "image_caption": "街头场景。人物停下脚步，抬起双手示意，准备开口解释误会。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0139.wav",
+    "audio_caption": "人物惊恐喊道：“别打我！”",
+    "choices": [
+      "面临追打，人物准备转身逃跑躲避。",
+      "面临追打，人物准备寻找掩体避险。",
+      "存在误会，人物准备抬手示意解释。",
+      "存在误会，人物准备出示证件证明身份。"
+    ],
+    "answer": "C",
+    "answer_option": "option_C",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Anaphoric",
+        "image": "Contextual",
+        "audio": "Prosodic"
+      }
+    }
+  },
+  {
+    "id": "group_73_4",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "人物在街头遭遇突发状况。当他喊“别打我！”时，有两种可能的情况：一是确实面临追打风险，他会转身逃跑躲避或者寻找掩体避险；二是存在误会或身份误认，他会抬手示意解释或者出示证件证明身份。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0103.jpg",
+    "image_caption": "街头场景。人物停下脚步，伸手向口袋掏取，准备出示证件证明身份。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0139.wav",
+    "audio_caption": "人物惊恐喊道：“别打我！”",
+    "choices": [
+      "面临追打，人物准备转身逃跑躲避。",
+      "面临追打，人物准备寻找掩体避险。",
+      "存在误会，人物准备抬手示意解释。",
+      "存在误会，人物准备出示证件证明身份。"
+    ],
+    "answer": "D",
+    "answer_option": "option_D",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Anaphoric",
+        "image": "Contextual",
+        "audio": "Prosodic"
+      }
+    }
+  },
+  {
+    "id": "group_75_1",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "乘客在地铁站过闸机刷卡。当他说“刷不开啊”时，有两种可能的情况：一是卡片状态异常，他会给交通卡充余额或者更换备用交通卡；二是操作或闸机异常，他会调整刷卡对准位置或者呼叫工作人员协助。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0104.jpg",
+    "image_caption": "地铁站闸机场景。乘客掏出手机，准备打开充值页面给交通卡充余额。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0141.wav",
+    "audio_caption": "乘客说：“刷不开啊。”",
+    "choices": [
+      "卡片异常，乘客准备给交通卡充余额。",
+      "卡片异常，乘客准备更换备用交通卡。",
+      "操作/闸机异常，乘客准备调整刷卡位置。",
+      "操作/闸机异常，乘客准备呼叫工作人员。"
+    ],
+    "answer": "A",
+    "answer_option": "option_A",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Syntactic",
+        "image": "Spatial",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_75_2",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "乘客在地铁站过闸机刷卡。当他说“刷不开啊”时，有两种可能的情况：一是卡片状态异常，他会给交通卡充余额或者更换备用交通卡；二是操作或闸机异常，他会调整刷卡对准位置或者呼叫工作人员协助。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0105.jpg",
+    "image_caption": "地铁站闸机场景。乘客翻找背包，准备拿出备用交通卡。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0141.wav",
+    "audio_caption": "乘客说：“刷不开啊。”",
+    "choices": [
+      "卡片异常，乘客准备给交通卡充余额。",
+      "卡片异常，乘客准备更换备用交通卡。",
+      "操作/闸机异常，乘客准备调整刷卡位置。",
+      "操作/闸机异常，乘客准备呼叫工作人员。"
+    ],
+    "answer": "B",
+    "answer_option": "option_B",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Syntactic",
+        "image": "Spatial",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_75_3",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "乘客在地铁站过闸机刷卡。当他说“刷不开啊”时，有两种可能的情况：一是卡片状态异常，他会给交通卡充余额或者更换备用交通卡；二是操作或闸机异常，他会调整刷卡对准位置或者呼叫工作人员协助。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0106.jpg",
+    "image_caption": "地铁站闸机场景。乘客调整卡片角度，重新对准闸机刷卡区。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0141.wav",
+    "audio_caption": "乘客说：“刷不开啊。”",
+    "choices": [
+      "卡片异常，乘客准备给交通卡充余额。",
+      "卡片异常，乘客准备更换备用交通卡。",
+      "操作/闸机异常，乘客准备调整刷卡位置。",
+      "操作/闸机异常，乘客准备呼叫工作人员。"
+    ],
+    "answer": "C",
+    "answer_option": "option_C",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Syntactic",
+        "image": "Spatial",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_75_4",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "乘客在地铁站过闸机刷卡。当他说“刷不开啊”时，有两种可能的情况：一是卡片状态异常，他会给交通卡充余额或者更换备用交通卡；二是操作或闸机异常，他会调整刷卡对准位置或者呼叫工作人员协助。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0107.jpg",
+    "image_caption": "地铁站闸机场景。乘客抬手招手，准备呼叫地铁站工作人员。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0141.wav",
+    "audio_caption": "乘客说：“刷不开啊。”",
+    "choices": [
+      "卡片异常，乘客准备给交通卡充余额。",
+      "卡片异常，乘客准备更换备用交通卡。",
+      "操作/闸机异常，乘客准备调整刷卡位置。",
+      "操作/闸机异常，乘客准备呼叫工作人员。"
+    ],
+    "answer": "D",
+    "answer_option": "option_D",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Syntactic",
+        "image": "Spatial",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_76_1",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "用户使用洗衣机洗衣服。当他说“洗不干净啊”时，有两种可能的情况：一是操作设置错误，他会添加洗衣液或者切换强力洗涤模式；二是衣物污渍顽固，他会手搓顽固污渍或者更换专用去渍洗涤剂。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0050.jpg",
+    "image_caption": "居家洗衣场景。用户拿起洗衣液瓶，准备向洗衣机内添加洗衣液。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0072.wav",
+    "audio_caption": "用户说：“洗不干净啊。”",
+    "choices": [
+      "操作错误，用户准备添加洗衣液。",
+      "操作错误，用户准备切换强力洗涤模式。",
+      "污渍顽固，用户准备手搓衣物顽固污渍。",
+      "污渍顽固，用户准备更换专用去渍洗涤剂。"
+    ],
+    "answer": "A",
+    "answer_option": "option_A",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Syntactic",
+        "image": "Kinematic",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_76_2",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "用户使用洗衣机洗衣服。当他说“洗不干净啊”时，有两种可能的情况：一是操作设置错误，他会添加洗衣液或者切换强力洗涤模式；二是衣物污渍顽固，他会手搓顽固污渍或者更换专用去渍洗涤剂。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0051.jpg",
+    "image_caption": "居家洗衣场景。用户按动洗衣机面板，准备切换强力洗涤模式。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0072.wav",
+    "audio_caption": "用户说：“洗不干净啊。”",
+    "choices": [
+      "操作错误，用户准备添加洗衣液。",
+      "操作错误，用户准备切换强力洗涤模式。",
+      "污渍顽固，用户准备手搓衣物顽固污渍。",
+      "污渍顽固，用户准备更换专用去渍洗涤剂。"
+    ],
+    "answer": "B",
+    "answer_option": "option_B",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Syntactic",
+        "image": "Kinematic",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_76_3",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "用户使用洗衣机洗衣服。当他说“洗不干净啊”时，有两种可能的情况：一是操作设置错误，他会添加洗衣液或者切换强力洗涤模式；二是衣物污渍顽固，他会手搓顽固污渍或者更换专用去渍洗涤剂。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0052.jpg",
+    "image_caption": "居家洗衣场景。用户拿出搓衣板，准备手搓衣物上的顽固污渍。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0072.wav",
+    "audio_caption": "用户说：“洗不干净啊。”",
+    "choices": [
+      "操作错误，用户准备添加洗衣液。",
+      "操作错误，用户准备切换强力洗涤模式。",
+      "污渍顽固，用户准备手搓衣物顽固污渍。",
+      "污渍顽固，用户准备更换专用去渍洗涤剂。"
+    ],
+    "answer": "C",
+    "answer_option": "option_C",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Syntactic",
+        "image": "Kinematic",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_76_4",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "用户使用洗衣机洗衣服。当他说“洗不干净啊”时，有两种可能的情况：一是操作设置错误，他会添加洗衣液或者切换强力洗涤模式；二是衣物污渍顽固，他会手搓顽固污渍或者更换专用去渍洗涤剂。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0053.jpg",
+    "image_caption": "居家洗衣场景。用户拿起专用去渍剂，准备替换普通洗衣液。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0072.wav",
+    "audio_caption": "用户说：“洗不干净啊。”",
+    "choices": [
+      "操作错误，用户准备添加洗衣液。",
+      "操作错误，用户准备切换强力洗涤模式。",
+      "污渍顽固，用户准备手搓衣物顽固污渍。",
+      "污渍顽固，用户准备更换专用去渍洗涤剂。"
+    ],
+    "answer": "D",
+    "answer_option": "option_D",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Syntactic",
+        "image": "Kinematic",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_79_1",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "用户给自行车打气。当他说“打不进去啊”时，有两种可能的情况：一是车胎异常，他会检查内胎漏气情况或者更换全新内胎；二是工具异常，他会重新卡紧气筒接口或者更换备用打气筒。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0054.jpg",
+    "image_caption": "路边修车场景。用户用手捏自行车内胎，检查是否漏气。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0074.wav",
+    "audio_caption": "用户说：“打不进去啊。”",
+    "choices": [
+      "车胎异常，用户准备检查内胎漏气情况。",
+      "车胎异常，用户准备更换全新内胎。",
+      "工具异常，用户准备重新卡紧气筒接口。",
+      "工具异常，用户准备更换备用打气筒。"
+    ],
+    "answer": "A",
+    "answer_option": "option_A",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Syntactic",
+        "image": "Spatial",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_79_2",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "用户给自行车打气。当他说“打不进去啊”时，有两种可能的情况：一是车胎异常，他会检查内胎漏气情况或者更换全新内胎；二是工具异常，他会重新卡紧气筒接口或者更换备用打气筒。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0055.jpg",
+    "image_caption": "路边修车场景。用户拿起全新内胎，准备更换自行车旧内胎。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0074.wav",
+    "audio_caption": "用户说：“打不进去啊。”",
+    "choices": [
+      "车胎异常，用户准备检查内胎漏气情况。",
+      "车胎异常，用户准备更换全新内胎。",
+      "工具异常，用户准备重新卡紧气筒接口。",
+      "工具异常，用户准备更换备用打气筒。"
+    ],
+    "answer": "B",
+    "answer_option": "option_B",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Syntactic",
+        "image": "Spatial",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_79_3",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "用户给自行车打气。当他说“打不进去啊”时，有两种可能的情况：一是车胎异常，他会检查内胎漏气情况或者更换全新内胎；二是工具异常，他会重新卡紧气筒接口或者更换备用打气筒。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0056.jpg",
+    "image_caption": "路边修车场景。用户用手重新卡紧气筒和车胎气嘴的接口。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0074.wav",
+    "audio_caption": "用户说：“打不进去啊。”",
+    "choices": [
+      "车胎异常，用户准备检查内胎漏气情况。",
+      "车胎异常，用户准备更换全新内胎。",
+      "工具异常，用户准备重新卡紧气筒接口。",
+      "工具异常，用户准备更换备用打气筒。"
+    ],
+    "answer": "C",
+    "answer_option": "option_C",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Syntactic",
+        "image": "Spatial",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_79_4",
+    "language": "zh",
+    "question": "下列哪个选项是正确的？",
+    "context": "用户给自行车打气。当他说“打不进去啊”时，有两种可能的情况：一是车胎异常，他会检查内胎漏气情况或者更换全新内胎；二是工具异常，他会重新卡紧气筒接口或者更换备用打气筒。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0057.jpg",
+    "image_caption": "路边修车场景。用户拿起备用打气筒，准备更换当前打气工具。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0074.wav",
+    "audio_caption": "用户说：“打不进去啊。”",
+    "choices": [
+      "车胎异常，用户准备检查内胎漏气情况。",
+      "车胎异常，用户准备更换全新内胎。",
+      "工具异常，用户准备重新卡紧气筒接口。",
+      "工具异常，用户准备更换备用打气筒。"
+    ],
+    "answer": "D",
+    "answer_option": "option_D",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Syntactic",
+        "image": "Spatial",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_102_1",
+    "language": "zh",
+    "question": "根据当地交通法规，救护车是否获准通过交叉路口？目前这辆救护车处于何种状态？",
+    "context": "交通法规规定，仅当救护车同时开启警示灯和警报器时，才被视为正在执行紧急任务，从而享有优先通行权并可免受红灯限制；否则，所有车辆均须遵照红灯信号停车等候。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0059.jpg",
+    "image_caption": "一辆警示灯闪烁的救护车正在马路上行驶，前方路口红灯亮。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0079.wav",
+    "audio_caption": "救护车的警笛正在响。",
+    "choices": [
+      "能通过；警示灯闪烁并且警笛拉响",
+      "不能通过；警示灯闪烁并且警笛拉响",
+      "不能通过；警示灯未闪烁并且警笛拉响",
+      "不能通过；警示灯闪烁并且警笛未拉响"
+    ],
+    "answer": "A",
+    "answer_option": "option_A",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Logical",
+        "image": "Semiotic",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_102_2",
+    "language": "zh",
+    "question": "根据当地交通法规，救护车是否获准通过交叉路口？目前这辆救护车处于何种状态？",
+    "context": "交通法规规定，仅当救护车同时开启警示灯和警报器时，才被视为正在执行紧急任务，从而享有优先通行权并可免受红灯限制；否则，所有车辆均须遵照红灯信号停车等候。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0069.jpg",
+    "image_caption": "一辆警示灯未闪烁的救护车正在马路上行驶，前方路口红灯亮。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0079.wav",
+    "audio_caption": "救护车的警笛正在响。",
+    "choices": [
+      "能通过；警示灯闪烁并且警笛拉响",
+      "不能通过；警示灯闪烁并且警笛拉响",
+      "不能通过；警示灯未闪烁并且警笛拉响",
+      "不能通过；警示灯闪烁并且警笛未拉响"
+    ],
+    "answer": "C",
+    "answer_option": "option_C",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Logical",
+        "image": "Semiotic",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_102_3",
+    "language": "zh",
+    "question": "根据当地交通法规，救护车是否获准通过交叉路口？目前这辆救护车处于何种状态？",
+    "context": "交通法规规定，仅当救护车同时开启警示灯和警报器时，才被视为正在执行紧急任务，从而享有优先通行权并可免受红灯限制；否则，所有车辆均须遵照红灯信号停车等候。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0059.jpg",
+    "image_caption": "一辆警示灯闪烁的救护车正在马路上行驶，前方路口红灯亮。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0080.wav",
+    "audio_caption": "救护车未拉响警笛，周围是嘈杂的车流声。",
+    "choices": [
+      "能通过；警示灯闪烁并且警笛拉响",
+      "不能通过；警示灯闪烁并且警笛拉响",
+      "不能通过；警示灯未闪烁并且警笛拉响",
+      "不能通过；警示灯闪烁并且警笛未拉响"
+    ],
+    "answer": "D",
+    "answer_option": "option_D",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Logical",
+        "image": "Semiotic",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_109_1",
+    "language": "zh",
+    "question": "根据当地交通法规，校车是否获准通过交叉路口？目前这辆校车处于何种状态？",
+    "context": "交通法规规定，仅当校车同时开启警示灯和停车示意牌时，才被视为正在接送学生，从而享有优先通行权并可免受红灯限制；否则，所有车辆均须遵照红灯信号停车等候。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0110.jpg",
+    "image_caption": "一辆警示灯闪烁的校车正在马路上行驶，前方路口红灯亮。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0001.wav",
+    "audio_caption": "校车停车指示牌展开的机械声，伴随缓慢的警示蜂鸣声。",
+    "choices": [
+      "能通过；警示灯闪烁并且停车牌开启",
+      "不能通过；警示灯闪烁并且停车牌开启",
+      "不能通过；警示灯未闪烁并且停车牌开启",
+      "不能通过；警示灯闪烁并且停车牌未开启"
+    ],
+    "answer": "A",
+    "answer_option": "option_A",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Logical",
+        "image": "Semiotic",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_109_2",
+    "language": "zh",
+    "question": "根据当地交通法规，校车是否获准通过交叉路口？目前这辆校车处于何种状态？",
+    "context": "交通法规规定，仅当校车同时开启警示灯和停车示意牌时，才被视为正在接送学生，从而享有优先通行权并可免受红灯限制；否则，所有车辆均须遵照红灯信号停车等候。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0110.jpg",
+    "image_caption": "一辆警示灯未闪烁的校车正在马路上行驶，前方路口红灯亮。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0001.wav",
+    "audio_caption": "校车停车指示牌展开的机械声，伴随缓慢的警示蜂鸣声。",
+    "choices": [
+      "能通过；警示灯闪烁并且停车牌开启",
+      "不能通过；警示灯闪烁并且停车牌开启",
+      "不能通过；警示灯未闪烁并且停车牌开启",
+      "不能通过；警示灯闪烁并且停车牌未开启"
+    ],
+    "answer": "C",
+    "answer_option": "option_C",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Logical",
+        "image": "Semiotic",
+        "audio": "Referential"
+      }
+    }
+  },
+  {
+    "id": "group_109_3",
+    "language": "zh",
+    "question": "根据当地交通法规，校车是否获准通过交叉路口？目前这辆校车处于何种状态？",
+    "context": "交通法规规定，仅当校车同时开启警示灯和停车示意牌时，才被视为正在接送学生，从而享有优先通行权并可免受红灯限制；否则，所有车辆均须遵照红灯信号停车等候。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0110.jpg",
+    "image_caption": "一辆警示灯闪烁的校车正在马路上行驶，前方路口红灯亮。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0002.wav",
+    "audio_caption": "只有校车发动机和路面行驶声，无停车牌动作与警示音。",
+    "choices": [
+      "能通过；警示灯闪烁并且停车牌开启",
+      "不能通过；警示灯闪烁并且停车牌开启",
+      "不能通过；警示灯未闪烁并且停车牌开启",
+      "不能通过；警示灯闪烁并且停车牌未开启"
+    ],
+    "answer": "D",
+    "answer_option": "option_D",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Logical",
+        "image": "Semiotic",
+        "audio": "Symbolic"
+      }
+    }
+  },
+  {
+    "id": "group_116_1",
+    "language": "zh",
+    "question": "根据路标规则，这位司机应该怎么做？",
+    "context": "路标规则：当看到'禁行'标志且听到'持续长鸣'时，车辆必须停车等待；当看到'放行'标志且听到'间断短鸣'时，车辆可以减速通过。其他情况，必须靠边停车观察。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0018.jpg",
+    "image_caption": "前方路口有放行标志",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0017.wav",
+    "audio_caption": "后方车辆的持续长鸣",
+    "choices": [
+      "停车等待",
+      "减速通过",
+      "靠边停车观察",
+      "直接加速通过"
+    ],
+    "answer": "C",
+    "answer_option": "option_C",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Logical",
+        "image": "Kinematic",
+        "audio": "Prosodic"
+      }
+    }
+  },
+  {
+    "id": "group_116_2",
+    "language": "zh",
+    "question": "根据路标规则，这位司机应该怎么做？",
+    "context": "路标规则：当看到'禁行'标志且听到'持续长鸣'时，车辆必须停车等待；当看到'放行'标志且听到'间断短鸣'时，车辆可以减速通过。其他情况，必须靠边停车观察。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0019.jpg",
+    "image_caption": "前方路口有禁行标志",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0017.wav",
+    "audio_caption": "后方车辆的持续长鸣",
+    "choices": [
+      "停车等待",
+      "减速通过",
+      "靠边停车观察",
+      "直接加速通过"
+    ],
+    "answer": "A",
+    "answer_option": "option_A",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Logical",
+        "image": "Observational",
+        "audio": "Prosodic"
+      }
+    }
+  },
+  {
+    "id": "group_116_3",
+    "language": "zh",
+    "question": "根据路标规则，这位司机应该怎么做？",
+    "context": "路标规则：当看到'禁行'标志且听到'持续长鸣'时，车辆必须停车等待；当看到'放行'标志且听到'间断短鸣'时，车辆可以减速通过。其他情况，必须靠边停车观察。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0018.jpg",
+    "image_caption": "前方路口有放行标志",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0018.wav",
+    "audio_caption": "后方车辆的间接短鸣",
+    "choices": [
+      "停车等待",
+      "减速通过",
+      "靠边停车观察",
+      "直接加速通过"
+    ],
+    "answer": "B",
+    "answer_option": "option_B",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Logical",
+        "image": "Observational",
+        "audio": "Indexical"
+      }
+    }
+  },
+  {
+    "id": "group_116_4",
+    "language": "zh",
+    "question": "根据路标规则，这位司机应该怎么做？",
+    "context": "路标规则：当看到'禁行'标志且听到'持续长鸣'时，车辆必须停车等待；当看到'放行'标志且听到'间断短鸣'时，车辆可以减速通过。其他情况，必须靠边停车观察。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0019.jpg",
+    "image_caption": "前方路口有禁行标志",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0018.wav",
+    "audio_caption": "后方车辆的间接短鸣",
+    "choices": [
+      "停车等待",
+      "减速通过",
+      "靠边停车观察",
+      "直接加速通过"
+    ],
+    "answer": "C",
+    "answer_option": "option_C",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Logical",
+        "image": "Observational",
+        "audio": "Indexical"
+      }
+    }
+  },
+  {
+    "id": "group_116_5",
+    "language": "zh",
+    "question": "根据路标规则，这位司机应该怎么做？",
+    "context": "路标规则：当看到'禁行'标志且听到'间接短鸣'时，车辆需停车等待；当看到'放行'标志且听到'持续长鸣'时，车辆需减速通过。其他情况，必须靠边停车观察。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0018.jpg",
+    "image_caption": "前方路口有放行标志",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0017.wav",
+    "audio_caption": "后方车辆的持续长鸣",
+    "choices": [
+      "停车等待",
+      "减速通过",
+      "靠边停车观察",
+      "直接加速通过"
+    ],
+    "answer": "B",
+    "answer_option": "option_B",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Logical",
+        "image": "Observational",
+        "audio": "Indexical"
+      }
+    }
+  },
+  {
+    "id": "group_116_6",
+    "language": "zh",
+    "question": "根据路标规则，这位司机应该怎么做？",
+    "context": "路标规则：当看到'禁行'标志且听到'间接短鸣'时，车辆需停车等待；当看到'放行'标志且听到'持续长鸣'时，车辆需减速通过。其他情况，必须靠边停车观察。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0019.jpg",
+    "image_caption": "前方路口有禁行标志",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0017.wav",
+    "audio_caption": "后方车辆的持续长鸣",
+    "choices": [
+      "停车等待",
+      "减速通过",
+      "靠边停车观察",
+      "直接加速通过"
+    ],
+    "answer": "C",
+    "answer_option": "option_C",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Logical",
+        "image": "Observational",
+        "audio": "Indexical"
+      }
+    }
+  },
+  {
+    "id": "group_116_7",
+    "language": "zh",
+    "question": "根据路标规则，这位司机应该怎么做？",
+    "context": "路标规则：当看到'禁行'标志且听到'间接短鸣'时，车辆需停车等待；当看到'放行'标志且听到'持续长鸣'时，车辆需减速通过。其他情况，必须靠边停车观察。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0018.jpg",
+    "image_caption": "前方路口有放行标志",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0018.wav",
+    "audio_caption": "后方车辆的间接短鸣",
+    "choices": [
+      "停车等待",
+      "减速通过",
+      "靠边停车观察",
+      "直接加速通过"
+    ],
+    "answer": "C",
+    "answer_option": "option_C",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Logical",
+        "image": "Observational",
+        "audio": "Indexical"
+      }
+    }
+  },
+  {
+    "id": "group_116_8",
+    "language": "zh",
+    "question": "根据路标规则，这位司机应该怎么做？",
+    "context": "路标规则：当看到'禁行'标志且听到'间接短鸣'时，车辆需停车等待；当看到'放行'标志且听到'持续长鸣'时，车辆需减速通过。其他情况，必须靠边停车观察。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0019.jpg",
+    "image_caption": "前方路口有禁行标志",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0018.wav",
+    "audio_caption": "后方车辆的间接短鸣",
+    "choices": [
+      "停车等待",
+      "减速通过",
+      "靠边停车观察",
+      "直接加速通过"
+    ],
+    "answer": "A",
+    "answer_option": "option_A",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Logical",
+        "image": "Observational",
+        "audio": "Indexical"
+      }
+    }
+  },
+  {
+    "id": "group_118_1",
+    "language": "zh",
+    "question": "在音频中，刘女士说的话是什么意思？刘女士的态度发生了什么转变？",
+    "context": "刘女士和朋友前往一家她此前寄予厚望的意大利餐厅吃饭，她们点了一道意大利菜。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0074.jpg",
+    "image_caption": "一位女士用餐的照片，面前的食物已经快被吃光了，女士脸上的表情非常享受",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0091.wav",
+    "audio_caption": "一道女声：“真是一道了不起的菜。”",
+    "choices": [
+      "真心喜爱这道菜；此前寄予厚望，且期望得到了满足",
+      "真心喜爱这道菜；起初持怀疑态度，但随后感到惊喜",
+      "在说反话；起初就持怀疑态度，结果证实确实难吃",
+      "在说反话；此前寄予厚望，结果却大失所望"
+    ],
+    "answer": "A",
+    "answer_option": "option_A",
+    "category": {
+      "level": "dual_modal",
+      "modal_category": {
+        "text": "Pragmatic",
+        "image": "Observational",
+        "audio": "Indexical"
+      }
+    }
+  },
+  {
+    "id": "group_118_2",
+    "language": "zh",
+    "question": "在音频中，刘女士说的话是什么意思？刘女士的态度发生了什么转变？",
+    "context": "刘女士和朋友前往一家她此前寄予厚望的意大利餐厅吃饭，她们点了一道意大利菜。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0075.jpg",
+    "image_caption": "一位女士用餐的照片，面前的食物还剩下很多，女士脸上的表情非常痛苦",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0091.wav",
+    "audio_caption": "一道女声：“真是一道了不起的菜。”",
+    "choices": [
+      "真心喜爱这道菜；此前寄予厚望，且期望得到了满足",
+      "真心喜爱这道菜；起初持怀疑态度，但随后感到惊喜",
+      "在说反话；起初就持怀疑态度，结果证实确实难吃",
+      "在说反话；此前寄予厚望，结果却大失所望"
+    ],
+    "answer": "D",
+    "answer_option": "option_D",
+    "category": {
+      "level": "dual_modal",
+      "modal_category": {
+        "text": "Pragmatic",
+        "image": "Kinematic",
+        "audio": "Indexical"
+      }
+    }
+  },
+  {
+    "id": "group_118_3",
+    "language": "zh",
+    "question": "在音频中，刘女士说的话是什么意思？刘女士的态度发生了什么转变？",
+    "context": "刘女士此前一直对意大利菜持怀疑态度，今天朋友邀请刘女士前往一家意大利餐厅吃饭，她们点了一道意大利菜。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0074.jpg",
+    "image_caption": "一位女士用餐的照片，面前的食物已经快被吃光了，女士脸上的表情非常享受",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0091.wav",
+    "audio_caption": "一道女声：“真是一道了不起的菜。”",
+    "choices": [
+      "真心喜爱这道菜；此前寄予厚望，且期望得到了满足",
+      "真心喜爱这道菜；起初持怀疑态度，但随后感到惊喜",
+      "在说反话；起初就持怀疑态度，结果证实确实难吃",
+      "在说反话；此前寄予厚望，结果却大失所望"
+    ],
+    "answer": "B",
+    "answer_option": "option_B",
+    "category": {
+      "level": "dual_modal",
+      "modal_category": {
+        "text": "Pragmatic",
+        "image": "Observational",
+        "audio": "Indexical"
+      }
+    }
+  },
+  {
+    "id": "group_118_4",
+    "language": "zh",
+    "question": "在音频中，刘女士说的话是什么意思？刘女士的态度发生了什么转变？",
+    "context": "刘女士此前一直对意大利菜持怀疑态度，今天朋友邀请刘女士前往一家意大利餐厅吃饭，她们点了一道意大利菜。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0075.jpg",
+    "image_caption": "一位女士用餐的照片，面前的食物还剩下很多，女士脸上的表情非常痛苦",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0091.wav",
+    "audio_caption": "一道女声：“真是一道了不起的菜。”",
+    "choices": [
+      "真心喜爱这道菜；此前寄予厚望，且期望得到了满足",
+      "真心喜爱这道菜；起初持怀疑态度，但随后感到惊喜",
+      "在说反话；起初就持怀疑态度，结果证实确实难吃",
+      "在说反话；此前寄予厚望，结果却大失所望"
+    ],
+    "answer": "C",
+    "answer_option": "option_C",
+    "category": {
+      "level": "dual_modal",
+      "modal_category": {
+        "text": "Pragmatic",
+        "image": "Kinematic",
+        "audio": "Indexical"
+      }
+    }
+  },
+  {
+    "id": "group_120_1",
+    "language": "zh",
+    "question": "根据收银员培训手册，应该如何处理这笔交易？",
+    "context": "收银员手册：如果顾客拿的是会员卡且听到嘀一声，则扫商品条码；如果顾客拿的是优惠券且听到嘀两声，则录入优惠码；其他情况，请呼叫主管。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0020.jpg",
+    "image_caption": "一张顾客手持会员卡靠近扫描仪照片。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0022.wav",
+    "audio_caption": "一声“滴”",
+    "choices": [
+      "扫商品条码",
+      "录入优惠码",
+      "呼叫主管",
+      "直接结账"
+    ],
+    "answer": "A",
+    "answer_option": "option_A",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Logical",
+        "image": "Contextual",
+        "audio": "Indexical"
+      }
+    }
+  },
+  {
+    "id": "group_120_2",
+    "language": "zh",
+    "question": "根据收银员培训手册，应该如何处理这笔交易？",
+    "context": "收银员手册：如果顾客拿的是会员卡且听到嘀一声，则扫商品条码；如果顾客拿的是优惠券且听到嘀两声，则录入优惠码；其他情况，请呼叫主管。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0020.jpg",
+    "image_caption": "一张顾客手持会员卡靠近扫描仪照片。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0021.wav",
+    "audio_caption": "两声“滴”",
+    "choices": [
+      "扫商品条码",
+      "录入优惠码",
+      "呼叫主管",
+      "直接结账"
+    ],
+    "answer": "C",
+    "answer_option": "option_C",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Logical",
+        "image": "Contextual",
+        "audio": "Indexical"
+      }
+    }
+  },
+  {
+    "id": "group_120_3",
+    "language": "zh",
+    "question": "根据收银员培训手册，应该如何处理这笔交易？",
+    "context": "收银员手册：如果顾客拿的是会员卡且听到嘀一声，则扫商品条码；如果顾客拿的是优惠券且听到嘀两声，则录入优惠码；其他情况，请呼叫主管。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0021.jpg",
+    "image_caption": "一张顾客手持优惠券靠近扫描仪照片。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0022.wav",
+    "audio_caption": "一声“滴”",
+    "choices": [
+      "扫商品条码",
+      "录入优惠码",
+      "呼叫主管",
+      "直接结账"
+    ],
+    "answer": "C",
+    "answer_option": "option_C",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Logical",
+        "image": "Contextual",
+        "audio": "Phonetic"
+      }
+    }
+  },
+  {
+    "id": "group_120_4",
+    "language": "zh",
+    "question": "根据收银员培训手册，应该如何处理这笔交易？",
+    "context": "收银员手册：如果顾客拿的是会员卡且听到嘀一声，则扫商品条码；如果顾客拿的是优惠券且听到嘀两声，则录入优惠码；其他情况，请呼叫主管。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0021.jpg",
+    "image_caption": "一张顾客手持优惠券靠近扫描仪照片。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0021.wav",
+    "audio_caption": "两声“滴”",
+    "choices": [
+      "扫商品条码",
+      "录入优惠码",
+      "呼叫主管",
+      "直接结账"
+    ],
+    "answer": "B",
+    "answer_option": "option_B",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Logical",
+        "image": "Contextual",
+        "audio": "Phonetic"
+      }
+    }
+  },
+  {
+    "id": "group_120_5",
+    "language": "zh",
+    "question": "根据收银员培训手册，应该如何处理这笔交易？",
+    "context": "收银员手册：如果顾客拿的是会员卡且听到嘀两声，则扫商品条码；如果顾客拿的是优惠券且听到嘀一声，则录入优惠码；其他情况，请呼叫主管。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0020.jpg",
+    "image_caption": "一张顾客手持会员卡靠近扫描仪照片。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0022.wav",
+    "audio_caption": "一声“滴”",
+    "choices": [
+      "扫商品条码",
+      "录入优惠码",
+      "呼叫主管",
+      "直接结账"
+    ],
+    "answer": "C",
+    "answer_option": "option_C",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Logical",
+        "image": "Contextual",
+        "audio": "Phonetic"
+      }
+    }
+  },
+  {
+    "id": "group_120_6",
+    "language": "zh",
+    "question": "根据收银员培训手册，应该如何处理这笔交易？",
+    "context": "收银员手册：如果顾客拿的是会员卡且听到嘀两声，则扫商品条码；如果顾客拿的是优惠券且听到嘀一声，则录入优惠码；其他情况，请呼叫主管。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0020.jpg",
+    "image_caption": "一张顾客手持会员卡靠近扫描仪照片。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0021.wav",
+    "audio_caption": "两声“滴”",
+    "choices": [
+      "扫商品条码",
+      "录入优惠码",
+      "呼叫主管",
+      "直接结账"
+    ],
+    "answer": "A",
+    "answer_option": "option_A",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Logical",
+        "image": "Contextual",
+        "audio": "Phonetic"
+      }
+    }
+  },
+  {
+    "id": "group_120_7",
+    "language": "zh",
+    "question": "根据收银员培训手册，应该如何处理这笔交易？",
+    "context": "收银员手册：如果顾客拿的是会员卡且听到嘀两声，则扫商品条码；如果顾客拿的是优惠券且听到嘀一声，则录入优惠码；其他情况，请呼叫主管。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0021.jpg",
+    "image_caption": "一张顾客手持优惠券靠近扫描仪照片。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0022.wav",
+    "audio_caption": "一声“滴”",
+    "choices": [
+      "扫商品条码",
+      "录入优惠码",
+      "呼叫主管",
+      "直接结账"
+    ],
+    "answer": "B",
+    "answer_option": "option_B",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Logical",
+        "image": "Contextual",
+        "audio": "Phonetic"
+      }
+    }
+  },
+  {
+    "id": "group_120_8",
+    "language": "zh",
+    "question": "根据收银员培训手册，应该如何处理这笔交易？",
+    "context": "收银员手册：如果顾客拿的是会员卡且听到嘀两声，则扫商品条码；如果顾客拿的是优惠券且听到嘀一声，则录入优惠码；其他情况，请呼叫主管。",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0021.jpg",
+    "image_caption": "一张顾客手持优惠券靠近扫描仪照片。",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0021.wav",
+    "audio_caption": "两声“滴”",
+    "choices": [
+      "扫商品条码",
+      "录入优惠码",
+      "呼叫主管",
+      "直接结账"
+    ],
+    "answer": "C",
+    "answer_option": "option_C",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Logical",
+        "image": "Contextual",
+        "audio": "Phonetic"
+      }
+    }
+  },
+  {
+    "id": "group_121_1",
+    "language": "zh",
+    "question": "根据洗衣标识，这件衣服该怎么洗？",
+    "context": "洗衣标识规则：如果图案是圆形且中间有X，则只能干洗；如果图案是方形且中间有X，则只能烘干；如果图案是圆形且中间有小三角形，则只能低温熨烫；其他情况只能手洗",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0022.jpg",
+    "image_caption": "一张衣服标签的模糊照片。洗涤符号褪色，只能看到中间是个X",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0023.wav",
+    "audio_caption": "用户录了一段语音：'我记得这件衣服的洗衣标识外面是个圆形'",
+    "choices": [
+      "只能干洗",
+      "只能烘干",
+      "只能低温熨烫",
+      "只能手洗"
+    ],
+    "answer": "A",
+    "answer_option": "option_A",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Logical",
+        "image": "Semiotic",
+        "audio": "Environmental"
+      }
+    }
+  },
+  {
+    "id": "group_121_2",
+    "language": "zh",
+    "question": "根据洗衣标识，这件衣服该怎么洗？",
+    "context": "洗衣标识规则：如果图案是圆形且中间有X，则只能干洗；如果图案是方形且中间有X，则只能烘干；如果图案是圆形且中间有小三角形，则只能低温熨烫；其他情况只能手洗",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0022.jpg",
+    "image_caption": "一张衣服标签的模糊照片。洗涤符号褪色，只能看到中间是个X",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0024.wav",
+    "audio_caption": "用户录了一段语音：'我记得这件衣服的洗衣标识外面是个方形'",
+    "choices": [
+      "只能干洗",
+      "只能烘干",
+      "只能低温熨烫",
+      "只能手洗"
+    ],
+    "answer": "B",
+    "answer_option": "option_B",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Logical",
+        "image": "Semiotic",
+        "audio": "Environmental"
+      }
+    }
+  },
+  {
+    "id": "group_121_3",
+    "language": "zh",
+    "question": "根据洗衣标识，这件衣服该怎么洗？",
+    "context": "洗衣标识规则：如果图案是圆形且中间有X，则只能干洗；如果图案是方形且中间有X，则只能烘干；如果图案是圆形且中间有小三角形，则只能低温熨烫；其他情况只能手洗",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0023.jpg",
+    "image_caption": "一张衣服标签的模糊照片。洗涤符号褪色，只能看到中间是个小三角形",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0023.wav",
+    "audio_caption": "用户录了一段语音：'我记得这件衣服的洗衣标识外面是个圆形'",
+    "choices": [
+      "只能干洗",
+      "只能烘干",
+      "只能低温熨烫",
+      "只能手洗"
+    ],
+    "answer": "C",
+    "answer_option": "option_C",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Logical",
+        "image": "Semiotic",
+        "audio": "Environmental"
+      }
+    }
+  },
+  {
+    "id": "group_121_4",
+    "language": "zh",
+    "question": "根据洗衣标识，这件衣服该怎么洗？",
+    "context": "洗衣标识规则：如果图案是圆形且中间有X，则只能干洗；如果图案是方形且中间有X，则只能烘干；如果图案是圆形且中间有小三角形，则只能低温熨烫；其他情况只能手洗",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0023.jpg",
+    "image_caption": "一张衣服标签的模糊照片。洗涤符号褪色，只能看到中间是个小三角形",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0024.wav",
+    "audio_caption": "用户录了一段语音：'我记得这件衣服的洗衣标识外面是个方形'",
+    "choices": [
+      "只能干洗",
+      "只能烘干",
+      "只能低温熨烫",
+      "只能手洗"
+    ],
+    "answer": "D",
+    "answer_option": "option_D",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Logical",
+        "image": "Semiotic",
+        "audio": "Environmental"
+      }
+    }
+  },
+  {
+    "id": "group_121_5",
+    "language": "zh",
+    "question": "根据洗衣标识，这件衣服该怎么洗？",
+    "context": "洗衣标识规则：如果图案是圆形且中间有X，则只能烘干；如果图案是方形且中间有X，则只能干洗；如果图案是圆形且中间有小三角形，则只能低温熨烫；其他情况只能手洗",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0022.jpg",
+    "image_caption": "一张衣服标签的模糊照片。洗涤符号褪色，只能看到中间是个X",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0023.wav",
+    "audio_caption": "用户录了一段语音：'我记得这件衣服的洗衣标识外面是个圆形'",
+    "choices": [
+      "只能干洗",
+      "只能烘干",
+      "只能低温熨烫",
+      "只能手洗"
+    ],
+    "answer": "B",
+    "answer_option": "option_B",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Logical",
+        "image": "Semiotic",
+        "audio": "Environmental"
+      }
+    }
+  },
+  {
+    "id": "group_121_6",
+    "language": "zh",
+    "question": "根据洗衣标识，这件衣服该怎么洗？",
+    "context": "洗衣标识规则：如果图案是圆形且中间有X，则只能烘干；如果图案是方形且中间有X，则只能干洗；如果图案是圆形且中间有小三角形，则只能低温熨烫；其他情况只能手洗",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0022.jpg",
+    "image_caption": "一张衣服标签的模糊照片。洗涤符号褪色，只能看到中间是个X",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0024.wav",
+    "audio_caption": "用户录了一段语音：'我记得这件衣服的洗衣标识外面是个方形'",
+    "choices": [
+      "只能干洗",
+      "只能烘干",
+      "只能低温熨烫",
+      "只能手洗"
+    ],
+    "answer": "A",
+    "answer_option": "option_A",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Logical",
+        "image": "Semiotic",
+        "audio": "Symbolic"
+      }
+    }
+  },
+  {
+    "id": "group_121_7",
+    "language": "zh",
+    "question": "根据洗衣标识，这件衣服该怎么洗？",
+    "context": "洗衣标识规则：如果图案是圆形且中间有X，则只能烘干；如果图案是方形且中间有X，则只能干洗；如果图案是圆形且中间有小三角形，则只能低温熨烫；其他情况只能手洗",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0023.jpg",
+    "image_caption": "一张衣服标签的模糊照片。洗涤符号褪色，只能看到中间是个小三角形",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0023.wav",
+    "audio_caption": "用户录了一段语音：'我记得这件衣服的洗衣标识外面是个圆形'",
+    "choices": [
+      "只能干洗",
+      "只能烘干",
+      "只能低温熨烫",
+      "只能手洗"
+    ],
+    "answer": "C",
+    "answer_option": "option_C",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Logical",
+        "image": "Semiotic",
+        "audio": "Symbolic"
+      }
+    }
+  },
+  {
+    "id": "group_121_8",
+    "language": "zh",
+    "question": "根据洗衣标识，这件衣服该怎么洗？",
+    "context": "洗衣标识规则：如果图案是圆形且中间有X，则只能烘干；如果图案是方形且中间有X，则只能干洗；如果图案是圆形且中间有小三角形，则只能低温熨烫；其他情况只能手洗",
+    "image": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/image/img_0023.jpg",
+    "image_caption": "一张衣服标签的模糊照片。洗涤符号褪色，只能看到中间是个小三角形",
+    "audio": "https://huggingface.co/datasets/triad-26/TRIAD/resolve/main/audio/aud_0024.wav",
+    "audio_caption": "用户录了一段语音：'我记得这件衣服的洗衣标识外面是个方形'",
+    "choices": [
+      "只能干洗",
+      "只能烘干",
+      "只能低温熨烫",
+      "只能手洗"
+    ],
+    "answer": "D",
+    "answer_option": "option_D",
+    "category": {
+      "level": "single_modal",
+      "modal_category": {
+        "text": "Logical",
+        "image": "Semiotic",
+        "audio": "Symbolic"
+      }
+    }
+  }
+]

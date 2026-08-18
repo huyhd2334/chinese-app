@@ -1,4 +1,4 @@
-import { db, type Word, type Reading } from "./database"
+import { db, type Word, type Reading, type ListeningTriad } from "./database"
 
 export async function importHsk() {
   const response = await fetch(`/content/words.json`)
@@ -27,5 +27,24 @@ export async function importReading() {
   }))
 
   await db.readings.bulkPut(data)
+  return
+}
+
+
+export async function importListening() {
+  const response = await fetch(`/content/triad_zh_listening_full.json`)
+
+  if (!response.ok) {
+    throw new Error(`Failed to load listenings`)
+  }
+
+  const listenings: ListeningTriad[] = await response.json()
+
+  const data = listenings.map(r => ({
+    ...r,
+    completed: false
+  }))
+
+  await db.listeningTriads.bulkPut(data)
   return
 }

@@ -16,7 +16,7 @@ export interface Word {
   classifiers?: string[]
 }
 
-export interface ReviewItem{
+export interface ReviewItem {
   id: string
   wordId: string
   status: "new" | "learning" | "review" | "mastered"
@@ -25,7 +25,6 @@ export interface ReviewItem{
   dueAt: number
   interval: number
   easeFactor: number
-
   repetitions: number
   correctCount: number
   wrongCount: number
@@ -69,17 +68,49 @@ export interface Reading {
   completed: boolean
 }
 
+export interface ListeningTriad {
+  id: string
+  language: string
+  question: string
+  context?: string
+
+  image?: string
+  image_caption?: string
+
+  audio: string
+  audio_caption?: string
+
+  choices: string[]
+  answer: string
+  answer_option: string
+
+  category?: {
+    level?: string
+
+    modal_category?: {
+      text?: string
+      image?: string
+      audio?: string
+    }
+  }
+  completed: boolean
+  result?: "correct" | "false"
+}
+
 
 export const db = new Dexie("ChineseLearningDB") as Dexie & {
   words: EntityTable<Word, "id">
   reviewItems: EntityTable<ReviewItem, "id">
   notes: EntityTable<Note, "id">
   readings: EntityTable<Reading, "id">
+  listeningTriads: EntityTable<ListeningTriad, "id">
 }
+
 
 db.version(1).stores({
   words: "id, hanzi, *hskLevel",
   reviewItems: "id, wordId, status, dueAt, createdAt",
   notes: "++id, wordId, updatedAt",
-  readings: "source_document_id, id"
+  readings: "source_document_id, id",
+  listeningTriads: "id, completed, result"
 })

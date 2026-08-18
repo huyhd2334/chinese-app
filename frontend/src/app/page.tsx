@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import Link from "next/link"
 import { db, type ReviewItem, type Word } from "../../db/database"
-import { importHsk, importReading } from "../../db/importContent"
+import { importHsk, importListening, importReading } from "../../db/importContent"
 import { reviewRepository } from "../../repositories/reviewRepository"
 import { CircleCheckBig, BookOpen, Brain, Trophy, Target } from "lucide-react"
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts"
@@ -19,6 +19,7 @@ export default function Dashboard() {
     await importReading()
     setWordCount(count)
     await loadData()
+    await importListening()
   }
 
   const loadData = async () => {
