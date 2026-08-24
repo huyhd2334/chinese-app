@@ -7,6 +7,7 @@ export interface Word {
   pinyin?: string
   pinyinNumeric?: string
   meanings: string[]
+  meanings_vi?: string[]
   hskLevel: number[]
   hskLevels: number[]
   sourceLevels: string[]

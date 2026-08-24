@@ -20,6 +20,29 @@ export const wordRepository = {
       .toArray()
   },
 
+  async getIdsByHsk(level: number) {
+    return db.words
+      .where("hskLevel")
+      .equals(level)
+      .primaryKeys()
+  },
+
+  async getByHskPaginated(level: number, offset: number, limit: number) {
+    return db.words
+      .where("hskLevel")
+      .equals(level)
+      .offset(offset)
+      .limit(limit)
+      .toArray()
+  },
+
+  async getCountByHsk(level: number) {
+    return db.words
+      .where("hskLevel")
+      .equals(level)
+      .count()
+  },
+
   async getAll() {
     return db.words.toArray()
   },

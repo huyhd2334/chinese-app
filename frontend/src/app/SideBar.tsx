@@ -8,9 +8,9 @@ const SideBar = () => {
   const pathname = usePathname();
   return (
     <aside className='w-16 md:w-50 shrink-0 border-r border-gray-200 ml-2 md:ml-6 pt-8 space-y-2 transition-all duration-500'>
-      <div className="flex items-center font-semibold text-2xl px-2.5 mb-4 md:px-0 overflow-hidden">
-        <span className="md:hidden text-white bg-red rounded-xl bg-red-500 pt-1 pb-1 pl-3 pr-3 ">H</span>
-        <span className="hidden md:inline">HSK Learning</span>
+      <div className="flex items-center font-serif text-2xl px-2.5 mb-4 md:px-0 overflow-hidden text-china-red">
+        <span className="md:hidden text-china-paper bg-china-red rounded-lg shadow-sm shadow-china-red/20 pt-1 pb-1 pl-3 pr-3 font-serif">H</span>
+        <span className="hidden md:inline font-bold tracking-wider">HSK <span className="text-china-ink font-sans text-xl">Learning</span></span>
       </div>      
       <nav>
         <Link href={"/"} title="DashBoard" className={`${styles.option} ${pathname === "/" ? styles.activate : ""} justify-center md:justify-start`} >

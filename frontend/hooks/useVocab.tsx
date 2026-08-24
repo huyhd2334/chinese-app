@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import {wordRepository} from '../repositories/wordRepository'
 import { db, ReviewItem, Word } from '../db/database'
 import { reviewRepository } from '../repositories/reviewRepository'
@@ -17,17 +17,48 @@ const useVocab = () => {
     const {getByHsk} = wordRepository
     const {markKnown, markUnknown, markHard, markEasy} = reviewRepository
 
-    const getHskVocab = async(level: number): Promise<Word[]> => {
+    const getHskVocab = useCallback(async(level: number): Promise<Word[]> => {
         try {
             setLoading(true)
-            const words = await getByHsk(level)
+            const words = await wordRepository.getByHsk(level)
             return words ?? []
         } catch (error) {
             setLoading(false)
             console.error(error)
             return []
         }finally{setLoading(false)}
-    }
+    }, [])
+
+    const getHskVocabPaginated = useCallback(async(level: number, offset: number, limit: number): Promise<Word[]> => {
+        try {
+            setLoading(true)
+            const words = await wordRepository.getByHskPaginated(level, offset, limit)
+            return words ?? []
+        } catch (error) {
+            console.error(error)
+            return []
+        } finally {
+            setLoading(false)
+        }
+    }, [])
+
+    const getHskVocabCount = useCallback(async(level: number): Promise<number> => {
+        try {
+            return await wordRepository.getCountByHsk(level)
+        } catch (error) {
+            console.error(error)
+            return 0
+        }
+    }, [])
+
+    const getHskVocabIds = useCallback(async(level: number): Promise<string[]> => {
+        try {
+            return (await wordRepository.getIdsByHsk(level)) as string[]
+        } catch (error) {
+            console.error(error)
+            return []
+        }
+    }, [])
     
     const addToReview = async (
         wordId: string
@@ -42,11 +73,11 @@ const useVocab = () => {
         }
     }
 
-    const loadReview = async () => {
+    const loadReview = useCallback(async (filter: "due" | "new" | "learning" | "review" | "mastered" | "all" = "due") => {
         try {
             setLoading(true)
 
-            const reviewItems = await reviewRepository.getDueReviews()
+            const reviewItems = await reviewRepository.getReviewsByFilter(filter)
             const result: ReviewCard[] = []
 
             for (const item of reviewItems) {
@@ -60,8 +91,8 @@ const useVocab = () => {
         } finally {
             setLoading(false)
         }
-    }
-  return{getHskVocab, addToReview, loadReview, loading, loadingAdd, cards, markKnown, markUnknown, markHard, markEasy}
+    }, [])
+  return{getHskVocab, getHskVocabPaginated, getHskVocabCount, getHskVocabIds, addToReview, loadReview, loading, loadingAdd, cards, markKnown, markUnknown, markHard, markEasy}
 }
 
 export default useVocab

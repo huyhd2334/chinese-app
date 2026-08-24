@@ -36,6 +36,16 @@ export const reviewRepository = {
     return await db.reviewItems.where("dueAt").belowOrEqual(Date.now()).toArray()
   },
 
+  async getReviewsByFilter(filter: "due" | "new" | "learning" | "review" | "mastered" | "all") {
+    if (filter === "due") {
+      return await this.getDueReviews()
+    }
+    if (filter === "all") {
+      return await db.reviewItems.toArray()
+    }
+    return await db.reviewItems.where("status").equals(filter).toArray()
+  },
+
   async getAll() {
     return await db.reviewItems.toArray()
   },

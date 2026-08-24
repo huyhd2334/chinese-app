@@ -46,8 +46,8 @@ export default function ListeningPage() {
     <main className="min-h-screen p-6">
       <div className="mx-auto max-w-2xl">
         <div className="mb-8">
-          <h1 className="text-2xl font-bold">Listening</h1>
-          <p className="mt-1 text-sm text-gray-500">Listen and choose the correct answer</p>
+          <h1 className="text-2xl font-bold">Solving puzzles</h1>
+          <p className="mt-1 text-sm text-gray-500">Listen / image / and context to choose the correct answer</p>
         </div>
 
         {question ? (
