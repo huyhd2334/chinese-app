@@ -7,7 +7,7 @@ import VocabQuizModal from "@/components/vocabulary/VocabQuizModal"
 import { useEffect, useRef, useState } from "react"
 import useVocab from "../../../hooks/useVocab"
 import { db, type Word } from "../../../db/database"
-import { Search, Plus, Sparkles, Eye, EyeOff, Trophy } from "lucide-react"
+import { Search, Plus, Sparkles, Eye, EyeOff, Trophy, CheckCircle2 } from "lucide-react"
 
 const Page = () => {
   const levels = 7
@@ -30,6 +30,10 @@ const Page = () => {
   const [isFlashcardOpen, setIsFlashcardOpen] = useState(false)
   const [isQuizOpen, setIsQuizOpen] = useState(false)
   const [currentLevelWords, setCurrentLevelWords] = useState<Word[]>([])
+
+  // Feedback toast & container refresh
+  const [toastMessage, setToastMessage] = useState<string | null>(null)
+  const [refreshTrigger, setRefreshTrigger] = useState(0)
 
   const { getHskVocabIds, addToReview } = useVocab()
 
@@ -78,11 +82,20 @@ const Page = () => {
     const reviewWordIds = new Set(reviews.map(r => r.wordId))
     
     const newWords = ids.filter(id => !reviewWordIds.has(id)).slice(0, 10)
+    if (newWords.length === 0) {
+      setToastMessage(`Tất cả từ HSK ${level} đã có trong lộ trình ôn tập!`)
+      setTimeout(() => setToastMessage(null), 2500)
+      return
+    }
+
     for (const id of newWords) {
       await addToReview(id)
     }
     setLearningCount(prev => prev + newWords.length)
     setNewCount(prev => prev - newWords.length)
+    setRefreshTrigger(prev => prev + 1)
+    setToastMessage(`Đã thêm ${newWords.length} từ mới HSK ${level} vào ôn tập ✓`)
+    setTimeout(() => setToastMessage(null), 2500)
   }
 
   const progressPercentage = count > 0 ? ((learningCount + masteredCount) / count) * 100 : 0
@@ -246,8 +259,17 @@ const Page = () => {
           hidePinyin={hidePinyin}
           hideMeaning={hideMeaning}
           onWordsLoaded={(words) => setCurrentLevelWords(words)}
+          refreshTrigger={refreshTrigger}
         />
       </div>
+
+      {/* Floating Toast Notification */}
+      {toastMessage && (
+        <div className="fixed bottom-20 md:bottom-8 left-1/2 -translate-x-1/2 z-50 bg-china-jade text-white px-5 py-2.5 rounded-full shadow-lg font-medium text-xs sm:text-sm flex items-center gap-2 animate-fade-in pointer-events-none">
+          <CheckCircle2 className="w-4 h-4" />
+          {toastMessage}
+        </div>
+      )}
 
       {/* Flashcard Modal */}
       <FlashcardModal

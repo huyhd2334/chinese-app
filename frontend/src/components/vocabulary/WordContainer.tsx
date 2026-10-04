@@ -16,6 +16,7 @@ interface WordContainerProps {
   hidePinyin?: boolean
   hideMeaning?: boolean
   onWordsLoaded?: (words: Word[]) => void
+  refreshTrigger?: number
 }
 
 const WordContainer = ({
@@ -27,7 +28,8 @@ const WordContainer = ({
   filter,
   hidePinyin = false,
   hideMeaning = false,
-  onWordsLoaded
+  onWordsLoaded,
+  refreshTrigger = 0
 }: WordContainerProps) => {
     const {loading, loadingAdd, getHskVocabPaginated, getHskVocabCount, addToReview} = useVocab()
     const [allWords, setAllWords] = useState<Word[]>([])
@@ -79,7 +81,7 @@ const WordContainer = ({
           setReviewItems(reviewMap)
        }
        loadInitData()
-    }, [level, getHskVocabCount, setCount])
+    }, [level, getHskVocabCount, setCount, refreshTrigger])
     
     useEffect(() => {
       const handleGetWords = async () => {
