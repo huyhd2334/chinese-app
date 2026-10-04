@@ -174,7 +174,7 @@ const WordContainer = ({
         </div>
       )}
 
-      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pb-4'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 lg:gap-5 pb-4'>
         {loading && allWords.length === 0 ? (
           <div className="col-span-full py-20 text-center text-muted font-medium flex flex-col items-center gap-4">
             <div className="w-8 h-8 border-4 border-china-red/30 border-t-china-red rounded-full animate-spin"></div>
@@ -200,7 +200,7 @@ const WordContainer = ({
                   <Link
                     key={w.id}
                     href={`/vocabulary/${w.id}`}
-                    className={`flex flex-col border border-border bg-white p-6 rounded-2xl transition-all duration-300 group relative overflow-hidden
+                    className={`flex flex-col border border-border bg-white p-4 sm:p-5 rounded-2xl transition-all duration-300 group relative overflow-hidden
                       ${isJustAdded ? 'ring-2 ring-china-jade/50 bg-china-jade/5 scale-[1.02]' : 'hover:shadow-xl hover:border-china-red/40 hover:-translate-y-1'}`}
                     onClick={() => {
                       sessionStorage.setItem("vocab-scroll", String(scrollRef.current?.scrollTop || 0))

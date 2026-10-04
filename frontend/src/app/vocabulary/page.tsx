@@ -6,7 +6,7 @@ import FlashcardModal from "@/components/vocabulary/FlashcardModal"
 import { useEffect, useRef, useState } from "react"
 import useVocab from "../../../hooks/useVocab"
 import { db, type Word } from "../../../db/database"
-import { Search, Plus, Sparkles, Eye, EyeOff, Star } from "lucide-react"
+import { Search, Plus, Sparkles, Eye, EyeOff } from "lucide-react"
 
 const Page = () => {
   const levels = 7
@@ -86,92 +86,93 @@ const Page = () => {
   const progressPercentage = count > 0 ? ((learningCount + masteredCount) / count) * 100 : 0
 
   return (
-    <div className="flex h-full min-h-0 flex-col bg-china-paper/20">
-      <header className="flex shrink-0 px-8 pt-8 items-end">
+    <div className="flex flex-col min-h-full bg-china-paper/20 px-3 sm:px-6 md:px-8 py-4 sm:py-6 space-y-5">
+      {/* Header */}
+      <header className="shrink-0">
         <HeaderVocab totalWords={count} studyingWords={learningCount} />
       </header>
       
       {/* Top Controls Strip */}
-      <div className="px-8 mt-6 flex flex-col xl:flex-row gap-6 items-start xl:items-center justify-between">
+      <div className="flex flex-col lg:flex-row gap-4 lg:items-center justify-between bg-card/60 p-3 sm:p-4 rounded-2xl border border-border/70 shadow-xs">
         {/* Level Progress */}
-        <div className="w-full xl:w-1/3 space-y-2">
-          <div className="flex justify-between text-sm font-medium text-china-ink">
+        <div className="w-full lg:w-1/3 space-y-1.5">
+          <div className="flex justify-between text-xs sm:text-sm font-medium text-china-ink">
             <span>Tiến độ HSK {level}</span>
             <span className="text-china-jade font-serif font-bold">{progressPercentage.toFixed(1)}%</span>
           </div>
-          <div className="h-2.5 w-full bg-border rounded-full overflow-hidden shadow-inner">
+          <div className="h-2 w-full bg-border rounded-full overflow-hidden shadow-inner">
             <div 
               className="h-full bg-gradient-to-r from-china-gold to-china-jade transition-all duration-700 ease-out rounded-full"
               style={{ width: `${progressPercentage}%` }}
             />
           </div>
-          <div className="flex justify-between text-xs font-medium text-muted">
-            <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-border"></span> Mới: {newCount}</span>
-            <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-china-gold"></span> Đang học: {learningCount}</span>
-            <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-china-jade"></span> Thuần thục: {masteredCount}</span>
+          <div className="flex justify-between text-[11px] font-medium text-muted">
+            <span className="flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-border"></span> Mới: {newCount}</span>
+            <span className="flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-china-gold"></span> Đang học: {learningCount}</span>
+            <span className="flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-china-jade"></span> Thuần thục: {masteredCount}</span>
           </div>
         </div>
 
         {/* Action Buttons & Search */}
-        <div className="w-full xl:w-2/3 flex flex-wrap gap-3 items-center justify-end">
+        <div className="w-full lg:w-2/3 flex flex-wrap gap-2.5 items-center justify-start lg:justify-end">
           {/* Search Box */}
-          <div className="relative w-full sm:w-60 group">
+          <div className="relative w-full sm:w-56 group">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted group-focus-within:text-china-red transition-colors" />
             <input 
               type="text" 
-              placeholder="Tìm chữ Hán, pinyin, nghĩa..." 
+              placeholder="Tìm chữ Hán, pinyin..." 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 text-sm bg-white border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-china-red/20 focus:border-china-red transition-all shadow-sm"
+              className="w-full pl-9 pr-3 py-1.5 text-xs sm:text-sm bg-white border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-china-red/20 focus:border-china-red transition-all shadow-xs"
             />
           </div>
 
           {/* Active Recall Toggles */}
-          <div className="flex items-center bg-white border border-border p-1 rounded-xl shadow-sm text-xs font-medium">
+          <div className="flex items-center bg-white border border-border p-0.5 rounded-xl shadow-xs text-xs font-medium">
             <button
               onClick={() => setHidePinyin(!hidePinyin)}
-              className={`flex items-center gap-1 px-3 py-1.5 rounded-lg transition-colors ${
+              className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg transition-colors ${
                 hidePinyin ? "bg-china-red text-white" : "text-muted hover:text-china-ink hover:bg-gray-50"
               }`}
-              title="Ẩn phiên âm Pinyin để tự kiểm tra khả năng nhớ mặt chữ"
+              title="Ẩn Pinyin để tự kiểm tra mặt chữ"
             >
-              {hidePinyin ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
-              <span>{hidePinyin ? "Đang ẩn Pinyin" : "Pinyin"}</span>
+              {hidePinyin ? <EyeOff className="w-3 h-3" /> : <Eye className="w-3 h-3" />}
+              <span>{hidePinyin ? "Ẩn Pinyin" : "Pinyin"}</span>
             </button>
             <button
               onClick={() => setHideMeaning(!hideMeaning)}
-              className={`flex items-center gap-1 px-3 py-1.5 rounded-lg transition-colors ${
+              className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg transition-colors ${
                 hideMeaning ? "bg-china-red text-white" : "text-muted hover:text-china-ink hover:bg-gray-50"
               }`}
-              title="Ẩn nghĩa để kích hoạt active recall"
+              title="Ẩn Nghĩa để tự suy nghĩ"
             >
-              {hideMeaning ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
-              <span>{hideMeaning ? "Đang ẩn Nghĩa" : "Nghĩa"}</span>
+              {hideMeaning ? <EyeOff className="w-3 h-3" /> : <Eye className="w-3 h-3" />}
+              <span>{hideMeaning ? "Ẩn Nghĩa" : "Nghĩa"}</span>
             </button>
           </div>
 
           {/* Quick Actions */}
           <button 
             onClick={() => setIsFlashcardOpen(true)}
-            className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-china-red to-[#b30d25] hover:opacity-95 text-white text-sm font-semibold rounded-xl transition-all shadow-md active:scale-95"
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-china-red to-[#b30d25] hover:opacity-95 text-white text-xs sm:text-sm font-semibold rounded-xl transition-all shadow-xs active:scale-95"
           >
-            <Sparkles className="w-4 h-4" /> Luyện Flashcard
+            <Sparkles className="w-3.5 h-3.5" /> Flashcard
           </button>
 
           <button 
             onClick={handleQuickAdd10}
-            className="flex items-center gap-1.5 px-3.5 py-2 bg-china-ink hover:bg-china-ink/80 text-white text-sm font-medium rounded-xl transition-all shadow-sm active:scale-95"
+            className="flex items-center gap-1 px-3 py-1.5 bg-china-ink hover:bg-china-ink/80 text-white text-xs sm:text-sm font-medium rounded-xl transition-all shadow-xs active:scale-95"
             title="Thêm nhanh 10 từ chưa học vào danh sách ôn tập"
           >
-            <Plus className="w-4 h-4" /> Thêm 10 từ
+            <Plus className="w-3.5 h-3.5" /> +10 từ
           </button>
         </div>
       </div>
 
-      {/* Filter Tabs */}
-      <div className="px-8 mt-4 flex flex-wrap items-center justify-between gap-4">
+      {/* Filter Tabs & HSK Levels */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         {/* Status Filters */}
-        <div className="flex bg-white border border-border p-1 rounded-xl shadow-sm overflow-x-auto hide-scrollbar">
+        <div className="flex bg-white border border-border p-1 rounded-xl shadow-xs overflow-x-auto scrollbar-hide gap-1">
           {[
             { id: 'all', label: 'Tất cả' },
             { id: 'studying', label: 'Đang học' },
@@ -182,9 +183,9 @@ const Page = () => {
             <button
               key={f.id}
               onClick={() => setFilter(f.id)}
-              className={`px-4 py-1.5 text-xs font-medium rounded-lg whitespace-nowrap transition-all ${
+              className={`px-3 py-1 text-xs font-medium rounded-lg whitespace-nowrap transition-all ${
                 filter === f.id 
-                  ? 'bg-china-red text-white shadow-sm' 
+                  ? 'bg-china-red text-white shadow-xs font-bold' 
                   : 'text-muted hover:text-china-ink hover:bg-gray-50'
               }`}
             >
@@ -193,8 +194,8 @@ const Page = () => {
           ))}
         </div>
 
-        {/* HSK Level Tabs */}
-        <div className="flex gap-1.5 overflow-x-auto hide-scrollbar border-b border-border/60">
+        {/* HSK Level Tabs with horizontal swipe */}
+        <div className="flex gap-1 overflow-x-auto scrollbar-hide border-b border-border/60 pb-0.5">
           {[...Array(levels)].map((_, index) => {
             const lv = index + 1
             return (
@@ -204,14 +205,14 @@ const Page = () => {
                   setLevel(lv)
                   sessionStorage.setItem("vocab-level", String(lv))
                 }}              
-                className={`flex items-center gap-1.5 px-3.5 py-2 font-medium transition-all text-xs sm:text-sm rounded-t-xl border-b-2 ${
+                className={`flex items-center gap-1 px-2.5 py-1.5 font-medium transition-all text-xs rounded-t-xl border-b-2 whitespace-nowrap ${
                   level === lv 
-                    ? "border-china-red text-china-red bg-white font-bold shadow-sm" 
+                    ? "border-china-red text-china-red bg-white font-bold shadow-xs" 
                     : "border-transparent text-muted hover:text-china-ink hover:bg-gray-50"
                 }`}
               >
                 HSK {lv}
-                <span className={`text-[10px] px-1.5 py-0.5 rounded-md ${level === lv ? 'bg-china-red/10 text-china-red font-semibold' : 'bg-border/60 text-muted'}`}>
+                <span className={`text-[10px] px-1 py-0.2 rounded ${level === lv ? 'bg-china-red/10 text-china-red font-semibold' : 'bg-border/60 text-muted'}`}>
                   {hskCounts[lv] || 0}
                 </span>
               </button>
@@ -220,8 +221,8 @@ const Page = () => {
         </div>
       </div>
 
-      {/* Word Container */}
-      <div ref={scrollRef} className="min-h-0 flex-1 overflow-y-auto px-8 py-4">
+      {/* Word Container (Natural flow on mobile, no trapped nested scroll) */}
+      <div ref={scrollRef} className="w-full">
         <WordContainer
           level={level}
           setCount={setCount} 
