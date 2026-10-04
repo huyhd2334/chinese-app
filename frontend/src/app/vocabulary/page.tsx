@@ -3,10 +3,11 @@
 import HeaderVocab from "@/components/vocabulary/HeaderVocab"
 import WordContainer from "@/components/vocabulary/WordContainer"
 import FlashcardModal from "@/components/vocabulary/FlashcardModal"
+import VocabQuizModal from "@/components/vocabulary/VocabQuizModal"
 import { useEffect, useRef, useState } from "react"
 import useVocab from "../../../hooks/useVocab"
 import { db, type Word } from "../../../db/database"
-import { Search, Plus, Sparkles, Eye, EyeOff } from "lucide-react"
+import { Search, Plus, Sparkles, Eye, EyeOff, Trophy } from "lucide-react"
 
 const Page = () => {
   const levels = 7
@@ -25,8 +26,9 @@ const Page = () => {
   const [hidePinyin, setHidePinyin] = useState(false)
   const [hideMeaning, setHideMeaning] = useState(false)
 
-  // Flashcard modal state
+  // Flashcard & Quiz modal states
   const [isFlashcardOpen, setIsFlashcardOpen] = useState(false)
+  const [isQuizOpen, setIsQuizOpen] = useState(false)
   const [currentLevelWords, setCurrentLevelWords] = useState<Word[]>([])
 
   const { getHskVocabIds, addToReview } = useVocab()
@@ -160,6 +162,14 @@ const Page = () => {
           </button>
 
           <button 
+            onClick={() => setIsQuizOpen(true)}
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-china-jade to-[#204a3e] hover:opacity-95 text-white text-xs sm:text-sm font-semibold rounded-xl transition-all shadow-xs active:scale-95"
+            title="Trắc nghiệm phản xạ 4 đáp án & Chế độ luyện nghe"
+          >
+            <Trophy className="w-3.5 h-3.5" /> Mini Quiz
+          </button>
+
+          <button 
             onClick={handleQuickAdd10}
             className="flex items-center gap-1 px-3 py-1.5 bg-china-ink hover:bg-china-ink/80 text-white text-xs sm:text-sm font-medium rounded-xl transition-all shadow-xs active:scale-95"
             title="Thêm nhanh 10 từ chưa học vào danh sách ôn tập"
@@ -245,6 +255,17 @@ const Page = () => {
         onClose={() => setIsFlashcardOpen(false)}
         words={currentLevelWords.length > 0 ? currentLevelWords.slice(0, 30) : []}
         onMarkLearned={async (wordId) => {
+          await addToReview(wordId)
+          setLearningCount(prev => prev + 1)
+        }}
+      />
+
+      {/* Mini Quiz Modal */}
+      <VocabQuizModal
+        isOpen={isQuizOpen}
+        onClose={() => setIsQuizOpen(false)}
+        words={currentLevelWords.length > 0 ? currentLevelWords : []}
+        onWordMastered={async (wordId) => {
           await addToReview(wordId)
           setLearningCount(prev => prev + 1)
         }}

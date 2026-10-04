@@ -1,11 +1,11 @@
 "use client"
 
-import { useEffect, useState, useCallback } from "react"
+import { useEffect, useState, useCallback, useMemo } from "react"
 import useVocab from "../../../hooks/useVocab"
 import Link from "next/link"
 import { 
   Volume2, Sparkles, BookOpen, PenTool, CheckCircle2, 
-  ChevronDown, ArrowRight, RotateCw, Check, Flame, Trophy
+  ChevronDown, ArrowRight, RotateCw, Check, Flame, Trophy, Filter
 } from "lucide-react"
 
 type FilterType = "due" | "new" | "learning" | "review" | "mastered" | "all"
@@ -15,6 +15,7 @@ export default function ReviewPage() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [showAnswer, setShowAnswer] = useState(false)
   const [filter, setFilter] = useState<FilterType>("due")
+  const [hskFilter, setHskFilter] = useState<number | "all">("all")
   const [isFilterOpen, setIsFilterOpen] = useState(false)
   const [completedCount, setCompletedCount] = useState(0)
 
@@ -35,10 +36,42 @@ export default function ReviewPage() {
     setCurrentIndex(0)
     setShowAnswer(false)
     setCompletedCount(0)
-  }, [cards])
+  }, [cards, hskFilter])
 
-  const currentCard = cards[currentIndex]
-  const total = cards.length
+  // Get HSK Level number safely
+  const getHskLevelNumber = useCallback((word: any) => {
+    if (word?.hskLevel && Array.isArray(word.hskLevel) && word.hskLevel.length > 0) {
+      return word.hskLevel[0]
+    }
+    if (word?.hskLevels && Array.isArray(word.hskLevels) && word.hskLevels.length > 0) {
+      return word.hskLevels[0]
+    }
+    return null
+  }, [])
+
+  // Filter cards by HSK level
+  const displayedCards = useMemo(() => {
+    if (hskFilter === "all") return cards
+    return cards.filter(c => {
+      const lv = getHskLevelNumber(c.word)
+      return lv === hskFilter
+    })
+  }, [cards, hskFilter, getHskLevelNumber])
+
+  // Count cards by HSK level
+  const hskCounts = useMemo(() => {
+    const counts: Record<number, number> = {}
+    for (const c of cards) {
+      const lv = getHskLevelNumber(c.word)
+      if (lv) {
+        counts[lv] = (counts[lv] || 0) + 1
+      }
+    }
+    return counts
+  }, [cards, getHskLevelNumber])
+
+  const currentCard = displayedCards[currentIndex]
+  const total = displayedCards.length
   const progress = total > 0 ? ((currentIndex + 1) / total) * 100 : 0
 
   const playAudio = useCallback((text?: string) => {
@@ -62,7 +95,7 @@ export default function ReviewPage() {
 
       setCompletedCount(prev => prev + 1)
 
-      if (currentIndex >= cards.length - 1) {
+      if (currentIndex >= displayedCards.length - 1) {
         await loadReview(filter)
         return
       }
@@ -71,12 +104,11 @@ export default function ReviewPage() {
     } catch (error) {
       console.error("Review update error:", error)
     }
-  }, [currentCard, currentIndex, cards.length, filter, loadReview, markEasy, markHard, markKnown, markUnknown])
+  }, [currentCard, currentIndex, displayedCards.length, filter, loadReview, markEasy, markHard, markKnown, markUnknown])
 
   // Keyboard shortcuts
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Don't trigger if user is in an input
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return
 
       if (e.code === "Space") {
@@ -103,17 +135,6 @@ export default function ReviewPage() {
     return () => window.removeEventListener("keydown", handleKeyDown)
   }, [showAnswer, handleResult])
 
-  // Get HSK Level number safely
-  const getHskLevelNumber = (word: any) => {
-    if (word?.hskLevel && Array.isArray(word.hskLevel) && word.hskLevel.length > 0) {
-      return word.hskLevel[0]
-    }
-    if (word?.hskLevels && Array.isArray(word.hskLevels) && word.hskLevels.length > 0) {
-      return word.hskLevels[0]
-    }
-    return null
-  }
-
   const hskNum = currentCard ? getHskLevelNumber(currentCard.word) : null
 
   // Status mapping
@@ -133,10 +154,10 @@ export default function ReviewPage() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-3xl px-3 sm:px-6 py-4 sm:py-8 space-y-6">
+    <div className="mx-auto w-full max-w-3xl px-3 sm:px-6 py-4 sm:py-8 space-y-5">
       {/* Top Header */}
-      <div>
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
+      <div className="space-y-3">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
             <h1 className="text-2xl sm:text-3xl font-bold font-serif text-china-red flex items-center gap-2">
               <span>复习</span>
@@ -191,7 +212,7 @@ export default function ReviewPage() {
             </div>
 
             {/* Counter */}
-            {cards.length > 0 && (
+            {displayedCards.length > 0 && (
               <div className="rounded-full bg-border/60 px-3 py-1 text-xs sm:text-sm font-medium text-china-ink whitespace-nowrap">
                 {currentIndex + 1} / {total}
               </div>
@@ -199,8 +220,42 @@ export default function ReviewPage() {
           </div>
         </div>
 
+        {/* HSK Level Quick Filter Row */}
+        <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-hide py-1">
+          <button
+            onClick={() => setHskFilter("all")}
+            className={`px-3 py-1 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
+              hskFilter === "all"
+                ? "bg-china-ink text-white shadow-xs font-bold"
+                : "bg-white border border-border text-muted hover:text-china-ink"
+            }`}
+          >
+            Tất cả cấp độ ({cards.length})
+          </button>
+          {[1, 2, 3, 4, 5, 6, 7].map(lv => {
+            const count = hskCounts[lv] || 0
+            if (count === 0 && hskFilter !== lv) return null // Only show active levels with words
+            return (
+              <button
+                key={lv}
+                onClick={() => setHskFilter(lv)}
+                className={`flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
+                  hskFilter === lv
+                    ? "bg-china-red text-white shadow-xs font-bold"
+                    : "bg-white border border-border text-muted hover:text-china-ink"
+                }`}
+              >
+                <span>HSK {lv}</span>
+                <span className={`text-[10px] px-1 py-0.2 rounded ${hskFilter === lv ? "bg-white/20 text-white" : "bg-china-paper text-muted"}`}>
+                  {count}
+                </span>
+              </button>
+            )
+          })}
+        </div>
+
         {/* Progress Bar */}
-        {cards.length > 0 && (
+        {displayedCards.length > 0 && (
           <div className="h-2 overflow-hidden rounded-full bg-border/60">
             <div
               className="h-full rounded-full bg-gradient-to-r from-china-red to-china-gold transition-all duration-300"
@@ -218,7 +273,7 @@ export default function ReviewPage() {
             <p className="text-xs sm:text-sm font-medium text-muted">Đang tải thẻ ôn tập...</p>
           </div>
         </div>
-      ) : !cards.length ? (
+      ) : !displayedCards.length ? (
         /* Empty / Completed state */
         <div className="flex min-h-[45vh] items-center justify-center p-4">
           <div className="w-full max-w-md rounded-3xl border border-border bg-card p-6 sm:p-10 text-center shadow-xs">
@@ -229,7 +284,9 @@ export default function ReviewPage() {
               Xuất sắc! Đã hoàn thành ôn tập
             </h2>
             <p className="text-xs sm:text-sm text-muted mb-6">
-              Bạn không còn từ nào cần ôn trong danh mục này. Hãy duy trì thói quen mỗi ngày nhé!
+              {hskFilter !== "all" 
+                ? `Không còn từ HSK ${hskFilter} nào cần ôn trong mục này.` 
+                : "Bạn không còn từ nào cần ôn trong danh mục này. Hãy duy trì thói quen mỗi ngày nhé!"}
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link 
@@ -238,12 +295,21 @@ export default function ReviewPage() {
               >
                 <BookOpen className="w-4 h-4" /> Học thêm từ mới
               </Link>
-              <button
-                onClick={() => setFilter("all")}
-                className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-border bg-white text-china-ink text-sm font-medium hover:bg-china-paper transition-all shadow-xs"
-              >
-                <RotateCw className="w-4 h-4" /> Ôn tất cả từ
-              </button>
+              {hskFilter !== "all" ? (
+                <button
+                  onClick={() => setHskFilter("all")}
+                  className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-border bg-white text-china-ink text-sm font-medium hover:bg-china-paper transition-all shadow-xs"
+                >
+                  <RotateCw className="w-4 h-4" /> Xem tất cả cấp độ
+                </button>
+              ) : (
+                <button
+                  onClick={() => setFilter("all")}
+                  className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-border bg-white text-china-ink text-sm font-medium hover:bg-china-paper transition-all shadow-xs"
+                >
+                  <RotateCw className="w-4 h-4" /> Ôn tất cả từ
+                </button>
+              )}
             </div>
           </div>
         </div>
@@ -255,7 +321,7 @@ export default function ReviewPage() {
             {/* Top Badges (HSK Level + Status + Radical) */}
             <div className="w-full flex items-center justify-between mb-8">
               <div className="flex items-center gap-2 flex-wrap">
-                {/* HSK Level Badge - User's explicit request */}
+                {/* HSK Level Badge - Prominent with Level number */}
                 {hskNum ? (
                   <span className="px-3 py-1 bg-gradient-to-r from-china-red to-[#a30d25] text-white text-xs sm:text-sm font-bold rounded-xl shadow-xs border border-china-red/30 tracking-wide">
                     HSK {hskNum}
