@@ -9,7 +9,8 @@ import {
   CircleCheckBig, BookOpen, Brain, Trophy, Target, 
   Play, Ear, Flame, Medal, Compass, Star, TrendingUp, 
   Clock, AlertCircle, ArrowRight, BookMarked, History,
-  Volume2, PenTool, Sparkles
+  Volume2, PenTool, Sparkles, CheckCircle2, ChevronRight,
+  Settings2, Plus, Zap
 } from "lucide-react"
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts"
 
@@ -21,6 +22,21 @@ const PROVERBS = [
   { cn: "万事开头难", pinyin: "Wàn shì kāi tóu nán", en: "All things are difficult before they are easy" }
 ]
 
+const STREAK_STORAGE_KEY = "chinese_app_streak_config"
+
+const getLocalDateStr = (date: Date = new Date()): string => {
+  const year = date.getFullYear()
+  const month = String(date.getMonth() + 1).padStart(2, "0")
+  const day = String(date.getDate()).padStart(2, "0")
+  return `${year}-${month}-${day}`
+}
+
+const getYesterdayDateStr = (): string => {
+  const d = new Date()
+  d.setDate(d.getDate() - 1)
+  return getLocalDateStr(d)
+}
+
 export default function Dashboard() {
   const [wordCount, setWordCount] = useState(0)
   const [wordReview, setWordReview] = useState(0)
@@ -30,6 +46,12 @@ export default function Dashboard() {
   const [greeting, setGreeting] = useState("Good morning")
   const [chineseDate, setChineseDate] = useState("")
   const [streak, setStreak] = useState(0)
+  const [bestStreak, setBestStreak] = useState(0)
+  const [newWordsToday, setNewWordsToday] = useState(0)
+  const [dueCount, setDueCount] = useState(0)
+  const [dailyTarget, setDailyTarget] = useState(10)
+  const [isDailyGoalAchieved, setIsDailyGoalAchieved] = useState(false)
+  const [streakToast, setStreakToast] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
   const [dailyWord, setDailyWord] = useState<Word | null>(null)
   const [isDailyWordAdded, setIsDailyWordAdded] = useState(false)
@@ -67,15 +89,91 @@ export default function Dashboard() {
     
     const due = allReviews.filter(r => r.dueAt <= Date.now())
     setWordReview(due.length)
+    setDueCount(due.length)
+
+    // Calculate words added today
+    const todayStart = new Date()
+    todayStart.setHours(0, 0, 0, 0)
+    const todayStartTs = todayStart.getTime()
+    const wordsAddedToday = allReviews.filter(r => r.createdAt >= todayStartTs).length
+    setNewWordsToday(wordsAddedToday)
     
-    // Calculate streak
-    if (allReviews.length > 0) {
-      const firstReviewTime = Math.min(...allReviews.map(r => r.createdAt))
-      const daysSince = Math.floor((Date.now() - firstReviewTime) / (1000 * 60 * 60 * 24))
-      setStreak(daysSince + 1)
-    } else {
-      setStreak(0)
+    // Load streak configuration
+    const todayStr = getLocalDateStr()
+    const yesterdayStr = getYesterdayDateStr()
+
+    let storedConfig = {
+      streak: 0,
+      bestStreak: 0,
+      targetNewWords: 10,
+      lastCompletedDate: "",
+      completedDates: [] as string[]
     }
+
+    try {
+      const saved = localStorage.getItem(STREAK_STORAGE_KEY)
+      if (saved) {
+        storedConfig = { ...storedConfig, ...JSON.parse(saved) }
+      }
+    } catch (e) {
+      console.error("Error reading streak config", e)
+    }
+
+    const target = storedConfig.targetNewWords || 10
+    setDailyTarget(target)
+
+    // Goal met condition:
+    // 1. Added/learned >= target new words today
+    // 2. All due words reviewed (due.length === 0)
+    const isCondition1Met = wordsAddedToday >= target
+    const isCondition2Met = due.length === 0
+    const isTodayMet = isCondition1Met && isCondition2Met && allReviews.length > 0
+    setIsDailyGoalAchieved(isTodayMet)
+
+    let currentStreak = storedConfig.streak
+    let currentBest = storedConfig.bestStreak
+    let lastCompleted = storedConfig.lastCompletedDate
+    let completedDates = storedConfig.completedDates || []
+
+    if (isTodayMet) {
+      if (!completedDates.includes(todayStr)) {
+        completedDates.push(todayStr)
+        if (lastCompleted === yesterdayStr) {
+          currentStreak += 1
+        } else {
+          currentStreak = 1
+        }
+        lastCompleted = todayStr
+        currentBest = Math.max(currentBest, currentStreak)
+        storedConfig = {
+          ...storedConfig,
+          streak: currentStreak,
+          bestStreak: currentBest,
+          lastCompletedDate: lastCompleted,
+          completedDates
+        }
+        localStorage.setItem(STREAK_STORAGE_KEY, JSON.stringify(storedConfig))
+      }
+    } else {
+      if (completedDates.includes(todayStr)) {
+        // Was already achieved earlier today
+        setIsDailyGoalAchieved(true)
+      } else if (lastCompleted === yesterdayStr) {
+        // Maintained up to yesterday, waiting for today
+      } else if (lastCompleted === todayStr) {
+        // Today is already recorded
+      } else {
+        // Streak lost
+        if (currentStreak > 0) {
+          currentStreak = 0
+          storedConfig.streak = 0
+          localStorage.setItem(STREAK_STORAGE_KEY, JSON.stringify(storedConfig))
+        }
+      }
+    }
+
+    setStreak(currentStreak)
+    setBestStreak(currentBest)
 
     // Pick Word of the Day (deterministic based on today's day of year)
     if (allWords.length > 0) {
@@ -89,6 +187,47 @@ export default function Dashboard() {
     }
     
     setLoading(false)
+  }
+
+  const handleSetDailyTarget = (newTarget: number) => {
+    setDailyTarget(newTarget)
+    try {
+      const saved = localStorage.getItem(STREAK_STORAGE_KEY)
+      const conf = saved ? JSON.parse(saved) : {}
+      conf.targetNewWords = newTarget
+      localStorage.setItem(STREAK_STORAGE_KEY, JSON.stringify(conf))
+      setStreakToast(`Đã đổi mục tiêu thành ${newTarget} từ/ngày`)
+      setTimeout(() => setStreakToast(null), 2500)
+    } catch (e) {
+      console.error(e)
+    }
+    loadData()
+  }
+
+  const handleQuickAdd10Dashboard = async () => {
+    try {
+      const allWords = await db.words.toArray()
+      const allReviews = await reviewRepository.getAll()
+      const reviewWordIds = new Set(allReviews.map(r => r.wordId))
+      
+      const unlearned = allWords.filter(w => !reviewWordIds.has(w.id))
+      if (unlearned.length === 0) {
+        setStreakToast("Tất cả từ trong từ điển đã có trong danh sách ôn tập!")
+        setTimeout(() => setStreakToast(null), 3000)
+        return
+      }
+
+      const toAdd = unlearned.slice(0, 10)
+      for (const w of toAdd) {
+        await reviewRepository.add(w.id)
+      }
+
+      setStreakToast(`Đã thêm ${toAdd.length} từ mới vào lộ trình hôm nay! ✓`)
+      setTimeout(() => setStreakToast(null), 3000)
+      await loadData()
+    } catch (e) {
+      console.error("Error adding words:", e)
+    }
   }
 
   const handleAddDailyWord = async () => {
@@ -213,12 +352,16 @@ export default function Dashboard() {
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-china-red tracking-wide">
               {greeting}
             </h1>
-            {streak > 0 && (
-              <div className="flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-china-gold/10 text-china-gold border border-china-gold/30 text-xs sm:text-sm font-bold shadow-2xs">
-                <Flame className="w-3.5 h-3.5 fill-china-gold" />
-                <span>{streak} Ngày</span>
-              </div>
-            )}
+            <div className={`flex items-center gap-1.5 px-3 py-1 rounded-full border text-xs sm:text-sm font-bold shadow-2xs transition-all ${
+              streak > 0 
+                ? (isDailyGoalAchieved 
+                    ? "bg-china-gold/15 text-china-gold border-china-gold/40" 
+                    : "bg-amber-500/10 text-amber-600 border-amber-500/30")
+                : "bg-muted/10 text-muted border-border"
+            }`}>
+              <Flame className={`w-3.5 h-3.5 ${streak > 0 ? "fill-current" : ""}`} />
+              <span>{streak} Ngày {isDailyGoalAchieved ? "🔥" : "(Chờ đạt)"}</span>
+            </div>
           </div>
           
           <div className="space-y-0.5">
@@ -238,6 +381,181 @@ export default function Dashboard() {
           </button>
         </div>
       </header>
+
+      {/* 1.5. Daily Goal & Streak Requirement Bar */}
+      <section className={`rounded-xl sm:rounded-2xl p-4 sm:p-5 border transition-all ${
+        isDailyGoalAchieved 
+          ? "bg-gradient-to-r from-china-jade/10 via-card to-china-gold/10 border-china-jade/40 shadow-xs" 
+          : "bg-card border-border shadow-xs"
+      }`}>
+        {/* Header of Streak Bar */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3.5 border-b border-border/60">
+          <div className="flex items-center gap-3">
+            <div className={`p-2.5 rounded-xl flex items-center justify-center shrink-0 ${
+              isDailyGoalAchieved 
+                ? "bg-china-gold text-white shadow-xs shadow-china-gold/30" 
+                : "bg-china-gold/10 text-china-gold border border-china-gold/30"
+            }`}>
+              <Flame className={`w-5 h-5 ${streak > 0 ? "fill-current" : ""}`} />
+            </div>
+            <div>
+              <div className="flex items-center gap-2 flex-wrap">
+                <h2 className="text-base sm:text-lg font-serif font-bold text-china-ink">
+                  Mục tiêu chuỗi ngày (Streak)
+                </h2>
+                <span className={`text-xs font-bold px-2.5 py-0.5 rounded-full border flex items-center gap-1 ${
+                  isDailyGoalAchieved
+                    ? "bg-china-jade/15 text-china-jade border-china-jade/30"
+                    : "bg-amber-500/10 text-amber-600 border-amber-500/30"
+                }`}>
+                  {isDailyGoalAchieved ? (
+                    <>
+                      <CheckCircle2 className="w-3.5 h-3.5" />
+                      Đã duy trì chuỗi hôm nay!
+                    </>
+                  ) : (
+                    <>
+                      <Clock className="w-3.5 h-3.5" />
+                      Chưa hoàn thành hôm nay
+                    </>
+                  )}
+                </span>
+              </div>
+              <p className="text-xs text-muted mt-0.5">
+                {isDailyGoalAchieved 
+                  ? `Xuất sắc! Bạn đã duy trì chuỗi ${streak} ngày liên tiếp.` 
+                  : `Học tối thiểu ${dailyTarget} từ mới và ôn sạch từ tới hạn để được set chuỗi hôm nay.`}
+              </p>
+            </div>
+          </div>
+
+          {/* Right controls: target selector & streak count */}
+          <div className="flex items-center gap-2.5 self-end sm:self-center">
+            {/* Quick target selector dropdown */}
+            <div className="flex items-center gap-1.5 bg-china-paper border border-border rounded-lg px-2.5 py-1 text-xs text-muted shadow-2xs">
+              <Settings2 className="w-3.5 h-3.5 text-china-gold" />
+              <span>Mục tiêu:</span>
+              <select 
+                value={dailyTarget} 
+                onChange={(e) => handleSetDailyTarget(Number(e.target.value))}
+                className="bg-transparent font-semibold text-china-ink focus:outline-hidden cursor-pointer"
+              >
+                <option value={5}>5 từ</option>
+                <option value={10}>10 từ (Chuẩn)</option>
+                <option value={15}>15 từ</option>
+                <option value={20}>20 từ</option>
+              </select>
+            </div>
+
+            <div className="flex items-center gap-1.5 px-3 py-1 rounded-xl bg-china-gold/10 text-china-gold border border-china-gold/30 font-bold text-xs sm:text-sm shadow-2xs">
+              <Zap className="w-4 h-4 fill-china-gold" />
+              <span>{streak} Ngày</span>
+            </div>
+          </div>
+        </div>
+
+        {/* 2 Requirements Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 sm:gap-4 pt-3.5">
+          {/* Requirement 1: New words today */}
+          <div className={`p-3.5 rounded-xl border transition-all ${
+            newWordsToday >= dailyTarget 
+              ? "bg-china-jade/5 border-china-jade/30" 
+              : "bg-china-paper/60 border-border"
+          }`}>
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center gap-2">
+                <BookOpen className={`w-4 h-4 ${newWordsToday >= dailyTarget ? "text-china-jade" : "text-china-gold"}`} />
+                <span className="text-xs sm:text-sm font-semibold text-china-ink">
+                  1. Từ mới hôm nay
+                </span>
+              </div>
+              <span className={`text-xs font-bold ${newWordsToday >= dailyTarget ? "text-china-jade" : "text-china-ink"}`}>
+                {newWordsToday} / {dailyTarget} từ
+              </span>
+            </div>
+
+            {/* Progress bar */}
+            <div className="h-2 w-full bg-border/60 rounded-full overflow-hidden mb-2.5">
+              <div 
+                className={`h-full transition-all duration-500 rounded-full ${
+                  newWordsToday >= dailyTarget ? "bg-china-jade" : "bg-china-gold"
+                }`}
+                style={{ width: `${Math.min(100, Math.round((newWordsToday / dailyTarget) * 100))}%` }}
+              />
+            </div>
+
+            <div className="flex items-center justify-between gap-2">
+              <span className="text-[11px] text-muted">
+                {newWordsToday >= dailyTarget 
+                  ? "✓ Đã học đủ số từ mới quy định" 
+                  : `Cần thêm ${dailyTarget - newWordsToday} từ mới hôm nay`}
+              </span>
+              {newWordsToday < dailyTarget && (
+                <div className="flex items-center gap-1.5 shrink-0">
+                  <button
+                    onClick={handleQuickAdd10Dashboard}
+                    className="text-[11px] font-semibold text-china-red hover:text-white bg-china-red/10 hover:bg-china-red px-2.5 py-1 rounded-lg transition-colors flex items-center gap-1 active:scale-95"
+                  >
+                    <Plus className="w-3 h-3" /> +10 từ nhanh
+                  </button>
+                  <Link
+                    href="/vocabulary"
+                    className="text-[11px] text-muted hover:text-china-ink underline transition-colors"
+                  >
+                    Kho từ
+                  </Link>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Requirement 2: Due reviews */}
+          <div className={`p-3.5 rounded-xl border transition-all ${
+            dueCount === 0 && reviews.length > 0
+              ? "bg-china-jade/5 border-china-jade/30" 
+              : dueCount > 0 
+              ? "bg-china-red/5 border-china-red/30"
+              : "bg-china-paper/60 border-border"
+          }`}>
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center gap-2">
+                <Target className={`w-4 h-4 ${dueCount === 0 ? "text-china-jade" : "text-china-red"}`} />
+                <span className="text-xs sm:text-sm font-semibold text-china-ink">
+                  2. Ôn tập từ tới hạn
+                </span>
+              </div>
+              <span className={`text-xs font-bold ${dueCount === 0 ? "text-china-jade" : "text-china-red"}`}>
+                {dueCount === 0 ? "Đã hoàn thành" : `Còn ${dueCount} từ cần ôn`}
+              </span>
+            </div>
+
+            {/* Progress / Status display */}
+            <div className="h-2 w-full bg-border/60 rounded-full overflow-hidden mb-2.5">
+              <div 
+                className={`h-full transition-all duration-500 rounded-full ${
+                  dueCount === 0 ? "bg-china-jade w-full" : "bg-china-red w-1/3 animate-pulse"
+                }`}
+              />
+            </div>
+
+            <div className="flex items-center justify-between gap-2">
+              <span className="text-[11px] text-muted">
+                {dueCount === 0 
+                  ? "✓ Không còn từ nào bị trễ hạn" 
+                  : "Cần ôn tập hết từ tới hạn để duy trì chuỗi"}
+              </span>
+              {dueCount > 0 && (
+                <Link
+                  href="/review"
+                  className="text-[11px] font-semibold text-white bg-china-red hover:bg-china-red-hover px-2.5 py-1 rounded-lg transition-colors flex items-center gap-1 shrink-0 shadow-xs active:scale-95"
+                >
+                  Ôn ngay ({dueCount}) <ChevronRight className="w-3 h-3" />
+                </Link>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* 2. Quick Action Cards (Hero Section) */}
       <section className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
@@ -501,15 +819,29 @@ export default function Dashboard() {
           {difficultWords.length > 0 ? (
             <div className="flex gap-3 sm:gap-4 overflow-x-auto pb-3 snap-x scrollbar-hide">
               {difficultWords.map(({ word, review }) => (
-                <div key={review.id} className="min-w-[150px] sm:min-w-[190px] flex-shrink-0 snap-start bg-china-paper border border-border rounded-xl p-3.5 sm:p-4 hover:border-china-red/30 transition-colors">
-                  <div className="text-3xl sm:text-4xl font-serif text-center text-china-ink mb-1">{word?.hanzi}</div>
-                  <div className="text-center text-china-red text-xs sm:text-sm mb-1.5 font-medium">{word?.pinyin}</div>
-                  <p className="text-xs text-center text-muted line-clamp-2 mb-3 h-8">
-                    {word?.meanings_vi ? word.meanings_vi.join(', ') : word?.meanings?.join(', ')}
-                  </p>
-                  <div className="flex items-center justify-center gap-1 text-[11px] font-medium text-china-red/80 bg-china-red/5 py-0.5 rounded-full">
-                    <AlertCircle className="w-3 h-3" />
-                    {review.wrongCount} lần sai
+                <div 
+                  key={review.id} 
+                  className="w-48 sm:w-56 max-w-[230px] shrink-0 snap-start bg-china-paper border border-border rounded-xl p-3.5 sm:p-4 hover:border-china-red/30 hover:shadow-xs transition-all flex flex-col justify-between overflow-hidden"
+                >
+                  <div className="flex flex-col items-center w-full">
+                    <div className="flex items-center justify-center gap-1.5 mb-1 w-full">
+                      <span className="text-3xl sm:text-4xl font-serif text-china-ink text-center select-all">{word?.hanzi}</span>
+                      <button 
+                        onClick={(e) => playAudio(word?.hanzi || "", e)}
+                        className="text-muted hover:text-china-red p-1 rounded-full transition-colors shrink-0"
+                        title="Nghe phát âm"
+                      >
+                        <Volume2 className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                    <div className="text-center text-china-red text-xs sm:text-sm mb-1.5 font-medium truncate w-full">{word?.pinyin}</div>
+                    <p className="text-xs text-center text-muted line-clamp-2 mb-3 h-8 w-full break-words px-1" title={word?.meanings_vi ? word.meanings_vi.join(', ') : word?.meanings?.join(', ')}>
+                      {word?.meanings_vi ? word.meanings_vi.join(', ') : word?.meanings?.join(', ')}
+                    </p>
+                  </div>
+                  <div className="flex items-center justify-center gap-1.5 text-[11px] font-medium text-china-red/90 bg-china-red/5 py-1 px-2.5 rounded-full w-full shrink-0">
+                    <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                    <span>{review.wrongCount} lần sai</span>
                   </div>
                 </div>
               ))}
@@ -579,6 +911,13 @@ export default function Dashboard() {
           </div>
         </div>
       </section>
+
+      {/* Toast Notification */}
+      {streakToast && (
+        <div className="fixed bottom-20 left-1/2 -translate-x-1/2 z-50 bg-china-ink text-china-paper px-4 py-2.5 rounded-xl shadow-xl border border-china-gold/40 text-xs sm:text-sm font-medium animate-in fade-in slide-in-from-bottom-3 duration-200">
+          {streakToast}
+        </div>
+      )}
     </main>
   )
 }
