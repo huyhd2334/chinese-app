@@ -48,6 +48,11 @@ export default function Dashboard() {
   const [streak, setStreak] = useState(0)
   const [bestStreak, setBestStreak] = useState(0)
   const [newWordsToday, setNewWordsToday] = useState(0)
+  const [wordsStudiedToday, setWordsStudiedToday] = useState(0)
+  const [remainingWordsInDict, setRemainingWordsInDict] = useState(0)
+  const [effectiveTarget, setEffectiveTarget] = useState(10)
+  const [isCondition1Met, setIsCondition1Met] = useState(false)
+  const [isCondition2Met, setIsCondition2Met] = useState(false)
   const [dueCount, setDueCount] = useState(0)
   const [dailyTarget, setDailyTarget] = useState(10)
   const [isDailyGoalAchieved, setIsDailyGoalAchieved] = useState(false)
@@ -91,12 +96,21 @@ export default function Dashboard() {
     setWordReview(due.length)
     setDueCount(due.length)
 
-    // Calculate words added today
+    // Calculate words added and words reviewed/studied today
     const todayStart = new Date()
     todayStart.setHours(0, 0, 0, 0)
     const todayStartTs = todayStart.getTime()
+    
     const wordsAddedToday = allReviews.filter(r => r.createdAt >= todayStartTs).length
     setNewWordsToday(wordsAddedToday)
+
+    const studiedToday = allReviews.filter(r => r.updatedAt >= todayStartTs && (r.updatedAt !== r.createdAt || r.repetitions > 0)).length
+    setWordsStudiedToday(studiedToday)
+
+    // Count unlearned words remaining in the entire dictionary
+    const reviewWordIds = new Set(allReviews.map(r => r.wordId))
+    const unlearnedCount = allWords.filter(w => !reviewWordIds.has(w.id)).length
+    setRemainingWordsInDict(unlearnedCount)
     
     // Load streak configuration
     const todayStr = getLocalDateStr()
@@ -122,12 +136,30 @@ export default function Dashboard() {
     const target = storedConfig.targetNewWords || 10
     setDailyTarget(target)
 
-    // Goal met condition:
-    // 1. Added/learned >= target new words today
-    // 2. All due words reviewed (due.length === 0)
-    const isCondition1Met = wordsAddedToday >= target
-    const isCondition2Met = due.length === 0
-    const isTodayMet = isCondition1Met && isCondition2Met && allReviews.length > 0
+    // Effective target: if remaining words in dict is fewer than target, adjust
+    const effTarget = unlearnedCount > 0 ? Math.min(target, unlearnedCount) : 0
+    setEffectiveTarget(effTarget > 0 ? effTarget : target)
+
+    // Condition 1: "Từ mới & Hoạt động học hôm nay"
+    // Satisfied if:
+    // 1. Added >= target new words today (or >= effective target)
+    // 2. OR unlearnedCount === 0 (all words in the dictionary have been added to study list!)
+    // 3. OR user studied/reviewed >= target words today (active review progress counts!)
+    // 4. OR remaining words < target and user added all remaining words today
+    const cond1Met = 
+      (effTarget > 0 && wordsAddedToday >= effTarget) ||
+      unlearnedCount === 0 ||
+      studiedToday >= target ||
+      (unlearnedCount > 0 && wordsAddedToday >= unlearnedCount)
+    setIsCondition1Met(cond1Met)
+
+    // Condition 2: "Ôn tập từ tới hạn"
+    // Satisfied if all due items have been reviewed (due.length === 0)
+    const cond2Met = due.length === 0
+    setIsCondition2Met(cond2Met)
+
+    // Daily Goal achieved if both conditions are met and user has review items
+    const isTodayMet = cond1Met && cond2Met && allReviews.length > 0
     setIsDailyGoalAchieved(isTodayMet)
 
     let currentStreak = storedConfig.streak
@@ -138,11 +170,22 @@ export default function Dashboard() {
     if (isTodayMet) {
       if (!completedDates.includes(todayStr)) {
         completedDates.push(todayStr)
-        if (lastCompleted === yesterdayStr) {
+
+        let diffDays = 999
+        if (lastCompleted) {
+          const lastDate = new Date(lastCompleted + "T00:00:00")
+          const nowDate = new Date(todayStr + "T00:00:00")
+          diffDays = Math.round((nowDate.getTime() - lastDate.getTime()) / (1000 * 60 * 60 * 24))
+        }
+
+        if (diffDays === 1 || (diffDays === 999 && currentStreak > 0)) {
           currentStreak += 1
+        } else if (diffDays === 0) {
+          // already counted today
         } else {
           currentStreak = 1
         }
+
         lastCompleted = todayStr
         currentBest = Math.max(currentBest, currentStreak)
         storedConfig = {
@@ -156,19 +199,23 @@ export default function Dashboard() {
       }
     } else {
       if (completedDates.includes(todayStr)) {
-        // Was already achieved earlier today
+        // Was already marked complete today
         setIsDailyGoalAchieved(true)
-      } else if (lastCompleted === yesterdayStr) {
-        // Maintained up to yesterday, waiting for today
-      } else if (lastCompleted === todayStr) {
-        // Today is already recorded
       } else {
-        // Streak lost
-        if (currentStreak > 0) {
+        // Streak is only broken if at least 1 FULL DAY was skipped (diffDays > 1)
+        let diffDays = 0
+        if (lastCompleted) {
+          const lastDate = new Date(lastCompleted + "T00:00:00")
+          const nowDate = new Date(todayStr + "T00:00:00")
+          diffDays = Math.round((nowDate.getTime() - lastDate.getTime()) / (1000 * 60 * 60 * 24))
+        }
+
+        if (diffDays > 1) {
           currentStreak = 0
           storedConfig.streak = 0
           localStorage.setItem(STREAK_STORAGE_KEY, JSON.stringify(storedConfig))
         }
+        // If diffDays <= 1: do NOT reset to 0! Streak remains pending today's completion.
       }
     }
 
@@ -212,12 +259,14 @@ export default function Dashboard() {
       
       const unlearned = allWords.filter(w => !reviewWordIds.has(w.id))
       if (unlearned.length === 0) {
-        setStreakToast("Tất cả từ trong từ điển đã có trong danh sách ôn tập!")
-        setTimeout(() => setStreakToast(null), 3000)
+        setStreakToast("Tất cả từ trong từ điển đã có trong danh sách học! Mục tiêu từ mới tự động hoàn thành ✓")
+        setTimeout(() => setStreakToast(null), 3500)
+        await loadData()
         return
       }
 
-      const toAdd = unlearned.slice(0, 10)
+      const countToAdd = Math.min(10, unlearned.length)
+      const toAdd = unlearned.slice(0, countToAdd)
       for (const w of toAdd) {
         await reviewRepository.add(w.id)
       }
@@ -424,7 +473,9 @@ export default function Dashboard() {
               <p className="text-xs text-muted mt-0.5">
                 {isDailyGoalAchieved 
                   ? `Xuất sắc! Bạn đã duy trì chuỗi ${streak} ngày liên tiếp.` 
-                  : `Học tối thiểu ${dailyTarget} từ mới và ôn sạch từ tới hạn để được set chuỗi hôm nay.`}
+                  : remainingWordsInDict === 0
+                  ? `Kho từ đã học hết! Chỉ cần ôn sạch ${dueCount > 0 ? dueCount : ""} từ tới hạn để duy trì chuỗi.`
+                  : `Học tối thiểu ${effectiveTarget} từ mới (hoặc ôn ${dailyTarget} từ) và ôn sạch từ tới hạn để được set chuỗi hôm nay.`}
               </p>
             </div>
           </div>
@@ -456,21 +507,27 @@ export default function Dashboard() {
 
         {/* 2 Requirements Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 sm:gap-4 pt-3.5">
-          {/* Requirement 1: New words today */}
+          {/* Requirement 1: New words or active study today */}
           <div className={`p-3.5 rounded-xl border transition-all ${
-            newWordsToday >= dailyTarget 
+            isCondition1Met 
               ? "bg-china-jade/5 border-china-jade/30" 
               : "bg-china-paper/60 border-border"
           }`}>
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">
-                <BookOpen className={`w-4 h-4 ${newWordsToday >= dailyTarget ? "text-china-jade" : "text-china-gold"}`} />
+                <BookOpen className={`w-4 h-4 ${isCondition1Met ? "text-china-jade" : "text-china-gold"}`} />
                 <span className="text-xs sm:text-sm font-semibold text-china-ink">
-                  1. Từ mới hôm nay
+                  1. Từ mới / Học tập hôm nay
                 </span>
               </div>
-              <span className={`text-xs font-bold ${newWordsToday >= dailyTarget ? "text-china-jade" : "text-china-ink"}`}>
-                {newWordsToday} / {dailyTarget} từ
+              <span className={`text-xs font-bold ${isCondition1Met ? "text-china-jade" : "text-china-ink"}`}>
+                {remainingWordsInDict === 0 
+                  ? "Đã học hết kho từ ✓"
+                  : newWordsToday >= effectiveTarget
+                  ? `${newWordsToday}/${effectiveTarget} từ mới`
+                  : wordsStudiedToday >= dailyTarget
+                  ? `${wordsStudiedToday}/${dailyTarget} từ đã ôn`
+                  : `${newWordsToday}/${effectiveTarget} từ mới (${wordsStudiedToday}/${dailyTarget} đã ôn)`}
               </span>
             </div>
 
@@ -478,26 +535,39 @@ export default function Dashboard() {
             <div className="h-2 w-full bg-border/60 rounded-full overflow-hidden mb-2.5">
               <div 
                 className={`h-full transition-all duration-500 rounded-full ${
-                  newWordsToday >= dailyTarget ? "bg-china-jade" : "bg-china-gold"
+                  isCondition1Met ? "bg-china-jade" : "bg-china-gold"
                 }`}
-                style={{ width: `${Math.min(100, Math.round((newWordsToday / dailyTarget) * 100))}%` }}
+                style={{ 
+                  width: `${isCondition1Met 
+                    ? 100 
+                    : Math.min(100, Math.max(
+                        effectiveTarget > 0 ? Math.round((newWordsToday / effectiveTarget) * 100) : 0,
+                        Math.round((wordsStudiedToday / dailyTarget) * 100)
+                      ))}%` 
+                }}
               />
             </div>
 
-            <div className="flex items-center justify-between gap-2">
+            <div className="flex items-center justify-between gap-2 flex-wrap">
               <span className="text-[11px] text-muted">
-                {newWordsToday >= dailyTarget 
-                  ? "✓ Đã học đủ số từ mới quy định" 
-                  : `Cần thêm ${dailyTarget - newWordsToday} từ mới hôm nay`}
+                {remainingWordsInDict === 0
+                  ? "✓ Kho từ vựng đã thêm hết, điều kiện tự động hoàn thành!"
+                  : isCondition1Met
+                  ? (newWordsToday >= effectiveTarget 
+                      ? "✓ Đã học đủ số từ mới hôm nay" 
+                      : `✓ Đã ôn tập ${wordsStudiedToday} từ hôm nay`)
+                  : `Cần thêm ${Math.max(0, effectiveTarget - newWordsToday)} từ mới HOẶC ôn ${Math.max(0, dailyTarget - wordsStudiedToday)} từ`}
               </span>
-              {newWordsToday < dailyTarget && (
+              {!isCondition1Met && (
                 <div className="flex items-center gap-1.5 shrink-0">
-                  <button
-                    onClick={handleQuickAdd10Dashboard}
-                    className="text-[11px] font-semibold text-china-red hover:text-white bg-china-red/10 hover:bg-china-red px-2.5 py-1 rounded-lg transition-colors flex items-center gap-1 active:scale-95"
-                  >
-                    <Plus className="w-3 h-3" /> +10 từ nhanh
-                  </button>
+                  {remainingWordsInDict > 0 && (
+                    <button
+                      onClick={handleQuickAdd10Dashboard}
+                      className="text-[11px] font-semibold text-china-red hover:text-white bg-china-red/10 hover:bg-china-red px-2.5 py-1 rounded-lg transition-colors flex items-center gap-1 active:scale-95"
+                    >
+                      <Plus className="w-3 h-3" /> +{Math.min(10, remainingWordsInDict)} từ nhanh
+                    </button>
+                  )}
                   <Link
                     href="/vocabulary"
                     className="text-[11px] text-muted hover:text-china-ink underline transition-colors"
