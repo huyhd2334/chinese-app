@@ -7,6 +7,7 @@ import {
   Volume2, Sparkles, BookOpen, PenTool, CheckCircle2, 
   ChevronDown, ArrowRight, RotateCw, Check, Flame, Trophy, Filter
 } from "lucide-react"
+import { getHanViet } from "@/utils/hanviet"
 
 type FilterType = "due" | "new" | "learning" | "review" | "mastered" | "all"
 
@@ -136,6 +137,7 @@ export default function ReviewPage() {
   }, [showAnswer, handleResult])
 
   const hskNum = currentCard ? getHskLevelNumber(currentCard.word) : null
+  const cardHanViet = currentCard ? getHanViet(currentCard.word.hanzi, currentCard.word.traditional, currentCard.word.pinyinNumeric) : ""
 
   // Status mapping
   const getStatusBadge = (status: string) => {
@@ -380,9 +382,16 @@ export default function ReviewPage() {
               {/* Revealed Answer or Show Answer Button */}
               {showAnswer ? (
                 <div className="space-y-3 mt-6 pt-6 border-t border-border/60 animate-fade-in w-full max-w-lg mx-auto">
-                  {/* Pinyin */}
-                  <div className="text-2xl sm:text-3xl font-medium text-china-red tracking-wide">
-                    {currentCard.word.pinyin}
+                  {/* Pinyin & Hán-Việt */}
+                  <div className="flex flex-wrap items-center justify-center gap-2.5">
+                    <span className="text-2xl sm:text-3xl font-medium text-china-red tracking-wide">
+                      {currentCard.word.pinyin}
+                    </span>
+                    {cardHanViet && (
+                      <span className="px-2.5 py-1 bg-amber-50 text-amber-800 border border-amber-200/80 rounded-lg text-xs sm:text-sm font-semibold tracking-wide shadow-xs">
+                        Hán-Việt: {cardHanViet}
+                      </span>
+                    )}
                   </div>
 
                   {/* Vietnamese / English Meaning */}

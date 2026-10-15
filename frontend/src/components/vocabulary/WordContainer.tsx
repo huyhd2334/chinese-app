@@ -5,6 +5,7 @@ import type { Word, ReviewItem } from "../../../db/database"
 import { db } from "../../../db/database"
 import Link from 'next/link'
 import { Volume2, CheckCircle2, AlertCircle, Star, Eye, EyeOff } from 'lucide-react'
+import { getHanViet } from '../../utils/hanviet'
 
 interface WordContainerProps {
   level: number
@@ -40,7 +41,13 @@ const WordContainer = ({
     const [revealedPinyin, setRevealedPinyin] = useState<Set<string>>(new Set())
     const [revealedMeaning, setRevealedMeaning] = useState<Set<string>>(new Set())
 
-    const [page, setPage] = useState(0)
+    const [page, setPage] = useState(() => {
+      if (typeof window !== "undefined") {
+        const saved = sessionStorage.getItem("vocab-page")
+        if (saved) return Number(saved)
+      }
+      return 0
+    })
     const itemsPerPage = 50
 
     // Load favorites from localStorage
@@ -89,17 +96,39 @@ const WordContainer = ({
         const res = await getHskVocabPaginated(level, 0, count || 5000)
         setAllWords(res)
         onWordsLoaded?.(res)
-
-        const scroll = sessionStorage.getItem("vocab-scroll")
-        if (scroll) {
-          setTimeout(() => {
-            scrollRef.current?.scrollTo(0, Number(scroll))
-            sessionStorage.removeItem("vocab-scroll")
-          }, 100)
-        }
       }
       handleGetWords()
     }, [level, getHskVocabPaginated, getHskVocabCount, onWordsLoaded])
+
+    // Restore exact card position and scroll when words/page are rendered
+    useEffect(() => {
+      if (allWords.length === 0) return
+
+      const savedLastId = sessionStorage.getItem("vocab-last-id")
+      const savedScrollY = sessionStorage.getItem("vocab-scroll-y")
+
+      if (savedLastId || savedScrollY) {
+        const timer = setTimeout(() => {
+          let targetEl: HTMLElement | null = null
+          if (savedLastId) {
+            targetEl = document.getElementById(`word-card-${savedLastId}`)
+          }
+          if (targetEl) {
+            targetEl.scrollIntoView({ block: 'center', behavior: 'instant' })
+            targetEl.classList.add('ring-4', 'ring-china-red/50', 'transition-all', 'duration-500')
+            setTimeout(() => {
+              targetEl?.classList.remove('ring-4', 'ring-china-red/50')
+            }, 1800)
+          } else if (savedScrollY) {
+            window.scrollTo({ top: Number(savedScrollY), behavior: 'instant' })
+          }
+          sessionStorage.removeItem("vocab-last-id")
+          sessionStorage.removeItem("vocab-scroll-y")
+        }, 150)
+
+        return () => clearTimeout(timer)
+      }
+    }, [allWords, page])
 
     const handleAddLearn = async (id: string) => {
       try {
@@ -197,16 +226,19 @@ const WordContainer = ({
                   const isJustAdded = addedId === w.id
                   const isPinyinHidden = hidePinyin && !revealedPinyin.has(w.id)
                   const isMeaningHidden = hideMeaning && !revealedMeaning.has(w.id)
+                  const hanViet = getHanViet(w.hanzi, w.traditional, w.pinyinNumeric)
 
                   return (
                   <Link
                     key={w.id}
+                    id={`word-card-${w.id}`}
                     href={`/vocabulary/${w.id}`}
                     className={`flex flex-col border border-border bg-white p-4 sm:p-5 rounded-2xl transition-all duration-300 group relative overflow-hidden
                       ${isJustAdded ? 'ring-2 ring-china-jade/50 bg-china-jade/5 scale-[1.02]' : 'hover:shadow-xl hover:border-china-red/40 hover:-translate-y-1'}`}
                     onClick={() => {
-                      sessionStorage.setItem("vocab-scroll", String(scrollRef.current?.scrollTop || 0))
+                      sessionStorage.setItem("vocab-scroll-y", String(window.scrollY || document.documentElement.scrollTop || 0))
                       sessionStorage.setItem("vocab-page", String(page))
+                      sessionStorage.setItem("vocab-last-id", w.id)
                     }}>
                   
                   <div className="absolute top-4 right-4 flex items-center gap-2">
@@ -223,7 +255,7 @@ const WordContainer = ({
                   </div>
 
                   <div className='flex flex-row items-start justify-between gap-3 mb-6 mt-2'>
-                      <div className="flex flex-col gap-1">
+                      <div className="flex flex-col gap-1 w-full">
                         <div className="flex items-end gap-3 flex-wrap">
                           <h3 className={`font-serif font-bold text-china-ink group-hover:text-china-red transition-colors whitespace-nowrap ${
                             w.hanzi.length <= 1
@@ -238,7 +270,7 @@ const WordContainer = ({
                             <p className='text-base md:text-xl text-muted font-serif mb-1 opacity-70'>{w.traditional}</p>
                           )}
                         </div>
-                        <div className="flex items-center gap-3 mt-2">
+                        <div className="flex items-center gap-2 flex-wrap mt-2">
                           <span 
                             onClick={(e) => {
                               if (hidePinyin) {
@@ -263,6 +295,11 @@ const WordContainer = ({
                           >
                             <Volume2 className="w-4 h-4" />
                           </button>
+                          {hanViet && (
+                            <span className="text-xs font-bold text-china-gold bg-china-gold/10 px-2 py-0.5 rounded-md border border-china-gold/30">
+                              Hán-Việt: {hanViet}
+                            </span>
+                          )}
                         </div>
                       </div>
                   </div>
@@ -336,7 +373,12 @@ const WordContainer = ({
         <div className="flex shrink-0 items-center justify-center gap-2 py-8 mt-auto">
           <button 
             disabled={page === 0}
-            onClick={() => { setPage(p => p - 1); scrollRef.current?.scrollTo(0, 0) }}
+            onClick={() => {
+              const prev = Math.max(0, page - 1);
+              setPage(prev);
+              sessionStorage.setItem("vocab-page", String(prev));
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
             className="px-3 py-2 text-sm font-medium rounded-lg border border-border bg-white text-china-ink disabled:opacity-50 hover:bg-gray-50 transition-colors"
           >
             Trước
@@ -348,7 +390,11 @@ const WordContainer = ({
                 return (
                   <button
                     key={i}
-                    onClick={() => { setPage(i); scrollRef.current?.scrollTo(0, 0) }}
+                    onClick={() => {
+                      setPage(i);
+                      sessionStorage.setItem("vocab-page", String(i));
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
                     className={`w-8 h-8 flex items-center justify-center text-sm font-medium rounded-lg transition-colors ${
                       page === i 
                         ? 'bg-china-red text-white' 
@@ -368,7 +414,12 @@ const WordContainer = ({
 
           <button 
             disabled={page === totalPages - 1}
-            onClick={() => { setPage(p => p + 1); scrollRef.current?.scrollTo(0, 0) }}
+            onClick={() => {
+              const next = Math.min(totalPages - 1, page + 1);
+              setPage(next);
+              sessionStorage.setItem("vocab-page", String(next));
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
             className="px-3 py-2 text-sm font-medium rounded-lg border border-border bg-white text-china-ink disabled:opacity-50 hover:bg-gray-50 transition-colors"
           >
             Sau

@@ -13,6 +13,7 @@ import {
   Settings2, Plus, Zap
 } from "lucide-react"
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts"
+import { getHanViet } from "@/utils/hanviet"
 
 const PROVERBS = [
   { cn: "千里之行，始于足下", pinyin: "Qiān lǐ zhī xíng, shǐ yú zú xià", en: "A journey of a thousand miles begins with a single step" },
@@ -729,7 +730,7 @@ export default function Dashboard() {
                   )}
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 flex-wrap">
                   <h3 className="text-lg sm:text-2xl font-serif font-bold text-china-red">
                     {dailyWord.pinyin}
                   </h3>
@@ -740,6 +741,11 @@ export default function Dashboard() {
                   >
                     <Volume2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   </button>
+                  {getHanViet(dailyWord.hanzi, dailyWord.traditional, dailyWord.pinyinNumeric) && (
+                    <span className="px-2 py-0.5 bg-amber-50 text-amber-800 border border-amber-200/80 rounded-md text-[11px] sm:text-xs font-semibold">
+                      Hán-Việt: {getHanViet(dailyWord.hanzi, dailyWord.traditional, dailyWord.pinyinNumeric)}
+                    </span>
+                  )}
                 </div>
 
                 <p className="text-xs sm:text-sm text-china-ink font-medium max-w-lg line-clamp-2">
@@ -904,7 +910,14 @@ export default function Dashboard() {
                         <Volume2 className="w-3.5 h-3.5" />
                       </button>
                     </div>
-                    <div className="text-center text-china-red text-xs sm:text-sm mb-1.5 font-medium truncate w-full">{word?.pinyin}</div>
+                    <div className="flex flex-wrap items-center justify-center gap-1.5 text-center text-xs sm:text-sm mb-1.5 font-medium truncate w-full">
+                      <span className="text-china-red">{word?.pinyin}</span>
+                      {word && getHanViet(word.hanzi, word.traditional, word.pinyinNumeric) && (
+                        <span className="text-[10px] bg-amber-50 text-amber-800 border border-amber-200/80 px-1.5 py-0.2 rounded font-medium">
+                          {getHanViet(word.hanzi, word.traditional, word.pinyinNumeric)}
+                        </span>
+                      )}
+                    </div>
                     <p className="text-xs text-center text-muted line-clamp-2 mb-3 h-8 w-full break-words px-1" title={word?.meanings_vi ? word.meanings_vi.join(', ') : word?.meanings?.join(', ')}>
                       {word?.meanings_vi ? word.meanings_vi.join(', ') : word?.meanings?.join(', ')}
                     </p>

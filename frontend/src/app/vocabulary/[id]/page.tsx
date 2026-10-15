@@ -10,6 +10,7 @@ import {
   ArrowLeft, BookOpen, PenTool, MessageCircle, BarChart3, 
   Plus, Trash2, Volume2, FileEdit, Save, Check 
 } from "lucide-react"
+import { getHanViet } from "@/utils/hanviet"
 
 interface PageProps {
   params: Promise<{
@@ -123,6 +124,8 @@ export default function WordDetailPage({ params }: PageProps) {
     )
   }
 
+  const hanViet = getHanViet(word.hanzi, word.traditional, word.pinyinNumeric)
+
   const examples = [
     { zh: `我学习${word.hanzi}。`, py: `Wǒ xuéxí ${word.pinyin}.`, en: `Tôi học từ ${word.hanzi}.` },
     { zh: `这个${word.hanzi}怎么写？`, py: `Zhège ${word.pinyin} zěnme xiě?`, en: `Chữ ${word.hanzi} này viết thế nào?` }
@@ -215,7 +218,7 @@ export default function WordDetailPage({ params }: PageProps) {
               {word.hanzi}
             </h1>
             
-            <div className="flex items-center justify-center md:justify-start gap-3 mb-2">
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-2.5 sm:gap-3 mb-2">
               <span className="text-2xl sm:text-3xl md:text-4xl font-medium text-china-red">
                 {word.pinyin}
               </span>
@@ -226,6 +229,11 @@ export default function WordDetailPage({ params }: PageProps) {
               >
                 <Volume2 className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
+              {hanViet && (
+                <span className="px-2.5 py-1 bg-amber-50 text-amber-800 border border-amber-200/80 rounded-lg text-xs sm:text-sm font-semibold tracking-wide shadow-xs">
+                  Hán-Việt: {hanViet}
+                </span>
+              )}
             </div>
 
             {word.traditional && word.traditional !== word.hanzi && (
@@ -274,6 +282,12 @@ export default function WordDetailPage({ params }: PageProps) {
                   </h3>
                   
                   <div className="grid grid-cols-2 gap-4 sm:gap-6">
+                    {hanViet && (
+                      <div>
+                        <p className="text-xs text-muted mb-1 uppercase tracking-wider font-semibold">Âm Hán-Việt</p>
+                        <p className="text-xl sm:text-2xl font-serif text-amber-900 font-bold">{hanViet}</p>
+                      </div>
+                    )}
                     {word.radical && (
                       <div>
                         <p className="text-xs text-muted mb-1 uppercase tracking-wider font-semibold">Bộ thủ</p>

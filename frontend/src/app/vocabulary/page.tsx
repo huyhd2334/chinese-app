@@ -40,6 +40,8 @@ const Page = () => {
   useEffect(() => {
     const savedLevel = sessionStorage.getItem("vocab-level")
     if (savedLevel) setLevel(Number(savedLevel))
+    const savedFilter = sessionStorage.getItem("vocab-filter")
+    if (savedFilter) setFilter(savedFilter)
   }, [])
 
   useEffect(() => {
@@ -205,7 +207,11 @@ const Page = () => {
           ].map(f => (
             <button
               key={f.id}
-              onClick={() => setFilter(f.id)}
+              onClick={() => {
+                setFilter(f.id)
+                sessionStorage.setItem("vocab-filter", f.id)
+                sessionStorage.setItem("vocab-page", "0")
+              }}
               className={`px-3 py-1 text-xs font-medium rounded-lg whitespace-nowrap transition-all ${
                 filter === f.id 
                   ? 'bg-china-red text-white shadow-xs font-bold' 
@@ -227,6 +233,7 @@ const Page = () => {
                 onClick={() => {
                   setLevel(lv)
                   sessionStorage.setItem("vocab-level", String(lv))
+                  sessionStorage.setItem("vocab-page", "0")
                 }}              
                 className={`flex items-center gap-1 px-2.5 py-1.5 font-medium transition-all text-xs rounded-t-xl border-b-2 whitespace-nowrap ${
                   level === lv 

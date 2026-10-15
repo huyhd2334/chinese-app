@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useCallback } from "react"
 import { type Word } from "../../../db/database"
 import { Volume2, X, RotateCw, Check, ArrowRight, ArrowLeft, Sparkles, BookOpen } from "lucide-react"
+import { getHanViet } from "../../utils/hanviet"
 
 interface FlashcardModalProps {
   isOpen: boolean
@@ -30,6 +31,7 @@ export default function FlashcardModal({ isOpen, onClose, words, onMarkLearned }
   }, [isOpen])
 
   const currentWord = words[currentIndex]
+  const cardHanViet = currentWord ? getHanViet(currentWord.hanzi, currentWord.traditional, currentWord.pinyinNumeric) : ""
 
   const playAudio = useCallback((text?: string) => {
     if (!text) return
@@ -178,9 +180,14 @@ export default function FlashcardModal({ isOpen, onClose, words, onMarkLearned }
                   } transition-opacity duration-300`}
                   style={{ transform: "rotateY(180deg)" }}
                 >
-                  <p className="text-3xl md:text-4xl font-medium text-china-red mb-2">
+                  <p className="text-3xl md:text-4xl font-medium text-china-red mb-1">
                     {currentWord.pinyin}
                   </p>
+                  {cardHanViet && (
+                    <span className="px-2.5 py-0.5 mb-2 bg-amber-50 text-amber-800 border border-amber-200/80 rounded-lg text-xs font-semibold tracking-wide">
+                      Hán-Việt: {cardHanViet}
+                    </span>
+                  )}
                   <div className="w-12 h-0.5 bg-china-gold/50 my-2" />
                   <p className="text-lg md:text-xl font-medium text-china-ink max-w-sm mb-3">
                     {currentWord.meanings_vi ? currentWord.meanings_vi.join(", ") : currentWord.meanings?.join(", ")}
