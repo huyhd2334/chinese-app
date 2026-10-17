@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useEffect } from "react"
-import { Volume2, X, BookOpen, Star, Sparkles, Tag, Layers, Check } from "lucide-react"
+import { Volume2, X, Star } from "lucide-react"
 import type { BonusWord } from "@/types/bonus"
 import { getHanViet } from "@/utils/hanviet"
 
@@ -53,14 +53,9 @@ export default function BonusWordDetailModal({
       >
         {/* Top Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-border bg-china-paper/60">
-          <div className="flex items-center gap-2">
-            <span className="p-1.5 bg-china-red/10 text-china-red rounded-lg">
-              <BookOpen className="w-4 h-4" />
-            </span>
-            <span className="text-xs font-semibold uppercase tracking-wider text-muted">
-              {word.category || word.topic || "Chi tiết từ vựng"}
-            </span>
-          </div>
+          <span className="text-xs font-semibold uppercase tracking-wider text-muted">
+            {word.category || word.topic || "Chi tiết từ vựng"}
+          </span>
 
           <div className="flex items-center gap-1.5">
             {onToggleFavorite && (
@@ -90,14 +85,14 @@ export default function BonusWordDetailModal({
           {/* Main Word Hero */}
           <div className="text-center bg-china-paper/40 p-6 rounded-2xl border border-border/80 relative">
             <h2 className={`font-bold font-serif text-china-ink mb-2 select-all ${
-              isZh ? "text-5xl sm:text-6xl" : "text-3xl sm:text-4xl"
+              isZh ? "text-5xl sm:text-6xl" : "text-3xl sm:text-4xl font-sans"
             }`}>
               {word.word}
             </h2>
 
             {/* Pronunciation & Audio */}
             <div className="flex items-center justify-center gap-2 flex-wrap mb-2">
-              <span className={`text-xl sm:text-2xl font-medium ${isZh ? "text-china-red" : "text-blue-600"}`}>
+              <span className={`text-xl sm:text-2xl font-medium ${isZh ? "text-china-red font-mono" : "text-blue-600 font-sans"}`}>
                 {word.pinyin || word.phonetic}
               </span>
               <button
@@ -111,9 +106,8 @@ export default function BonusWordDetailModal({
 
             {/* Sino-Vietnamese reading if Chinese */}
             {hanViet && (
-              <div className="inline-flex items-center gap-1 px-3 py-1 bg-amber-50 border border-amber-200/80 rounded-xl text-xs sm:text-sm font-semibold text-amber-900 mb-2">
-                <span>Hán-Việt:</span>
-                <span className="font-serif">{hanViet}</span>
+              <div className="inline-block px-3 py-1 bg-amber-50 border border-amber-200/80 rounded-xl text-xs sm:text-sm font-semibold text-amber-900 mb-2">
+                Hán-Việt: <span className="font-serif">{hanViet}</span>
               </div>
             )}
 
@@ -134,8 +128,8 @@ export default function BonusWordDetailModal({
 
           {/* Meaning Section */}
           <div className="bg-white p-5 rounded-2xl border border-border shadow-2xs">
-            <p className="text-xs uppercase tracking-wider text-muted font-bold flex items-center gap-1.5 mb-2">
-              <Sparkles className="w-3.5 h-3.5 text-china-gold" /> Nghĩa tiếng Việt
+            <p className="text-xs uppercase tracking-wider text-muted font-bold mb-2">
+              Nghĩa tiếng Việt
             </p>
             <p className="text-base sm:text-lg font-semibold text-china-ink leading-relaxed">
               {word.meaning}
@@ -146,8 +140,8 @@ export default function BonusWordDetailModal({
           {word.example && (
             <div className="bg-china-paper/60 p-5 rounded-2xl border border-border">
               <div className="flex items-center justify-between mb-2">
-                <p className="text-xs uppercase tracking-wider text-muted font-bold flex items-center gap-1.5">
-                  <BookOpen className="w-3.5 h-3.5 text-china-red" /> Câu ví dụ thực tế
+                <p className="text-xs uppercase tracking-wider text-muted font-bold">
+                  Ví dụ minh họa
                 </p>
                 <button
                   onClick={() => playAudio(word.example || "", word.language)}

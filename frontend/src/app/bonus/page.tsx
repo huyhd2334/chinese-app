@@ -2,10 +2,6 @@
 
 import React from "react"
 import Link from "next/link"
-import { 
-  Sparkles, BookOpen, Layers, Volume2, ArrowRight, 
-  CheckCircle2, Compass, GraduationCap, Flame, Eye, Star 
-} from "lucide-react"
 
 export default function BonusHubPage() {
   const collections = [
@@ -15,10 +11,8 @@ export default function BonusHubPage() {
       subtitle: "Phiên bản 3.0 Mới Nhất",
       language: "zh",
       itemCount: 1070,
-      badge: "HSK 3.0 Cao Cấp",
-      level: "HSK 5",
+      badge: "HSK 3.0",
       bgGradient: "from-[#c8102e] via-[#940d23] to-[#5a0011]",
-      accentColor: "border-china-red/30 text-china-red",
       description: "Toàn bộ 1,070 từ vựng HSK 5 chuẩn phiên bản 3.0 mới nhất với phiên âm Pinyin, âm Hán-Việt, loại từ, nghĩa tiếng Việt và 100% câu ví dụ thực tế kèm phiên âm.",
       previewWords: [
         { word: "安慰", pinyin: "ānwèi", mean: "An ủi, vỗ về" },
@@ -43,9 +37,7 @@ export default function BonusHubPage() {
       language: "en",
       itemCount: 986,
       badge: "TOEIC 550 - 900+",
-      level: "Thương Mại & Giao Tiếp",
       bgGradient: "from-[#1e3a8a] via-[#1e293b] to-[#0f172a]",
-      accentColor: "border-blue-500/30 text-blue-600",
       description: "Kho gần 1,000 từ vựng và cụm từ TOEIC thiết yếu chia theo 12+ chủ đề thực tế: Hợp đồng, Đầu tư, Thuế, Báo cáo tài chính, Nhân sự, Giao tiếp công sở với phiên âm IPA chuẩn.",
       previewWords: [
         { word: "contract", pinyin: "/ˈkɑːn.trækt/", mean: "hợp đồng" },
@@ -70,11 +62,9 @@ export default function BonusHubPage() {
       
       {/* 1. Hero Header */}
       <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-china-ink via-[#1f1f1f] to-china-ink text-china-paper p-6 sm:p-10 shadow-xl border border-white/10">
-        <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-china-gold/20 via-china-red/10 to-transparent rounded-bl-full pointer-events-none" />
         <div className="relative z-10 max-w-2xl space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 backdrop-blur-md rounded-full border border-white/15 text-xs font-semibold text-china-gold">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Mục Mở Rộng Đặc Biệt · 词汇宝库</span>
+          <div className="inline-block px-3 py-1 bg-white/10 rounded-full border border-white/15 text-xs font-semibold text-china-gold tracking-wide">
+            Mục Mở Rộng · 词汇宝库
           </div>
 
           <h1 className="text-2xl sm:text-4xl md:text-5xl font-serif font-bold tracking-tight text-white">
@@ -87,14 +77,14 @@ export default function BonusHubPage() {
             sẵn sàng học ngay với thẻ ghi nhớ 3D và lưới tra cứu trực quan.
           </p>
 
-          <div className="flex flex-wrap items-center gap-4 pt-2 text-xs sm:text-sm text-china-paper/90">
-            <div className="flex items-center gap-1.5 bg-white/5 px-3 py-1.5 rounded-xl border border-white/10">
+          <div className="flex flex-wrap items-center gap-3 pt-2 text-xs sm:text-sm text-china-paper/90">
+            <div className="bg-white/5 px-3 py-1.5 rounded-xl border border-white/10">
               <span className="font-bold text-china-gold">2,056</span> từ vựng tuyển chọn
             </div>
-            <div className="flex items-center gap-1.5 bg-white/5 px-3 py-1.5 rounded-xl border border-white/10">
-              <span className="font-bold text-emerald-400">100%</span> có phát âm AI
+            <div className="bg-white/5 px-3 py-1.5 rounded-xl border border-white/10">
+              <span className="font-bold text-emerald-400">100%</span> phát âm chuẩn
             </div>
-            <div className="flex items-center gap-1.5 bg-white/5 px-3 py-1.5 rounded-xl border border-white/10">
+            <div className="bg-white/5 px-3 py-1.5 rounded-xl border border-white/10">
               <span className="font-bold text-sky-400">2</span> chế độ: Flashcard & Gallery
             </div>
           </div>
@@ -103,33 +93,26 @@ export default function BonusHubPage() {
 
       {/* 2. Gallery of Collections */}
       <section className="space-y-4">
-        <div className="flex items-center justify-between">
-          <div>
-            <h2 className="text-xl sm:text-2xl font-serif font-bold text-china-ink flex items-center gap-2">
-              <Layers className="w-5 h-5 text-china-red" />
-              Bộ Sưu Tập Thẻ Từ Vựng
-            </h2>
-            <p className="text-xs sm:text-sm text-muted">
-              Chọn bộ tài liệu bạn muốn luyện tập để bắt đầu học với Thẻ Flashcard hoặc xem toàn bộ danh mục
-            </p>
-          </div>
+        <div>
+          <h2 className="text-xl sm:text-2xl font-serif font-bold text-china-ink">
+            Bộ Sưu Tập Thẻ Từ Vựng
+          </h2>
+          <p className="text-xs sm:text-sm text-muted">
+            Chọn bộ tài liệu bạn muốn luyện tập để bắt đầu học với Thẻ Flashcard hoặc xem toàn bộ danh mục
+          </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {collections.map((col) => (
             <div
               key={col.slug}
-              className="bg-card rounded-3xl border border-border overflow-hidden shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between group"
+              className="bg-card rounded-3xl border border-border overflow-hidden shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
             >
               {/* Card Banner */}
-              <div className={`p-6 sm:p-8 bg-gradient-to-br ${col.bgGradient} text-white relative overflow-hidden`}>
-                <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform duration-500">
-                  <BookOpen className="w-32 h-32" />
-                </div>
-
-                <div className="relative z-10 space-y-2">
+              <div className={`p-6 sm:p-8 bg-gradient-to-br ${col.bgGradient} text-white`}>
+                <div className="space-y-2">
                   <div className="flex items-center justify-between gap-2">
-                    <span className="px-3 py-1 bg-white/20 backdrop-blur-md text-xs font-bold rounded-full border border-white/30 tracking-wider">
+                    <span className="px-3 py-1 bg-white/20 text-xs font-bold rounded-full border border-white/30 tracking-wider">
                       {col.badge}
                     </span>
                     <span className="text-xs font-medium text-white/80">
@@ -162,7 +145,7 @@ export default function BonusHubPage() {
                       {col.previewWords.map((pw, i) => (
                         <div
                           key={i}
-                          className="px-2.5 py-1 bg-china-paper border border-border/80 rounded-xl text-xs flex items-center gap-1.5 hover:border-china-red/30 transition-colors"
+                          className="px-2.5 py-1 bg-china-paper border border-border/80 rounded-xl text-xs flex items-center gap-1.5"
                         >
                           <span className={`font-serif font-bold ${col.language === "zh" ? "text-china-ink text-sm" : "text-china-ink font-sans"}`}>
                             {pw.word}
@@ -176,8 +159,8 @@ export default function BonusHubPage() {
                   {/* Highlights Bullet List */}
                   <div className="mt-5 pt-4 border-t border-border/60 space-y-2">
                     {col.features.map((feat, i) => (
-                      <div key={i} className="flex items-center gap-2 text-xs text-china-ink/80">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-china-jade shrink-0" />
+                      <div key={i} className="flex items-start gap-2 text-xs text-china-ink/80">
+                        <span className="text-china-red font-bold leading-tight">•</span>
                         <span>{feat}</span>
                       </div>
                     ))}
@@ -188,17 +171,15 @@ export default function BonusHubPage() {
                 <div className="pt-6 grid grid-cols-2 gap-3">
                   <Link
                     href={`/bonus/${col.slug}?mode=flashcard`}
-                    className="flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-china-red text-white text-xs sm:text-sm font-bold hover:bg-china-red-hover transition-all shadow-xs active:scale-95 text-center"
+                    className="py-3 px-4 rounded-2xl bg-china-red text-white text-xs sm:text-sm font-bold hover:bg-china-red-hover transition-all shadow-xs active:scale-95 text-center"
                   >
-                    <Flame className="w-4 h-4" />
-                    <span>Học Thẻ Flashcard</span>
+                    Học Thẻ Flashcard
                   </Link>
                   <Link
                     href={`/bonus/${col.slug}?mode=gallery`}
-                    className="flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-white border border-border text-china-ink text-xs sm:text-sm font-semibold hover:bg-china-paper hover:border-china-ink/20 transition-all shadow-2xs active:scale-95 text-center"
+                    className="py-3 px-4 rounded-2xl bg-white border border-border text-china-ink text-xs sm:text-sm font-semibold hover:bg-china-paper hover:border-china-ink/20 transition-all shadow-2xs active:scale-95 text-center"
                   >
-                    <Eye className="w-4 h-4" />
-                    <span>Xem Gallery Thẻ</span>
+                    Xem Gallery Thẻ
                   </Link>
                 </div>
               </div>
@@ -207,17 +188,16 @@ export default function BonusHubPage() {
         </div>
       </section>
 
-      {/* 3. Learning Modes Info Section */}
+      {/* 3. Learning Methods Section */}
       <section className="bg-china-paper/60 rounded-3xl p-6 sm:p-8 border border-border space-y-4">
-        <h3 className="text-lg sm:text-xl font-serif font-bold text-china-ink flex items-center gap-2">
-          <GraduationCap className="w-5 h-5 text-china-red" />
+        <h3 className="text-lg sm:text-xl font-serif font-bold text-china-ink">
           Phương Pháp Học Với Mục Bonus
         </h3>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="bg-white p-5 rounded-2xl border border-border shadow-2xs space-y-2">
-            <div className="w-9 h-9 rounded-xl bg-china-red/10 text-china-red flex items-center justify-center font-bold">
-              1
+            <div className="text-xs font-bold text-china-red uppercase tracking-wider">
+              Bước 1
             </div>
             <h4 className="font-bold text-china-ink text-sm sm:text-base">Thẻ Ghi Nhớ 3D</h4>
             <p className="text-xs text-muted leading-relaxed">
@@ -226,8 +206,8 @@ export default function BonusHubPage() {
           </div>
 
           <div className="bg-white p-5 rounded-2xl border border-border shadow-2xs space-y-2">
-            <div className="w-9 h-9 rounded-xl bg-china-jade/10 text-china-jade flex items-center justify-center font-bold">
-              2
+            <div className="text-xs font-bold text-china-jade uppercase tracking-wider">
+              Bước 2
             </div>
             <h4 className="font-bold text-china-ink text-sm sm:text-base">Tự Kiểm Tra Trực Quan</h4>
             <p className="text-xs text-muted leading-relaxed">
@@ -236,8 +216,8 @@ export default function BonusHubPage() {
           </div>
 
           <div className="bg-white p-5 rounded-2xl border border-border shadow-2xs space-y-2">
-            <div className="w-9 h-9 rounded-xl bg-china-gold/10 text-china-gold flex items-center justify-center font-bold">
-              3
+            <div className="text-xs font-bold text-china-gold uppercase tracking-wider">
+              Bước 3
             </div>
             <h4 className="font-bold text-china-ink text-sm sm:text-base">Luyện Nghe & Đánh Dấu</h4>
             <p className="text-xs text-muted leading-relaxed">

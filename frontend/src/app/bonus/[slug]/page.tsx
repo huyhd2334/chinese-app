@@ -2,13 +2,8 @@
 
 import React, { useState, useEffect, useMemo, useCallback, use } from "react"
 import Link from "next/link"
-import { useSearchParams, useRouter } from "next/navigation"
-import { 
-  ArrowLeft, Volume2, Sparkles, Star, Search, Filter, 
-  RotateCw, ArrowRight, Check, Eye, EyeOff, Layers, 
-  BookOpen, Shuffle, Play, Pause, ChevronLeft, ChevronRight,
-  Info, CheckCircle2, AlertCircle
-} from "lucide-react"
+import { useSearchParams } from "next/navigation"
+import { ArrowLeft, Volume2, Star, Search, ChevronLeft, ChevronRight } from "lucide-react"
 import type { BonusWord } from "@/types/bonus"
 import { getHanViet } from "@/utils/hanviet"
 import BonusWordDetailModal from "@/components/bonus/BonusWordDetailModal"
@@ -27,7 +22,6 @@ export default function BonusStudyPage({ params }: PageProps) {
   const resolvedParams = use(params)
   const slug = resolvedParams.slug
   const searchParams = useSearchParams()
-  const router = useRouter()
 
   const initialMode = searchParams.get("mode") === "gallery" ? "gallery" : "flashcard"
   const [mode, setMode] = useState<"flashcard" | "gallery">(initialMode)
@@ -177,15 +171,12 @@ export default function BonusStudyPage({ params }: PageProps) {
   useEffect(() => {
     if (!isAutoPlay || mode !== "flashcard" || !currentCard) return
 
-    // Speak word
     playAudio(currentCard.word)
 
-    // Flip after 1.5s
     const flipTimer = setTimeout(() => {
       setIsFlipped(true)
     }, 1500)
 
-    // Next card after 4.5s
     const nextTimer = setTimeout(() => {
       if (currentIndex + 1 < deck.length) {
         setIsFlipped(false)
@@ -217,15 +208,6 @@ export default function BonusStudyPage({ params }: PageProps) {
     const s = new Set<string>()
     rawWords.forEach(w => {
       if (w.topic) s.add(w.topic)
-    })
-    return Array.from(s)
-  }, [rawWords])
-
-  // Unique parts of speech
-  const partsOfSpeech = useMemo(() => {
-    const s = new Set<string>()
-    rawWords.forEach(w => {
-      if (w.partOfSpeech) s.add(w.partOfSpeech)
     })
     return Array.from(s)
   }, [rawWords])
@@ -267,7 +249,7 @@ export default function BonusStudyPage({ params }: PageProps) {
         <div className="flex items-center gap-3">
           <Link
             href="/bonus"
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-border bg-china-paper hover:bg-gray-100 text-china-ink text-xs sm:text-sm font-medium transition-colors"
+            className="flex items-center gap-1 px-3 py-1.5 rounded-xl border border-border bg-china-paper hover:bg-gray-100 text-china-ink text-xs sm:text-sm font-medium transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Kho Bonus</span>
@@ -285,7 +267,7 @@ export default function BonusStudyPage({ params }: PageProps) {
               </h1>
             </div>
             <p className="text-[11px] sm:text-xs text-muted">
-              {rawWords.length} từ vựng · {favorites.size} đã lưu ⭐
+              {rawWords.length} từ vựng · {favorites.size} đã lưu
             </p>
           </div>
         </div>
@@ -294,25 +276,23 @@ export default function BonusStudyPage({ params }: PageProps) {
         <div className="flex bg-china-paper border border-border p-1 rounded-xl shadow-2xs w-full sm:w-auto">
           <button
             onClick={() => setMode("flashcard")}
-            className={`flex-1 sm:flex-none flex items-center justify-center gap-1.5 px-4 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
+            className={`flex-1 sm:flex-none px-4 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
               mode === "flashcard"
                 ? "bg-china-red text-white shadow-xs"
                 : "text-muted hover:text-china-ink"
             }`}
           >
-            <Layers className="w-4 h-4" />
-            <span>Thẻ Flashcard</span>
+            Thẻ Flashcard
           </button>
           <button
             onClick={() => setMode("gallery")}
-            className={`flex-1 sm:flex-none flex items-center justify-center gap-1.5 px-4 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
+            className={`flex-1 sm:flex-none px-4 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
               mode === "gallery"
                 ? "bg-china-red text-white shadow-xs"
                 : "text-muted hover:text-china-ink"
             }`}
           >
-            <BookOpen className="w-4 h-4" />
-            <span>Thư Viện Thẻ (Gallery)</span>
+            Thư Viện Thẻ
           </button>
         </div>
       </div>
@@ -329,32 +309,29 @@ export default function BonusStudyPage({ params }: PageProps) {
                   {currentIndex + 1} / {deck.length}
                 </span>
                 <span className="text-xs px-2 py-0.5 rounded-md bg-china-jade/10 text-china-jade font-semibold">
-                  ✓ {rememberedIds.size} đã nhớ
+                  {rememberedIds.size} đã nhớ
                 </span>
                 <span className="text-xs px-2 py-0.5 rounded-md bg-china-red/10 text-china-red font-semibold">
-                  ✗ {forgottenIds.size} cần ôn
+                  {forgottenIds.size} cần ôn
                 </span>
               </div>
 
               <div className="flex items-center gap-2">
                 <button
                   onClick={handleShuffle}
-                  title="Xáo trộn ngẫu nhiên"
-                  className="flex items-center gap-1 px-3 py-1.5 rounded-xl border border-border bg-white hover:bg-china-paper text-xs font-medium text-china-ink transition-colors shadow-2xs"
+                  className="px-3 py-1.5 rounded-xl border border-border bg-white hover:bg-china-paper text-xs font-medium text-china-ink transition-colors shadow-2xs"
                 >
-                  <Shuffle className="w-3.5 h-3.5" />
-                  <span className="hidden sm:inline">Xáo trộn</span>
+                  Xáo trộn
                 </button>
                 <button
                   onClick={() => setIsAutoPlay(prev => !prev)}
-                  className={`flex items-center gap-1 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all shadow-2xs ${
+                  className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all shadow-2xs ${
                     isAutoPlay 
                       ? "bg-china-jade text-white" 
                       : "bg-white border border-border text-china-ink hover:bg-china-paper"
                   }`}
                 >
-                  {isAutoPlay ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
-                  <span>{isAutoPlay ? "Dừng tự động" : "Tự động đọc"}</span>
+                  {isAutoPlay ? "Dừng tự động" : "Tự động đọc"}
                 </button>
               </div>
             </div>
@@ -488,8 +465,8 @@ export default function BonusStudyPage({ params }: PageProps) {
                       {currentCard.example && (
                         <div className="bg-white/60 p-4 rounded-2xl border border-border/80 text-left max-w-lg mx-auto space-y-1">
                           <div className="flex items-center justify-between">
-                            <span className="text-[11px] uppercase tracking-wider text-muted font-bold flex items-center gap-1">
-                              <BookOpen className="w-3 h-3 text-china-red" /> Ví dụ minh họa
+                            <span className="text-[11px] uppercase tracking-wider text-muted font-bold">
+                              Ví dụ minh họa
                             </span>
                             <button
                               onClick={(e) => playAudio(currentCard.example, e)}
@@ -523,7 +500,7 @@ export default function BonusStudyPage({ params }: PageProps) {
               <div className="w-full max-w-2xl mt-6 grid grid-cols-2 gap-4">
                 <button
                   onClick={() => handleCardResult(false)}
-                  className="flex items-center justify-center gap-2 py-3.5 px-4 rounded-2xl border border-red-200 bg-red-50 hover:bg-red-100 text-red-600 font-bold text-sm sm:text-base transition-all shadow-xs active:scale-95"
+                  className="flex items-center justify-center gap-1.5 py-3.5 px-4 rounded-2xl border border-red-200 bg-red-50 hover:bg-red-100 text-red-600 font-bold text-sm sm:text-base transition-all shadow-xs active:scale-95"
                 >
                   <ChevronLeft className="w-5 h-5" />
                   <span>Chưa nhớ (←)</span>
@@ -531,7 +508,7 @@ export default function BonusStudyPage({ params }: PageProps) {
 
                 <button
                   onClick={() => handleCardResult(true)}
-                  className="flex items-center justify-center gap-2 py-3.5 px-4 rounded-2xl border border-china-jade/30 bg-china-jade hover:bg-china-jade/90 text-white font-bold text-sm sm:text-base transition-all shadow-xs active:scale-95"
+                  className="flex items-center justify-center gap-1.5 py-3.5 px-4 rounded-2xl border border-china-jade/30 bg-china-jade hover:bg-china-jade/90 text-white font-bold text-sm sm:text-base transition-all shadow-xs active:scale-95"
                 >
                   <span>Đã nhớ (→)</span>
                   <ChevronRight className="w-5 h-5" />
@@ -540,7 +517,6 @@ export default function BonusStudyPage({ params }: PageProps) {
             </div>
           ) : (
             <div className="text-center py-20 bg-card rounded-3xl border border-border p-8">
-              <CheckCircle2 className="w-16 h-16 text-china-jade mx-auto mb-4" />
               <h3 className="text-2xl font-serif font-bold text-china-ink mb-2">Đã hoàn thành bộ thẻ!</h3>
               <p className="text-sm text-muted mb-6">Bạn đã xem hết toàn bộ thẻ từ vựng trong bộ tài liệu này.</p>
               <button
@@ -582,26 +558,24 @@ export default function BonusStudyPage({ params }: PageProps) {
               <div className="flex items-center gap-2 flex-wrap">
                 <button
                   onClick={() => setHidePhonetic(p => !p)}
-                  className={`flex items-center gap-1.5 px-3 py-2 rounded-xl border text-xs font-medium transition-colors ${
+                  className={`px-3 py-2 rounded-xl border text-xs font-medium transition-colors ${
                     hidePhonetic
                       ? "bg-china-red text-white border-china-red"
                       : "bg-white border-border text-china-ink hover:bg-china-paper"
                   }`}
                 >
-                  {hidePhonetic ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
-                  <span>{hidePhonetic ? "Đã ẩn phiên âm" : "Ẩn phiên âm"}</span>
+                  {hidePhonetic ? "Hiện phiên âm" : "Ẩn phiên âm"}
                 </button>
 
                 <button
                   onClick={() => setHideMeaning(m => !m)}
-                  className={`flex items-center gap-1.5 px-3 py-2 rounded-xl border text-xs font-medium transition-colors ${
+                  className={`px-3 py-2 rounded-xl border text-xs font-medium transition-colors ${
                     hideMeaning
                       ? "bg-china-red text-white border-china-red"
                       : "bg-white border-border text-china-ink hover:bg-china-paper"
                   }`}
                 >
-                  {hideMeaning ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
-                  <span>{hideMeaning ? "Đã ẩn nghĩa" : "Ẩn nghĩa"}</span>
+                  {hideMeaning ? "Hiện nghĩa" : "Ẩn nghĩa"}
                 </button>
 
                 <button
@@ -755,7 +729,6 @@ export default function BonusStudyPage({ params }: PageProps) {
           {/* Empty state */}
           {filteredWords.length === 0 && (
             <div className="py-20 flex flex-col items-center justify-center text-muted font-medium bg-card rounded-2xl border border-border">
-              <AlertCircle className="w-12 h-12 mb-3 text-border" />
               <p>Không tìm thấy từ vựng nào khớp với bộ lọc.</p>
             </div>
           )}

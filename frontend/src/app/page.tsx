@@ -664,9 +664,6 @@ export default function Dashboard() {
         </Link>
 
         <Link href="/bonus" className="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-gradient-to-br from-indigo-700 via-purple-800 to-slate-900 p-3.5 sm:p-5 text-white shadow-md hover:shadow-lg transition-all duration-300">
-          <div className="absolute top-0 right-0 p-3 sm:p-5 opacity-20 group-hover:scale-110 transition-transform duration-500">
-            <Sparkles className="w-16 h-16 sm:w-20 sm:h-20" />
-          </div>
           <div className="relative z-10">
             <div className="flex items-center gap-1.5 mb-1">
               <span className="text-[9px] sm:text-[10px] bg-amber-400 text-china-ink font-bold px-1.5 py-0.2 rounded uppercase">Bonus</span>
