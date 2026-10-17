@@ -629,7 +629,7 @@ export default function Dashboard() {
       </section>
 
       {/* 2. Quick Action Cards (Hero Section) */}
-      <section className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
+      <section className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-4">
         <Link href="/review" className="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-gradient-to-br from-china-red to-[#8b0000] p-3.5 sm:p-5 text-white shadow-md hover:shadow-lg transition-all duration-300">
           <div className="absolute top-0 right-0 p-3 sm:p-5 opacity-15 group-hover:scale-110 transition-transform duration-500">
             <Target className="w-16 h-16 sm:w-20 sm:h-20" />
@@ -663,6 +663,25 @@ export default function Dashboard() {
           </div>
         </Link>
 
+        <Link href="/bonus" className="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-gradient-to-br from-indigo-700 via-purple-800 to-slate-900 p-3.5 sm:p-5 text-white shadow-md hover:shadow-lg transition-all duration-300">
+          <div className="absolute top-0 right-0 p-3 sm:p-5 opacity-20 group-hover:scale-110 transition-transform duration-500">
+            <Sparkles className="w-16 h-16 sm:w-20 sm:h-20" />
+          </div>
+          <div className="relative z-10">
+            <div className="flex items-center gap-1.5 mb-1">
+              <span className="text-[9px] sm:text-[10px] bg-amber-400 text-china-ink font-bold px-1.5 py-0.2 rounded uppercase">Bonus</span>
+              <h3 className="text-base sm:text-xl font-serif font-bold">Mở rộng</h3>
+            </div>
+            <p className="text-white/80 text-[11px] sm:text-xs mb-3 sm:mb-5 line-clamp-1">HSK 5 & TOEIC</p>
+            <div className="flex items-center justify-between mt-auto">
+              <span className="bg-white/20 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[11px] sm:text-xs backdrop-blur-xs">
+                2,056 từ
+              </span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </div>
+        </Link>
+
         <Link href="/reading" className="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-gradient-to-br from-[#2b2b2b] to-[#1a1a1a] p-3.5 sm:p-5 text-white shadow-md hover:shadow-lg transition-all duration-300">
           <div className="absolute top-0 right-0 p-3 sm:p-5 opacity-15 group-hover:scale-110 transition-transform duration-500">
             <BookOpen className="w-16 h-16 sm:w-20 sm:h-20" />
@@ -676,7 +695,7 @@ export default function Dashboard() {
           </div>
         </Link>
 
-        <Link href="/listening" className="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-gradient-to-br from-china-gold to-[#b38b1d] p-3.5 sm:p-5 text-white shadow-md hover:shadow-lg transition-all duration-300">
+        <Link href="/listening" className="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-gradient-to-br from-china-gold to-[#b38b1d] p-3.5 sm:p-5 text-white shadow-md hover:shadow-lg transition-all duration-300 col-span-2 sm:col-span-1">
           <div className="absolute top-0 right-0 p-3 sm:p-5 opacity-15 group-hover:scale-110 transition-transform duration-500">
             <Ear className="w-16 h-16 sm:w-20 sm:h-20" />
           </div>

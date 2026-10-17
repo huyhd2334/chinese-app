@@ -1,0 +1,44 @@
+[
+  {
+    "id": "hsk5",
+    "slug": "hsk5",
+    "title": "Tổng Hợp Từ Vựng HSK 5",
+    "subtitle": "Phiên bản 3.0 Chuẩn Mới",
+    "language": "zh",
+    "itemCount": 1070,
+    "coverColor": "from-amber-600 to-red-700",
+    "accentColor": "text-china-red",
+    "badge": "HSK 3.0 Cao cấp",
+    "level": "HSK 5",
+    "description": "Toàn bộ 1,070 từ vựng HSK 5 chuẩn phiên bản 3.0 mới nhất với phiên âm Pinyin, âm Hán-Việt, loại từ, nghĩa tiếng Việt chuẩn xác và 100% câu ví dụ thực tế kèm phiên âm.",
+    "features": [
+      "1,070 từ vựng cao cấp",
+      "Kèm âm Hán-Việt & Pinyin",
+      "100% câu ví dụ thực tế",
+      "Phát âm giọng đọc AI chuẩn",
+      "Học thẻ Flashcard 3D"
+    ],
+    "dataFile": "/content/bonus/hsk5_v3.json"
+  },
+  {
+    "id": "toeic",
+    "slug": "toeic",
+    "title": "Bộ Từ Vựng TOEIC Chuyên Sâu",
+    "subtitle": "Công sở, Thương mại & Đàm phán",
+    "language": "en",
+    "itemCount": 986,
+    "coverColor": "from-blue-600 to-indigo-800",
+    "accentColor": "text-blue-600",
+    "badge": "Tiếng Anh TOEIC",
+    "level": "TOEIC 550 - 900+",
+    "description": "Kho gần 1,000 từ vựng và cụm từ TOEIC thông dụng nhất chia theo các chủ đề: Hợp đồng, Đầu tư, Thuế, Báo cáo tài chính, Nhân sự, Giao tiếp công sở với phiên âm IPA quốc tế.",
+    "features": [
+      "986 từ & cụm từ tuyển chọn",
+      "Phiên âm IPA chuẩn quốc tế",
+      "12+ chủ đề thiết yếu",
+      "Từ đồng nghĩa & cụm động từ",
+      "Phát âm tiếng Anh chuẩn"
+    ],
+    "dataFile": "/content/bonus/toeic_vocab.json"
+  }
+]

@@ -2,12 +2,13 @@
 import { usePathname } from "next/navigation";
 import Link from 'next/link'
 import styles from './sideBar.module.css'
-import { BookText, Eye, GraduationCap, LayoutDashboard, Puzzle, ReceiptText } from "lucide-react";
+import { BookText, Eye, GraduationCap, LayoutDashboard, Puzzle, ReceiptText, Sparkles } from "lucide-react";
 
 const navItems = [
   { href: "/", label: "Dashboard", shortLabel: "Home", icon: LayoutDashboard },
   { href: "/vocabulary", label: "Vocabulary", shortLabel: "Vocab", icon: ReceiptText },
   { href: "/review", label: "Review", shortLabel: "Review", icon: Eye },
+  { href: "/bonus", label: "Bonus Vocab", shortLabel: "Bonus", icon: Sparkles },
   { href: "/reading", label: "Reading", shortLabel: "Read", icon: BookText },
   { href: "/listening", label: "Solving puzzles", shortLabel: "Puzzle", icon: Puzzle },
   { href: "/exams", label: "Mock Exams", shortLabel: "Exams", icon: GraduationCap },
