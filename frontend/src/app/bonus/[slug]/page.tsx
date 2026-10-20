@@ -4,9 +4,10 @@ import React, { useState, useEffect, useMemo, useCallback, use } from "react"
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 import { ArrowLeft, Volume2, Star, Search, ChevronLeft, ChevronRight } from "lucide-react"
-import type { BonusWord } from "@/types/bonus"
+import type { BonusWord, BonusCollection } from "@/types/bonus"
 import { getHanViet } from "@/utils/hanviet"
 import BonusWordDetailModal from "@/components/bonus/BonusWordDetailModal"
+import BonusAddCardModal from "@/components/bonus/BonusAddCardModal"
 
 // Direct static import for instant rendering and offline support
 import hsk5Raw from "@/data/bonus/hsk5_v3.json"
@@ -26,18 +27,116 @@ export default function BonusStudyPage({ params }: PageProps) {
   const initialMode = searchParams.get("mode") === "gallery" ? "gallery" : "flashcard"
   const [mode, setMode] = useState<"flashcard" | "gallery">(initialMode)
 
-  // Collection metadata
-  const isZh = slug === "hsk5"
-  const collectionTitle = isZh ? "Tổng Hợp Từ Vựng HSK 5" : "Bộ Từ Vựng TOEIC Chuyên Sâu"
-  const collectionBadge = isZh ? "HSK 3.0" : "TOEIC Vocab"
+  // Custom collection info if applicable
+  const [customCollection, setCustomCollection] = useState<BonusCollection | null>(null)
+  const [customCards, setCustomCards] = useState<BonusWord[]>([])
 
-  // Load raw data
-  const rawWords = useMemo<BonusWord[]>(() => {
+  // Modal states for adding / editing cards
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false)
+  const [editingCard, setEditingCard] = useState<BonusWord | null>(null)
+
+  // Collection metadata
+  const isDefaultHsk = slug === "hsk5"
+  const isDefaultToeic = slug === "toeic"
+
+  // Load custom collection info and custom cards from localStorage
+  useEffect(() => {
+    try {
+      if (!isDefaultHsk && !isDefaultToeic) {
+        const storedCols = localStorage.getItem("bonus_custom_collections")
+        if (storedCols) {
+          const cols: BonusCollection[] = JSON.parse(storedCols)
+          const found = cols.find(c => c.slug === slug)
+          if (found) setCustomCollection(found)
+        }
+      }
+
+      const storedCards = localStorage.getItem(`bonus_custom_cards_${slug}`)
+      if (storedCards) {
+        setCustomCards(JSON.parse(storedCards))
+      }
+    } catch (e) {
+      console.error(e)
+    }
+  }, [slug, isDefaultHsk, isDefaultToeic])
+
+  const isZh = isDefaultHsk ? true : isDefaultToeic ? false : (customCollection?.language !== "en")
+  const collectionTitle = isDefaultHsk 
+    ? "Tổng Hợp Từ Vựng HSK 5" 
+    : isDefaultToeic 
+    ? "Bộ Từ Vựng TOEIC Chuyên Sâu" 
+    : (customCollection?.title || "Bộ từ vựng tự tạo")
+
+  const collectionBadge = isDefaultHsk 
+    ? "HSK 3.0" 
+    : isDefaultToeic 
+    ? "TOEIC Vocab" 
+    : (isZh ? "Tiếng Trung" : "Tiếng Anh")
+
+  // Base raw data
+  const baseWords = useMemo<BonusWord[]>(() => {
     if (slug === "hsk5") {
       return hsk5Raw as BonusWord[]
     }
-    return toeicRaw as BonusWord[]
+    if (slug === "toeic") {
+      return toeicRaw as BonusWord[]
+    }
+    return []
   }, [slug])
+
+  // Combined words (custom cards prepended so they appear first)
+  const allWords = useMemo<BonusWord[]>(() => {
+    return [...customCards, ...baseWords]
+  }, [customCards, baseWords])
+
+  // Save new or edited card
+  const handleSaveCard = (card: BonusWord) => {
+    let updated: BonusWord[]
+    const existingIndex = customCards.findIndex(c => c.id === card.id)
+    if (existingIndex >= 0) {
+      updated = [...customCards]
+      updated[existingIndex] = card
+    } else {
+      updated = [card, ...customCards]
+    }
+
+    setCustomCards(updated)
+    try {
+      localStorage.setItem(`bonus_custom_cards_${slug}`, JSON.stringify(updated))
+    } catch (e) {
+      console.error(e)
+    }
+
+    // Also update current deck if in flashcard mode
+    setDeck(prev => {
+      const idx = prev.findIndex(c => c.id === card.id)
+      if (idx >= 0) {
+        const next = [...prev]
+        next[idx] = card
+        return next
+      }
+      return [card, ...prev]
+    })
+  }
+
+  // Delete custom card
+  const handleDeleteCustomCard = (cardId: string, e?: React.MouseEvent) => {
+    if (e) {
+      e.stopPropagation()
+      e.preventDefault()
+    }
+    if (!confirm("Bạn có chắc chắn muốn xóa thẻ này không?")) return
+
+    const updated = customCards.filter(c => c.id !== cardId)
+    setCustomCards(updated)
+    try {
+      localStorage.setItem(`bonus_custom_cards_${slug}`, JSON.stringify(updated))
+    } catch (e) {
+      console.error(e)
+    }
+
+    setDeck(prev => prev.filter(c => c.id !== cardId))
+  }
 
   // Favorites
   const [favorites, setFavorites] = useState<Set<string>>(new Set())
@@ -73,21 +172,21 @@ export default function BonusStudyPage({ params }: PageProps) {
   }, [favStorageKey])
 
   // --- Flashcard Mode State ---
-  const [deck, setDeck] = useState<BonusWord[]>(rawWords)
+  const [deck, setDeck] = useState<BonusWord[]>(allWords)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isFlipped, setIsFlipped] = useState(false)
   const [rememberedIds, setRememberedIds] = useState<Set<string>>(new Set())
   const [forgottenIds, setForgottenIds] = useState<Set<string>>(new Set())
   const [isAutoPlay, setIsAutoPlay] = useState(false)
 
-  // Reset deck when rawWords change
+  // Reset deck when allWords change
   useEffect(() => {
-    setDeck(rawWords)
+    setDeck(allWords)
     setCurrentIndex(0)
     setIsFlipped(false)
     setRememberedIds(new Set())
     setForgottenIds(new Set())
-  }, [rawWords])
+  }, [allWords])
 
   const currentCard = deck[currentIndex]
 
@@ -142,7 +241,7 @@ export default function BonusStudyPage({ params }: PageProps) {
 
   // Keyboard navigation for Flashcard
   useEffect(() => {
-    if (mode !== "flashcard") return
+    if (mode !== "flashcard" || isAddModalOpen) return
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return
@@ -165,7 +264,7 @@ export default function BonusStudyPage({ params }: PageProps) {
 
     window.addEventListener("keydown", handleKeyDown)
     return () => window.removeEventListener("keydown", handleKeyDown)
-  }, [mode, handleCardResult])
+  }, [mode, isAddModalOpen, handleCardResult])
 
   // Auto-play feature
   useEffect(() => {
@@ -206,16 +305,16 @@ export default function BonusStudyPage({ params }: PageProps) {
   // Unique topics
   const topics = useMemo(() => {
     const s = new Set<string>()
-    rawWords.forEach(w => {
+    allWords.forEach(w => {
       if (w.topic) s.add(w.topic)
     })
     return Array.from(s)
-  }, [rawWords])
+  }, [allWords])
 
   // Filtered gallery words
   const filteredWords = useMemo(() => {
     const q = searchQuery.toLowerCase().trim()
-    return rawWords.filter(w => {
+    return allWords.filter(w => {
       if (onlyFavorites && !favorites.has(w.id)) return false
       if (selectedTopic !== "all" && w.topic !== selectedTopic) return false
       if (selectedPos !== "all" && w.partOfSpeech !== selectedPos) return false
@@ -230,7 +329,7 @@ export default function BonusStudyPage({ params }: PageProps) {
       }
       return true
     })
-  }, [rawWords, searchQuery, selectedTopic, selectedPos, onlyFavorites, favorites, isZh])
+  }, [allWords, searchQuery, selectedTopic, selectedPos, onlyFavorites, favorites, isZh])
 
   const totalPages = Math.ceil(filteredWords.length / itemsPerPage)
   const paginatedWords = useMemo(() => {
@@ -245,7 +344,7 @@ export default function BonusStudyPage({ params }: PageProps) {
     <div className="p-3 sm:p-6 md:p-8 max-w-7xl mx-auto space-y-6 animate-fade-in">
       
       {/* 1. Sticky Navigation Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-white/80 backdrop-blur-md p-4 rounded-2xl border border-border shadow-xs">
+      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 bg-white/80 backdrop-blur-md p-4 rounded-2xl border border-border shadow-xs">
         <div className="flex items-center gap-3">
           <Link
             href="/bonus"
@@ -267,33 +366,46 @@ export default function BonusStudyPage({ params }: PageProps) {
               </h1>
             </div>
             <p className="text-[11px] sm:text-xs text-muted">
-              {rawWords.length} từ vựng · {favorites.size} đã lưu
+              {allWords.length} từ vựng {customCards.length > 0 && `(${customCards.length} thẻ tự thêm)`} · {favorites.size} đã lưu
             </p>
           </div>
         </div>
 
-        {/* Mode Switcher Tabs */}
-        <div className="flex bg-china-paper border border-border p-1 rounded-xl shadow-2xs w-full sm:w-auto">
+        {/* Action Controls */}
+        <div className="flex items-center gap-2 w-full md:w-auto justify-between md:justify-end">
           <button
-            onClick={() => setMode("flashcard")}
-            className={`flex-1 sm:flex-none px-4 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
-              mode === "flashcard"
-                ? "bg-china-red text-white shadow-xs"
-                : "text-muted hover:text-china-ink"
-            }`}
+            onClick={() => {
+              setEditingCard(null)
+              setIsAddModalOpen(true)
+            }}
+            className="px-3.5 py-1.5 rounded-xl bg-china-ink hover:bg-china-ink/80 text-white text-xs sm:text-sm font-bold transition-all shadow-xs active:scale-95 whitespace-nowrap"
           >
-            Thẻ Flashcard
+            + Thêm thẻ mới
           </button>
-          <button
-            onClick={() => setMode("gallery")}
-            className={`flex-1 sm:flex-none px-4 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
-              mode === "gallery"
-                ? "bg-china-red text-white shadow-xs"
-                : "text-muted hover:text-china-ink"
-            }`}
-          >
-            Thư Viện Thẻ
-          </button>
+
+          {/* Mode Switcher Tabs */}
+          <div className="flex bg-china-paper border border-border p-1 rounded-xl shadow-2xs">
+            <button
+              onClick={() => setMode("flashcard")}
+              className={`px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
+                mode === "flashcard"
+                  ? "bg-china-red text-white shadow-xs"
+                  : "text-muted hover:text-china-ink"
+              }`}
+            >
+              Thẻ Flashcard
+            </button>
+            <button
+              onClick={() => setMode("gallery")}
+              className={`px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
+                mode === "gallery"
+                  ? "bg-china-red text-white shadow-xs"
+                  : "text-muted hover:text-china-ink"
+              }`}
+            >
+              Thư Viện Thẻ
+            </button>
+          </div>
         </div>
       </div>
 
@@ -306,7 +418,7 @@ export default function BonusStudyPage({ params }: PageProps) {
               <div className="flex items-center gap-2 font-medium">
                 <span className="text-muted">Tiến độ:</span>
                 <span className="font-bold text-china-ink font-mono text-sm sm:text-base">
-                  {currentIndex + 1} / {deck.length}
+                  {deck.length > 0 ? currentIndex + 1 : 0} / {deck.length}
                 </span>
                 <span className="text-xs px-2 py-0.5 rounded-md bg-china-jade/10 text-china-jade font-semibold">
                   {rememberedIds.size} đã nhớ
@@ -317,6 +429,15 @@ export default function BonusStudyPage({ params }: PageProps) {
               </div>
 
               <div className="flex items-center gap-2">
+                <button
+                  onClick={() => {
+                    setEditingCard(null)
+                    setIsAddModalOpen(true)
+                  }}
+                  className="px-3 py-1.5 rounded-xl border border-border bg-china-paper hover:bg-gray-200 text-xs font-semibold text-china-ink transition-colors"
+                >
+                  + Thêm thẻ
+                </button>
                 <button
                   onClick={handleShuffle}
                   className="px-3 py-1.5 rounded-xl border border-border bg-white hover:bg-china-paper text-xs font-medium text-china-ink transition-colors shadow-2xs"
@@ -371,10 +492,15 @@ export default function BonusStudyPage({ params }: PageProps) {
                   >
                     {/* Top tags */}
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-2 flex-wrap">
                         <span className="px-3 py-1 bg-china-red/10 text-china-red text-xs font-bold rounded-xl border border-china-red/20">
                           {currentCard.category || currentCard.topic || "Từ vựng"}
                         </span>
+                        {currentCard.isCustom && (
+                          <span className="px-2 py-0.5 bg-amber-100 text-amber-800 text-[10px] font-bold rounded-md">
+                            Tự tạo
+                          </span>
+                        )}
                         {currentCard.partOfSpeech && (
                           <span className="px-2.5 py-0.5 bg-china-paper border border-border text-muted text-xs font-semibold rounded-lg">
                             {currentCard.partOfSpeech}
@@ -416,7 +542,7 @@ export default function BonusStudyPage({ params }: PageProps) {
 
                     {/* Hint bottom */}
                     <div className="flex items-center justify-between text-xs text-muted/80 border-t border-border/60 pt-3">
-                      <span>Thẻ #{currentCard.stt}</span>
+                      <span>Thẻ #{currentIndex + 1}</span>
                       <span className="text-china-red font-medium">Bấm để lật ↺</span>
                     </div>
                   </div>
@@ -516,17 +642,17 @@ export default function BonusStudyPage({ params }: PageProps) {
               </div>
             </div>
           ) : (
-            <div className="text-center py-20 bg-card rounded-3xl border border-border p-8">
-              <h3 className="text-2xl font-serif font-bold text-china-ink mb-2">Đã hoàn thành bộ thẻ!</h3>
-              <p className="text-sm text-muted mb-6">Bạn đã xem hết toàn bộ thẻ từ vựng trong bộ tài liệu này.</p>
+            <div className="text-center py-20 bg-card rounded-3xl border border-border p-8 space-y-4">
+              <h3 className="text-2xl font-serif font-bold text-china-ink">Chưa có thẻ từ vựng nào!</h3>
+              <p className="text-sm text-muted">Bộ thẻ này hiện chưa có thẻ từ vựng nào. Hãy thêm từ vựng mới để bắt đầu học.</p>
               <button
                 onClick={() => {
-                  setCurrentIndex(0)
-                  setIsFlipped(false)
+                  setEditingCard(null)
+                  setIsAddModalOpen(true)
                 }}
                 className="px-6 py-2.5 rounded-xl bg-china-red text-white text-sm font-semibold hover:bg-china-red-hover transition-colors shadow-xs"
               >
-                Luyện lại từ đầu
+                + Thêm thẻ từ vựng đầu tiên
               </button>
             </div>
           )}
@@ -556,6 +682,16 @@ export default function BonusStudyPage({ params }: PageProps) {
 
               {/* Toggles */}
               <div className="flex items-center gap-2 flex-wrap">
+                <button
+                  onClick={() => {
+                    setEditingCard(null)
+                    setIsAddModalOpen(true)
+                  }}
+                  className="px-3.5 py-2 rounded-xl bg-china-ink hover:bg-china-ink/80 text-white text-xs font-bold transition-all shadow-xs"
+                >
+                  + Thêm thẻ mới
+                </button>
+
                 <button
                   onClick={() => setHidePhonetic(p => !p)}
                   className={`px-3 py-2 rounded-xl border text-xs font-medium transition-colors ${
@@ -610,10 +746,10 @@ export default function BonusStudyPage({ params }: PageProps) {
                       : "bg-china-paper text-china-ink hover:bg-gray-200"
                   }`}
                 >
-                  Tất cả ({rawWords.length})
+                  Tất cả ({allWords.length})
                 </button>
                 {topics.map(t => {
-                  const count = rawWords.filter(w => w.topic === t).length
+                  const count = allWords.filter(w => w.topic === t).length
                   return (
                     <button
                       key={t}
@@ -645,12 +781,17 @@ export default function BonusStudyPage({ params }: PageProps) {
                 <div
                   key={word.id}
                   onClick={() => setSelectedDetailWord(word)}
-                  className="bg-card rounded-2xl border border-border p-4 shadow-2xs hover:shadow-md hover:border-china-red/40 transition-all duration-200 flex flex-col justify-between cursor-pointer group"
+                  className="bg-card rounded-2xl border border-border p-4 shadow-2xs hover:shadow-md hover:border-china-red/40 transition-all duration-200 flex flex-col justify-between cursor-pointer group relative"
                 >
                   <div>
                     {/* Top row */}
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center gap-1.5 flex-wrap">
+                        {word.isCustom && (
+                          <span className="px-1.5 py-0.2 rounded text-[9px] font-bold bg-amber-100 text-amber-800">
+                            Tự tạo
+                          </span>
+                        )}
                         {word.partOfSpeech && (
                           <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-china-paper border border-border text-muted">
                             {word.partOfSpeech}
@@ -718,7 +859,28 @@ export default function BonusStudyPage({ params }: PageProps) {
 
                   {/* Card bottom hint */}
                   <div className="mt-3 pt-2.5 border-t border-border/50 flex items-center justify-between text-[11px] text-muted">
-                    <span>#{word.stt}</span>
+                    {word.isCustom ? (
+                      <div className="flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
+                        <button
+                          onClick={() => {
+                            setEditingCard(word)
+                            setIsAddModalOpen(true)
+                          }}
+                          className="text-china-jade font-semibold hover:underline"
+                        >
+                          Sửa
+                        </button>
+                        <span>·</span>
+                        <button
+                          onClick={(e) => handleDeleteCustomCard(word.id, e)}
+                          className="text-red-500 font-semibold hover:underline"
+                        >
+                          Xóa
+                        </button>
+                      </div>
+                    ) : (
+                      <span>#{word.stt}</span>
+                    )}
                     <span className="group-hover:text-china-red transition-colors">Xem chi tiết →</span>
                   </div>
                 </div>
@@ -728,8 +890,17 @@ export default function BonusStudyPage({ params }: PageProps) {
 
           {/* Empty state */}
           {filteredWords.length === 0 && (
-            <div className="py-20 flex flex-col items-center justify-center text-muted font-medium bg-card rounded-2xl border border-border">
+            <div className="py-20 flex flex-col items-center justify-center text-muted font-medium bg-card rounded-2xl border border-border space-y-3">
               <p>Không tìm thấy từ vựng nào khớp với bộ lọc.</p>
+              <button
+                onClick={() => {
+                  setEditingCard(null)
+                  setIsAddModalOpen(true)
+                }}
+                className="px-4 py-2 rounded-xl bg-china-red text-white text-xs font-semibold hover:bg-china-red-hover transition-colors"
+              >
+                + Thêm từ này vào bộ thẻ
+              </button>
             </div>
           )}
 
@@ -796,6 +967,19 @@ export default function BonusStudyPage({ params }: PageProps) {
         onClose={() => setSelectedDetailWord(null)}
         isFavorite={selectedDetailWord ? favorites.has(selectedDetailWord.id) : false}
         onToggleFavorite={toggleFavorite}
+      />
+
+      {/* 5. Add / Edit Card Modal with Auto-Translate Assistant */}
+      <BonusAddCardModal
+        isOpen={isAddModalOpen}
+        onClose={() => {
+          setIsAddModalOpen(false)
+          setEditingCard(null)
+        }}
+        onSaveCard={handleSaveCard}
+        language={isZh ? "zh" : "en"}
+        defaultTopic={topics[0] || "Từ vựng tự thêm"}
+        editCard={editingCard}
       />
 
     </div>

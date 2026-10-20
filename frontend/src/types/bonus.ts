@@ -15,6 +15,8 @@ export interface BonusWord {
   level?: string | number
   language: "zh" | "en"
   synonyms?: string[]
+  isCustom?: boolean
+  createdAt?: number
 }
 
 export interface BonusCollection {
@@ -24,11 +26,13 @@ export interface BonusCollection {
   subtitle: string
   language: "zh" | "en"
   itemCount: number
-  coverColor: string
-  accentColor: string
+  coverColor?: string
+  accentColor?: string
   badge: string
-  level: string
+  level?: string
   description: string
-  features: string[]
-  dataFile: string
+  features?: string[]
+  dataFile?: string
+  isCustom?: boolean
+  createdAt?: number
 }
