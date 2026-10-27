@@ -33,6 +33,7 @@ export default function BonusStudyPage({ params }: PageProps) {
 
   // Modal states for adding / editing cards
   const [isAddModalOpen, setIsAddModalOpen] = useState(false)
+  const [addModalTab, setAddModalTab] = useState<"single" | "bulk">("single")
   const [editingCard, setEditingCard] = useState<BonusWord | null>(null)
 
   // Collection metadata
@@ -117,6 +118,20 @@ export default function BonusStudyPage({ params }: PageProps) {
       }
       return [card, ...prev]
     })
+  }
+
+  // Save multiple cards from bulk import
+  const handleSaveCards = (newCards: BonusWord[]) => {
+    if (!newCards.length) return
+    const updated = [...newCards, ...customCards]
+    setCustomCards(updated)
+    try {
+      localStorage.setItem(`bonus_custom_cards_${slug}`, JSON.stringify(updated))
+    } catch (e) {
+      console.error(e)
+    }
+
+    setDeck(prev => [...newCards, ...prev])
   }
 
   // Delete custom card
@@ -372,16 +387,29 @@ export default function BonusStudyPage({ params }: PageProps) {
         </div>
 
         {/* Action Controls */}
-        <div className="flex items-center gap-2 w-full md:w-auto justify-between md:justify-end">
-          <button
-            onClick={() => {
-              setEditingCard(null)
-              setIsAddModalOpen(true)
-            }}
-            className="px-3.5 py-1.5 rounded-xl bg-china-ink hover:bg-china-ink/80 text-white text-xs sm:text-sm font-bold transition-all shadow-xs active:scale-95 whitespace-nowrap"
-          >
-            + Thêm thẻ mới
-          </button>
+        <div className="flex flex-wrap items-center gap-2 w-full md:w-auto justify-between md:justify-end">
+          <div className="flex items-center gap-1.5">
+            <button
+              onClick={() => {
+                setEditingCard(null)
+                setAddModalTab("single")
+                setIsAddModalOpen(true)
+              }}
+              className="px-3.5 py-1.5 rounded-xl bg-china-ink hover:bg-china-ink/80 text-white text-xs sm:text-sm font-semibold transition-all active:scale-95 whitespace-nowrap"
+            >
+              + Thêm thẻ
+            </button>
+            <button
+              onClick={() => {
+                setEditingCard(null)
+                setAddModalTab("bulk")
+                setIsAddModalOpen(true)
+              }}
+              className="px-3.5 py-1.5 rounded-xl border border-border bg-white hover:bg-china-paper text-china-ink text-xs sm:text-sm font-semibold transition-all active:scale-95 whitespace-nowrap shadow-2xs"
+            >
+              + Thêm nhiều từ
+            </button>
+          </div>
 
           {/* Mode Switcher Tabs */}
           <div className="flex bg-china-paper border border-border p-1 rounded-xl shadow-2xs">
@@ -685,11 +713,23 @@ export default function BonusStudyPage({ params }: PageProps) {
                 <button
                   onClick={() => {
                     setEditingCard(null)
+                    setAddModalTab("single")
                     setIsAddModalOpen(true)
                   }}
-                  className="px-3.5 py-2 rounded-xl bg-china-ink hover:bg-china-ink/80 text-white text-xs font-bold transition-all shadow-xs"
+                  className="px-3 py-2 rounded-xl bg-china-ink hover:bg-china-ink/80 text-white text-xs font-semibold transition-all active:scale-95"
                 >
-                  + Thêm thẻ mới
+                  + Thêm thẻ
+                </button>
+
+                <button
+                  onClick={() => {
+                    setEditingCard(null)
+                    setAddModalTab("bulk")
+                    setIsAddModalOpen(true)
+                  }}
+                  className="px-3 py-2 rounded-xl border border-border bg-white hover:bg-china-paper text-china-ink text-xs font-semibold transition-all active:scale-95 shadow-2xs"
+                >
+                  + Thêm nhiều từ
                 </button>
 
                 <button
@@ -969,7 +1009,7 @@ export default function BonusStudyPage({ params }: PageProps) {
         onToggleFavorite={toggleFavorite}
       />
 
-      {/* 5. Add / Edit Card Modal with Auto-Translate Assistant */}
+      {/* 5. Add / Edit Card Modal with Auto-Translate Assistant & Bulk Import */}
       <BonusAddCardModal
         isOpen={isAddModalOpen}
         onClose={() => {
@@ -977,9 +1017,11 @@ export default function BonusStudyPage({ params }: PageProps) {
           setEditingCard(null)
         }}
         onSaveCard={handleSaveCard}
+        onSaveCards={handleSaveCards}
         language={isZh ? "zh" : "en"}
         defaultTopic={topics[0] || "Từ vựng tự thêm"}
         editCard={editingCard}
+        initialTab={addModalTab}
       />
 
     </div>

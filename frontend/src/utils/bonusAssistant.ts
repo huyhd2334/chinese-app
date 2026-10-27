@@ -65,13 +65,31 @@ export interface AssistantWordResult {
 }
 
 /**
- * Trợ lý tự động phân tích từ vựng, tra từ điển cục bộ hoặc dịch thuật trực tuyến
+ * Phân tách dòng nhập liệu (có thể chứa từ + nghĩa, ví dụ: "苹果 - quả táo" hoặc "apple : quả táo")
+ */
+export function parseInputLine(rawLine: string): { word: string; prefilledMeaning: string } {
+  const trimmed = rawLine.trim()
+  if (!trimmed) return { word: "", prefilledMeaning: "" }
+
+  const match = trimmed.match(/^([^:\-–—=]+?)\s*[:\-–—=]\s*(.+)$/)
+  if (match) {
+    return {
+      word: match[1].trim(),
+      prefilledMeaning: match[2].trim()
+    }
+  }
+
+  return { word: trimmed, prefilledMeaning: "" }
+}
+
+/**
+ * Trợ lý tự động phân tích 1 từ vựng, tra từ điển cục bộ hoặc dịch thuật trực tuyến
  */
 export async function assistWordCreation(
   input: string, 
   language: "zh" | "en" = "zh"
 ): Promise<AssistantWordResult> {
-  const query = input.trim()
+  const { word: query, prefilledMeaning } = parseInputLine(input)
   if (!query) {
     return { word: "", meaning: "" }
   }
@@ -80,7 +98,7 @@ export async function assistWordCreation(
   if (language === "zh") {
     const hanViet = getHanViet(query)
     let pinyin = ""
-    let meaning = ""
+    let meaning = prefilledMeaning
     let pos = ""
 
     // Bước 1: Tra cứu trong IndexedDB local database trước
@@ -88,10 +106,12 @@ export async function assistWordCreation(
       const match = await db.words.where("hanzi").equals(query).first()
       if (match) {
         pinyin = match.pinyin || ""
-        if (match.meanings_vi && match.meanings_vi.length > 0) {
-          meaning = match.meanings_vi.join("; ")
-        } else if (match.meanings && match.meanings.length > 0) {
-          meaning = match.meanings.join("; ")
+        if (!meaning) {
+          if (match.meanings_vi && match.meanings_vi.length > 0) {
+            meaning = match.meanings_vi.join("; ")
+          } else if (match.meanings && match.meanings.length > 0) {
+            meaning = match.meanings.join("; ")
+          }
         }
         if (match.partOfSpeech && match.partOfSpeech.length > 0) {
           pos = mapPosToVietnamese(match.partOfSpeech[0])
@@ -109,7 +129,6 @@ export async function assistWordCreation(
       }
     }
 
-    // Tạo câu ví dụ mẫu mặc định nếu chưa có
     const example = `我每天学习${query}。`
     const examplePinyin = pinyin ? `Wǒ měitiān xuéxí ${pinyin}.` : ""
 
@@ -119,7 +138,7 @@ export async function assistWordCreation(
       pinyin,
       hanViet,
       partOfSpeech: pos || "Từ vựng",
-      meaning,
+      meaning: meaning || query,
       example,
       examplePinyin,
       topic: "Từ vựng tự thêm"
@@ -127,22 +146,76 @@ export async function assistWordCreation(
   }
 
   // 2. Nếu là Tiếng Anh
-  let meaning = ""
-  const translated = await translateToVietnamese(query, "en")
-  if (translated) {
-    meaning = translated
+  let meaning = prefilledMeaning
+  if (!meaning) {
+    const translated = await translateToVietnamese(query, "en")
+    if (translated) {
+      meaning = translated
+    }
   }
 
-  const example = `This is a common example sentence using "${query}".`
+  const example = `This is an example sentence with "${query}".`
 
   return {
     word: query,
     phonetic: "",
     partOfSpeech: "Từ vựng",
-    meaning,
+    meaning: meaning || query,
     example,
     topic: "Từ vựng tự thêm"
   }
+}
+
+/**
+ * Xử lý hàng loạt danh sách từ vựng (chạy từng nhóm nhỏ để tối ưu tốc độ)
+ */
+export async function batchAssistWords(
+  rawLines: string[],
+  language: "zh" | "en" = "zh",
+  onProgress?: (done: number, total: number) => void
+): Promise<BonusWord[]> {
+  const cleanLines = rawLines
+    .map(l => l.trim())
+    .filter(l => l.length > 0)
+
+  const total = cleanLines.length
+  if (total === 0) return []
+
+  const results: BonusWord[] = []
+  const chunkSize = 4
+
+  for (let i = 0; i < total; i += chunkSize) {
+    const chunk = cleanLines.slice(i, i + chunkSize)
+    const chunkResults = await Promise.all(
+      chunk.map(async (line, idx) => {
+        const item = await assistWordCreation(line, language)
+        const isZh = language === "zh"
+        const card: BonusWord = {
+          id: `custom_${Date.now()}_${i + idx}_${Math.random().toString(36).slice(2, 6)}`,
+          stt: Date.now() + i + idx,
+          word: item.word,
+          hanzi: isZh ? item.word : undefined,
+          pinyin: isZh ? item.pinyin : undefined,
+          phonetic: !isZh ? item.phonetic : undefined,
+          hanViet: isZh ? (item.hanViet || getHanViet(item.word)) : undefined,
+          partOfSpeech: item.partOfSpeech || "Từ vựng",
+          meaning: item.meaning || item.word,
+          example: item.example,
+          examplePinyin: item.examplePinyin,
+          topic: item.topic || "Từ vựng tự thêm",
+          language,
+          isCustom: true,
+          createdAt: Date.now() + i + idx
+        }
+        return card
+      })
+    )
+
+    results.push(...chunkResults)
+    onProgress?.(results.length, total)
+  }
+
+  return results
 }
 
 function mapPosToVietnamese(pos: string): string {
