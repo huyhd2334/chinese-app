@@ -45,7 +45,7 @@ const SideBar = () => {
         </nav>
 
         {/* User Account Menu Desktop */}
-        <div className="pt-2 pb-4 px-1 lg:px-2 border-t border-border mt-auto">
+        <div className="pt-2 pb-4 border-t border-border mt-auto">
           <UserMenu />
         </div>
       </aside>

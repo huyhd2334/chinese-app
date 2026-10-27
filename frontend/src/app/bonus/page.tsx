@@ -15,7 +15,6 @@ const DEFAULT_COLLECTIONS = [
     language: "zh" as const,
     baseItemCount: 1070,
     badge: "HSK 3.0",
-    bgGradient: "from-[#c8102e] via-[#940d23] to-[#5a0011]",
     description: "1,070 từ vựng HSK 5 chuẩn 3.0 kèm Pinyin, âm Hán-Việt và câu ví dụ.",
     previewWords: [
       { word: "安慰", pinyin: "ānwèi" },
@@ -32,8 +31,7 @@ const DEFAULT_COLLECTIONS = [
     subtitle: "Công Sở, Thương Mại & Đàm Phán",
     language: "en" as const,
     baseItemCount: 986,
-    badge: "TOEIC 550 - 900+",
-    bgGradient: "from-[#1e3a8a] via-[#1e293b] to-[#0f172a]",
+    badge: "TOEIC 550+",
     description: "986 từ vựng TOEIC thông dụng theo các chủ đề công sở và thương mại.",
     previewWords: [
       { word: "contract", pinyin: "/ˈkɑːn.trækt/" },
@@ -127,28 +125,25 @@ export default function BonusHubPage() {
   return (
     <div className="p-3 sm:p-6 md:p-8 max-w-7xl mx-auto space-y-6 animate-fade-in">
       
-      {/* 1. Header */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-china-ink via-[#1f1f1f] to-china-ink text-china-paper p-6 sm:p-8 shadow-xl border border-white/10">
-        <div className="relative z-10 max-w-2xl space-y-2.5">
-          <div className="inline-block px-3 py-0.5 bg-white/10 rounded-full border border-white/15 text-[11px] font-semibold text-china-gold tracking-wide">
-            Mục Mở Rộng
+      {/* 1. Header (Clean & Refined) */}
+      <div className="bg-card rounded-2xl border border-border p-6 sm:p-7 shadow-2xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="space-y-1">
+          <div className="flex items-center gap-2">
+            <span className="px-2.5 py-0.5 bg-china-red/10 text-china-red text-xs font-bold rounded-md">
+              Mở rộng
+            </span>
+            <h1 className="text-xl sm:text-2xl font-serif font-bold text-china-ink">
+              Kho Từ Vựng Bonus
+            </h1>
           </div>
-
-          <h1 className="text-2xl sm:text-4xl font-serif font-bold tracking-tight text-white">
-            Kho Từ Vựng Bonus
-          </h1>
-
-          <p className="text-xs sm:text-sm text-china-paper/85 leading-relaxed">
+          <p className="text-xs sm:text-sm text-muted">
             Học từ vựng mở rộng với Flashcard, thư viện tra cứu và tự tạo bộ thẻ học riêng.
           </p>
+        </div>
 
-          <div className="flex flex-wrap items-center gap-2.5 pt-2 text-xs text-china-paper/90">
-            <div className="bg-white/10 px-3 py-1 rounded-xl">
-              <span className="font-bold text-china-gold">{totalWords}</span> từ vựng
-            </div>
-            <div className="bg-white/10 px-3 py-1 rounded-xl">
-              <span className="font-bold text-emerald-400">{DEFAULT_COLLECTIONS.length + customCollections.length}</span> bộ từ
-            </div>
+        <div className="flex items-center gap-2 self-start md:self-auto">
+          <div className="px-3 py-1.5 rounded-xl bg-china-paper border border-border text-xs text-muted">
+            Tổng cộng: <span className="font-bold text-china-ink">{totalWords}</span> từ vựng ({DEFAULT_COLLECTIONS.length + customCollections.length} bộ)
           </div>
         </div>
       </div>
@@ -157,7 +152,7 @@ export default function BonusHubPage() {
       <section className="space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
-            <h2 className="text-lg sm:text-xl font-serif font-bold text-china-ink">
+            <h2 className="text-base sm:text-lg font-serif font-bold text-china-ink">
               Bộ Sưu Tập Thẻ
             </h2>
             <p className="text-xs text-muted">
@@ -175,142 +170,130 @@ export default function BonusHubPage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
           
-          {/* Custom User Collections First */}
+          {/* Custom User Collections */}
           {customCollections.map((col) => {
             const count = customCounts[col.slug] || 0
             const isZh = col.language === "zh"
-            const bgGrad = isZh ? "from-[#b91c1c] to-[#7f1d1d]" : "from-[#1d4ed8] to-[#1e293b]"
 
             return (
               <div
                 key={col.slug}
-                className="bg-card rounded-2xl border border-china-gold/40 overflow-hidden shadow-2xs hover:shadow-md transition-all flex flex-col justify-between"
+                className="bg-card rounded-2xl border border-border p-5 sm:p-6 shadow-2xs hover:border-china-gold/60 transition-all flex flex-col justify-between"
               >
-                {/* Banner */}
-                <div className={`p-5 sm:p-6 bg-gradient-to-br ${bgGrad} text-white`}>
-                  <div className="space-y-1.5">
-                    <div className="flex items-center justify-between gap-2">
-                      <span className="px-2.5 py-0.5 bg-amber-400 text-china-ink text-[11px] font-bold rounded-full">
-                        Bộ tự tạo
+                <div>
+                  <div className="flex items-center justify-between gap-2 mb-2">
+                    <span className="px-2.5 py-0.5 bg-amber-50 text-amber-800 border border-amber-200/80 text-[11px] font-bold rounded-md">
+                      Bộ tự tạo {isZh ? "· Tiếng Trung" : "· Tiếng Anh"}
+                    </span>
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs text-muted">
+                        {count} thẻ
                       </span>
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs text-white/90">
-                          {count} thẻ
-                        </span>
-                        <button
-                          onClick={(e) => handleDeleteCustomCollection(col.slug, e)}
-                          title="Xóa bộ từ vựng này"
-                          className="text-xs text-white/70 hover:text-white px-2 py-0.5 rounded bg-black/20 transition-colors"
-                        >
-                          Xóa
-                        </button>
-                      </div>
+                      <button
+                        onClick={(e) => handleDeleteCustomCollection(col.slug, e)}
+                        title="Xóa bộ từ vựng này"
+                        className="text-xs text-muted hover:text-red-500 px-2 py-0.5 rounded hover:bg-red-50 transition-colors"
+                      >
+                        Xóa
+                      </button>
                     </div>
-
-                    <h3 className="text-xl sm:text-2xl font-serif font-bold text-white pt-1">
-                      {col.title}
-                    </h3>
-                    <p className="text-white/80 text-xs">
-                      {col.subtitle}
-                    </p>
                   </div>
-                </div>
 
-                {/* Body */}
-                <div className="p-5 sm:p-6 space-y-4 flex-1 flex flex-col justify-between">
-                  <p className="text-xs sm:text-sm text-china-ink/80 leading-relaxed">
+                  <h3 className="text-lg sm:text-xl font-serif font-bold text-china-ink">
+                    {col.title}
+                  </h3>
+                  <p className="text-muted text-xs mb-2">
+                    {col.subtitle}
+                  </p>
+                  <p className="text-xs sm:text-sm text-china-ink/80 leading-relaxed mb-4">
                     {col.description}
                   </p>
+                </div>
 
-                  {/* Action Buttons */}
-                  <div className="pt-2 grid grid-cols-2 gap-3">
-                    <Link
-                      href={`/bonus/${col.slug}?mode=flashcard`}
-                      className="py-2.5 px-4 rounded-xl bg-china-red text-white text-xs sm:text-sm font-bold hover:bg-china-red-hover transition-all text-center active:scale-95"
-                    >
-                      Học Flashcard
-                    </Link>
-                    <Link
-                      href={`/bonus/${col.slug}?mode=gallery`}
-                      className="py-2.5 px-4 rounded-xl bg-white border border-border text-china-ink text-xs sm:text-sm font-semibold hover:bg-china-paper transition-all text-center active:scale-95"
-                    >
-                      Xem & Thêm Thẻ
-                    </Link>
-                  </div>
+                {/* Actions */}
+                <div className="pt-4 border-t border-border/60 grid grid-cols-2 gap-3">
+                  <Link
+                    href={`/bonus/${col.slug}?mode=flashcard`}
+                    className="py-2.5 px-4 rounded-xl bg-china-red text-white text-xs sm:text-sm font-semibold hover:bg-china-red-hover transition-all text-center active:scale-95 shadow-2xs"
+                  >
+                    Học Flashcard
+                  </Link>
+                  <Link
+                    href={`/bonus/${col.slug}?mode=gallery`}
+                    className="py-2.5 px-4 rounded-xl bg-white border border-border text-china-ink text-xs sm:text-sm font-medium hover:bg-china-paper transition-all text-center active:scale-95"
+                  >
+                    Xem & Thêm Thẻ
+                  </Link>
                 </div>
               </div>
             )
           })}
 
-          {/* Default Collections */}
+          {/* Default Collections (HSK 5 & TOEIC) */}
           {DEFAULT_COLLECTIONS.map((col) => {
             const addedCustom = customCounts[col.slug] || 0
             const totalCount = col.baseItemCount + addedCustom
+            const isHsk = col.slug === "hsk5"
 
             return (
               <div
                 key={col.slug}
-                className="bg-card rounded-2xl border border-border overflow-hidden shadow-2xs hover:shadow-md transition-all flex flex-col justify-between"
+                className="bg-card rounded-2xl border border-border p-5 sm:p-6 shadow-2xs hover:border-border/80 transition-all flex flex-col justify-between"
               >
-                {/* Banner */}
-                <div className={`p-5 sm:p-6 bg-gradient-to-br ${col.bgGradient} text-white`}>
-                  <div className="space-y-1.5">
-                    <div className="flex items-center justify-between gap-2">
-                      <span className="px-2.5 py-0.5 bg-white/20 text-[11px] font-bold rounded-full border border-white/30">
-                        {col.badge}
-                      </span>
-                      <span className="text-xs text-white/80">
-                        {totalCount} từ vựng {addedCustom > 0 && `(+${addedCustom} tự thêm)`}
-                      </span>
-                    </div>
+                <div>
+                  <div className="flex items-center justify-between gap-2 mb-2">
+                    <span className={`px-2.5 py-0.5 rounded-md text-[11px] font-bold border ${
+                      isHsk 
+                        ? "bg-china-red/5 text-china-red border-china-red/20" 
+                        : "bg-blue-50 text-blue-700 border-blue-200/80"
+                    }`}>
+                      {col.badge}
+                    </span>
+                    <span className="text-xs text-muted">
+                      {totalCount} từ vựng {addedCustom > 0 && `(+${addedCustom} tự thêm)`}
+                    </span>
+                  </div>
 
-                    <h3 className="text-xl sm:text-2xl font-serif font-bold text-white pt-1">
-                      {col.title}
-                    </h3>
-                    <p className="text-white/80 text-xs">
-                      {col.subtitle}
-                    </p>
+                  <h3 className="text-lg sm:text-xl font-serif font-bold text-china-ink">
+                    {col.title}
+                  </h3>
+                  <p className="text-muted text-xs mb-2">
+                    {col.subtitle}
+                  </p>
+                  <p className="text-xs sm:text-sm text-china-ink/80 leading-relaxed mb-3">
+                    {col.description}
+                  </p>
+
+                  {/* Preview Words */}
+                  <div className="flex flex-wrap gap-1.5 pt-1 mb-4">
+                    {col.previewWords.map((pw, i) => (
+                      <div
+                        key={i}
+                        className="px-2.5 py-1 bg-china-paper border border-border/80 rounded-lg text-xs flex items-center gap-1.5"
+                      >
+                        <span className={`font-serif font-semibold ${col.language === "zh" ? "text-china-ink" : "text-china-ink font-sans"}`}>
+                          {pw.word}
+                        </span>
+                        <span className="text-muted text-[11px]">{pw.pinyin}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
 
-                {/* Body */}
-                <div className="p-5 sm:p-6 space-y-4 flex-1 flex flex-col justify-between">
-                  <div className="space-y-3">
-                    <p className="text-xs sm:text-sm text-china-ink/80 leading-relaxed">
-                      {col.description}
-                    </p>
-
-                    {/* Preview Words */}
-                    <div className="flex flex-wrap gap-1.5 pt-1">
-                      {col.previewWords.map((pw, i) => (
-                        <div
-                          key={i}
-                          className="px-2 py-0.5 bg-china-paper border border-border/80 rounded-lg text-xs flex items-center gap-1.5"
-                        >
-                          <span className={`font-serif font-bold ${col.language === "zh" ? "text-china-ink" : "text-china-ink font-sans"}`}>
-                            {pw.word}
-                          </span>
-                          <span className="text-muted text-[11px]">{pw.pinyin}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Actions */}
-                  <div className="pt-2 grid grid-cols-2 gap-3">
-                    <Link
-                      href={`/bonus/${col.slug}?mode=flashcard`}
-                      className="py-2.5 px-4 rounded-xl bg-china-red text-white text-xs sm:text-sm font-bold hover:bg-china-red-hover transition-all text-center active:scale-95"
-                    >
-                      Học Flashcard
-                    </Link>
-                    <Link
-                      href={`/bonus/${col.slug}?mode=gallery`}
-                      className="py-2.5 px-4 rounded-xl bg-white border border-border text-china-ink text-xs sm:text-sm font-semibold hover:bg-china-paper transition-all text-center active:scale-95"
-                    >
-                      Xem & Thêm Thẻ
-                    </Link>
-                  </div>
+                {/* Actions */}
+                <div className="pt-4 border-t border-border/60 grid grid-cols-2 gap-3">
+                  <Link
+                    href={`/bonus/${col.slug}?mode=flashcard`}
+                    className="py-2.5 px-4 rounded-xl bg-china-red text-white text-xs sm:text-sm font-semibold hover:bg-china-red-hover transition-all text-center active:scale-95 shadow-2xs"
+                  >
+                    Học Flashcard
+                  </Link>
+                  <Link
+                    href={`/bonus/${col.slug}?mode=gallery`}
+                    className="py-2.5 px-4 rounded-xl bg-white border border-border text-china-ink text-xs sm:text-sm font-medium hover:bg-china-paper transition-all text-center active:scale-95"
+                  >
+                    Xem & Thêm Thẻ
+                  </Link>
                 </div>
               </div>
             )

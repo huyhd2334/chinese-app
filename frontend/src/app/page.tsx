@@ -663,10 +663,10 @@ export default function Dashboard() {
           </div>
         </Link>
 
-        <Link href="/bonus" className="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-gradient-to-br from-indigo-700 via-purple-800 to-slate-900 p-3.5 sm:p-5 text-white shadow-md hover:shadow-lg transition-all duration-300">
+        <Link href="/bonus" className="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-gradient-to-br from-[#383838] to-[#1c1c1c] p-3.5 sm:p-5 text-white shadow-md hover:shadow-lg transition-all duration-300">
           <div className="relative z-10">
             <div className="flex items-center gap-1.5 mb-1">
-              <span className="text-[9px] sm:text-[10px] bg-amber-400 text-china-ink font-bold px-1.5 py-0.2 rounded uppercase">Bonus</span>
+              <span className="text-[9px] sm:text-[10px] bg-china-gold text-china-ink font-bold px-1.5 py-0.2 rounded uppercase">Bonus</span>
               <h3 className="text-base sm:text-xl font-serif font-bold">Mở rộng</h3>
             </div>
             <p className="text-white/80 text-[11px] sm:text-xs mb-3 sm:mb-5 line-clamp-1">HSK 5 & TOEIC</p>
