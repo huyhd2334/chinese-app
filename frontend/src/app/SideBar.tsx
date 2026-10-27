@@ -3,6 +3,7 @@ import { usePathname } from "next/navigation";
 import Link from 'next/link'
 import styles from './sideBar.module.css'
 import { BookText, Eye, GraduationCap, LayoutDashboard, Puzzle, ReceiptText, Sparkles } from "lucide-react";
+import UserMenu from "@/components/auth/UserMenu";
 
 const navItems = [
   { href: "/", label: "Dashboard", shortLabel: "Home", icon: LayoutDashboard },
@@ -42,19 +43,22 @@ const SideBar = () => {
             )
           })}
         </nav>
+
+        {/* User Account Menu Desktop */}
+        <div className="pt-2 pb-4 px-1 lg:px-2 border-t border-border mt-auto">
+          <UserMenu />
+        </div>
       </aside>
 
       {/* Mobile Top Brand Bar */}
-      <header className="md:hidden sticky top-0 z-30 flex items-center justify-between px-4 py-3 bg-white/95 backdrop-blur-md border-b border-border shadow-xs">
+      <header className="md:hidden sticky top-0 z-30 flex items-center justify-between px-4 py-2.5 bg-white/95 backdrop-blur-md border-b border-border shadow-xs">
         <Link href="/" className="flex items-center gap-2">
           <span className="text-china-paper bg-china-red rounded-lg shadow-xs py-0.5 px-2 font-serif font-bold text-base">H</span>
           <span className="font-serif font-bold text-lg text-china-red tracking-wider">
             HSK <span className="text-china-ink font-sans text-sm font-medium">Learning</span>
           </span>
         </Link>
-        <span className="text-xs px-2.5 py-1 bg-china-paper border border-border rounded-full text-muted font-medium">
-          App
-        </span>
+        <UserMenu compact />
       </header>
 
       {/* Mobile Bottom Navigation Bar */}

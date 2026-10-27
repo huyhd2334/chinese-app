@@ -8,6 +8,13 @@ import type { BonusWord, BonusCollection } from "@/types/bonus"
 import { getHanViet } from "@/utils/hanviet"
 import BonusWordDetailModal from "@/components/bonus/BonusWordDetailModal"
 import BonusAddCardModal from "@/components/bonus/BonusAddCardModal"
+import { useAuth } from "@/contexts/AuthContext"
+import {
+  syncCardsWithCloud,
+  saveCardToCloud,
+  saveCardsBatchToCloud,
+  deleteCardFromCloud,
+} from "@/utils/bonusCloudSync"
 
 // Direct static import for instant rendering and offline support
 import hsk5Raw from "@/data/bonus/hsk5_v3.json"
@@ -23,6 +30,7 @@ export default function BonusStudyPage({ params }: PageProps) {
   const resolvedParams = use(params)
   const slug = resolvedParams.slug
   const searchParams = useSearchParams()
+  const { user } = useAuth()
 
   const initialMode = searchParams.get("mode") === "gallery" ? "gallery" : "flashcard"
   const [mode, setMode] = useState<"flashcard" | "gallery">(initialMode)
@@ -40,26 +48,35 @@ export default function BonusStudyPage({ params }: PageProps) {
   const isDefaultHsk = slug === "hsk5"
   const isDefaultToeic = slug === "toeic"
 
-  // Load custom collection info and custom cards from localStorage
+  // Load custom collection info and custom cards (Cloud if logged in, else localStorage)
   useEffect(() => {
-    try {
-      if (!isDefaultHsk && !isDefaultToeic) {
-        const storedCols = localStorage.getItem("bonus_custom_collections")
-        if (storedCols) {
-          const cols: BonusCollection[] = JSON.parse(storedCols)
-          const found = cols.find(c => c.slug === slug)
-          if (found) setCustomCollection(found)
+    async function loadCardsData() {
+      try {
+        if (!isDefaultHsk && !isDefaultToeic) {
+          const storedCols = localStorage.getItem("bonus_custom_collections")
+          if (storedCols) {
+            const cols: BonusCollection[] = JSON.parse(storedCols)
+            const found = cols.find(c => c.slug === slug)
+            if (found) setCustomCollection(found)
+          }
         }
-      }
 
-      const storedCards = localStorage.getItem(`bonus_custom_cards_${slug}`)
-      if (storedCards) {
-        setCustomCards(JSON.parse(storedCards))
+        if (user) {
+          const cloudCards = await syncCardsWithCloud(user.id, slug)
+          setCustomCards(cloudCards)
+        } else {
+          const storedCards = localStorage.getItem(`bonus_custom_cards_${slug}`)
+          if (storedCards) {
+            setCustomCards(JSON.parse(storedCards))
+          }
+        }
+      } catch (e) {
+        console.error(e)
       }
-    } catch (e) {
-      console.error(e)
     }
-  }, [slug, isDefaultHsk, isDefaultToeic])
+
+    loadCardsData()
+  }, [slug, isDefaultHsk, isDefaultToeic, user])
 
   const isZh = isDefaultHsk ? true : isDefaultToeic ? false : (customCollection?.language !== "en")
   const collectionTitle = isDefaultHsk 
@@ -108,6 +125,10 @@ export default function BonusStudyPage({ params }: PageProps) {
       console.error(e)
     }
 
+    if (user) {
+      saveCardToCloud(user.id, slug, card)
+    }
+
     // Also update current deck if in flashcard mode
     setDeck(prev => {
       const idx = prev.findIndex(c => c.id === card.id)
@@ -131,6 +152,10 @@ export default function BonusStudyPage({ params }: PageProps) {
       console.error(e)
     }
 
+    if (user) {
+      saveCardsBatchToCloud(user.id, slug, newCards)
+    }
+
     setDeck(prev => [...newCards, ...prev])
   }
 
@@ -148,6 +173,10 @@ export default function BonusStudyPage({ params }: PageProps) {
       localStorage.setItem(`bonus_custom_cards_${slug}`, JSON.stringify(updated))
     } catch (e) {
       console.error(e)
+    }
+
+    if (user) {
+      deleteCardFromCloud(user.id, cardId)
     }
 
     setDeck(prev => prev.filter(c => c.id !== cardId))
