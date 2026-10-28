@@ -75,10 +75,22 @@ const useVocab = () => {
       setLoading(true)
 
       const reviewItems = await reviewRepository.getReviewsByFilter(filter)
-      const result: ReviewCard[] = []
+      if (!reviewItems || reviewItems.length === 0) {
+        setCards([])
+        return []
+      }
 
+      // High-performance bulk lookup: 1 transaction instead of N sequential queries
+      const wordIds = reviewItems.map(item => item.wordId)
+      const words = await db.words.bulkGet(wordIds)
+      const wordMap = new Map<string, Word>()
+      words.forEach(w => {
+        if (w) wordMap.set(w.id, w)
+      })
+
+      const result: ReviewCard[] = []
       for (const item of reviewItems) {
-        const word = await db.words.get(item.wordId)
+        const word = wordMap.get(item.wordId)
         if (!word) continue
         result.push({
           word,
