@@ -1,8 +1,24 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Volume2, Eye, EyeOff, BookOpen, Sparkles, X, Plus } from 'lucide-react'
-import { CurriculumDialogue, CurriculumWord } from '@/types/curriculum'
+import {
+  Volume2,
+  Eye,
+  EyeOff,
+  BookOpen,
+  Sparkles,
+  X,
+  Plus,
+  FileText,
+  MessageSquare,
+  Play,
+  Square
+} from 'lucide-react'
+import {
+  CurriculumDialogue,
+  CurriculumWord,
+  CurriculumReadingPassage
+} from '@/types/curriculum'
 import { getHanViet } from '@/utils/hanviet'
 import { db } from '../../../db/database'
 
@@ -10,15 +26,20 @@ interface InteractiveReaderProps {
   dialogues: CurriculumDialogue[]
   vocabulary: CurriculumWord[]
   lessonTitle?: string
+  readingPassage?: CurriculumReadingPassage
 }
 
 export default function InteractiveReader({
   dialogues,
   vocabulary,
   lessonTitle,
+  readingPassage,
 }: InteractiveReaderProps) {
+  // Default to 'passage' if available so user immediately sees the reading text
+  const [activeTab, setActiveTab] = useState<'passage' | 'dialogue'>('passage')
   const [showPinyin, setShowPinyin] = useState(true)
   const [showTranslation, setShowTranslation] = useState(true)
+  const [isPlayingPassage, setIsPlayingPassage] = useState(false)
 
   // Floating word popover state
   const [activeWordInfo, setActiveWordInfo] = useState<{
@@ -37,8 +58,27 @@ export default function InteractiveReader({
     window.speechSynthesis.speak(utterance)
   }
 
+  const handlePlayFullPassage = () => {
+    if (typeof window === 'undefined' || !('speechSynthesis' in window) || !readingPassage) return
+
+    if (isPlayingPassage) {
+      window.speechSynthesis.cancel()
+      setIsPlayingPassage(false)
+      return
+    }
+
+    window.speechSynthesis.cancel()
+    const utterance = new SpeechSynthesisUtterance(readingPassage.content)
+    utterance.lang = 'zh-CN'
+    utterance.rate = 0.82
+    utterance.onend = () => setIsPlayingPassage(false)
+    utterance.onerror = () => setIsPlayingPassage(false)
+    setIsPlayingPassage(true)
+    window.speechSynthesis.speak(utterance)
+  }
+
   const handleWordClick = async (char: string) => {
-    if (!char || !char.trim() || /[，。？！、\s0-9]/.test(char)) return
+    if (!char || !char.trim() || /[，。？！、“”‘’\s0-9:：]/.test(char)) return
 
     playAudio(char)
 
@@ -72,16 +112,34 @@ export default function InteractiveReader({
     <div className="space-y-5 max-w-3xl mx-auto">
       {/* Reader Controls Toolbar */}
       <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 bg-white border border-border rounded-2xl shadow-xs">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-xl bg-china-red/10 text-china-red flex items-center justify-center">
-            <BookOpen className="w-4 h-4" />
-          </div>
-          <div>
-            <h3 className="text-xs font-bold text-china-ink">Sách Bài Khóa Tương Tác</h3>
-            <p className="text-[11px] text-muted">Bấm vào bất kỳ từ nào để tra nghĩa &amp; nghe phát âm</p>
-          </div>
+        {/* Switch View Tabs */}
+        <div className="flex items-center gap-1.5 bg-china-paper p-1 rounded-xl border border-border/80">
+          <button
+            onClick={() => setActiveTab('passage')}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition ${
+              activeTab === 'passage'
+                ? 'bg-china-red text-white shadow-xs'
+                : 'text-muted hover:text-china-ink'
+            }`}
+          >
+            <FileText className="w-3.5 h-3.5" />
+            <span>Đoạn văn đọc hiểu (短文)</span>
+          </button>
+
+          <button
+            onClick={() => setActiveTab('dialogue')}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition ${
+              activeTab === 'dialogue'
+                ? 'bg-china-red text-white shadow-xs'
+                : 'text-muted hover:text-china-ink'
+            }`}
+          >
+            <MessageSquare className="w-3.5 h-3.5" />
+            <span>Hội thoại phân vai ({dialogues?.length || 0})</span>
+          </button>
         </div>
 
+        {/* Visibility Toggles */}
         <div className="flex items-center gap-2">
           <button
             onClick={() => setShowPinyin((prev) => !prev)}
@@ -109,71 +167,182 @@ export default function InteractiveReader({
         </div>
       </div>
 
-      {/* Interactive Dialogue Bubbles */}
-      <div className="bg-white border border-border rounded-3xl p-6 shadow-xs space-y-4">
-        {dialogues && dialogues.length > 0 ? (
-          dialogues.map((d, idx) => (
-            <div
-              key={d.id || idx}
-              className="flex items-start gap-3.5 p-4 rounded-2xl bg-china-paper/60 border border-border/70 hover:bg-china-paper transition"
-            >
-              {d.role && (
-                <div className="w-9 h-9 rounded-full bg-china-red text-white font-serif font-bold text-xs flex items-center justify-center shrink-0 shadow-xs">
-                  {d.role}
+      {/* ========================================================= */}
+      {/* TAB 1: ĐOẠN VĂN ĐỌC HIỂU (READING PASSAGE / 短文阅读) */}
+      {/* ========================================================= */}
+      {activeTab === 'passage' && (
+        <div className="bg-white border border-border rounded-3xl p-6 sm:p-8 shadow-xs space-y-6">
+          {readingPassage ? (
+            <div className="space-y-6">
+              {/* Passage Title & Audio Action */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-border/80">
+                <div>
+                  <span className="text-[11px] font-bold text-china-red uppercase tracking-wider">
+                    HSK 3.0 • 短文阅读 (Đoạn văn đọc hiểu)
+                  </span>
+                  <h3 className="text-xl sm:text-2xl font-bold font-serif text-china-ink mt-0.5">
+                    {readingPassage.title || lessonTitle}
+                  </h3>
+                </div>
+
+                <button
+                  onClick={handlePlayFullPassage}
+                  className={`flex items-center gap-2 px-4 py-2.5 rounded-2xl text-xs font-bold transition shadow-xs self-start sm:self-auto ${
+                    isPlayingPassage
+                      ? 'bg-red-600 text-white animate-pulse'
+                      : 'bg-china-red text-white hover:bg-china-red/90'
+                  }`}
+                >
+                  {isPlayingPassage ? (
+                    <>
+                      <Square className="w-3.5 h-3.5 fill-current" />
+                      <span>Dừng phát âm</span>
+                    </>
+                  ) : (
+                    <>
+                      <Play className="w-3.5 h-3.5 fill-current" />
+                      <span>Nghe toàn bộ bài đọc</span>
+                    </>
+                  )}
+                </button>
+              </div>
+
+              {/* Chinese Passage Content with interactive clickable characters */}
+              <div className="p-6 rounded-2xl bg-china-paper/60 border border-border/80">
+                <p className="text-xs text-muted mb-4 font-sans flex items-center gap-1.5">
+                  <Sparkles className="w-3.5 h-3.5 text-china-red" />
+                  <span>Bấm vào bất kỳ chữ Hán nào để tra cứu từ điển và nghe phát âm tức thì:</span>
+                </p>
+
+                <div className="text-2xl sm:text-3xl font-serif text-china-ink leading-[2.3] sm:leading-[2.4] tracking-wide select-text">
+                  {Array.from(readingPassage.content).map((char, cIdx) => {
+                    const isPunctuation = /[，。？！、“”‘’\s:：]/.test(char)
+                    if (isPunctuation) {
+                      return (
+                        <span key={cIdx} className="text-muted/80 font-serif">
+                          {char}
+                        </span>
+                      )
+                    }
+                    return (
+                      <button
+                        key={cIdx}
+                        onClick={() => handleWordClick(char)}
+                        className="hover:text-china-red hover:bg-red-50 hover:underline decoration-china-red decoration-2 underline-offset-4 cursor-pointer transition rounded px-0.5"
+                        title="Bấm tra từ điển"
+                      >
+                        {char}
+                      </button>
+                    )
+                  })}
+                </div>
+              </div>
+
+              {/* Pinyin Transcription */}
+              {showPinyin && readingPassage.pinyin && (
+                <div className="p-4 sm:p-5 rounded-2xl bg-amber-50/70 border border-amber-200/80 space-y-1.5">
+                  <span className="text-[11px] font-bold text-amber-800 uppercase tracking-wider block">
+                    Phiên âm Pinyin chuẩn:
+                  </span>
+                  <p className="text-xs sm:text-sm text-amber-950 font-sans leading-relaxed">
+                    {readingPassage.pinyin}
+                  </p>
                 </div>
               )}
 
-              <div className="flex-1 space-y-1.5">
-                <div className="flex items-center justify-between gap-2">
-                  {/* Clickable Hanzi characters */}
-                  <div className="flex flex-wrap items-center gap-1 font-serif text-xl sm:text-2xl font-bold text-china-ink">
-                    {Array.from(d.chinese).map((char, cIdx) => {
-                      const isPunctuation = /[，。？！、\s]/.test(char)
-                      if (isPunctuation) {
-                        return <span key={cIdx} className="text-muted">{char}</span>
-                      }
-                      return (
-                        <button
-                          key={cIdx}
-                          onClick={() => handleWordClick(char)}
-                          className="hover:text-china-red hover:underline decoration-china-red decoration-2 underline-offset-4 cursor-pointer transition rounded px-0.5"
-                          title="Bấm để xem từ điển"
-                        >
-                          {char}
-                        </button>
-                      )
-                    })}
+              {/* Vietnamese Translation */}
+              {showTranslation && readingPassage.vietnamese && (
+                <div className="p-4 sm:p-5 rounded-2xl bg-blue-50/60 border border-blue-200/80 space-y-1.5">
+                  <span className="text-[11px] font-bold text-blue-800 uppercase tracking-wider block">
+                    Bản dịch tiếng Việt tham khảo:
+                  </span>
+                  <p className="text-xs sm:text-sm text-slate-800 font-medium leading-relaxed">
+                    {readingPassage.vietnamese}
+                  </p>
+                </div>
+              )}
+            </div>
+          ) : (
+            <div className="py-12 text-center text-muted text-xs">
+              Đang tải đoạn văn đọc hiểu của bài học...
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* ========================================================= */}
+      {/* TAB 2: HỘI THOẠI PHÂN VAI (DIALOGUES / 课文对话) */}
+      {/* ========================================================= */}
+      {activeTab === 'dialogue' && (
+        <div className="bg-white border border-border rounded-3xl p-6 shadow-xs space-y-4">
+          {dialogues && dialogues.length > 0 ? (
+            dialogues.map((d, idx) => (
+              <div
+                key={d.id || idx}
+                className="flex items-start gap-3.5 p-4 rounded-2xl bg-china-paper/60 border border-border/70 hover:bg-china-paper transition"
+              >
+                {d.role && (
+                  <div className="px-2.5 py-1.5 rounded-xl bg-china-red/10 text-china-red border border-china-red/20 font-serif font-bold text-xs shrink-0 whitespace-nowrap">
+                    {d.role}
+                  </div>
+                )}
+
+                <div className="flex-1 space-y-1.5">
+                  <div className="flex items-center justify-between gap-2">
+                    {/* Clickable Hanzi characters */}
+                    <div className="flex flex-wrap items-center gap-1 font-serif text-xl sm:text-2xl font-bold text-china-ink">
+                      {Array.from(d.chinese).map((char, cIdx) => {
+                        const isPunctuation = /[，。？！、\s]/.test(char)
+                        if (isPunctuation) {
+                          return (
+                            <span key={cIdx} className="text-muted">
+                              {char}
+                            </span>
+                          )
+                        }
+                        return (
+                          <button
+                            key={cIdx}
+                            onClick={() => handleWordClick(char)}
+                            className="hover:text-china-red hover:underline decoration-china-red decoration-2 underline-offset-4 cursor-pointer transition rounded px-0.5"
+                            title="Bấm để xem từ điển"
+                          >
+                            {char}
+                          </button>
+                        )
+                      })}
+                    </div>
+
+                    <button
+                      onClick={() => playAudio(d.chinese)}
+                      className="p-1.5 rounded-xl text-muted hover:text-china-red hover:bg-white transition shrink-0"
+                      title="Nghe câu này"
+                    >
+                      <Volume2 className="w-4 h-4" />
+                    </button>
                   </div>
 
-                  <button
-                    onClick={() => playAudio(d.chinese)}
-                    className="p-1.5 rounded-xl text-muted hover:text-china-red hover:bg-white transition shrink-0"
-                    title="Nghe câu này"
-                  >
-                    <Volume2 className="w-4 h-4" />
-                  </button>
+                  {showPinyin && d.pinyin && (
+                    <p className="text-xs font-medium text-china-red font-sans">
+                      {d.pinyin}
+                    </p>
+                  )}
+
+                  {showTranslation && d.vietnamese && (
+                    <p className="text-xs font-medium text-slate-700 pt-0.5 leading-relaxed">
+                      {d.vietnamese}
+                    </p>
+                  )}
                 </div>
-
-                {showPinyin && d.pinyin && (
-                  <p className="text-xs font-medium text-china-red font-sans">
-                    {d.pinyin}
-                  </p>
-                )}
-
-                {showTranslation && d.vietnamese && (
-                  <p className="text-xs font-medium text-slate-700 pt-0.5 leading-relaxed">
-                    {d.vietnamese}
-                  </p>
-                )}
               </div>
+            ))
+          ) : (
+            <div className="py-8 text-center text-muted text-xs">
+              Chưa có bài khóa hội thoại trong bài học này.
             </div>
-          ))
-        ) : (
-          <div className="py-8 text-center text-muted text-xs">
-            Chưa có bài khóa hội thoại trong bài học này.
-          </div>
-        )}
-      </div>
+          )}
+        </div>
+      )}
 
       {/* Floating Word Card Popover */}
       {activeWordInfo && (
@@ -200,17 +369,17 @@ export default function InteractiveReader({
             </p>
           </div>
 
-          <div className="flex items-center gap-1 shrink-0">
+          <div className="flex items-center gap-1.5 shrink-0">
             <button
               onClick={() => playAudio(activeWordInfo.hanzi)}
-              className="p-2 text-china-red hover:bg-china-red/10 rounded-xl transition"
-              title="Nghe lại"
+              className="p-2 rounded-xl bg-china-paper hover:bg-china-red/10 text-china-ink hover:text-china-red transition"
+              title="Phát âm lại"
             >
               <Volume2 className="w-4 h-4" />
             </button>
             <button
               onClick={() => setActiveWordInfo(null)}
-              className="p-2 text-muted hover:text-china-ink hover:bg-neutral-100 rounded-xl transition"
+              className="p-2 rounded-xl hover:bg-neutral-100 text-muted transition"
               title="Đóng"
             >
               <X className="w-4 h-4" />

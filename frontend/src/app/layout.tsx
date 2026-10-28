@@ -4,18 +4,35 @@ import { AuthProvider } from "@/contexts/AuthContext";
 import AuthModal from "@/components/auth/AuthModal";
 import UpgradeModal from "@/components/subscription/UpgradeModal";
 import AuthGate from "@/components/auth/AuthGate";
+import { Nunito, Noto_Serif_SC } from "next/font/google";
+
+const nunito = Nunito({
+  subsets: ["latin", "vietnamese"],
+  display: "swap",
+  variable: "--font-nunito",
+});
+
+const notoSerifSC = Noto_Serif_SC({
+  subsets: ["latin"],
+  weight: ["400", "600", "700", "900"],
+  display: "swap",
+  variable: "--font-noto-serif-sc",
+});
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="vi">
+    <html lang="vi" className={`${nunito.variable} ${notoSerifSC.variable}`}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        {/* Import font Nunito tròn trịa hỗ trợ tiếng Việt 100% + Noto Serif/Sans SC riêng cho chữ Hán */}
+        {/* Asynchronous Non-blocking fallback for full CJK glyph ranges */}
         <link
-          href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300..1000;1,300..1000&family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;600;700;900&display=swap"
           rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&display=swap"
+          media="print"
+          // @ts-expect-error Next.js inline onload string
+          onLoad="this.media='all'"
         />
       </head>
       <body className="h-dvh overflow-hidden bg-china-paper text-china-ink font-sans selection:bg-china-red selection:text-white antialiased">

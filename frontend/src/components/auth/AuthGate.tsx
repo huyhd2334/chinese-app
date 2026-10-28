@@ -3,7 +3,7 @@
 import React from "react"
 import Image from "next/image"
 import { useAuth } from "@/contexts/AuthContext"
-import { LogIn, BookOpen, Brain, Sparkles, ShieldCheck } from "lucide-react"
+import { LogIn, BookOpen, Brain, ShieldCheck } from "lucide-react"
 
 export default function AuthGate({ children }: { children: React.ReactNode }) {
   const { user, isLoading, openAuthModal } = useAuth()
@@ -88,7 +88,7 @@ export default function AuthGate({ children }: { children: React.ReactNode }) {
           {/* Heading & Motivation */}
           <div className="space-y-2 mt-2">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-china-red/10 text-china-red text-xs font-semibold tracking-wide border border-china-red/20">
-              <Sparkles className="w-3.5 h-3.5 text-china-gold" />
+              
               <span>千里之行，始于足下</span>
             </div>
 

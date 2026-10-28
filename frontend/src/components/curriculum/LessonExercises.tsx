@@ -14,18 +14,30 @@ import {
   Puzzle,
   Mic
 } from 'lucide-react'
-import { CurriculumWord, CurriculumDialogue } from '@/types/curriculum'
+import { CurriculumWord, CurriculumDialogue, CurriculumListeningExercise } from '@/types/curriculum'
 
 interface LessonExercisesProps {
   words: CurriculumWord[]
   dialogues?: CurriculumDialogue[]
   lessonTitle?: string
+  listeningExercises?: CurriculumListeningExercise[]
 }
 
 type ExerciseType = 'match' | 'reorder' | 'quiz' | 'listening'
 
-export default function LessonExercises({ words, dialogues, lessonTitle }: LessonExercisesProps) {
+export default function LessonExercises({
+  words,
+  dialogues,
+  lessonTitle,
+  listeningExercises,
+}: LessonExercisesProps) {
   const [activeType, setActiveType] = useState<ExerciseType>('match')
+
+  // --- TEXTBOOK LISTENING STATE ---
+  const [lisIndex, setLisIndex] = useState(0)
+  const [selectedLisAnswer, setSelectedLisAnswer] = useState<number | null>(null)
+  const [lisScore, setLisScore] = useState(0)
+  const [showLisExplanation, setShowLisExplanation] = useState(false)
 
   // --- MATCH PAIRS STATE ---
   const matchWords = useMemo(() => {
@@ -662,46 +674,214 @@ export default function LessonExercises({ words, dialogues, lessonTitle }: Lesso
         </div>
       )}
 
-      {/* EXERCISE 4: LISTENING QUIZ */}
-      {activeType === 'listening' && words.length > 0 && (
-        <div className="bg-white border border-border rounded-3xl p-6 shadow-xs space-y-6">
-          <div className="flex items-center justify-between pb-3 border-b border-border">
-            <div>
-              <h3 className="text-base font-bold text-china-ink">
-                Bài tập 4: Luyện nghe và nhận diện chữ Hán
-              </h3>
-              <p className="text-xs text-muted mt-0.5">
-                Bấm vào loa để nghe giọng đọc bản xứ, sau đó chọn chữ Hán bạn vừa nghe được.
-              </p>
+      {/* EXERCISE 4: LISTENING COMPREHENSION (听力) */}
+      {activeType === 'listening' && (
+        <div className="bg-white border border-border rounded-3xl p-6 sm:p-8 shadow-xs space-y-6">
+          {listeningExercises && listeningExercises.length > 0 ? (
+            /* TEXTBOOK AUTHENTIC LISTENING EXERCISE */
+            <div className="space-y-6">
+              <div className="flex items-center justify-between pb-3 border-b border-border">
+                <div>
+                  <span className="text-[11px] font-bold text-china-red uppercase tracking-wider">
+                    HSK 3.0 • 听力练习 (Luyện nghe giáo trình)
+                  </span>
+                  <h3 className="text-base font-bold text-china-ink mt-0.5">
+                    听两遍对话，选择正确答案 (Nghe hội thoại và chọn đáp án đúng)
+                  </h3>
+                  <p className="text-xs text-muted mt-0.5">
+                    Câu {lisIndex + 1} / {listeningExercises.length}
+                  </p>
+                </div>
+
+                <span className="text-xs font-semibold text-china-red bg-china-red/10 px-2.5 py-1 rounded-lg">
+                  Điểm: {lisScore} / {listeningExercises.length}
+                </span>
+              </div>
+
+              {/* Audio Play Center */}
+              <div className="p-6 bg-china-paper/60 border border-border rounded-2xl text-center space-y-4">
+                <button
+                  onClick={() => playAudio(listeningExercises[lisIndex].audioText)}
+                  className="w-20 h-20 rounded-full bg-china-red hover:bg-china-red/90 text-white flex items-center justify-center mx-auto transition transform hover:scale-105 shadow-md active:scale-95"
+                  title="Nghe đoạn hội thoại"
+                >
+                  <Volume2 className="w-10 h-10" />
+                </button>
+
+                <div>
+                  <p className="text-sm font-bold text-china-ink">
+                    ▶ Bấm vào loa để nghe đoạn hội thoại (听录音)
+                  </p>
+                  <p className="text-xs text-muted mt-0.5">
+                    Đoạn băng sẽ phát với tốc độ chuẩn 0.85x rõ ràng
+                  </p>
+                </div>
+              </div>
+
+              {/* Question */}
+              <div className="p-4 bg-white border-2 border-border/80 rounded-2xl space-y-1">
+                <span className="text-xs font-bold text-muted uppercase">Câu hỏi:</span>
+                <p className="text-lg sm:text-xl font-bold font-serif text-china-ink">
+                  {listeningExercises[lisIndex].question}
+                </p>
+                {listeningExercises[lisIndex].questionPinyin && (
+                  <p className="text-xs text-china-red font-sans">
+                    {listeningExercises[lisIndex].questionPinyin}
+                  </p>
+                )}
+              </div>
+
+              {/* Options */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                {listeningExercises[lisIndex].options.map((opt, optIdx) => {
+                  const label = String.fromCharCode(65 + optIdx)
+                  const isSelected = selectedLisAnswer === optIdx
+                  const isCorrect = optIdx === listeningExercises[lisIndex].answerIndex
+
+                  let btnStyle = 'bg-white border-border hover:border-china-red/50 text-china-ink'
+                  if (selectedLisAnswer !== null) {
+                    if (isCorrect) {
+                      btnStyle = 'bg-emerald-50 border-emerald-500 text-emerald-800 font-bold ring-2 ring-emerald-300'
+                    } else if (isSelected) {
+                      btnStyle = 'bg-red-50 border-red-500 text-red-800 font-bold'
+                    } else {
+                      btnStyle = 'bg-neutral-50 border-border text-muted opacity-50'
+                    }
+                  }
+
+                  return (
+                    <button
+                      key={optIdx}
+                      disabled={selectedLisAnswer !== null}
+                      onClick={() => {
+                        setSelectedLisAnswer(optIdx)
+                        if (optIdx === listeningExercises[lisIndex].answerIndex) {
+                          setLisScore((prev) => prev + 1)
+                        }
+                        setShowLisExplanation(true)
+                      }}
+                      className={`p-4 rounded-2xl border text-center font-serif text-base font-bold transition shadow-xs flex items-center justify-center gap-2 ${btnStyle}`}
+                    >
+                      <span className="w-6 h-6 rounded-full bg-china-paper border border-border text-china-red text-xs font-mono flex items-center justify-center shrink-0">
+                        {label}
+                      </span>
+                      <span>{opt}</span>
+                    </button>
+                  )
+                })}
+              </div>
+
+              {/* Feedback and Explanation */}
+              {selectedLisAnswer !== null && (
+                <div className="space-y-4 pt-2">
+                  <div
+                    className={`p-4 rounded-2xl border ${
+                      selectedLisAnswer === listeningExercises[lisIndex].answerIndex
+                        ? 'bg-emerald-50 border-emerald-300 text-emerald-900'
+                        : 'bg-red-50 border-red-300 text-red-900'
+                    }`}
+                  >
+                    <div className="flex items-center gap-2 font-bold text-sm mb-2">
+                      {selectedLisAnswer === listeningExercises[lisIndex].answerIndex ? (
+                        <>
+                          <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+                          <span>Chính xác! Chúc mừng bạn.</span>
+                        </>
+                      ) : (
+                        <>
+                          <XCircle className="w-5 h-5 text-red-600" />
+                          <span>
+                            Chưa chính xác! Đáp án đúng là:{' '}
+                            <b>{listeningExercises[lisIndex].options[listeningExercises[lisIndex].answerIndex]}</b>
+                          </span>
+                        </>
+                      )}
+                    </div>
+
+                    <div className="text-xs space-y-1.5 pt-1 border-t border-black/10">
+                      <p>
+                        <b>Lời thoại bài nghe:</b> &quot;{listeningExercises[lisIndex].audioText}&quot;
+                      </p>
+                      {listeningExercises[lisIndex].explanation && (
+                        <p>
+                          <b>Giải thích:</b> {listeningExercises[lisIndex].explanation}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="flex justify-end">
+                    {lisIndex + 1 < listeningExercises.length ? (
+                      <button
+                        onClick={() => {
+                          setLisIndex((prev) => prev + 1)
+                          setSelectedLisAnswer(null)
+                          setShowLisExplanation(false)
+                        }}
+                        className="px-5 py-2.5 bg-china-red text-white text-xs font-bold rounded-xl shadow-xs hover:bg-china-red/90 transition flex items-center gap-1.5"
+                      >
+                        <span>Câu nghe tiếp theo</span>
+                        <ArrowRight className="w-4 h-4" />
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => {
+                          setLisIndex(0)
+                          setSelectedLisAnswer(null)
+                          setShowLisExplanation(false)
+                          setLisScore(0)
+                        }}
+                        className="px-5 py-2.5 bg-neutral-900 text-white text-xs font-bold rounded-xl shadow-xs hover:bg-neutral-800 transition flex items-center gap-1.5"
+                      >
+                        <RotateCcw className="w-4 h-4" />
+                        <span>Luyện nghe lại từ đầu</span>
+                      </button>
+                    )}
+                  </div>
+                </div>
+              )}
             </div>
-          </div>
+          ) : (
+            /* FALLBACK SINGLE-WORD LISTENING */
+            <div className="space-y-6">
+              <div className="flex items-center justify-between pb-3 border-b border-border">
+                <div>
+                  <h3 className="text-base font-bold text-china-ink">
+                    Bài tập 4: Luyện nghe và nhận diện chữ Hán
+                  </h3>
+                  <p className="text-xs text-muted mt-0.5">
+                    Bấm vào loa để nghe giọng đọc bản xứ, sau đó chọn chữ Hán bạn vừa nghe được.
+                  </p>
+                </div>
+              </div>
 
-          <div className="text-center py-6 space-y-4">
-            <button
-              onClick={() => playAudio(quizQuestions[quizIndex]?.word?.hanzi || words[0].hanzi)}
-              className="w-20 h-20 rounded-full bg-china-red/10 hover:bg-china-red hover:text-white text-china-red flex items-center justify-center mx-auto transition transform hover:scale-105 shadow-sm"
-              title="Nghe phát âm"
-            >
-              <Volume2 className="w-10 h-10" />
-            </button>
-            <p className="text-xs font-medium text-muted">Chạm vào biểu tượng loa để nghe lại</p>
-          </div>
+              <div className="text-center py-6 space-y-4">
+                <button
+                  onClick={() => playAudio(quizQuestions[quizIndex]?.word?.hanzi || words[0].hanzi)}
+                  className="w-20 h-20 rounded-full bg-china-red/10 hover:bg-china-red hover:text-white text-china-red flex items-center justify-center mx-auto transition transform hover:scale-105 shadow-sm"
+                  title="Nghe phát âm"
+                >
+                  <Volume2 className="w-10 h-10" />
+                </button>
+                <p className="text-xs font-medium text-muted">Chạm vào biểu tượng loa để nghe lại</p>
+              </div>
 
-          {/* 4 Choices */}
-          <div className="grid grid-cols-2 gap-3.5">
-            {quizQuestions[quizIndex]?.options.map((opt) => (
-              <button
-                key={opt.id}
-                onClick={() => {
-                  playAudio(opt.hanzi)
-                  handleSelectQuiz(opt.id)
-                }}
-                className="p-5 bg-china-paper/60 border border-border hover:border-china-red hover:bg-white rounded-2xl text-center font-serif text-3xl font-bold text-china-ink transition shadow-xs"
-              >
-                {opt.hanzi}
-              </button>
-            ))}
-          </div>
+              <div className="grid grid-cols-2 gap-3.5">
+                {quizQuestions[quizIndex]?.options.map((opt) => (
+                  <button
+                    key={opt.id}
+                    onClick={() => {
+                      playAudio(opt.hanzi)
+                      handleSelectQuiz(opt.id)
+                    }}
+                    className="p-5 bg-china-paper/60 border border-border hover:border-china-red hover:bg-white rounded-2xl text-center font-serif text-3xl font-bold text-china-ink transition shadow-xs"
+                  >
+                    {opt.hanzi}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>

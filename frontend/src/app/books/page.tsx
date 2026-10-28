@@ -5,7 +5,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 import {
   BookOpen,
-  Sparkles,
   ChevronRight,
   Layers
 } from 'lucide-react'
@@ -33,20 +32,19 @@ export default function BooksDirectoryPage() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 pb-24 space-y-6">
-      {/* Top Banner: Giới thiệu Giáo Trình Chuẩn HSK */}
+      {/* Top Banner: Giới thiệu Giáo Trình Chuẩn HSK 3.0 */}
       <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-china-ink to-slate-900 text-white p-6 md:p-8 shadow-md">
         <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="space-y-2 max-w-2xl">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-white backdrop-blur-md border border-white/20">
-              <Sparkles className="w-3.5 h-3.5 text-china-gold" />
-              <span>Giáo trình chính khóa HSK 1 – 6</span>
+            <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-white backdrop-blur-md border border-white/20">
+              <span>Hệ thống Giáo Trình HSK 3.0 Mới Nhất</span>
             </div>
             <h1 className="text-2xl md:text-3xl font-bold text-china-paper tracking-tight">
-              Giáo Trình Chuẩn HSK (Standard Course)
+              Giáo Trình Chuẩn HSK 3.0 (New HSK Standard)
             </h1>
             <p className="text-sm text-slate-300 leading-relaxed">
-              Học bám sát theo lộ trình từng bài học trong bộ <b>Giáo trình chuẩn HSK</b>. 
-              Tích hợp sẵn từ vựng trọng tâm, bài khóa hội thoại tương tác chạm nghe đọc và hệ thống bài tập củng cố kiến thức.
+              Học bám sát theo lộ trình bộ <b>Giáo trình HSK 3.0</b>. 
+              Tích hợp sẵn từ vựng 300 từ cốt lõi, đoạn văn đọc hiểu (短文阅读), bài khóa hội thoại tương tác chạm nghe và hệ thống bài tập luyện nghe (听力) chuẩn sách.
             </p>
           </div>
         </div>
@@ -65,175 +63,250 @@ export default function BooksDirectoryPage() {
 
         {/* Decorative background watermark */}
         <div className="absolute right-[-20px] bottom-[-30px] text-white/5 font-chinese text-[180px] font-bold select-none pointer-events-none" lang="zh">
-          教程
+          3.0
         </div>
       </div>
 
-      {/* Main Grid: Book Tabs + Lesson List */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-        {/* Left: Book Shelf (4 cols) */}
-        <div className="lg:col-span-4 space-y-3">
-          <div className="flex items-center justify-between px-1">
-            <h2 className="text-xs font-bold uppercase tracking-wider text-muted">
-              Tủ Sách Giáo Trình
-            </h2>
-            <span className="text-xs text-muted font-semibold">{books.length} giáo trình</span>
+      {/* 6 Real Books Bookshelf Showcase */}
+      <section className="bg-white border border-border/80 rounded-3xl p-5 sm:p-7 shadow-xs space-y-6">
+        {/* Shelf Header */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-border/60">
+          <div className="flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-xl bg-china-red/10 text-china-red flex items-center justify-center font-bold">
+              <BookOpen className="w-4 h-4" />
+            </div>
+            <div>
+              <h2 className="text-base font-bold text-china-ink">
+                Tủ Sách Giáo Trình Chuẩn HSK 3.0
+              </h2>
+              <p className="text-xs text-muted">
+                Nhấp vào bìa sách để mở danh sách bài học, đoạn văn đọc hiểu và bài luyện nghe
+              </p>
+            </div>
           </div>
+          <div className="flex items-center gap-1.5 self-start sm:self-auto text-xs font-semibold px-3 py-1 rounded-full bg-china-paper border border-border text-muted">
+            <span>Chuẩn HSK 3.0 Mới Nhất</span>
+          </div>
+        </div>
 
-          <div className="space-y-2">
-            {books.map((book) => {
+        {/* 6 Real 3D Books Grid */}
+        <div className="pt-2">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5 sm:gap-6 items-end justify-items-center">
+            {books.slice(0, 6).map((book) => {
               const isSelected = selectedBook?.id === book.id
               return (
                 <button
                   key={book.id}
                   onClick={() => handleSelectBook(book)}
-                  className={`w-full text-left p-4 rounded-2xl border transition-all flex items-center justify-between gap-3 cursor-pointer ${
-                    isSelected
-                      ? 'bg-white border-china-red shadow-sm ring-1 ring-china-red/20'
-                      : 'bg-china-paper/60 border-border/80 hover:bg-white hover:border-border'
-                  }`}
+                  className="group flex flex-col items-center text-center focus:outline-none cursor-pointer w-full max-w-[150px]"
                 >
-                  <div className="flex items-center gap-3 min-w-0">
-                    <div
-                      className={`w-11 h-11 rounded-xl flex items-center justify-center font-bold text-white shadow-xs shrink-0 bg-gradient-to-br ${book.colorTheme}`}
-                    >
-                      H{book.level}
-                    </div>
-                    <div className="min-w-0">
-                      <div className="flex items-center gap-2">
-                        <h3 className={`text-sm font-bold truncate ${isSelected ? 'text-china-red' : 'text-china-ink'}`}>
-                          {book.title}
-                        </h3>
-                      </div>
-                      <p className="text-xs text-muted truncate">
-                        <span className="font-chinese" lang="zh">{book.chineseTitle}</span> • {book.totalLessons} bài học
-                      </p>
-                    </div>
-                  </div>
-
-                  <span
-                    className={`shrink-0 text-[10px] font-semibold px-2 py-0.5 rounded-full ${
+                  {/* 3D Book Cover Graphic */}
+                  <div
+                    className={`relative w-full aspect-[1/1.42] rounded-r-xl rounded-l-xs overflow-hidden transition-all duration-300 ease-out select-none ${
                       isSelected
-                        ? 'bg-china-red/10 text-china-red'
-                        : 'bg-neutral-100 text-muted'
+                        ? '-translate-y-3 scale-[1.04] shadow-[0_22px_35px_-5px_rgba(200,16,46,0.35)] ring-3 ring-china-red ring-offset-2 ring-offset-white'
+                        : 'shadow-[0_8px_16px_-4px_rgba(0,0,0,0.2)] group-hover:shadow-[0_18px_28px_-4px_rgba(0,0,0,0.3)] group-hover:-translate-y-2 group-hover:scale-[1.02]'
                     }`}
                   >
-                    {book.badge || `Cấp ${book.level}`}
-                  </span>
+                    {/* Real Book Cover Image */}
+                    {book.coverImage ? (
+                      <Image
+                        src={book.coverImage}
+                        alt={book.title}
+                        fill
+                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw"
+                        className="object-cover"
+                        priority={book.level <= 2}
+                      />
+                    ) : (
+                      <div className={`w-full h-full bg-gradient-to-br ${book.colorTheme} flex items-center justify-center text-white font-bold text-2xl`}>
+                        H{book.level}
+                      </div>
+                    )}
+
+                    {/* Realistic 3D Book Spine Effect (Left Side Lighting & Crease) */}
+                    <div className="absolute inset-y-0 left-0 w-3.5 bg-gradient-to-r from-black/35 via-white/20 to-transparent pointer-events-none" />
+                    <div className="absolute inset-y-0 left-3 w-[1px] bg-black/15 pointer-events-none" />
+
+                    {/* Realistic Book Page Edge Sheen (Right Side Edge) */}
+                    <div className="absolute inset-y-0 right-0 w-1.5 bg-gradient-to-l from-black/20 via-white/10 to-transparent pointer-events-none" />
+
+                    {/* Level Badge Overlay on Book */}
+                    <div className="absolute top-2 right-2 bg-china-ink/80 backdrop-blur-md text-white text-[10px] font-bold px-1.5 py-0.5 rounded shadow-xs">
+                      HSK {book.level}
+                    </div>
+
+                    {/* Selected Indicator Ribbon */}
+                    {isSelected && (
+                      <div className="absolute bottom-0 inset-x-0 bg-china-red text-white text-[10px] font-bold py-1 text-center shadow-md animate-fade-in flex items-center justify-center gap-1">
+                        <span>✓ Đang mở</span>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Book Info Underneath */}
+                  <div className="mt-3 space-y-0.5 w-full">
+                    <h3 className={`text-xs font-bold transition-colors truncate ${isSelected ? 'text-china-red font-black' : 'text-china-ink group-hover:text-china-red'}`}>
+                      HSK {book.level}
+                    </h3>
+                    <p className="text-[11px] text-muted truncate">
+                      {book.totalLessons} bài học
+                    </p>
+                    <span className={`inline-block text-[9px] font-semibold px-1.5 py-0.5 rounded-full ${isSelected ? 'bg-china-red/10 text-china-red font-bold' : 'bg-neutral-100 text-muted'}`}>
+                      {book.badge}
+                    </span>
+                  </div>
                 </button>
               )
             })}
           </div>
+
+          {/* Realistic Wooden Shelf Ledge */}
+          <div className="mt-5 pt-1 border-b-4 border-amber-900/20 rounded-full mx-2 shadow-[0_2px_4px_rgba(0,0,0,0.06)]" />
         </div>
+      </section>
 
-        {/* Right: Selected Book Lessons (8 cols) */}
-        <div className="lg:col-span-8 space-y-4">
-          {selectedBook && (
-            <>
-              {/* Selected Book Header Card */}
-              <div className="bg-white border border-border rounded-2xl p-5 shadow-xs">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs font-bold text-china-red uppercase tracking-wider">
-                        {selectedBook.badge}
-                      </span>
-                      <span className="text-muted text-xs">•</span>
-                      <span className="text-xs text-muted font-chinese" lang="zh">{selectedBook.chineseTitle}</span>
-                    </div>
-                    <h2 className="text-xl font-bold text-china-ink mt-0.5">
-                      {selectedBook.title}
-                    </h2>
-                    <p className="text-xs text-muted mt-1 leading-relaxed">
-                      {selectedBook.description}
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Lessons List */}
-              <div className="space-y-3">
-                <div className="flex items-center justify-between px-1">
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-muted">
-                    Danh Sách Bài Học ({lessons.length} bài)
-                  </h3>
-                </div>
-
-                {lessons.length > 0 ? (
-                  <div className="grid grid-cols-1 gap-3">
-                    {lessons.map((lesson) => {
-                      const vocabCount = lesson.vocabulary?.length || 0
-                      const dialogueCount = lesson.dialogues?.length || 0
-
-                      return (
-                        <div
-                          key={lesson.id}
-                          className="bg-white border border-border hover:border-china-red/30 rounded-2xl p-4.5 shadow-xs hover:shadow-sm transition group"
-                        >
-                          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                            <div className="flex items-start gap-3.5">
-                              <div className="w-10 h-10 rounded-xl bg-china-paper border border-border/70 flex items-center justify-center text-sm font-bold text-china-red shrink-0 group-hover:bg-china-red group-hover:text-white transition">
-                                {lesson.lessonNumber}
-                              </div>
-
-                              <div>
-                                <div className="flex items-center gap-2">
-                                  <h4 className="text-base font-bold font-chinese text-china-ink group-hover:text-china-red transition" lang="zh">
-                                    {lesson.title}
-                                  </h4>
-                                  {lesson.titlePinyin && (
-                                    <span className="text-xs text-china-red font-medium">
-                                      {lesson.titlePinyin}
-                                    </span>
-                                  )}
-                                </div>
-                                <p className="text-xs font-medium text-slate-600 mt-0.5">
-                                  {lesson.titleVi}
-                                </p>
-
-                                <div className="flex items-center gap-3 mt-2 text-[11px] text-muted">
-                                  <span className="flex items-center gap-1">
-                                    <BookOpen className="w-3 h-3 text-china-red" />
-                                    {vocabCount} từ vựng
-                                  </span>
-                                  {dialogueCount > 0 && (
-                                    <span className="flex items-center gap-1">
-                                      <Layers className="w-3 h-3 text-blue-600" />
-                                      {dialogueCount} câu hội thoại
-                                    </span>
-                                  )}
-                                </div>
-                              </div>
-                            </div>
-
-                            <div className="flex items-center gap-2 self-end sm:self-center">
-                              <Link
-                                href={`/books/${selectedBook.id}/${lesson.id}`}
-                                className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-china-red hover:bg-china-red/90 text-white text-xs font-bold transition shadow-xs active:scale-95"
-                              >
-                                <span>Học bài này</span>
-                                <ChevronRight className="w-3.5 h-3.5" />
-                              </Link>
-                            </div>
-                          </div>
-                        </div>
-                      )
-                    })}
-                  </div>
+      {/* Selected Book Overview & Lessons List */}
+      {selectedBook && (
+        <section className="space-y-4">
+          {/* Selected Book Header Card */}
+          <div className="bg-white border border-border rounded-3xl p-5 sm:p-6 shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
+            <div className="flex items-center gap-4 min-w-0">
+              {/* Selected Book Real Cover Miniature */}
+              <div className="relative w-16 sm:w-20 aspect-[1/1.42] shrink-0 rounded-r-lg rounded-l-xs overflow-hidden shadow-md ring-2 ring-china-red/20">
+                {selectedBook.coverImage ? (
+                  <Image
+                    src={selectedBook.coverImage}
+                    alt={selectedBook.title}
+                    fill
+                    sizes="80px"
+                    className="object-cover"
+                  />
                 ) : (
-                  <div className="bg-white border border-border rounded-2xl p-8 text-center text-muted">
-                    <BookOpen className="w-8 h-8 text-neutral-300 mx-auto mb-2" />
-                    <p className="text-sm font-semibold text-china-ink">Các bài học đang được hoàn thiện</p>
-                    <p className="text-xs text-muted max-w-sm mx-auto mt-1">
-                      Nội dung giáo trình này sẽ được cập nhật sớm nhất trong các phiên bản tiếp theo.
-                    </p>
+                  <div className={`w-full h-full bg-gradient-to-br ${selectedBook.colorTheme} flex items-center justify-center text-white font-bold`}>
+                    H{selectedBook.level}
                   </div>
                 )}
+                <div className="absolute inset-y-0 left-0 w-2 bg-gradient-to-r from-black/30 via-white/20 to-transparent pointer-events-none" />
               </div>
-            </>
-          )}
-        </div>
-      </div>
+
+              {/* Book Details */}
+              <div className="space-y-1 min-w-0">
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-bold text-china-red uppercase tracking-wider">
+                    {selectedBook.badge || `Cấp ${selectedBook.level}`}
+                  </span>
+                  <span className="text-muted text-xs">•</span>
+                  <span className="text-xs text-muted font-chinese" lang="zh">
+                    {selectedBook.chineseTitle}
+                  </span>
+                </div>
+                <h2 className="text-lg sm:text-xl font-bold text-china-ink truncate">
+                  {selectedBook.title}
+                </h2>
+                <p className="text-xs text-muted leading-relaxed line-clamp-2 max-w-2xl">
+                  {selectedBook.description}
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3 shrink-0 self-end md:self-center">
+              <span className="text-xs font-semibold px-3 py-1.5 rounded-xl bg-china-paper text-china-ink border border-border">
+                {lessons.length} bài học có sẵn
+              </span>
+            </div>
+          </div>
+
+          {/* Lessons Grid */}
+          <div className="space-y-3">
+            <div className="flex items-center justify-between px-1">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-muted flex items-center gap-2">
+                <span>Danh Sách Bài Học</span>
+                <span className="text-[11px] font-normal text-muted">({lessons.length} bài)</span>
+              </h3>
+            </div>
+
+            {lessons.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+                {lessons.map((lesson) => {
+                  const vocabCount = lesson.vocabulary?.length || 0
+                  const dialogueCount = lesson.dialogues?.length || 0
+
+                  return (
+                    <div
+                      key={lesson.id}
+                      className="bg-white border border-border hover:border-china-red/30 rounded-2xl p-4.5 shadow-xs hover:shadow-sm transition-all group flex flex-col justify-between gap-3"
+                    >
+                      <div className="flex items-start gap-3.5">
+                        <div className="w-10 h-10 rounded-xl bg-china-paper border border-border/70 flex items-center justify-center text-sm font-bold text-china-red shrink-0 group-hover:bg-china-red group-hover:text-white transition">
+                          {lesson.lessonNumber}
+                        </div>
+
+                        <div className="min-w-0">
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <h4 className="text-base font-bold font-chinese text-china-ink group-hover:text-china-red transition" lang="zh">
+                              {lesson.title}
+                            </h4>
+                            {lesson.titlePinyin && (
+                              <span className="text-xs text-china-red font-medium">
+                                {lesson.titlePinyin}
+                              </span>
+                            )}
+                          </div>
+                          <p className="text-xs font-medium text-slate-600 mt-0.5 line-clamp-1">
+                            {lesson.titleVi}
+                          </p>
+
+                          <div className="flex items-center gap-3 mt-2 text-[11px] text-muted">
+                            <span className="flex items-center gap-1">
+                              <BookOpen className="w-3 h-3 text-china-red" />
+                              {vocabCount} từ vựng
+                            </span>
+                            {dialogueCount > 0 && (
+                              <span className="flex items-center gap-1">
+                                <Layers className="w-3 h-3 text-blue-600" />
+                                {dialogueCount} câu hội thoại
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center justify-end pt-2 border-t border-border/40">
+                        <Link
+                          href={`/books/${selectedBook.id}/${lesson.id}`}
+                          className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-china-red hover:bg-china-red/90 text-white text-xs font-bold transition shadow-xs active:scale-95"
+                        >
+                          <span>Học bài này</span>
+                          <ChevronRight className="w-3.5 h-3.5" />
+                        </Link>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            ) : (
+              <div className="bg-white border border-border rounded-3xl p-8 sm:p-12 text-center space-y-3">
+                <div className="w-24 h-24 mx-auto drop-shadow-sm">
+                  <Image
+                    src="/chibi-brush.svg"
+                    alt="Tiểu Lu đang chuẩn bị bài học"
+                    width={96}
+                    height={96}
+                    className="object-contain"
+                  />
+                </div>
+                <h4 className="text-base font-bold text-china-ink">
+                  Tiểu Lu đang biên soạn Giáo trình Chuẩn HSK {selectedBook.level}!
+                </h4>
+                <p className="text-xs text-muted max-w-md mx-auto leading-relaxed">
+                  Nội dung đầy đủ của <b>{selectedBook.title}</b> bao gồm từ vựng, hội thoại mẫu và ngữ pháp đang được hoàn thiện và sẽ sớm ra mắt bạn. Hãy bắt đầu ôn tập với <b>Giáo trình Chuẩn HSK 1</b> nhé!
+                </p>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
     </div>
   )
 }

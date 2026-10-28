@@ -3,15 +3,15 @@ import { usePathname } from "next/navigation";
 import Link from 'next/link'
 import Image from 'next/image'
 import styles from './sideBar.module.css'
-import { BookOpen, Eye, LayoutDashboard, ReceiptText, Sparkles } from "lucide-react";
+import { BookOpen, Eye, LayoutDashboard, ReceiptText, BookMarked } from "lucide-react";
 import UserMenu from "@/components/auth/UserMenu";
 
 const navItems = [
   { href: "/", label: "Dashboard", shortLabel: "Home", icon: LayoutDashboard },
-  { href: "/books", label: "Giáo trình HSK", shortLabel: "Sách", icon: BookOpen },
+  { href: "/books", label: "Giáo trình HSK 3.0", shortLabel: "HSK 3.0", icon: BookOpen },
   { href: "/vocabulary", label: "Từ vựng HSK", shortLabel: "Từ vựng", icon: ReceiptText },
   { href: "/review", label: "Ôn tập SRS", shortLabel: "Ôn tập", icon: Eye },
-  { href: "/bonus", label: "Từ mở rộng", shortLabel: "Mở rộng", icon: Sparkles },
+  { href: "/bonus", label: "Từ mở rộng", shortLabel: "Mở rộng", icon: BookMarked },
 ]
 
 const SideBar = () => {
@@ -20,10 +20,10 @@ const SideBar = () => {
   return (
     <>
       {/* Desktop & Tablet Sidebar */}
-      <aside className='hidden md:flex flex-col w-16 lg:w-56 shrink-0 border-r border-border/80 px-2 lg:px-3 pt-4 pb-3 space-y-2.5 transition-all duration-300 bg-china-paper/60 select-none'>
+      <aside className='hidden md:flex flex-col w-16 lg:w-56 shrink-0 border-r border-border/80 px-2 lg:px-3 pt-5 pb-3 transition-all duration-300 bg-china-paper/60 select-none'>
         
         {/* Brand Header */}
-        <div className="flex items-center gap-3 px-1 lg:px-2 py-1 mb-1">
+        <div className="flex items-center gap-3 px-1 lg:px-2 py-1 mb-5 lg:mb-6">
           <div className="w-10 h-10 rounded-2xl bg-white border border-border shadow-xs p-1 shrink-0 flex items-center justify-center transition-transform hover:scale-105">
             <Image
               src="/chibi-loading.svg"
@@ -46,7 +46,7 @@ const SideBar = () => {
         </div>      
 
         {/* Navigation Items */}
-        <nav className="flex-1 space-y-1.5 overflow-y-auto custom-scrollbar pt-1">
+        <nav className="flex-1 space-y-2 overflow-y-auto custom-scrollbar">
           {navItems.map((item) => {
             const isActive = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href)
             const Icon = item.icon

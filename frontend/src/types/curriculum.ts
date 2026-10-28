@@ -7,6 +7,7 @@ export interface BookCourse {
   totalLessons: number
   badge?: string
   colorTheme: string
+  coverImage?: string
   isCustom?: boolean
 }
 
@@ -31,6 +32,23 @@ export interface CurriculumDialogue {
   vietnamese?: string
 }
 
+export interface CurriculumReadingPassage {
+  title?: string
+  content: string
+  pinyin?: string
+  vietnamese?: string
+}
+
+export interface CurriculumListeningExercise {
+  id: string
+  audioText: string
+  question: string
+  questionPinyin?: string
+  options: string[]
+  answerIndex: number
+  explanation?: string
+}
+
 export interface CurriculumLesson {
   id: string
   bookId: string
@@ -40,6 +58,8 @@ export interface CurriculumLesson {
   titlePinyin?: string
   vocabulary: CurriculumWord[]
   dialogues?: CurriculumDialogue[]
+  readingPassage?: CurriculumReadingPassage
+  listeningExercises?: CurriculumListeningExercise[]
   grammarNotes?: string[]
   updatedAt?: number
   isCustom?: boolean

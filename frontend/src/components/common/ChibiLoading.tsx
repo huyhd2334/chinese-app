@@ -3,7 +3,7 @@
 import React from "react"
 import Image from "next/image"
 import { useAuth } from "@/contexts/AuthContext"
-import { LogIn, Sparkles } from "lucide-react"
+import { LogIn } from "lucide-react"
 
 export interface ChibiLoadingProps {
   /**
@@ -114,7 +114,7 @@ export default function ChibiLoading({
               >
                 <LogIn className="w-4 h-4" />
                 <span>Đăng nhập ngay</span>
-                <Sparkles className="w-3.5 h-3.5 text-china-gold" />
+                
               </button>
             </div>
           )}

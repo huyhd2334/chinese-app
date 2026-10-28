@@ -186,10 +186,10 @@ export default function LessonDetailPage() {
           <div className="space-y-2 max-w-xl">
             <div className="flex items-center gap-2">
               <span className="px-3 py-1 rounded-full text-xs font-bold bg-china-red text-white shadow-xs">
-                Bài {lesson.lessonNumber}
+                HSK 3.0 • Bài {lesson.lessonNumber}
               </span>
               <span className="text-xs font-semibold text-slate-700 bg-white/80 px-2.5 py-0.5 rounded-full border border-border">
-                {book?.chineseTitle} • Cấp {book?.level || 1}
+                {book?.chineseTitle || '新HSK教程 1 (3.0)'} • Cấp {book?.level || 1}
               </span>
             </div>
 
@@ -263,7 +263,7 @@ export default function LessonDetailPage() {
           className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl hover:bg-china-paper text-china-ink hover:text-china-red transition shrink-0"
         >
           <Layers className="w-3.5 h-3.5 text-blue-600" />
-          <span>III. Bài Khóa ({lesson.dialogues?.length || 0})</span>
+          <span>III. Đoạn Văn &amp; Bài Khóa</span>
         </button>
 
         {lesson.grammarNotes && lesson.grammarNotes.length > 0 && (
@@ -281,7 +281,7 @@ export default function LessonDetailPage() {
           className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-china-red/10 text-china-red hover:bg-china-red hover:text-white transition shrink-0 font-bold"
         >
           <Puzzle className="w-3.5 h-3.5" />
-          <span>V. Bài Tập (Workbook)</span>
+          <span>V. Bài Tập &amp; Luyện Nghe</span>
         </button>
       </div>
 
@@ -399,10 +399,10 @@ export default function LessonDetailPage() {
             </div>
             <div>
               <h2 className="text-xl font-bold font-serif text-china-ink">
-                课文 - Bài Khóa Hội Thoại Tương Tác
+                课文与短文 - Đoạn Văn Đọc Hiểu &amp; Bài Khóa
               </h2>
               <p className="text-xs text-muted">
-                Bấm vào bất kỳ chữ Hán nào trong câu để tra từ điển tức thì và nghe phát âm
+                Đọc đoạn văn liền mạch hoặc hội thoại phân vai, bấm vào từng chữ để tra cứu &amp; nghe audio
               </p>
             </div>
           </div>
@@ -416,6 +416,7 @@ export default function LessonDetailPage() {
           dialogues={lesson.dialogues || []}
           vocabulary={lesson.vocabulary}
           lessonTitle={lesson.title}
+          readingPassage={lesson.readingPassage}
         />
       </section>
 
@@ -484,6 +485,7 @@ export default function LessonDetailPage() {
           words={lesson.vocabulary}
           dialogues={lesson.dialogues}
           lessonTitle={lesson.title}
+          listeningExercises={lesson.listeningExercises}
         />
       </section>
 
