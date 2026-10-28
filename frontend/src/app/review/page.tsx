@@ -2,12 +2,15 @@
 
 import { useEffect, useState, useCallback, useMemo } from "react"
 import useVocab from "../../../hooks/useVocab"
+import { db } from "../../../db/database"
 import Link from "next/link"
-import { 
-  Volume2, Sparkles, BookOpen, PenTool, CheckCircle2, 
-  ChevronDown, ArrowRight, RotateCw, Check, Flame, Trophy, Filter
-} from "lucide-react"
+import { Volume2, RotateCw } from "lucide-react"
 import { getHanViet } from "@/utils/hanviet"
+import {
+  FREE_REVIEW_LIMIT,
+  getLocalSubscription,
+  triggerUpgradeModal,
+} from "@/utils/subscription"
 
 type FilterType = "due" | "new" | "learning" | "review" | "mastered" | "all"
 
@@ -17,29 +20,71 @@ export default function ReviewPage() {
   const [showAnswer, setShowAnswer] = useState(false)
   const [filter, setFilter] = useState<FilterType>("due")
   const [hskFilter, setHskFilter] = useState<number | "all">("all")
-  const [isFilterOpen, setIsFilterOpen] = useState(false)
-  const [completedCount, setCompletedCount] = useState(0)
+  const [autoAudio, setAutoAudio] = useState(true)
+  const [sessionReviewed, setSessionReviewed] = useState(0)
 
-  const filterOptions = [
-    { value: "due", label: "Cần ôn tập hôm nay" },
-    { value: "new", label: "Từ mới chưa học" },
-    { value: "learning", label: "Đang học" },
-    { value: "review", label: "Đang ôn tập" },
-    { value: "mastered", label: "Đã thuần thục" },
-    { value: "all", label: "Tất cả từ vựng" },
+  // Thống kê toàn bộ từ trong Review & trạng thái gói cước
+  const [totalReviewWords, setTotalReviewWords] = useState(0)
+  const [statusCounts, setStatusCounts] = useState({
+    due: 0,
+    new: 0,
+    learning: 0,
+    review: 0,
+    mastered: 0,
+    all: 0,
+  })
+  const [isPro, setIsPro] = useState(false)
+
+  const filterTabs: { value: FilterType; label: string; countKey: keyof typeof statusCounts }[] = [
+    { value: "due", label: "Cần ôn hôm nay", countKey: "due" },
+    { value: "new", label: "Từ mới", countKey: "new" },
+    { value: "learning", label: "Đang học", countKey: "learning" },
+    { value: "review", label: "Đang ôn", countKey: "review" },
+    { value: "mastered", label: "Đã thuộc", countKey: "mastered" },
+    { value: "all", label: "Tất cả", countKey: "all" },
   ]
+
+  const refreshGlobalStats = useCallback(async () => {
+    try {
+      const allItems = await db.reviewItems.toArray()
+      const now = Date.now()
+      setTotalReviewWords(allItems.length)
+      setStatusCounts({
+        due: allItems.filter((i) => i.dueAt <= now).length,
+        new: allItems.filter((i) => i.status === "new").length,
+        learning: allItems.filter((i) => i.status === "learning").length,
+        review: allItems.filter((i) => i.status === "review").length,
+        mastered: allItems.filter((i) => i.status === "mastered").length,
+        all: allItems.length,
+      })
+    } catch (e) {
+      console.error(e)
+    }
+  }, [])
+
+  useEffect(() => {
+    const checkSub = () => {
+      const sub = getLocalSubscription()
+      setIsPro(
+        (sub.plan === "pro_monthly" || sub.plan === "pro_yearly") &&
+          (!sub.expiresAt || sub.expiresAt > Date.now())
+      )
+    }
+    checkSub()
+    window.addEventListener("hsk-subscription-updated", checkSub)
+    return () => window.removeEventListener("hsk-subscription-updated", checkSub)
+  }, [])
 
   useEffect(() => {
     loadReview(filter)
-  }, [filter, loadReview])
+    refreshGlobalStats()
+  }, [filter, loadReview, refreshGlobalStats])
 
   useEffect(() => {
     setCurrentIndex(0)
     setShowAnswer(false)
-    setCompletedCount(0)
   }, [cards, hskFilter])
 
-  // Get HSK Level number safely
   const getHskLevelNumber = useCallback((word: any) => {
     if (word?.hskLevel && Array.isArray(word.hskLevel) && word.hskLevel.length > 0) {
       return word.hskLevel[0]
@@ -50,23 +95,16 @@ export default function ReviewPage() {
     return null
   }, [])
 
-  // Filter cards by HSK level
   const displayedCards = useMemo(() => {
     if (hskFilter === "all") return cards
-    return cards.filter(c => {
-      const lv = getHskLevelNumber(c.word)
-      return lv === hskFilter
-    })
+    return cards.filter((c) => getHskLevelNumber(c.word) === hskFilter)
   }, [cards, hskFilter, getHskLevelNumber])
 
-  // Count cards by HSK level
   const hskCounts = useMemo(() => {
     const counts: Record<number, number> = {}
     for (const c of cards) {
       const lv = getHskLevelNumber(c.word)
-      if (lv) {
-        counts[lv] = (counts[lv] || 0) + 1
-      }
+      if (lv) counts[lv] = (counts[lv] || 0) + 1
     }
     return counts
   }, [cards, getHskLevelNumber])
@@ -86,35 +124,65 @@ export default function ReviewPage() {
     }
   }, [])
 
-  const handleResult = useCallback(async (action: "again" | "hard" | "good" | "easy") => {
-    if (!currentCard) return
-    try {
-      if (action === "again") await markUnknown(currentCard.reviewId)
-      if (action === "hard") await markHard(currentCard.reviewId)
-      if (action === "good") await markKnown(currentCard.reviewId)
-      if (action === "easy") await markEasy(currentCard.reviewId)
-
-      setCompletedCount(prev => prev + 1)
-
-      if (currentIndex >= displayedCards.length - 1) {
-        await loadReview(filter)
-        return
-      }
-      setCurrentIndex(prev => prev + 1)
-      setShowAnswer(false)
-    } catch (error) {
-      console.error("Review update error:", error)
+  // Tự động phát âm khi lật đáp án
+  const handleRevealAnswer = useCallback(() => {
+    setShowAnswer(true)
+    if (autoAudio && currentCard?.word?.hanzi) {
+      playAudio(currentCard.word.hanzi)
     }
-  }, [currentCard, currentIndex, displayedCards.length, filter, loadReview, markEasy, markHard, markKnown, markUnknown])
+  }, [autoAudio, currentCard, playAudio])
 
-  // Keyboard shortcuts
+  const handleResult = useCallback(
+    async (action: "again" | "hard" | "good" | "easy") => {
+      if (!currentCard) return
+      try {
+        if (action === "again") await markUnknown(currentCard.reviewId)
+        if (action === "hard") await markHard(currentCard.reviewId)
+        if (action === "good") await markKnown(currentCard.reviewId)
+        if (action === "easy") await markEasy(currentCard.reviewId)
+
+        setSessionReviewed((prev) => prev + 1)
+        await refreshGlobalStats()
+
+        if (currentIndex >= displayedCards.length - 1) {
+          await loadReview(filter)
+          return
+        }
+        setCurrentIndex((prev) => prev + 1)
+        setShowAnswer(false)
+      } catch (error) {
+        console.error("Review update error:", error)
+      }
+    },
+    [
+      currentCard,
+      currentIndex,
+      displayedCards.length,
+      filter,
+      loadReview,
+      markEasy,
+      markHard,
+      markKnown,
+      markUnknown,
+      refreshGlobalStats,
+    ]
+  )
+
+  // Phím tắt bàn phím
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return
 
       if (e.code === "Space") {
         e.preventDefault()
-        setShowAnswer(prev => !prev)
+        if (!showAnswer) {
+          handleRevealAnswer()
+        } else {
+          setShowAnswer(false)
+        }
+      } else if (e.key === "r" || e.key === "R") {
+        e.preventDefault()
+        playAudio(currentCard?.word?.hanzi)
       } else if (showAnswer) {
         if (e.key === "1") {
           e.preventDefault()
@@ -134,121 +202,127 @@ export default function ReviewPage() {
 
     window.addEventListener("keydown", handleKeyDown)
     return () => window.removeEventListener("keydown", handleKeyDown)
-  }, [showAnswer, handleResult])
+  }, [showAnswer, handleResult, handleRevealAnswer, currentCard, playAudio])
 
   const hskNum = currentCard ? getHskLevelNumber(currentCard.word) : null
-  const cardHanViet = currentCard ? getHanViet(currentCard.word.hanzi, currentCard.word.traditional, currentCard.word.pinyinNumeric) : ""
+  const cardHanViet = currentCard
+    ? getHanViet(currentCard.word.hanzi, currentCard.word.traditional, currentCard.word.pinyinNumeric)
+    : ""
 
-  // Status mapping
+  // Tính toán khoảng thời gian lặp lại dự kiến (Anki SRS Preview)
+  const nextIntervals = useMemo(() => {
+    const item = currentCard?.reviewItem
+    if (!item) {
+      return { again: "10 phút", hard: "1 ngày", good: "1 ngày", easy: "4 ngày" }
+    }
+    const hardDays = item.interval > 0 ? Math.max(1, Math.round(item.interval * 1.2)) : 1
+    const goodDays = Math.min(365, item.interval > 0 ? Math.round(item.interval * item.easeFactor) : 1)
+    const easyDays = Math.min(365, item.interval > 0 ? Math.round(item.interval * item.easeFactor * 1.3) : 4)
+    return {
+      again: "10 phút",
+      hard: `${hardDays} ngày`,
+      good: `${goodDays} ngày`,
+      easy: `${easyDays} ngày`,
+    }
+  }, [currentCard])
+
   const getStatusBadge = (status: string) => {
     switch (status) {
       case "new":
-        return { label: "Từ mới", color: "bg-blue-50 text-blue-700 border-blue-200" }
+        return { label: "Từ mới", color: "bg-china-paper text-china-ink border-border" }
       case "learning":
-        return { label: "Đang học", color: "bg-amber-50 text-amber-700 border-amber-200" }
+        return { label: "Đang học", color: "bg-amber-50 text-amber-800 border-amber-200" }
       case "review":
-        return { label: "Cần ôn", color: "bg-purple-50 text-purple-700 border-purple-200" }
+        return { label: "Đang ôn", color: "bg-blue-50 text-blue-700 border-blue-200" }
       case "mastered":
         return { label: "Đã thuộc", color: "bg-emerald-50 text-emerald-700 border-emerald-200" }
       default:
-        return { label: status, color: "bg-gray-50 text-gray-700 border-gray-200" }
+        return { label: status, color: "bg-china-paper text-muted border-border" }
     }
   }
 
+  const quotaPercent = Math.min(100, Math.round((totalReviewWords / FREE_REVIEW_LIMIT) * 100))
+
   return (
-    <div className="mx-auto w-full max-w-3xl px-3 sm:px-6 py-4 sm:py-8 space-y-5">
-      {/* Top Header */}
-      <div className="space-y-3">
+    <div className="mx-auto w-full max-w-4xl px-3 sm:px-6 py-4 sm:py-6 space-y-5">
+      {/* 1. Header & Quota Card */}
+      <div className="bg-card rounded-2xl border border-border p-4 sm:p-5 shadow-2xs space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
-            <h1 className="text-2xl sm:text-3xl font-bold font-serif text-china-red flex items-center gap-2">
-              <span>复习</span>
-              <span className="text-lg sm:text-xl font-sans text-china-ink font-semibold">Ôn tập từ vựng</span>
-            </h1>
-            <p className="text-xs sm:text-sm text-muted mt-0.5">
-              Hệ thống lặp lại ngắt quãng (Spaced Repetition)
+            <div className="flex items-center gap-2">
+              <h1 className="text-xl sm:text-2xl font-serif font-bold text-china-ink">
+                Ôn tập từ vựng
+              </h1>
+              <span className="px-2 py-0.5 rounded-md bg-china-paper border border-border text-[11px] font-medium text-muted">
+                Spaced Repetition
+              </span>
+            </div>
+            <p className="text-xs text-muted mt-0.5">
+              Ghi nhớ dài hạn theo chu kỳ đường cong quên lãng · Đã ôn {sessionReviewed} từ trong phiên này
             </p>
           </div>
 
-          <div className="flex items-center gap-2 sm:gap-3">
-            {/* Filter Dropdown */}
-            <div className="relative">
-              <button 
-                onClick={() => setIsFilterOpen(!isFilterOpen)}
-                className="flex items-center gap-2 rounded-xl border border-border bg-card px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium text-china-ink shadow-xs hover:border-china-red/30 transition-all outline-none focus:ring-2 focus:ring-china-red/20 justify-between group"
-              >
-                <span className="group-hover:text-china-red transition-colors">
-                  {filterOptions.find(o => o.value === filter)?.label}
+          {/* Thanh dung lượng Free 500 từ hoặc Huy hiệu Pro */}
+          <div className="flex items-center gap-3 bg-china-paper/80 px-3.5 py-2 rounded-xl border border-border self-start sm:self-auto">
+            {isPro ? (
+              <div className="flex items-center gap-2 text-xs">
+                <span className="px-2 py-0.5 bg-china-ink text-china-gold font-bold text-[10px] rounded uppercase">
+                  PRO
                 </span>
-                <ChevronDown className={`w-3.5 h-3.5 text-muted group-hover:text-china-red transition-transform duration-200 ${isFilterOpen ? 'rotate-180' : ''}`} />
-              </button>
-              
-              {isFilterOpen && (
-                <>
-                  <div className="fixed inset-0 z-20" onClick={() => setIsFilterOpen(false)}></div>
-                  <div className="absolute right-0 mt-2 w-52 rounded-xl border border-border bg-card shadow-xl z-30 overflow-hidden animate-fade-in">
-                    <div className="py-1">
-                      {filterOptions.map((opt) => (
-                        <button
-                          key={opt.value}
-                          onClick={() => {
-                            setFilter(opt.value as FilterType)
-                            setIsFilterOpen(false)
-                          }}
-                          className={`w-full flex items-center justify-between px-3.5 py-2 text-xs sm:text-sm transition-colors ${
-                            filter === opt.value 
-                              ? 'bg-china-red/10 text-china-red font-semibold' 
-                              : 'text-china-ink hover:bg-border/30 hover:text-china-red'
-                          }`}
-                        >
-                          {opt.label}
-                          {filter === opt.value && (
-                            <Check className="w-3.5 h-3.5" />
-                          )}
-                        </button>
-                      ))}
-                    </div>
+                <span className="font-semibold text-china-ink">
+                  {totalReviewWords} từ (Không giới hạn)
+                </span>
+              </div>
+            ) : (
+              <div className="flex items-center gap-3">
+                <div className="space-y-1 min-w-[125px]">
+                  <div className="flex justify-between text-[11px]">
+                    <span className="text-muted font-medium">Gói Miễn phí</span>
+                    <span className={`font-bold ${totalReviewWords >= FREE_REVIEW_LIMIT ? "text-china-red" : "text-china-ink"}`}>
+                      {totalReviewWords} / {FREE_REVIEW_LIMIT} từ
+                    </span>
                   </div>
-                </>
-              )}
-            </div>
-
-            {/* Counter */}
-            {displayedCards.length > 0 && (
-              <div className="rounded-full bg-border/60 px-3 py-1 text-xs sm:text-sm font-medium text-china-ink whitespace-nowrap">
-                {currentIndex + 1} / {total}
+                  <div className="h-1.5 w-full bg-border rounded-full overflow-hidden">
+                    <div
+                      className={`h-full rounded-full transition-all ${
+                        quotaPercent >= 90 ? "bg-china-red" : "bg-china-ink"
+                      }`}
+                      style={{ width: `${quotaPercent}%` }}
+                    />
+                  </div>
+                </div>
+                <button
+                  onClick={() => triggerUpgradeModal("manual")}
+                  className="px-2.5 py-1.5 rounded-lg bg-china-red hover:bg-china-red-hover text-white text-[11px] font-bold transition-colors whitespace-nowrap active:scale-95"
+                >
+                  Nâng cấp Pro
+                </button>
               </div>
             )}
           </div>
         </div>
 
-        {/* HSK Level Quick Filter Row */}
-        <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-hide py-1">
-          <button
-            onClick={() => setHskFilter("all")}
-            className={`px-3 py-1 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
-              hskFilter === "all"
-                ? "bg-china-ink text-white shadow-xs font-bold"
-                : "bg-white border border-border text-muted hover:text-china-ink"
-            }`}
-          >
-            Tất cả cấp độ ({cards.length})
-          </button>
-          {[1, 2, 3, 4, 5, 6, 7].map(lv => {
-            const count = hskCounts[lv] || 0
-            if (count === 0 && hskFilter !== lv) return null // Only show active levels with words
+        {/* Bộ lọc Trạng thái dạng Tabs tinh gọn */}
+        <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-hide pt-2 border-t border-border/60">
+          {filterTabs.map((tab) => {
+            const active = filter === tab.value
+            const count = statusCounts[tab.countKey]
             return (
               <button
-                key={lv}
-                onClick={() => setHskFilter(lv)}
-                className={`flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
-                  hskFilter === lv
-                    ? "bg-china-red text-white shadow-xs font-bold"
-                    : "bg-white border border-border text-muted hover:text-china-ink"
+                key={tab.value}
+                onClick={() => setFilter(tab.value)}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
+                  active
+                    ? "bg-china-ink text-white shadow-2xs"
+                    : "bg-china-paper/70 hover:bg-china-paper text-china-ink border border-transparent hover:border-border"
                 }`}
               >
-                <span>HSK {lv}</span>
-                <span className={`text-[10px] px-1 py-0.2 rounded ${hskFilter === lv ? "bg-white/20 text-white" : "bg-china-paper text-muted"}`}>
+                <span>{tab.label}</span>
+                <span
+                  className={`px-1.5 py-0.2 rounded-md text-[10px] font-bold ${
+                    active ? "bg-white/20 text-white" : "bg-white text-muted border border-border/60"
+                  }`}
+                >
                   {count}
                 </span>
               </button>
@@ -256,222 +330,304 @@ export default function ReviewPage() {
           })}
         </div>
 
-        {/* Progress Bar */}
-        {displayedCards.length > 0 && (
-          <div className="h-2 overflow-hidden rounded-full bg-border/60">
-            <div
-              className="h-full rounded-full bg-gradient-to-r from-china-red to-china-gold transition-all duration-300"
-              style={{ width: `${progress}%` }}
-            />
+        {/* Bộ lọc Cấp độ HSK + Thanh tiến độ phiên */}
+        {cards.length > 0 && (
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-1">
+            <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-hide">
+              <button
+                onClick={() => setHskFilter("all")}
+                className={`px-2.5 py-1 rounded-lg text-[11px] font-semibold whitespace-nowrap transition-colors ${
+                  hskFilter === "all"
+                    ? "bg-china-red/10 text-china-red border border-china-red/30"
+                    : "bg-white border border-border text-muted hover:text-china-ink"
+                }`}
+              >
+                Tất cả HSK ({cards.length})
+              </button>
+              {[1, 2, 3, 4, 5, 6, 7].map((lv) => {
+                const c = hskCounts[lv] || 0
+                if (c === 0 && hskFilter !== lv) return null
+                return (
+                  <button
+                    key={lv}
+                    onClick={() => setHskFilter(lv)}
+                    className={`px-2.5 py-1 rounded-lg text-[11px] font-semibold whitespace-nowrap transition-colors ${
+                      hskFilter === lv
+                        ? "bg-china-red text-white"
+                        : "bg-white border border-border text-muted hover:text-china-ink"
+                    }`}
+                  >
+                    HSK {lv} ({c})
+                  </button>
+                )
+              })}
+            </div>
+
+            {displayedCards.length > 0 && (
+              <div className="flex items-center gap-2.5 shrink-0">
+                <span className="text-xs font-mono font-semibold text-china-ink">
+                  Thẻ {currentIndex + 1} / {total}
+                </span>
+                <div className="w-24 h-1.5 bg-border rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-china-red transition-all duration-300"
+                    style={{ width: `${progress}%` }}
+                  />
+                </div>
+              </div>
+            )}
           </div>
         )}
       </div>
 
-      {/* Main Review Area */}
+      {/* 2. Khu vực Thẻ Học Tập Chính */}
       {loading && cards.length === 0 ? (
-        <div className="flex min-h-[45vh] items-center justify-center">
-          <div className="flex flex-col items-center gap-3 text-china-ink">
-            <div className="w-8 h-8 border-3 border-china-red/30 border-t-china-red rounded-full animate-spin"></div>
-            <p className="text-xs sm:text-sm font-medium text-muted">Đang tải thẻ ôn tập...</p>
+        <div className="flex min-h-[420px] items-center justify-center bg-card rounded-3xl border border-border">
+          <div className="flex flex-col items-center gap-3">
+            <div className="w-7 h-7 border-2 border-china-red/30 border-t-china-red rounded-full animate-spin" />
+            <p className="text-xs text-muted">Đang tải thẻ ôn tập...</p>
           </div>
         </div>
       ) : !displayedCards.length ? (
-        /* Empty / Completed state */
-        <div className="flex min-h-[45vh] items-center justify-center p-4">
-          <div className="w-full max-w-md rounded-3xl border border-border bg-card p-6 sm:p-10 text-center shadow-xs">
-            <div className="w-16 h-16 rounded-full bg-china-jade/10 text-china-jade flex items-center justify-center mx-auto mb-4">
-              <Sparkles className="w-8 h-8" />
-            </div>
-            <h2 className="text-xl sm:text-2xl font-serif font-bold text-china-ink mb-2">
-              Xuất sắc! Đã hoàn thành ôn tập
-            </h2>
-            <p className="text-xs sm:text-sm text-muted mb-6">
-              {hskFilter !== "all" 
-                ? `Không còn từ HSK ${hskFilter} nào cần ôn trong mục này.` 
-                : "Bạn không còn từ nào cần ôn trong danh mục này. Hãy duy trì thói quen mỗi ngày nhé!"}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Link 
-                href="/vocabulary"
-                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-china-red text-white text-sm font-semibold hover:bg-china-red-hover transition-all shadow-sm active:scale-95"
+        /* Trạng thái Hoàn Thành */
+        <div className="bg-card rounded-3xl border border-border p-8 sm:p-12 text-center shadow-2xs space-y-4">
+          <div className="inline-block px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold">
+            Hoàn thành mục tiêu
+          </div>
+          <h2 className="text-xl sm:text-2xl font-serif font-bold text-china-ink">
+            {hskFilter !== "all"
+              ? `Không còn từ HSK ${hskFilter} nào trong danh mục này`
+              : "Bạn đã ôn tập xong toàn bộ thẻ đến hạn!"}
+          </h2>
+          <p className="text-xs sm:text-sm text-muted max-w-md mx-auto leading-relaxed">
+            Duy trì việc ôn tập ngắt quãng mỗi ngày giúp bộ não chuyển từ vựng từ trí nhớ ngắn hạn sang trí nhớ dài hạn.
+          </p>
+          <div className="flex flex-wrap gap-3 justify-center pt-2">
+            <Link
+              href="/vocabulary"
+              className="px-5 py-2.5 rounded-xl bg-china-red hover:bg-china-red-hover text-white text-xs sm:text-sm font-semibold transition-all active:scale-95"
+            >
+              + Thêm từ mới từ Kho HSK
+            </Link>
+            {hskFilter !== "all" ? (
+              <button
+                onClick={() => setHskFilter("all")}
+                className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-border bg-white text-china-ink text-xs sm:text-sm font-medium hover:bg-china-paper transition-all"
               >
-                <BookOpen className="w-4 h-4" /> Học thêm từ mới
-              </Link>
-              {hskFilter !== "all" ? (
-                <button
-                  onClick={() => setHskFilter("all")}
-                  className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-border bg-white text-china-ink text-sm font-medium hover:bg-china-paper transition-all shadow-xs"
-                >
-                  <RotateCw className="w-4 h-4" /> Xem tất cả cấp độ
-                </button>
-              ) : (
+                <RotateCw className="w-3.5 h-3.5" /> Xem tất cả cấp độ
+              </button>
+            ) : (
+              filter !== "all" && (
                 <button
                   onClick={() => setFilter("all")}
-                  className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-border bg-white text-china-ink text-sm font-medium hover:bg-china-paper transition-all shadow-xs"
+                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-border bg-white text-china-ink text-xs sm:text-sm font-medium hover:bg-china-paper transition-all"
                 >
-                  <RotateCw className="w-4 h-4" /> Ôn tất cả từ
+                  <RotateCw className="w-3.5 h-3.5" /> Ôn tập toàn bộ ({statusCounts.all} từ)
                 </button>
-              )}
-            </div>
+              )
+            )}
           </div>
         </div>
       ) : currentCard ? (
-        /* Active Card */
-        <div className="rounded-3xl border border-border bg-card shadow-sm overflow-hidden transition-all duration-300">
-          <div className="p-6 sm:p-10 flex flex-col items-center justify-center min-h-[380px] sm:min-h-[420px] relative">
-            
-            {/* Top Badges (HSK Level + Status + Radical) */}
-            <div className="w-full flex items-center justify-between mb-8">
+        <div className="space-y-4">
+          {/* Khung Thẻ Flashcard */}
+          <div className="rounded-3xl border border-border bg-card shadow-xs overflow-hidden transition-all">
+            {/* Thanh thông tin trên cùng của Thẻ */}
+            <div className="flex items-center justify-between px-5 sm:px-8 py-4 border-b border-border/60 bg-china-paper/40">
               <div className="flex items-center gap-2 flex-wrap">
-                {/* HSK Level Badge - Prominent with Level number */}
-                {hskNum ? (
-                  <span className="px-3 py-1 bg-gradient-to-r from-china-red to-[#a30d25] text-white text-xs sm:text-sm font-bold rounded-xl shadow-xs border border-china-red/30 tracking-wide">
+                {hskNum && (
+                  <span className="px-2.5 py-0.5 bg-china-red/10 text-china-red border border-china-red/20 text-xs font-bold rounded-lg">
                     HSK {hskNum}
                   </span>
-                ) : (
-                  <span className="px-2.5 py-0.5 bg-china-paper border border-border text-muted text-xs font-semibold rounded-lg">
-                    HSK
-                  </span>
                 )}
-
-                {/* Status Badge */}
                 {currentCard.status_learning && (
-                  <span className={`px-2.5 py-0.5 text-xs font-medium rounded-lg border ${getStatusBadge(currentCard.status_learning).color}`}>
+                  <span
+                    className={`px-2.5 py-0.5 text-xs font-semibold rounded-lg border ${
+                      getStatusBadge(currentCard.status_learning).color
+                    }`}
+                  >
                     {getStatusBadge(currentCard.status_learning).label}
                   </span>
                 )}
-
-                {/* Radical */}
                 {currentCard.word.radical && (
-                  <span className="hidden sm:inline-block px-2 py-0.5 text-xs font-medium rounded-lg bg-china-paper border border-border text-muted">
-                    Bộ: {currentCard.word.radical}
+                  <span className="px-2.5 py-0.5 text-xs rounded-lg bg-white border border-border text-muted">
+                    Bộ thủ: <b className="font-serif text-china-ink">{currentCard.word.radical}</b>
+                  </span>
+                )}
+                {currentCard.reviewItem && currentCard.reviewItem.repetitions > 0 && (
+                  <span className="hidden sm:inline-block px-2.5 py-0.5 text-[11px] rounded-lg bg-white border border-border text-muted">
+                    Lần lặp #{currentCard.reviewItem.repetitions} · Chu kỳ {currentCard.reviewItem.interval} ngày
                   </span>
                 )}
               </div>
 
-              {/* Speaker Audio Button */}
-              <button
-                title="Phát âm từ này"
-                onClick={() => playAudio(currentCard.word.hanzi)}
-                className="p-2 text-china-red/80 hover:text-china-red hover:bg-china-red/10 rounded-full transition-colors active:scale-95"
-              >
-                <Volume2 className="w-5 h-5 sm:w-6 sm:h-6" />
-              </button>
-            </div>
-
-            {/* Hanzi Presentation */}
-            <div className="text-center my-auto w-full">
-              <h2 className={`font-serif font-bold text-china-ink leading-tight mb-2 tracking-wide whitespace-nowrap transition-transform duration-300 hover:scale-105 select-none ${
-                currentCard.word.hanzi.length <= 1
-                  ? "text-7xl sm:text-8xl md:text-9xl"
-                  : currentCard.word.hanzi.length === 2
-                  ? "text-6xl sm:text-7xl md:text-8xl"
-                  : currentCard.word.hanzi.length === 3
-                  ? "text-4xl sm:text-5xl md:text-6xl"
-                  : "text-3xl sm:text-4xl md:text-5xl"
-              }`}>
-                {currentCard.word.hanzi}
-              </h2>
-
-              {currentCard.word.traditional && currentCard.word.traditional !== currentCard.word.hanzi && (
-                <p className="text-sm sm:text-base font-serif text-muted mb-4 opacity-70">
-                  {currentCard.word.traditional} <span className="text-xs font-sans">(Phồn thể)</span>
-                </p>
-              )}
-
-              {/* Revealed Answer or Show Answer Button */}
-              {showAnswer ? (
-                <div className="space-y-3 mt-6 pt-6 border-t border-border/60 animate-fade-in w-full max-w-lg mx-auto">
-                  {/* Pinyin & Hán-Việt */}
-                  <div className="flex flex-wrap items-center justify-center gap-2.5">
-                    <span className="text-2xl sm:text-3xl font-medium text-china-red tracking-wide">
-                      {currentCard.word.pinyin}
-                    </span>
-                    {cardHanViet && (
-                      <span className="px-2.5 py-1 bg-amber-50 text-amber-800 border border-amber-200/80 rounded-lg text-xs sm:text-sm font-semibold tracking-wide shadow-xs">
-                        Hán-Việt: {cardHanViet}
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Vietnamese / English Meaning */}
-                  <div className="text-base sm:text-lg text-china-ink font-medium leading-relaxed">
-                    {currentCard.word.meanings_vi ? currentCard.word.meanings_vi.join("; ") : currentCard.word.meanings?.join("; ")}
-                  </div>
-
-                  {/* Part of Speech & Classifiers */}
-                  <div className="flex items-center justify-center gap-2 flex-wrap text-xs text-muted pt-2">
-                    {currentCard.word.partOfSpeech && currentCard.word.partOfSpeech.length > 0 && (
-                      <span className="px-2 py-0.5 bg-china-paper border border-border rounded-md font-medium text-china-ink">
-                        {currentCard.word.partOfSpeech.join(" · ")}
-                      </span>
-                    )}
-                    {currentCard.word.classifiers && currentCard.word.classifiers.length > 0 && (
-                      <span className="px-2 py-0.5 bg-china-paper border border-border rounded-md">
-                        Lượng từ: <b className="font-serif text-china-ink">{currentCard.word.classifiers.join(", ")}</b>
-                      </span>
-                    )}
-                    <Link
-                      href={`/vocabulary/${currentCard.word.id}`}
-                      className="inline-flex items-center gap-1 text-china-red hover:underline ml-2"
-                    >
-                      <PenTool className="w-3 h-3" /> Chi tiết & luyện viết →
-                    </Link>
-                  </div>
-                </div>
-              ) : (
+              <div className="flex items-center gap-2">
                 <button
-                  onClick={() => setShowAnswer(true)}
-                  className="mt-6 px-6 sm:px-8 py-3 rounded-2xl border-2 border-dashed border-border hover:border-china-red text-china-ink hover:text-china-red text-sm sm:text-base font-medium transition-all shadow-xs hover:bg-china-red/5 active:scale-95"
+                  type="button"
+                  onClick={() => setAutoAudio((prev) => !prev)}
+                  className={`px-2.5 py-1 rounded-lg text-[11px] font-medium border transition-colors ${
+                    autoAudio
+                      ? "bg-china-ink text-white border-china-ink"
+                      : "bg-white text-muted border-border hover:text-china-ink"
+                  }`}
+                  title="Tự động đọc khi hiện đáp án"
                 >
-                  Nhấn hoặc bấm <kbd className="px-1.5 py-0.5 bg-china-paper border border-border rounded text-xs font-mono text-muted">Space</kbd> để xem đáp án
+                  Tự đọc: {autoAudio ? "Bật" : "Tắt"}
                 </button>
-              )}
-            </div>
-          </div>
-
-          {/* Rating Buttons (Spaced Repetition) */}
-          {showAnswer && (
-            <div className="border-t border-border bg-china-paper/60 p-4 sm:p-6 rounded-b-3xl animate-fade-in">
-              <p className="text-center text-xs sm:text-sm text-muted mb-3 font-medium">
-                Bạn nhớ từ này ở mức độ nào?
-              </p>
-
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3">
                 <button
-                  onClick={() => handleResult("again")}
-                  className="flex flex-col items-center justify-center p-3 sm:p-3.5 rounded-xl border border-red-200 bg-white hover:bg-red-50 text-red-600 transition-all shadow-xs active:scale-95 group"
+                  type="button"
+                  title="Nghe phát âm (Phím R)"
+                  onClick={() => playAudio(currentCard.word.hanzi)}
+                  className="p-2 rounded-xl bg-white border border-border text-china-red hover:bg-china-red hover:text-white transition-colors active:scale-95"
                 >
-                  <span className="font-bold text-sm sm:text-base">Chưa nhớ</span>
-                  <span className="text-[11px] text-red-400 mt-0.5">Học lại (<kbd className="font-mono text-[10px]">1</kbd>)</span>
-                </button>
-
-                <button
-                  onClick={() => handleResult("hard")}
-                  className="flex flex-col items-center justify-center p-3 sm:p-3.5 rounded-xl border border-amber-200 bg-white hover:bg-amber-50 text-amber-600 transition-all shadow-xs active:scale-95 group"
-                >
-                  <span className="font-bold text-sm sm:text-base">Hơi khó</span>
-                  <span className="text-[11px] text-amber-500 mt-0.5">Vừa nhớ (<kbd className="font-mono text-[10px]">2</kbd>)</span>
-                </button>
-
-                <button
-                  onClick={() => handleResult("good")}
-                  className="flex flex-col items-center justify-center p-3 sm:p-3.5 rounded-xl border border-emerald-200 bg-white hover:bg-emerald-50 text-emerald-600 transition-all shadow-xs active:scale-95 group"
-                >
-                  <span className="font-bold text-sm sm:text-base">Nhớ tốt</span>
-                  <span className="text-[11px] text-emerald-500 mt-0.5">Đã thuộc (<kbd className="font-mono text-[10px]">3</kbd>)</span>
-                </button>
-
-                <button
-                  onClick={() => handleResult("easy")}
-                  className="flex flex-col items-center justify-center p-3 sm:p-3.5 rounded-xl border border-blue-200 bg-white hover:bg-blue-50 text-blue-600 transition-all shadow-xs active:scale-95 group"
-                >
-                  <span className="font-bold text-sm sm:text-base">Rất dễ</span>
-                  <span className="text-[11px] text-blue-500 mt-0.5">Thuần thục (<kbd className="font-mono text-[10px]">4</kbd>)</span>
+                  <Volume2 className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
               </div>
             </div>
-          )}
+
+            {/* Nội dung chính của Thẻ */}
+            <div className="p-6 sm:p-10 flex flex-col items-center justify-between min-h-[340px] sm:min-h-[370px]">
+              {/* Chữ Hán trung tâm đặt trên nền khung Điền Tự Cách tinh tế */}
+              <div className="my-auto text-center w-full space-y-2">
+                <div className="inline-flex flex-col items-center justify-center px-8 py-5 rounded-2xl bg-china-paper/40 border border-border/70 relative">
+                  <h2
+                    className={`font-serif font-bold text-china-ink leading-tight tracking-wide select-all ${
+                      currentCard.word.hanzi.length <= 1
+                        ? "text-6xl sm:text-7xl md:text-8xl"
+                        : currentCard.word.hanzi.length === 2
+                        ? "text-5xl sm:text-6xl md:text-7xl"
+                        : currentCard.word.hanzi.length === 3
+                        ? "text-4xl sm:text-5xl md:text-6xl"
+                        : "text-3xl sm:text-4xl md:text-5xl"
+                    }`}
+                  >
+                    {currentCard.word.hanzi}
+                  </h2>
+
+                  {currentCard.word.traditional &&
+                    currentCard.word.traditional !== currentCard.word.hanzi && (
+                      <p className="text-xs sm:text-sm font-serif text-muted mt-1.5">
+                        Phồn thể: <span className="text-china-ink">{currentCard.word.traditional}</span>
+                      </p>
+                    )}
+                </div>
+
+                {/* Khu vực Đáp án hoặc Nút Lật Thẻ */}
+                {showAnswer ? (
+                  <div className="pt-5 mt-4 border-t border-border/60 max-w-xl mx-auto space-y-3 animate-fade-in">
+                    {/* Pinyin & Âm Hán-Việt */}
+                    <div className="flex flex-wrap items-center justify-center gap-2.5">
+                      <span className="text-2xl sm:text-3xl font-mono font-semibold text-china-red">
+                        {currentCard.word.pinyin}
+                      </span>
+                      {cardHanViet && (
+                        <span className="px-2.5 py-0.5 bg-amber-50 text-amber-900 border border-amber-200 rounded-lg text-xs sm:text-sm font-bold">
+                          Hán-Việt: {cardHanViet}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Nghĩa tiếng Việt */}
+                    <div className="bg-china-paper/70 border border-border rounded-2xl p-4 text-center">
+                      <p className="text-base sm:text-xl font-bold text-china-ink leading-snug">
+                        {currentCard.word.meanings_vi
+                          ? currentCard.word.meanings_vi.join("; ")
+                          : currentCard.word.meanings?.join("; ")}
+                      </p>
+                    </div>
+
+                    {/* Từ loại, Lượng từ & Link luyện viết */}
+                    <div className="flex items-center justify-center gap-2 flex-wrap text-xs text-muted pt-1">
+                      {currentCard.word.partOfSpeech && currentCard.word.partOfSpeech.length > 0 && (
+                        <span className="px-2.5 py-0.5 bg-white border border-border rounded-md font-medium text-china-ink">
+                          Loại từ: {currentCard.word.partOfSpeech.join(", ")}
+                        </span>
+                      )}
+                      {currentCard.word.classifiers && currentCard.word.classifiers.length > 0 && (
+                        <span className="px-2.5 py-0.5 bg-white border border-border rounded-md">
+                          Lượng từ:{" "}
+                          <b className="font-serif text-china-ink">
+                            {currentCard.word.classifiers.join(", ")}
+                          </b>
+                        </span>
+                      )}
+                      <Link
+                        href={`/vocabulary/${currentCard.word.id}`}
+                        className="px-2.5 py-0.5 rounded-md bg-white border border-border text-china-red font-semibold hover:bg-china-red hover:text-white transition-colors"
+                      >
+                        Chi tiết & Luyện viết →
+                      </Link>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="pt-6">
+                    <button
+                      type="button"
+                      onClick={handleRevealAnswer}
+                      className="px-8 py-3 rounded-2xl bg-china-ink hover:bg-china-ink/85 text-white text-xs sm:text-sm font-semibold transition-all shadow-xs active:scale-95"
+                    >
+                      Hiển thị đáp án (Phím Space)
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* 3. Thanh 4 Nút Đánh Giá SRS (Chỉ hiện khi đã xem đáp án) */}
+            {showAnswer && (
+              <div className="border-t border-border bg-china-paper/60 p-4 sm:p-5 animate-fade-in">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3">
+                  <button
+                    type="button"
+                    onClick={() => handleResult("again")}
+                    className="flex flex-col items-center justify-center py-3 px-3 rounded-2xl border border-border bg-white hover:border-red-400 hover:bg-red-50/50 transition-all active:scale-95"
+                  >
+                    <span className="text-[11px] font-mono text-muted mb-0.5">
+                      {nextIntervals.again}
+                    </span>
+                    <span className="font-bold text-sm text-red-600">Chưa nhớ</span>
+                    <span className="text-[10px] text-muted mt-0.5">Phím 1</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => handleResult("hard")}
+                    className="flex flex-col items-center justify-center py-3 px-3 rounded-2xl border border-border bg-white hover:border-amber-400 hover:bg-amber-50/50 transition-all active:scale-95"
+                  >
+                    <span className="text-[11px] font-mono text-muted mb-0.5">
+                      {nextIntervals.hard}
+                    </span>
+                    <span className="font-bold text-sm text-amber-700">Hơi khó</span>
+                    <span className="text-[10px] text-muted mt-0.5">Phím 2</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => handleResult("good")}
+                    className="flex flex-col items-center justify-center py-3 px-3 rounded-2xl border border-border bg-white hover:border-emerald-500 hover:bg-emerald-50/50 transition-all active:scale-95"
+                  >
+                    <span className="text-[11px] font-mono text-muted mb-0.5">
+                      {nextIntervals.good}
+                    </span>
+                    <span className="font-bold text-sm text-emerald-700">Nhớ tốt</span>
+                    <span className="text-[10px] text-muted mt-0.5">Phím 3</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => handleResult("easy")}
+                    className="flex flex-col items-center justify-center py-3 px-3 rounded-2xl border border-border bg-white hover:border-blue-500 hover:bg-blue-50/50 transition-all active:scale-95"
+                  >
+                    <span className="text-[11px] font-mono text-muted mb-0.5">
+                      {nextIntervals.easy}
+                    </span>
+                    <span className="font-bold text-sm text-blue-700">Rất dễ</span>
+                    <span className="text-[10px] text-muted mt-0.5">Phím 4</span>
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       ) : null}
     </div>

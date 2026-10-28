@@ -2,6 +2,7 @@ import SideBar from "./SideBar";
 import "./globals.css";
 import { AuthProvider } from "@/contexts/AuthContext";
 import AuthModal from "@/components/auth/AuthModal";
+import UpgradeModal from "@/components/subscription/UpgradeModal";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -22,6 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </main>
           </div>
           <AuthModal />
+          <UpgradeModal />
         </AuthProvider>
       </body>
     </html>

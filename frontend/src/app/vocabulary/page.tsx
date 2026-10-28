@@ -90,13 +90,23 @@ const Page = () => {
       return
     }
 
-    for (const id of newWords) {
-      await addToReview(id)
+    let addedCount = 0
+    try {
+      for (const id of newWords) {
+        await addToReview(id)
+        addedCount++
+      }
+      setToastMessage(`Đã thêm ${addedCount} từ mới HSK ${level} vào ôn tập ✓`)
+    } catch {
+      if (addedCount > 0) {
+        setToastMessage(`Đã thêm ${addedCount} từ (Chạm giới hạn 500 từ gói Miễn phí)`)
+      }
     }
-    setLearningCount(prev => prev + newWords.length)
-    setNewCount(prev => prev - newWords.length)
-    setRefreshTrigger(prev => prev + 1)
-    setToastMessage(`Đã thêm ${newWords.length} từ mới HSK ${level} vào ôn tập ✓`)
+    if (addedCount > 0) {
+      setLearningCount(prev => prev + addedCount)
+      setNewCount(prev => prev - addedCount)
+      setRefreshTrigger(prev => prev + 1)
+    }
     setTimeout(() => setToastMessage(null), 2500)
   }
 

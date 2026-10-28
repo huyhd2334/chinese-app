@@ -3,6 +3,7 @@
 import React, { useState } from "react"
 import { X } from "lucide-react"
 import { useAuth } from "@/contexts/AuthContext"
+import { isValidEmail, checkRateLimit } from "@/utils/security"
 
 export default function AuthModal() {
   const { isAuthModalOpen, closeAuthModal, signInWithEmail, signUpWithEmail, signInWithGoogle } = useAuth()
@@ -19,6 +20,22 @@ export default function AuthModal() {
     e.preventDefault()
     setErrorMessage(null)
     setSuccessMessage(null)
+
+    if (!isValidEmail(email)) {
+      setErrorMessage("Địa chỉ email không hợp lệ.")
+      return
+    }
+    if (password.length < 6 || password.length > 128) {
+      setErrorMessage("Mật khẩu phải từ 6 đến 128 ký tự.")
+      return
+    }
+
+    const rl = checkRateLimit("auth_submit", 6, 60000)
+    if (!rl.allowed) {
+      setErrorMessage(`Bạn thao tác quá nhanh. Vui lòng thử lại sau ${rl.retryAfterSec} giây.`)
+      return
+    }
+
     setIsSubmitting(true)
 
     try {

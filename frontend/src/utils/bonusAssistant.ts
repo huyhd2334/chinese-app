@@ -1,6 +1,7 @@
 import { getHanViet } from "./hanviet"
 import { db } from "../../db/database"
 import type { BonusWord } from "@/types/bonus"
+import { sanitizeText } from "./security"
 
 // Cache for translation results to prevent duplicate network calls
 const translationCache = new Map<string, string>()
@@ -68,18 +69,18 @@ export interface AssistantWordResult {
  * Phân tách dòng nhập liệu (có thể chứa từ + nghĩa, ví dụ: "苹果 - quả táo" hoặc "apple : quả táo")
  */
 export function parseInputLine(rawLine: string): { word: string; prefilledMeaning: string } {
-  const trimmed = rawLine.trim()
+  const trimmed = sanitizeText(rawLine, 600)
   if (!trimmed) return { word: "", prefilledMeaning: "" }
 
   const match = trimmed.match(/^([^:\-–—=]+?)\s*[:\-–—=]\s*(.+)$/)
   if (match) {
     return {
-      word: match[1].trim(),
-      prefilledMeaning: match[2].trim()
+      word: sanitizeText(match[1], 100),
+      prefilledMeaning: sanitizeText(match[2], 500)
     }
   }
 
-  return { word: trimmed, prefilledMeaning: "" }
+  return { word: sanitizeText(trimmed, 100), prefilledMeaning: "" }
 }
 
 /**
@@ -175,8 +176,9 @@ export async function batchAssistWords(
   onProgress?: (done: number, total: number) => void
 ): Promise<BonusWord[]> {
   const cleanLines = rawLines
-    .map(l => l.trim())
+    .map(l => sanitizeText(l, 600))
     .filter(l => l.length > 0)
+    .slice(0, 100)
 
   const total = cleanLines.length
   if (total === 0) return []

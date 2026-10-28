@@ -1,9 +1,21 @@
 import { db, type ReviewItem } from "../db/database"
+import { FREE_REVIEW_LIMIT, isProUser, ReviewLimitError, triggerUpgradeModal } from "../src/utils/subscription"
 
 export const reviewRepository = {
   async add(wordId: string) {
     const existing = await db.reviewItems.where("wordId").equals(wordId).first()
     if (existing) return existing
+
+    // Kiểm tra giới hạn 500 từ cho tài khoản Miễn phí (Free Tier)
+    if (!isProUser()) {
+      const currentCount = await db.reviewItems.count()
+      if (currentCount >= FREE_REVIEW_LIMIT) {
+        triggerUpgradeModal("limit_500")
+        throw new ReviewLimitError(
+          `Gói Miễn phí giới hạn tối đa ${FREE_REVIEW_LIMIT} từ ôn tập. Vui lòng nâng cấp gói Pro theo tháng để học không giới hạn!`
+        )
+      }
+    }
 
     const now = Date.now()
     const item: ReviewItem = {
@@ -22,6 +34,10 @@ export const reviewRepository = {
 
     await db.reviewItems.add(item)
     return item
+  },
+
+  async getCount() {
+    return await db.reviewItems.count()
   },
 
   async getById(reviewId: string) {

@@ -268,11 +268,19 @@ export default function Dashboard() {
 
       const countToAdd = Math.min(10, unlearned.length)
       const toAdd = unlearned.slice(0, countToAdd)
-      for (const w of toAdd) {
-        await reviewRepository.add(w.id)
+      let addedCount = 0
+      try {
+        for (const w of toAdd) {
+          await reviewRepository.add(w.id)
+          addedCount++
+        }
+        setStreakToast(`Đã thêm ${addedCount} từ mới vào lộ trình hôm nay! ✓`)
+      } catch {
+        if (addedCount > 0) {
+          setStreakToast(`Đã thêm ${addedCount} từ (Chạm giới hạn 500 từ gói Miễn phí)`)
+        }
       }
 
-      setStreakToast(`Đã thêm ${toAdd.length} từ mới vào lộ trình hôm nay! ✓`)
       setTimeout(() => setStreakToast(null), 3000)
       await loadData()
     } catch (e) {
