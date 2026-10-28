@@ -235,7 +235,7 @@ const WordContainer = ({
                     key={w.id}
                     id={`word-card-${w.id}`}
                     href={`/vocabulary/${w.id}`}
-                    className={`flex flex-col border border-border bg-white p-4 sm:p-5 rounded-2xl transition-all duration-300 group relative overflow-hidden
+                    className={`flex flex-col border border-border bg-white p-4 sm:p-5 rounded-2xl transition-all duration-300 group relative overflow-hidden content-visibility-auto
                       ${isJustAdded ? 'ring-2 ring-china-jade/50 bg-china-jade/5 scale-[1.02]' : 'hover:shadow-xl hover:border-china-red/40 hover:-translate-y-1'}`}
                     onClick={() => {
                       sessionStorage.setItem("vocab-scroll-y", String(window.scrollY || document.documentElement.scrollTop || 0))

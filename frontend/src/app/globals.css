@@ -49,6 +49,20 @@
 
 html {
   background: var(--background);
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+}
+
+/* GPU acceleration for interactive cards & animations */
+.gpu-layer {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Render optimization for long lists (skips off-screen layout and paint) */
+.content-visibility-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 120px;
 }
 
 body {

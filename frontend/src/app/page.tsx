@@ -7,6 +7,7 @@ import ChibiLoading from "@/components/common/ChibiLoading"
 import { db, type ReviewItem, type Word } from "../../db/database"
 import { importHsk, importListening, importReading } from "../../db/importContent"
 import { reviewRepository } from "../../repositories/reviewRepository"
+import { wordRepository } from "../../repositories/wordRepository"
 import { 
   CircleCheckBig, BookOpen, Brain, Trophy, Target, 
   Play, Ear, Flame, Medal, Compass, Star, TrendingUp, 
@@ -44,8 +45,9 @@ const getYesterdayDateStr = (): string => {
 export default function Dashboard() {
   const [wordCount, setWordCount] = useState(0)
   const [wordReview, setWordReview] = useState(0)
-  const [words, setWords] = useState<Word[]>([])
   const [reviews, setReviews] = useState<ReviewItem[]>([])
+  const [hskData, setHskData] = useState<{ name: string; total: number; learning: number }[]>([])
+  const [difficultWords, setDifficultWords] = useState<{ review: ReviewItem; word: Word }[]>([])
   const [proverb, setProverb] = useState(PROVERBS[0])
   const [greeting, setGreeting] = useState("Good morning")
   const [chineseDate, setChineseDate] = useState("")
@@ -95,12 +97,12 @@ export default function Dashboard() {
   }
 
   const loadData = async () => {
-    const allWords = await db.words.toArray()
+    // High-performance index count: takes <1ms instead of loading 5,000 words into memory
+    const totalWordCount = await db.words.count()
     const allReviews = await reviewRepository.getAll()
 
-    setWords(allWords)
     setReviews(allReviews)
-    setWordCount(allWords.length)
+    setWordCount(totalWordCount)
     
     const due = allReviews.filter(r => r.dueAt <= Date.now())
     setWordReview(due.length)
@@ -119,9 +121,39 @@ export default function Dashboard() {
 
     // Count unlearned words remaining in the entire dictionary
     const reviewWordIds = new Set(allReviews.map(r => r.wordId))
-    const unlearnedCount = Math.max(0, allWords.length - reviewWordIds.size)
+    const unlearnedCount = Math.max(0, totalWordCount - reviewWordIds.size)
     setRemainingWordsInDict(unlearnedCount)
-    setRemainingWordsInDict(unlearnedCount)
+
+    // Load HSK levels distribution efficiently via ID indexes
+    const hskLevelData = await Promise.all([1, 2, 3, 4, 5, 6].map(async (level) => {
+      const ids = (await wordRepository.getIdsByHsk(level)) as string[]
+      const idSet = new Set(ids)
+      const learning = allReviews.filter(r => idSet.has(r.wordId)).length
+      return {
+        name: `HSK ${level}`,
+        total: ids.length,
+        learning
+      }
+    }))
+    setHskData(hskLevelData)
+
+    // Top difficult words: only fetch the needed 10 records with bulkGet!
+    const topDifficult = allReviews
+      .filter(r => r.wrongCount > 0)
+      .sort((a, b) => b.wrongCount - a.wrongCount)
+      .slice(0, 10)
+
+    if (topDifficult.length > 0) {
+      const wordsMap = new Map<string, Word>()
+      const fetchedWords = await db.words.bulkGet(topDifficult.map(r => r.wordId))
+      fetchedWords.forEach(w => { if (w) wordsMap.set(w.id, w) })
+      const diffList = topDifficult
+        .map(r => ({ review: r, word: wordsMap.get(r.wordId)! }))
+        .filter(x => x.word)
+      setDifficultWords(diffList)
+    } else {
+      setDifficultWords([])
+    }
     
     // Load streak configuration
     const todayStr = getLocalDateStr()
@@ -234,14 +266,16 @@ export default function Dashboard() {
     setBestStreak(currentBest)
 
     // Pick Word of the Day (deterministic based on today's day of year)
-    if (allWords.length > 0) {
+    if (totalWordCount > 0) {
       const now = new Date()
       const start = new Date(now.getFullYear(), 0, 0)
       const dayOfYear = Math.floor((now.getTime() - start.getTime()) / (1000 * 60 * 60 * 24))
-      const picked = allWords[dayOfYear % allWords.length]
-      setDailyWord(picked)
-      const isAdded = allReviews.some(r => r.wordId === picked.id)
-      setIsDailyWordAdded(isAdded)
+      const picked = await db.words.offset(dayOfYear % totalWordCount).first()
+      if (picked) {
+        setDailyWord(picked)
+        const isAdded = reviewWordIds.has(picked.id)
+        setIsDailyWordAdded(isAdded)
+      }
     }
     
     setLoading(false)
@@ -264,24 +298,27 @@ export default function Dashboard() {
 
   const handleQuickAdd10Dashboard = async () => {
     try {
-      const allWords = await db.words.toArray()
       const allReviews = await reviewRepository.getAll()
       const reviewWordIds = new Set(allReviews.map(r => r.wordId))
       
-      const unlearned = allWords.filter(w => !reviewWordIds.has(w.id))
-      if (unlearned.length === 0) {
+      const toAddIds: string[] = []
+      await db.words.each(w => {
+        if (toAddIds.length < 10 && !reviewWordIds.has(w.id)) {
+          toAddIds.push(w.id)
+        }
+      })
+
+      if (toAddIds.length === 0) {
         setStreakToast("Tất cả từ trong từ điển đã có trong danh sách học! Mục tiêu từ mới tự động hoàn thành ✓")
         setTimeout(() => setStreakToast(null), 3500)
         await loadData()
         return
       }
 
-      const countToAdd = Math.min(10, unlearned.length)
-      const toAdd = unlearned.slice(0, countToAdd)
       let addedCount = 0
       try {
-        for (const w of toAdd) {
-          await reviewRepository.add(w.id)
+        for (const id of toAddIds) {
+          await reviewRepository.add(id)
           addedCount++
         }
         setStreakToast(`Đã thêm ${addedCount} từ mới vào lộ trình hôm nay! ✓`)
@@ -350,32 +387,12 @@ export default function Dashboard() {
   const studyTimeHours = Math.floor(attempts / 60)
   const studyTimeMins = attempts % 60
 
-  const hskData = [1, 2, 3, 4, 5, 6].map(level => {
-    const levelWords = words.filter(w => w.hskLevels?.includes(level))
-    const ids = new Set(levelWords.map(w => w.id))
-    return {
-      name: `HSK ${level}`,
-      total: levelWords.length,
-      learning: reviews.filter(r => ids.has(r.wordId)).length
-    }
-  })
-
   const statusData = [
     { name: "Learning", value: learning },
     { name: "Review", value: review },
     { name: "Mastered", value: mastered },
     { name: "New", value: newWords }
   ].filter(x => x.value > 0)
-
-  const difficultWords = reviews
-    .filter(r => r.wrongCount > 0)
-    .sort((a, b) => b.wrongCount - a.wrongCount)
-    .slice(0, 10)
-    .map(r => ({
-      review: r,
-      word: words.find(w => w.id === r.wordId)
-    }))
-    .filter(x => x.word)
 
   // Calculate 7-day activity based on updatedAt
   const heatmapData = Array.from({ length: 7 }).map((_, i) => {

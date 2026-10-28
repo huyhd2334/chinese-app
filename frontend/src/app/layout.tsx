@@ -24,16 +24,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="vi" className={`${nunito.variable} ${notoSerifSC.variable}`}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        {/* Asynchronous Non-blocking fallback for full CJK glyph ranges */}
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&display=swap"
-          media="print"
-          // @ts-expect-error Next.js inline onload string
-          onLoad="this.media='all'"
-        />
       </head>
       <body className="h-dvh overflow-hidden bg-china-paper text-china-ink font-sans selection:bg-china-red selection:text-white antialiased">
         <AuthProvider>

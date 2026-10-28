@@ -208,12 +208,12 @@ export default function InteractiveReader({
                   <span>Bấm vào từng chữ Hán để tra cứu từ điển và nghe phát âm chuẩn:</span>
                 </p>
 
-                <div className="text-2xl sm:text-3xl font-serif text-china-ink leading-[2.3] sm:leading-[2.4] tracking-wide select-text">
+                <div className="text-2xl sm:text-3xl font-serif text-china-ink leading-[2.3] sm:leading-[2.4] tracking-wide">
                   {Array.from(readingPassage.content).map((char, cIdx) => {
                     const isPunctuation = /[，。？！、“”‘’\s:：]/.test(char)
                     if (isPunctuation) {
                       return (
-                        <span key={cIdx} className="text-muted/80 font-serif">
+                        <span key={cIdx} className="text-muted/80 font-serif select-none">
                           {char}
                         </span>
                       )
@@ -221,9 +221,10 @@ export default function InteractiveReader({
                     return (
                       <button
                         key={cIdx}
+                        type="button"
                         onClick={() => handleWordClick(char)}
-                        className="hover:text-china-red hover:bg-china-red/5 hover:underline decoration-china-red decoration-2 underline-offset-4 cursor-pointer transition rounded px-0.5"
-                        title="Bấm tra từ điển"
+                        className="touch-manipulation select-none hover:text-china-red hover:bg-china-red/5 active:bg-china-red/15 active:scale-95 hover:underline decoration-china-red decoration-2 underline-offset-4 cursor-pointer transition rounded px-0.5 inline-block"
+                        title="Bấm tra từ điển và nghe phát âm"
                       >
                         {char}
                       </button>
@@ -297,8 +298,9 @@ export default function InteractiveReader({
                         return (
                           <button
                             key={cIdx}
+                            type="button"
                             onClick={() => handleWordClick(char)}
-                            className="hover:text-china-red hover:underline decoration-china-red decoration-2 underline-offset-4 cursor-pointer transition rounded px-0.5"
+                            className="touch-manipulation select-none hover:text-china-red active:bg-china-red/15 active:scale-95 hover:underline decoration-china-red decoration-2 underline-offset-4 cursor-pointer transition rounded px-0.5 inline-block"
                             title="Bấm để xem từ điển"
                           >
                             {char}
@@ -308,11 +310,13 @@ export default function InteractiveReader({
                     </div>
 
                     <button
+                      type="button"
                       onClick={() => playAudio(d.chinese)}
-                      className="p-1.5 rounded-xl text-muted hover:text-china-red hover:bg-white transition shrink-0"
+                      className="w-10 h-10 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center text-muted hover:text-china-red hover:bg-white active:bg-china-red/10 active:text-china-red transition shrink-0 touch-manipulation cursor-pointer"
                       title="Nghe câu này"
+                      aria-label="Phát âm câu này"
                     >
-                      <Volume2 className="w-4 h-4" />
+                      <Volume2 className="w-5 h-5 sm:w-4 sm:h-4" />
                     </button>
                   </div>
 
@@ -365,9 +369,11 @@ export default function InteractiveReader({
 
           <div className="flex items-center gap-1.5 shrink-0">
             <button
+              type="button"
               onClick={() => playAudio(activeWordInfo.hanzi)}
-              className="p-2 rounded-xl bg-china-paper hover:bg-china-red/10 text-china-ink hover:text-china-red transition"
+              className="w-10 h-10 sm:w-9 sm:h-9 flex items-center justify-center rounded-xl bg-china-paper hover:bg-china-red/10 active:bg-china-red/20 text-china-ink hover:text-china-red active:text-china-red transition touch-manipulation cursor-pointer"
               title="Phát âm lại"
+              aria-label="Phát âm từ này"
             >
               <Volume2 className="w-4 h-4" />
             </button>
