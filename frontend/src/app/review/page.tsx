@@ -4,13 +4,15 @@ import { useEffect, useState, useCallback, useMemo } from "react"
 import useVocab from "../../../hooks/useVocab"
 import { db } from "../../../db/database"
 import Link from "next/link"
-import { Volume2, RotateCw } from "lucide-react"
+import Image from "next/image"
+import { Volume2, RotateCw, BookOpen, Sparkles, ExternalLink } from "lucide-react"
 import { getHanViet } from "@/utils/hanviet"
 import {
   FREE_REVIEW_LIMIT,
   getLocalSubscription,
   triggerUpgradeModal,
 } from "@/utils/subscription"
+import ChibiLoading from "@/components/common/ChibiLoading"
 
 type FilterType = "due" | "new" | "learning" | "review" | "mastered" | "all"
 
@@ -209,7 +211,7 @@ export default function ReviewPage() {
     ? getHanViet(currentCard.word.hanzi, currentCard.word.traditional, currentCard.word.pinyinNumeric)
     : ""
 
-  // Tính toán khoảng thời gian lặp lại dự kiến (Anki SRS Preview)
+  // Khoảng thời gian lặp lại dự kiến (Anki SRS Preview)
   const nextIntervals = useMemo(() => {
     const item = currentCard?.reviewItem
     if (!item) {
@@ -241,108 +243,97 @@ export default function ReviewPage() {
     }
   }
 
-  const quotaPercent = Math.min(100, Math.round((totalReviewWords / FREE_REVIEW_LIMIT) * 100))
-
   return (
-    <div className="mx-auto w-full max-w-4xl px-3 sm:px-6 py-4 sm:py-6 space-y-5">
-      {/* 1. Header & Quota Card */}
-      <div className="bg-card rounded-2xl border border-border p-4 sm:p-5 shadow-2xs space-y-4">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-          <div>
-            <div className="flex items-center gap-2">
-              <h1 className="text-xl sm:text-2xl font-serif font-bold text-china-ink">
-                Ôn tập từ vựng
-              </h1>
-              <span className="px-2 py-0.5 rounded-md bg-china-paper border border-border text-[11px] font-medium text-muted">
-                Spaced Repetition
-              </span>
-            </div>
-            <p className="text-xs text-muted mt-0.5">
-              Ghi nhớ dài hạn theo chu kỳ đường cong quên lãng · Đã ôn {sessionReviewed} từ trong phiên này
-            </p>
+    <div className="mx-auto w-full max-w-4xl lg:max-w-5xl px-3 sm:px-6 py-3 sm:py-4 space-y-3.5">
+      
+      {/* 1. Header & Bộ Lọc Khoáng Đạt, Đẹp Mắt */}
+      <div className="bg-card rounded-2xl border border-border/80 p-3.5 sm:p-4 shadow-xs space-y-3">
+        {/* Hàng 1: Tiêu đề + Tiến độ + Gói cước */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+          <div className="flex items-center gap-3">
+            <h1 className="text-lg sm:text-xl font-bold text-china-ink">
+              Ôn tập từ vựng
+            </h1>
+            <span className="px-2.5 py-0.5 rounded-full bg-china-paper border border-border text-xs font-semibold text-muted">
+              Đã ôn {sessionReviewed} từ
+            </span>
           </div>
 
-          {/* Thanh dung lượng Free 500 từ hoặc Huy hiệu Pro */}
-          <div className="flex items-center gap-3 bg-china-paper/80 px-3.5 py-2 rounded-xl border border-border self-start sm:self-auto">
-            {isPro ? (
-              <div className="flex items-center gap-2 text-xs">
-                <span className="px-2 py-0.5 bg-china-ink text-china-gold font-bold text-[10px] rounded uppercase">
-                  PRO
+          <div className="flex items-center gap-4 self-end sm:self-center">
+            {/* Thanh tiến độ thẻ to rõ */}
+            {displayedCards.length > 0 && (
+              <div className="flex items-center gap-2.5 bg-china-paper px-3 py-1 rounded-xl border border-border/70">
+                <span className="text-xs font-mono font-bold text-china-ink">
+                  Thẻ {currentIndex + 1} / {total}
                 </span>
-                <span className="font-semibold text-china-ink">
-                  {totalReviewWords} từ (Không giới hạn)
-                </span>
-              </div>
-            ) : (
-              <div className="flex items-center gap-3">
-                <div className="space-y-1 min-w-[125px]">
-                  <div className="flex justify-between text-[11px]">
-                    <span className="text-muted font-medium">Gói Miễn phí</span>
-                    <span className={`font-bold ${totalReviewWords >= FREE_REVIEW_LIMIT ? "text-china-red" : "text-china-ink"}`}>
-                      {totalReviewWords} / {FREE_REVIEW_LIMIT} từ
-                    </span>
-                  </div>
-                  <div className="h-1.5 w-full bg-border rounded-full overflow-hidden">
-                    <div
-                      className={`h-full rounded-full transition-all ${
-                        quotaPercent >= 90 ? "bg-china-red" : "bg-china-ink"
-                      }`}
-                      style={{ width: `${quotaPercent}%` }}
-                    />
-                  </div>
+                <div className="w-24 sm:w-28 h-2 bg-border rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-china-red transition-all duration-300 rounded-full"
+                    style={{ width: `${progress}%` }}
+                  />
                 </div>
-                <button
-                  onClick={() => triggerUpgradeModal("manual")}
-                  className="px-2.5 py-1.5 rounded-lg bg-china-red hover:bg-china-red-hover text-white text-[11px] font-bold transition-colors whitespace-nowrap active:scale-95"
-                >
-                  Nâng cấp Pro
-                </button>
               </div>
+            )}
+
+            {/* Gói cước Pro / Miễn phí */}
+            {isPro ? (
+              <span className="px-2 py-0.5 bg-china-ink text-china-gold font-bold text-xs rounded-lg shadow-2xs">
+                PRO
+              </span>
+            ) : (
+              <button
+                onClick={() => triggerUpgradeModal("manual")}
+                className="text-xs font-bold text-china-red hover:underline flex items-center gap-1"
+                title={`${totalReviewWords}/${FREE_REVIEW_LIMIT} từ miễn phí`}
+              >
+                <span>{totalReviewWords}/{FREE_REVIEW_LIMIT} từ</span>
+              </button>
             )}
           </div>
         </div>
 
-        {/* Bộ lọc Trạng thái dạng Tabs tinh gọn */}
-        <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-hide pt-2 border-t border-border/60">
-          {filterTabs.map((tab) => {
-            const active = filter === tab.value
-            const count = statusCounts[tab.countKey]
-            return (
-              <button
-                key={tab.value}
-                onClick={() => setFilter(tab.value)}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
-                  active
-                    ? "bg-china-ink text-white shadow-2xs"
-                    : "bg-china-paper/70 hover:bg-china-paper text-china-ink border border-transparent hover:border-border"
-                }`}
-              >
-                <span>{tab.label}</span>
-                <span
-                  className={`px-1.5 py-0.2 rounded-md text-[10px] font-bold ${
-                    active ? "bg-white/20 text-white" : "bg-white text-muted border border-border/60"
+        {/* Hàng 2: Tabs trạng thái & HSK filter */}
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 pt-2 border-t border-border/60">
+          {/* Tabs trạng thái */}
+          <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-hide py-0.5">
+            {filterTabs.map((tab) => {
+              const active = filter === tab.value
+              const count = statusCounts[tab.countKey]
+              return (
+                <button
+                  key={tab.value}
+                  onClick={() => setFilter(tab.value)}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
+                    active
+                      ? "bg-china-ink text-white shadow-xs"
+                      : "bg-china-paper hover:bg-white text-china-ink border border-transparent hover:border-border"
                   }`}
                 >
-                  {count}
-                </span>
-              </button>
-            )
-          })}
-        </div>
+                  <span>{tab.label}</span>
+                  <span
+                    className={`px-1.5 py-0.2 rounded-md text-[10px] font-bold ${
+                      active ? "bg-white/20 text-white" : "bg-white text-muted border border-border/70"
+                    }`}
+                  >
+                    {count}
+                  </span>
+                </button>
+              )
+            })}
+          </div>
 
-        {/* Bộ lọc Cấp độ HSK + Thanh tiến độ phiên */}
-        {cards.length > 0 && (
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-1">
-            <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-hide">
+          {/* Cấp độ HSK */}
+          {cards.length > 0 && (
+            <div className="flex items-center gap-1 shrink-0 overflow-x-auto scrollbar-hide">
               <button
                 onClick={() => setHskFilter("all")}
-                className={`px-2.5 py-1 rounded-lg text-[11px] font-semibold whitespace-nowrap transition-colors ${
+                className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-colors ${
                   hskFilter === "all"
                     ? "bg-china-red/10 text-china-red border border-china-red/30"
                     : "bg-white border border-border text-muted hover:text-china-ink"
                 }`}
               >
-                Tất cả HSK ({cards.length})
+                Tất cả ({cards.length})
               </button>
               {[1, 2, 3, 4, 5, 6, 7].map((lv) => {
                 const c = hskCounts[lv] || 0
@@ -351,283 +342,346 @@ export default function ReviewPage() {
                   <button
                     key={lv}
                     onClick={() => setHskFilter(lv)}
-                    className={`px-2.5 py-1 rounded-lg text-[11px] font-semibold whitespace-nowrap transition-colors ${
+                    className={`px-2 py-1 rounded-lg text-xs font-bold transition-colors ${
                       hskFilter === lv
                         ? "bg-china-red text-white"
                         : "bg-white border border-border text-muted hover:text-china-ink"
                     }`}
                   >
-                    HSK {lv} ({c})
+                    HSK {lv}
                   </button>
                 )
               })}
             </div>
-
-            {displayedCards.length > 0 && (
-              <div className="flex items-center gap-2.5 shrink-0">
-                <span className="text-xs font-mono font-semibold text-china-ink">
-                  Thẻ {currentIndex + 1} / {total}
-                </span>
-                <div className="w-24 h-1.5 bg-border rounded-full overflow-hidden">
-                  <div
-                    className="h-full bg-china-red transition-all duration-300"
-                    style={{ width: `${progress}%` }}
-                  />
-                </div>
-              </div>
-            )}
-          </div>
-        )}
+          )}
+        </div>
       </div>
 
-      {/* 2. Khu vực Thẻ Học Tập Chính */}
+      {/* 2. Khung Thẻ Flashcard Bề Thế, To Rõ & Có Tiểu Lu Lấp Ló */}
       {loading && cards.length === 0 ? (
-        <div className="flex min-h-[420px] items-center justify-center bg-card rounded-3xl border border-border">
-          <div className="flex flex-col items-center gap-3">
-            <div className="w-7 h-7 border-2 border-china-red/30 border-t-china-red rounded-full animate-spin" />
-            <p className="text-xs text-muted">Đang tải thẻ ôn tập...</p>
-          </div>
+        <div className="flex min-h-[420px] items-center justify-center bg-card rounded-3xl border border-border shadow-xs">
+          <ChibiLoading
+            variant="loading"
+            character="loading"
+            size="md"
+            title="Đang tải thẻ ôn tập..."
+          />
         </div>
       ) : !displayedCards.length ? (
-        /* Trạng thái Hoàn Thành */
-        <div className="bg-card rounded-3xl border border-border p-8 sm:p-12 text-center shadow-2xs space-y-4">
-          <div className="inline-block px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold">
-            Hoàn thành mục tiêu
+        /* Trạng thái Hoàn Thành - Có Chibi Cổ Vũ */
+        <div className="bg-card rounded-3xl border border-border p-8 sm:p-12 text-center shadow-xs space-y-4 animate-fade-in">
+          <div className="relative w-40 h-40 mx-auto select-none">
+            <Image
+              src="/chibi-cheer.svg"
+              alt="Tiểu Lu Hoàn Thành"
+              width={160}
+              height={160}
+              priority
+              className="object-contain"
+            />
           </div>
-          <h2 className="text-xl sm:text-2xl font-serif font-bold text-china-ink">
+
+          <div className="inline-block px-3.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold">
+            Hoàn thành xuất sắc!
+          </div>
+
+          <h2 className="text-2xl sm:text-3xl font-bold text-china-ink">
             {hskFilter !== "all"
-              ? `Không còn từ HSK ${hskFilter} nào trong danh mục này`
-              : "Bạn đã ôn tập xong toàn bộ thẻ đến hạn!"}
+              ? `Không còn từ HSK ${hskFilter} nào cần ôn`
+              : "Bạn đã hoàn thành sạch thẻ cần ôn hôm nay!"}
           </h2>
+
           <p className="text-xs sm:text-sm text-muted max-w-md mx-auto leading-relaxed">
-            Duy trì việc ôn tập ngắt quãng mỗi ngày giúp bộ não chuyển từ vựng từ trí nhớ ngắn hạn sang trí nhớ dài hạn.
+            Duy trì ôn tập ngắt quãng mỗi ngày giúp bộ não ghi nhớ dài hạn bền vững.
           </p>
+
           <div className="flex flex-wrap gap-3 justify-center pt-2">
             <Link
               href="/vocabulary"
-              className="px-5 py-2.5 rounded-xl bg-china-red hover:bg-china-red-hover text-white text-xs sm:text-sm font-semibold transition-all active:scale-95"
+              className="px-5 py-2.5 rounded-xl bg-china-red hover:bg-china-red-hover text-white text-xs sm:text-sm font-bold transition-all active:scale-95 flex items-center gap-2"
             >
-              + Thêm từ mới từ Kho HSK
+              <BookOpen className="w-4 h-4" />
+              <span>Học thêm từ mới HSK</span>
             </Link>
             {hskFilter !== "all" ? (
               <button
                 onClick={() => setHskFilter("all")}
-                className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-border bg-white text-china-ink text-xs sm:text-sm font-medium hover:bg-china-paper transition-all"
+                className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-border bg-white text-china-ink text-xs sm:text-sm font-semibold hover:bg-china-paper"
               >
-                <RotateCw className="w-3.5 h-3.5" /> Xem tất cả cấp độ
+                <RotateCw className="w-4 h-4" /> Xem tất cả cấp độ
               </button>
             ) : (
               filter !== "all" && (
                 <button
                   onClick={() => setFilter("all")}
-                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-border bg-white text-china-ink text-xs sm:text-sm font-medium hover:bg-china-paper transition-all"
+                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-border bg-white text-china-ink text-xs sm:text-sm font-semibold hover:bg-china-paper"
                 >
-                  <RotateCw className="w-3.5 h-3.5" /> Ôn tập toàn bộ ({statusCounts.all} từ)
+                  <RotateCw className="w-4 h-4" /> Ôn toàn bộ ({statusCounts.all} từ)
                 </button>
               )
             )}
           </div>
         </div>
       ) : currentCard ? (
-        <div className="space-y-4">
-          {/* Khung Thẻ Flashcard */}
-          <div className="rounded-3xl border border-border bg-card shadow-xs overflow-hidden transition-all">
-            {/* Thanh thông tin trên cùng của Thẻ */}
-            <div className="flex items-center justify-between px-5 sm:px-8 py-4 border-b border-border/60 bg-china-paper/40">
-              <div className="flex items-center gap-2 flex-wrap">
-                {hskNum && (
-                  <span className="px-2.5 py-0.5 bg-china-red/10 text-china-red border border-china-red/20 text-xs font-bold rounded-lg">
-                    HSK {hskNum}
-                  </span>
-                )}
-                {currentCard.status_learning && (
-                  <span
-                    className={`px-2.5 py-0.5 text-xs font-semibold rounded-lg border ${
-                      getStatusBadge(currentCard.status_learning).color
-                    }`}
-                  >
-                    {getStatusBadge(currentCard.status_learning).label}
-                  </span>
-                )}
-                {currentCard.word.radical && (
-                  <span className="px-2.5 py-0.5 text-xs rounded-lg bg-white border border-border text-muted">
-                    Bộ thủ: <b className="font-serif text-china-ink">{currentCard.word.radical}</b>
-                  </span>
-                )}
-                {currentCard.reviewItem && currentCard.reviewItem.repetitions > 0 && (
-                  <span className="hidden sm:inline-block px-2.5 py-0.5 text-[11px] rounded-lg bg-white border border-border text-muted">
-                    Lần lặp #{currentCard.reviewItem.repetitions} · Chu kỳ {currentCard.reviewItem.interval} ngày
-                  </span>
-                )}
-              </div>
+        <div className="relative rounded-3xl border border-border/90 bg-card shadow-sm overflow-visible flex flex-col transition-all">
+          
+          {/* Tiểu Lu Lấp Ló trên góc phải của thẻ Flashcard */}
+          <div className="absolute -top-7 sm:-top-8 right-8 sm:right-12 w-16 sm:w-20 h-10 sm:h-12 z-20 pointer-events-none select-none transition-transform hover:scale-110">
+            <Image
+              src="/chibi-peek.svg"
+              alt="Tiểu Lu lấp ló"
+              width={75}
+              height={48}
+              priority
+              className="object-contain drop-shadow-xs"
+            />
+          </div>
 
-              <div className="flex items-center gap-2">
-                <button
-                  type="button"
-                  onClick={() => setAutoAudio((prev) => !prev)}
-                  className={`px-2.5 py-1 rounded-lg text-[11px] font-medium border transition-colors ${
-                    autoAudio
-                      ? "bg-china-ink text-white border-china-ink"
-                      : "bg-white text-muted border-border hover:text-china-ink"
+          {/* Thanh Header Thẻ */}
+          <div className="flex items-center justify-between px-5 sm:px-8 py-3 border-b border-border/70 bg-china-paper/50 rounded-t-3xl">
+            <div className="flex items-center gap-2 flex-wrap">
+              {hskNum && (
+                <span className="px-3 py-1 bg-china-red/10 text-china-red border border-china-red/25 text-xs font-bold rounded-lg">
+                  HSK {hskNum}
+                </span>
+              )}
+              {currentCard.status_learning && (
+                <span
+                  className={`px-3 py-1 text-xs font-bold rounded-lg border ${
+                    getStatusBadge(currentCard.status_learning).color
                   }`}
-                  title="Tự động đọc khi hiện đáp án"
                 >
-                  Tự đọc: {autoAudio ? "Bật" : "Tắt"}
-                </button>
+                  {getStatusBadge(currentCard.status_learning).label}
+                </span>
+              )}
+              {currentCard.word.radical && (
+                <span className="px-2.5 py-1 text-xs rounded-lg bg-white border border-border text-muted">
+                  Bộ thủ: <b className="font-chinese text-china-ink">{currentCard.word.radical}</b>
+                </span>
+              )}
+            </div>
+
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => setAutoAudio((prev) => !prev)}
+                className={`px-2.5 py-1 rounded-lg text-xs font-bold border transition-colors cursor-pointer ${
+                  autoAudio
+                    ? "bg-china-ink text-white border-china-ink"
+                    : "bg-white text-muted border-border hover:text-china-ink"
+                }`}
+                title="Tự động đọc khi hiện đáp án"
+              >
+                Tự đọc: {autoAudio ? "Bật" : "Tắt"}
+              </button>
+              <button
+                type="button"
+                title="Nghe phát âm (Phím R)"
+                onClick={() => playAudio(currentCard.word.hanzi)}
+                className="p-2 rounded-xl bg-white border border-border text-china-red hover:bg-china-red hover:text-white transition-colors active:scale-95 cursor-pointer shadow-2xs"
+              >
+                <Volume2 className="w-4 h-4 sm:w-5 sm:h-5" />
+              </button>
+            </div>
+          </div>
+
+          {/* Thân Thẻ Flashcard: Chữ Hán To Bề Thế, Đẹp Mắt */}
+          <div className="p-6 sm:p-8 flex flex-col items-center justify-center text-center space-y-4">
+            
+            {/* Khung Chữ Hán Trang Nhã */}
+            <div className="px-10 py-5 sm:py-6 rounded-2xl bg-china-paper/60 border border-border/80 shadow-2xs inline-flex flex-col items-center justify-center min-w-[200px] sm:min-w-[240px]">
+              <h2
+                className={`font-chinese font-bold text-china-ink leading-tight tracking-wider select-all ${
+                  currentCard.word.hanzi.length <= 1
+                    ? "text-6xl sm:text-7xl md:text-8xl"
+                    : currentCard.word.hanzi.length === 2
+                    ? "text-5xl sm:text-6xl md:text-7xl"
+                    : "text-4xl sm:text-5xl md:text-6xl"
+                }`}
+                lang="zh"
+              >
+                {currentCard.word.hanzi}
+              </h2>
+
+              {currentCard.word.traditional &&
+                currentCard.word.traditional !== currentCard.word.hanzi && (
+                  <p className="text-xs sm:text-sm font-chinese text-muted mt-1.5" lang="zh">
+                    Phồn thể: <span className="text-china-ink font-semibold">{currentCard.word.traditional}</span>
+                  </p>
+                )}
+            </div>
+
+            {/* Khu vực Đáp án */}
+            {showAnswer ? (
+              <div className="w-full max-w-xl mx-auto space-y-3 pt-1 animate-fade-in">
+                {/* Pinyin to rõ + Hán-Việt đậm đà */}
+                <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
+                  <span className="text-2xl sm:text-3xl font-bold text-china-red tracking-wide">
+                    {currentCard.word.pinyin}
+                  </span>
+                  {cardHanViet && (
+                    <span className="px-3 py-1 bg-amber-500/10 text-amber-800 border border-amber-300 rounded-lg text-xs sm:text-sm font-bold">
+                      Hán-Việt: {cardHanViet}
+                    </span>
+                  )}
+                </div>
+
+                {/* Nghĩa tiếng Việt rõ ràng, to bản */}
+                <div className="bg-china-paper/90 border border-border/90 rounded-2xl px-5 py-3 text-center shadow-2xs">
+                  <p className="text-base sm:text-lg font-bold text-china-ink leading-snug">
+                    {currentCard.word.meanings_vi
+                      ? currentCard.word.meanings_vi.join("; ")
+                      : currentCard.word.meanings?.join("; ")}
+                  </p>
+                </div>
+
+                {/* Phân loại & Link luyện viết */}
+                <div className="flex items-center justify-center gap-3 text-xs text-muted pt-0.5">
+                  {currentCard.word.partOfSpeech && currentCard.word.partOfSpeech.length > 0 && (
+                    <span className="bg-white border border-border px-2 py-0.5 rounded-md font-medium text-china-ink">
+                      {currentCard.word.partOfSpeech.join(", ")}
+                    </span>
+                  )}
+                  <Link
+                    href={`/vocabulary/${currentCard.word.id}`}
+                    className="inline-flex items-center gap-1 font-bold text-china-red hover:underline"
+                  >
+                    <span>Chi tiết & Luyện viết</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+            ) : (
+              <div className="pt-2">
                 <button
                   type="button"
-                  title="Nghe phát âm (Phím R)"
-                  onClick={() => playAudio(currentCard.word.hanzi)}
-                  className="p-2 rounded-xl bg-white border border-border text-china-red hover:bg-china-red hover:text-white transition-colors active:scale-95"
+                  onClick={handleRevealAnswer}
+                  className="px-8 py-3 rounded-2xl bg-china-ink hover:bg-china-ink/90 text-white text-sm font-bold transition-all shadow-sm active:scale-95 cursor-pointer"
                 >
-                  <Volume2 className="w-4 h-4 sm:w-5 sm:h-5" />
+                  Hiển thị đáp án (Phím Space)
                 </button>
-              </div>
-            </div>
-
-            {/* Nội dung chính của Thẻ */}
-            <div className="p-6 sm:p-10 flex flex-col items-center justify-between min-h-[340px] sm:min-h-[370px]">
-              {/* Chữ Hán trung tâm đặt trên nền khung Điền Tự Cách tinh tế */}
-              <div className="my-auto text-center w-full space-y-2">
-                <div className="inline-flex flex-col items-center justify-center px-8 py-5 rounded-2xl bg-china-paper/40 border border-border/70 relative">
-                  <h2
-                    className={`font-serif font-bold text-china-ink leading-tight tracking-wide select-all ${
-                      currentCard.word.hanzi.length <= 1
-                        ? "text-6xl sm:text-7xl md:text-8xl"
-                        : currentCard.word.hanzi.length === 2
-                        ? "text-5xl sm:text-6xl md:text-7xl"
-                        : currentCard.word.hanzi.length === 3
-                        ? "text-4xl sm:text-5xl md:text-6xl"
-                        : "text-3xl sm:text-4xl md:text-5xl"
-                    }`}
-                  >
-                    {currentCard.word.hanzi}
-                  </h2>
-
-                  {currentCard.word.traditional &&
-                    currentCard.word.traditional !== currentCard.word.hanzi && (
-                      <p className="text-xs sm:text-sm font-serif text-muted mt-1.5">
-                        Phồn thể: <span className="text-china-ink">{currentCard.word.traditional}</span>
-                      </p>
-                    )}
-                </div>
-
-                {/* Khu vực Đáp án hoặc Nút Lật Thẻ */}
-                {showAnswer ? (
-                  <div className="pt-5 mt-4 border-t border-border/60 max-w-xl mx-auto space-y-3 animate-fade-in">
-                    {/* Pinyin & Âm Hán-Việt */}
-                    <div className="flex flex-wrap items-center justify-center gap-2.5">
-                      <span className="text-2xl sm:text-3xl font-mono font-semibold text-china-red">
-                        {currentCard.word.pinyin}
-                      </span>
-                      {cardHanViet && (
-                        <span className="px-2.5 py-0.5 bg-amber-50 text-amber-900 border border-amber-200 rounded-lg text-xs sm:text-sm font-bold">
-                          Hán-Việt: {cardHanViet}
-                        </span>
-                      )}
-                    </div>
-
-                    {/* Nghĩa tiếng Việt */}
-                    <div className="bg-china-paper/70 border border-border rounded-2xl p-4 text-center">
-                      <p className="text-base sm:text-xl font-bold text-china-ink leading-snug">
-                        {currentCard.word.meanings_vi
-                          ? currentCard.word.meanings_vi.join("; ")
-                          : currentCard.word.meanings?.join("; ")}
-                      </p>
-                    </div>
-
-                    {/* Từ loại, Lượng từ & Link luyện viết */}
-                    <div className="flex items-center justify-center gap-2 flex-wrap text-xs text-muted pt-1">
-                      {currentCard.word.partOfSpeech && currentCard.word.partOfSpeech.length > 0 && (
-                        <span className="px-2.5 py-0.5 bg-white border border-border rounded-md font-medium text-china-ink">
-                          Loại từ: {currentCard.word.partOfSpeech.join(", ")}
-                        </span>
-                      )}
-                      {currentCard.word.classifiers && currentCard.word.classifiers.length > 0 && (
-                        <span className="px-2.5 py-0.5 bg-white border border-border rounded-md">
-                          Lượng từ:{" "}
-                          <b className="font-serif text-china-ink">
-                            {currentCard.word.classifiers.join(", ")}
-                          </b>
-                        </span>
-                      )}
-                      <Link
-                        href={`/vocabulary/${currentCard.word.id}`}
-                        className="px-2.5 py-0.5 rounded-md bg-white border border-border text-china-red font-semibold hover:bg-china-red hover:text-white transition-colors"
-                      >
-                        Chi tiết & Luyện viết →
-                      </Link>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="pt-6">
-                    <button
-                      type="button"
-                      onClick={handleRevealAnswer}
-                      className="px-8 py-3 rounded-2xl bg-china-ink hover:bg-china-ink/85 text-white text-xs sm:text-sm font-semibold transition-all shadow-xs active:scale-95"
-                    >
-                      Hiển thị đáp án (Phím Space)
-                    </button>
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* 3. Thanh 4 Nút Đánh Giá SRS (Chỉ hiện khi đã xem đáp án) */}
-            {showAnswer && (
-              <div className="border-t border-border bg-china-paper/60 p-4 sm:p-5 animate-fade-in">
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3">
-                  <button
-                    type="button"
-                    onClick={() => handleResult("again")}
-                    className="flex flex-col items-center justify-center py-3 px-3 rounded-2xl border border-border bg-white hover:border-red-400 hover:bg-red-50/50 transition-all active:scale-95"
-                  >
-                    <span className="text-[11px] font-mono text-muted mb-0.5">
-                      {nextIntervals.again}
-                    </span>
-                    <span className="font-bold text-sm text-red-600">Chưa nhớ</span>
-                    <span className="text-[10px] text-muted mt-0.5">Phím 1</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => handleResult("hard")}
-                    className="flex flex-col items-center justify-center py-3 px-3 rounded-2xl border border-border bg-white hover:border-amber-400 hover:bg-amber-50/50 transition-all active:scale-95"
-                  >
-                    <span className="text-[11px] font-mono text-muted mb-0.5">
-                      {nextIntervals.hard}
-                    </span>
-                    <span className="font-bold text-sm text-amber-700">Hơi khó</span>
-                    <span className="text-[10px] text-muted mt-0.5">Phím 2</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => handleResult("good")}
-                    className="flex flex-col items-center justify-center py-3 px-3 rounded-2xl border border-border bg-white hover:border-emerald-500 hover:bg-emerald-50/50 transition-all active:scale-95"
-                  >
-                    <span className="text-[11px] font-mono text-muted mb-0.5">
-                      {nextIntervals.good}
-                    </span>
-                    <span className="font-bold text-sm text-emerald-700">Nhớ tốt</span>
-                    <span className="text-[10px] text-muted mt-0.5">Phím 3</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => handleResult("easy")}
-                    className="flex flex-col items-center justify-center py-3 px-3 rounded-2xl border border-border bg-white hover:border-blue-500 hover:bg-blue-50/50 transition-all active:scale-95"
-                  >
-                    <span className="text-[11px] font-mono text-muted mb-0.5">
-                      {nextIntervals.easy}
-                    </span>
-                    <span className="font-bold text-sm text-blue-700">Rất dễ</span>
-                    <span className="text-[10px] text-muted mt-0.5">Phím 4</span>
-                  </button>
-                </div>
               </div>
             )}
           </div>
+
+          {/* 3. Thanh 4 Nút Đánh Giá SRS: Đồng bộ Hán phong với Mini Mascot Tiểu Lu */}
+          {showAnswer && (
+            <div className="border-t border-border/80 bg-china-paper/60 p-3 sm:p-4 rounded-b-3xl animate-fade-in">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3">
+                {/* 1. Chưa nhớ */}
+                <button
+                  type="button"
+                  onClick={() => handleResult("again")}
+                  className="flex flex-col items-center justify-between py-2.5 px-3 rounded-2xl border border-border/90 bg-white hover:border-china-red hover:bg-china-paper/70 shadow-2xs transition-all duration-200 active:scale-95 cursor-pointer group"
+                >
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 mb-1.5 transition-transform group-hover:scale-110">
+                    <Image
+                      src="/srs-again.svg"
+                      alt="Chưa nhớ"
+                      width={40}
+                      height={40}
+                      className="object-contain"
+                    />
+                  </div>
+                  <div className="text-center">
+                    <span className="block font-bold text-sm sm:text-base text-china-ink group-hover:text-china-red transition-colors">
+                      Chưa nhớ
+                    </span>
+                    <span className="block text-[11px] text-muted font-medium mt-0.5">
+                      {nextIntervals.again}
+                    </span>
+                  </div>
+                  <span className="mt-1 px-1.5 py-0.2 rounded text-[10px] font-mono text-muted/70 bg-china-paper border border-border/60">
+                    Phím 1
+                  </span>
+                </button>
+
+                {/* 2. Hơi khó */}
+                <button
+                  type="button"
+                  onClick={() => handleResult("hard")}
+                  className="flex flex-col items-center justify-between py-2.5 px-3 rounded-2xl border border-border/90 bg-white hover:border-amber-400 hover:bg-china-paper/70 shadow-2xs transition-all duration-200 active:scale-95 cursor-pointer group"
+                >
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 mb-1.5 transition-transform group-hover:scale-110">
+                    <Image
+                      src="/srs-hard.svg"
+                      alt="Hơi khó"
+                      width={40}
+                      height={40}
+                      className="object-contain"
+                    />
+                  </div>
+                  <div className="text-center">
+                    <span className="block font-bold text-sm sm:text-base text-china-ink group-hover:text-amber-700 transition-colors">
+                      Hơi khó
+                    </span>
+                    <span className="block text-[11px] text-muted font-medium mt-0.5">
+                      {nextIntervals.hard}
+                    </span>
+                  </div>
+                  <span className="mt-1 px-1.5 py-0.2 rounded text-[10px] font-mono text-muted/70 bg-china-paper border border-border/60">
+                    Phím 2
+                  </span>
+                </button>
+
+                {/* 3. Nhớ tốt */}
+                <button
+                  type="button"
+                  onClick={() => handleResult("good")}
+                  className="flex flex-col items-center justify-between py-2.5 px-3 rounded-2xl border border-border/90 bg-white hover:border-china-jade hover:bg-china-paper/70 shadow-2xs transition-all duration-200 active:scale-95 cursor-pointer group"
+                >
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 mb-1.5 transition-transform group-hover:scale-110">
+                    <Image
+                      src="/srs-good.svg"
+                      alt="Nhớ tốt"
+                      width={40}
+                      height={40}
+                      className="object-contain"
+                    />
+                  </div>
+                  <div className="text-center">
+                    <span className="block font-bold text-sm sm:text-base text-china-ink group-hover:text-china-jade transition-colors">
+                      Nhớ tốt
+                    </span>
+                    <span className="block text-[11px] text-muted font-medium mt-0.5">
+                      {nextIntervals.good}
+                    </span>
+                  </div>
+                  <span className="mt-1 px-1.5 py-0.2 rounded text-[10px] font-mono text-muted/70 bg-china-paper border border-border/60">
+                    Phím 3
+                  </span>
+                </button>
+
+                {/* 4. Rất dễ */}
+                <button
+                  type="button"
+                  onClick={() => handleResult("easy")}
+                  className="flex flex-col items-center justify-between py-2.5 px-3 rounded-2xl border border-border/90 bg-white hover:border-china-gold hover:bg-china-paper/70 shadow-2xs transition-all duration-200 active:scale-95 cursor-pointer group"
+                >
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 mb-1.5 transition-transform group-hover:scale-110">
+                    <Image
+                      src="/srs-easy.svg"
+                      alt="Rất dễ"
+                      width={40}
+                      height={40}
+                      className="object-contain"
+                    />
+                  </div>
+                  <div className="text-center">
+                    <span className="block font-bold text-sm sm:text-base text-china-ink group-hover:text-amber-600 transition-colors">
+                      Rất dễ
+                    </span>
+                    <span className="block text-[11px] text-muted font-medium mt-0.5">
+                      {nextIntervals.easy}
+                    </span>
+                  </div>
+                  <span className="mt-1 px-1.5 py-0.2 rounded text-[10px] font-mono text-muted/70 bg-china-paper border border-border/60">
+                    Phím 4
+                  </span>
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       ) : null}
     </div>

@@ -13,6 +13,13 @@ export interface ChibiLoadingProps {
    * - "compact": Thu nhỏ tối đa để nhúng vào card, modal hoặc khu vực hẹp.
    */
   variant?: "loading" | "auth-required" | "compact"
+  /**
+   * Biểu cảm nhân vật Tiểu Lu:
+   * - "loading": Ngồi đọc sách uống trà, chờ đợi
+   * - "cheer": Giơ cờ "加油!", nhảy nhót cổ vũ
+   * - "brush": Cầm bút lông đại tự, nháy mắt tinh nghịch
+   */
+  character?: "loading" | "cheer" | "brush"
   title?: string
   description?: string
   size?: "sm" | "md" | "lg"
@@ -27,8 +34,15 @@ const SIZE_MAP = {
   lg: { width: 300, height: 300, box: "w-72 h-72" },
 }
 
+const CHARACTER_SVG = {
+  loading: "/chibi-loading.svg",
+  cheer: "/chibi-cheer.svg",
+  brush: "/chibi-brush.svg",
+}
+
 export default function ChibiLoading({
   variant = "loading",
+  character = "loading",
   title,
   description,
   size = "md",
@@ -38,11 +52,12 @@ export default function ChibiLoading({
 }: ChibiLoadingProps) {
   const { openAuthModal } = useAuth()
   const dim = SIZE_MAP[size]
+  const svgSrc = CHARACTER_SVG[character] || CHARACTER_SVG.loading
 
   // Default copy text based on variant
   const defaultTitle =
     variant === "auth-required"
-      ? "Tiểu Bảo đang đợi bạn đăng nhập..."
+      ? "Tiểu Lu đang đợi bạn đăng nhập..."
       : variant === "compact"
       ? "Đang tải..."
       : "Đang tải bài học..."
@@ -64,8 +79,8 @@ export default function ChibiLoading({
       {/* Chibi SVG Container */}
       <div className={`relative ${dim.box} flex items-center justify-center select-none`}>
         <Image
-          src="/chibi-loading.svg"
-          alt="Chibi Panda Loading"
+          src={svgSrc}
+          alt={`Chibi Tiểu Lu - ${character}`}
           width={dim.width}
           height={dim.height}
           priority
@@ -76,7 +91,7 @@ export default function ChibiLoading({
       {/* Text Info */}
       {variant !== "compact" ? (
         <div className="mt-3 max-w-sm space-y-1.5 animate-[fadeIn_0.4s_ease-out]">
-          <h3 className="text-base font-bold text-china-ink font-serif tracking-tight flex items-center justify-center gap-1.5">
+          <h3 className="text-base font-bold text-china-ink font-sans tracking-tight flex items-center justify-center gap-1.5">
             <span>{displayTitle}</span>
             {variant === "loading" && (
               <span className="inline-flex gap-1 ml-0.5">
@@ -87,7 +102,7 @@ export default function ChibiLoading({
             )}
           </h3>
 
-          <p className="text-xs text-muted leading-relaxed px-2">{displayDesc}</p>
+          <p className="text-xs text-muted leading-relaxed px-2 font-sans">{displayDesc}</p>
 
           {/* Action button when user is logged out or auth is required */}
           {variant === "auth-required" && showLoginButton && (
@@ -105,7 +120,7 @@ export default function ChibiLoading({
           )}
         </div>
       ) : (
-        <span className="mt-2 text-xs font-medium text-muted">{displayTitle}</span>
+        <span className="mt-2 text-xs font-semibold text-muted">{displayTitle}</span>
       )}
     </div>
   )

@@ -177,13 +177,7 @@ export default function LessonDetailPage() {
           <span className="text-china-red font-semibold">Bài {lesson.lessonNumber}</span>
         </div>
 
-        <Link
-          href={`/digitizer?book=${bookId}&lesson=${lesson.lessonNumber}`}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-china-paper hover:bg-neutral-100 border border-border text-xs font-semibold text-china-ink transition"
-        >
-          <Crop className="w-3.5 h-3.5 text-china-red" />
-          <span>Số hóa thêm từ (OCR)</span>
-        </Link>
+        
       </div>
 
       {/* Book Cover Header Banner */}

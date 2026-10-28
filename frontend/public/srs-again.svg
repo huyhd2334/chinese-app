@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="100%" height="100%">
+  <!-- Mini Chibi Tiểu Lu: Gãi đầu bối rối (Chưa nhớ) -->
+  <defs>
+    <radialGradient id="againBlush" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff7b89" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#ff7b89" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Ears -->
+  <circle cx="22" cy="22" r="11" fill="#31333b"/>
+  <circle cx="22" cy="22" r="6" fill="#434752"/>
+  <circle cx="58" cy="22" r="11" fill="#31333b"/>
+  <circle cx="58" cy="22" r="6" fill="#434752"/>
+
+  <!-- Chubby Head -->
+  <circle cx="40" cy="42" r="28" fill="#ffffff" stroke="#eae0d5" stroke-width="1.5"/>
+
+  <!-- Jade Scholar Cap tilted slightly -->
+  <path d="M33 16 C33 10 37 8 42 8 C47 8 51 10 51 16 Z" fill="#366c5d"/>
+  <rect x="31" y="15" width="22" height="3" rx="1.5" fill="#20453b"/>
+  <circle cx="42" cy="12" r="2" fill="#d4af37"/>
+
+  <!-- Eye Patches -->
+  <ellipse cx="28" cy="38" rx="8" ry="10" fill="#31333b" transform="rotate(-8 28 38)"/>
+  <ellipse cx="52" cy="38" rx="8" ry="10" fill="#31333b" transform="rotate(8 52 38)"/>
+
+  <!-- Dizzy / Confused Eyes (Dấu X hoặc mắt xoắn ốc nhẹ đáng yêu) -->
+  <path d="M25 35 L31 41 M31 35 L25 41" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="52" cy="38" r="3.5" fill="#1e2026"/>
+  <circle cx="51" cy="37" r="1.5" fill="#ffffff"/>
+
+  <!-- Cheeks -->
+  <ellipse cx="22" cy="48" rx="6" ry="4" fill="url(#againBlush)"/>
+  <ellipse cx="58" cy="48" rx="6" ry="4" fill="url(#againBlush)"/>
+
+  <!-- Nose & Wavy Confused Mouth -->
+  <circle cx="40" cy="44" r="1.8" fill="#31333b"/>
+  <path d="M36 49 Q38 47 40 49 Q42 51 44 49" fill="none" stroke="#31333b" stroke-width="1.8" stroke-linecap="round"/>
+
+  <!-- Little Paw Scratching Head (Bàn tay nhỏ giơ lên gãi đầu) -->
+  <ellipse cx="18" cy="28" rx="6" ry="5" fill="#31333b" transform="rotate(-30 18 28)"/>
+  <!-- Sweat drop (Giọt mồ hôi bối rối) -->
+  <path d="M60 30 C60 27 63 24 63 24 C63 24 66 27 66 30 C66 32 63.3 33 60 30 Z" fill="#60a5fa" opacity="0.85"/>
+</svg>

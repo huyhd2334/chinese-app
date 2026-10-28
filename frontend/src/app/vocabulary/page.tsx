@@ -2,12 +2,10 @@
 
 import HeaderVocab from "@/components/vocabulary/HeaderVocab"
 import WordContainer from "@/components/vocabulary/WordContainer"
-import FlashcardModal from "@/components/vocabulary/FlashcardModal"
-import VocabQuizModal from "@/components/vocabulary/VocabQuizModal"
 import { useEffect, useRef, useState } from "react"
 import useVocab from "../../../hooks/useVocab"
-import { db, type Word } from "../../../db/database"
-import { Search, Plus, Sparkles, Eye, EyeOff, Trophy, CheckCircle2 } from "lucide-react"
+import { db } from "../../../db/database"
+import { Search, Eye, EyeOff } from "lucide-react"
 
 const Page = () => {
   const levels = 7
@@ -26,16 +24,7 @@ const Page = () => {
   const [hidePinyin, setHidePinyin] = useState(false)
   const [hideMeaning, setHideMeaning] = useState(false)
 
-  // Flashcard & Quiz modal states
-  const [isFlashcardOpen, setIsFlashcardOpen] = useState(false)
-  const [isQuizOpen, setIsQuizOpen] = useState(false)
-  const [currentLevelWords, setCurrentLevelWords] = useState<Word[]>([])
-
-  // Feedback toast & container refresh
-  const [toastMessage, setToastMessage] = useState<string | null>(null)
-  const [refreshTrigger, setRefreshTrigger] = useState(0)
-
-  const { getHskVocabIds, addToReview } = useVocab()
+  const { getHskVocabIds } = useVocab()
 
   useEffect(() => {
     const savedLevel = sessionStorage.getItem("vocab-level")
@@ -78,38 +67,6 @@ const Page = () => {
     fetchAllCounts()
   }, [getHskVocabIds])
 
-  const handleQuickAdd10 = async () => {
-    const ids = await getHskVocabIds(level)
-    const reviews = await db.reviewItems.toArray()
-    const reviewWordIds = new Set(reviews.map(r => r.wordId))
-    
-    const newWords = ids.filter(id => !reviewWordIds.has(id)).slice(0, 10)
-    if (newWords.length === 0) {
-      setToastMessage(`Tất cả từ HSK ${level} đã có trong lộ trình ôn tập!`)
-      setTimeout(() => setToastMessage(null), 2500)
-      return
-    }
-
-    let addedCount = 0
-    try {
-      for (const id of newWords) {
-        await addToReview(id)
-        addedCount++
-      }
-      setToastMessage(`Đã thêm ${addedCount} từ mới HSK ${level} vào ôn tập ✓`)
-    } catch {
-      if (addedCount > 0) {
-        setToastMessage(`Đã thêm ${addedCount} từ (Chạm giới hạn 500 từ gói Miễn phí)`)
-      }
-    }
-    if (addedCount > 0) {
-      setLearningCount(prev => prev + addedCount)
-      setNewCount(prev => prev - addedCount)
-      setRefreshTrigger(prev => prev + 1)
-    }
-    setTimeout(() => setToastMessage(null), 2500)
-  }
-
   const progressPercentage = count > 0 ? ((learningCount + masteredCount) / count) * 100 : 0
 
   return (
@@ -143,7 +100,7 @@ const Page = () => {
         {/* Action Buttons & Search */}
         <div className="w-full lg:w-2/3 flex flex-wrap gap-2.5 items-center justify-start lg:justify-end">
           {/* Search Box */}
-          <div className="relative w-full sm:w-56 group">
+          <div className="relative w-full sm:w-64 group">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted group-focus-within:text-china-red transition-colors" />
             <input 
               type="text" 
@@ -177,30 +134,6 @@ const Page = () => {
               <span>{hideMeaning ? "Ẩn Nghĩa" : "Nghĩa"}</span>
             </button>
           </div>
-
-          {/* Quick Actions */}
-          <button 
-            onClick={() => setIsFlashcardOpen(true)}
-            className="flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-china-red to-[#b30d25] hover:opacity-95 text-white text-xs sm:text-sm font-semibold rounded-xl transition-all shadow-xs active:scale-95"
-          >
-            <Sparkles className="w-3.5 h-3.5" /> Flashcard
-          </button>
-
-          <button 
-            onClick={() => setIsQuizOpen(true)}
-            className="flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-china-jade to-[#204a3e] hover:opacity-95 text-white text-xs sm:text-sm font-semibold rounded-xl transition-all shadow-xs active:scale-95"
-            title="Trắc nghiệm phản xạ 4 đáp án & Chế độ luyện nghe"
-          >
-            <Trophy className="w-3.5 h-3.5" /> Mini Quiz
-          </button>
-
-          <button 
-            onClick={handleQuickAdd10}
-            className="flex items-center gap-1 px-3 py-1.5 bg-china-ink hover:bg-china-ink/80 text-white text-xs sm:text-sm font-medium rounded-xl transition-all shadow-xs active:scale-95"
-            title="Thêm nhanh 10 từ chưa học vào danh sách ôn tập"
-          >
-            <Plus className="w-3.5 h-3.5" /> +10 từ
-          </button>
         </div>
       </div>
 
@@ -275,40 +208,8 @@ const Page = () => {
           filter={filter}
           hidePinyin={hidePinyin}
           hideMeaning={hideMeaning}
-          onWordsLoaded={(words) => setCurrentLevelWords(words)}
-          refreshTrigger={refreshTrigger}
         />
       </div>
-
-      {/* Floating Toast Notification */}
-      {toastMessage && (
-        <div className="fixed bottom-20 md:bottom-8 left-1/2 -translate-x-1/2 z-50 bg-china-jade text-white px-5 py-2.5 rounded-full shadow-lg font-medium text-xs sm:text-sm flex items-center gap-2 animate-fade-in pointer-events-none">
-          <CheckCircle2 className="w-4 h-4" />
-          {toastMessage}
-        </div>
-      )}
-
-      {/* Flashcard Modal */}
-      <FlashcardModal
-        isOpen={isFlashcardOpen}
-        onClose={() => setIsFlashcardOpen(false)}
-        words={currentLevelWords.length > 0 ? currentLevelWords.slice(0, 30) : []}
-        onMarkLearned={async (wordId) => {
-          await addToReview(wordId)
-          setLearningCount(prev => prev + 1)
-        }}
-      />
-
-      {/* Mini Quiz Modal */}
-      <VocabQuizModal
-        isOpen={isQuizOpen}
-        onClose={() => setIsQuizOpen(false)}
-        words={currentLevelWords.length > 0 ? currentLevelWords : []}
-        onWordMastered={async (wordId) => {
-          await addToReview(wordId)
-          setLearningCount(prev => prev + 1)
-        }}
-      />
     </div>
   )
 }

@@ -4,6 +4,8 @@ import useVocab from '../../../hooks/useVocab'
 import type { Word, ReviewItem } from "../../../db/database"
 import { db } from "../../../db/database"
 import Link from 'next/link'
+import Image from 'next/image'
+import ChibiLoading from '@/components/common/ChibiLoading'
 import { Volume2, CheckCircle2, AlertCircle, Star, Eye, EyeOff } from 'lucide-react'
 import { getHanViet } from '../../utils/hanviet'
 
@@ -207,9 +209,14 @@ const WordContainer = ({
 
       <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 lg:gap-5 pb-4'>
         {loading && allWords.length === 0 ? (
-          <div className="col-span-full py-20 text-center text-muted font-medium flex flex-col items-center gap-4">
-            <div className="w-8 h-8 border-4 border-china-red/30 border-t-china-red rounded-full animate-spin"></div>
-            Đang tải dữ liệu từ vựng...
+          <div className="col-span-full py-12 flex items-center justify-center">
+            <ChibiLoading
+              variant="loading"
+              character="loading"
+              size="md"
+              title="Tiểu Lu đang mở kho từ vựng..."
+              description="Đang tải danh mục từ HSK cho bạn nhé!"
+            />
           </div>
         ) : (
             displayedWords.length > 0 ? (
@@ -361,9 +368,22 @@ const WordContainer = ({
                 )
               })
             ) : (
-              <div className="col-span-full py-20 flex flex-col items-center justify-center text-muted font-medium">
-                <AlertCircle className="w-12 h-12 mb-4 text-border" />
-                <p>Không tìm thấy từ vựng nào khớp với điều kiện lọc.</p>
+              <div className="col-span-full py-14 flex flex-col items-center justify-center text-center space-y-2.5 animate-fade-in">
+                <div className="relative w-24 h-16 select-none">
+                  <Image
+                    src="/chibi-peek.svg"
+                    alt="Tiểu Lu lấp ló"
+                    width={96}
+                    height={64}
+                    className="object-contain"
+                  />
+                </div>
+                <p className="font-bold text-china-ink text-sm sm:text-base">
+                  Tiểu Lu không tìm thấy từ vựng nào khớp với bộ lọc!
+                </p>
+                <p className="text-xs text-muted max-w-xs">
+                  Bạn hãy thử đổi cấp độ HSK, xóa từ khóa tìm kiếm hoặc chọn xem &quot;Tất cả&quot; nhé.
+                </p>
               </div>
             )
         )}

@@ -1,19 +1,17 @@
 'use client'
 import { usePathname } from "next/navigation";
 import Link from 'next/link'
+import Image from 'next/image'
 import styles from './sideBar.module.css'
-import { BookOpen, BookText, Eye, GraduationCap, LayoutDashboard, Puzzle, ReceiptText, Sparkles } from "lucide-react";
+import { BookOpen, Eye, LayoutDashboard, ReceiptText, Sparkles } from "lucide-react";
 import UserMenu from "@/components/auth/UserMenu";
 
 const navItems = [
   { href: "/", label: "Dashboard", shortLabel: "Home", icon: LayoutDashboard },
   { href: "/books", label: "Giáo trình HSK", shortLabel: "Sách", icon: BookOpen },
-  { href: "/vocabulary", label: "Vocabulary", shortLabel: "Vocab", icon: ReceiptText },
-  { href: "/review", label: "Review", shortLabel: "Review", icon: Eye },
-  { href: "/bonus", label: "Bonus Vocab", shortLabel: "Bonus", icon: Sparkles },
-  { href: "/reading", label: "Reading", shortLabel: "Read", icon: BookText },
-  { href: "/listening", label: "Solving puzzles", shortLabel: "Puzzle", icon: Puzzle },
-  { href: "/exams", label: "Mock Exams", shortLabel: "Exams", icon: GraduationCap },
+  { href: "/vocabulary", label: "Từ vựng HSK", shortLabel: "Từ vựng", icon: ReceiptText },
+  { href: "/review", label: "Ôn tập SRS", shortLabel: "Ôn tập", icon: Eye },
+  { href: "/bonus", label: "Từ mở rộng", shortLabel: "Mở rộng", icon: Sparkles },
 ]
 
 const SideBar = () => {
@@ -22,12 +20,33 @@ const SideBar = () => {
   return (
     <>
       {/* Desktop & Tablet Sidebar */}
-      <aside className='hidden md:flex flex-col w-16 lg:w-52 shrink-0 border-r border-border ml-2 lg:ml-6 pt-6 space-y-3 transition-all duration-300 bg-china-paper/50'>
-        <div className="flex items-center font-serif text-2xl px-2 lg:px-0 overflow-hidden text-china-red mb-2">
-          <span className="lg:hidden text-china-paper bg-china-red rounded-lg shadow-sm shadow-china-red/20 py-1 px-3 font-serif font-bold">H</span>
-          <span className="hidden lg:inline font-bold tracking-wider">HSK <span className="text-china-ink font-sans text-xl">Learning</span></span>
+      <aside className='hidden md:flex flex-col w-16 lg:w-56 shrink-0 border-r border-border/80 px-2 lg:px-3 pt-4 pb-3 space-y-2.5 transition-all duration-300 bg-china-paper/60 select-none'>
+        
+        {/* Brand Header */}
+        <div className="flex items-center gap-3 px-1 lg:px-2 py-1 mb-1">
+          <div className="w-10 h-10 rounded-2xl bg-white border border-border shadow-xs p-1 shrink-0 flex items-center justify-center transition-transform hover:scale-105">
+            <Image
+              src="/chibi-loading.svg"
+              alt="Tiểu Lu"
+              width={34}
+              height={34}
+              priority
+              className="object-contain"
+            />
+          </div>
+          <div className="hidden lg:flex flex-col leading-tight min-w-0">
+            <div className="flex items-center gap-1">
+              <span className="font-extrabold tracking-wide text-china-red text-base">HSK</span>
+              <span className="font-bold text-china-ink text-base">Learning</span>
+            </div>
+            <span className="text-[11px] text-muted font-semibold truncate">
+              Bàn học Tiểu Lu
+            </span>
+          </div>
         </div>      
-        <nav className="flex-1 space-y-1">
+
+        {/* Navigation Items */}
+        <nav className="flex-1 space-y-1.5 overflow-y-auto custom-scrollbar pt-1">
           {navItems.map((item) => {
             const isActive = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href)
             const Icon = item.icon
@@ -36,34 +55,49 @@ const SideBar = () => {
                 key={item.href}
                 href={item.href} 
                 title={item.label} 
-                className={`${styles.option} ${isActive ? styles.activate : ""} justify-center lg:justify-start rounded-xl mx-1`}
+                className={`${styles.option} ${isActive ? styles.activate : ""} justify-center lg:justify-between`}
               >
-                <Icon className="w-5 h-5 shrink-0" /> 
-                <span className="hidden lg:inline text-sm font-medium">{item.label}</span>
+                <div className="flex items-center gap-3 min-w-0">
+                  <Icon className="w-5 h-5 shrink-0" /> 
+                  <span className="hidden lg:inline truncate font-semibold">{item.label}</span>
+                </div>
+                {isActive && (
+                  <span className="hidden lg:block w-1.5 h-1.5 rounded-full bg-china-red shrink-0" />
+                )}
               </Link>
             )
           })}
         </nav>
 
         {/* User Account Menu Desktop */}
-        <div className="pt-2 pb-4 border-t border-border mt-auto">
+        <div className="pt-2 border-t border-border/70 mt-auto">
           <UserMenu />
         </div>
       </aside>
 
       {/* Mobile Top Brand Bar */}
       <header className="md:hidden sticky top-0 z-30 flex items-center justify-between px-4 py-2.5 bg-white/95 backdrop-blur-md border-b border-border shadow-xs">
-        <Link href="/" className="flex items-center gap-2">
-          <span className="text-china-paper bg-china-red rounded-lg shadow-xs py-0.5 px-2 font-serif font-bold text-base">H</span>
-          <span className="font-serif font-bold text-lg text-china-red tracking-wider">
-            HSK <span className="text-china-ink font-sans text-sm font-medium">Learning</span>
-          </span>
+        <Link href="/" className="flex items-center gap-2.5">
+          <div className="w-8 h-8 rounded-xl bg-white border border-border shadow-2xs p-1 flex items-center justify-center">
+            <Image
+              src="/chibi-loading.svg"
+              alt="Tiểu Lu"
+              width={26}
+              height={26}
+              priority
+              className="object-contain"
+            />
+          </div>
+          <div className="flex items-center gap-1 font-bold text-base leading-none">
+            <span className="text-china-red">HSK</span>
+            <span className="text-china-ink">Learning</span>
+          </div>
         </Link>
         <UserMenu compact />
       </header>
 
       {/* Mobile Bottom Navigation Bar */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-lg border-t border-border shadow-[0_-4px_20px_rgba(0,0,0,0.05)] flex items-center justify-around py-1.5 px-1 safe-area-pb">
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-lg border-t border-border shadow-[0_-4px_20px_rgba(0,0,0,0.05)] flex items-center justify-around py-1.5 px-2 safe-area-pb">
         {navItems.map((item) => {
           const isActive = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href)
           const Icon = item.icon
@@ -80,7 +114,7 @@ const SideBar = () => {
               <div className={`p-1 rounded-lg transition-transform ${isActive ? "bg-china-red/10 scale-105" : ""}`}>
                 <Icon className={`w-5 h-5 ${isActive ? "stroke-china-red" : "stroke-muted"}`} />
               </div>
-              <span className={`text-[10px] mt-0.5 truncate max-w-[50px] ${isActive ? "font-bold text-china-red" : "text-muted"}`}>
+              <span className={`text-[10px] mt-0.5 truncate max-w-[60px] font-semibold ${isActive ? "text-china-red" : "text-muted"}`}>
                 {item.shortLabel}
               </span>
             </Link>

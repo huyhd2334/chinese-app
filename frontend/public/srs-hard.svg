@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="100%" height="100%">
+  <!-- Mini Chibi Tiểu Lu: Chống cằm suy nghĩ (Hơi khó) -->
+  <defs>
+    <radialGradient id="hardBlush" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff7b89" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#ff7b89" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Ears -->
+  <circle cx="22" cy="22" r="11" fill="#31333b"/>
+  <circle cx="22" cy="22" r="6" fill="#434752"/>
+  <circle cx="58" cy="22" r="11" fill="#31333b"/>
+  <circle cx="58" cy="22" r="6" fill="#434752"/>
+
+  <!-- Chubby Head -->
+  <circle cx="40" cy="42" r="28" fill="#ffffff" stroke="#eae0d5" stroke-width="1.5"/>
+
+  <!-- Scholar Cap -->
+  <path d="M33 16 C33 10 37 8 40 8 C43 8 47 10 47 16 Z" fill="#366c5d"/>
+  <rect x="31" y="15" width="18" height="3" rx="1.5" fill="#20453b"/>
+  <circle cx="40" cy="12" r="2" fill="#d4af37"/>
+
+  <!-- Eye Patches -->
+  <ellipse cx="28" cy="38" rx="8" ry="10" fill="#31333b" transform="rotate(-8 28 38)"/>
+  <ellipse cx="52" cy="38" rx="8" ry="10" fill="#31333b" transform="rotate(8 52 38)"/>
+
+  <!-- Thinking Eyes (Nhìn chéo lên trên suy ngẫm) -->
+  <circle cx="27" cy="36" r="4.5" fill="#1e2026"/>
+  <circle cx="25.5" cy="34.5" r="2" fill="#ffffff"/>
+
+  <circle cx="51" cy="36" r="4.5" fill="#1e2026"/>
+  <circle cx="49.5" cy="34.5" r="2" fill="#ffffff"/>
+
+  <!-- Cheeks -->
+  <ellipse cx="22" cy="48" rx="6" ry="4" fill="url(#hardBlush)"/>
+  <ellipse cx="58" cy="48" rx="6" ry="4" fill="url(#hardBlush)"/>
+
+  <!-- Nose & Pensive Small Mouth -->
+  <circle cx="40" cy="44" r="1.8" fill="#31333b"/>
+  <ellipse cx="40" cy="49" rx="2.5" ry="2" fill="#31333b"/>
+
+  <!-- Paw resting under chin (Tay chống cằm suy nghĩ) -->
+  <ellipse cx="40" cy="58" rx="7" ry="5.5" fill="#31333b"/>
+  <ellipse cx="40" cy="56" rx="4" ry="3" fill="#434752"/>
+
+  <!-- Little thinking question dot -->
+  <text x="64" y="24" font-family="'Nunito', sans-serif" font-size="12" fill="#d4af37" font-weight="900">?</text>
+</svg>

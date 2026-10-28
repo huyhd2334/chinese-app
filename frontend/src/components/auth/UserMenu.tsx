@@ -121,15 +121,15 @@ export default function UserMenu({ compact = false }: UserMenuProps) {
   const displayName = user?.email?.split("@")[0] || "Tài khoản"
 
   return (
-    <div className="space-y-1">
+    <div className="space-y-1 w-full">
       {/* Nút Gói Pro căn đều với các mục Sidebar */}
       <button
         onClick={() => triggerUpgradeModal("manual")}
-        className={`${styles.option} justify-center lg:justify-start rounded-xl mx-1 w-[calc(100%-8px)] cursor-pointer text-left hover:text-china-ink hover:bg-white/60 transition-all`}
+        className={`${styles.option} w-full justify-center lg:justify-start cursor-pointer text-left`}
         title={isPro ? "Đang sử dụng Gói Pro" : "Nâng cấp Pro để mở khóa không giới hạn từ"}
       >
         <Crown className={`w-5 h-5 shrink-0 ${isPro ? "text-china-gold" : "text-muted"}`} />
-        <span className="hidden lg:inline text-sm font-medium text-china-ink">
+        <span className="hidden lg:inline text-sm font-semibold text-china-ink truncate">
           {isPro ? "Thành viên Pro" : "Nâng cấp Pro"}
         </span>
       </button>
@@ -137,27 +137,27 @@ export default function UserMenu({ compact = false }: UserMenuProps) {
       {!user ? (
         <button
           onClick={openAuthModal}
-          className={`${styles.option} justify-center lg:justify-start rounded-xl mx-1 w-[calc(100%-8px)] cursor-pointer text-left hover:text-china-ink hover:bg-white/60 transition-all`}
+          className={`${styles.option} w-full justify-center lg:justify-start cursor-pointer text-left`}
           title="Đăng nhập để đồng bộ dữ liệu"
         >
           <LogIn className="w-5 h-5 shrink-0 text-muted" />
-          <span className="hidden lg:inline text-sm font-medium text-china-ink">
+          <span className="hidden lg:inline text-sm font-semibold text-china-ink">
             Đăng nhập
           </span>
         </button>
       ) : (
-        <div className="relative">
+        <div className="relative w-full">
           <button
             onClick={() => setShowDropdown(prev => !prev)}
-            className={`${styles.option} justify-center lg:justify-start rounded-xl mx-1 w-[calc(100%-8px)] cursor-pointer text-left hover:bg-white/70 transition-all`}
+            className={`${styles.option} w-full justify-center lg:justify-start cursor-pointer text-left`}
             title={user.email}
           >
-            <div className="w-5 h-5 rounded-full bg-china-red/10 border border-china-red/30 text-china-red flex items-center justify-center font-bold text-[10px] uppercase shrink-0">
+            <div className="w-6 h-6 rounded-full bg-china-red/10 border border-china-red/30 text-china-red flex items-center justify-center font-bold text-xs uppercase shrink-0">
               {displayName[0]}
             </div>
             <div className="hidden lg:flex flex-col min-w-0 leading-tight">
-              <div className="flex items-center gap-1">
-                <span className="text-sm font-semibold text-china-ink truncate max-w-[85px]">
+              <div className="flex items-center gap-1.5">
+                <span className="text-xs font-bold text-china-ink truncate max-w-[95px]">
                   {displayName}
                 </span>
                 {isPro && (
@@ -166,7 +166,7 @@ export default function UserMenu({ compact = false }: UserMenuProps) {
                   </span>
                 )}
               </div>
-              <span className="text-[10px] text-china-jade font-medium">Đã đồng bộ</span>
+              <span className="text-[10px] text-china-jade font-semibold">Đã đồng bộ</span>
             </div>
           </button>
 
@@ -177,7 +177,7 @@ export default function UserMenu({ compact = false }: UserMenuProps) {
                 className="fixed inset-0 z-30"
                 onClick={() => setShowDropdown(false)}
               />
-              <div className="absolute bottom-full mb-2 left-2 w-48 bg-card rounded-2xl border border-border shadow-xl p-2 z-40 space-y-1">
+              <div className="absolute bottom-full mb-2 left-0 w-52 bg-card rounded-2xl border border-border shadow-xl p-2 z-40 space-y-1">
                 <div className="px-2.5 py-1.5 border-b border-border text-[11px] text-muted truncate">
                   {user.email}
                 </div>
@@ -186,7 +186,7 @@ export default function UserMenu({ compact = false }: UserMenuProps) {
                     setShowDropdown(false)
                     triggerUpgradeModal("manual")
                   }}
-                  className="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-xs text-china-ink hover:bg-china-paper transition-colors font-semibold text-left"
+                  className="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-xs text-china-ink hover:bg-china-paper transition-colors font-semibold text-left cursor-pointer"
                 >
                   <Crown className="w-3.5 h-3.5 text-china-gold shrink-0" />
                   <span>{isPro ? "Thông tin Gói Pro" : "Nâng cấp Gói Pro"}</span>
@@ -196,7 +196,7 @@ export default function UserMenu({ compact = false }: UserMenuProps) {
                     setShowDropdown(false)
                     signOut()
                   }}
-                  className="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-xs text-red-600 hover:bg-red-50 transition-colors font-medium text-left"
+                  className="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-xs text-red-600 hover:bg-red-50 transition-colors font-medium text-left cursor-pointer"
                 >
                   <LogOut className="w-3.5 h-3.5 shrink-0" />
                   <span>Đăng xuất</span>

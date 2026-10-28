@@ -1,0 +1,220 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <!-- Gradients & Warm Colors -->
+    <linearGradient id="cheerCloudGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fff9f0" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#f5ecdb" stop-opacity="0.75"/>
+    </linearGradient>
+
+    <linearGradient id="cheerGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fce28b"/>
+      <stop offset="50%" stop-color="#d4af37"/>
+      <stop offset="100%" stop-color="#a3821a"/>
+    </linearGradient>
+
+    <linearGradient id="bannerRedGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c8102e"/>
+      <stop offset="50%" stop-color="#e82b48"/>
+      <stop offset="100%" stop-color="#a80b24"/>
+    </linearGradient>
+
+    <linearGradient id="cheerJadeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5ca38e"/>
+      <stop offset="100%" stop-color="#2d5e51"/>
+    </linearGradient>
+
+    <radialGradient id="cheerBlush" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff7b89" stop-opacity="0.65"/>
+      <stop offset="100%" stop-color="#ff7b89" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#2b2b2b" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <style>
+    /* CSS Animations for lively cheering panda */
+    .cheer-bounce {
+      animation: cheerBounce 2.8s ease-in-out infinite;
+      transform-origin: 200px 320px;
+    }
+    .banner-wave {
+      animation: bannerWave 2.8s ease-in-out infinite;
+      transform-origin: 200px 105px;
+    }
+    .confetti-pop-1 {
+      animation: popSparkle 2.2s ease-in-out infinite alternate;
+    }
+    .confetti-pop-2 {
+      animation: popSparkle 2.2s ease-in-out infinite alternate 1.1s;
+    }
+    .ears-wiggle {
+      animation: earTwitch 3.4s ease-in-out infinite;
+      transform-origin: 200px 175px;
+    }
+
+    @keyframes cheerBounce {
+      0%, 100% {
+        transform: translateY(0) scale(1, 1);
+      }
+      30% {
+        transform: translateY(-8px) scale(1.02, 0.98);
+      }
+      50% {
+        transform: translateY(-12px) scale(0.98, 1.02);
+      }
+      70% {
+        transform: translateY(-2px) scale(1.01, 0.99);
+      }
+    }
+
+    @keyframes bannerWave {
+      0%, 100% {
+        transform: rotate(-1deg);
+      }
+      50% {
+        transform: rotate(2deg) translateY(-2px);
+      }
+    }
+
+    @keyframes popSparkle {
+      0% {
+        opacity: 0.3;
+        transform: scale(0.7) rotate(0deg);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1.15) rotate(20deg);
+      }
+    }
+
+    @keyframes earTwitch {
+      0%, 80%, 100% { transform: rotate(0deg); }
+      85% { transform: rotate(-2deg); }
+      90% { transform: rotate(2deg); }
+    }
+  </style>
+
+  <!-- Ambient Light Halo -->
+  <circle cx="200" cy="205" r="140" fill="url(#cheerCloudGrad)" opacity="0.6"/>
+  <circle cx="200" cy="205" r="140" fill="none" stroke="#e6dbcc" stroke-width="2" stroke-dasharray="5 7" opacity="0.6"/>
+
+  <!-- Floor Ground Shadow -->
+  <ellipse cx="200" cy="342" rx="105" ry="16" fill="#2b2b2b" opacity="0.08"/>
+  <ellipse cx="200" cy="340" rx="75" ry="10" fill="#2b2b2b" opacity="0.1"/>
+
+  <!-- Cheering Character Group -->
+  <g class="cheer-bounce">
+    <!-- Paws holding Banner Up High -->
+    <g class="banner-wave">
+      <!-- Cheering Red Scroll / Banner (加油 - Cố lên!) -->
+      <g filter="url(#softShadow)">
+        <rect x="110" y="86" width="180" height="42" rx="12" fill="url(#bannerRedGrad)"/>
+        <!-- Gold Trim -->
+        <rect x="114" y="90" width="172" height="34" rx="8" fill="none" stroke="url(#cheerGoldGrad)" stroke-width="2" stroke-dasharray="8 4" opacity="0.85"/>
+        <!-- Scroll rods -->
+        <rect x="104" y="82" width="9" height="50" rx="4" fill="#a0714f"/>
+        <circle cx="108.5" cy="82" r="6" fill="#d4af37"/>
+        <circle cx="108.5" cy="132" r="6" fill="#d4af37"/>
+
+        <rect x="287" y="82" width="9" height="50" rx="4" fill="#a0714f"/>
+        <circle cx="291.5" cy="82" r="6" fill="#d4af37"/>
+        <circle cx="291.5" cy="132" r="6" fill="#d4af37"/>
+
+        <!-- Text "加油" (Jiāyóu) and Stars -->
+        <text x="200" y="114" font-family="'Noto Serif SC', serif" font-size="20" fill="#fdfaf3" font-weight="900" text-anchor="middle" letter-spacing="4">加 油 ！</text>
+        <circle cx="140" cy="107" r="3" fill="#fce28b"/>
+        <circle cx="260" cy="107" r="3" fill="#fce28b"/>
+      </g>
+
+      <!-- Left Raised Paw -->
+      <circle cx="126" cy="126" r="14" fill="#31333b"/>
+      <ellipse cx="126" cy="123" rx="7" ry="5" fill="#434752"/>
+
+      <!-- Right Raised Paw -->
+      <circle cx="274" cy="126" r="14" fill="#31333b"/>
+      <ellipse cx="274" cy="123" rx="7" ry="5" fill="#434752"/>
+    </g>
+
+    <!-- Ears -->
+    <g class="ears-wiggle">
+      <!-- Left Ear -->
+      <circle cx="132" cy="155" r="26" fill="#31333b"/>
+      <circle cx="132" cy="155" r="16" fill="#434752"/>
+      <circle cx="135" cy="153" r="9" fill="#fca5a5" opacity="0.3"/>
+
+      <!-- Right Ear -->
+      <circle cx="268" cy="155" r="26" fill="#31333b"/>
+      <circle cx="268" cy="155" r="16" fill="#434752"/>
+      <circle cx="265" cy="153" r="9" fill="#fca5a5" opacity="0.3"/>
+    </g>
+
+    <!-- Chubby Body with Hanfu Robe -->
+    <g id="cheer-body">
+      <!-- Base body -->
+      <ellipse cx="200" cy="285" rx="64" ry="46" fill="#ffffff"/>
+      <!-- Soft shading -->
+      <path d="M145 285 C 160 324 240 324 255 285 C 245 304 225 315 200 315 C 175 315 155 304 145 285 Z" fill="#ebe4d8" opacity="0.6"/>
+
+      <!-- Red Robe -->
+      <path d="M148 266 C 148 296 162 316 200 316 C 238 316 252 296 252 266 C 242 258 222 254 200 254 C 178 254 158 258 148 266 Z" fill="#c8102e"/>
+      <!-- Collar Overlap -->
+      <path d="M180 254 L 208 296" stroke="#f5d77f" stroke-width="4.5" stroke-linecap="round"/>
+      <path d="M220 254 L 195 290" stroke="#faf8f5" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="206" cy="293" r="3.5" fill="#d4af37"/>
+
+      <!-- Golden belt -->
+      <path d="M154 304 C 172 312 228 312 246 304" fill="none" stroke="#d4af37" stroke-width="2.5" stroke-linecap="round"/>
+
+      <!-- Little feet / seated legs -->
+      <ellipse cx="160" cy="330" rx="16" ry="11" fill="#31333b"/>
+      <ellipse cx="240" cy="330" rx="16" ry="11" fill="#31333b"/>
+      <ellipse cx="160" cy="331" rx="9" ry="6" fill="#434752"/>
+      <ellipse cx="240" cy="331" rx="9" ry="6" fill="#434752"/>
+    </g>
+
+    <!-- Head -->
+    <g id="cheer-head">
+      <!-- Main chubby head -->
+      <path d="M125 205 C 122 160 152 130 200 130 C 248 130 278 160 275 205 C 275 242 248 264 200 264 C 152 264 125 242 125 205 Z" fill="#ffffff" filter="url(#softShadow)"/>
+
+      <!-- Eye Patches -->
+      <ellipse cx="162" cy="198" rx="18" ry="22" fill="#31333b" transform="rotate(-10 162 198)"/>
+      <ellipse cx="238" cy="198" rx="18" ry="22" fill="#31333b" transform="rotate(10 238 198)"/>
+
+      <!-- Big Happy Smiling Eyes (Arc crescent cute shape ^_^) -->
+      <path d="M152 198 C 158 190 168 190 174 198" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>
+      <path d="M226 198 C 232 190 242 190 248 198" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>
+
+      <!-- Rosy Cheeks -->
+      <ellipse cx="146" cy="222" rx="14" ry="9" fill="url(#cheerBlush)"/>
+      <ellipse cx="254" cy="222" rx="14" ry="9" fill="url(#cheerBlush)"/>
+
+      <!-- Tiny Nose & Cheerful Open Smile -->
+      <circle cx="200" cy="211" r="3" fill="#31333b"/>
+      <path d="M192 218 C 195 228 205 228 208 218 Z" fill="#c8102e"/>
+      <path d="M194 221 C 198 224 202 224 206 221" fill="#ff7b89"/>
+
+      <!-- Jade Scholar Cap -->
+      <g id="cheer-cap">
+        <path d="M180 132 C 180 122 188 116 200 116 C 212 116 220 122 220 132 Z" fill="url(#cheerJadeGrad)"/>
+        <rect x="176" y="129" width="48" height="5" rx="2.5" fill="#20453b"/>
+        <circle cx="200" cy="124" r="4" fill="#f5d77f"/>
+        <circle cx="200" cy="114" r="3" fill="#c8102e"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- Sparkles & Cheering Confetti -->
+  <g class="confetti-pop-1" transform="translate(85, 110)">
+    <path d="M0 -7 Q 0 0 7 0 Q 0 0 0 7 Q 0 0 -7 0 Q 0 0 0 -7 Z" fill="#d4af37"/>
+  </g>
+  <g class="confetti-pop-2" transform="translate(315, 105)">
+    <path d="M0 -8 Q 0 0 8 0 Q 0 0 0 8 Q 0 0 -8 0 Q 0 0 0 -8 Z" fill="#c8102e"/>
+  </g>
+  <circle cx="95" cy="180" r="3" fill="#5ca38e" opacity="0.8"/>
+  <circle cx="308" cy="175" r="3.5" fill="#f5d77f" opacity="0.8"/>
+  <circle cx="115" cy="275" r="2.5" fill="#e82b48" opacity="0.7"/>
+  <circle cx="290" cy="285" r="2.5" fill="#d4af37" opacity="0.7"/>
+</svg>
