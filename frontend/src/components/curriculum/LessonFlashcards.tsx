@@ -176,8 +176,9 @@ export default function LessonFlashcards({ words, lessonTitle }: LessonFlashcard
               <button
                 type="button"
                 onClick={(e) => playAudio(currentWord.hanzi, e)}
-                className="p-1.5 rounded-full bg-china-paper hover:bg-china-red hover:text-white text-china-ink transition"
+                className="w-9 h-9 flex items-center justify-center rounded-full bg-china-paper hover:bg-china-red hover:text-white active:bg-china-red active:text-white text-china-ink transition touch-manipulation cursor-pointer"
                 title="Phát âm"
+                aria-label="Phát âm từ"
               >
                 <Volume2 className="w-4 h-4" />
               </button>

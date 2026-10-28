@@ -568,9 +568,15 @@ export default function LessonDetailPage() {
 
                 <div>
                   <div className="flex items-baseline gap-2">
-                    <span className="font-chinese font-bold text-2xl text-china-ink group-hover:text-china-red transition" lang="zh">
+                    <button
+                      type="button"
+                      onClick={() => playPronunciation(w.hanzi)}
+                      className="font-chinese font-bold text-2xl text-china-ink group-hover:text-china-red hover:text-china-red active:text-china-red active:scale-95 transition touch-manipulation cursor-pointer text-left"
+                      lang="zh"
+                      title="Chạm để nghe phát âm"
+                    >
                       {w.hanzi}
-                    </span>
+                    </button>
                     <span className="text-sm font-semibold text-china-red font-sans">
                       {w.pinyin}
                     </span>
@@ -597,11 +603,13 @@ export default function LessonDetailPage() {
 
               <div className="shrink-0 flex flex-col items-center gap-1.5">
                 <button
+                  type="button"
                   onClick={() => playPronunciation(w.hanzi)}
-                  className="p-2 rounded-xl text-muted hover:text-china-red hover:bg-china-paper transition active:scale-95 cursor-pointer"
+                  className="w-10 h-10 sm:w-9 sm:h-9 flex items-center justify-center rounded-xl bg-china-paper/70 hover:bg-china-red/10 active:bg-china-red/20 text-muted hover:text-china-red active:text-china-red transition active:scale-95 touch-manipulation cursor-pointer"
                   title="Nghe phát âm chuẩn"
+                  aria-label={`Phát âm từ ${w.hanzi}`}
                 >
-                  <Volume2 className="w-4 h-4" />
+                  <Volume2 className="w-5 h-5 sm:w-4 sm:h-4" />
                 </button>
               </div>
             </div>

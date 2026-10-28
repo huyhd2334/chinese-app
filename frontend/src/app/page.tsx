@@ -966,11 +966,13 @@ export default function Dashboard() {
                     {dailyWord.pinyin}
                   </h3>
                   <button
+                    type="button"
                     title="Nghe phát âm"
                     onClick={(e) => playAudio(dailyWord.hanzi, e)}
-                    className="p-1 text-china-red hover:bg-china-red/10 rounded-full transition-colors active:scale-95"
+                    className="w-9 h-9 sm:w-8 sm:h-8 flex items-center justify-center text-china-red hover:bg-china-red/10 active:bg-china-red/20 rounded-full transition-colors active:scale-95 touch-manipulation cursor-pointer"
+                    aria-label="Phát âm từ vựng hôm nay"
                   >
-                    <Volume2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                    <Volume2 className="w-4 h-4" />
                   </button>
                   {getHanViet(dailyWord.hanzi, dailyWord.traditional, dailyWord.pinyinNumeric) && (
                     <span className="px-2 py-0.5 bg-amber-50 text-amber-800 border border-amber-200/80 rounded-md text-[11px] sm:text-xs font-semibold">

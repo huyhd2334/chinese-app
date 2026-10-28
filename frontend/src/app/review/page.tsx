@@ -473,9 +473,9 @@ export default function ReviewPage() {
                 type="button"
                 title="Nghe phát âm (Phím R)"
                 onClick={() => playAudio(currentCard.word.hanzi)}
-                className="p-2 rounded-xl bg-white border border-border text-china-red hover:bg-china-red hover:text-white transition-colors active:scale-95 cursor-pointer shadow-2xs"
+                className="w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center rounded-xl bg-white border border-border text-china-red hover:bg-china-red hover:text-white transition-colors active:scale-95 cursor-pointer shadow-2xs touch-manipulation"
               >
-                <Volume2 className="w-4 h-4 sm:w-5 sm:h-5" />
+                <Volume2 className="w-5 h-5" />
               </button>
             </div>
           </div>
