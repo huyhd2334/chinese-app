@@ -12,7 +12,8 @@ export interface SubscriptionInfo {
   checksum: string
 }
 
-const SUB_STORAGE_KEY = "hsk_sub_state_v1"
+const SUB_STORAGE_KEY = "hsk_sub_state_v2"
+const LEGACY_STORAGE_KEY = "hsk_sub_state_v1"
 
 export class ReviewLimitError extends Error {
   constructor(message = "Đã đạt giới hạn 500 từ ôn tập của gói Miễn phí.") {
@@ -30,12 +31,24 @@ export function getLocalSubscription(currentUserId = "guest"): SubscriptionInfo 
   }
 
   try {
+    // Xóa bản lưu thử nghiệm cũ (v1) nếu có
+    if (localStorage.getItem(LEGACY_STORAGE_KEY)) {
+      localStorage.removeItem(LEGACY_STORAGE_KEY)
+    }
+
     const raw = localStorage.getItem(SUB_STORAGE_KEY)
     if (!raw) {
       return { plan: "free", expiresAt: null, userId: currentUserId, checksum: "" }
     }
 
     const parsed: SubscriptionInfo = JSON.parse(raw)
+
+    // Không cho phép tài khoản guest giữ trạng thái Pro
+    if (!parsed.userId || parsed.userId === "guest") {
+      localStorage.removeItem(SUB_STORAGE_KEY)
+      return { plan: "free", expiresAt: null, userId: currentUserId, checksum: "" }
+    }
+
     const expectedChecksum = computeSubChecksum(parsed.plan, parsed.expiresAt, parsed.userId)
 
     // Nếu chữ ký không khớp hoặc đã hết hạn -> tự động về gói Free
@@ -45,6 +58,7 @@ export function getLocalSubscription(currentUserId = "guest"): SubscriptionInfo 
     }
 
     if (parsed.expiresAt && parsed.expiresAt < Date.now()) {
+      localStorage.removeItem(SUB_STORAGE_KEY)
       return { plan: "free", expiresAt: null, userId: parsed.userId, checksum: "" }
     }
 
@@ -59,6 +73,7 @@ export function getLocalSubscription(currentUserId = "guest"): SubscriptionInfo 
  */
 export function isProUser(): boolean {
   const sub = getLocalSubscription()
+  if (sub.userId === "guest") return false
   if (sub.plan === "pro_monthly" || sub.plan === "pro_yearly") {
     if (!sub.expiresAt || sub.expiresAt > Date.now()) {
       return true
@@ -79,14 +94,18 @@ export function saveLocalSubscription(plan: PlanType, expiresAt: number | null, 
     checksum,
   }
   if (typeof window !== "undefined") {
-    localStorage.setItem(SUB_STORAGE_KEY, JSON.stringify(info))
+    if (plan === "free" || userId === "guest") {
+      localStorage.removeItem(SUB_STORAGE_KEY)
+    } else {
+      localStorage.setItem(SUB_STORAGE_KEY, JSON.stringify(info))
+    }
     window.dispatchEvent(new CustomEvent("hsk-subscription-updated", { detail: info }))
   }
   return info
 }
 
 /**
- * Đồng bộ trạng thái gói đăng ký với Supabase Cloud
+ * Đồng bộ trạng thái gói đăng ký từ Supabase Cloud (Chỉ đọc từ Server, không tự đẩy local lên)
  */
 export async function syncSubscriptionWithCloud(userId: string): Promise<SubscriptionInfo> {
   try {
@@ -96,63 +115,133 @@ export async function syncSubscriptionWithCloud(userId: string): Promise<Subscri
       .eq("user_id", userId)
       .maybeSingle()
 
-    if (!error && data) {
+    if (!error && data && data.status === "active") {
       const expiresAt = data.expires_at ? new Date(data.expires_at).getTime() : null
       const isExpired = expiresAt !== null && expiresAt < Date.now()
       const activePlan: PlanType = isExpired ? "free" : (data.plan as PlanType) || "free"
 
-      return saveLocalSubscription(activePlan, isExpired ? null : expiresAt, userId)
-    }
-
-    // Nếu trên Cloud chưa có nhưng dưới máy vừa kích hoạt thì đồng bộ lên Cloud
-    const local = getLocalSubscription(userId)
-    if (local.plan !== "free" && local.expiresAt && local.expiresAt > Date.now()) {
-      await supabase.from("user_subscriptions").upsert({
-        user_id: userId,
-        plan: local.plan,
-        status: "active",
-        expires_at: new Date(local.expiresAt).toISOString(),
-        updated_at: new Date().toISOString(),
-      })
-      return saveLocalSubscription(local.plan, local.expiresAt, userId)
+      if (activePlan === "pro_monthly" || activePlan === "pro_yearly") {
+        return saveLocalSubscription(activePlan, expiresAt, userId)
+      }
     }
 
     return saveLocalSubscription("free", null, userId)
   } catch {
-    return getLocalSubscription(userId)
+    return saveLocalSubscription("free", null, userId)
   }
 }
 
 /**
- * Kích hoạt gói Pro (Theo tháng hoặc Theo năm) và lưu lên Supabase Cloud
+ * Kiểm tra giao dịch chuyển khoản ngân hàng trên Supabase (Không tự động nâng cấp nếu chưa có xác nhận thực tế)
  */
-export async function activateProSubscription(
+export async function verifyBankTransferPayment(
+  userId: string,
   plan: "pro_monthly" | "pro_yearly",
-  userId?: string
-): Promise<SubscriptionInfo> {
-  const now = Date.now()
-  const durationDays = plan === "pro_yearly" ? 365 : 30
-  const expiresAt = now + durationDays * 24 * 60 * 60 * 1000
-  const uid = userId || "guest"
-
-  const info = saveLocalSubscription(plan, expiresAt, uid)
-
-  if (userId) {
-    try {
-      await supabase.from("user_subscriptions").upsert({
-        user_id: userId,
-        plan,
-        status: "active",
-        started_at: new Date(now).toISOString(),
-        expires_at: new Date(expiresAt).toISOString(),
-        updated_at: new Date(now).toISOString(),
-      })
-    } catch (e) {
-      console.warn("Could not sync subscription to Supabase:", e)
+  amount: number,
+  transferRef: string
+): Promise<{ verified: boolean; message: string; subInfo?: SubscriptionInfo }> {
+  // 1. Kiểm tra xem tài khoản đã được Webhook ngân hàng hoặc Admin duyệt trên bảng user_subscriptions chưa
+  const synced = await syncSubscriptionWithCloud(userId)
+  if (synced.plan === "pro_monthly" || synced.plan === "pro_yearly") {
+    return {
+      verified: true,
+      message: "Giao dịch đã được xác nhận! Tài khoản của bạn đã được nâng cấp lên Gói Pro.",
+      subInfo: synced,
     }
   }
 
-  return info
+  // 2. Nếu chưa được duyệt, ghi nhận yêu cầu đối soát (status = 'pending') vào bảng payment_requests
+  try {
+    await supabase.from("payment_requests").insert({
+      user_id: userId,
+      plan,
+      amount,
+      transfer_ref: transferRef,
+      status: "pending",
+    })
+  } catch {
+    // Bỏ qua nếu bảng payment_requests chưa được tạo
+  }
+
+  return {
+    verified: false,
+    message: `Hệ thống chưa ghi nhận được giao dịch chuyển khoản ngân hàng với nội dung "${transferRef}". Vui lòng hoàn tất chuyển khoản đúng số tiền & nội dung rồi bấm kiểm tra lại sau 1–3 phút.`,
+  }
+}
+
+/**
+ * Kích hoạt Gói Pro bằng Mã Kích Hoạt thông qua hàm RPC bảo mật trên Supabase
+ */
+export async function redeemActivationCodeOnServer(
+  code: string,
+  userId: string
+): Promise<{ success: boolean; message: string; subInfo?: SubscriptionInfo }> {
+  const cleanCode = code.trim().toUpperCase()
+  if (!cleanCode) {
+    return { success: false, message: "Vui lòng nhập mã kích hoạt." }
+  }
+
+  try {
+    const { data, error } = await supabase.rpc("redeem_activation_code", {
+      p_code: cleanCode,
+    })
+
+    if (error) {
+      return {
+        success: false,
+        message: "Mã kích hoạt không hợp lệ hoặc hệ thống chưa cấu hình bảng mã kích hoạt trên Supabase.",
+      }
+    }
+
+    if (data && data.success) {
+      const expiresAt = data.expires_at ? new Date(data.expires_at).getTime() : Date.now() + 30 * 86400000
+      const plan = (data.plan as PlanType) || "pro_monthly"
+      const info = saveLocalSubscription(plan, expiresAt, userId)
+      return {
+        success: true,
+        message: data.message || "Kích hoạt Gói Pro thành công!",
+        subInfo: info,
+      }
+    }
+
+    return {
+      success: false,
+      message: data?.message || "Mã kích hoạt không tồn tại hoặc đã hết lượt sử dụng.",
+    }
+  } catch {
+    return {
+      success: false,
+      message: "Không thể xác thực mã kích hoạt lúc này. Vui lòng thử lại sau.",
+    }
+  }
+}
+
+/**
+ * Đưa tài khoản về lại Gói Miễn Phí (Hủy gói Pro trên cả máy và Supabase)
+ */
+export async function resetToFreeSubscription(userId?: string): Promise<SubscriptionInfo> {
+  if (typeof window !== "undefined") {
+    localStorage.removeItem(LEGACY_STORAGE_KEY)
+    localStorage.removeItem(SUB_STORAGE_KEY)
+  }
+
+  if (userId) {
+    try {
+      await supabase.rpc("cancel_my_subscription")
+    } catch {
+      // Fallback nếu chưa chạy RPC mới
+    }
+    try {
+      await supabase
+        .from("user_subscriptions")
+        .update({ plan: "free", status: "cancelled", expires_at: null })
+        .eq("user_id", userId)
+    } catch {
+      // Ignore
+    }
+  }
+
+  return saveLocalSubscription("free", null, userId || "guest")
 }
 
 /**

@@ -6,11 +6,13 @@ import { useAuth } from "@/contexts/AuthContext"
 import {
   FREE_REVIEW_LIMIT,
   getLocalSubscription,
-  activateProSubscription,
   syncSubscriptionWithCloud,
-  type PlanType,
+  verifyBankTransferPayment,
+  redeemActivationCodeOnServer,
+  resetToFreeSubscription,
   type SubscriptionInfo,
 } from "@/utils/subscription"
+import { checkRateLimit } from "@/utils/security"
 
 export default function UpgradeModal() {
   const { user, openAuthModal } = useAuth()
@@ -20,7 +22,7 @@ export default function UpgradeModal() {
   const [paymentTab, setPaymentTab] = useState<"qr" | "code">("qr")
   const [promoCode, setPromoCode] = useState("")
   const [isProcessing, setIsProcessing] = useState(false)
-  const [feedback, setFeedback] = useState<{ type: "success" | "error"; text: string } | null>(null)
+  const [feedback, setFeedback] = useState<{ type: "success" | "error" | "warning"; text: string } | null>(null)
   const [subInfo, setSubInfo] = useState<SubscriptionInfo>({
     plan: "free",
     expiresAt: null,
@@ -28,7 +30,7 @@ export default function UpgradeModal() {
     checksum: "",
   })
 
-  // Đồng bộ trạng thái gói cước khi user đăng nhập
+  // Đồng bộ trạng thái gói cước thực tế từ Supabase khi user đăng nhập
   useEffect(() => {
     if (user?.id) {
       syncSubscriptionWithCloud(user.id).then(setSubInfo)
@@ -43,7 +45,11 @@ export default function UpgradeModal() {
       const customEvent = e as CustomEvent<{ reason?: "limit_500" | "manual" }>
       setTriggerReason(customEvent.detail?.reason || "manual")
       setFeedback(null)
-      setSubInfo(getLocalSubscription(user?.id || "guest"))
+      if (user?.id) {
+        syncSubscriptionWithCloud(user.id).then(setSubInfo)
+      } else {
+        setSubInfo(getLocalSubscription("guest"))
+      }
       setIsOpen(true)
     }
 
@@ -62,59 +68,119 @@ export default function UpgradeModal() {
   if (!isOpen) return null
 
   const isPro =
+    subInfo.userId !== "guest" &&
     (subInfo.plan === "pro_monthly" || subInfo.plan === "pro_yearly") &&
     (!subInfo.expiresAt || subInfo.expiresAt > Date.now())
 
   const priceAmount = selectedPlan === "pro_monthly" ? 49000 : 399000
-  const transferRef = `HSKPRO ${(user?.email?.split("@")[0] || "HOCVIEN").replace(/[^a-zA-Z0-9]/g, "").toUpperCase().slice(0, 10)}`
-  const qrUrl = `https://img.vietqr.io/image/MB-0388888888-compact2.png?amount=${priceAmount}&addInfo=${encodeURIComponent(transferRef)}&accountName=${encodeURIComponent("HSK LEARNING PRO")}`
+  const transferRef = `HSKPRO ${(user?.email?.split("@")[0] || "HOCVIEN")
+    .replace(/[^a-zA-Z0-9]/g, "")
+    .toUpperCase()
+    .slice(0, 10)}`
+  const qrUrl = `https://img.vietqr.io/image/MB-0388888888-compact2.png?amount=${priceAmount}&addInfo=${encodeURIComponent(
+    transferRef
+  )}&accountName=${encodeURIComponent("HSK LEARNING PRO")}`
 
-  const handleConfirmPayment = async () => {
+  // Kiểm tra trạng thái chuyển khoản thực tế trên Server Supabase
+  const handleVerifyPayment = async () => {
+    if (!user) {
+      setFeedback({
+        type: "error",
+        text: "Vui lòng đăng nhập tài khoản trước khi xác nhận chuyển khoản để hệ thống gắn gói Pro vào tài khoản của bạn.",
+      })
+      return
+    }
+
+    const rl = checkRateLimit("verify_payment", 5, 60000)
+    if (!rl.allowed) {
+      setFeedback({
+        type: "error",
+        text: `Vui lòng đợi ${rl.retryAfterSec} giây trước khi kiểm tra lại giao dịch.`,
+      })
+      return
+    }
+
     setIsProcessing(true)
     setFeedback(null)
     try {
-      await new Promise((r) => setTimeout(r, 800))
-      const updated = await activateProSubscription(selectedPlan, user?.id)
-      setSubInfo(updated)
-      setFeedback({
-        type: "success",
-        text: `Kích hoạt thành công ${selectedPlan === "pro_monthly" ? "Gói Pro Theo Tháng" : "Gói Pro Theo Năm"}! Bạn đã mở khóa toàn bộ giới hạn ôn tập.`,
-      })
+      const result = await verifyBankTransferPayment(user.id, selectedPlan, priceAmount, transferRef)
+      if (result.verified && result.subInfo) {
+        setSubInfo(result.subInfo)
+        setFeedback({
+          type: "success",
+          text: result.message,
+        })
+      } else {
+        setFeedback({
+          type: "warning",
+          text: result.message,
+        })
+      }
     } catch {
       setFeedback({
         type: "error",
-        text: "Có lỗi xảy ra khi kích hoạt. Vui lòng thử lại.",
+        text: "Không thể kết nối máy chủ kiểm tra giao dịch. Vui lòng thử lại sau.",
       })
     } finally {
       setIsProcessing(false)
     }
   }
 
+  // Kích hoạt bằng Mã Kích Hoạt qua RPC trên Supabase
   const handleApplyCode = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (!user) {
+      setFeedback({
+        type: "error",
+        text: "Vui lòng đăng nhập tài khoản trước khi sử dụng mã kích hoạt.",
+      })
+      return
+    }
+
     const clean = promoCode.trim().toUpperCase()
     if (!clean) return
+
+    const rl = checkRateLimit("redeem_code", 5, 60000)
+    if (!rl.allowed) {
+      setFeedback({
+        type: "error",
+        text: `Bạn đã nhập sai quá nhiều lần. Vui lòng thử lại sau ${rl.retryAfterSec} giây.`,
+      })
+      return
+    }
 
     setIsProcessing(true)
     setFeedback(null)
 
     try {
-      await new Promise((r) => setTimeout(r, 500))
-      const validCodes = ["HSKPRO", "VIP30", "PRO2026", "HSK500", "ADMINPRO"]
-      if (!validCodes.includes(clean)) {
+      const res = await redeemActivationCodeOnServer(clean, user.id)
+      if (res.success && res.subInfo) {
+        setSubInfo(res.subInfo)
+        setPromoCode("")
+        setFeedback({
+          type: "success",
+          text: res.message,
+        })
+      } else {
         setFeedback({
           type: "error",
-          text: "Mã kích hoạt không hợp lệ. (Gợi ý mã trải nghiệm: HSKPRO)",
+          text: res.message,
         })
-        return
       }
+    } finally {
+      setIsProcessing(false)
+    }
+  }
 
-      const updated = await activateProSubscription(selectedPlan, user?.id)
-      setSubInfo(updated)
-      setPromoCode("")
+  // Hủy gói Pro để quay về gói Miễn phí
+  const handleResetToFree = async () => {
+    setIsProcessing(true)
+    try {
+      const resetInfo = await resetToFreeSubscription(user?.id)
+      setSubInfo(resetInfo)
       setFeedback({
-        type: "success",
-        text: "Đã kích hoạt Gói Pro thành công! Bạn có thể ôn tập không giới hạn từ vựng.",
+        type: "warning",
+        text: "Đã chuyển tài khoản về lại Gói Miễn Phí (giới hạn 500 từ ôn tập).",
       })
     } finally {
       setIsProcessing(false)
@@ -122,7 +188,7 @@ export default function UpgradeModal() {
   }
 
   const formatExpiry = (ts: number | null) => {
-    if (!ts) return "Vĩnh viễn"
+    if (!ts) return "Đang hoạt động"
     return new Date(ts).toLocaleDateString("vi-VN", {
       day: "2-digit",
       month: "2-digit",
@@ -168,7 +234,9 @@ export default function UpgradeModal() {
           {/* Cảnh báo khi chạm mốc 500 từ */}
           {triggerReason === "limit_500" && !isPro && (
             <div className="p-3.5 rounded-2xl bg-amber-50 border border-amber-200 text-amber-900 text-xs sm:text-sm leading-relaxed">
-              <p className="font-bold">Bạn đã chạm mốc {FREE_REVIEW_LIMIT}/{FREE_REVIEW_LIMIT} từ ôn tập miễn phí!</p>
+              <p className="font-bold">
+                Bạn đã chạm mốc {FREE_REVIEW_LIMIT}/{FREE_REVIEW_LIMIT} từ ôn tập miễn phí!
+              </p>
               <p className="text-amber-800 mt-0.5">
                 Tài khoản miễn phí cho phép lưu tối đa {FREE_REVIEW_LIMIT} từ trong lộ trình Review. Hãy đăng ký gói Pro theo tháng để học trọn bộ 11,470+ từ HSK 1–7 không giới hạn.
               </p>
@@ -178,9 +246,11 @@ export default function UpgradeModal() {
           {/* Thông báo kết quả */}
           {feedback && (
             <div
-              className={`p-3.5 rounded-2xl border text-xs sm:text-sm font-medium ${
+              className={`p-3.5 rounded-2xl border text-xs sm:text-sm font-medium leading-relaxed ${
                 feedback.type === "success"
                   ? "bg-emerald-50 border-emerald-200 text-emerald-800"
+                  : feedback.type === "warning"
+                  ? "bg-amber-50 border-amber-200 text-amber-900"
                   : "bg-red-50 border-red-200 text-red-700"
               }`}
             >
@@ -204,12 +274,23 @@ export default function UpgradeModal() {
                   Hạn sử dụng đến: <b className="text-china-ink">{formatExpiry(subInfo.expiresAt)}</b> · Quyền lợi: Không giới hạn từ ôn tập
                 </p>
               </div>
-              <button
-                onClick={() => setIsOpen(false)}
-                className="px-4 py-2 rounded-xl bg-china-ink text-white text-xs font-semibold hover:bg-china-ink/85 transition-colors self-start sm:self-auto"
-              >
-                Tiếp tục học tập
-              </button>
+              <div className="flex items-center gap-2 self-start sm:self-auto">
+                <button
+                  type="button"
+                  disabled={isProcessing}
+                  onClick={handleResetToFree}
+                  className="px-3 py-2 rounded-xl border border-border bg-white text-muted hover:text-red-600 hover:border-red-200 text-xs font-medium transition-colors"
+                >
+                  Chuyển về Gói Miễn phí
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setIsOpen(false)}
+                  className="px-4 py-2 rounded-xl bg-china-ink text-white text-xs font-semibold hover:bg-china-ink/85 transition-colors"
+                >
+                  Đóng
+                </button>
+              </div>
             </div>
           )}
 
@@ -242,7 +323,9 @@ export default function UpgradeModal() {
                 <ul className="space-y-2 mt-3 text-xs text-china-ink/85">
                   <li className="flex items-center gap-2">
                     <Check className="w-3.5 h-3.5 text-china-red shrink-0" />
-                    <span>Ôn tập Review <b>không giới hạn</b> (vượt mốc 500 từ)</span>
+                    <span>
+                      Ôn tập Review <b>không giới hạn</b> (vượt mốc 500 từ)
+                    </span>
                   </li>
                   <li className="flex items-center gap-2">
                     <Check className="w-3.5 h-3.5 text-china-red shrink-0" />
@@ -305,18 +388,24 @@ export default function UpgradeModal() {
                 <div className="flex gap-4">
                   <button
                     type="button"
-                    onClick={() => setPaymentTab("qr")}
+                    onClick={() => {
+                      setPaymentTab("qr")
+                      setFeedback(null)
+                    }}
                     className={`text-xs sm:text-sm font-semibold pb-1 border-b-2 transition-colors ${
                       paymentTab === "qr"
                         ? "border-china-red text-china-red"
                         : "border-transparent text-muted hover:text-china-ink"
                     }`}
                   >
-                    Chuyển khoản QR tự động
+                    Chuyển khoản ngân hàng (VietQR)
                   </button>
                   <button
                     type="button"
-                    onClick={() => setPaymentTab("code")}
+                    onClick={() => {
+                      setPaymentTab("code")
+                      setFeedback(null)
+                    }}
                     className={`text-xs sm:text-sm font-semibold pb-1 border-b-2 transition-colors ${
                       paymentTab === "code"
                         ? "border-china-red text-china-red"
@@ -334,9 +423,9 @@ export default function UpgradeModal() {
                       setIsOpen(false)
                       openAuthModal()
                     }}
-                    className="text-xs text-china-red hover:underline font-medium"
+                    className="text-xs text-china-red hover:underline font-semibold"
                   >
-                    Đăng nhập để lưu vào tài khoản →
+                    Đăng nhập trước khi nâng cấp →
                   </button>
                 )}
               </div>
@@ -375,10 +464,10 @@ export default function UpgradeModal() {
                       <button
                         type="button"
                         disabled={isProcessing}
-                        onClick={handleConfirmPayment}
+                        onClick={handleVerifyPayment}
                         className="flex-1 py-2.5 px-4 rounded-xl bg-china-red hover:bg-china-red-hover text-white text-xs sm:text-sm font-bold transition-all active:scale-95 disabled:opacity-50"
                       >
-                        {isProcessing ? "Đang kiểm tra & kích hoạt..." : "Xác nhận đã thanh toán"}
+                        {isProcessing ? "Đang đối soát giao dịch..." : "Kiểm tra trạng thái thanh toán"}
                       </button>
                     </div>
                   </div>
@@ -386,14 +475,14 @@ export default function UpgradeModal() {
               ) : (
                 <form onSubmit={handleApplyCode} className="space-y-3">
                   <p className="text-xs text-muted">
-                    Nhập mã kích hoạt Pro hoặc mã ưu đãi học viên (Nhập <code className="px-1.5 py-0.5 bg-white border border-border rounded font-mono text-china-ink">HSKPRO</code> để kích hoạt thử nghiệm):
+                    Nhập mã kích hoạt Pro do hệ thống hoặc quản trị viên cung cấp (mã được xác thực trực tiếp trên máy chủ Supabase):
                   </p>
                   <div className="flex gap-2">
                     <input
                       type="text"
                       value={promoCode}
                       onChange={(e) => setPromoCode(e.target.value)}
-                      placeholder="Nhập mã kích hoạt (VD: HSKPRO)..."
+                      placeholder="Nhập mã kích hoạt của bạn..."
                       className="flex-1 px-3.5 py-2 bg-white border border-border rounded-xl text-xs sm:text-sm font-mono uppercase text-china-ink focus:outline-hidden focus:border-china-red"
                     />
                     <button
@@ -401,7 +490,7 @@ export default function UpgradeModal() {
                       disabled={isProcessing || !promoCode.trim()}
                       className="px-5 py-2 rounded-xl bg-china-ink hover:bg-china-ink/85 text-white text-xs sm:text-sm font-semibold transition-all disabled:opacity-40 active:scale-95"
                     >
-                      {isProcessing ? "Đang xử lý..." : "Kích hoạt"}
+                      {isProcessing ? "Đang xác thực..." : "Kích hoạt"}
                     </button>
                   </div>
                 </form>
