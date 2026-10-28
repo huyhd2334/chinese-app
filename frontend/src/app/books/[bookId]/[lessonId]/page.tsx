@@ -11,14 +11,18 @@ import {
   Sparkles,
   CheckCircle,
   Eye,
-  EyeOff,
   Crop,
   ChevronRight,
-  Plus
+  Puzzle,
+  RotateCw,
+  HelpCircle
 } from 'lucide-react'
 import { getBook, getLesson } from '@/utils/curriculumStorage'
-import { BookCourse, CurriculumLesson, CurriculumWord } from '@/types/curriculum'
+import { BookCourse, CurriculumLesson } from '@/types/curriculum'
 import { db } from '../../../../../db/database'
+import LessonFlashcards from '@/components/curriculum/LessonFlashcards'
+import LessonExercises from '@/components/curriculum/LessonExercises'
+import InteractiveReader from '@/components/curriculum/InteractiveReader'
 
 export default function LessonDetailPage() {
   const params = useParams()
@@ -28,11 +32,7 @@ export default function LessonDetailPage() {
 
   const [book, setBook] = useState<BookCourse | null>(null)
   const [lesson, setLesson] = useState<CurriculumLesson | null>(null)
-  const [activeTab, setActiveTab] = useState<'vocab' | 'dialogue' | 'grammar'>('vocab')
-
-  // Dialogue Display Toggles
-  const [showPinyin, setShowPinyin] = useState(true)
-  const [showTranslation, setShowTranslation] = useState(true)
+  const [activeTab, setActiveTab] = useState<'vocab' | 'flashcards' | 'reader' | 'exercises' | 'grammar'>('vocab')
 
   // Status for adding to Spaced Repetition
   const [addedReviewStatus, setAddedReviewStatus] = useState<string | null>(null)
@@ -66,7 +66,6 @@ export default function LessonDetailPage() {
       let count = 0
 
       for (const w of lesson.vocabulary) {
-        // Find or create word in db.words
         let wordRecord = await db.words.where('hanzi').equals(w.hanzi).first()
 
         let wordId = wordRecord?.id
@@ -85,7 +84,6 @@ export default function LessonDetailPage() {
           })
         }
 
-        // Check if already in reviewItems
         const existingReview = await db.reviewItems.where('wordId').equals(wordId).first()
         if (!existingReview) {
           await db.reviewItems.put({
@@ -132,17 +130,27 @@ export default function LessonDetailPage() {
     <div className="max-w-5xl mx-auto px-4 sm:px-6 py-6 pb-24 space-y-6">
       {/* Breadcrumb Navigation */}
       <div className="flex items-center justify-between gap-3 text-xs text-muted">
+        <div className="flex items-center gap-2">
+          <Link
+            href="/books"
+            className="inline-flex items-center gap-1.5 hover:text-china-ink font-medium transition"
+          >
+            <ArrowLeft className="w-3.5 h-3.5" />
+            <span>Tủ sách</span>
+          </Link>
+          <span className="text-border">/</span>
+          <span className="font-medium text-china-ink">{book?.title || 'Giáo trình'}</span>
+          <span className="text-border">/</span>
+          <span className="text-china-red font-semibold">Bài {lesson.lessonNumber}</span>
+        </div>
+
         <Link
-          href="/books"
-          className="inline-flex items-center gap-1.5 hover:text-china-ink font-medium transition"
+          href={`/digitizer?book=${bookId}&lesson=${lesson.lessonNumber}`}
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-china-paper hover:bg-neutral-100 border border-border text-xs font-semibold text-china-ink transition"
         >
-          <ArrowLeft className="w-3.5 h-3.5" />
-          <span>Tủ sách</span>
+          <Crop className="w-3.5 h-3.5 text-china-red" />
+          <span>Số hóa thêm từ (OCR)</span>
         </Link>
-        <span className="text-border">/</span>
-        <span className="font-medium text-china-ink">{book?.title || 'Giáo trình'}</span>
-        <span className="text-border">/</span>
-        <span className="text-china-red font-semibold">Bài {lesson.lessonNumber}</span>
       </div>
 
       {/* Lesson Hero Banner */}
@@ -178,16 +186,8 @@ export default function LessonDetailPage() {
               className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-china-red hover:bg-china-red/90 text-white text-xs font-bold transition shadow-xs"
             >
               <Eye className="w-4 h-4" />
-              <span>Đưa toàn bộ vào Ôn tập</span>
+              <span>Đưa từ vào Ôn tập</span>
             </button>
-
-            <Link
-              href={`/digitizer?book=${bookId}&lesson=${lesson.lessonNumber}`}
-              className="flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-china-paper hover:bg-neutral-100 border border-border text-xs font-semibold text-china-ink transition"
-            >
-              <Crop className="w-3.5 h-3.5 text-china-red" />
-              <span>Số hóa thêm từ (OCR)</span>
-            </Link>
           </div>
         </div>
 
@@ -201,50 +201,72 @@ export default function LessonDetailPage() {
         )}
       </div>
 
-      {/* Tabs Switcher */}
-      <div className="flex items-center gap-2 border-b border-border pb-2">
+      {/* Modern Textbook Study Navigation Bar */}
+      <div className="flex flex-wrap items-center gap-2 border-b border-border pb-2">
         <button
           onClick={() => setActiveTab('vocab')}
-          className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition ${
+          className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition ${
             activeTab === 'vocab'
               ? 'bg-china-red text-white shadow-xs'
               : 'text-muted hover:text-china-ink hover:bg-neutral-100'
           }`}
         >
           <BookOpen className="w-4 h-4" />
-          <span>Từ vựng bài học ({lesson.vocabulary?.length || 0})</span>
+          <span>1. Từ vựng ({lesson.vocabulary?.length || 0})</span>
         </button>
 
-        {lesson.dialogues && lesson.dialogues.length > 0 && (
-          <button
-            onClick={() => setActiveTab('dialogue')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition ${
-              activeTab === 'dialogue'
-                ? 'bg-china-red text-white shadow-xs'
-                : 'text-muted hover:text-china-ink hover:bg-neutral-100'
-            }`}
-          >
-            <Layers className="w-4 h-4" />
-            <span>Bài khóa / Đoạn hội thoại ({lesson.dialogues.length})</span>
-          </button>
-        )}
+        <button
+          onClick={() => setActiveTab('flashcards')}
+          className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition ${
+            activeTab === 'flashcards'
+              ? 'bg-china-red text-white shadow-xs'
+              : 'text-muted hover:text-china-ink hover:bg-neutral-100'
+          }`}
+        >
+          <RotateCw className="w-4 h-4" />
+          <span>2. Bộ Flashcard lật thẻ</span>
+        </button>
+
+        <button
+          onClick={() => setActiveTab('reader')}
+          className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition ${
+            activeTab === 'reader'
+              ? 'bg-china-red text-white shadow-xs'
+              : 'text-muted hover:text-china-ink hover:bg-neutral-100'
+          }`}
+        >
+          <Layers className="w-4 h-4" />
+          <span>3. Sách Bài Khóa ({lesson.dialogues?.length || 0})</span>
+        </button>
+
+        <button
+          onClick={() => setActiveTab('exercises')}
+          className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition ${
+            activeTab === 'exercises'
+              ? 'bg-china-red text-white shadow-xs'
+              : 'text-muted hover:text-china-ink hover:bg-neutral-100'
+          }`}
+        >
+          <Puzzle className="w-4 h-4" />
+          <span>4. Bài tập tương tác (Workbook)</span>
+        </button>
 
         {lesson.grammarNotes && lesson.grammarNotes.length > 0 && (
           <button
             onClick={() => setActiveTab('grammar')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition ${
+            className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition ${
               activeTab === 'grammar'
                 ? 'bg-china-red text-white shadow-xs'
                 : 'text-muted hover:text-china-ink hover:bg-neutral-100'
             }`}
           >
             <Sparkles className="w-4 h-4" />
-            <span>Ngữ pháp &amp; Chú thích ({lesson.grammarNotes.length})</span>
+            <span>5. Ngữ pháp ({lesson.grammarNotes.length})</span>
           </button>
         )}
       </div>
 
-      {/* TAB 1: VOCABULARY */}
+      {/* TAB 1: VOCABULARY LIST */}
       {activeTab === 'vocab' && (
         <div className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
@@ -302,86 +324,32 @@ export default function LessonDetailPage() {
         </div>
       )}
 
-      {/* TAB 2: DIALOGUE */}
-      {activeTab === 'dialogue' && lesson.dialogues && (
-        <div className="bg-white border border-border rounded-2xl p-6 shadow-xs space-y-6">
-          <div className="flex items-center justify-between pb-3 border-b border-border">
-            <h3 className="text-sm font-bold text-china-ink">Đoạn hội thoại chuẩn</h3>
-
-            <div className="flex items-center gap-3 text-xs">
-              <button
-                onClick={() => setShowPinyin((prev) => !prev)}
-                className={`flex items-center gap-1 px-2.5 py-1 rounded-lg border text-xs font-semibold transition ${
-                  showPinyin
-                    ? 'bg-china-red/10 border-china-red/30 text-china-red'
-                    : 'bg-china-paper border-border text-muted'
-                }`}
-              >
-                {showPinyin ? <Eye className="w-3.5 h-3.5" /> : <EyeOff className="w-3.5 h-3.5" />}
-                <span>Pinyin</span>
-              </button>
-
-              <button
-                onClick={() => setShowTranslation((prev) => !prev)}
-                className={`flex items-center gap-1 px-2.5 py-1 rounded-lg border text-xs font-semibold transition ${
-                  showTranslation
-                    ? 'bg-china-red/10 border-china-red/30 text-china-red'
-                    : 'bg-china-paper border-border text-muted'
-                }`}
-              >
-                {showTranslation ? <Eye className="w-3.5 h-3.5" /> : <EyeOff className="w-3.5 h-3.5" />}
-                <span>Dịch nghĩa</span>
-              </button>
-            </div>
-          </div>
-
-          <div className="space-y-4">
-            {lesson.dialogues.map((d, idx) => (
-              <div
-                key={d.id || idx}
-                className="flex items-start gap-3 p-3.5 rounded-2xl bg-china-paper/60 border border-border/80 hover:bg-china-paper transition"
-              >
-                {d.role && (
-                  <div className="w-8 h-8 rounded-full bg-china-red text-white font-bold text-xs flex items-center justify-center shrink-0">
-                    {d.role}
-                  </div>
-                )}
-
-                <div className="flex-1 space-y-1">
-                  <div className="flex items-center justify-between gap-2">
-                    <p className="font-serif font-bold text-lg text-china-ink">
-                      {d.chinese}
-                    </p>
-                    <button
-                      onClick={() => playPronunciation(d.chinese)}
-                      className="p-1.5 text-muted hover:text-china-red rounded-lg transition"
-                      title="Nghe đọc câu"
-                    >
-                      <Volume2 className="w-4 h-4" />
-                    </button>
-                  </div>
-
-                  {showPinyin && d.pinyin && (
-                    <p className="text-xs text-china-red font-medium">
-                      {d.pinyin}
-                    </p>
-                  )}
-
-                  {showTranslation && d.vietnamese && (
-                    <p className="text-xs text-slate-600 font-medium pt-0.5">
-                      {d.vietnamese}
-                    </p>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+      {/* TAB 2: FLASHCARDS */}
+      {activeTab === 'flashcards' && (
+        <LessonFlashcards words={lesson.vocabulary} lessonTitle={lesson.title} />
       )}
 
-      {/* TAB 3: GRAMMAR */}
+      {/* TAB 3: INTERACTIVE READER */}
+      {activeTab === 'reader' && (
+        <InteractiveReader
+          dialogues={lesson.dialogues || []}
+          vocabulary={lesson.vocabulary}
+          lessonTitle={lesson.title}
+        />
+      )}
+
+      {/* TAB 4: WORKBOOK EXERCISES */}
+      {activeTab === 'exercises' && (
+        <LessonExercises
+          words={lesson.vocabulary}
+          dialogues={lesson.dialogues}
+          lessonTitle={lesson.title}
+        />
+      )}
+
+      {/* TAB 5: GRAMMAR NOTES */}
       {activeTab === 'grammar' && lesson.grammarNotes && (
-        <div className="bg-white border border-border rounded-2xl p-6 shadow-xs space-y-4">
+        <div className="bg-white border border-border rounded-3xl p-6 shadow-xs space-y-4">
           <h3 className="text-base font-bold text-china-ink pb-2 border-b border-border">
             Điểm ngữ pháp &amp; Chú ý trong bài
           </h3>
@@ -389,7 +357,7 @@ export default function LessonDetailPage() {
             {lesson.grammarNotes.map((note, idx) => (
               <li
                 key={idx}
-                className="flex items-start gap-3 p-3.5 rounded-xl bg-china-paper/50 border border-border/70 text-xs text-china-ink leading-relaxed"
+                className="flex items-start gap-3 p-3.5 rounded-2xl bg-china-paper/60 border border-border/80 text-xs text-china-ink leading-relaxed"
               >
                 <span className="w-5 h-5 rounded-full bg-china-red/10 text-china-red font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
                   {idx + 1}

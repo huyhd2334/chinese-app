@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useRef, useEffect, useCallback } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import {
   Upload,
   Crop,
@@ -17,7 +17,13 @@ import {
   Maximize2,
   FileText,
   HelpCircle,
-  ArrowRight
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+  FileUp,
+  Layers,
+  Puzzle,
+  RotateCw
 } from 'lucide-react'
 import { createWorker } from 'tesseract.js'
 import { CurriculumWord, BookCourse } from '@/types/curriculum'
@@ -37,7 +43,9 @@ export default function OcrStudio() {
   // Mode: "image" or "text"
   const [inputMode, setInputMode] = useState<'image' | 'text'>('image')
 
-  // Image & Canvas State
+  // Multi-page & Image State
+  const [pages, setPages] = useState<string[]>([])
+  const [currentPageIndex, setCurrentPageIndex] = useState(0)
   const [imageSrc, setImageSrc] = useState<string | null>(null)
   const [cropRect, setCropRect] = useState<CropRect | null>(null)
   const [isDragging, setIsDragging] = useState(false)
@@ -58,8 +66,9 @@ export default function OcrStudio() {
   const [lessonNumber, setLessonNumber] = useState(1)
   const [lessonTitle, setLessonTitle] = useState('Bài 1: 你好 - Xin chào')
   const [saveSuccess, setSaveSuccess] = useState<string | null>(null)
+  const [savedLessonId, setSavedLessonId] = useState<string | null>(null)
 
-  // New Word Form modal/inline
+  // New Word Form modal
   const [showAddModal, setShowAddModal] = useState(false)
   const [newHanzi, setNewHanzi] = useState('')
 
@@ -84,6 +93,8 @@ export default function OcrStudio() {
           if (blob) {
             const url = URL.createObjectURL(blob)
             setImageSrc(url)
+            setPages([url])
+            setCurrentPageIndex(0)
             setCropRect(null)
             setInputMode('image')
           }
@@ -96,12 +107,78 @@ export default function OcrStudio() {
     return () => window.removeEventListener('paste', handlePaste)
   }, [])
 
-  // File upload handler
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
-    if (file) {
-      const url = URL.createObjectURL(file)
-      setImageSrc(url)
+  // File upload handler (Supports multiple images or PDF file!)
+  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files
+    if (!files || files.length === 0) return
+
+    setIsProcessing(true)
+    setOcrStatusText('Đang nạp file giáo trình...')
+    setOcrProgress(15)
+
+    try {
+      const firstFile = files[0]
+
+      // Check if PDF
+      if (firstFile.type === 'application/pdf' || firstFile.name.toLowerCase().endsWith('.pdf')) {
+        setOcrStatusText('Đang mở file PDF giáo trình...')
+        const arrayBuffer = await firstFile.arrayBuffer()
+        const pdfjs = await import('pdfjs-dist')
+        pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`
+
+        const loadingTask = pdfjs.getDocument({ data: arrayBuffer })
+        const pdf = await loadingTask.promise
+        const renderedPages: string[] = []
+
+        const maxPages = Math.min(pdf.numPages, 15)
+        for (let p = 1; p <= maxPages; p++) {
+          setOcrStatusText(`Đang xử lý trang ${p} / ${maxPages}...`)
+          setOcrProgress(Math.round(20 + (p / maxPages) * 70))
+
+          const page = await pdf.getPage(p)
+          const viewport = page.getViewport({ scale: 1.5 })
+          const canvas = document.createElement('canvas')
+          const ctx = canvas.getContext('2d')
+          canvas.width = viewport.width
+          canvas.height = viewport.height
+
+          if (ctx) {
+            // @ts-ignore
+            await page.render({ canvasContext: ctx, viewport }).promise
+            renderedPages.push(canvas.toDataURL('image/jpeg', 0.9))
+          }
+        }
+
+        if (renderedPages.length > 0) {
+          setPages(renderedPages)
+          setCurrentPageIndex(0)
+          setImageSrc(renderedPages[0])
+          setCropRect(null)
+        }
+      } else {
+        // Multiple or single images
+        const imageUrls: string[] = []
+        for (let i = 0; i < files.length; i++) {
+          imageUrls.push(URL.createObjectURL(files[i]))
+        }
+        setPages(imageUrls)
+        setCurrentPageIndex(0)
+        setImageSrc(imageUrls[0])
+        setCropRect(null)
+      }
+    } catch (err: any) {
+      console.error('File load error:', err)
+      alert('Không thể mở file: ' + (err?.message || 'Lỗi định dạng'))
+    } finally {
+      setIsProcessing(false)
+    }
+  }
+
+  // Switch between pages in a multi-page document
+  const handleSelectPage = (index: number) => {
+    if (index >= 0 && index < pages.length) {
+      setCurrentPageIndex(index)
+      setImageSrc(pages[index])
       setCropRect(null)
     }
   }
@@ -146,7 +223,8 @@ export default function OcrStudio() {
     const blob = new Blob([sampleSvg], { type: 'image/svg+xml' })
     const url = URL.createObjectURL(blob)
     setImageSrc(url)
-    // Pre-select the bounding box around vocabulary table
+    setPages([url])
+    setCurrentPageIndex(0)
     setCropRect({
       x: 8,
       y: 26,
@@ -205,7 +283,6 @@ export default function OcrStudio() {
     setOcrStatusText('Đang chuẩn bị ảnh vùng chọn...')
 
     try {
-      // 1. Create temporary canvas to crop the bounding box area
       const img = imageRef.current
       const canvas = document.createElement('canvas')
       const ctx = canvas.getContext('2d')
@@ -233,7 +310,6 @@ export default function OcrStudio() {
       // Draw cropped region
       ctx.drawImage(img, sx, sy, sWidth, sHeight, 0, 0, canvas.width, canvas.height)
 
-      // 2. Run Tesseract worker
       setOcrProgress(20)
       setOcrStatusText('Đang nạp mô hình AI tiếng Trung (chi_sim)...')
 
@@ -254,7 +330,7 @@ export default function OcrStudio() {
       setOcrProgress(95)
       setOcrStatusText('Đang đối soát tự động với Từ điển 11.470 từ...')
 
-      // 3. Match with DB and auto-fill pinyin, hán-việt, nghĩa
+      // Match with DB and auto-fill pinyin, hán-việt, nghĩa
       const structuredWords = await matchAndStructureOcrText(text)
       setWords((prev) => [...prev, ...structuredWords])
 
@@ -289,7 +365,6 @@ export default function OcrStudio() {
       const next = [...prev]
       const target = { ...next[index], [field]: value }
 
-      // Auto update HanViet if Hanzi changes
       if (field === 'hanzi') {
         target.hanViet = getHanViet(value) || ''
       }
@@ -347,8 +422,8 @@ export default function OcrStudio() {
         isCustom: true,
       })
 
-      setSaveSuccess(`Đã lưu thành công ${words.length} từ vào ${lessonTitle}!`)
-      setTimeout(() => setSaveSuccess(null), 5000)
+      setSavedLessonId(lessonId)
+      setSaveSuccess(`Đã lưu thành công ${words.length} từ vào ${lessonTitle}! Toàn bộ Flashcard và Bài tập tương tác đã sẵn sàng.`)
     } catch (e) {
       alert('Có lỗi xảy ra khi lưu bài học!')
     }
@@ -372,15 +447,15 @@ export default function OcrStudio() {
         <div>
           <div className="flex items-center gap-2">
             <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-china-red/10 text-china-red border border-china-red/20">
-              Studio Số hóa
+              Studio Số hóa Giáo trình
             </span>
-            <span className="text-xs text-muted">HSK Standard Course Digitizer</span>
+            <span className="text-xs text-muted">PDF &amp; Bounding Box OCR to Interactive Book</span>
           </div>
           <h1 className="text-2xl font-bold font-serif text-china-ink mt-1">
-            Khoanh Vùng &amp; Nhận Diện Sách (Bounding Box OCR)
+            Số Hóa Sách Thành Flashcard &amp; Bài Tập Tương Tác
           </h1>
           <p className="text-sm text-muted mt-0.5">
-            Kéo chuột khoanh đoạn chữ Hán trên trang sách giáo trình, AI sẽ tự động đọc chữ, tra Pinyin, âm Hán-Việt và nghĩa tiếng Việt.
+            Tải PDF hoặc ảnh chụp sách $\rightarrow$ Khoanh vùng OCR $\rightarrow$ Hệ thống tự động chuyển thành sách điện tử, bộ flashcard 3D và bài tập tương tác!
           </p>
         </div>
 
@@ -462,7 +537,7 @@ export default function OcrStudio() {
           }`}
         >
           <Crop className="w-4 h-4" />
-          <span>Khoanh vùng trên ảnh chụp (OCR Canvas)</span>
+          <span>Khoanh vùng trên ảnh chụp / PDF (OCR Canvas)</span>
         </button>
 
         <button
@@ -487,9 +562,15 @@ export default function OcrStudio() {
             <div className="flex flex-wrap items-center justify-between gap-2 p-2 bg-white border border-border rounded-xl shadow-xs">
               <div className="flex items-center gap-2">
                 <label className="cursor-pointer flex items-center gap-1.5 px-3 py-1.5 bg-china-paper hover:bg-neutral-100 border border-border rounded-lg text-xs font-semibold text-china-ink transition">
-                  <Upload className="w-3.5 h-3.5 text-china-red" />
-                  <span>Tải ảnh lên</span>
-                  <input type="file" accept="image/*" onChange={handleFileUpload} className="hidden" />
+                  <FileUp className="w-3.5 h-3.5 text-china-red" />
+                  <span>Tải ảnh / PDF giáo trình</span>
+                  <input
+                    type="file"
+                    accept="image/*,.pdf"
+                    multiple
+                    onChange={handleFileUpload}
+                    className="hidden"
+                  />
                 </label>
 
                 <button
@@ -501,6 +582,30 @@ export default function OcrStudio() {
                   <span>Trang mẫu HSK 1</span>
                 </button>
               </div>
+
+              {pages.length > 1 && (
+                <div className="flex items-center gap-1.5 text-xs text-muted">
+                  <button
+                    disabled={currentPageIndex === 0}
+                    onClick={() => handleSelectPage(currentPageIndex - 1)}
+                    className="p-1 rounded hover:bg-neutral-100 disabled:opacity-40"
+                    title="Trang trước"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                  </button>
+                  <span className="font-semibold text-china-ink">
+                    Trang {currentPageIndex + 1} / {pages.length}
+                  </span>
+                  <button
+                    disabled={currentPageIndex >= pages.length - 1}
+                    onClick={() => handleSelectPage(currentPageIndex + 1)}
+                    className="p-1 rounded hover:bg-neutral-100 disabled:opacity-40"
+                    title="Trang tiếp"
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+                </div>
+              )}
 
               {imageSrc && (
                 <div className="flex items-center gap-1.5">
@@ -536,7 +641,6 @@ export default function OcrStudio() {
             >
               {imageSrc ? (
                 <>
-                  {/* The Document Image */}
                   <img
                     ref={imageRef}
                     src={imageSrc}
@@ -545,7 +649,6 @@ export default function OcrStudio() {
                     draggable={false}
                   />
 
-                  {/* Bounding Box Selection Highlight */}
                   {cropRect && cropRect.width > 0 && cropRect.height > 0 && (
                     <div
                       style={{
@@ -556,7 +659,6 @@ export default function OcrStudio() {
                       }}
                       className="absolute border-2 border-china-red bg-china-red/20 shadow-[0_0_15px_rgba(185,28,28,0.5)] transition-all pointer-events-none"
                     >
-                      {/* Corner Badges */}
                       <span className="absolute -top-6 left-0 bg-china-red text-white text-[10px] font-bold px-2 py-0.5 rounded shadow">
                         Vùng quét ({Math.round(cropRect.width)}% × {Math.round(cropRect.height)}%)
                       </span>
@@ -570,7 +672,7 @@ export default function OcrStudio() {
                   </div>
                   <h3 className="text-base font-bold text-white mb-1">Chưa có ảnh trang sách nào</h3>
                   <p className="text-xs text-white/60 max-w-sm mb-4">
-                    Tải ảnh chụp trang sách, dán ảnh từ clipboard (Ctrl + V), hoặc bấm nút &quot;Trang mẫu HSK 1&quot; bên trên để trải nghiệm.
+                    Tải file PDF sách, ảnh chụp trang sách, dán từ clipboard (Ctrl + V), hoặc bấm nút &quot;Trang mẫu HSK 1&quot; bên trên.
                   </p>
                   <button
                     onClick={handleLoadSamplePage}
@@ -586,7 +688,7 @@ export default function OcrStudio() {
             <div className="flex items-center justify-between text-xs text-muted px-1">
               <span className="flex items-center gap-1">
                 <HelpCircle className="w-3.5 h-3.5 text-china-red" />
-                Mẹo: Bạn có thể nhấn <b>Ctrl + V</b> mọi lúc trên bàn phím để dán ảnh chụp màn hình!
+                Mẹo: Bấm <b>Ctrl + V</b> mọi lúc trên bàn phím để dán ảnh chụp màn hình giáo trình!
               </span>
               {cropRect && (
                 <span className="font-mono text-[11px] text-china-red">
@@ -673,10 +775,10 @@ export default function OcrStudio() {
             <div className="bg-china-paper/70 border border-border rounded-2xl p-4 text-xs space-y-2">
               <div className="font-semibold text-china-ink flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                <span>Cơ chế Đối Soát Thông Minh (Auto-Verification)</span>
+                <span>Tự Động Sinh Flashcard &amp; Bài Tập Sách</span>
               </div>
               <p className="text-muted leading-relaxed">
-                Khi chữ Hán được nhận diện, hệ thống tự động tra vào cơ sở dữ liệu <b>11.470 từ HSK</b> của app để lấy đúng <b>100% Pinyin có thanh điệu chuẩn</b> và nghĩa tiếng Việt, không sợ lỗi mờ dấu thanh như OCR truyền thống!
+                Ngay khi bạn lưu từ vựng vào bài học, hệ thống sẽ <b>tự động sinh toàn bộ bộ Flashcard lật thẻ 3D</b> và <b>4 dạng bài tập sách giáo trình</b> (Nối từ, Sắp xếp câu, Trắc nghiệm, Luyện nghe) mà bạn không cần phải soạn câu hỏi thủ công!
               </p>
             </div>
           </div>
@@ -710,7 +812,7 @@ export default function OcrStudio() {
         </div>
       )}
 
-      {/* Verification & Review Section (The Heart of Digitization) */}
+      {/* Verification & Review Section */}
       <div className="bg-white border border-border rounded-2xl p-5 shadow-xs space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-border">
           <div>
@@ -720,7 +822,7 @@ export default function OcrStudio() {
               </h2>
               {words.length > 0 && (
                 <span className="px-2 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800">
-                  Sẵn sàng lưu
+                  Sẵn sàng chuyển thành Flashcard &amp; Bài tập
                 </span>
               )}
             </div>
@@ -754,27 +856,46 @@ export default function OcrStudio() {
                   className="flex items-center gap-1.5 px-4 py-2 bg-china-red hover:bg-china-red/90 text-white rounded-xl text-xs font-bold transition shadow-xs"
                 >
                   <Save className="w-3.5 h-3.5" />
-                  <span>Lưu vào Bài Học</span>
+                  <span>Lưu &amp; Tạo Bộ Flashcard / Bài Tập</span>
                 </button>
               </>
             )}
           </div>
         </div>
 
-        {/* Save Success Alert */}
+        {/* Save Success Alert with Direct Study Shortcuts */}
         {saveSuccess && (
-          <div className="flex items-center justify-between p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-xs text-emerald-800">
+          <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-2xl text-xs text-emerald-900 space-y-3">
             <div className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-              <span className="font-semibold">{saveSuccess}</span>
+              <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
+              <span className="font-bold text-sm">{saveSuccess}</span>
             </div>
-            <Link
-              href={`/books`}
-              className="font-bold underline flex items-center gap-1 text-emerald-900 hover:text-emerald-700"
-            >
-              <span>Xem bài học trong Giáo trình</span>
-              <ArrowRight className="w-3 h-3" />
-            </Link>
+
+            <div className="flex flex-wrap items-center gap-2 pt-1">
+              <Link
+                href={`/books/${selectedBookId}/${savedLessonId || `${selectedBookId}_${lessonNumber}`}`}
+                className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold shadow-xs transition"
+              >
+                <BookOpen className="w-3.5 h-3.5" />
+                <span>Xem Sách Bài Học</span>
+              </Link>
+
+              <Link
+                href={`/books/${selectedBookId}/${savedLessonId || `${selectedBookId}_${lessonNumber}`}`}
+                className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white hover:bg-neutral-50 text-emerald-800 border border-emerald-300 text-xs font-bold shadow-xs transition"
+              >
+                <RotateCw className="w-3.5 h-3.5" />
+                <span>Học Flashcard 3D</span>
+              </Link>
+
+              <Link
+                href={`/books/${selectedBookId}/${savedLessonId || `${selectedBookId}_${lessonNumber}`}`}
+                className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white hover:bg-neutral-50 text-emerald-800 border border-emerald-300 text-xs font-bold shadow-xs transition"
+              >
+                <Puzzle className="w-3.5 h-3.5" />
+                <span>Làm Bài Tập Sách (Workbook)</span>
+              </Link>
+            </div>
           </div>
         )}
 
@@ -800,7 +921,6 @@ export default function OcrStudio() {
                       {idx + 1}
                     </td>
 
-                    {/* Hanzi */}
                     <td className="py-2 px-3">
                       <div className="flex items-center gap-1.5">
                         <input
@@ -820,7 +940,6 @@ export default function OcrStudio() {
                       </div>
                     </td>
 
-                    {/* Pinyin */}
                     <td className="py-2 px-3">
                       <input
                         type="text"
@@ -831,7 +950,6 @@ export default function OcrStudio() {
                       />
                     </td>
 
-                    {/* Han-Viet */}
                     <td className="py-2 px-3">
                       <input
                         type="text"
@@ -842,7 +960,6 @@ export default function OcrStudio() {
                       />
                     </td>
 
-                    {/* Meaning */}
                     <td className="py-2 px-3">
                       <input
                         type="text"
@@ -853,7 +970,6 @@ export default function OcrStudio() {
                       />
                     </td>
 
-                    {/* Part of Speech */}
                     <td className="py-2 px-3">
                       <input
                         type="text"
@@ -864,7 +980,6 @@ export default function OcrStudio() {
                       />
                     </td>
 
-                    {/* Actions */}
                     <td className="py-2 px-2 text-center">
                       <button
                         onClick={() => handleDeleteWord(idx)}
@@ -884,7 +999,7 @@ export default function OcrStudio() {
             <Crop className="w-8 h-8 text-neutral-300 mx-auto mb-2" />
             <p className="text-sm font-semibold text-china-ink">Chưa có từ vựng nào được quét</p>
             <p className="text-xs text-muted max-w-sm mx-auto mt-1">
-              Hãy tải ảnh trang sách và khoanh vùng bảng từ vựng, hoặc dán chữ Hán để bắt đầu số hóa.
+              Hãy tải ảnh hoặc PDF trang sách và khoanh vùng bảng từ vựng, hoặc dán chữ Hán để bắt đầu số hóa.
             </p>
           </div>
         )}
