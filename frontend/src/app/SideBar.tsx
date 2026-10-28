@@ -2,11 +2,12 @@
 import { usePathname } from "next/navigation";
 import Link from 'next/link'
 import styles from './sideBar.module.css'
-import { BookText, Eye, GraduationCap, LayoutDashboard, Puzzle, ReceiptText, Sparkles } from "lucide-react";
+import { BookOpen, BookText, Eye, GraduationCap, LayoutDashboard, Puzzle, ReceiptText, Sparkles } from "lucide-react";
 import UserMenu from "@/components/auth/UserMenu";
 
 const navItems = [
   { href: "/", label: "Dashboard", shortLabel: "Home", icon: LayoutDashboard },
+  { href: "/books", label: "Giáo trình HSK", shortLabel: "Sách", icon: BookOpen },
   { href: "/vocabulary", label: "Vocabulary", shortLabel: "Vocab", icon: ReceiptText },
   { href: "/review", label: "Review", shortLabel: "Review", icon: Eye },
   { href: "/bonus", label: "Bonus Vocab", shortLabel: "Bonus", icon: Sparkles },
