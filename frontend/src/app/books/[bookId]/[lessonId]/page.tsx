@@ -40,6 +40,7 @@ import {
   LESSON_SECTIONS,
   LessonProgressData
 } from '@/utils/lessonProgress'
+import { playChineseAudio } from '@/utils/audioTts'
 
 export default function LessonDetailPage() {
   const params = useParams()
@@ -138,12 +139,7 @@ export default function LessonDetailPage() {
   }
 
   const playPronunciation = (text: string) => {
-    if (typeof window === 'undefined' || !('speechSynthesis' in window)) return
-    window.speechSynthesis.cancel()
-    const utterance = new SpeechSynthesisUtterance(text)
-    utterance.lang = 'zh-CN'
-    utterance.rate = 0.85
-    window.speechSynthesis.speak(utterance)
+    playChineseAudio(text)
   }
 
   // Add all lesson vocabulary to Spaced Repetition review list in Dexie

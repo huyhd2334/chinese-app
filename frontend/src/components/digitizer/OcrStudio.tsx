@@ -28,6 +28,7 @@ import {
 import { createWorker } from 'tesseract.js'
 import { CurriculumWord, BookCourse } from '@/types/curriculum'
 import { matchAndStructureOcrText } from '@/utils/ocrMatcher'
+import { playChineseAudio } from '@/utils/audioTts'
 import { getAllBooks, saveLesson, saveCustomBook } from '@/utils/curriculumStorage'
 import { getHanViet } from '@/utils/hanviet'
 import Link from 'next/link'
@@ -395,12 +396,7 @@ export default function OcrStudio() {
 
   // Audio pronounce
   const playPronunciation = (hanzi: string) => {
-    if (typeof window === 'undefined' || !('speechSynthesis' in window)) return
-    window.speechSynthesis.cancel()
-    const utterance = new SpeechSynthesisUtterance(hanzi)
-    utterance.lang = 'zh-CN'
-    utterance.rate = 0.85
-    window.speechSynthesis.speak(utterance)
+    playChineseAudio(hanzi)
   }
 
   // Save to Curriculum

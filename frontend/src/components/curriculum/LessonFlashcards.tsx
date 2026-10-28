@@ -12,6 +12,7 @@ import {
   BookOpen
 } from 'lucide-react'
 import { CurriculumWord } from '@/types/curriculum'
+import { playChineseAudio } from '@/utils/audioTts'
 
 interface LessonFlashcardsProps {
   words: CurriculumWord[]
@@ -43,12 +44,7 @@ export default function LessonFlashcards({ words, lessonTitle }: LessonFlashcard
 
   const playAudio = (text: string, e?: React.MouseEvent) => {
     e?.stopPropagation()
-    if (typeof window === 'undefined' || !('speechSynthesis' in window)) return
-    window.speechSynthesis.cancel()
-    const utterance = new SpeechSynthesisUtterance(text)
-    utterance.lang = 'zh-CN'
-    utterance.rate = 0.85
-    window.speechSynthesis.speak(utterance)
+    playChineseAudio(text)
   }
 
   const handleFlip = () => {

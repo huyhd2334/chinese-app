@@ -20,6 +20,7 @@ import {
 } from '@/types/curriculum'
 import { getHanViet } from '@/utils/hanviet'
 import { db } from '../../../db/database'
+import { playChineseAudio, stopAllAudio } from '@/utils/audioTts'
 
 interface InteractiveReaderProps {
   dialogues: CurriculumDialogue[]
@@ -49,31 +50,25 @@ export default function InteractiveReader({
   } | null>(null)
 
   const playAudio = (text: string) => {
-    if (typeof window === 'undefined' || !('speechSynthesis' in window)) return
-    window.speechSynthesis.cancel()
-    const utterance = new SpeechSynthesisUtterance(text)
-    utterance.lang = 'zh-CN'
-    utterance.rate = 0.85
-    window.speechSynthesis.speak(utterance)
+    playChineseAudio(text)
   }
 
   const handlePlayFullPassage = () => {
-    if (typeof window === 'undefined' || !('speechSynthesis' in window) || !readingPassage) return
+    if (!readingPassage) return
 
     if (isPlayingPassage) {
-      window.speechSynthesis.cancel()
+      stopAllAudio()
       setIsPlayingPassage(false)
       return
     }
 
-    window.speechSynthesis.cancel()
-    const utterance = new SpeechSynthesisUtterance(readingPassage.content)
-    utterance.lang = 'zh-CN'
-    utterance.rate = 0.82
-    utterance.onend = () => setIsPlayingPassage(false)
-    utterance.onerror = () => setIsPlayingPassage(false)
     setIsPlayingPassage(true)
-    window.speechSynthesis.speak(utterance)
+    playChineseAudio(readingPassage.content, {
+      rate: 0.82,
+      volume: 1.0,
+      onEnd: () => setIsPlayingPassage(false),
+      onError: () => setIsPlayingPassage(false),
+    })
   }
 
   const handleWordClick = async (char: string) => {

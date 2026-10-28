@@ -4,6 +4,7 @@ import React, { useState, useEffect, useCallback } from "react"
 import { type Word } from "../../../db/database"
 import { Volume2, X, RotateCw, Check, ArrowRight, ArrowLeft, Sparkles, BookOpen } from "lucide-react"
 import { getHanViet } from "../../utils/hanviet"
+import { playChineseAudio } from "@/utils/audioTts"
 
 interface FlashcardModalProps {
   isOpen: boolean
@@ -35,13 +36,7 @@ export default function FlashcardModal({ isOpen, onClose, words, onMarkLearned }
 
   const playAudio = useCallback((text?: string) => {
     if (!text) return
-    if (typeof window !== "undefined" && "speechSynthesis" in window) {
-      window.speechSynthesis.cancel()
-      const utterance = new SpeechSynthesisUtterance(text)
-      utterance.lang = "zh-CN"
-      utterance.rate = 0.85
-      window.speechSynthesis.speak(utterance)
-    }
+    playChineseAudio(text)
   }, [])
 
   const handleNext = useCallback((remembered: boolean) => {

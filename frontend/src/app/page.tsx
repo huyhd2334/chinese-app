@@ -16,6 +16,7 @@ import {
 } from "lucide-react"
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts"
 import { getHanViet } from "@/utils/hanviet"
+import { playChineseAudio } from "@/utils/audioTts"
 
 const PROVERBS = [
   { cn: "千里之行，始于足下", pinyin: "Qiān lǐ zhī xíng, shǐ yú zú xià", en: "A journey of a thousand miles begins with a single step" },
@@ -69,13 +70,7 @@ export default function Dashboard() {
       e.preventDefault()
       e.stopPropagation()
     }
-    if (typeof window !== "undefined" && "speechSynthesis" in window) {
-      window.speechSynthesis.cancel()
-      const utterance = new SpeechSynthesisUtterance(text)
-      utterance.lang = "zh-CN"
-      utterance.rate = 0.85
-      window.speechSynthesis.speak(utterance)
-    }
+    playChineseAudio(text)
   }
 
   const getData = async () => {

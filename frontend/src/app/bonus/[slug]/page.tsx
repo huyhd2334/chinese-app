@@ -6,6 +6,7 @@ import { useSearchParams } from "next/navigation"
 import { ArrowLeft, Volume2, Star, Search, ChevronLeft, ChevronRight } from "lucide-react"
 import type { BonusWord, BonusCollection } from "@/types/bonus"
 import { getHanViet } from "@/utils/hanviet"
+import { playChineseAudio } from "@/utils/audioTts"
 import BonusWordDetailModal from "@/components/bonus/BonusWordDetailModal"
 import BonusAddCardModal from "@/components/bonus/BonusAddCardModal"
 import { useAuth } from "@/contexts/AuthContext"
@@ -234,20 +235,14 @@ export default function BonusStudyPage({ params }: PageProps) {
 
   const currentCard = deck[currentIndex]
 
-  // Audio helper
+  // High-Clarity Audio helper
   const playAudio = useCallback((text?: string, e?: React.MouseEvent) => {
     if (e) {
       e.stopPropagation()
       e.preventDefault()
     }
     if (!text) return
-    if (typeof window !== "undefined" && "speechSynthesis" in window) {
-      window.speechSynthesis.cancel()
-      const utterance = new SpeechSynthesisUtterance(text)
-      utterance.lang = isZh ? "zh-CN" : "en-US"
-      utterance.rate = 0.85
-      window.speechSynthesis.speak(utterance)
-    }
+    playChineseAudio(text, { lang: isZh ? 'zh' : 'en' })
   }, [isZh])
 
   // Next / Prev card

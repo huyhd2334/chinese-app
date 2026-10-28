@@ -8,6 +8,7 @@ import Image from 'next/image'
 import ChibiLoading from '@/components/common/ChibiLoading'
 import { Volume2, CheckCircle2, AlertCircle, Star, Eye, EyeOff } from 'lucide-react'
 import { getHanViet } from '../../utils/hanviet'
+import { playChineseAudio } from '@/utils/audioTts'
 
 interface WordContainerProps {
   level: number
@@ -160,13 +161,7 @@ const WordContainer = ({
     const playAudio = (text: string, e: React.MouseEvent) => {
       e.preventDefault()
       e.stopPropagation()
-      if (typeof window !== "undefined" && "speechSynthesis" in window) {
-        window.speechSynthesis.cancel()
-        const utterance = new SpeechSynthesisUtterance(text)
-        utterance.lang = "zh-CN"
-        utterance.rate = 0.85
-        window.speechSynthesis.speak(utterance)
-      }
+      playChineseAudio(text)
     }
 
     const filteredWords = allWords.filter(w => {

@@ -4,6 +4,7 @@ import React, { useEffect } from "react"
 import { Volume2, X, Star } from "lucide-react"
 import type { BonusWord } from "@/types/bonus"
 import { getHanViet } from "@/utils/hanviet"
+import { playChineseAudio } from "@/utils/audioTts"
 
 interface BonusWordDetailModalProps {
   word: BonusWord | null
@@ -36,13 +37,7 @@ export default function BonusWordDetailModal({
   const hanViet = isZh && word.hanzi ? getHanViet(word.hanzi) : ""
 
   const playAudio = (text: string, lang: "zh" | "en" = "zh") => {
-    if (typeof window !== "undefined" && "speechSynthesis" in window) {
-      window.speechSynthesis.cancel()
-      const utterance = new SpeechSynthesisUtterance(text)
-      utterance.lang = lang === "zh" ? "zh-CN" : "en-US"
-      utterance.rate = 0.85
-      window.speechSynthesis.speak(utterance)
-    }
+    playChineseAudio(text, { lang })
   }
 
   return (

@@ -7,6 +7,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Volume2, RotateCw, BookOpen, Sparkles, ExternalLink } from "lucide-react"
 import { getHanViet } from "@/utils/hanviet"
+import { playChineseAudio } from "@/utils/audioTts"
 import {
   FREE_REVIEW_LIMIT,
   getLocalSubscription,
@@ -117,13 +118,7 @@ export default function ReviewPage() {
 
   const playAudio = useCallback((text?: string) => {
     if (!text) return
-    if (typeof window !== "undefined" && "speechSynthesis" in window) {
-      window.speechSynthesis.cancel()
-      const utterance = new SpeechSynthesisUtterance(text)
-      utterance.lang = "zh-CN"
-      utterance.rate = 0.85
-      window.speechSynthesis.speak(utterance)
-    }
+    playChineseAudio(text)
   }, [])
 
   // Tự động phát âm khi lật đáp án

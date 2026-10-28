@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react"
 import { type Word } from "../../../db/database"
 import { Volume2, X, RotateCw, CheckCircle2, XCircle, Trophy, Sparkles, Headphones, Eye } from "lucide-react"
+import { playChineseAudio } from "@/utils/audioTts"
 
 interface VocabQuizModalProps {
   isOpen: boolean
@@ -26,16 +27,10 @@ export default function VocabQuizModal({ isOpen, onClose, words, onWordMastered 
   const [isFinished, setIsFinished] = useState(false)
   const [isListeningMode, setIsListeningMode] = useState(false)
 
-  // Web Speech API
+  // High-Clarity Audio
   const playAudio = useCallback((text?: string) => {
     if (!text) return
-    if (typeof window !== "undefined" && "speechSynthesis" in window) {
-      window.speechSynthesis.cancel()
-      const utterance = new SpeechSynthesisUtterance(text)
-      utterance.lang = "zh-CN"
-      utterance.rate = 0.85
-      window.speechSynthesis.speak(utterance)
-    }
+    playChineseAudio(text)
   }, [])
 
   // Generate 10 randomized quiz questions

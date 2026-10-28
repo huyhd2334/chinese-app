@@ -11,6 +11,7 @@ import {
   Plus, Trash2, Volume2, FileEdit, Save, Check 
 } from "lucide-react"
 import { getHanViet } from "@/utils/hanviet"
+import { playChineseAudio } from "@/utils/audioTts"
 
 interface PageProps {
   params: Promise<{
@@ -104,13 +105,7 @@ export default function WordDetailPage({ params }: PageProps) {
   }
 
   const playAudio = (text: string) => {
-    if (typeof window !== "undefined" && "speechSynthesis" in window) {
-      window.speechSynthesis.cancel()
-      const utterance = new SpeechSynthesisUtterance(text)
-      utterance.lang = "zh-CN"
-      utterance.rate = 0.85
-      window.speechSynthesis.speak(utterance)
-    }
+    playChineseAudio(text)
   }
 
   if (!word) {
