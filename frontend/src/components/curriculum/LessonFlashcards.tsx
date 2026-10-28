@@ -9,7 +9,6 @@ import {
   Shuffle,
   CheckCircle2,
   XCircle,
-  Sparkles,
   BookOpen
 } from 'lucide-react'
 import { CurriculumWord } from '@/types/curriculum'

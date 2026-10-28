@@ -1,0 +1,183 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <!-- Jade Gradient for Taoist Robe -->
+    <linearGradient id="taoistJade" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#40916c"/>
+      <stop offset="50%" stop-color="#2d6a4f"/>
+      <stop offset="100%" stop-color="#1b4332"/>
+    </linearGradient>
+
+    <linearGradient id="taoistTrim" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e8f5e9"/>
+      <stop offset="50%" stop-color="#c8e6c9"/>
+      <stop offset="100%" stop-color="#a5d6a7"/>
+    </linearGradient>
+
+    <!-- Cloud Aura Background -->
+    <linearGradient id="taoistCloud" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f0fdf4" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#dcfce7" stop-opacity="0.5"/>
+    </linearGradient>
+
+    <!-- Blush -->
+    <radialGradient id="taoistBlush" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff7b89" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#ff7b89" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="taoistShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#1b4332" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <style>
+    .taoist-float {
+      animation: taoistFloat 3.6s ease-in-out infinite;
+      transform-origin: 200px 220px;
+    }
+    .scroll-glow {
+      animation: scrollPulse 2.8s ease-in-out infinite alternate;
+    }
+    .breeze-leaf {
+      animation: leafFloat 4s ease-in-out infinite;
+    }
+
+    @keyframes taoistFloat {
+      0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-6px) rotate(1.2deg);
+      }
+    }
+
+    @keyframes scrollPulse {
+      0% { opacity: 0.85; transform: scale(1); }
+      100% { opacity: 1; transform: scale(1.03); }
+    }
+
+    @keyframes leafFloat {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-8px) rotate(15deg); }
+    }
+  </style>
+
+  <!-- Background Taoist Cloud Pad -->
+  <g opacity="0.85">
+    <ellipse cx="200" cy="340" rx="110" ry="24" fill="#d1fae5" opacity="0.6"/>
+    <ellipse cx="200" cy="345" rx="75" ry="14" fill="#a7f3d0" opacity="0.5"/>
+  </g>
+
+  <!-- Gentle floating leaves / bamboo aura -->
+  <g class="breeze-leaf" opacity="0.7">
+    <path d="M 90 140 C 85 125, 105 120, 115 130 C 110 145, 95 145, 90 140 Z" fill="#52b788"/>
+    <path d="M 310 130 C 315 115, 295 110, 285 120 C 290 135, 305 135, 310 130 Z" fill="#52b788"/>
+    <circle cx="95" cy="180" r="3" fill="#74c69d"/>
+    <circle cx="305" cy="190" r="3.5" fill="#74c69d"/>
+  </g>
+
+  <!-- MAIN CHARACTER GROUP -->
+  <g class="taoist-float" filter="url(#taoistShadow)">
+    
+    <!-- TAOIST ROBE SLEEVES & BODY (Back layer) -->
+    <path d="M 120 280 C 110 240, 140 220, 165 215 L 235 215 C 260 220, 290 240, 280 280 C 275 320, 260 330, 200 330 C 140 330, 125 320, 120 280 Z" 
+          fill="url(#taoistJade)"/>
+
+    <!-- Wide flowing Taoist Sleeves -->
+    <!-- Left sleeve resting on desk / holding scroll -->
+    <path d="M 150 225 C 110 240, 95 280, 130 305 C 145 300, 160 270, 165 240 Z" fill="#2d6a4f"/>
+    <!-- Right sleeve with white silk cuff -->
+    <path d="M 250 225 C 290 240, 305 280, 270 305 C 255 300, 240 270, 235 240 Z" fill="#2d6a4f"/>
+
+    <!-- Robe Front Lapel & Collar (Taoist style crossed collar) -->
+    <path d="M 165 215 L 205 280 L 195 280 L 155 218 Z" fill="url(#taoistTrim)"/>
+    <path d="M 235 215 L 180 290 L 195 295 L 245 220 Z" fill="url(#taoistTrim)"/>
+
+    <!-- Jade Pendant Belt (Thắt lưng đai ngọc) -->
+    <rect x="165" y="285" width="70" height="12" rx="4" fill="#1b4332"/>
+    <ellipse cx="200" cy="291" rx="8" ry="7" fill="#80ed99" stroke="#1b4332" stroke-width="2"/>
+    <!-- Jade Tassel -->
+    <path d="M 200 298 L 200 322" stroke="#52b788" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="200" cy="324" r="3" fill="#2d6a4f"/>
+
+    <!-- PANDA HEAD & EARS -->
+    <!-- Left Ear with inner shadow -->
+    <circle cx="135" cy="110" r="32" fill="#2b2b2b"/>
+    <circle cx="137" cy="112" r="20" fill="#3d3d3d"/>
+    
+    <!-- Right Ear -->
+    <circle cx="265" cy="110" r="32" fill="#2b2b2b"/>
+    <circle cx="263" cy="112" r="20" fill="#3d3d3d"/>
+
+    <!-- Big White Head -->
+    <ellipse cx="200" cy="165" rx="84" ry="72" fill="#ffffff" stroke="#f1efe8" stroke-width="2"/>
+
+    <!-- TAOIST HAT / MŨ THANH VÂN VỚI THÁI CỰ ĐỒ -->
+    <g>
+      <!-- Cap base -->
+      <path d="M 160 115 C 160 85, 240 85, 240 115 Z" fill="#1b4332"/>
+      <rect x="155" y="112" width="90" height="12" rx="5" fill="#40916c" stroke="#1b4332" stroke-width="2"/>
+      <!-- Jade Hairpin (Trâm ngọc cắm ngang mũ) -->
+      <path d="M 140 108 L 260 108" stroke="#80ed99" stroke-width="4.5" stroke-linecap="round"/>
+      <circle cx="140" cy="108" r="4.5" fill="#2d6a4f"/>
+      <circle cx="260" cy="108" r="4.5" fill="#2d6a4f"/>
+
+      <!-- Yin-Yang / Taiji Mini Symbol on Hat -->
+      <circle cx="200" cy="100" r="9" fill="#ffffff" stroke="#1b4332" stroke-width="1.5"/>
+      <path d="M 200 91 A 4.5 4.5 0 0 0 200 100 A 4.5 4.5 0 0 1 200 109 A 9 9 0 0 1 200 91 Z" fill="#1b4332"/>
+      <circle cx="200" cy="95.5" r="1.5" fill="#ffffff"/>
+      <circle cx="200" cy="104.5" r="1.5" fill="#1b4332"/>
+    </g>
+
+    <!-- EYE PATCHES -->
+    <!-- Left Eye Patch (Oval tilted) -->
+    <ellipse cx="165" cy="165" rx="22" ry="26" transform="rotate(-15 165 165)" fill="#2b2b2b"/>
+    <!-- Right Eye Patch -->
+    <ellipse cx="235" cy="165" rx="22" ry="26" transform="rotate(15 235 165)" fill="#2b2b2b"/>
+
+    <!-- EYES (Wisdom Sparkle) -->
+    <!-- Left Eye: Large cute shiny anime pupil -->
+    <ellipse cx="166" cy="164" rx="10" ry="12" fill="#ffffff"/>
+    <circle cx="168" cy="161" r="5" fill="#1b1b1b"/>
+    <circle cx="165" cy="159" r="2" fill="#ffffff"/>
+    <circle cx="169" cy="165" r="1.2" fill="#ffffff"/>
+
+    <!-- Right Eye: Friendly smiling arch ^_^ -->
+    <path d="M 226 166 Q 235 158 244 166" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+
+    <!-- NOSE & HAPPY SMILE -->
+    <path d="M 194 180 C 194 176, 206 176, 206 180 C 206 185, 194 185, 194 180 Z" fill="#2b2b2b"/>
+    <path d="M 200 183 L 200 188 C 196 193 192 193 189 191 M 200 188 C 204 193 208 193 211 191" 
+          stroke="#2b2b2b" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+
+    <!-- CHEEK BLUSH -->
+    <ellipse cx="145" cy="182" rx="14" ry="8" fill="url(#taoistBlush)"/>
+    <ellipse cx="255" cy="182" rx="14" ry="8" fill="url(#taoistBlush)"/>
+
+    <!-- PANDA PAWS & HOLDING BAMBOO SCROLL (BÀI KHÓA) -->
+    <!-- Left Paw holding scroll -->
+    <circle cx="150" cy="275" r="16" fill="#2b2b2b"/>
+
+    <!-- Bamboo Scroll (Kinh Thư / Bài Khóa Cổ) -->
+    <g class="scroll-glow" transform="translate(145, 235)">
+      <!-- Scroll body -->
+      <rect x="0" y="0" width="110" height="50" rx="6" fill="#fdfbf7" stroke="#b7e4c7" stroke-width="2.5"/>
+      <!-- Bamboo slats lines -->
+      <line x1="22" y1="0" x2="22" y2="50" stroke="#d8f3dc" stroke-width="1.5"/>
+      <line x1="44" y1="0" x2="44" y2="50" stroke="#d8f3dc" stroke-width="1.5"/>
+      <line x1="66" y1="0" x2="66" y2="50" stroke="#d8f3dc" stroke-width="1.5"/>
+      <line x1="88" y1="0" x2="88" y2="50" stroke="#d8f3dc" stroke-width="1.5"/>
+      
+      <!-- Chinese characters on scroll: "课文" (Bài khóa) -->
+      <text x="33" y="32" font-family="'Noto Serif SC', serif" font-size="20" font-weight="bold" fill="#1b4332">课</text>
+      <text x="68" y="32" font-family="'Noto Serif SC', serif" font-size="20" font-weight="bold" fill="#1b4332">文</text>
+
+      <!-- Vermilion Mini Seal Stamp on scroll -->
+      <rect x="92" y="28" width="12" height="14" rx="2" fill="#c8102e" opacity="0.85"/>
+      <text x="94" y="39" font-family="serif" font-size="8" font-weight="bold" fill="#ffffff">道</text>
+    </g>
+
+    <!-- Right Paw gently holding scroll edge -->
+    <circle cx="260" cy="275" r="16" fill="#2b2b2b"/>
+  </g>
+</svg>

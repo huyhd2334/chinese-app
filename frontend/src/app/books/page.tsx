@@ -6,29 +6,77 @@ import Image from 'next/image'
 import {
   BookOpen,
   ChevronRight,
-  Layers
+  Layers,
+  Clock,
+  CheckCircle2,
+  Trophy,
+  TrendingUp
 } from 'lucide-react'
 import { getAllBooks, getLessons } from '@/utils/curriculumStorage'
 import { BookCourse, CurriculumLesson } from '@/types/curriculum'
+import {
+  getLessonProgress,
+  getBookOverallProgress,
+  formatStudyHours,
+  formatStudyHoursShort,
+  LessonProgressData
+} from '@/utils/lessonProgress'
 
 export default function BooksDirectoryPage() {
   const [books, setBooks] = useState<BookCourse[]>([])
   const [selectedBook, setSelectedBook] = useState<BookCourse | null>(null)
   const [lessons, setLessons] = useState<CurriculumLesson[]>([])
+  const [progressMap, setProgressMap] = useState<Record<string, LessonProgressData>>({})
+
+  const refreshProgress = (currentBookId: string, currentLessons: CurriculumLesson[]) => {
+    const map: Record<string, LessonProgressData> = {}
+    for (const l of currentLessons) {
+      map[l.id] = getLessonProgress(currentBookId, l.id)
+    }
+    setProgressMap(map)
+  }
 
   useEffect(() => {
     const loadedBooks = getAllBooks()
     setBooks(loadedBooks)
     if (loadedBooks.length > 0) {
       setSelectedBook(loadedBooks[0])
-      setLessons(getLessons(loadedBooks[0].id))
+      const list = getLessons(loadedBooks[0].id)
+      setLessons(list)
+      refreshProgress(loadedBooks[0].id, list)
     }
   }, [])
 
+  useEffect(() => {
+    if (selectedBook && lessons.length > 0) {
+      refreshProgress(selectedBook.id, lessons)
+    }
+  }, [selectedBook, lessons])
+
+  useEffect(() => {
+    const handleUpdate = () => {
+      if (selectedBook && lessons.length > 0) {
+        refreshProgress(selectedBook.id, lessons)
+      }
+    }
+    window.addEventListener('lesson-progress-updated', handleUpdate)
+    return () => window.removeEventListener('lesson-progress-updated', handleUpdate)
+  }, [selectedBook, lessons])
+
   const handleSelectBook = (book: BookCourse) => {
     setSelectedBook(book)
-    setLessons(getLessons(book.id))
+    const list = getLessons(book.id)
+    setLessons(list)
+    refreshProgress(book.id, list)
   }
+
+  // Calculate overall stats for selected book
+  const overallStats = selectedBook
+    ? getBookOverallProgress(
+        selectedBook.id,
+        lessons.map((l) => l.id)
+      )
+    : { totalLessons: 0, completedLessons: 0, avgPercent: 0, totalStudyTimeSeconds: 0 }
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 pb-24 space-y-6">
@@ -210,10 +258,41 @@ export default function BooksDirectoryPage() {
               </div>
             </div>
 
-            <div className="flex items-center gap-3 shrink-0 self-end md:self-center">
-              <span className="text-xs font-semibold px-3 py-1.5 rounded-xl bg-china-paper text-china-ink border border-border">
-                {lessons.length} bài học có sẵn
+            <div className="flex flex-col sm:flex-row md:flex-col items-end md:items-end gap-2.5 shrink-0 self-start md:self-center">
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-bold text-china-ink bg-china-paper px-3 py-1.5 rounded-xl border border-border flex items-center gap-1.5">
+                  <TrendingUp className="w-3.5 h-3.5 text-china-red" />
+                  Tiến độ sách: <b className="text-china-red">{overallStats.avgPercent}%</b>
+                </span>
+                <span className="text-xs font-semibold px-3 py-1.5 rounded-xl bg-china-paper text-china-ink border border-border">
+                  {overallStats.completedLessons}/{lessons.length} bài xong
+                </span>
+              </div>
+
+              <div className="flex items-center gap-1.5 text-xs text-muted">
+                <Clock className="w-3.5 h-3.5 text-china-red" />
+                <span>Tổng giờ học sách:</span>
+                <span className="font-bold text-china-ink font-mono">
+                  {formatStudyHours(overallStats.totalStudyTimeSeconds)}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Book Progress Bar */}
+          <div className="bg-china-paper/60 border border-border/80 rounded-2xl p-3.5 space-y-1.5">
+            <div className="flex items-center justify-between text-xs font-medium text-slate-700">
+              <span className="flex items-center gap-1.5">
+                <TrendingUp className="w-3.5 h-3.5 text-china-red" />
+                <span>Tiến độ hoàn thành giáo trình {selectedBook.title}</span>
               </span>
+              <span className="font-bold text-china-red font-mono">{overallStats.avgPercent}%</span>
+            </div>
+            <div className="w-full bg-white rounded-full h-2.5 overflow-hidden border border-border/70 p-0.5">
+              <div
+                className="h-full rounded-full bg-gradient-to-r from-china-red via-china-red/90 to-china-gold transition-all duration-500"
+                style={{ width: `${Math.max(overallStats.avgPercent, overallStats.totalStudyTimeSeconds > 0 ? 3 : 0)}%` }}
+              />
             </div>
           </div>
 
@@ -231,6 +310,13 @@ export default function BooksDirectoryPage() {
                 {lessons.map((lesson) => {
                   const vocabCount = lesson.vocabulary?.length || 0
                   const dialogueCount = lesson.dialogues?.length || 0
+                  const p = progressMap[lesson.id] || {
+                    percent: 0,
+                    timeSpentSeconds: 0,
+                    completedSections: [],
+                    lastStudiedAt: 0,
+                  }
+                  const isCompleted = p.percent >= 100
 
                   return (
                     <div
@@ -238,11 +324,15 @@ export default function BooksDirectoryPage() {
                       className="bg-white border border-border hover:border-china-red/30 rounded-2xl p-4.5 shadow-xs hover:shadow-sm transition-all group flex flex-col justify-between gap-3"
                     >
                       <div className="flex items-start gap-3.5">
-                        <div className="w-10 h-10 rounded-xl bg-china-paper border border-border/70 flex items-center justify-center text-sm font-bold text-china-red shrink-0 group-hover:bg-china-red group-hover:text-white transition">
-                          {lesson.lessonNumber}
+                        <div className={`w-10 h-10 rounded-xl border flex items-center justify-center text-sm font-bold shrink-0 transition ${
+                          isCompleted
+                            ? 'bg-emerald-50 border-emerald-200 text-emerald-700'
+                            : 'bg-china-paper border-border/70 text-china-red group-hover:bg-china-red group-hover:text-white'
+                        }`}>
+                          {isCompleted ? '✓' : lesson.lessonNumber}
                         </div>
 
-                        <div className="min-w-0">
+                        <div className="min-w-0 flex-1">
                           <div className="flex items-center gap-2 flex-wrap">
                             <h4 className="text-base font-bold font-chinese text-china-ink group-hover:text-china-red transition" lang="zh">
                               {lesson.title}
@@ -264,7 +354,7 @@ export default function BooksDirectoryPage() {
                             </span>
                             {dialogueCount > 0 && (
                               <span className="flex items-center gap-1">
-                                <Layers className="w-3 h-3 text-blue-600" />
+                                <Layers className="w-3 h-3 text-china-ink" />
                                 {dialogueCount} câu hội thoại
                               </span>
                             )}
@@ -272,12 +362,66 @@ export default function BooksDirectoryPage() {
                         </div>
                       </div>
 
-                      <div className="flex items-center justify-end pt-2 border-t border-border/40">
+                      {/* Thanh Tiến Độ & Số Giờ Học Của Bài */}
+                      <div className="pt-2 space-y-1.5 border-t border-border/40">
+                        <div className="flex items-center justify-between text-[11px]">
+                          <div className="flex items-center gap-1.5 text-slate-600">
+                            <Clock className="w-3.5 h-3.5 text-china-red shrink-0" />
+                            <span>Đã học:</span>
+                            <span className="font-bold text-china-ink font-mono">
+                              {formatStudyHoursShort(p.timeSpentSeconds)}
+                            </span>
+                          </div>
+
+                          <div className="flex items-center gap-1">
+                            {isCompleted ? (
+                              <span className="inline-flex items-center gap-1 font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                                <CheckCircle2 className="w-3 h-3" />
+                                100% Hoàn thành
+                              </span>
+                            ) : p.percent > 0 ? (
+                              <span className="font-bold text-china-red font-mono">
+                                {p.percent}%
+                              </span>
+                            ) : (
+                              <span className="text-muted text-[10px]">Chưa học</span>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Thanh Tiến Độ Ngang */}
+                        <div className="w-full bg-neutral-100 rounded-full h-2 overflow-hidden border border-border/60 p-[1px]">
+                          <div
+                            className={`h-full rounded-full transition-all duration-300 ${
+                              isCompleted
+                                ? 'bg-emerald-500'
+                                : p.percent > 0
+                                ? 'bg-gradient-to-r from-china-red to-china-gold'
+                                : 'bg-transparent'
+                            }`}
+                            style={{ width: `${Math.max(p.percent, p.timeSpentSeconds > 0 ? 5 : 0)}%` }}
+                          />
+                        </div>
+                      </div>
+
+                      <div className="flex items-center justify-between pt-1 border-t border-border/30">
+                        <div className="text-[11px] text-muted">
+                          {p.completedSections && p.completedSections.length > 0 ? (
+                            <span>{p.completedSections.length}/5 phần</span>
+                          ) : (
+                            <span>5 phần học</span>
+                          )}
+                        </div>
+
                         <Link
                           href={`/books/${selectedBook.id}/${lesson.id}`}
-                          className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-china-red hover:bg-china-red/90 text-white text-xs font-bold transition shadow-xs active:scale-95"
+                          className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold transition shadow-xs active:scale-95 ${
+                            isCompleted
+                              ? 'bg-emerald-50 text-emerald-800 hover:bg-emerald-100 border border-emerald-200'
+                              : 'bg-china-red hover:bg-china-red/90 text-white'
+                          }`}
                         >
-                          <span>Học bài này</span>
+                          <span>{isCompleted ? 'Ôn tập lại' : p.percent > 0 ? 'Tiếp tục học' : 'Học bài này'}</span>
                           <ChevronRight className="w-3.5 h-3.5" />
                         </Link>
                       </div>

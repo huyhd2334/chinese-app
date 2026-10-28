@@ -6,7 +6,6 @@ import {
   Eye,
   EyeOff,
   BookOpen,
-  Sparkles,
   X,
   Plus,
   FileText,
@@ -210,8 +209,8 @@ export default function InteractiveReader({
               {/* Chinese Passage Content with interactive clickable characters */}
               <div className="p-6 rounded-2xl bg-china-paper/60 border border-border/80">
                 <p className="text-xs text-muted mb-4 font-sans flex items-center gap-1.5">
-                  <Sparkles className="w-3.5 h-3.5 text-china-red" />
-                  <span>Bấm vào bất kỳ chữ Hán nào để tra cứu từ điển và nghe phát âm tức thì:</span>
+                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-china-red"></span>
+                  <span>Bấm vào từng chữ Hán để tra cứu từ điển và nghe phát âm chuẩn:</span>
                 </p>
 
                 <div className="text-2xl sm:text-3xl font-serif text-china-ink leading-[2.3] sm:leading-[2.4] tracking-wide select-text">
@@ -228,7 +227,7 @@ export default function InteractiveReader({
                       <button
                         key={cIdx}
                         onClick={() => handleWordClick(char)}
-                        className="hover:text-china-red hover:bg-red-50 hover:underline decoration-china-red decoration-2 underline-offset-4 cursor-pointer transition rounded px-0.5"
+                        className="hover:text-china-red hover:bg-china-red/5 hover:underline decoration-china-red decoration-2 underline-offset-4 cursor-pointer transition rounded px-0.5"
                         title="Bấm tra từ điển"
                       >
                         {char}
@@ -240,11 +239,11 @@ export default function InteractiveReader({
 
               {/* Pinyin Transcription */}
               {showPinyin && readingPassage.pinyin && (
-                <div className="p-4 sm:p-5 rounded-2xl bg-amber-50/70 border border-amber-200/80 space-y-1.5">
-                  <span className="text-[11px] font-bold text-amber-800 uppercase tracking-wider block">
-                    Phiên âm Pinyin chuẩn:
+                <div className="p-4 sm:p-5 rounded-2xl bg-china-paper border border-border space-y-1.5">
+                  <span className="text-[11px] font-bold text-china-red uppercase tracking-wider block">
+                    Phiên âm Pinyin:
                   </span>
-                  <p className="text-xs sm:text-sm text-amber-950 font-sans leading-relaxed">
+                  <p className="text-xs sm:text-sm text-china-ink font-sans leading-relaxed">
                     {readingPassage.pinyin}
                   </p>
                 </div>
@@ -252,11 +251,11 @@ export default function InteractiveReader({
 
               {/* Vietnamese Translation */}
               {showTranslation && readingPassage.vietnamese && (
-                <div className="p-4 sm:p-5 rounded-2xl bg-blue-50/60 border border-blue-200/80 space-y-1.5">
-                  <span className="text-[11px] font-bold text-blue-800 uppercase tracking-wider block">
+                <div className="p-4 sm:p-5 rounded-2xl bg-white border border-border space-y-1.5">
+                  <span className="text-[11px] font-bold text-china-ink/70 uppercase tracking-wider block">
                     Bản dịch tiếng Việt tham khảo:
                   </span>
-                  <p className="text-xs sm:text-sm text-slate-800 font-medium leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed">
                     {readingPassage.vietnamese}
                   </p>
                 </div>

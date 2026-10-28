@@ -3,15 +3,14 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import {
   ArrowLeft,
   BookOpen,
   Volume2,
   Layers,
-  Sparkles,
   CheckCircle,
   Eye,
-  Crop,
   ChevronRight,
   ChevronLeft,
   Puzzle,
@@ -20,7 +19,10 @@ import {
   Bookmark,
   CheckCircle2,
   Trophy,
-  ArrowUp
+  ArrowUp,
+  Clock,
+  TrendingUp,
+  Award
 } from 'lucide-react'
 import { getBook, getLesson, getLessons } from '@/utils/curriculumStorage'
 import { BookCourse, CurriculumLesson } from '@/types/curriculum'
@@ -28,6 +30,16 @@ import { db } from '../../../../../db/database'
 import LessonFlashcards from '@/components/curriculum/LessonFlashcards'
 import LessonExercises from '@/components/curriculum/LessonExercises'
 import InteractiveReader from '@/components/curriculum/InteractiveReader'
+import {
+  getLessonProgress,
+  saveLessonProgress,
+  addLessonStudyTime,
+  toggleLessonSection,
+  markLessonComplete,
+  formatStudyHours,
+  LESSON_SECTIONS,
+  LessonProgressData
+} from '@/utils/lessonProgress'
 
 export default function LessonDetailPage() {
   const params = useParams()
@@ -44,6 +56,54 @@ export default function LessonDetailPage() {
 
   // Floating back to top button
   const [showBackToTop, setShowBackToTop] = useState(false)
+
+  // Lesson Progress & Study Hours Tracking
+  const [progress, setProgress] = useState<LessonProgressData>({
+    percent: 0,
+    timeSpentSeconds: 0,
+    completedSections: [],
+    lastStudiedAt: 0,
+  })
+
+  useEffect(() => {
+    if (bookId && lessonId) {
+      const p = getLessonProgress(bookId, lessonId)
+      setProgress(p)
+    }
+  }, [bookId, lessonId])
+
+  // Real-time study timer: accumulate study seconds when user is actively on this tab
+  useEffect(() => {
+    if (!bookId || !lessonId) return
+
+    const interval = setInterval(() => {
+      if (typeof document !== 'undefined' && document.visibilityState === 'visible') {
+        const newSec = addLessonStudyTime(bookId, lessonId, 5)
+        setProgress((prev) => {
+          const newPercent = prev.timeSpentSeconds < 30 && prev.percent === 0 ? 10 : prev.percent
+          return {
+            ...prev,
+            timeSpentSeconds: newSec,
+            percent: newPercent,
+          }
+        })
+      }
+    }, 5000)
+
+    return () => clearInterval(interval)
+  }, [bookId, lessonId])
+
+  const handleToggleSection = (sectionId: string) => {
+    if (!bookId || !lessonId) return
+    const updated = toggleLessonSection(bookId, lessonId, sectionId)
+    setProgress(updated)
+  }
+
+  const handleMarkComplete = () => {
+    if (!bookId || !lessonId) return
+    const updated = markLessonComplete(bookId, lessonId)
+    setProgress(updated)
+  }
 
   useEffect(() => {
     if (bookId) {
@@ -176,11 +236,9 @@ export default function LessonDetailPage() {
           <span className="text-border">/</span>
           <span className="text-china-red font-semibold">Bài {lesson.lessonNumber}</span>
         </div>
-
-        
       </div>
 
-      {/* Book Cover Header Banner */}
+      {/* Book Cover Header Banner with Mascot Tiểu Lu Đạo Sĩ */}
       <div className="relative overflow-hidden bg-gradient-to-br from-white via-china-paper to-amber-50/40 border border-border rounded-3xl p-6 sm:p-8 shadow-xs">
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2 max-w-xl">
@@ -194,7 +252,7 @@ export default function LessonDetailPage() {
             </div>
 
             <div className="flex items-baseline gap-3 pt-1">
-              <h1 className="text-3xl sm:text-4xl font-serif font-bold text-china-ink tracking-tight">
+              <h1 className="text-3xl sm:text-4xl font-chinese font-bold text-china-ink tracking-tight" lang="zh">
                 {lesson.title}
               </h1>
               {lesson.titlePinyin && (
@@ -210,75 +268,200 @@ export default function LessonDetailPage() {
 
             <p className="text-xs text-muted pt-1 flex items-center gap-1.5">
               <Bookmark className="w-3.5 h-3.5 text-china-red" />
-              <span>Dạng sách tương tác: Lướt từ trên xuống dưới, chỗ nào có chữ Hán đều có thể chạm để nghe đọc và làm bài tập ngay!</span>
+              <span>Dạng sách tương tác: Bài khóa đọc hiểu đặt trên đầu trang. Chạm vào chữ Hán để nghe đọc và làm bài tập ngay!</span>
             </p>
           </div>
 
-          <div className="shrink-0 flex flex-col gap-2.5">
+          <div className="shrink-0 flex flex-col sm:flex-row md:flex-col items-center gap-3">
             <button
               onClick={handleAddAllToReview}
-              className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-2xl bg-china-red hover:bg-china-red/90 text-white text-xs font-bold transition shadow-xs"
+              className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-2xl bg-china-red hover:bg-china-red/90 text-white text-xs font-bold transition shadow-xs active:scale-95 cursor-pointer"
             >
               <Eye className="w-4 h-4" />
               <span>Đưa {lesson.vocabulary?.length || 0} từ vào Ôn tập</span>
             </button>
+
+            {/* Mascot Tiểu Lu Đạo Sĩ Thanh Vân */}
+            <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-2xl bg-white/90 border border-border shadow-2xs">
+              <div className="w-10 h-10 shrink-0">
+                <Image
+                  src="/chibi-taoist.svg"
+                  alt="Tiểu Lu Đạo Sĩ"
+                  width={40}
+                  height={40}
+                  priority
+                  className="object-contain"
+                />
+              </div>
+              <div className="text-[11px] leading-tight text-left">
+                <p className="font-bold text-china-ink">Tiểu Lu Đạo Sĩ</p>
+                <p className="text-muted text-[10px]">Cùng bạn luyện đọc</p>
+              </div>
+            </div>
           </div>
         </div>
 
         {addedReviewStatus && (
-          <div className="relative z-10 mt-4 p-3.5 bg-emerald-50 border border-emerald-200 rounded-2xl text-xs text-emerald-800 flex items-center justify-between">
-            <span className="font-semibold">{addedReviewStatus}</span>
-            <Link href="/review" className="underline font-bold text-emerald-900">
+          <div className="relative z-10 mt-4 p-3.5 bg-china-paper border border-china-gold/40 rounded-2xl text-xs text-china-ink flex items-center justify-between">
+            <span className="font-semibold text-china-red">{addedReviewStatus}</span>
+            <Link href="/review" className="underline font-bold text-china-red">
               Vào trang Ôn tập Spaced Repetition ngay →
             </Link>
           </div>
         )}
 
         {/* Watermark character */}
-        <div className="absolute right-[-10px] bottom-[-25px] font-serif text-[130px] font-bold text-black/[0.03] select-none pointer-events-none">
+        <div className="absolute right-[-10px] bottom-[-25px] font-chinese text-[130px] font-bold text-black/[0.03] select-none pointer-events-none" lang="zh">
           {lesson.title.slice(0, 2)}
         </div>
       </div>
 
-      {/* Sticky Table of Contents Quick Nav Bar */}
+      {/* ======================================================== */}
+      {/* THANH TIẾN ĐỘ & SỐ GIỜ HỌC CỦA BÀI (PROGRESS & STUDY HOURS) */}
+      {/* ======================================================== */}
+      <div className="bg-white border border-border rounded-3xl p-5 sm:p-6 shadow-xs space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="space-y-1">
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-bold uppercase tracking-wider text-china-red flex items-center gap-1.5">
+                <TrendingUp className="w-4 h-4" />
+                Tiến độ bài học
+              </span>
+              {progress.percent >= 100 ? (
+                <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200 flex items-center gap-1">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                  Đã hoàn thành 100%
+                </span>
+              ) : (
+                <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-china-paper border border-border text-china-ink">
+                  Đang học ({progress.percent}%)
+                </span>
+              )}
+            </div>
+
+            {/* Số giờ học */}
+            <div className="flex items-center gap-2 pt-0.5 text-xs text-slate-700">
+              <Clock className="w-4 h-4 text-china-red shrink-0" />
+              <span className="font-semibold">Thời gian học bài này:</span>
+              <span className="font-bold text-china-ink bg-china-paper px-2.5 py-0.5 rounded-md border border-border font-mono text-xs">
+                {formatStudyHours(progress.timeSpentSeconds)}
+              </span>
+              <span className="inline-flex items-center gap-1 text-[11px] text-emerald-700 font-medium">
+                <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                Đang ghi nhận
+              </span>
+            </div>
+          </div>
+
+          {/* Quick Complete / Reset Action */}
+          <div className="flex items-center gap-2 self-start sm:self-auto">
+            {progress.percent < 100 ? (
+              <button
+                onClick={handleMarkComplete}
+                className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-china-paper hover:bg-china-red hover:text-white border border-border text-china-ink text-xs font-bold transition shadow-2xs active:scale-95 cursor-pointer"
+              >
+                <CheckCircle2 className="w-4 h-4 text-china-red" />
+                <span>Đánh dấu hoàn thành (100%)</span>
+              </button>
+            ) : (
+              <button
+                onClick={() => setProgress(saveLessonProgress(bookId, lessonId, { percent: 0, completedSections: [] }))}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium text-muted hover:text-china-ink hover:bg-china-paper transition"
+                title="Bấm nếu muốn học lại từ đầu"
+              >
+                <RotateCw className="w-3.5 h-3.5" />
+                <span>Học lại từ đầu</span>
+              </button>
+            )}
+          </div>
+        </div>
+
+        {/* Thanh Tiến Độ Chi Tiết */}
+        <div className="space-y-1.5">
+          <div className="flex items-center justify-between text-xs font-bold">
+            <span className="text-china-ink">Hoàn thành các nội dung trọng tâm</span>
+            <span className="text-china-red font-mono text-sm">{progress.percent}%</span>
+          </div>
+          <div className="w-full bg-neutral-100 rounded-full h-3 overflow-hidden p-0.5 border border-border/80">
+            <div
+              className={`h-full rounded-full transition-all duration-500 ${
+                progress.percent >= 100
+                  ? 'bg-emerald-500'
+                  : 'bg-gradient-to-r from-china-red via-china-red/90 to-china-gold'
+              }`}
+              style={{ width: `${Math.max(progress.percent, progress.timeSpentSeconds > 0 ? 5 : 0)}%` }}
+            />
+          </div>
+        </div>
+
+        {/* 5 Chặng Mục Tiêu Trong Bài Học */}
+        <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 pt-1">
+          {LESSON_SECTIONS.map((sec, idx) => {
+            const isDone = progress.completedSections?.includes(sec.id) || progress.percent >= 100
+            return (
+              <button
+                key={sec.id}
+                onClick={() => handleToggleSection(sec.id)}
+                className={`flex items-center justify-between p-2.5 rounded-xl border text-xs font-medium transition cursor-pointer ${
+                  isDone
+                    ? 'bg-china-red/10 border-china-red/40 text-china-red font-bold shadow-2xs'
+                    : 'bg-china-paper/60 border-border/80 text-muted hover:border-china-ink/30 hover:text-china-ink'
+                }`}
+                title="Bấm để tích hoàn thành phần này"
+              >
+                <span className="truncate">
+                  {idx + 1}. {sec.label}
+                </span>
+                <span className={`text-[10px] shrink-0 font-bold ml-1 px-1.5 py-0.5 rounded ${
+                  isDone ? 'bg-china-red text-white' : 'bg-neutral-200/80 text-muted'
+                }`}>
+                  {isDone ? '✓' : `+${sec.weight}%`}
+                </span>
+              </button>
+            )
+          })}
+        </div>
+      </div>
+
+      {/* Sticky Table of Contents Quick Nav Bar (BÀI KHÓA LÊN ĐẦU TIÊN) */}
       <div className="sticky top-2 z-20 bg-white/95 backdrop-blur-md border border-border/90 rounded-2xl p-1.5 shadow-sm flex items-center justify-between gap-1 overflow-x-auto text-xs font-semibold">
         <button
-          onClick={() => scrollToSection('sec-vocab')}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl hover:bg-china-paper text-china-ink hover:text-china-red transition shrink-0"
+          onClick={() => scrollToSection('sec-reader')}
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl hover:bg-china-paper text-china-ink hover:text-china-red transition shrink-0 cursor-pointer"
         >
           <BookOpen className="w-3.5 h-3.5 text-china-red" />
-          <span>I. Từ mới ({lesson.vocabulary?.length || 0})</span>
+          <span>I. Bài Khóa &amp; Đọc Hiểu</span>
         </button>
 
         <button
-          onClick={() => scrollToSection('sec-flashcards')}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl hover:bg-china-paper text-china-ink hover:text-china-red transition shrink-0"
+          onClick={() => scrollToSection('sec-vocab')}
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl hover:bg-china-paper text-china-ink hover:text-china-red transition shrink-0 cursor-pointer"
         >
-          <RotateCw className="w-3.5 h-3.5 text-amber-600" />
-          <span>II. Flashcard 3D</span>
-        </button>
-
-        <button
-          onClick={() => scrollToSection('sec-reader')}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl hover:bg-china-paper text-china-ink hover:text-china-red transition shrink-0"
-        >
-          <Layers className="w-3.5 h-3.5 text-blue-600" />
-          <span>III. Đoạn Văn &amp; Bài Khóa</span>
+          <Layers className="w-3.5 h-3.5 text-china-ink" />
+          <span>II. Từ Mới ({lesson.vocabulary?.length || 0})</span>
         </button>
 
         {lesson.grammarNotes && lesson.grammarNotes.length > 0 && (
           <button
             onClick={() => scrollToSection('sec-grammar')}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl hover:bg-china-paper text-china-ink hover:text-china-red transition shrink-0"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl hover:bg-china-paper text-china-ink hover:text-china-red transition shrink-0 cursor-pointer"
           >
-            <Sparkles className="w-3.5 h-3.5 text-purple-600" />
-            <span>IV. Ngữ Pháp</span>
+            <Bookmark className="w-3.5 h-3.5 text-china-gold" />
+            <span>III. Ngữ Pháp</span>
           </button>
         )}
 
         <button
+          onClick={() => scrollToSection('sec-flashcards')}
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl hover:bg-china-paper text-china-ink hover:text-china-red transition shrink-0 cursor-pointer"
+        >
+          <RotateCw className="w-3.5 h-3.5 text-china-ink" />
+          <span>IV. Flashcard 3D</span>
+        </button>
+
+        <button
           onClick={() => scrollToSection('sec-exercises')}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-china-red/10 text-china-red hover:bg-china-red hover:text-white transition shrink-0 font-bold"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-china-red/10 text-china-red hover:bg-china-red hover:text-white transition shrink-0 font-bold cursor-pointer"
         >
           <Puzzle className="w-3.5 h-3.5" />
           <span>V. Bài Tập &amp; Luyện Nghe</span>
@@ -286,130 +469,45 @@ export default function LessonDetailPage() {
       </div>
 
       {/* ======================================================== */}
-      {/* PHẦN 1: TỪ VỰNG BÀI HỌC (生词 - VOCABULARY) */}
+      {/* PHẦN 1: SÁCH BÀI KHÓA HỘI THOẠI & ĐOẠN VĂN (ĐƯỢC ĐƯA LÊN ĐẦU TRANG) */}
       {/* ======================================================== */}
-      <section id="sec-vocab" className="space-y-4 pt-4 scroll-mt-16">
-        <div className="flex items-center justify-between pb-2 border-b-2 border-china-red/20">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-xl bg-china-red text-white flex items-center justify-center font-bold text-xs">
+      <section id="sec-reader" className="space-y-4 pt-2 scroll-mt-16">
+        <div className="flex items-center justify-between pb-3 border-b-2 border-china-red/20">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-xl bg-china-red text-white flex items-center justify-center font-bold text-sm shadow-xs">
               I
             </div>
             <div>
-              <h2 className="text-xl font-bold font-serif text-china-ink">
-                生词 - Bảng Từ Mới Bài Học
-              </h2>
-              <p className="text-xs text-muted">
-                Chạm vào biểu tượng loa để nghe phát âm giọng chuẩn bản xứ
-              </p>
-            </div>
-          </div>
-
-          <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-china-paper border border-border text-muted">
-            {lesson.vocabulary?.length || 0} từ vựng
-          </span>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-          {lesson.vocabulary.map((w, idx) => (
-            <div
-              key={w.id || idx}
-              className="bg-white border border-border hover:border-china-red/40 rounded-2xl p-4 shadow-xs transition flex items-start justify-between gap-3 group"
-            >
-              <div className="flex items-start gap-3">
-                <span className="w-6 h-6 rounded-lg bg-china-paper text-muted text-xs font-mono flex items-center justify-center shrink-0 mt-0.5">
-                  {idx + 1}
+              <div className="flex items-center gap-2">
+                <h2 className="text-xl font-bold font-serif text-china-ink">
+                  课文与短文 - Bài Khóa &amp; Đoạn Văn Đọc Hiểu
+                </h2>
+                <span className="hidden sm:inline-block font-chinese text-[11px] font-bold px-2 py-0.5 rounded-md bg-china-red/10 text-china-red border border-china-red/20" lang="zh">
+                  印 • 朗读
                 </span>
-
-                <div>
-                  <div className="flex items-baseline gap-2">
-                    <span className="font-serif font-bold text-2xl text-china-ink group-hover:text-china-red transition">
-                      {w.hanzi}
-                    </span>
-                    <span className="text-sm font-semibold text-china-red font-sans">
-                      {w.pinyin}
-                    </span>
-                  </div>
-
-                  <div className="flex items-center gap-2 mt-1">
-                    {w.hanViet && (
-                      <span className="text-xs font-semibold text-slate-700 bg-slate-100 px-2 py-0.5 rounded">
-                        Âm HV: {w.hanViet}
-                      </span>
-                    )}
-                    {w.partOfSpeech && (
-                      <span className="text-[11px] text-muted italic">
-                        ({w.partOfSpeech})
-                      </span>
-                    )}
-                  </div>
-
-                  <p className="text-xs text-slate-800 mt-2 font-medium leading-relaxed">
-                    {w.meaning}
-                  </p>
-                </div>
               </div>
-
-              <div className="shrink-0 flex flex-col items-center gap-1.5">
-                <button
-                  onClick={() => playPronunciation(w.hanzi)}
-                  className="p-2 rounded-xl text-muted hover:text-china-red hover:bg-china-paper transition"
-                  title="Nghe phát âm chuẩn"
-                >
-                  <Volume2 className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ======================================================== */}
-      {/* PHẦN 2: BỘ FLASHCARD 3D TƯƠNG TÁC (TÍCH HỢP LIỀN MẠCH) */}
-      {/* ======================================================== */}
-      <section id="sec-flashcards" className="space-y-4 pt-6 scroll-mt-16">
-        <div className="flex items-center justify-between pb-2 border-b-2 border-amber-500/20">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-xl bg-amber-500 text-white flex items-center justify-center font-bold text-xs">
-              II
-            </div>
-            <div>
-              <h2 className="text-xl font-bold font-serif text-china-ink">
-                Lật Thẻ Flashcard 3D Ôn Nhanh Từ Mới
-              </h2>
-              <p className="text-xs text-muted">
-                Bấm vào thẻ để lật xem nghĩa &amp; pinyin, phím cách (Space) hoặc bấm &quot;Đã thuộc&quot; để sang từ tiếp
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="p-4 sm:p-6 bg-china-paper/60 border border-border rounded-3xl">
-          <LessonFlashcards words={lesson.vocabulary} lessonTitle={lesson.title} />
-        </div>
-      </section>
-
-      {/* ======================================================== */}
-      {/* PHẦN 3: SÁCH BÀI KHÓA HỘI THOẠI (课文 - DIALOGUES) */}
-      {/* ======================================================== */}
-      <section id="sec-reader" className="space-y-4 pt-6 scroll-mt-16">
-        <div className="flex items-center justify-between pb-2 border-b-2 border-blue-500/20">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-xs">
-              III
-            </div>
-            <div>
-              <h2 className="text-xl font-bold font-serif text-china-ink">
-                课文与短文 - Đoạn Văn Đọc Hiểu &amp; Bài Khóa
-              </h2>
-              <p className="text-xs text-muted">
-                Đọc đoạn văn liền mạch hoặc hội thoại phân vai, bấm vào từng chữ để tra cứu &amp; nghe audio
+              <p className="text-xs text-muted mt-0.5">
+                Đọc bài khóa trước tiên, chạm vào từng chữ Hán để nghe phát âm giọng chuẩn và dịch nghĩa
               </p>
             </div>
           </div>
 
-          <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-200">
-            {lesson.dialogues?.length || 0} câu hội thoại
-          </span>
+          <div className="flex items-center gap-3">
+            <span className="hidden sm:inline-block text-xs font-semibold px-2.5 py-1 rounded-full bg-china-paper border border-border text-china-ink">
+              {lesson.dialogues?.length || 0} câu hội thoại
+            </span>
+            {/* Mascot Tiểu Lu Đạo Sĩ Thanh Vân (Skin Xanh Ngọc) */}
+            <div className="w-12 h-12 sm:w-14 sm:h-14 shrink-0 transition-transform hover:scale-110" title="Tiểu Lu Đạo Sĩ cùng bạn luyện đọc bài khóa">
+              <Image
+                src="/chibi-taoist.svg"
+                alt="Tiểu Lu Đạo Sĩ"
+                width={56}
+                height={56}
+                priority
+                className="object-contain drop-shadow-xs"
+              />
+            </div>
+          </div>
         </div>
 
         <InteractiveReader
@@ -421,22 +519,138 @@ export default function LessonDetailPage() {
       </section>
 
       {/* ======================================================== */}
-      {/* PHẦN 4: NGỮ PHÁP & CHÚ THÍCH (小语讲堂 / GRAMMAR) */}
+      {/* PHẦN 2: TỪ VỰNG BÀI HỌC (生词 - VOCABULARY) */}
+      {/* ======================================================== */}
+      <section id="sec-vocab" className="space-y-4 pt-6 scroll-mt-16">
+        <div className="flex items-center justify-between pb-3 border-b-2 border-china-red/20">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-xl bg-china-ink text-white flex items-center justify-center font-bold text-sm shadow-xs">
+              II
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h2 className="text-xl font-bold font-serif text-china-ink">
+                  生词 - Bảng Từ Mới Bài Học
+                </h2>
+                <span className="hidden sm:inline-block font-chinese text-[11px] font-bold px-2 py-0.5 rounded-md bg-china-red/10 text-china-red border border-china-red/20" lang="zh">
+                  印 • 字词
+                </span>
+              </div>
+              <p className="text-xs text-muted mt-0.5">
+                Chạm vào biểu tượng loa để nghe phát âm, học âm Hán-Việt và từ loại
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <span className="hidden sm:inline-block text-xs font-semibold px-2.5 py-1 rounded-full bg-china-paper border border-border text-china-ink">
+              {lesson.vocabulary?.length || 0} từ vựng
+            </span>
+            {/* Mascot Tiểu Lu Thư Sinh (Skin Áo Đỏ Thưởng Trà) */}
+            <div className="w-12 h-12 sm:w-14 sm:h-14 shrink-0 transition-transform hover:scale-110" title="Tiểu Lu chăm chỉ học từ mới">
+              <Image
+                src="/chibi-loading.svg"
+                alt="Tiểu Lu Thư Sinh"
+                width={56}
+                height={56}
+                className="object-contain drop-shadow-xs"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          {lesson.vocabulary.map((w, idx) => (
+            <div
+              key={w.id || idx}
+              className="bg-white border border-border hover:border-china-red/40 rounded-2xl p-4 shadow-xs transition flex items-start justify-between gap-3 group"
+            >
+              <div className="flex items-start gap-3">
+                <span className="w-6 h-6 rounded-lg bg-china-paper text-muted text-xs font-mono flex items-center justify-center shrink-0 mt-0.5 border border-border/60">
+                  {idx + 1}
+                </span>
+
+                <div>
+                  <div className="flex items-baseline gap-2">
+                    <span className="font-chinese font-bold text-2xl text-china-ink group-hover:text-china-red transition" lang="zh">
+                      {w.hanzi}
+                    </span>
+                    <span className="text-sm font-semibold text-china-red font-sans">
+                      {w.pinyin}
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-2 mt-1">
+                    {w.hanViet && (
+                      <span className="text-xs font-semibold text-amber-900 bg-amber-50 border border-amber-200/80 px-2 py-0.5 rounded">
+                        Âm HV: {w.hanViet}
+                      </span>
+                    )}
+                    {w.partOfSpeech && (
+                      <span className="text-[11px] text-muted italic">
+                        ({w.partOfSpeech})
+                      </span>
+                    )}
+                  </div>
+
+                  <p className="text-xs text-china-ink mt-2 font-medium leading-relaxed">
+                    {w.meaning}
+                  </p>
+                </div>
+              </div>
+
+              <div className="shrink-0 flex flex-col items-center gap-1.5">
+                <button
+                  onClick={() => playPronunciation(w.hanzi)}
+                  className="p-2 rounded-xl text-muted hover:text-china-red hover:bg-china-paper transition active:scale-95 cursor-pointer"
+                  title="Nghe phát âm chuẩn"
+                >
+                  <Volume2 className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ======================================================== */}
+      {/* PHẦN 3: NGỮ PHÁP & CHÚ THÍCH TRỌNG TÂM (小语讲堂 / GRAMMAR) */}
       {/* ======================================================== */}
       {lesson.grammarNotes && lesson.grammarNotes.length > 0 && (
         <section id="sec-grammar" className="space-y-4 pt-6 scroll-mt-16">
-          <div className="flex items-center justify-between pb-2 border-b-2 border-purple-500/20">
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-xl bg-purple-600 text-white flex items-center justify-center font-bold text-xs">
-                IV
+          <div className="flex items-center justify-between pb-3 border-b-2 border-china-gold/30">
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 rounded-xl bg-china-gold text-white flex items-center justify-center font-bold text-sm shadow-xs">
+                III
               </div>
               <div>
-                <h2 className="text-xl font-bold font-serif text-china-ink">
-                  小语讲堂 - Điểm Ngữ Pháp &amp; Chú Thích Trọng Tâm
-                </h2>
-                <p className="text-xs text-muted">
+                <div className="flex items-center gap-2">
+                  <h2 className="text-xl font-bold font-serif text-china-ink">
+                    语法注释 - Điểm Ngữ Pháp &amp; Chú Thích Trọng Tâm
+                  </h2>
+                  <span className="hidden sm:inline-block font-chinese text-[11px] font-bold px-2 py-0.5 rounded-md bg-amber-50 text-amber-800 border border-amber-200" lang="zh">
+                    印 • 讲解
+                  </span>
+                </div>
+                <p className="text-xs text-muted mt-0.5">
                   Quy tắc ngữ pháp, cấu trúc câu và các bài vè luyện đọc chuẩn trong sách
                 </p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <span className="hidden sm:inline-block text-xs font-semibold px-2.5 py-1 rounded-full bg-china-paper border border-border text-china-ink">
+                {lesson.grammarNotes.length} điểm ngữ pháp
+              </span>
+              {/* Mascot Tiểu Lu Trạng Nguyên Hoàng Gia (Skin Vàng Kim Gấm) */}
+              <div className="w-12 h-12 sm:w-14 sm:h-14 shrink-0 transition-transform hover:scale-110" title="Tiểu Lu Trạng Nguyên giảng bài ngữ pháp">
+                <Image
+                  src="/chibi-scholar-gold.svg"
+                  alt="Tiểu Lu Trạng Nguyên"
+                  width={56}
+                  height={56}
+                  className="object-contain drop-shadow-xs"
+                />
               </div>
             </div>
           </div>
@@ -447,7 +661,7 @@ export default function LessonDetailPage() {
                 key={idx}
                 className="flex items-start gap-3.5 p-4 rounded-2xl bg-china-paper/60 border border-border/80 text-xs sm:text-sm text-china-ink leading-relaxed hover:bg-china-paper transition"
               >
-                <span className="w-6 h-6 rounded-full bg-purple-100 text-purple-700 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                <span className="w-6 h-6 rounded-full bg-amber-100 text-amber-900 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 border border-amber-200">
                   {idx + 1}
                 </span>
                 <span className="font-medium">{note}</span>
@@ -458,27 +672,85 @@ export default function LessonDetailPage() {
       )}
 
       {/* ======================================================== */}
+      {/* PHẦN 4: BỘ FLASHCARD 3D TƯƠNG TÁC */}
+      {/* ======================================================== */}
+      <section id="sec-flashcards" className="space-y-4 pt-6 scroll-mt-16">
+        <div className="flex items-center justify-between pb-3 border-b-2 border-border/80">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-xl bg-stone-700 text-white flex items-center justify-center font-bold text-sm shadow-xs">
+              IV
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h2 className="text-xl font-bold font-serif text-china-ink">
+                  卡片 - Lật Thẻ Flashcard 3D Ôn Nhanh
+                </h2>
+                <span className="hidden sm:inline-block font-chinese text-[11px] font-bold px-2 py-0.5 rounded-md bg-stone-100 text-stone-700 border border-stone-200" lang="zh">
+                  印 • 记忆
+                </span>
+              </div>
+              <p className="text-xs text-muted mt-0.5">
+                Bấm vào thẻ để lật xem nghĩa &amp; pinyin, phím cách (Space) hoặc bấm &quot;Đã thuộc&quot; để sang từ tiếp
+              </p>
+            </div>
+          </div>
+
+          {/* Mascot Tiểu Lu Múa Bút Thư Pháp */}
+          <div className="w-12 h-12 sm:w-14 sm:h-14 shrink-0 transition-transform hover:scale-110" title="Tiểu Lu múa bút viết chữ flashcard">
+            <Image
+              src="/chibi-brush.svg"
+              alt="Tiểu Lu Múa Bút"
+              width={56}
+              height={56}
+              className="object-contain drop-shadow-xs"
+            />
+          </div>
+        </div>
+
+        <div className="p-4 sm:p-6 bg-china-paper/60 border border-border rounded-3xl">
+          <LessonFlashcards words={lesson.vocabulary} lessonTitle={lesson.title} />
+        </div>
+      </section>
+
+      {/* ======================================================== */}
       {/* PHẦN 5: BÀI TẬP THỰC HÀNH SÁCH (练习 - WORKBOOK EXERCISES) */}
       {/* ======================================================== */}
       <section id="sec-exercises" className="space-y-4 pt-6 scroll-mt-16">
-        <div className="flex items-center justify-between pb-2 border-b-2 border-emerald-500/20">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold text-xs">
+        <div className="flex items-center justify-between pb-3 border-b-2 border-china-red/20">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-xl bg-china-red text-white flex items-center justify-center font-bold text-sm shadow-xs">
               V
             </div>
             <div>
-              <h2 className="text-xl font-bold font-serif text-china-ink">
-                练习 - Bài Tập Củng Cố Trong Sách (Workbook)
-              </h2>
-              <p className="text-xs text-muted">
+              <div className="flex items-center gap-2">
+                <h2 className="text-xl font-bold font-serif text-china-ink">
+                  练习 - Bài Tập Củng Cố Trong Sách (Workbook)
+                </h2>
+                <span className="hidden sm:inline-block font-chinese text-[11px] font-bold px-2 py-0.5 rounded-md bg-china-red/10 text-china-red border border-china-red/20" lang="zh">
+                  印 • 习题
+                </span>
+              </div>
+              <p className="text-xs text-muted mt-0.5">
                 Thực hành nối từ, xếp câu, trắc nghiệm và luyện nghe chọn chữ trực tiếp
               </p>
             </div>
           </div>
 
-          <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
-            Tương tác trực tiếp
-          </span>
+          <div className="flex items-center gap-3">
+            <span className="hidden sm:inline-block text-xs font-semibold px-2.5 py-1 rounded-full bg-china-paper border border-border text-china-ink">
+              Tương tác trực tiếp
+            </span>
+            {/* Mascot Tiểu Lu Hiệp Khách Giang Hồ (Skin Nón Lá Trúc) */}
+            <div className="w-12 h-12 sm:w-14 sm:h-14 shrink-0 transition-transform hover:scale-110" title="Tiểu Lu Hiệp Khách cùng bạn vượt ải bài tập">
+              <Image
+                src="/chibi-wuxia.svg"
+                alt="Tiểu Lu Hiệp Khách"
+                width={56}
+                height={56}
+                className="object-contain drop-shadow-xs"
+              />
+            </div>
+          </div>
         </div>
 
         <LessonExercises
@@ -516,7 +788,7 @@ export default function LessonDetailPage() {
         ) : (
           <Link
             href="/books"
-            className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold shadow-md transition"
+            className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-china-red hover:bg-china-red/90 text-white text-xs font-bold shadow-md transition"
           >
             <Trophy className="w-4 h-4" />
             <span>Bạn đã hoàn thành sách! Về Tủ Sách</span>
@@ -528,7 +800,7 @@ export default function LessonDetailPage() {
       {showBackToTop && (
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="fixed bottom-6 right-6 z-40 p-3 rounded-full bg-china-red text-white shadow-xl hover:bg-china-red/90 transition transform hover:scale-105"
+          className="fixed bottom-6 right-6 z-40 p-3 rounded-full bg-china-red text-white shadow-xl hover:bg-china-red/90 transition transform hover:scale-105 cursor-pointer"
           title="Lên đầu trang"
         >
           <ArrowUp className="w-5 h-5" />

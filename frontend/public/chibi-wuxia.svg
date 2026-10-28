@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <!-- Bamboo Hat Gradient -->
+    <linearGradient id="bambooHat" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f4e285"/>
+      <stop offset="60%" stop-color="#dda15e"/>
+      <stop offset="100%" stop-color="#bc6c25"/>
+    </linearGradient>
+
+    <!-- Indigo Wuxia Robe Gradient -->
+    <linearGradient id="wuxiaIndigo" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4a5568"/>
+      <stop offset="50%" stop-color="#2d3748"/>
+      <stop offset="100%" stop-color="#1a202c"/>
+    </linearGradient>
+
+    <!-- Leather Belt & Scarf -->
+    <linearGradient id="leatherBelt" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#99582a"/>
+      <stop offset="100%" stop-color="#6f1d1b"/>
+    </linearGradient>
+
+    <radialGradient id="wuxiaBlush" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff7b89" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#ff7b89" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="wuxiaShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#1a202c" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <style>
+    .wuxia-sway {
+      animation: wuxiaSway 3.2s ease-in-out infinite;
+      transform-origin: 200px 220px;
+    }
+    .ribbon-fly {
+      animation: ribbonWave 2.8s ease-in-out infinite alternate;
+      transform-origin: 140px 125px;
+    }
+    .sword-brush {
+      animation: brushStance 3.2s ease-in-out infinite alternate;
+      transform-origin: 270px 260px;
+    }
+
+    @keyframes wuxiaSway {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-5px) rotate(1.5deg); }
+    }
+
+    @keyframes ribbonWave {
+      0% { transform: rotate(0deg) skewX(0deg); }
+      100% { transform: rotate(8deg) skewX(6deg); }
+    }
+
+    @keyframes brushStance {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(-5deg) translateY(-2px); }
+    }
+  </style>
+
+  <!-- Ground Dust / Jianghu Road -->
+  <g opacity="0.8">
+    <ellipse cx="200" cy="340" rx="100" ry="20" fill="#e2e8f0" opacity="0.6"/>
+    <ellipse cx="200" cy="343" rx="65" ry="12" fill="#cbd5e1" opacity="0.5"/>
+  </g>
+
+  <!-- MAIN CHARACTER GROUP -->
+  <g class="wuxia-sway" filter="url(#wuxiaShadow)">
+
+    <!-- WUXIA COAT / ROBE (ÁO HIỆP KHÁCH CHÀM) -->
+    <path d="M 120 280 C 110 240, 140 220, 165 215 L 235 215 C 260 220, 290 240, 280 280 C 275 320, 260 330, 200 330 C 140 330, 125 320, 120 280 Z" 
+          fill="url(#wuxiaIndigo)"/>
+
+    <!-- Sleeves with warrior wrist wraps -->
+    <path d="M 150 225 C 110 240, 95 280, 130 305 C 145 300, 160 270, 165 240 Z" fill="#2d3748"/>
+    <path d="M 250 225 C 290 240, 305 280, 270 305 C 255 300, 240 270, 235 240 Z" fill="#2d3748"/>
+
+    <!-- Red Silk Hero Scarf / Collar (Khăn lụa hiệp khách cổ trang) -->
+    <path d="M 165 215 L 205 270 L 195 270 L 155 218 Z" fill="#c8102e"/>
+    <path d="M 235 215 L 185 275 L 195 280 L 245 220 Z" fill="#a30d25"/>
+
+    <!-- Leather Belt with Gourd (Đai da đeo hồ lô rượu nhỏ) -->
+    <rect x="165" y="280" width="70" height="12" rx="3" fill="url(#leatherBelt)"/>
+    <rect x="195" y="278" width="10" height="16" rx="2" fill="#e9c46a"/>
+    <!-- Wine Gourd on belt -->
+    <circle cx="230" cy="292" r="5" fill="#dda15e" stroke="#99582a" stroke-width="1.5"/>
+    <circle cx="230" cy="301" r="7.5" fill="#dda15e" stroke="#99582a" stroke-width="1.5"/>
+    <circle cx="230" cy="286" r="2" fill="#c8102e"/>
+
+    <!-- PANDA EARS -->
+    <circle cx="135" cy="110" r="32" fill="#2b2b2b"/>
+    <circle cx="137" cy="112" r="20" fill="#3d3d3d"/>
+    
+    <circle cx="265" cy="110" r="32" fill="#2b2b2b"/>
+    <circle cx="263" cy="112" r="20" fill="#3d3d3d"/>
+
+    <!-- HEAD -->
+    <ellipse cx="200" cy="165" rx="84" ry="72" fill="#ffffff" stroke="#f1efe8" stroke-width="2"/>
+
+    <!-- NÓN LÁ TRÚC HIỆP KHÁCH (BAMBOO CONICAL STRAW HAT) -->
+    <g>
+      <!-- Wide Conical Straw Hat Base -->
+      <path d="M 80 120 Q 200 65 320 120 Q 200 100 80 120 Z" fill="url(#bambooHat)" stroke="#bc6c25" stroke-width="2"/>
+      <path d="M 120 112 Q 200 75 280 112" stroke="#dda15e" stroke-width="1.5" fill="none"/>
+      <!-- Hat apex tip -->
+      <circle cx="200" cy="85" r="5" fill="#bc6c25"/>
+
+      <!-- Red Chinstrap Ribbon flowing in the wind (Dải lụa đỏ buộc nón bay phất phơ) -->
+      <path class="ribbon-fly" d="M 140 118 C 120 140, 100 170, 90 210 C 95 212, 105 180, 142 125 Z" fill="#c8102e" opacity="0.9"/>
+      <path class="ribbon-fly" d="M 260 118 C 275 140, 290 170, 305 200 C 300 202, 285 175, 258 125 Z" fill="#c8102e" opacity="0.9"/>
+    </g>
+
+    <!-- EYE PATCHES -->
+    <ellipse cx="165" cy="165" rx="22" ry="26" transform="rotate(-15 165 165)" fill="#2b2b2b"/>
+    <ellipse cx="235" cy="165" rx="22" ry="26" transform="rotate(15 235 165)" fill="#2b2b2b"/>
+
+    <!-- EYES: Confident Wuxia Eyes (Left wink with smile, Right confident sparkle) -->
+    <!-- Left Eye: Determined Sparkle pupil -->
+    <ellipse cx="166" cy="164" rx="10" ry="12" fill="#ffffff"/>
+    <circle cx="167" cy="161" r="5" fill="#1b1b1b"/>
+    <circle cx="164" cy="159" r="2" fill="#ffffff"/>
+    <circle cx="168" cy="165" r="1.2" fill="#ffffff"/>
+
+    <!-- Right Eye: Cool winking hero smile -->
+    <path d="M 226 166 Q 235 156 244 166" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+
+    <!-- NOSE & HEROIC SMIRK -->
+    <path d="M 194 180 C 194 176, 206 176, 206 180 C 206 185, 194 185, 194 180 Z" fill="#2b2b2b"/>
+    <path d="M 200 183 L 200 188 C 203 192 208 193 214 189" 
+          stroke="#2b2b2b" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+
+    <!-- BLUSH -->
+    <ellipse cx="145" cy="182" rx="14" ry="8" fill="url(#wuxiaBlush)"/>
+    <ellipse cx="255" cy="182" rx="14" ry="8" fill="url(#wuxiaBlush)"/>
+
+    <!-- LEFT PAW: Holding Workbook Scroll ("练习" - Bài tập) -->
+    <circle cx="148" cy="275" r="16" fill="#2b2b2b"/>
+    <g transform="translate(138, 235)">
+      <rect x="0" y="0" width="65" height="50" rx="6" fill="#fdfbf7" stroke="#99582a" stroke-width="2"/>
+      <text x="14" y="32" font-family="'Noto Serif SC', serif" font-size="18" font-weight="bold" fill="#2d3748">练</text>
+      <text x="36" y="32" font-family="'Noto Serif SC', serif" font-size="18" font-weight="bold" fill="#2d3748">习</text>
+    </g>
+
+    <!-- RIGHT PAW: WIELDING A BRUSH SWORD LIKE A HERO (Vung bút như kiếm) -->
+    <g class="sword-brush">
+      <!-- Brush handle held like a sword hilt -->
+      <path d="M 250 280 L 310 200" stroke="#dda15e" stroke-width="9" stroke-linecap="round"/>
+      <path d="M 245 285 L 265 260" stroke="#bc6c25" stroke-width="12" stroke-linecap="round"/>
+      <circle cx="240" cy="290" r="5" fill="#c8102e"/> <!-- Red Pommel jewel -->
+
+      <!-- Brush Head (Mũi bút lông mực đậm uy phong) -->
+      <path d="M 310 200 C 315 190, 325 170, 335 160 C 330 180, 325 195, 315 205 Z" fill="#2b2b2b"/>
+      <circle cx="335" cy="160" r="2.5" fill="#2b2b2b"/> <!-- Ink droplet -->
+
+      <!-- Right Paw gripping the brush hilt -->
+      <circle cx="260" cy="268" r="16" fill="#2b2b2b"/>
+    </g>
+  </g>
+</svg>
