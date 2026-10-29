@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --background: #faf8f5; /* paper */
-  --foreground: #2b2b2b; /* ink */
+  --background: #faf8f5; /* Giấy Tuyên truyền thống */
+  --foreground: #2b2b2b; /* Mực Đen */
   --card: #ffffff;
-  --border: #eae0d5; /* warm border */
+  --border: #eae0d5; /* Viền giấy ấm */
   --muted: #8c857d;
-  --primary: #c8102e; /* china red */
+  --primary: #c8102e; /* Đỏ Trung Hoa */
   
   --china-red: #c8102e;
   --china-red-hover: #a30d25;
@@ -22,40 +22,214 @@
 }
 
 /* =====================================================================
-   SỰ KIỆN HALLOWEEN TOÀN TRANG (Áp dụng cho mọi trang khi bật sự kiện)
+   GIAO DIỆN SÁNG + SỰ KIỆN HALLOWEEN
    ===================================================================== */
-html.halloween-event-theme {
-  --background: #fbf7f2;
-  --china-paper: #fbf7f2;
-  --border: #eddac6;
+html.halloween-event-theme:not(.dark) {
+  --background: #fdf9f4;
+  --china-paper: #fdf9f4;
+  --border: #eedec8;
   --primary: #e65100; /* Cam bí ngô ấm áp */
   --china-red: #e65100;
   --china-red-hover: #c43c00;
   --china-gold: #f59e0b; /* Vàng hổ phách */
   --china-jade: #2d6a4f;
+  --china-ink: #29211c;
   --muted: #8c7b6c;
 }
 
-html.halloween-event-theme body {
-  background: var(--background);
+/* =====================================================================
+   GIAO DIỆN TỐI (DARK MODE - Nghiên Mực & Đêm Trăng)
+   Thiết kế chuẩn mực, nền sâu ấm cúng, tương phản hài hòa không gây mỏi mắt
+   ===================================================================== */
+html.dark:not(.halloween-event-theme) {
+  --background: #121216; /* Mực đen than ấm */
+  --foreground: #edeae4; /* Chữ trắng ngà mềm dịu */
+  --card: #1c1c24; /* Khối thẻ nổi bật */
+  --border: #2d2d3a; /* Đường viền thanh thoát */
+  --muted: #9a9489; /* Chữ phụ sắc nét */
+  --primary: #ff4d5e; /* Đỏ chu sa rực rỡ trên nền tối */
+  --china-red: #ff4d5e;
+  --china-red-hover: #ff3347;
+  --china-gold: #f5be38; /* Hoàng kim phát sáng */
+  --china-paper: #16161d; /* Nền giấy tối */
+  --china-ink: #edeae4;
+  --china-jade: #38b28a; /* Ngọc bích phát sáng */
 }
 
-html.halloween-event-theme ::selection {
-  background-color: #e65100;
-  color: #ffffff;
+/* =====================================================================
+   GIAO DIỆN TỐI + SỰ KIỆN HALLOWEEN (Đêm Hội Đèn Lồng Huyền Bí)
+   ===================================================================== */
+html.dark.halloween-event-theme {
+  --background: #110e17; /* Đêm tím than huyền bí */
+  --foreground: #f4eff8;
+  --card: #1a1624; /* Đá cung điện đêm */
+  --border: #382c47; /* Viền mận tím dịu */
+  --muted: #a195b0;
+  --primary: #ff6a2b; /* Cam bí ngô neon phát sáng */
+  --china-red: #ff6a2b;
+  --china-red-hover: #e65314;
+  --china-gold: #f59e0b; /* Vàng hổ phách */
+  --china-paper: #15121e;
+  --china-ink: #f4eff8;
+  --china-jade: #2fa37e;
 }
 
-/* Ánh sáng ấm bí ngô huyền ảo dịu nhẹ ở góc phải trên */
+/* Hiệu ứng hào quang Halloween */
 html.halloween-event-theme::after {
   content: "";
   position: fixed;
   top: 0;
   right: 0;
-  width: 260px;
-  height: 260px;
+  width: 280px;
+  height: 280px;
   pointer-events: none;
-  background: radial-gradient(circle at top right, rgba(230, 81, 0, 0.07), transparent 70%);
-  z-index: 50;
+  background: radial-gradient(circle at top right, rgba(230, 81, 0, 0.08), transparent 70%);
+  z-index: 35;
+}
+
+html.dark.halloween-event-theme::after {
+  background: radial-gradient(circle at top right, rgba(255, 106, 43, 0.12), transparent 70%);
+}
+
+/* Màu bôi đen chữ theo chủ đề */
+html.halloween-event-theme ::selection {
+  background-color: #e65100;
+  color: #ffffff;
+}
+
+html.dark:not(.halloween-event-theme) ::selection {
+  background-color: #ff4d5e;
+  color: #ffffff;
+}
+
+/* =====================================================================
+   DARK MODE UTILITY OVERRIDES (Bảo đảm không bị lỗi ô trắng/chữ chìm)
+   ===================================================================== */
+html.dark {
+  color-scheme: dark;
+}
+
+html.dark body {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+html.dark .bg-white {
+  background-color: var(--card) !important;
+}
+
+html.dark .bg-white\/95 {
+  background-color: rgba(28, 28, 36, 0.95) !important;
+}
+
+html.dark .bg-white\/90 {
+  background-color: rgba(28, 28, 36, 0.90) !important;
+}
+
+html.dark .bg-white\/80 {
+  background-color: rgba(28, 28, 36, 0.80) !important;
+}
+
+html.dark .bg-white\/70 {
+  background-color: rgba(28, 28, 36, 0.70) !important;
+}
+
+html.dark .bg-white\/60 {
+  background-color: rgba(28, 28, 36, 0.60) !important;
+}
+
+html.dark .bg-china-paper {
+  background-color: var(--china-paper) !important;
+}
+
+html.dark .bg-china-paper\/60 {
+  background-color: rgba(22, 22, 29, 0.6) !important;
+}
+
+html.dark .bg-neutral-50, 
+html.dark .bg-gray-50 {
+  background-color: rgba(255, 255, 255, 0.04) !important;
+}
+
+html.dark .bg-neutral-100, 
+html.dark .bg-gray-100 {
+  background-color: rgba(255, 255, 255, 0.07) !important;
+}
+
+html.dark .bg-neutral-200, 
+html.dark .bg-gray-200 {
+  background-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+html.dark .hover\:bg-neutral-50:hover, 
+html.dark .hover\:bg-gray-50:hover {
+  background-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+html.dark .hover\:bg-neutral-100:hover, 
+html.dark .hover\:bg-gray-100:hover {
+  background-color: rgba(255, 255, 255, 0.09) !important;
+}
+
+html.dark .hover\:bg-neutral-200:hover, 
+html.dark .hover\:bg-gray-200:hover {
+  background-color: rgba(255, 255, 255, 0.14) !important;
+}
+
+html.dark .hover\:bg-china-paper:hover {
+  background-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+html.dark .text-slate-800, 
+html.dark .text-slate-700, 
+html.dark .text-gray-800, 
+html.dark .text-gray-900 {
+  color: #edeae4 !important;
+}
+
+html.dark .text-slate-600, 
+html.dark .text-gray-600 {
+  color: #9f998e !important;
+}
+
+html.dark .border-border {
+  border-color: var(--border) !important;
+}
+
+html.dark .border-border\/50, 
+html.dark .border-border\/60, 
+html.dark .border-border\/70, 
+html.dark .border-border\/80 {
+  border-color: rgba(45, 45, 58, 0.7) !important;
+}
+
+html.dark .border-gray-200,
+html.dark .border-gray-300 {
+  border-color: var(--border) !important;
+}
+
+html.dark input:not([type="checkbox"]):not([type="radio"]), 
+html.dark textarea, 
+html.dark select {
+  background-color: #17171f !important;
+  color: #edeae4 !important;
+  border-color: var(--border) !important;
+}
+
+html.dark input::placeholder, 
+html.dark textarea::placeholder {
+  color: #78736b !important;
+}
+
+html.dark .shadow-xs, 
+html.dark .shadow-2xs, 
+html.dark .shadow-sm {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35) !important;
+}
+
+html.dark .shadow-md, 
+html.dark .shadow-lg {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5) !important;
 }
 
 @theme inline {
@@ -298,4 +472,56 @@ body {
 
 .safe-area-pb {
   padding-bottom: max(6px, env(safe-area-inset-bottom));
+}
+
+/* =====================================================================
+   HALLOWEEN SVG CORNER ANIMATIONS
+   ===================================================================== */
+@keyframes spiderSway {
+  0%, 100% {
+    transform: rotate(6deg);
+  }
+  50% {
+    transform: rotate(-6deg);
+  }
+}
+
+@keyframes pumpkinFlicker {
+  0%, 100% {
+    opacity: 0.95;
+    filter: drop-shadow(0 0 4px rgba(254, 240, 138, 0.7));
+  }
+  25% {
+    opacity: 0.8;
+    filter: drop-shadow(0 0 2px rgba(254, 240, 138, 0.5));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(254, 240, 138, 0.95));
+  }
+  75% {
+    opacity: 0.85;
+    filter: drop-shadow(0 0 3px rgba(254, 240, 138, 0.6));
+  }
+}
+
+@keyframes batFlutter {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(-4deg);
+  }
+}
+
+.spider-sway {
+  animation: spiderSway 4.5s ease-in-out infinite;
+}
+
+.pumpkin-flicker {
+  animation: pumpkinFlicker 2.8s ease-in-out infinite;
+}
+
+.bat-flutter {
+  animation: batFlutter 3.2s ease-in-out infinite;
 }

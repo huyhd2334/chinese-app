@@ -47,15 +47,46 @@
   fill: rgba(200, 16, 46, 0.12) !important;
 }
 
-/* Biến tấu nav khi sự kiện Halloween đang bật */
-:global(html.halloween-event-theme) .activate {
+/* Biến tấu nav khi ở chế độ Ban đêm (Dark Mode) */
+:global(html.dark) .option:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+:global(html.dark) .activate {
+  color: var(--china-red) !important;
+  background-color: rgba(255, 77, 94, 0.14) !important;
+  border-color: rgba(255, 77, 94, 0.3) !important;
+  box-shadow: 0 0 10px rgba(255, 77, 94, 0.12);
+}
+
+:global(html.dark) .activate svg {
+  stroke: var(--china-red) !important;
+  fill: rgba(255, 77, 94, 0.18) !important;
+}
+
+/* Biến tấu nav khi sự kiện Halloween đang bật (Sáng) */
+:global(html.halloween-event-theme:not(.dark)) .activate {
   color: #e65100 !important;
   background-color: rgba(230, 81, 0, 0.1) !important;
   border-color: rgba(230, 81, 0, 0.28) !important;
   box-shadow: 0 1px 4px rgba(230, 81, 0, 0.1);
 }
 
-:global(html.halloween-event-theme) .activate svg {
+:global(html.halloween-event-theme:not(.dark)) .activate svg {
   stroke: #e65100 !important;
   fill: rgba(230, 81, 0, 0.15) !important;
+}
+
+/* Biến tấu nav khi sự kiện Halloween đang bật (Tối) */
+:global(html.dark.halloween-event-theme) .activate {
+  color: #ff7a29 !important;
+  background-color: rgba(255, 106, 43, 0.18) !important;
+  border-color: rgba(255, 106, 43, 0.42) !important;
+  box-shadow: 0 0 14px rgba(255, 106, 43, 0.2);
+}
+
+:global(html.dark.halloween-event-theme) .activate svg {
+  stroke: #ff7a29 !important;
+  fill: rgba(255, 106, 43, 0.22) !important;
 }

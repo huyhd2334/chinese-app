@@ -29,6 +29,8 @@ interface AuthContextType {
   closeHalloweenModal: () => void
   isHalloweenTheme: boolean
   toggleHalloweenTheme: () => void
+  isDarkMode: boolean
+  toggleDarkMode: () => void
   signInWithEmail: (email: string, password: string) => Promise<SignInResult>
   signUpWithEmail: (email: string, password: string) => Promise<SignUpResult>
   resendConfirmationEmail: (email: string) => Promise<{ error: string | null; success?: boolean }>
@@ -48,6 +50,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     if (typeof window === "undefined") return true
     return localStorage.getItem("hsk_halloween_event_theme") !== "off"
   })
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    if (typeof window === "undefined") return false
+    const saved = localStorage.getItem("hsk_color_theme")
+    if (saved === "dark") return true
+    if (saved === "light") return false
+    return window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)").matches : false
+  })
 
   const openHalloweenModal = () => {
     if (isHalloweenTheme) setIsHalloweenModalOpen(true)
@@ -66,6 +75,25 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       return next
     })
   }
+
+  const toggleDarkMode = () => {
+    setIsDarkMode((prev) => {
+      const next = !prev
+      if (typeof window !== "undefined") {
+        localStorage.setItem("hsk_color_theme", next ? "dark" : "light")
+      }
+      return next
+    })
+  }
+
+  useEffect(() => {
+    if (typeof document === "undefined") return
+    if (isDarkMode) {
+      document.documentElement.classList.add("dark")
+    } else {
+      document.documentElement.classList.remove("dark")
+    }
+  }, [isDarkMode])
 
   useEffect(() => {
     if (typeof document === "undefined") return
@@ -284,6 +312,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         closeHalloweenModal,
         isHalloweenTheme,
         toggleHalloweenTheme,
+        isDarkMode,
+        toggleDarkMode,
         signInWithEmail,
         signUpWithEmail,
         resendConfirmationEmail,

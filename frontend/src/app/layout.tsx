@@ -43,10 +43,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="vi" className={`${nunito.variable} ${notoSerifSC.variable}`}>
+    <html lang="vi" suppressHydrationWarning className={`${nunito.variable} ${notoSerifSC.variable}`}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
         <meta name="theme-color" content="#c0392b" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem("hsk_color_theme");var d=t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme: dark)").matches);if(d){document.documentElement.classList.add("dark");}var h=localStorage.getItem("hsk_halloween_event_theme");if(h!=="off"){document.documentElement.classList.add("halloween-event-theme");}}catch(e){}})();`,
+          }}
+        />
       </head>
       <body className="h-dvh overflow-hidden bg-china-paper text-china-ink font-sans selection:bg-china-red selection:text-white antialiased">
         <AuthProvider>
