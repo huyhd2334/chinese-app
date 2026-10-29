@@ -1,5 +1,7 @@
 import { BookCourse, CurriculumLesson } from "@/types/curriculum"
 import { NEW_HSK1_ALL_LESSONS } from "./newHsk1Lessons"
+import { NEW_HSK2_ALL_LESSONS } from "./newHsk2Lessons"
+import { NEW_HSK3_ALL_LESSONS } from "./newHsk3Lessons"
 
 export const PRESET_BOOKS: BookCourse[] = [
   {
@@ -14,24 +16,24 @@ export const PRESET_BOOKS: BookCourse[] = [
     coverImage: "/books/hsk1.jpg",
   },
   {
-    id: "hsk2_standard",
-    title: "Giáo trình Chuẩn HSK 2",
-    chineseTitle: "HSK 标准教程 2",
+    id: "new_hsk2_standard",
+    title: "Giáo trình HSK 2 (Chuẩn 3.0)",
+    chineseTitle: "新HSK教程 2 (3.0)",
     level: 2,
-    description: "Nâng cao khả năng giao tiếp thường nhật căn bản, mở rộng thêm 150 từ vựng mới và điểm ngữ pháp thông dụng (15 bài học).",
+    description: "Bộ giáo trình HSK 3.0 mới nhất gồm 15 bài học với 300 từ vựng nâng cao, điểm ngữ pháp trọng điểm, bài khóa thực tế, bài đọc hiểu và luyện nghe chuyên sâu chuẩn HSK 3.0.",
     totalLessons: 15,
-    badge: "Sơ cấp 2",
+    badge: "HSK 3.0 Mới",
     colorTheme: "from-emerald-600 to-teal-700",
     coverImage: "/books/hsk2.jpg",
   },
   {
-    id: "hsk3_standard",
-    title: "Giáo trình Chuẩn HSK 3",
-    chineseTitle: "HSK 标准教程 3",
+    id: "new_hsk3_standard",
+    title: "Giáo trình HSK 3 (Chuẩn 3.0)",
+    chineseTitle: "新HSK教程 3 (3.0)",
     level: 3,
-    description: "Mở rộng vốn từ lên 600 từ, bắt đầu đọc hiểu và giao tiếp lưu loát về cuộc sống, du lịch và công việc (20 bài học).",
-    totalLessons: 20,
-    badge: "Trung cấp 1",
+    description: "Bộ giáo trình HSK 3.0 mới nhất gồm 18 bài học chuyên sâu với hơn 400 từ vựng, câu chữ 把, 被, bổ ngữ xu hướng, bài đọc hiểu và luyện nghe đa dạng chuẩn HSK 3.0.",
+    totalLessons: 18,
+    badge: "HSK 3.0 Mới",
     colorTheme: "from-amber-600 to-orange-700",
     coverImage: "/books/hsk3.jpg",
   },
@@ -73,49 +75,8 @@ export const PRESET_BOOKS: BookCourse[] = [
 export const PRESET_LESSONS: Record<string, CurriculumLesson[]> = {
   hsk1_standard: NEW_HSK1_ALL_LESSONS,
   new_hsk1_standard: NEW_HSK1_ALL_LESSONS,
-  hsk2_standard: [
-    {
-      id: "hsk2_standard_1",
-      bookId: "hsk2_standard",
-      lessonNumber: 1,
-      title: "九月去北京旅游最好",
-      titleVi: "Tháng chín đi Bắc Kinh du lịch là tốt nhất",
-      titlePinyin: "Jiǔ yuè qù Běijīng lǚyóu zuì hǎo",
-      vocabulary: [
-        { id: "h2_1_1", hanzi: "旅游", pinyin: "lǚyóu", hanViet: "Lữ Du", meaning: "du lịch", partOfSpeech: "Động từ / Danh từ" },
-        { id: "h2_1_2", hanzi: "觉得", pinyin: "juéde", hanViet: "Giác Đắc", meaning: "cảm thấy, nghĩ rằng", partOfSpeech: "Động từ" },
-        { id: "h2_1_3", hanzi: "最", pinyin: "zuì", hanViet: "Tối", meaning: "nhất (so sánh bậc nhất)", partOfSpeech: "Phó từ" },
-        { id: "h2_1_4", hanzi: "为什么", pinyin: "wèishénme", hanViet: "Vi Thập Ma", meaning: "tại sao, vì sao", partOfSpeech: "Đại từ" },
-        { id: "h2_1_5", hanzi: "也", pinyin: "yě", hanViet: "Dã", meaning: "cũng", partOfSpeech: "Phó từ" },
-        { id: "h2_1_6", hanzi: "运动", pinyin: "yùndòng", hanViet: "Vận Động", meaning: "thể thao, vận động", partOfSpeech: "Danh từ / Động từ" },
-        { id: "h2_1_7", hanzi: "踢足球", pinyin: "tī zúqiú", hanViet: "Thích Túc Cầu", meaning: "đá bóng", partOfSpeech: "Cụm động từ" },
-        { id: "h2_1_8", hanzi: "一起", pinyin: "yìqǐ", hanViet: "Nhất Khởi", meaning: "cùng nhau", partOfSpeech: "Phó từ" },
-        { id: "h2_1_9", hanzi: "要", pinyin: "yào", hanViet: "Yếu", meaning: "muốn, cần, sẽ", partOfSpeech: "Động từ năng nguyện" },
-        { id: "h2_1_10", hanzi: "新", pinyin: "xīn", hanViet: "Tân", meaning: "mới", partOfSpeech: "Tính từ" },
-      ],
-    },
-    {
-      id: "hsk2_standard_2",
-      bookId: "hsk2_standard",
-      lessonNumber: 2,
-      title: "我每天六点起床",
-      titleVi: "Tôi thức dậy lúc 6 giờ mỗi ngày",
-      titlePinyin: "Wǒ měitiān liù diǎn qǐchuáng",
-      vocabulary: [
-        { id: "h2_2_1", hanzi: "生病", pinyin: "shēng bìng", hanViet: "Sinh Bệnh", meaning: "bị ốm, mắc bệnh", partOfSpeech: "Cụm động từ" },
-        { id: "h2_2_2", hanzi: "每", pinyin: "měi", hanViet: "Mỗi", meaning: "mỗi, mọi", partOfSpeech: "Đại từ" },
-        { id: "h2_2_3", hanzi: "早上", pinyin: "zǎoshang", hanViet: "Tảo Thượng", meaning: "buổi sáng sớm", partOfSpeech: "Danh từ" },
-        { id: "h2_2_4", hanzi: "跑步", pinyin: "pǎo bù", hanViet: "Bào Bộ", meaning: "chạy bộ", partOfSpeech: "Cụm động từ" },
-        { id: "h2_2_5", hanzi: "起床", pinyin: "qǐ chuáng", hanViet: "Khởi Sàng", meaning: "thức dậy", partOfSpeech: "Cụm động từ" },
-        { id: "h2_2_6", hanzi: "药", pinyin: "yào", hanViet: "Dược", meaning: "thuốc men", partOfSpeech: "Danh từ" },
-        { id: "h2_2_7", hanzi: "身体", pinyin: "shēntǐ", hanViet: "Thân Thể", meaning: "thân thể, sức khỏe", partOfSpeech: "Danh từ" },
-        { id: "h2_2_8", hanzi: "出院", pinyin: "chū yuàn", hanViet: "Xuất Viện", meaning: "ra viện, xuất viện", partOfSpeech: "Cụm động từ" },
-        { id: "h2_2_9", hanzi: "高", pinyin: "gāo", hanViet: "Cao", meaning: "cao", partOfSpeech: "Tính từ" },
-        { id: "h2_2_10", hanzi: "米", pinyin: "mǐ", hanViet: "Mễ", meaning: "mét (đơn vị đo lường)", partOfSpeech: "Lượng từ" },
-        { id: "h2_2_11", hanzi: "知道", pinyin: "zhīdào", hanViet: "Tri Đạo", meaning: "biết, hiểu biết", partOfSpeech: "Động từ" },
-        { id: "h2_2_12", hanzi: "忙", pinyin: "máng", hanViet: "Mang", meaning: "bận rộn", partOfSpeech: "Tính từ" },
-        { id: "h2_2_13", hanzi: "时间", pinyin: "shíjiān", hanViet: "Thời Gian", meaning: "thời gian", partOfSpeech: "Danh từ" },
-      ],
-    },
-  ],
+  hsk2_standard: NEW_HSK2_ALL_LESSONS,
+  new_hsk2_standard: NEW_HSK2_ALL_LESSONS,
+  hsk3_standard: NEW_HSK3_ALL_LESSONS,
+  new_hsk3_standard: NEW_HSK3_ALL_LESSONS,
 }
