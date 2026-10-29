@@ -3,9 +3,40 @@
 import React, { useEffect, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { X, Volume2, Sparkles, BookOpen, RotateCw, ArrowRight } from "lucide-react"
+import { X, Volume2, BookOpen } from "lucide-react"
 import { useAuth } from "@/contexts/AuthContext"
 import { playChineseAudio } from "@/utils/audioTts"
+
+function PumpkinIcon({ className = "w-5 h-5" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className={className}
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      {/* Green Stem */}
+      <path
+        d="M12 2.5C12.3 3.8 13.3 4.5 14.5 4.2"
+        stroke="#2d6a4f"
+        strokeWidth="2.2"
+        strokeLinecap="round"
+      />
+      {/* Pumpkin Body Segments */}
+      <ellipse cx="7.8" cy="13.2" rx="4.8" ry="6.2" fill="#d9480f" />
+      <ellipse cx="16.2" cy="13.2" rx="4.8" ry="6.2" fill="#d9480f" />
+      <ellipse cx="12" cy="13.5" rx="5.5" ry="6.8" fill="#f76707" />
+      {/* Carved Eyes & Smile */}
+      <polygon points="9.5,12 11,10.5 11,12.5" fill="#1b002c" />
+      <polygon points="14.5,12 13,10.5 13,12.5" fill="#1b002c" />
+      <polygon points="12,13 11.4,13.8 12.6,13.8" fill="#1b002c" />
+      <path
+        d="M8.8 15.2C9.5 17 14.5 17 15.2 15.2C14.4 15.8 13.8 15 12 15.5C10.2 15 9.6 15.8 8.8 15.2Z"
+        fill="#1b002c"
+      />
+    </svg>
+  )
+}
 
 export default function HalloweenWelcomeModal() {
   const { isHalloweenModalOpen, closeHalloweenModal, user } = useAuth()
@@ -114,7 +145,7 @@ export default function HalloweenWelcomeModal() {
               onClick={closeHalloweenModal}
               className="w-full sm:flex-1 py-3 px-5 rounded-2xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 text-xs sm:text-sm font-black transition-all shadow-[0_4px_20px_rgba(251,133,0,0.4)] active:scale-95 cursor-pointer flex items-center justify-center gap-2"
             >
-              <Sparkles className="w-4 h-4 text-slate-950 fill-current" />
+              <PumpkinIcon className="w-5 h-5 shrink-0" />
               <span>Bắt đầu học cùng Tiểu Lu 🚀</span>
             </button>
 

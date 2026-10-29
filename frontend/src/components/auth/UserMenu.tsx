@@ -108,7 +108,7 @@ export default function UserMenu({ compact = false }: UserMenuProps) {
                 className="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-xs text-amber-800 bg-amber-50 hover:bg-amber-100 transition-colors font-bold text-left"
               >
                 <span>🎃</span>
-                <span>Lời chúc Vạn Thánh</span>
+                <span>Thông báo</span>
               </button>
               <button
                 onClick={() => {
@@ -209,7 +209,7 @@ export default function UserMenu({ compact = false }: UserMenuProps) {
                   className="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-xs text-amber-800 bg-amber-50 hover:bg-amber-100 transition-colors font-bold text-left cursor-pointer"
                 >
                   <span>🎃</span>
-                  <span>Lời chúc Vạn Thánh</span>
+                  <span>Thông báo</span>
                 </button>
                 <button
                   onClick={() => {
