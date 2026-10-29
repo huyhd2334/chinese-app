@@ -202,6 +202,17 @@ export async function redeemActivationCodeOnServer(
     return { success: false, message: "Vui lòng nhập mã kích hoạt." }
   }
 
+  // Mã kích hoạt đặc quyền dành cho Admin / Chủ sở hữu web thử nghiệm
+  if (cleanCode === "TIEULU2026" || cleanCode === "HSKPRO2026" || cleanCode === "TIEULU_PRO") {
+    const expiresAt = Date.now() + 365 * 86400000 // 1 năm
+    const info = saveLocalSubscription("pro_yearly", expiresAt, userId)
+    return {
+      success: true,
+      message: "Chúc mừng! Bạn đã kích hoạt thành công Gói Pro 1 Năm 🎉",
+      subInfo: info,
+    }
+  }
+
   try {
     const { data, error } = await supabase.rpc("redeem_activation_code", {
       p_code: cleanCode,
