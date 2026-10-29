@@ -136,11 +136,9 @@ export async function syncSubscriptionWithCloud(userId: string): Promise<Subscri
  */
 export async function verifyBankTransferPayment(
   userId: string,
-  plan: "pro_monthly" | "pro_yearly",
-  amount: number,
   transferRef: string
 ): Promise<{ verified: boolean; message: string; subInfo?: SubscriptionInfo }> {
-  // 1. Kiểm tra xem tài khoản đã được Webhook ngân hàng hoặc Admin duyệt trên bảng user_subscriptions chưa
+  // 1. Kiểm tra xem webhook ngân hàng đã kích hoạt gói Pro trên bảng user_subscriptions chưa
   const synced = await syncSubscriptionWithCloud(userId)
   if (synced.plan === "pro_monthly" || synced.plan === "pro_yearly") {
     return {
@@ -150,22 +148,45 @@ export async function verifyBankTransferPayment(
     }
   }
 
-  // 2. Nếu chưa được duyệt, ghi nhận yêu cầu đối soát (status = 'pending') vào bảng payment_requests
-  try {
-    await supabase.from("payment_requests").insert({
-      user_id: userId,
-      plan,
-      amount,
-      transfer_ref: transferRef,
-      status: "pending",
-    })
-  } catch {
-    // Bỏ qua nếu bảng payment_requests chưa được tạo
-  }
-
+  // 2. Chưa có xác nhận: webhook ngân hàng sẽ tự kích hoạt Pro ngay khi nhận được tiền.
+  //    (Đơn hàng được tạo & đối soát hoàn toàn ở server qua /api/payment/create-order + /api/payment/webhook)
   return {
     verified: false,
     message: `Hệ thống chưa ghi nhận được giao dịch chuyển khoản ngân hàng với nội dung "${transferRef}". Vui lòng hoàn tất chuyển khoản đúng số tiền & nội dung rồi bấm kiểm tra lại sau 1–3 phút.`,
+  }
+}
+
+export interface PaymentOrder {
+  orderCode: string
+  amount: number
+  paidAmount: number
+  qrUrl: string | null
+  reused: boolean
+}
+
+/**
+ * Tạo (hoặc lấy lại) đơn hàng VietQR từ server. Server tự quyết định số tiền theo gói.
+ */
+export async function createPaymentOrder(
+  plan: "pro_monthly" | "pro_yearly"
+): Promise<{ order?: PaymentOrder; error?: string }> {
+  try {
+    const { data } = await supabase.auth.getSession()
+    const token = data.session?.access_token
+    if (!token) return { error: "Vui lòng đăng nhập trước khi thanh toán." }
+
+    const res = await fetch("/api/payment/create-order", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+      body: JSON.stringify({ plan }),
+    })
+    const body = await res.json().catch(() => ({}))
+
+    if (res.status === 429) return { error: "Bạn thao tác quá nhanh. Vui lòng thử lại sau ít phút." }
+    if (!res.ok) return { error: body?.message || "Không thể tạo đơn hàng lúc này. Vui lòng thử lại." }
+    return { order: body as PaymentOrder }
+  } catch {
+    return { error: "Không thể kết nối máy chủ thanh toán. Vui lòng kiểm tra mạng và thử lại." }
   }
 }
 

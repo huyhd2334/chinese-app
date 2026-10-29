@@ -23,6 +23,9 @@ interface AuthContextType {
   isAuthModalOpen: boolean
   openAuthModal: () => void
   closeAuthModal: () => void
+  isHalloweenModalOpen: boolean
+  openHalloweenModal: () => void
+  closeHalloweenModal: () => void
   signInWithEmail: (email: string, password: string) => Promise<SignInResult>
   signUpWithEmail: (email: string, password: string) => Promise<SignUpResult>
   resendConfirmationEmail: (email: string) => Promise<{ error: string | null; success?: boolean }>
@@ -37,6 +40,22 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [session, setSession] = useState<Session | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false)
+  const [isHalloweenModalOpen, setIsHalloweenModalOpen] = useState(false)
+
+  const openHalloweenModal = () => setIsHalloweenModalOpen(true)
+  const closeHalloweenModal = () => setIsHalloweenModalOpen(false)
+
+  const triggerWelcomeIfFresh = (userId: string) => {
+    if (typeof sessionStorage === "undefined") return
+    const key = `halloween_welcome_shown_${userId}`
+    if (!sessionStorage.getItem(key)) {
+      sessionStorage.setItem(key, "1")
+      // Short delay so transitions feel natural
+      setTimeout(() => {
+        setIsHalloweenModalOpen(true)
+      }, 350)
+    }
+  }
 
   useEffect(() => {
     // 1. Initial session fetch
@@ -44,15 +63,22 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setSession(session)
       setUser(session?.user ?? null)
       setIsLoading(false)
+      if (session?.user) {
+        triggerWelcomeIfFresh(session.user.id)
+      }
     })
 
     // 2. Listen to auth changes
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
+    } = supabase.auth.onAuthStateChange((event, session) => {
       setSession(session)
       setUser(session?.user ?? null)
       setIsLoading(false)
+
+      if (event === "SIGNED_IN" && session?.user) {
+        triggerWelcomeIfFresh(session.user.id)
+      }
     })
 
     return () => {
@@ -98,6 +124,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }
 
       closeAuthModal()
+      setTimeout(() => {
+        setIsHalloweenModalOpen(true)
+      }, 350)
       return { error: null }
     } catch (err: unknown) {
       return { error: (err as Error).message || "Đã xảy ra lỗi đăng nhập" }
@@ -200,6 +229,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         isAuthModalOpen,
         openAuthModal,
         closeAuthModal,
+        isHalloweenModalOpen,
+        openHalloweenModal,
+        closeHalloweenModal,
         signInWithEmail,
         signUpWithEmail,
         resendConfirmationEmail,

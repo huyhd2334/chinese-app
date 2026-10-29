@@ -31,6 +31,8 @@ import { matchAndStructureOcrText } from '@/utils/ocrMatcher'
 import { playChineseAudio } from '@/utils/audioTts'
 import { getAllBooks, saveLesson, saveCustomBook } from '@/utils/curriculumStorage'
 import { getHanViet } from '@/utils/hanviet'
+import { isProUser } from '@/utils/subscription'
+import { consumeDailyQuota, FREE_OCR_DAILY_LIMIT, FREE_PDF_PAGE_LIMIT } from '@/utils/featureGates'
 import Link from 'next/link'
 
 interface CropRect {
@@ -131,7 +133,7 @@ export default function OcrStudio() {
         const pdf = await loadingTask.promise
         const renderedPages: string[] = []
 
-        const maxPages = Math.min(pdf.numPages, 15)
+        const maxPages = Math.min(pdf.numPages, isProUser() ? 15 : FREE_PDF_PAGE_LIMIT)
         for (let p = 1; p <= maxPages; p++) {
           setOcrStatusText(`Đang xử lý trang ${p} / ${maxPages}...`)
           setOcrProgress(Math.round(20 + (p / maxPages) * 70))
@@ -278,6 +280,12 @@ export default function OcrStudio() {
   // Execute OCR
   const runOcrOnSelection = async () => {
     if (!imageSrc || !imageRef.current) return
+
+    // Gói Free: tối đa FREE_OCR_DAILY_LIMIT lượt nhận diện / ngày
+    if (!consumeDailyQuota('ocr_run', FREE_OCR_DAILY_LIMIT)) {
+      setOcrStatusText(`Gói Miễn phí giới hạn ${FREE_OCR_DAILY_LIMIT} lượt OCR mỗi ngày. Nâng cấp Pro để dùng không giới hạn.`)
+      return
+    }
 
     setIsProcessing(true)
     setOcrProgress(5)

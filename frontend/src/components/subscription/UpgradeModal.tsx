@@ -8,11 +8,16 @@ import {
   getLocalSubscription,
   syncSubscriptionWithCloud,
   verifyBankTransferPayment,
+  createPaymentOrder,
   redeemActivationCodeOnServer,
   resetToFreeSubscription,
+  type PaymentOrder,
   type SubscriptionInfo,
 } from "@/utils/subscription"
 import { checkRateLimit } from "@/utils/security"
+import { supabase } from "@/lib/supabase"
+import { PLANS } from "@/lib/plans"
+import Link from "next/link"
 
 export default function UpgradeModal() {
   const { user, openAuthModal } = useAuth()
@@ -22,6 +27,7 @@ export default function UpgradeModal() {
   const [paymentTab, setPaymentTab] = useState<"qr" | "code">("qr")
   const [promoCode, setPromoCode] = useState("")
   const [isProcessing, setIsProcessing] = useState(false)
+  const [orderResult, setOrderResult] = useState<{ key: string; order?: PaymentOrder; error?: string } | null>(null)
   const [feedback, setFeedback] = useState<{ type: "success" | "error" | "warning"; text: string } | null>(null)
   const [subInfo, setSubInfo] = useState<SubscriptionInfo>({
     plan: "free",
@@ -65,23 +71,70 @@ export default function UpgradeModal() {
     }
   }, [user?.id])
 
-  if (!isOpen) return null
-
   const isPro =
     subInfo.userId !== "guest" &&
     (subInfo.plan === "pro_monthly" || subInfo.plan === "pro_yearly") &&
     (!subInfo.expiresAt || subInfo.expiresAt > Date.now())
 
-  const priceAmount = selectedPlan === "pro_monthly" ? 49000 : 399000
-  const transferRef = `HSKPRO ${(user?.email?.split("@")[0] || "HOCVIEN")
-    .replace(/[^a-zA-Z0-9]/g, "")
-    .toUpperCase()
-    .slice(0, 10)}`
-  const qrUrl = `https://img.vietqr.io/image/MB-0388888888-compact2.png?amount=${priceAmount}&addInfo=${encodeURIComponent(
-    transferRef
-  )}&accountName=${encodeURIComponent("HSK LEARNING PRO")}`
+  const priceAmount = PLANS[selectedPlan].amount
 
-  // Kiểm tra trạng thái chuyển khoản thực tế trên Server Supabase
+  // Kết quả tạo đơn gắn với (user + gói); đổi gói/đổi user -> tự coi là "đang tạo" mà không cần setState đồng bộ
+  const orderKey = `${user?.id ?? "guest"}:${selectedPlan}`
+  const currentResult = orderResult?.key === orderKey ? orderResult : null
+  const order = currentResult?.order ?? null
+  const orderError = currentResult?.error ?? null
+  const wantsOrder = isOpen && !!user?.id && !isPro && paymentTab === "qr"
+  const isCreatingOrder = wantsOrder && !currentResult
+  const transferRef = order?.orderCode || ""
+  const qrUrl = order?.qrUrl || ""
+
+  // Tạo đơn hàng VietQR (server quyết định số tiền + mã đơn) khi người dùng mở tab thanh toán
+  useEffect(() => {
+    if (!wantsOrder) return
+    let cancelled = false
+    createPaymentOrder(selectedPlan).then((res) => {
+      if (cancelled) return
+      setOrderResult({ key: orderKey, order: res.order, error: res.order ? undefined : res.error || "Không thể tạo đơn hàng." })
+    })
+    return () => {
+      cancelled = true
+    }
+  }, [wantsOrder, orderKey, selectedPlan])
+
+  // Mở khóa Pro TỨC THÌ khi webhook ghi nhận tiền: Realtime (chính) + polling 6s (dự phòng)
+  useEffect(() => {
+    if (!isOpen || !user?.id || isPro || !order) return
+    const uid = user.id
+    let done = false
+
+    const checkNow = async () => {
+      if (done) return
+      const info = await syncSubscriptionWithCloud(uid)
+      if (info.plan === "pro_monthly" || info.plan === "pro_yearly") {
+        done = true
+        setSubInfo(info)
+        setFeedback({
+          type: "success",
+          text: "Thanh toán thành công! Gói Pro đã được kích hoạt cho tài khoản của bạn.",
+        })
+      }
+    }
+
+    const channel = supabase
+      .channel(`pay-${uid}`)
+      .on("postgres_changes", { event: "*", schema: "public", table: "user_subscriptions", filter: `user_id=eq.${uid}` }, checkNow)
+      .on("postgres_changes", { event: "UPDATE", schema: "public", table: "orders", filter: `user_id=eq.${uid}` }, checkNow)
+      .subscribe()
+    const timer = setInterval(checkNow, 6000)
+
+    return () => {
+      done = true
+      clearInterval(timer)
+      supabase.removeChannel(channel)
+    }
+  }, [isOpen, user?.id, isPro, order])
+
+  // Kiểm tra trạng thái thanh toán thủ công (người dùng bấm nút)
   const handleVerifyPayment = async () => {
     if (!user) {
       setFeedback({
@@ -103,7 +156,7 @@ export default function UpgradeModal() {
     setIsProcessing(true)
     setFeedback(null)
     try {
-      const result = await verifyBankTransferPayment(user.id, selectedPlan, priceAmount, transferRef)
+      const result = await verifyBankTransferPayment(user.id, transferRef)
       if (result.verified && result.subInfo) {
         setSubInfo(result.subInfo)
         setFeedback({
@@ -195,6 +248,8 @@ export default function UpgradeModal() {
       year: "numeric",
     })
   }
+
+  if (!isOpen) return null
 
   return (
     <div
@@ -433,12 +488,16 @@ export default function UpgradeModal() {
               {paymentTab === "qr" ? (
                 <div className="flex flex-col sm:flex-row items-center gap-5">
                   <div className="w-36 h-36 sm:w-40 sm:h-40 rounded-2xl bg-white border border-border p-2 shrink-0 flex items-center justify-center overflow-hidden">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={qrUrl}
-                      alt="VietQR Payment"
-                      className="w-full h-full object-contain"
-                    />
+                    {isCreatingOrder ? (
+                      <span className="text-xs text-muted animate-pulse text-center">Đang tạo mã QR...</span>
+                    ) : qrUrl ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={qrUrl} alt="VietQR Payment" className="w-full h-full object-contain" />
+                    ) : (
+                      <span className="text-xs text-red-600 text-center px-1">
+                        {user ? orderError || "Chưa có mã QR" : "Đăng nhập để tạo mã QR"}
+                      </span>
+                    )}
                   </div>
                   <div className="flex-1 space-y-2 text-xs sm:text-sm w-full">
                     <div className="flex justify-between py-1 border-b border-border/60">
@@ -463,7 +522,7 @@ export default function UpgradeModal() {
                     <div className="pt-2 flex flex-wrap gap-2">
                       <button
                         type="button"
-                        disabled={isProcessing}
+                        disabled={isProcessing || !order}
                         onClick={handleVerifyPayment}
                         className="flex-1 py-2.5 px-4 rounded-xl bg-china-red hover:bg-china-red-hover text-white text-xs sm:text-sm font-bold transition-all active:scale-95 disabled:opacity-50"
                       >
@@ -497,6 +556,13 @@ export default function UpgradeModal() {
               )}
             </div>
           )}
+
+          <p className="text-[11px] text-muted text-center leading-relaxed">
+            Gói Pro được kích hoạt tự động ngay khi hệ thống nhận được tiền. Bằng việc thanh toán, bạn đồng ý với{" "}
+            <Link href="/terms" className="underline hover:text-china-red" onClick={() => setIsOpen(false)}>Điều khoản</Link>,{" "}
+            <Link href="/privacy" className="underline hover:text-china-red" onClick={() => setIsOpen(false)}>Chính sách bảo mật</Link> và{" "}
+            <Link href="/refund" className="underline hover:text-china-red" onClick={() => setIsOpen(false)}>Chính sách hoàn tiền</Link>.
+          </p>
         </div>
       </div>
     </div>

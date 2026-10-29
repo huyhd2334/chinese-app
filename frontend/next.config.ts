@@ -27,6 +27,35 @@ const securityHeaders = [
   },
 ];
 
+// Content-Security-Policy ở chế độ REPORT-ONLY: quan sát vi phạm trong DevTools/Console trước,
+// sau khi chạy ổn định vài ngày thì đổi key bên dưới thành "Content-Security-Policy" để bật chặn thật.
+// Lưu ý: tesseract.js / pdf.js nạp worker + model từ CDN nên cần nằm trong allowlist.
+const supabaseHost = (process.env.NEXT_PUBLIC_SUPABASE_URL || "https://*.supabase.co").replace(/\/$/, "");
+const supabaseWs = supabaseHost.replace(/^https/, "wss");
+const cspReportOnly = [
+  "default-src 'self'",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: https://cdn.jsdelivr.net https://unpkg.com",
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: blob: https://img.vietqr.io",
+  "font-src 'self' data:",
+  "media-src 'self' blob: data:",
+  `connect-src 'self' blob: data: ${supabaseHost} ${supabaseWs} https://*.supabase.co wss://*.supabase.co https://cdn.jsdelivr.net https://unpkg.com https://tessdata.projectnaptha.com`,
+  "worker-src 'self' blob:",
+  "frame-ancestors 'self'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "object-src 'none'",
+].join("; ");
+
+securityHeaders.push({
+  key: "Content-Security-Policy-Report-Only",
+  value: cspReportOnly,
+});
+securityHeaders.push({
+  key: "Cross-Origin-Opener-Policy",
+  value: "same-origin-allow-popups", // giữ tương thích đăng nhập Google OAuth popup/redirect
+});
+
 const nextConfig: NextConfig = {
   reactCompiler: true,
   poweredByHeader: false,
@@ -43,6 +72,19 @@ const nextConfig: NextConfig = {
       {
         source: "/(.*)",
         headers: securityHeaders,
+      },
+      {
+        // Service worker phải luôn được kiểm tra bản mới
+        source: "/sw.js",
+        headers: [
+          { key: "Cache-Control", value: "no-cache, no-store, must-revalidate" },
+          { key: "Service-Worker-Allowed", value: "/" },
+        ],
+      },
+      {
+        // API không bao giờ được cache ở trình duyệt/CDN (trừ khi route tự đặt header, ví dụ /api/tts)
+        source: "/api/payment/(.*)",
+        headers: [{ key: "Cache-Control", value: "no-store" }],
       },
       {
         source: "/content/(.*)",

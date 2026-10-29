@@ -17,6 +17,46 @@
 
 ---
 
+## 0. TRẠNG THÁI TRIỂN KHAI (cập nhật 28/10/2026)
+
+### 0.1. Đã làm trong code
+
+| Hạng mục | Trạng thái | File chính |
+| :--- | :--- | :--- |
+| Bảng `orders`, `payment_transactions`, RPC `process_payment_webhook` (idempotent, cộng dồn hạn, chuyển thiếu/bù) | ✅ | `supabase/migrations/20261028_production_hardening.sql` |
+| `redeem_activation_code` chống brute-force (khóa 10 phút sau 5 lần sai), 1 user/1 mã, cộng dồn hạn | ✅ | cùng file migration |
+| `is_pro()` + bảng `srs_items` (RLS: chỉ ghi được khi còn hạn Pro) | ✅ | cùng file migration |
+| API tạo đơn: giá do server quyết định, rate limit IP + user, tái sử dụng đơn pending | ✅ | `src/app/api/payment/create-order/route.ts` |
+| Webhook ngân hàng: API key hoặc HMAC-SHA256 (+ chống replay bằng timestamp), so sánh hằng thời gian, giới hạn payload, báo Telegram | ✅ | `src/app/api/payment/webhook/route.ts` |
+| UpgradeModal: QR động theo đơn, tự mở khóa Pro bằng Supabase Realtime + polling dự phòng 6s | ✅ | `src/components/subscription/UpgradeModal.tsx` |
+| Rate limit phía **server** (Upstash Redis hoặc bộ nhớ trong) | ✅ | `src/lib/server/rateLimit.ts` |
+| `/api/tts`: rate limit, LRU cache RAM, gộp request trùng, hàng đợi giới hạn đồng thời (backpressure 503), timeout, negative cache, CDN redirect, bỏ CORS `*` | ✅ | `src/app/api/tts/route.ts`, `src/lib/server/concurrency.ts` |
+| Script pre-generate audio HSK + upload Cloudflare R2 | ✅ (cần chạy tay) | `tools/pregenerate_audio.py` |
+| Cloud Sync SRS đa thiết bị (Pro): pull/push, Last-Write-Wins, tự đồng bộ khi đăng nhập / quay lại tab / có mạng / 5 phút / sau mỗi thao tác học | ✅ | `src/utils/srsCloudSync.ts`, `src/components/common/SyncManager.tsx` |
+| PWA: manifest, service worker (cache tĩnh + offline fallback), icon | ✅ | `public/manifest.webmanifest`, `public/sw.js`, `public/offline.html` |
+| Trang pháp lý (xem được khi chưa đăng nhập): Điều khoản, Bảo mật, Hoàn tiền | ✅ (cần luật sư rà soát) | `src/app/{terms,privacy,refund}` |
+| Giới hạn Free: OCR 5 lượt/ngày, PDF 5 trang | ✅ (soft-gate) | `src/utils/featureGates.ts` |
+| Security headers: thêm CSP (Report-Only), COOP, `no-store` cho API thanh toán | ✅ | `next.config.ts` |
+
+### 0.2. Việc BẠN cần làm để chạy thật (không thể tự động hóa trong code)
+
+1. **Chạy migration** `supabase/migrations/20261028_production_hardening.sql` trong Supabase → SQL Editor (sau `production_schema.sql`).
+2. **Điền biến môi trường** theo `frontend/.env.example` (đặc biệt `SUPABASE_SERVICE_ROLE_KEY`, `BANK_*`, `PAYMENT_WEBHOOK_*`). Hiện `.env.local` mới chỉ có 2 key Supabase public.
+   - ⚠️ `SUPABASE_SERVICE_ROLE_KEY` tuyệt đối không đặt tiền tố `NEXT_PUBLIC_`.
+3. **Đăng ký SePay (hoặc Casso)**, liên kết tài khoản ngân hàng nhận tiền, khai báo webhook `https://<domain>/api/payment/webhook` với kiểu chứng thực API Key trùng `PAYMENT_WEBHOOK_API_KEY`.
+4. **Thay số tài khoản nhận tiền**: trước đây UI hard-code `MB-0388888888` (số mẫu); nay lấy từ `BANK_BIN` / `BANK_ACCOUNT_NO`.
+5. **Cloudflare**: trỏ domain qua proxy, bật Bot Fight Mode + Turnstile, Rate Limiting rule cho `/api/*`; (tùy chọn) tạo bucket R2, chạy `python tools/pregenerate_audio.py --upload`, đặt `AUDIO_CDN_BASE`.
+6. **Upstash Redis** (free) nếu deploy serverless/nhiều instance, để rate limit dùng chung.
+7. Sau vài ngày chạy ổn định, đổi `Content-Security-Policy-Report-Only` thành `Content-Security-Policy` trong `next.config.ts` để chặn thật.
+8. Điền `NEXT_PUBLIC_SUPPORT_EMAIL`, nhờ chuyên gia pháp lý rà soát 3 trang pháp lý.
+
+### 0.3. Chưa làm (cố ý để giai đoạn sau)
+- Gói Lifetime / B2B, AI chữa bài thi, Sentry, Turnstile trên form đăng ký (cần tài khoản dịch vụ ngoài).
+- Chuyển OCR sang Web Worker / hàng đợi server (hiện OCR chạy trên máy người dùng nên không tốn tài nguyên server; hàng đợi `BoundedQueue` hiện bảo vệ luồng TTS).
+- Khóa nội dung HSK 3–6 theo bài cho gói Free (nội dung đang là file tĩnh trong `public/`; muốn khóa thật cần chuyển sang Signed URL / API có kiểm tra JWT).
+
+---
+
 ## 1. ĐÁNH GIÁ HIỆN TRẠNG & CÁC ĐIỂM NGHẼN CẦN KHẮC PHỤC
 
 ### 1.1. Hiện trạng tài nguyên & công nghệ
@@ -62,7 +102,7 @@
 
 ### 2.2. Chiến lược định giá & Tối ưu chuyển đổi (Pricing Strategy)
 1. **Gói Pro Tháng (`pro_monthly`):**
-   - **Mức giá đề xuất:** 59.000 VNĐ / tháng (~2 bát phở, cực kỳ dễ ra quyết định mua).
+   - **Mức giá:** 49.000 VNĐ / tháng (~1 bữa ăn sáng, dễ ra quyết định mua). *(Giá nguồn sự thật nằm ở `frontend/src/lib/plans.ts`.)*
    - **Mục tiêu:** Kéo tệp người dùng đang chuẩn bị thi gấp trong 1 - 2 tháng.
 2. **Gói Pro Năm (`pro_yearly`) - GÓI BÁN CHẠY NHẤT (BEST VALUE):**
    - **Mức giá đề xuất:** 399.000 VNĐ / năm (~33.000 VNĐ / tháng, giảm 45%).

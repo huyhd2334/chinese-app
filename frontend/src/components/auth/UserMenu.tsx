@@ -11,7 +11,7 @@ interface UserMenuProps {
 }
 
 export default function UserMenu({ compact = false }: UserMenuProps) {
-  const { user, isLoading, openAuthModal, signOut } = useAuth()
+  const { user, isLoading, openAuthModal, signOut, openHalloweenModal } = useAuth()
   const [showDropdown, setShowDropdown] = useState(false)
   const [isPro, setIsPro] = useState(false)
 
@@ -103,6 +103,16 @@ export default function UserMenu({ compact = false }: UserMenuProps) {
               <button
                 onClick={() => {
                   setShowDropdown(false)
+                  openHalloweenModal()
+                }}
+                className="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-xs text-amber-800 bg-amber-50 hover:bg-amber-100 transition-colors font-bold text-left"
+              >
+                <span>🎃</span>
+                <span>Lời chúc Vạn Thánh</span>
+              </button>
+              <button
+                onClick={() => {
+                  setShowDropdown(false)
                   signOut()
                 }}
                 className="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-xs text-red-600 hover:bg-red-50 transition-colors font-medium text-left"
@@ -190,6 +200,16 @@ export default function UserMenu({ compact = false }: UserMenuProps) {
                 >
                   <Crown className="w-3.5 h-3.5 text-china-gold shrink-0" />
                   <span>{isPro ? "Thông tin Gói Pro" : "Nâng cấp Gói Pro"}</span>
+                </button>
+                <button
+                  onClick={() => {
+                    setShowDropdown(false)
+                    openHalloweenModal()
+                  }}
+                  className="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-xs text-amber-800 bg-amber-50 hover:bg-amber-100 transition-colors font-bold text-left cursor-pointer"
+                >
+                  <span>🎃</span>
+                  <span>Lời chúc Vạn Thánh</span>
                 </button>
                 <button
                   onClick={() => {

@@ -1,0 +1,23 @@
+{
+  "name": "HSK Learning - Học tiếng Trung",
+  "short_name": "HSK Learning",
+  "description": "Học tiếng Trung HSK 1-7: từ vựng, ôn tập thông minh SRS, luyện nghe đọc viết và đề thi.",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#faf8f5",
+  "theme_color": "#c0392b",
+  "lang": "vi",
+  "categories": ["education"],
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Ôn tập hôm nay", "url": "/review", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Từ vựng", "url": "/vocabulary", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] }
+  ]
+}
