@@ -168,7 +168,7 @@ export default function WordDetailPage({ params }: PageProps) {
           className={`flex items-center justify-center gap-1.5 px-4 py-2 text-xs sm:text-sm font-bold rounded-xl shadow-xs transition-all w-full md:w-auto
             ${review 
               ? 'bg-white border border-china-red/30 text-china-red hover:bg-china-red/5' 
-              : 'bg-china-ink text-white hover:bg-china-ink/80'}`}
+              : 'bg-china-red text-white hover:bg-china-red-hover'}`}
         >
           {isAdding ? (
              <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
@@ -360,7 +360,7 @@ export default function WordDetailPage({ params }: PageProps) {
                       <p className="text-xs text-muted mb-4">Thêm từ này vào danh sách ôn tập để hệ thống tự động lên lịch nhắc nhở.</p>
                       <button 
                         onClick={toggleReview}
-                        className="px-4 py-2 bg-china-ink text-white rounded-xl text-xs sm:text-sm font-medium hover:bg-china-ink/80 transition-colors"
+                        className="px-4 py-2 bg-china-red text-white rounded-xl text-xs sm:text-sm font-semibold hover:bg-china-red-hover transition-colors shadow-2xs"
                       >
                         + Thêm vào ôn tập
                       </button>

@@ -162,7 +162,7 @@ export default function BonusHubPage() {
 
           <button
             onClick={() => setIsCreateModalOpen(true)}
-            className="self-start sm:self-auto px-4 py-2 rounded-xl bg-china-ink hover:bg-china-ink/80 text-white text-xs sm:text-sm font-semibold transition-all active:scale-95 whitespace-nowrap"
+            className="self-start sm:self-auto px-4 py-2 rounded-xl bg-china-red hover:bg-china-red-hover text-white text-xs sm:text-sm font-semibold transition-all active:scale-95 whitespace-nowrap shadow-xs cursor-pointer"
           >
             + Tạo bộ từ vựng mới
           </button>

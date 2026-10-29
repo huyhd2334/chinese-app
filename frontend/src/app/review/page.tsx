@@ -300,7 +300,7 @@ export default function ReviewPage() {
                   onClick={() => setFilter(tab.value)}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
                     active
-                      ? "bg-china-ink text-white shadow-xs"
+                      ? "bg-china-red text-white shadow-xs"
                       : "bg-china-paper hover:bg-white text-china-ink border border-transparent hover:border-border"
                   }`}
                 >
@@ -462,7 +462,7 @@ export default function ReviewPage() {
                 onClick={() => setAutoAudio((prev) => !prev)}
                 className={`px-2.5 py-1 rounded-lg text-xs font-bold border transition-colors cursor-pointer ${
                   autoAudio
-                    ? "bg-china-ink text-white border-china-ink"
+                    ? "bg-china-red text-white border-china-red"
                     : "bg-white text-muted border-border hover:text-china-ink"
                 }`}
                 title="Tự động đọc khi hiện đáp án"
@@ -551,7 +551,7 @@ export default function ReviewPage() {
                 <button
                   type="button"
                   onClick={handleRevealAnswer}
-                  className="px-8 py-3 rounded-2xl bg-china-ink hover:bg-china-ink/90 text-white text-sm font-bold transition-all shadow-sm active:scale-95 cursor-pointer"
+                  className="px-8 py-3 rounded-2xl bg-china-red hover:bg-china-red-hover text-white text-sm font-bold transition-all shadow-sm active:scale-95 cursor-pointer"
                 >
                   Hiển thị đáp án (Phím Space)
                 </button>

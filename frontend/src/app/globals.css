@@ -52,7 +52,6 @@ html.dark:not(.halloween-event-theme) {
   --china-red-hover: #ff3347;
   --china-gold: #f5be38; /* Hoàng kim phát sáng */
   --china-paper: #16161d; /* Nền giấy tối */
-  --china-ink: #edeae4;
   --china-jade: #38b28a; /* Ngọc bích phát sáng */
 }
 
@@ -70,7 +69,6 @@ html.dark.halloween-event-theme {
   --china-red-hover: #e65314;
   --china-gold: #f59e0b; /* Vàng hổ phách */
   --china-paper: #15121e;
-  --china-ink: #f4eff8;
   --china-jade: #2fa37e;
 }
 
@@ -112,6 +110,42 @@ html.dark {
 html.dark body {
   background-color: var(--background);
   color: var(--foreground);
+}
+
+/* Biến chữ china-ink: trong Dark Mode luôn hiển thị chữ ngà ấm sáng rõ */
+html.dark .text-china-ink {
+  color: var(--foreground) !important;
+}
+
+/* Biến nền china-ink: KHÔNG ĐƯỢC biến thành màu trắng! Giữ tông than tối sang trọng */
+html.dark .bg-china-ink {
+  background-color: #242430 !important;
+}
+
+html.dark .bg-china-ink\/60 {
+  background-color: rgba(0, 0, 0, 0.72) !important;
+}
+
+html.dark .bg-china-ink\/70 {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+}
+
+html.dark .bg-china-ink\/80 {
+  background-color: rgba(0, 0, 0, 0.85) !important;
+}
+
+html.dark .bg-china-ink\/90 {
+  background-color: rgba(18, 18, 24, 0.95) !important;
+}
+
+/* Nút bấm bg-black hoặc bg-slate-900 có text-white: trong dark mode giữ màu nền tối */
+html.dark .bg-black:not(iframe) {
+  background-color: #242430 !important;
+}
+
+html.dark .bg-slate-900,
+html.dark .bg-slate-950 {
+  background-color: #242430 !important;
 }
 
 html.dark .bg-white {

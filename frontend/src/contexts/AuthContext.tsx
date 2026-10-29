@@ -53,9 +53,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [isDarkMode, setIsDarkMode] = useState(() => {
     if (typeof window === "undefined") return false
     const saved = localStorage.getItem("hsk_color_theme")
-    if (saved === "dark") return true
-    if (saved === "light") return false
-    return window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)").matches : false
+    return saved === "dark"
   })
 
   const openHalloweenModal = () => {

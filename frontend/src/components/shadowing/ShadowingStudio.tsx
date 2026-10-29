@@ -51,6 +51,35 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
   } = useAudioRecorder()
 
   const userAudioPlayerRef = useRef<HTMLAudioElement | null>(null)
+  const iframeRef = useRef<HTMLIFrameElement | null>(null)
+
+  const formatTimestamp = (sec: number) => {
+    const m = Math.floor(sec / 60)
+    const s = Math.floor(sec % 60)
+    return `${m < 10 ? "0" : ""}${m}:${s < 10 ? "0" : ""}${s}`
+  }
+
+  const seekAndPlayVideo = (startTime: number) => {
+    setPlayerMode("video")
+    if (iframeRef.current && iframeRef.current.contentWindow) {
+      iframeRef.current.contentWindow.postMessage(
+        JSON.stringify({
+          event: "command",
+          func: "seekTo",
+          args: [startTime, true],
+        }),
+        "*"
+      )
+      iframeRef.current.contentWindow.postMessage(
+        JSON.stringify({
+          event: "command",
+          func: "playVideo",
+          args: [],
+        }),
+        "*"
+      )
+    }
+  }
 
   const currentSentence: ShadowingSentence | undefined = video.sentences[currentSentenceIndex]
 
@@ -61,6 +90,10 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
     }
     resetRecording()
     setCurrentSentenceIndex(index)
+    const target = video.sentences[index]
+    if (target && playerMode === "video") {
+      seekAndPlayVideo(target.startTime)
+    }
   }
 
   const handleNextSentence = () => {
@@ -210,7 +243,8 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
           {playerMode === "video" ? (
             <div className="relative aspect-video w-full rounded-3xl overflow-hidden bg-black shadow-md border border-border">
               <iframe
-                src={`https://www.youtube-nocookie.com/embed/${video.youtubeId}?enablejsapi=1&rel=0&modestbranding=1`}
+                ref={iframeRef}
+                src={`https://www.youtube-nocookie.com/embed/${video.youtubeId}?enablejsapi=1&rel=0&modestbranding=1&start=${Math.floor(currentSentence?.startTime || 0)}`}
                 title={video.title}
                 className="w-full h-full border-0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -329,6 +363,9 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
                   <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-china-paper text-china-ink border border-border">
                     Câu {currentSentenceIndex + 1}/{video.sentences.length}
                   </span>
+                  <span className="px-2 py-0.5 rounded-full text-[11px] font-mono font-bold bg-amber-500/10 text-amber-800 dark:text-amber-400 border border-amber-500/20">
+                    ⏱️ {formatTimestamp(currentSentence.startTime)} - {formatTimestamp(currentSentence.endTime)}
+                  </span>
                   {currentSentence.speaker && (
                     <span className="text-xs font-semibold text-amber-700">
                       👤 {currentSentence.speaker}
@@ -373,8 +410,18 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
                 )}
               </div>
 
-              {/* Native Voice Listen Button */}
-              <div className="flex items-center justify-center pt-1">
+              {/* Media Controls: Play Video Segment & TTS Voice */}
+              <div className="flex flex-wrap items-center justify-center gap-2 pt-1">
+                <button
+                  type="button"
+                  onClick={() => seekAndPlayVideo(currentSentence.startTime)}
+                  className="px-4 py-2 rounded-2xl bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white text-xs font-bold transition-all flex items-center gap-1.5 shadow-xs active:scale-95 cursor-pointer"
+                  title="Nhảy đến đúng thời điểm câu này trong video YouTube và phát"
+                >
+                  <Play className="w-3.5 h-3.5 fill-current" />
+                  <span>Xem đoạn này trên Video ({formatTimestamp(currentSentence.startTime)}) 🎬</span>
+                </button>
+
                 <button
                   type="button"
                   onClick={handlePlayNativeAudio}
@@ -532,9 +579,14 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
                         )}
                       </div>
 
-                      {isCompleted && (
-                        <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                      )}
+                      <div className="flex items-center gap-1.5 shrink-0">
+                        <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded-md bg-amber-500/10 text-amber-800 dark:text-amber-400 border border-amber-500/20">
+                          ⏱️ {formatTimestamp(sentence.startTime)}
+                        </span>
+                        {isCompleted && (
+                          <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                        )}
+                      </div>
                     </div>
 
                     <p

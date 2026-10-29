@@ -2,11 +2,11 @@
 
 import React, { useState, useEffect } from "react"
 import { useAuth } from "@/contexts/AuthContext"
-import { X, Sparkles } from "lucide-react"
+import { X } from "lucide-react"
 import { triggerSpookyConfetti } from "./HalloweenDecorations"
 
 export default function HalloweenBanner() {
-  const { isHalloweenTheme, openHalloweenModal } = useAuth()
+  const { isHalloweenTheme } = useAuth()
   const [isDismissed, setIsDismissed] = useState(false)
 
   useEffect(() => {
@@ -42,14 +42,6 @@ export default function HalloweenBanner() {
       </div>
 
       <div className="flex items-center gap-2 shrink-0 ml-2">
-        <button
-          onClick={openHalloweenModal}
-          className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-black/25 hover:bg-black/40 text-[11px] font-bold text-amber-200 hover:text-white transition-all cursor-pointer border border-amber-400/20"
-        >
-          <Sparkles className="w-3 h-3 text-amber-300" />
-          <span>Gặp Tiểu Lu 👻</span>
-        </button>
-
         <button
           onClick={handleDismiss}
           className="p-1 rounded-md text-amber-200 hover:text-white hover:bg-black/20 transition-colors cursor-pointer"

@@ -419,7 +419,7 @@ export default function BonusStudyPage({ params }: PageProps) {
                 setAddModalTab("single")
                 setIsAddModalOpen(true)
               }}
-              className="px-3.5 py-1.5 rounded-xl bg-china-ink hover:bg-china-ink/80 text-white text-xs sm:text-sm font-semibold transition-all active:scale-95 whitespace-nowrap"
+              className="px-3.5 py-1.5 rounded-xl bg-china-red hover:bg-china-red-hover text-white text-xs sm:text-sm font-semibold transition-all active:scale-95 whitespace-nowrap shadow-xs cursor-pointer"
             >
               + Thêm thẻ
             </button>
@@ -740,7 +740,7 @@ export default function BonusStudyPage({ params }: PageProps) {
                     setAddModalTab("single")
                     setIsAddModalOpen(true)
                   }}
-                  className="px-3 py-2 rounded-xl bg-china-ink hover:bg-china-ink/80 text-white text-xs font-semibold transition-all active:scale-95"
+                  className="px-3 py-2 rounded-xl bg-china-red hover:bg-china-red-hover text-white text-xs font-semibold transition-all active:scale-95 shadow-xs cursor-pointer"
                 >
                   + Thêm thẻ
                 </button>
@@ -806,8 +806,8 @@ export default function BonusStudyPage({ params }: PageProps) {
                   }}
                   className={`px-3 py-1 rounded-lg font-medium whitespace-nowrap transition-colors ${
                     selectedTopic === "all"
-                      ? "bg-china-ink text-white"
-                      : "bg-china-paper text-china-ink hover:bg-gray-200"
+                      ? "bg-china-red text-white shadow-2xs"
+                      : "bg-china-paper text-china-ink hover:bg-neutral-200"
                   }`}
                 >
                   Tất cả ({allWords.length})
@@ -823,8 +823,8 @@ export default function BonusStudyPage({ params }: PageProps) {
                       }}
                       className={`px-3 py-1 rounded-lg font-medium whitespace-nowrap transition-colors ${
                         selectedTopic === t
-                          ? "bg-china-ink text-white"
-                          : "bg-china-paper text-china-ink hover:bg-gray-200"
+                          ? "bg-china-red text-white shadow-2xs"
+                          : "bg-china-paper text-china-ink hover:bg-neutral-200"
                       }`}
                     >
                       {t} ({count})

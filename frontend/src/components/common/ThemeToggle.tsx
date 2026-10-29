@@ -44,7 +44,7 @@ export default function ThemeToggle({ variant = "pill", className = "" }: ThemeT
         type="button"
         onClick={toggleDarkMode}
         className={`p-2 rounded-xl text-china-ink hover:bg-black/5 dark:hover:bg-white/10 transition-colors cursor-pointer flex items-center justify-center ${className}`}
-        title={isDarkMode ? "Chuyển sang giao diện Sáng (Giấy Tuyên)" : "Chuyển sang giao diện Tối (Nghiên Mực)"}
+        title={isDarkMode ? "Đang là Tối — Bấm để chuyển sang Sáng (Giấy Tuyên)" : "Đang là Sáng — Bấm để chuyển sang Tối (Nghiên Mực)"}
         aria-label="Toggle dark mode"
       >
         {isDarkMode ? (
@@ -56,22 +56,42 @@ export default function ThemeToggle({ variant = "pill", className = "" }: ThemeT
     )
   }
 
-  // Default: sleek compact pill
+  // Segmented 2-state pill: ☀️ Sáng | 🌙 Tối (Rõ ràng 100%, không bao giờ hiểu nhầm)
   return (
-    <button
-      type="button"
-      onClick={toggleDarkMode}
-      className={`group flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl border border-border/80 bg-white/70 dark:bg-zinc-800/80 hover:bg-white dark:hover:bg-zinc-700/80 text-xs font-semibold text-china-ink transition-all shadow-2xs hover:shadow-xs active:scale-95 cursor-pointer ${className}`}
-      title={isDarkMode ? "Đang bật chế độ Ban đêm (Bấm để chuyển Sáng)" : "Đang bật chế độ Ban ngày (Bấm để chuyển Tối)"}
-      aria-label="Toggle dark mode"
+    <div
+      className={`inline-flex items-center p-0.5 rounded-xl border border-border/80 bg-neutral-200/60 dark:bg-zinc-800/80 transition-colors select-none ${className}`}
     >
-      <div className="relative w-4 h-4 shrink-0 flex items-center justify-center">
-        <Sun className="w-3.5 h-3.5 text-amber-500 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 dark:opacity-0" />
-        <Moon className="absolute w-3.5 h-3.5 text-amber-400 rotate-90 scale-0 opacity-0 transition-all dark:rotate-0 dark:scale-100 dark:opacity-100 fill-amber-400/20" />
-      </div>
-      <span className="text-[11px] font-bold text-china-ink select-none hidden sm:inline">
-        {isDarkMode ? "Tối" : "Sáng"}
-      </span>
-    </button>
+      <button
+        type="button"
+        onClick={() => {
+          if (isDarkMode) toggleDarkMode()
+        }}
+        className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer ${
+          !isDarkMode
+            ? "bg-white text-china-ink shadow-2xs"
+            : "text-muted hover:text-china-ink"
+        }`}
+        title="Bấm để chọn Giao diện Sáng (Giấy Tuyên)"
+      >
+        <Sun className="w-3.5 h-3.5 text-amber-500" />
+        <span>Sáng</span>
+      </button>
+
+      <button
+        type="button"
+        onClick={() => {
+          if (!isDarkMode) toggleDarkMode()
+        }}
+        className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer ${
+          isDarkMode
+            ? "bg-zinc-700 text-amber-300 shadow-2xs"
+            : "text-muted hover:text-china-ink"
+        }`}
+        title="Bấm để chọn Giao diện Tối (Nghiên Mực)"
+      >
+        <Moon className="w-3.5 h-3.5 text-amber-400 fill-amber-400/20" />
+        <span>Tối</span>
+      </button>
+    </div>
   )
 }

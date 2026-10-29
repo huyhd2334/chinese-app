@@ -114,7 +114,7 @@ export default function ListeningPage() {
                 <button
                   onClick={fetchQuestion}
                   disabled={loading}
-                  className="mt-4 w-full rounded-xl bg-black px-5 py-3 font-semibold text-white hover:opacity-80 disabled:opacity-50"
+                  className="mt-4 w-full rounded-xl bg-china-red hover:bg-china-red-hover px-5 py-3 font-semibold text-white shadow-sm transition active:scale-98 disabled:opacity-50 cursor-pointer"
                 >
                   {loading ? "Loading..." : "Next question →"}
                 </button>

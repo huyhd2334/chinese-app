@@ -85,7 +85,7 @@ export default function ShadowingPage() {
   // If in practice studio
   if (selectedVideo) {
     return (
-      <div className="min-h-screen bg-[#faf8f5] p-3 sm:p-6 lg:p-8">
+      <div className="min-h-screen bg-china-paper p-3 sm:p-6 lg:p-8">
         <ShadowingStudio
           video={selectedVideo}
           onBack={() => setSelectedVideo(null)}
@@ -95,7 +95,7 @@ export default function ShadowingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#faf8f5] p-4 sm:p-6 lg:p-8 space-y-6 max-w-6xl mx-auto pb-24">
+    <div className="min-h-screen bg-china-paper p-4 sm:p-6 lg:p-8 space-y-6 max-w-6xl mx-auto pb-24">
       
       {/* Hero Banner Header - Soft Paper Theme */}
       <div className="relative overflow-hidden rounded-3xl bg-white border border-border shadow-xs p-5 sm:p-7 flex flex-col md:flex-row items-center justify-between gap-6">

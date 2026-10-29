@@ -1194,36 +1194,36 @@ export default function Dashboard() {
       </section>
 
       {/* 8. Overall Progress Footer */}
-      <section className="bg-china-ink text-china-paper rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+      <section className="bg-white dark:bg-card border border-border rounded-2xl sm:rounded-3xl p-5 sm:p-7 md:p-8 shadow-xs flex flex-col md:flex-row items-center justify-between gap-6 transition-colors">
         
         <div className="flex items-center gap-4 sm:gap-6 w-full md:w-auto">
           {/* CSS Circular Progress */}
-          <div className="relative w-18 h-18 sm:w-22 sm:h-22 shrink-0 flex items-center justify-center rounded-full bg-china-ink"
+          <div className="relative w-18 h-18 sm:w-22 sm:h-22 shrink-0 flex items-center justify-center rounded-full bg-china-paper"
             style={{
-              background: `conic-gradient(#366c5d ${progress * 3.6}deg, rgba(255,255,255,0.1) 0deg)`
+              background: `conic-gradient(#366c5d ${progress * 3.6}deg, rgba(0,0,0,0.08) 0deg)`
             }}
           >
-            <div className="absolute w-14 h-14 sm:w-18 sm:h-18 bg-china-ink rounded-full flex items-center justify-center">
+            <div className="absolute w-14 h-14 sm:w-18 sm:h-18 bg-white dark:bg-card rounded-full flex items-center justify-center shadow-xs">
               <span className="text-lg sm:text-2xl font-serif font-bold text-china-jade">{progress}%</span>
             </div>
           </div>
           
           <div>
-            <h2 className="text-lg sm:text-2xl font-serif font-bold mb-0.5">Tiến độ tổng thể</h2>
-            <p className="text-white/60 text-xs sm:text-sm">{mastered} / {wordCount} từ đã thuần thục</p>
+            <h2 className="text-lg sm:text-2xl font-serif font-bold text-china-ink mb-0.5">Tiến độ tổng thể</h2>
+            <p className="text-muted text-xs sm:text-sm">{mastered} / {wordCount} từ đã thuần thục</p>
           </div>
         </div>
 
-        <div className="flex justify-around w-full md:w-auto gap-4 sm:gap-10 text-center pt-3 md:pt-0 border-t md:border-t-0 border-white/10">
+        <div className="flex justify-around w-full md:w-auto gap-4 sm:gap-10 text-center pt-3 md:pt-0 border-t md:border-t-0 border-border">
           <div>
             <p className="text-2xl sm:text-4xl font-serif font-bold text-china-gold mb-0.5">{accuracy}%</p>
-            <p className="text-[11px] sm:text-xs text-white/60 uppercase tracking-wider">Độ chính xác</p>
+            <p className="text-[11px] sm:text-xs text-muted uppercase tracking-wider font-semibold">Độ chính xác</p>
           </div>
           <div>
-            <p className="text-2xl sm:text-4xl font-serif font-bold text-white mb-0.5">
+            <p className="text-2xl sm:text-4xl font-serif font-bold text-china-ink mb-0.5">
               {studyTimeHours}<span className="text-sm sm:text-lg">h</span> {studyTimeMins}<span className="text-sm sm:text-lg">m</span>
             </p>
-            <p className="text-[11px] sm:text-xs text-white/60 uppercase tracking-wider">Thời gian học</p>
+            <p className="text-[11px] sm:text-xs text-muted uppercase tracking-wider font-semibold">Thời gian học</p>
           </div>
         </div>
       </section>
