@@ -56,38 +56,77 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    // 2. Chặn 1 tài khoản nhập nhiều lần redeem:
-    // Kiểm tra xem tài khoản này đã từng kích hoạt bất kỳ mã nào trên Supabase chưa
-    const { data: userRedemptions, error: userRedemptionsError } = await admin
+    // 2. Chặn 1 tài khoản nhập nhiều lần redeem, nhưng nếu chính là mã của tài khoản này thì khôi phục Pro ngay lập tức:
+    const { data: userRedemptions } = await admin
       .from("bonus_collections")
-      .select("id, title")
+      .select("id, title, subtitle, created_at")
       .eq("slug", "_sys_code_redemption")
       .eq("user_id", userId)
 
     if (userRedemptions && userRedemptions.length > 0) {
+      const existing = userRedemptions[0]
+      // Nếu chính là mã người dùng đang nhập -> Khôi phục Pro và trả về thành công ngay lập tức!
+      if (existing.title === cleanCode) {
+        const createdMs = new Date(existing.created_at).getTime()
+        const expiresAt = createdMs + config.durationDays * 86400000
+        const plan = (existing.subtitle as "pro_yearly" | "pro_monthly") || config.plan
+
+        try {
+          await admin.auth.admin.updateUserById(userId, {
+            app_metadata: {
+              plan,
+              expires_at: expiresAt,
+              activation_code: cleanCode,
+            },
+          })
+        } catch (authErr) {
+          console.warn("Không thể update app_metadata:", authErr)
+        }
+
+        return NextResponse.json({
+          success: true,
+          plan,
+          expiresAt,
+          message: `Tài khoản của bạn đã kích hoạt ${config.label} trước đó. Đã đồng bộ trạng thái Pro cho thiết bị của bạn! 🎉`,
+        })
+      }
+
+      // Nếu nhập mã khác khi đã có một mã kích hoạt rồi -> chặn
       return NextResponse.json(
         {
           success: false,
-          message: `Tài khoản của bạn đã được kích hoạt Gói Pro rồi (Mã: ${userRedemptions[0].title}). Mỗi tài khoản chỉ được kích hoạt 1 lần duy nhất.`,
+          message: `Tài khoản của bạn đã kích hoạt Gói Pro bằng mã ${existing.title} rồi. Mỗi tài khoản chỉ được sử dụng 1 mã duy nhất.`,
         },
         { status: 400 }
       )
     }
 
     // Kiểm tra thêm app_metadata của tài khoản trên Supabase Auth
-    const { data: authUserData } = await admin.auth.admin.getUserById(userId)
-    const appMeta = authUserData?.user?.app_metadata
-    if (appMeta?.plan === "pro_yearly" || appMeta?.plan === "pro_monthly") {
-      const exp = appMeta.expires_at ? Number(appMeta.expires_at) : null
-      if (!exp || exp > Date.now()) {
-        return NextResponse.json(
-          {
-            success: false,
-            message: "Tài khoản của bạn hiện đang là thành viên Gói Pro. Mỗi tài khoản chỉ được kích hoạt 1 lần duy nhất.",
-          },
-          { status: 400 }
-        )
+    try {
+      const { data: authUserData } = await admin.auth.admin.getUserById(userId)
+      const appMeta = authUserData?.user?.app_metadata
+      if (appMeta?.plan === "pro_yearly" || appMeta?.plan === "pro_monthly") {
+        const exp = appMeta.expires_at ? Number(appMeta.expires_at) : null
+        if (!exp || exp > Date.now()) {
+          if (appMeta.activation_code === cleanCode) {
+            return NextResponse.json({
+              success: true,
+              plan: appMeta.plan,
+              expiresAt: exp,
+              message: `Đã xác thực Gói Pro (${config.label}) cho tài khoản của bạn! 🎉`,
+            })
+          }
+          return NextResponse.json(
+            {
+              success: false,
+              message: "Tài khoản của bạn hiện đang là thành viên Gói Pro. Mỗi tài khoản chỉ được kích hoạt 1 lần duy nhất.",
+            },
+            { status: 400 }
+          )
+        }
       }
+    } catch (authErr) {
+      console.warn("Không thể kiểm tra auth user:", authErr)
     }
 
     // 3. Kiểm tra số lượng tài khoản đã kích hoạt mã này trên Supabase Cloud (Tối đa 10 tài khoản)

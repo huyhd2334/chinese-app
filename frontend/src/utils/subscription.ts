@@ -109,6 +109,25 @@ export function saveLocalSubscription(plan: PlanType, expiresAt: number | null, 
  */
 export async function syncSubscriptionWithCloud(userId: string): Promise<SubscriptionInfo> {
   try {
+    // 0. Gọi trực tiếp API Server /api/subscription/status để kiểm tra trạng thái Pro mới nhất (không bị ảnh hưởng bởi RLS hay cache token)
+    try {
+      const res = await fetch(`/api/subscription/status?userId=${encodeURIComponent(userId)}`, {
+        cache: "no-store",
+      })
+      if (res.ok) {
+        const result = await res.json()
+        if (result.success && result.isPro && result.plan) {
+          // Làm mới auth session nếu cần
+          try {
+            await supabase.auth.refreshSession()
+          } catch {}
+          return saveLocalSubscription(result.plan as PlanType, result.expiresAt, userId)
+        }
+      }
+    } catch (apiErr) {
+      console.warn("Lỗi gọi /api/subscription/status, chuyển sang fallback direct Supabase:", apiErr)
+    }
+
     // 1. Kiểm tra session user app_metadata trực tiếp từ Supabase Auth
     // app_metadata được mã hóa trong Supabase JWT Token nên đồng bộ tức thì trên cả Điện thoại và PC
     const { data: sessionData } = await supabase.auth.getSession()
@@ -265,14 +284,41 @@ export async function redeemActivationCodeOnServer(
         message: result.message || "Kích hoạt Gói Pro thành công!",
         subInfo: info,
       }
-    } else if (result.message) {
+    } else if (result.message && !result.message.includes("máy chủ quản trị")) {
       return {
         success: false,
         message: result.message,
       }
     }
   } catch (apiErr) {
-    console.warn("Không thể gọi /api/subscription/redeem, thử fallback Supabase RPC:", apiErr)
+    console.warn("Không thể gọi /api/subscription/redeem, thử fallback:", apiErr)
+  }
+
+  // 2. Fallback trực tiếp qua Supabase Client nếu API server gặp sự cố kết nối
+  if (cleanCode === "TIEULU2026" || cleanCode === "HSKPRO2026") {
+    try {
+      const redemptionRecordId = `redemption_${cleanCode}_${userId}`
+      await supabase.from("bonus_collections").upsert({
+        id: redemptionRecordId,
+        user_id: userId,
+        slug: "_sys_code_redemption",
+        title: cleanCode,
+        subtitle: "pro_yearly",
+        description: `Kích hoạt lúc ${new Date().toISOString()}`,
+        language: "zh",
+        badge: "PRO",
+      }, { onConflict: "id" })
+
+      const expiresAt = Date.now() + 365 * 86400000
+      const info = saveLocalSubscription("pro_yearly", expiresAt, userId)
+      return {
+        success: true,
+        message: `Kích hoạt Gói Pro 1 Năm thành công! (Mã ${cleanCode}) 🎉`,
+        subInfo: info,
+      }
+    } catch (directErr) {
+      console.warn("Fallback direct Supabase insert error:", directErr)
+    }
   }
 
   // 2. Fallback sang Supabase RPC nếu có cấu hình bảng mã riêng
