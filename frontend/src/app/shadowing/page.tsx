@@ -97,27 +97,27 @@ export default function ShadowingPage() {
   return (
     <div className="min-h-screen bg-[#faf8f5] p-4 sm:p-6 lg:p-8 space-y-6 max-w-6xl mx-auto pb-24">
       
-      {/* Hero Banner Header */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-china-red/90 via-china-red to-red-800 text-white p-6 sm:p-8 shadow-sm">
-        <div className="relative z-10 max-w-2xl space-y-3">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-white/15 backdrop-blur-sm border border-white/20 text-amber-200">
+      {/* Hero Banner Header - Soft Paper Theme */}
+      <div className="relative overflow-hidden rounded-3xl bg-white border border-border shadow-xs p-5 sm:p-7 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="space-y-3 max-w-xl">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-china-red/10 border border-china-red/20 text-china-red">
             <Headphones className="w-3.5 h-3.5" />
             <span>PHÒNG LUYỆN NÓI SHADOWING TIỂU LU</span>
           </div>
 
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-black tracking-tight leading-snug">
+          <h1 className="text-xl sm:text-2xl lg:text-3xl font-serif font-black text-china-ink tracking-tight leading-snug">
             Nhại Giọng Bản Xứ • Bứt Phá Khẩu Ngữ HSK
           </h1>
 
-          <p className="text-xs sm:text-sm text-white/85 leading-relaxed">
-            Phương pháp Shadowing giúp bạn bắt chước ngữ điệu, thanh điệu và nối âm tự nhiên của người bản xứ.
-            Nghe mẫu $\rightarrow$ Thu âm giọng bạn $\rightarrow$ Nghe lại đối chiếu hoàn toàn miễn phí!
+          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            Phương pháp Shadowing giúp bạn bắt chước ngữ điệu, thanh điệu và nối âm tự nhiên của người bản xứ:{" "}
+            <span className="font-semibold text-china-ink">Nghe mẫu → Thu âm nhại theo → Nghe lại đối chiếu trực tiếp</span> hoàn toàn miễn phí!
           </p>
 
-          <div className="pt-2 flex flex-wrap items-center gap-3">
+          <div className="pt-1 flex flex-wrap items-center gap-3">
             <button
               onClick={() => setIsAddModalOpen(true)}
-              className="px-4 py-2.5 rounded-2xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs sm:text-sm shadow-md transition-all active:scale-95 cursor-pointer flex items-center gap-2"
+              className="px-4 py-2.5 rounded-2xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-xs sm:text-sm shadow-sm transition-all active:scale-95 cursor-pointer flex items-center gap-2"
             >
               <Plus className="w-4 h-4" />
               <span>Thêm Video Của Bạn</span>
@@ -128,16 +128,22 @@ export default function ShadowingPage() {
           </div>
         </div>
 
-        {/* Mascot decoration */}
-        <div className="absolute -bottom-4 right-2 sm:right-6 opacity-30 sm:opacity-90 pointer-events-none select-none">
-          <Image
-            src="/chibi-loading.svg"
-            alt="Tiểu Lu Shadowing"
-            width={140}
-            height={140}
-            priority
-            className="drop-shadow-lg"
-          />
+        {/* Mascot decoration - Clean side container */}
+        <div className="hidden sm:flex items-center gap-3 p-4 rounded-3xl bg-china-paper border border-border/80 shrink-0">
+          <div className="w-20 h-20 relative flex items-center justify-center">
+            <Image
+              src="/chibi-loading.svg"
+              alt="Tiểu Lu Shadowing"
+              width={80}
+              height={80}
+              priority
+              className="object-contain"
+            />
+          </div>
+          <div className="text-xs max-w-[130px] leading-tight text-muted">
+            <p className="font-bold text-china-ink mb-0.5">Tiểu Lu đồng hành</p>
+            <p className="text-[11px]">Cùng bạn luyện nói mỗi ngày không lo ngại ngùng!</p>
+          </div>
         </div>
       </div>
 

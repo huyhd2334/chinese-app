@@ -31,7 +31,7 @@ export const SHADOWING_VIDEOS: ShadowingVideo[] = [
     duration: "3:20",
     category: "Giao tiếp đời sống",
     description: "Những mẫu câu chào hỏi căn bản, tự giới thiệu tên tuổi, quê quán và nghề nghiệp với ngữ tốc vừa phải, tròn vành rõ chữ.",
-    youtubeId: "Vb2zV9p2d3E", // ID YouTube mẫu
+    youtubeId: "aQOUSJOVHp8", // Video học giao tiếp tiếng Trung cơ bản
     sentencesCount: 7,
     isFree: true,
     sentences: [
@@ -108,7 +108,7 @@ export const SHADOWING_VIDEOS: ShadowingVideo[] = [
     duration: "4:05",
     category: "Ẩm thực & Mua sắm",
     description: "Hội thoại thực tế tại quán ăn Trung Quốc: gọi món, yêu cầu độ cay, xin thêm bát đũa và thanh toán bằng WeChat Pay / Alipay.",
-    youtubeId: "W9nZvy8P1zU",
+    youtubeId: "bBcp_ljCBGU",
     sentencesCount: 7,
     isFree: true,
     sentences: [
@@ -185,7 +185,7 @@ export const SHADOWING_VIDEOS: ShadowingVideo[] = [
     duration: "3:45",
     category: "Ẩm thực & Mua sắm",
     description: "Cách hỏi giá cả, thương lượng giá cả tự nhiên, khen chê món đồ và chọn kích cỡ, màu sắc phù hợp.",
-    youtubeId: "Jk4_9bH7q8c",
+    youtubeId: "Z8Mqw0b9ADs",
     sentencesCount: 6,
     isFree: true,
     sentences: [
@@ -253,7 +253,7 @@ export const SHADOWING_VIDEOS: ShadowingVideo[] = [
     duration: "4:30",
     category: "Phim hoạt hình ngắn",
     description: "Câu chuyện hoạt hình hóm hỉnh về chú gấu trúc Tiểu Lu vượt qua cơn buồn ngủ để dậy sớm luyện khẩu ngữ và từ vựng HSK.",
-    youtubeId: "9k_yW7k2h6o",
+    youtubeId: "aQOUSJOVHp8",
     sentencesCount: 6,
     isFree: true,
     sentences: [
@@ -321,7 +321,7 @@ export const SHADOWING_VIDEOS: ShadowingVideo[] = [
     duration: "3:50",
     category: "Giao tiếp đời sống",
     description: "Mẫu câu thực chiến khi đi du lịch: hỏi tuyến tàu điện ngầm, trạm chuyển tuyến, mua vé tự động và hỏi lối ra.",
-    youtubeId: "8x_jE3x3Q2M",
+    youtubeId: "bBcp_ljCBGU",
     sentencesCount: 6,
     isFree: true,
     sentences: [
@@ -389,7 +389,7 @@ export const SHADOWING_VIDEOS: ShadowingVideo[] = [
     duration: "4:15",
     category: "Công sở & Phỏng vấn",
     description: "Ngôn từ chuyên nghiệp, lịch sự trong phỏng vấn công ty đa quốc gia: kinh nghiệm làm việc, năng lực giải quyết vấn đề và tinh thần cầu tiến.",
-    youtubeId: "5m_oY2t7v3Q",
+    youtubeId: "Z8Mqw0b9ADs",
     sentencesCount: 6,
     isFree: true,
     sentences: [

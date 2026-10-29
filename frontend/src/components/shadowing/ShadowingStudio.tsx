@@ -32,6 +32,7 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
   const [showPinyin, setShowPinyin] = useState(true)
   const [showVietnamese, setShowVietnamese] = useState(true)
   const [playbackSpeed, setPlaybackSpeed] = useState<0.75 | 0.9 | 1.0>(1.0)
+  const [playerMode, setPlayerMode] = useState<"video" | "audio">("video")
   const [isPlayingNativeAudio, setIsPlayingNativeAudio] = useState(false)
   const [isPlayingUserAudio, setIsPlayingUserAudio] = useState(false)
 
@@ -164,16 +165,111 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
         {/* Left Column: Video & Practice Deck (7 cols) */}
         <div className="lg:col-span-7 space-y-4">
           
-          {/* YouTube Video Player Embed */}
-          <div className="relative aspect-video w-full rounded-3xl overflow-hidden bg-black shadow-md border border-border">
-            <iframe
-              src={`https://www.youtube.com/embed/${video.youtubeId}?enablejsapi=1&rel=0&modestbranding=1`}
-              title={video.title}
-              className="w-full h-full border-0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
+          {/* Player Mode Switcher */}
+          <div className="flex items-center justify-between pb-0.5">
+            <div className="flex items-center gap-1 p-1 rounded-2xl bg-china-paper border border-border">
+              <button
+                type="button"
+                onClick={() => setPlayerMode("video")}
+                className={`px-3 py-1 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
+                  playerMode === "video"
+                    ? "bg-white text-china-red shadow-2xs border border-border"
+                    : "text-muted hover:text-china-ink"
+                }`}
+              >
+                <span>🎬 Video YouTube</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setPlayerMode("audio")}
+                className={`px-3 py-1 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
+                  playerMode === "audio"
+                    ? "bg-white text-china-red shadow-2xs border border-border"
+                    : "text-muted hover:text-china-ink"
+                }`}
+              >
+                <span>🎧 Bàn Học Tiểu Lu</span>
+              </button>
+            </div>
+
+            {playerMode === "video" && (
+              <a
+                href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
+                target="_blank"
+                rel="noreferrer"
+                className="text-[11px] font-semibold text-muted hover:text-china-red transition-colors flex items-center gap-1"
+                title="Mở trực tiếp trên YouTube"
+              >
+                <span>Mở YouTube</span>
+                <span>↗</span>
+              </a>
+            )}
           </div>
+
+          {/* Media Player Container */}
+          {playerMode === "video" ? (
+            <div className="relative aspect-video w-full rounded-3xl overflow-hidden bg-black shadow-md border border-border">
+              <iframe
+                src={`https://www.youtube-nocookie.com/embed/${video.youtubeId}?enablejsapi=1&rel=0&modestbranding=1`}
+                title={video.title}
+                className="w-full h-full border-0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          ) : (
+            /* Animated Audio Stage with Chibi Panda */
+            <div className="relative aspect-video w-full rounded-3xl overflow-hidden bg-gradient-to-b from-[#1a1c23] to-[#0f1117] text-white shadow-md border border-border flex flex-col items-center justify-center p-6 text-center select-none">
+              {/* Audio Visualizer Waves */}
+              <div className="absolute inset-0 opacity-20 flex items-center justify-around px-8 pointer-events-none">
+                {[40, 70, 30, 90, 60, 85, 45, 95, 50, 75, 35].map((h, i) => (
+                  <div
+                    key={i}
+                    className={`w-2 bg-amber-400 rounded-full transition-all duration-300 ${
+                      isPlayingNativeAudio ? "animate-pulse" : ""
+                    }`}
+                    style={{ height: isPlayingNativeAudio ? `${h}%` : "18%" }}
+                  />
+                ))}
+              </div>
+
+              {/* Chibi Avatar */}
+              <div className="relative z-10 w-24 h-24 sm:w-28 sm:h-28 mb-3 transition-transform hover:scale-105">
+                <Image
+                  src="/chibi-loading.svg"
+                  alt="Tiểu Lu Audio Studio"
+                  width={112}
+                  height={112}
+                  priority
+                  className="w-full h-full object-contain drop-shadow-lg"
+                />
+              </div>
+
+              {/* Speaker & Current Sentence Preview */}
+              <div className="relative z-10 space-y-2 max-w-md">
+                <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-white/10 text-amber-300 text-xs font-bold border border-white/15">
+                  <Volume2 className={`w-3.5 h-3.5 ${isPlayingNativeAudio ? "animate-bounce" : ""}`} />
+                  <span>{currentSentence?.speaker || "Tiểu Lu phát âm"}</span>
+                </div>
+                <p className="font-chinese font-bold text-lg sm:text-xl text-white tracking-wide" lang="zh">
+                  {currentSentence?.chinese}
+                </p>
+              </div>
+
+              {/* Play / Listen Button */}
+              <div className="relative z-10 pt-3">
+                <button
+                  type="button"
+                  onClick={handlePlayNativeAudio}
+                  disabled={isPlayingNativeAudio}
+                  className="px-5 py-2.5 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs sm:text-sm shadow-md transition-all active:scale-95 cursor-pointer flex items-center gap-2"
+                >
+                  <Play className="w-4 h-4 fill-current" />
+                  <span>{isPlayingNativeAudio ? "Đang phát mẫu..." : "Phát câu này (Giọng chuẩn bản xứ)"}</span>
+                </button>
+              </div>
+            </div>
+          )}
 
           {/* Quick Settings & Navigation Bar */}
           <div className="flex items-center justify-between p-3 rounded-2xl bg-white border border-border shadow-xs text-xs">
