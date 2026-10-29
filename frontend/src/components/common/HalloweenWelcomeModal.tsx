@@ -3,42 +3,13 @@
 import React, { useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { X, BookOpen, ArrowRight } from "lucide-react"
+import { X, BookOpen, Sparkles, ChevronRight } from "lucide-react"
 import { useAuth } from "@/contexts/AuthContext"
-
-function PumpkinIcon({ className = "w-4 h-4" }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      className={className}
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M12 2.5C12.3 3.8 13.3 4.5 14.5 4.2"
-        stroke="#2d6a4f"
-        strokeWidth="2.2"
-        strokeLinecap="round"
-      />
-      <ellipse cx="7.8" cy="13.2" rx="4.8" ry="6.2" fill="#d9480f" />
-      <ellipse cx="16.2" cy="13.2" rx="4.8" ry="6.2" fill="#d9480f" />
-      <ellipse cx="12" cy="13.5" rx="5.5" ry="6.8" fill="#f76707" />
-      <polygon points="9.5,12 11,10.5 11,12.5" fill="#1b002c" />
-      <polygon points="14.5,12 13,10.5 13,12.5" fill="#1b002c" />
-      <polygon points="12,13 11.4,13.8 12.6,13.8" fill="#1b002c" />
-      <path
-        d="M8.8 15.2C9.5 17 14.5 17 15.2 15.2C14.4 15.8 13.8 15 12 15.5C10.2 15 9.6 15.8 8.8 15.2Z"
-        fill="#1b002c"
-      />
-    </svg>
-  )
-}
 
 function formatName(raw?: string): string {
   if (!raw) return "Bạn"
   const clean = raw.trim()
   if (!clean) return "Bạn"
-  // If ALL CAPS (like HUY QUOC), convert to Title Case
   if (clean === clean.toUpperCase()) {
     return clean
       .split(/\s+/)
@@ -51,7 +22,6 @@ function formatName(raw?: string): string {
 export default function HalloweenWelcomeModal() {
   const { isHalloweenModalOpen, closeHalloweenModal, isHalloweenTheme, user } = useAuth()
 
-  // Escape key to close
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape" && isHalloweenModalOpen) {
@@ -71,82 +41,98 @@ export default function HalloweenWelcomeModal() {
   const formattedName = formatName(rawName)
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/70 backdrop-blur-md animate-fade-in overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-xl animate-fade-in overflow-y-auto">
+      {/* Background Dim Dismiss click */}
+      <div className="fixed inset-0" onClick={closeHalloweenModal} />
+
+      {/* Luxury Royal Card Modal */}
       <div
-        className="relative w-full max-w-[420px] my-auto overflow-hidden rounded-3xl border border-amber-500/30 bg-gradient-to-b from-[#1e072b] via-[#160422] to-[#0d0216] text-white shadow-[0_10px_40px_rgba(0,0,0,0.6),0_0_50px_rgba(230,81,0,0.2)] animate-in fade-in zoom-in-95 duration-200"
+        className="relative w-full max-w-[400px] my-auto overflow-hidden rounded-[28px] border border-amber-500/25 bg-[#0f0b14]/95 text-white shadow-[0_25px_70px_rgba(0,0,0,0.85),0_0_60px_rgba(245,158,11,0.18)] backdrop-blur-2xl animate-in fade-in zoom-in-95 duration-200"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Soft Background Warm Light Halo */}
-        <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-64 h-64 rounded-full bg-gradient-to-b from-amber-500/20 via-purple-600/15 to-transparent blur-3xl pointer-events-none" />
+        {/* Luxury Top Light Beam & Radial Gradients */}
+        <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-72 h-72 rounded-full bg-gradient-to-b from-amber-400/20 via-orange-500/10 to-transparent blur-3xl pointer-events-none" />
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-amber-400/60 to-transparent pointer-events-none" />
 
-        {/* Close Button */}
+        {/* Filigree Corner Accents (Hán phong chỉ vàng) */}
+        <div className="absolute top-3 left-3 w-3.5 h-3.5 border-t border-l border-amber-400/40 pointer-events-none" />
+        <div className="absolute top-3 right-3 w-3.5 h-3.5 border-t border-r border-amber-400/40 pointer-events-none" />
+        <div className="absolute bottom-3 left-3 w-3.5 h-3.5 border-b border-l border-amber-400/40 pointer-events-none" />
+        <div className="absolute bottom-3 right-3 w-3.5 h-3.5 border-b border-r border-amber-400/40 pointer-events-none" />
+
+        {/* Minimal Close Button */}
         <button
           onClick={closeHalloweenModal}
-          className="absolute top-3.5 right-3.5 z-20 p-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white/70 hover:text-white transition-all cursor-pointer backdrop-blur-sm active:scale-95"
+          className="absolute top-3.5 right-3.5 z-20 w-8 h-8 rounded-full bg-white/5 hover:bg-white/15 text-white/60 hover:text-white transition-all cursor-pointer backdrop-blur-sm flex items-center justify-center active:scale-90 border border-white/10"
           aria-label="Đóng"
         >
           <X className="w-4 h-4" />
         </button>
 
-        <div className="relative z-10 px-5 pt-6 pb-5 sm:px-7 sm:pt-7 sm:pb-6 flex flex-col items-center text-center space-y-3.5">
+        <div className="relative z-10 px-6 pt-7 pb-6 flex flex-col items-center text-center space-y-4">
           
-          {/* Header Festival Tag */}
-          <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full text-[11px] font-bold tracking-wider uppercase bg-amber-500/15 border border-amber-400/30 text-amber-300">
-            <span>🎃 万圣节狂欢 • HALLOWEEN 👻</span>
+          {/* Header Festival Pill - Minimalist Gold */}
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-extrabold tracking-widest uppercase bg-gradient-to-r from-amber-500/15 via-orange-500/10 to-amber-500/15 border border-amber-400/30 text-amber-300 shadow-sm">
+            <Sparkles className="w-3 h-3 text-amber-400" />
+            <span>SỰ KIỆN VẠN THÁNH • 万圣夜</span>
           </div>
 
-          {/* Clean Mascot Display (No slop clutter, balanced height) */}
-          <div className="relative py-0.5">
-            <div className="w-40 h-40 sm:w-44 sm:h-44 mx-auto select-none transition-transform hover:scale-105 duration-300">
-              <Image
-                src="/chibi-halloween.svg"
-                alt="Tiểu Lu Hóa Trang Halloween"
-                width={176}
-                height={176}
-                priority
-                className="w-full h-full object-contain drop-shadow-[0_8px_20px_rgba(251,133,0,0.35)]"
-              />
+          {/* Luxury Mascot Crest (Đóng khung huy hiệu hoàng kim sơn mài) */}
+          <div className="relative my-1">
+            {/* Soft Ambient Golden Ring */}
+            <div className="absolute inset-0 rounded-full bg-gradient-to-b from-amber-400/25 to-orange-500/5 blur-md" />
+            
+            <div className="relative w-36 h-36 rounded-full p-2 bg-gradient-to-b from-amber-400/30 via-purple-900/40 to-black/60 border border-amber-400/40 shadow-inner flex items-center justify-center">
+              <div className="w-full h-full rounded-full bg-gradient-to-b from-[#1c1226] to-[#0c0812] flex items-center justify-center overflow-hidden border border-amber-300/15">
+                <Image
+                  src="/chibi-halloween.svg"
+                  alt="Tiểu Lu"
+                  width={130}
+                  height={130}
+                  priority
+                  className="w-[124px] h-[124px] object-contain drop-shadow-[0_4px_12px_rgba(251,133,0,0.4)]"
+                />
+              </div>
             </div>
           </div>
 
-          {/* Title & Greeting Typography - Balanced & Clean */}
-          <div className="space-y-1.5 w-full">
-            <h2 className="text-lg sm:text-xl font-serif font-black text-white tracking-tight leading-snug">
-              Tiểu Lu Chúc {formattedName} Học Tốt!
+          {/* Typography - Elite & Balanced */}
+          <div className="space-y-2 w-full pt-1">
+            <h2 className="text-xl sm:text-2xl font-serif font-black tracking-tight text-white leading-snug">
+              Chúc <span className="bg-gradient-to-r from-amber-200 via-amber-300 to-yellow-400 bg-clip-text text-transparent">{formattedName}</span> Bứt Phá HSK!
             </h2>
 
-            {/* Couplet Banner - Refined Golden Style */}
+            {/* Traditional Couplet Scroll - Luxury Dark Gold Silk */}
             <div
-              className="inline-block px-3 py-1 rounded-lg bg-white/5 border border-amber-400/25 text-amber-300 text-xs font-chinese font-semibold tracking-wide"
+              className="py-1.5 px-4 rounded-xl bg-gradient-to-r from-amber-500/10 via-amber-400/15 to-amber-500/10 border border-amber-400/30 text-amber-200 text-xs font-chinese tracking-widest font-bold shadow-xs select-none"
               lang="zh"
             >
-              “万圣狂欢 • 逢考必过 • 步步高升”
+              “ 勤 学 苦 练 • 步 步 高 升 ”
             </div>
 
-            <p className="text-xs text-slate-300/90 max-w-sm mx-auto leading-relaxed pt-0.5">
-              Hôm nay Tiểu Lu hóa trang thành Pháp Sư Bí Ngô đồng hành cùng bạn học tiếng Trung. Chúc bạn ghi nhớ từ vựng thần tốc và chinh phục HSK thật xuất sắc nhé!
+            <p className="text-xs text-stone-300/80 max-w-[320px] mx-auto leading-relaxed pt-0.5">
+              Đồng hành cùng Tiểu Lu trong mùa lễ hội Vạn Thánh: chúc bạn phản xạ tự nhiên, ghi nhớ sâu sắc và chạm mốc điểm cao!
             </p>
           </div>
 
-          {/* Action Buttons */}
-          <div className="w-full flex flex-col sm:flex-row items-center gap-2.5 pt-1.5">
+          {/* Action Buttons - Gold Leaf Button & Glass Action */}
+          <div className="w-full flex flex-col gap-2.5 pt-2">
             <button
               type="button"
               onClick={closeHalloweenModal}
-              className="w-full sm:flex-1 py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 text-xs font-black transition-all shadow-[0_2px_12px_rgba(251,133,0,0.35)] active:scale-95 cursor-pointer flex items-center justify-center gap-1.5 group"
+              className="w-full py-3 px-5 rounded-2xl bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-400 hover:from-amber-300 hover:to-yellow-300 text-stone-950 text-xs font-extrabold tracking-wide transition-all shadow-[0_4px_20px_rgba(245,158,11,0.35)] active:scale-98 cursor-pointer flex items-center justify-center gap-2 group"
             >
-              <PumpkinIcon className="w-4 h-4 shrink-0" />
-              <span>Bắt đầu học cùng Tiểu Lu</span>
-              <ArrowRight className="w-3.5 h-3.5 stroke-[2.5] text-slate-950 transition-transform group-hover:translate-x-0.5 shrink-0" />
+              <span>Vào Bàn Học Cùng Tiểu Lu</span>
+              <ChevronRight className="w-4 h-4 stroke-[2.5] text-stone-950 transition-transform group-hover:translate-x-0.5" />
             </button>
 
             <Link
               href="/books"
               onClick={closeHalloweenModal}
-              className="w-full sm:w-auto py-2.5 px-3.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 text-white text-xs font-bold transition-all active:scale-95 cursor-pointer flex items-center justify-center gap-1.5"
+              className="w-full py-2.5 px-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 text-stone-300 hover:text-white text-xs font-semibold transition-all active:scale-98 cursor-pointer flex items-center justify-center gap-1.5"
             >
-              <BookOpen className="w-3.5 h-3.5 text-amber-300" />
-              <span>Tủ Sách HSK</span>
+              <BookOpen className="w-3.5 h-3.5 text-amber-400/80" />
+              <span>Khám Phá Tủ Sách HSK</span>
             </Link>
           </div>
 
