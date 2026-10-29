@@ -1,11 +1,10 @@
 "use client"
 
-import React, { useEffect, useState } from "react"
+import React, { useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { X, Volume2, BookOpen } from "lucide-react"
+import { X, BookOpen } from "lucide-react"
 import { useAuth } from "@/contexts/AuthContext"
-import { playChineseAudio } from "@/utils/audioTts"
 
 function PumpkinIcon({ className = "w-5 h-5" }: { className?: string }) {
   return (
@@ -40,7 +39,6 @@ function PumpkinIcon({ className = "w-5 h-5" }: { className?: string }) {
 
 export default function HalloweenWelcomeModal() {
   const { isHalloweenModalOpen, closeHalloweenModal, user } = useAuth()
-  const [isPlayingAudio, setIsPlayingAudio] = useState(false)
 
   // Escape key to close
   useEffect(() => {
@@ -54,16 +52,6 @@ export default function HalloweenWelcomeModal() {
   }, [isHalloweenModalOpen, closeHalloweenModal])
 
   if (!isHalloweenModalOpen) return null
-
-  const handlePlayGreetingVoice = () => {
-    setIsPlayingAudio(true)
-    playChineseAudio("万圣节快乐！祝你学习进步，逢考必过！", {
-      rate: 0.88,
-      volume: 1.0,
-      onEnd: () => setIsPlayingAudio(false),
-      onError: () => setIsPlayingAudio(false),
-    })
-  }
 
   const displayName =
     user?.user_metadata?.full_name ||
@@ -107,19 +95,6 @@ export default function HalloweenWelcomeModal() {
                 className="w-full h-full object-contain drop-shadow-[0_12px_30px_rgba(251,133,0,0.4)]"
               />
             </div>
-
-            {/* Floating Speech Bubble with Audio Action */}
-            <button
-              type="button"
-              onClick={handlePlayGreetingVoice}
-              className={`absolute -bottom-2 sm:bottom-0 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-amber-500/90 hover:bg-amber-500 text-slate-950 text-xs font-bold shadow-lg transition-all flex items-center gap-1.5 cursor-pointer backdrop-blur-sm active:scale-95 ${
-                isPlayingAudio ? "ring-2 ring-white animate-pulse" : ""
-              }`}
-              title="Bấm để nghe giọng Tiểu Lu chúc bạn"
-            >
-              <Volume2 className="w-3.5 h-3.5 text-slate-950" />
-              <span>{isPlayingAudio ? "Tiểu Lu đang chúc..." : "Nghe Tiểu Lu chúc bạn 🔊"}</span>
-            </button>
           </div>
 
           {/* Title & Greeting Text */}
