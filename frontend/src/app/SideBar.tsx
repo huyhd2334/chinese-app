@@ -5,6 +5,7 @@ import Image from 'next/image'
 import styles from './sideBar.module.css'
 import { BookOpen, Eye, LayoutDashboard, ReceiptText, BookMarked, Headphones } from "lucide-react";
 import UserMenu from "@/components/auth/UserMenu";
+import { useAuth } from "@/contexts/AuthContext";
 
 const navItems = [
   { href: "/", label: "Dashboard", shortLabel: "Home", icon: LayoutDashboard },
@@ -17,6 +18,7 @@ const navItems = [
 
 const SideBar = () => {
   const pathname = usePathname();
+  const { isHalloweenTheme } = useAuth();
 
   return (
     <>
@@ -40,8 +42,9 @@ const SideBar = () => {
               <span className="font-extrabold tracking-wide text-china-red text-base">HSK</span>
               <span className="font-bold text-china-ink text-base">Learning</span>
             </div>
-            <span className="text-[11px] text-muted font-semibold truncate">
-              Bàn học Tiểu Lu
+            <span className="text-[11px] text-muted font-semibold truncate flex items-center gap-1">
+              <span>Bàn học Tiểu Lu</span>
+              {isHalloweenTheme && <span className="text-[11px]" title="Sự kiện Vạn Thánh">🎃</span>}
             </span>
           </div>
         </div>      
@@ -92,6 +95,7 @@ const SideBar = () => {
           <div className="flex items-center gap-1 font-bold text-base leading-none">
             <span className="text-china-red">HSK</span>
             <span className="text-china-ink">Learning</span>
+            {isHalloweenTheme && <span className="text-xs">🎃</span>}
           </div>
         </Link>
         <UserMenu compact />

@@ -3,7 +3,7 @@
 import React, { useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { X, BookOpen } from "lucide-react"
+import { X, BookOpen, ArrowRight } from "lucide-react"
 import { useAuth } from "@/contexts/AuthContext"
 
 function PumpkinIcon({ className = "w-5 h-5" }: { className?: string }) {
@@ -38,7 +38,7 @@ function PumpkinIcon({ className = "w-5 h-5" }: { className?: string }) {
 }
 
 export default function HalloweenWelcomeModal() {
-  const { isHalloweenModalOpen, closeHalloweenModal, user } = useAuth()
+  const { isHalloweenModalOpen, closeHalloweenModal, isHalloweenTheme, user } = useAuth()
 
   // Escape key to close
   useEffect(() => {
@@ -51,7 +51,7 @@ export default function HalloweenWelcomeModal() {
     return () => window.removeEventListener("keydown", handleKeyDown)
   }, [isHalloweenModalOpen, closeHalloweenModal])
 
-  if (!isHalloweenModalOpen) return null
+  if (!isHalloweenModalOpen || !isHalloweenTheme) return null
 
   const displayName =
     user?.user_metadata?.full_name ||
@@ -118,10 +118,11 @@ export default function HalloweenWelcomeModal() {
             <button
               type="button"
               onClick={closeHalloweenModal}
-              className="w-full sm:flex-1 py-3 px-5 rounded-2xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 text-xs sm:text-sm font-black transition-all shadow-[0_4px_20px_rgba(251,133,0,0.4)] active:scale-95 cursor-pointer flex items-center justify-center gap-2"
+              className="w-full sm:flex-1 py-3 px-5 rounded-2xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 text-xs sm:text-sm font-black transition-all shadow-[0_4px_20px_rgba(251,133,0,0.4)] active:scale-95 cursor-pointer flex items-center justify-center gap-2 group"
             >
               <PumpkinIcon className="w-5 h-5 shrink-0" />
-              <span>Bắt đầu học cùng Tiểu Lu 🚀</span>
+              <span>Bắt đầu học cùng Tiểu Lu</span>
+              <ArrowRight className="w-4 h-4 stroke-[2.5] text-slate-950 transition-transform group-hover:translate-x-1 shrink-0" />
             </button>
 
             <Link

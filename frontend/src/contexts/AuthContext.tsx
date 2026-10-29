@@ -26,6 +26,8 @@ interface AuthContextType {
   isHalloweenModalOpen: boolean
   openHalloweenModal: () => void
   closeHalloweenModal: () => void
+  isHalloweenTheme: boolean
+  toggleHalloweenTheme: () => void
   signInWithEmail: (email: string, password: string) => Promise<SignInResult>
   signUpWithEmail: (email: string, password: string) => Promise<SignUpResult>
   resendConfirmationEmail: (email: string) => Promise<{ error: string | null; success?: boolean }>
@@ -41,12 +43,32 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(true)
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false)
   const [isHalloweenModalOpen, setIsHalloweenModalOpen] = useState(false)
+  const [isHalloweenTheme, setIsHalloweenTheme] = useState(() => {
+    if (typeof window === "undefined") return true
+    return localStorage.getItem("hsk_halloween_event_theme") !== "off"
+  })
 
-  const openHalloweenModal = () => setIsHalloweenModalOpen(true)
+  const openHalloweenModal = () => {
+    if (isHalloweenTheme) setIsHalloweenModalOpen(true)
+  }
   const closeHalloweenModal = () => setIsHalloweenModalOpen(false)
+
+  const toggleHalloweenTheme = () => {
+    setIsHalloweenTheme((prev) => {
+      const next = !prev
+      if (typeof window !== "undefined") {
+        localStorage.setItem("hsk_halloween_event_theme", next ? "on" : "off")
+      }
+      if (!next) {
+        setIsHalloweenModalOpen(false)
+      }
+      return next
+    })
+  }
 
   const triggerWelcomeIfFresh = (userId: string) => {
     if (typeof sessionStorage === "undefined") return
+    if (!isHalloweenTheme) return
     const key = `halloween_welcome_shown_${userId}`
     if (!sessionStorage.getItem(key)) {
       sessionStorage.setItem(key, "1")
@@ -232,6 +254,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         isHalloweenModalOpen,
         openHalloweenModal,
         closeHalloweenModal,
+        isHalloweenTheme,
+        toggleHalloweenTheme,
         signInWithEmail,
         signUpWithEmail,
         resendConfirmationEmail,
