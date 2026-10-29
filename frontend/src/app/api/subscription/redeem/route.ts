@@ -51,12 +51,46 @@ export async function POST(req: NextRequest) {
     const config = PRO_CODES_CONFIG[cleanCode]
     if (!config) {
       return NextResponse.json(
-        { success: false, message: "Mã kích hoạt không chính xác hoặc đã bị xóa." },
+        { success: false, message: "Mã kích hoạt không chính xác hoặc đã hết hạn." },
         { status: 400 }
       )
     }
 
-    // 2. Kiểm tra số lượng tài khoản đã kích hoạt mã này trên Supabase Cloud
+    // 2. Chặn 1 tài khoản nhập nhiều lần redeem:
+    // Kiểm tra xem tài khoản này đã từng kích hoạt bất kỳ mã nào trên Supabase chưa
+    const { data: userRedemptions, error: userRedemptionsError } = await admin
+      .from("bonus_collections")
+      .select("id, title")
+      .eq("slug", "_sys_code_redemption")
+      .eq("user_id", userId)
+
+    if (userRedemptions && userRedemptions.length > 0) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: `Tài khoản của bạn đã được kích hoạt Gói Pro rồi (Mã: ${userRedemptions[0].title}). Mỗi tài khoản chỉ được kích hoạt 1 lần duy nhất.`,
+        },
+        { status: 400 }
+      )
+    }
+
+    // Kiểm tra thêm app_metadata của tài khoản trên Supabase Auth
+    const { data: authUserData } = await admin.auth.admin.getUserById(userId)
+    const appMeta = authUserData?.user?.app_metadata
+    if (appMeta?.plan === "pro_yearly" || appMeta?.plan === "pro_monthly") {
+      const exp = appMeta.expires_at ? Number(appMeta.expires_at) : null
+      if (!exp || exp > Date.now()) {
+        return NextResponse.json(
+          {
+            success: false,
+            message: "Tài khoản của bạn hiện đang là thành viên Gói Pro. Mỗi tài khoản chỉ được kích hoạt 1 lần duy nhất.",
+          },
+          { status: 400 }
+        )
+      }
+    }
+
+    // 3. Kiểm tra số lượng tài khoản đã kích hoạt mã này trên Supabase Cloud (Tối đa 10 tài khoản)
     const { data: existingRedemptions, error: queryError } = await admin
       .from("bonus_collections")
       .select("id, user_id, title")
@@ -73,19 +107,7 @@ export async function POST(req: NextRequest) {
 
     const redemptions = existingRedemptions || []
 
-    // 3. Kiểm tra xem tài khoản này đã kích hoạt mã này chưa
-    const alreadyUsed = redemptions.some((r) => r.user_id === userId)
-    if (alreadyUsed) {
-      return NextResponse.json(
-        {
-          success: false,
-          message: `Tài khoản của bạn đã kích hoạt mã ${cleanCode} trước đó rồi.`,
-        },
-        { status: 400 }
-      )
-    }
-
-    // 4. Kiểm tra giới hạn tối đa 10 tài khoản
+    // 4. Kiểm tra giới hạn tối đa 10 tài khoản cho mã này
     if (redemptions.length >= config.maxUses) {
       return NextResponse.json(
         {

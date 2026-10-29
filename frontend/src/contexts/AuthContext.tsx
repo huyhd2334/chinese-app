@@ -3,6 +3,7 @@
 import React, { createContext, useContext, useEffect, useState } from "react"
 import type { User, Session } from "@supabase/supabase-js"
 import { supabase } from "@/lib/supabase"
+import { saveLocalSubscription, PlanType } from "@/utils/subscription"
 
 export interface SignUpResult {
   error: string | null
@@ -79,6 +80,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   }
 
+  const syncUserSubscriptionFromMeta = (usr: User | null) => {
+    if (!usr) return
+    const meta = usr.app_metadata
+    if (meta?.plan === "pro_yearly" || meta?.plan === "pro_monthly") {
+      const exp = meta.expires_at ? Number(meta.expires_at) : null
+      if (!exp || exp > Date.now()) {
+        saveLocalSubscription(meta.plan as PlanType, exp, usr.id)
+      }
+    }
+  }
+
   useEffect(() => {
     // 1. Initial session fetch
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -86,6 +98,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setUser(session?.user ?? null)
       setIsLoading(false)
       if (session?.user) {
+        syncUserSubscriptionFromMeta(session.user)
         triggerWelcomeIfFresh(session.user.id)
       }
     })
@@ -98,8 +111,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setUser(session?.user ?? null)
       setIsLoading(false)
 
-      if (event === "SIGNED_IN" && session?.user) {
-        triggerWelcomeIfFresh(session.user.id)
+      if (event === "SIGNED_OUT") {
+        saveLocalSubscription("free", null, "guest")
+      } else if (session?.user) {
+        syncUserSubscriptionFromMeta(session.user)
+        if (event === "SIGNED_IN") {
+          triggerWelcomeIfFresh(session.user.id)
+        }
       }
     })
 
@@ -238,6 +256,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const signOut = async () => {
     await supabase.auth.signOut()
+    saveLocalSubscription("free", null, "guest")
     setUser(null)
     setSession(null)
   }

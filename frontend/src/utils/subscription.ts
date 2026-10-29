@@ -109,23 +109,22 @@ export function saveLocalSubscription(plan: PlanType, expiresAt: number | null, 
  */
 export async function syncSubscriptionWithCloud(userId: string): Promise<SubscriptionInfo> {
   try {
-    const { data, error } = await supabase
-      .from("user_subscriptions")
-      .select("*")
-      .eq("user_id", userId)
-      .maybeSingle()
-
-    if (!error && data && data.status === "active") {
-      const expiresAt = data.expires_at ? new Date(data.expires_at).getTime() : null
-      const isExpired = expiresAt !== null && expiresAt < Date.now()
-      const activePlan: PlanType = isExpired ? "free" : (data.plan as PlanType) || "free"
-
-      if (activePlan === "pro_monthly" || activePlan === "pro_yearly") {
-        return saveLocalSubscription(activePlan, expiresAt, userId)
+    // 1. Kiểm tra session user app_metadata trực tiếp từ Supabase Auth
+    // app_metadata được mã hóa trong Supabase JWT Token nên đồng bộ tức thì trên cả Điện thoại và PC
+    const { data: sessionData } = await supabase.auth.getSession()
+    const sessionUser = sessionData?.session?.user
+    if (sessionUser && sessionUser.id === userId) {
+      const appMeta = sessionUser.app_metadata
+      if (appMeta?.plan === "pro_yearly" || appMeta?.plan === "pro_monthly") {
+        const exp = appMeta.expires_at ? Number(appMeta.expires_at) : null
+        const isExpired = exp !== null && exp < Date.now()
+        if (!isExpired) {
+          return saveLocalSubscription(appMeta.plan as PlanType, exp, userId)
+        }
       }
     }
 
-    // 2. Kiểm tra nếu tài khoản đã từng kích hoạt mã Pro lưu trên Cloud
+    // 2. Kiểm tra nếu tài khoản đã từng kích hoạt mã Pro lưu trên Cloud (bonus_collections)
     const { data: codeData } = await supabase
       .from("bonus_collections")
       .select("id, subtitle, created_at")
@@ -142,9 +141,38 @@ export async function syncSubscriptionWithCloud(userId: string): Promise<Subscri
       }
     }
 
+    // 3. Kiểm tra bảng đăng ký gói user_subscriptions (hỗ trợ chuyển khoản/cổng thanh toán)
+    const { data, error } = await supabase
+      .from("user_subscriptions")
+      .select("*")
+      .eq("user_id", userId)
+      .maybeSingle()
+
+    if (!error && data && data.status === "active") {
+      const expiresAt = data.expires_at ? new Date(data.expires_at).getTime() : null
+      const isExpired = expiresAt !== null && expiresAt < Date.now()
+      const activePlan: PlanType = isExpired ? "free" : (data.plan as PlanType) || "free"
+
+      if (activePlan === "pro_monthly" || activePlan === "pro_yearly") {
+        return saveLocalSubscription(activePlan, expiresAt, userId)
+      }
+    }
+
+    // 4. Nếu local đã là Pro hợp lệ còn hạn của chính userId này, giữ nguyên để tránh rớt gói do lỗi mạng chập chờn
+    const local = getLocalSubscription(userId)
+    if (
+      local.userId === userId &&
+      (local.plan === "pro_yearly" || local.plan === "pro_monthly") &&
+      (!local.expiresAt || local.expiresAt > Date.now())
+    ) {
+      return local
+    }
+
     return saveLocalSubscription("free", null, userId)
-  } catch {
-    return saveLocalSubscription("free", null, userId)
+  } catch (err) {
+    console.warn("Lỗi khi đồng bộ gói cước từ cloud:", err)
+    const local = getLocalSubscription(userId)
+    return local
   }
 }
 
