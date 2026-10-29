@@ -196,12 +196,12 @@
     <ellipse cx="250" cy="242" rx="9" ry="6.5" fill="#1f2421"/>
     <ellipse cx="250" cy="240" rx="3.5" ry="1.5" fill="#ffffff" opacity="0.6"/>
 
-    <!-- CUTE HALLOWEEN SMILE WITH TINY FANGS -->
-    <path d="M 238 250 C 242 258, 248 258, 250 253 C 252 258, 258 258, 262 250" fill="none" stroke="#1f2421" stroke-width="3" stroke-linecap="round"/>
-    <!-- Cute Left Fang -->
-    <polygon points="241,250 244,250 242.5,256" fill="#ffffff" stroke="#1f2421" stroke-width="1"/>
-    <!-- Cute Right Fang -->
-    <polygon points="257,250 260,250 258.5,256" fill="#ffffff" stroke="#1f2421" stroke-width="1"/>
+    <!-- CUTE HALLOWEEN SMILE WITH NATURAL VAMPIRE FANGS -->
+    <path d="M 238 250 C 242 257, 247 257, 250 253 C 253 257, 258 257, 262 250" fill="none" stroke="#1f2421" stroke-width="2.6" stroke-linecap="round"/>
+    <!-- Cute Left Fang (Nhô tự nhiên từ khóe môi trái chúc xuống) -->
+    <polygon points="239,250 243,251 240.5,257" fill="#ffffff" stroke="#1f2421" stroke-width="0.8"/>
+    <!-- Cute Right Fang (Nhô tự nhiên từ khóe môi phải chúc xuống) -->
+    <polygon points="261,250 257,251 259.5,257" fill="#ffffff" stroke="#1f2421" stroke-width="0.8"/>
 
     <!-- ======================================================== -->
     <!-- HALLOWEEN COSTUME: JIANGSHI / WIZARD HAT & TALISMAN -->
