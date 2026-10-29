@@ -125,6 +125,23 @@ export async function syncSubscriptionWithCloud(userId: string): Promise<Subscri
       }
     }
 
+    // 2. Kiểm tra nếu tài khoản đã từng kích hoạt mã Pro lưu trên Cloud
+    const { data: codeData } = await supabase
+      .from("bonus_collections")
+      .select("id, subtitle, created_at")
+      .eq("slug", "_sys_code_redemption")
+      .eq("user_id", userId)
+      .maybeSingle()
+
+    if (codeData) {
+      const plan = (codeData.subtitle as PlanType) || "pro_yearly"
+      const createdMs = new Date(codeData.created_at).getTime()
+      const expiresAt = createdMs + 365 * 86400000
+      if (expiresAt > Date.now()) {
+        return saveLocalSubscription(plan, expiresAt, userId)
+      }
+    }
+
     return saveLocalSubscription("free", null, userId)
   } catch {
     return saveLocalSubscription("free", null, userId)
@@ -202,17 +219,35 @@ export async function redeemActivationCodeOnServer(
     return { success: false, message: "Vui lòng nhập mã kích hoạt." }
   }
 
-  // Mã kích hoạt đặc quyền dành cho Admin / Chủ sở hữu web thử nghiệm
-  if (cleanCode === "TIEULU2026" || cleanCode === "HSKPRO2026" || cleanCode === "TIEULU_PRO") {
-    const expiresAt = Date.now() + 365 * 86400000 // 1 năm
-    const info = saveLocalSubscription("pro_yearly", expiresAt, userId)
-    return {
-      success: true,
-      message: "Chúc mừng! Bạn đã kích hoạt thành công Gói Pro 1 Năm 🎉",
-      subInfo: info,
+  // 1. Gọi API server kiểm tra và trừ lượt kích hoạt trên Supabase Cloud (Giới hạn tối đa 10 tài khoản)
+  try {
+    const apiRes = await fetch("/api/subscription/redeem", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ code: cleanCode, userId }),
+    })
+
+    const result = await apiRes.json()
+    if (result.success) {
+      const plan = (result.plan as PlanType) || "pro_yearly"
+      const expiresAt = result.expiresAt || Date.now() + 365 * 86400000
+      const info = saveLocalSubscription(plan, expiresAt, userId)
+      return {
+        success: true,
+        message: result.message || "Kích hoạt Gói Pro thành công!",
+        subInfo: info,
+      }
+    } else if (result.message) {
+      return {
+        success: false,
+        message: result.message,
+      }
     }
+  } catch (apiErr) {
+    console.warn("Không thể gọi /api/subscription/redeem, thử fallback Supabase RPC:", apiErr)
   }
 
+  // 2. Fallback sang Supabase RPC nếu có cấu hình bảng mã riêng
   try {
     const { data, error } = await supabase.rpc("redeem_activation_code", {
       p_code: cleanCode,
