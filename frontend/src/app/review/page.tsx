@@ -352,7 +352,7 @@ export default function ReviewPage() {
         </div>
       </div>
 
-      {/* 2. Khung Thẻ Flashcard Bề Thế, To Rõ & Có Tiểu Lu Lấp Ló */}
+      {/* 2. Khung Thẻ Flashcard Bề Thế, To Rõ & Có Tiểu Long Lấp Ló */}
       {loading && cards.length === 0 ? (
         <div className="flex min-h-[420px] items-center justify-center bg-card rounded-3xl border border-border shadow-xs">
           <ChibiLoading
@@ -368,7 +368,7 @@ export default function ReviewPage() {
           <div className="relative w-40 h-40 mx-auto select-none">
             <Image
               src="/chibi-cheer.svg"
-              alt="Tiểu Lu Hoàn Thành"
+              alt="Tiểu Long Hoàn Thành"
               width={160}
               height={160}
               priority
@@ -420,11 +420,11 @@ export default function ReviewPage() {
       ) : currentCard ? (
         <div className="relative rounded-3xl border border-border/90 bg-card shadow-sm overflow-visible flex flex-col transition-all">
           
-          {/* Tiểu Lu Lấp Ló trên góc phải của thẻ Flashcard */}
+          {/* Tiểu Long Lấp Ló trên góc phải của thẻ Flashcard */}
           <div className="absolute -top-7 sm:-top-8 right-8 sm:right-12 w-16 sm:w-20 h-10 sm:h-12 z-20 pointer-events-none select-none transition-transform hover:scale-110">
             <Image
               src="/chibi-peek.svg"
-              alt="Tiểu Lu lấp ló"
+              alt="Tiểu Long lấp ló"
               width={75}
               height={48}
               priority
@@ -559,7 +559,7 @@ export default function ReviewPage() {
             )}
           </div>
 
-          {/* 3. Thanh 4 Nút Đánh Giá SRS: Đồng bộ Hán phong với Mini Mascot Tiểu Lu */}
+          {/* 3. Thanh 4 Nút Đánh Giá SRS: Đồng bộ Hán phong với Mini Mascot Tiểu Long */}
           {showAnswer && (
             <div className="border-t border-border/80 bg-china-paper/60 p-3 sm:p-4 rounded-b-3xl animate-fade-in">
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3">

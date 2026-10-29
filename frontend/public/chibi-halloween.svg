@@ -1,17 +1,37 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
   <defs>
-    <!-- Background Magic Glow -->
+    <!-- Background Magic Moon Glow -->
     <radialGradient id="halloweenMoonGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#ffb703" stop-opacity="0.35"/>
-      <stop offset="45%" stop-color="#fb8500" stop-opacity="0.15"/>
+      <stop offset="0%" stop-color="#ffb703" stop-opacity="0.25"/>
+      <stop offset="50%" stop-color="#fb8500" stop-opacity="0.1"/>
       <stop offset="100%" stop-color="#3a0ca3" stop-opacity="0"/>
     </radialGradient>
 
-    <!-- Hat & Cape Gradient: Deep Midnight Purple -->
+    <!-- Hat & Robe: Midnight Obsidian Purple -->
     <linearGradient id="witchPurple" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#4a1259"/>
       <stop offset="50%" stop-color="#2d0a38"/>
       <stop offset="100%" stop-color="#190321"/>
+    </linearGradient>
+
+    <!-- Jade Dragon Gradient -->
+    <linearGradient id="dragonJade" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#48ca9b"/>
+      <stop offset="50%" stop-color="#2ca579"/>
+      <stop offset="100%" stop-color="#1b7855"/>
+    </linearGradient>
+
+    <!-- Golden Antlers Gradient -->
+    <linearGradient id="dragonGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff085"/>
+      <stop offset="50%" stop-color="#f5be38"/>
+      <stop offset="100%" stop-color="#d4920a"/>
+    </linearGradient>
+
+    <!-- Cream Belly -->
+    <linearGradient id="dragonBelly" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fefae0"/>
+      <stop offset="100%" stop-color="#faedcd"/>
     </linearGradient>
 
     <!-- Pumpkin Orange Gradient -->
@@ -21,19 +41,12 @@
       <stop offset="100%" stop-color="#9d0208"/>
     </linearGradient>
 
-    <!-- Pumpkin Inner Warm Fire Glow -->
+    <!-- Pumpkin Inner Candle Glow -->
     <radialGradient id="candleFire" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#fff3b0"/>
+      <stop offset="0%" stop-color="#fffbe0"/>
       <stop offset="60%" stop-color="#ffb703"/>
       <stop offset="100%" stop-color="#fb8500"/>
     </radialGradient>
-
-    <!-- Taoist Talisman Yellow Paper -->
-    <linearGradient id="talismanYellow" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#fff3b0"/>
-      <stop offset="80%" stop-color="#ffe66d"/>
-      <stop offset="100%" stop-color="#ffd166"/>
-    </linearGradient>
 
     <!-- Gold Trim Gradient -->
     <linearGradient id="spookyGold" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -42,275 +55,244 @@
       <stop offset="100%" stop-color="#e76f51"/>
     </linearGradient>
 
-    <!-- Panda Blush -->
-    <radialGradient id="pandaBlush" cx="50%" cy="50%" r="50%">
+    <!-- Blush -->
+    <radialGradient id="dragonBlush" cx="50%" cy="50%" r="50%">
       <stop offset="0%" stop-color="#ff4d6d" stop-opacity="0.6"/>
       <stop offset="100%" stop-color="#ff4d6d" stop-opacity="0"/>
     </radialGradient>
 
-    <!-- Drop Shadow Filter -->
-    <filter id="spookyShadow" x="-15%" y="-15%" width="130%" height="130%">
-      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#120024" flood-opacity="0.35"/>
+    <!-- Drop Shadows -->
+    <filter id="spookyShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#05010a" flood-opacity="0.45"/>
     </filter>
 
-    <filter id="lanternGlow" x="-30%" y="-30%" width="160%" height="160%">
-      <feDropShadow dx="0" dy="0" stdDeviation="12" flood-color="#ffb703" flood-opacity="0.65"/>
+    <filter id="pumpkinGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
     </filter>
   </defs>
 
   <style>
-    .ghost-float {
-      animation: floatMotion 3.8s ease-in-out infinite;
-      transform-origin: 250px 250px;
+    .float-mascot {
+      animation: halloweenFloat 3.8s ease-in-out infinite;
+      transform-origin: 250px 320px;
     }
     .bat-flutter {
-      animation: batFly 4.2s ease-in-out infinite;
+      animation: batFly 2.6s ease-in-out infinite alternate;
+      transform-origin: 380px 110px;
     }
-    .bat-flutter-reverse {
-      animation: batFlyReverse 3.6s ease-in-out infinite;
+    .pumpkin-lantern {
+      animation: pumpkinFlicker 3s ease-in-out infinite alternate;
+      transform-origin: 250px 350px;
     }
-    .lantern-light {
-      animation: flickerPulse 2.4s ease-in-out infinite alternate;
-      transform-origin: 345px 335px;
+    .tail-wag {
+      animation: tailSway 2.8s ease-in-out infinite;
+      transform-origin: 160px 370px;
     }
-    .magic-sparkle {
-      animation: sparkleGlow 2.8s ease-in-out infinite alternate;
-    }
-    .talisman-flutter {
-      animation: talismanWiggle 3.2s ease-in-out infinite;
-      transform-origin: 250px 145px;
+    .hat-sway {
+      animation: hatTilt 3.8s ease-in-out infinite;
+      transform-origin: 250px 170px;
     }
 
-    @keyframes floatMotion {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-9px) rotate(1.2deg); }
+    @keyframes halloweenFloat {
+      0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-8px) rotate(1deg);
+      }
+    }
+    @keyframes hatTilt {
+      0%, 100% {
+        transform: rotate(0deg);
+      }
+      50% {
+        transform: rotate(-2deg);
+      }
+    }
+    @keyframes pumpkinFlicker {
+      0% {
+        filter: drop-shadow(0 0 10px rgba(255, 183, 3, 0.45));
+      }
+      100% {
+        filter: drop-shadow(0 0 20px rgba(251, 133, 0, 0.8));
+      }
     }
     @keyframes batFly {
-      0%, 100% { transform: translateY(0) rotate(-4deg); }
-      50% { transform: translateY(-12px) rotate(6deg); }
+      0% {
+        transform: translateY(0px) rotate(-3deg);
+      }
+      100% {
+        transform: translateY(-6px) rotate(4deg);
+      }
     }
-    @keyframes batFlyReverse {
-      0%, 100% { transform: translateY(0) rotate(5deg); }
-      50% { transform: translateY(-10px) rotate(-5deg); }
-    }
-    @keyframes flickerPulse {
-      0% { opacity: 0.88; transform: scale(0.98); }
-      100% { opacity: 1; transform: scale(1.03); }
-    }
-    @keyframes sparkleGlow {
-      0% { opacity: 0.4; transform: scale(0.85); }
-      100% { opacity: 1; transform: scale(1.15); }
-    }
-    @keyframes talismanWiggle {
-      0%, 100% { transform: rotate(0deg); }
-      35% { transform: rotate(3deg); }
-      75% { transform: rotate(-2deg); }
+    @keyframes tailSway {
+      0%, 100% {
+        transform: rotate(0deg);
+      }
+      50% {
+        transform: rotate(-8deg);
+      }
     }
   </style>
 
-  <!-- Giant Spooky Moon / Magic Aura Circle -->
-  <circle cx="250" cy="250" r="225" fill="url(#halloweenMoonGlow)"/>
+  <!-- BACKGROUND MOON & MYSTIC AURA -->
+  <circle cx="250" cy="250" r="235" fill="url(#halloweenMoonGlow)"/>
 
-  <!-- Subtle Soft Ambient Magic Glow -->
-  <g class="magic-sparkle" opacity="0.6">
-    <circle cx="110" cy="140" r="3" fill="#ffd166"/>
-    <circle cx="390" cy="130" r="3.5" fill="#ffd166"/>
-    <circle cx="95" cy="310" r="2.5" fill="#ff9e00"/>
-    <circle cx="410" cy="300" r="3" fill="#ffb703"/>
+  <!-- FLYING HALLOWEEN BAT -->
+  <g class="bat-flutter" filter="url(#spookyShadow)">
+    <path d="M 380 95 Q 365 75 350 85 Q 360 100 355 110 Q 375 105 380 115 Q 385 105 405 110 Q 400 100 410 85 Q 395 75 380 95 Z" fill="#2d0a38"/>
+    <circle cx="377" cy="98" r="1.5" fill="#ffb703"/>
+    <circle cx="383" cy="98" r="1.5" fill="#ffb703"/>
   </g>
 
-  <!-- Shadow below Xiao Lu -->
-  <ellipse cx="250" cy="440" rx="130" ry="22" fill="#1a042e" opacity="0.25"/>
+  <!-- FLOATING MAGIC CANDY & STARS -->
+  <g>
+    <!-- Little Star 1 -->
+    <path d="M 90 120 Q 98 120 98 112 Q 98 120 106 120 Q 98 120 98 128 Q 98 120 90 120 Z" fill="url(#dragonGold)"/>
+    <!-- Little Star 2 -->
+    <path d="M 405 210 Q 412 210 412 203 Q 412 210 419 210 Q 412 210 412 217 Q 412 210 405 210 Z" fill="url(#dragonGold)"/>
 
-  <!-- ======================================================== -->
-  <!-- MAIN CHIBI PANDA: TIỂU LU HÓA TRANG HALLOWEEN -->
-  <!-- ======================================================== -->
-  <g class="ghost-float" filter="url(#spookyShadow)">
+    <!-- Cute Halloween Candy -->
+    <rect x="75" y="240" width="18" height="12" rx="4" fill="url(#pumpkinOrange)" transform="rotate(-20 84 246)"/>
+    <polygon points="66,242 75,246 68,252" fill="url(#witchPurple)" transform="rotate(-20 84 246)"/>
+    <polygon points="101,240 92,246 99,250" fill="url(#witchPurple)" transform="rotate(-20 84 246)"/>
+  </g>
 
-    <!-- Cape / Cloak Background (Back wings of cloak) -->
-    <path d="M 160 270 C 130 310, 120 390, 145 425 C 185 410, 220 420, 250 420 C 280 420, 315 410, 355 425 C 380 390, 370 310, 340 270 Z" fill="url(#witchPurple)"/>
-    <!-- Cape Orange Lining Hem -->
-    <path d="M 145 425 C 185 410, 220 420, 250 420 C 280 420, 315 410, 355 425 C 345 418, 315 402, 250 412 C 185 402, 155 418, 145 425 Z" fill="#ff9e00"/>
+  <!-- DRAGON TAIL (With witch fire tip) -->
+  <g class="tail-wag">
+    <path d="M 180 370 C 130 360, 90 380, 95 415 C 100 435, 130 430, 155 400 Z" fill="url(#dragonJade)"/>
+    <!-- Golden Flame Tail Tuft -->
+    <path d="M 95 410 Q 70 395 65 420 Q 80 440 100 428 Z" fill="url(#dragonGold)"/>
+  </g>
 
-    <!-- PANDA BODY (Round white belly) -->
-    <ellipse cx="250" cy="335" rx="90" ry="85" fill="#ffffff"/>
+  <!-- MAIN DRAGON CHARACTER (TIỂU LONG HALLOWEEN) -->
+  <g class="float-mascot" filter="url(#spookyShadow)">
+    <!-- Dragon Body -->
+    <ellipse cx="250" cy="350" rx="90" ry="85" fill="url(#dragonJade)"/>
 
-    <!-- Robe / Costume Inner Chest (Chinese Scholar Cross-collar with Bat/Spooky accent) -->
-    <path d="M 215 265 L 250 330 L 285 265 Z" fill="#190321"/>
-    <!-- Robe orange inner collar -->
-    <path d="M 223 265 L 250 315 L 277 265" fill="none" stroke="#ff9e00" stroke-width="4.5"/>
-    <path d="M 229 265 L 250 305 L 271 265" fill="none" stroke="#ffd166" stroke-width="3"/>
+    <!-- Dragon Belly with soft cream & gold markings -->
+    <ellipse cx="250" cy="358" rx="60" ry="58" fill="url(#dragonBelly)"/>
+    <path d="M 215 340 Q 250 352 285 340" fill="none" stroke="#d4af37" stroke-width="3" stroke-linecap="round"/>
+    <path d="M 210 365 Q 250 377 290 365" fill="none" stroke="#d4af37" stroke-width="3" stroke-linecap="round"/>
+    <path d="M 218 390 Q 250 402 282 390" fill="none" stroke="#d4af37" stroke-width="3" stroke-linecap="round"/>
 
-    <!-- Belt (Golden Ancient Chinese Jade Buckle with Mini Pumpkin) -->
-    <rect x="180" y="340" width="140" height="18" rx="6" fill="#fb8500"/>
-    <rect x="236" y="336" width="28" height="26" rx="6" fill="#ffd166" stroke="#d4af37" stroke-width="2"/>
-    <circle cx="250" cy="349" r="6" fill="#9d0208"/>
+    <!-- Dragon Feet -->
+    <ellipse cx="195" cy="430" rx="24" ry="15" fill="url(#dragonJade)"/>
+    <ellipse cx="305" cy="430" rx="24" ry="15" fill="url(#dragonJade)"/>
 
-    <!-- PANDA FEET (Chubby black paws with orange pads) -->
-    <!-- Left Foot -->
-    <ellipse cx="190" cy="415" rx="26" ry="19" fill="#1f2421"/>
-    <circle cx="190" cy="415" r="9" fill="#fb8500" opacity="0.85"/>
-    <circle cx="180" cy="406" r="3.5" fill="#fb8500" opacity="0.85"/>
-    <circle cx="190" cy="403" r="3.5" fill="#fb8500" opacity="0.85"/>
-    <circle cx="200" cy="406" r="3.5" fill="#fb8500" opacity="0.85"/>
-    <!-- Right Foot -->
-    <ellipse cx="310" cy="415" rx="26" ry="19" fill="#1f2421"/>
-    <circle cx="310" cy="415" r="9" fill="#fb8500" opacity="0.85"/>
-    <circle cx="300" cy="406" r="3.5" fill="#fb8500" opacity="0.85"/>
-    <circle cx="310" cy="403" r="3.5" fill="#fb8500" opacity="0.85"/>
-    <circle cx="320" cy="406" r="3.5" fill="#fb8500" opacity="0.85"/>
+    <!-- GOLDEN ANTLERS (Poking out from hat sides) -->
+    <!-- Left Antler -->
+    <path d="M 195 160 C 180 120, 150 90, 130 75 C 142 95, 158 108, 168 140 C 150 128, 135 125, 122 130 C 142 142, 158 148, 175 165 Z" fill="url(#dragonGold)"/>
+    <!-- Right Antler -->
+    <path d="M 305 160 C 320 120, 350 90, 370 75 C 358 95, 342 108, 332 140 C 350 128, 365 125, 378 130 C 358 142, 342 148, 325 165 Z" fill="url(#dragonGold)"/>
 
-    <!-- PANDA HEAD -->
-    <!-- Ears (Chubby round black ears) -->
-    <circle cx="160" cy="165" r="38" fill="#1f2421"/>
-    <circle cx="160" cy="165" r="22" fill="#3a403d"/>
-    <circle cx="340" cy="165" r="38" fill="#1f2421"/>
-    <circle cx="340" cy="165" r="22" fill="#3a403d"/>
+    <!-- DRAGON HEAD -->
+    <circle cx="250" cy="220" r="95" fill="url(#dragonJade)"/>
 
-    <!-- Giant Round White Head -->
-    <circle cx="250" cy="225" r="102" fill="#ffffff" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.06))"/>
+    <!-- Dragon Ears / Fins -->
+    <ellipse cx="160" cy="215" rx="25" ry="18" fill="url(#dragonJade)" transform="rotate(-20 160 215)"/>
+    <ellipse cx="160" cy="215" rx="16" ry="10" fill="url(#dragonGold)" transform="rotate(-20 160 215)"/>
 
-    <!-- EYE PATCHES (Signature Panda Tear-shaped Patches) -->
-    <!-- Left Eye Patch (Angled outward slightly) -->
-    <ellipse cx="205" cy="220" rx="30" ry="26" fill="#1f2421" transform="rotate(-15 205 220)"/>
-    <!-- Right Eye Patch -->
-    <ellipse cx="295" cy="220" rx="30" ry="26" fill="#1f2421" transform="rotate(15 295 220)"/>
+    <ellipse cx="340" cy="215" rx="25" ry="18" fill="url(#dragonJade)" transform="rotate(20 340 215)"/>
+    <ellipse cx="340" cy="215" rx="16" ry="10" fill="url(#dragonGold)" transform="rotate(20 340 215)"/>
 
-    <!-- BIG SHINY ANIME EYES -->
+    <!-- Snout / Muzzle -->
+    <ellipse cx="250" cy="250" rx="65" ry="42" fill="#cbf3e4"/>
+
+    <!-- Cute Nostrils -->
+    <ellipse cx="235" cy="242" rx="5" ry="7" fill="#1b7855"/>
+    <ellipse cx="265" cy="242" rx="5" ry="7" fill="#1b7855"/>
+
+    <!-- Cute Smiling Mouth with Tiny Dragon Fang -->
+    <path d="M 235 258 Q 250 272 265 258" fill="none" stroke="#1b7855" stroke-width="4" stroke-linecap="round"/>
+    <polygon points="242,260 246,268 250,260" fill="#ffffff"/>
+
+    <!-- Golden Dragon Whiskers -->
+    <path d="M 200 248 Q 168 242 145 264" fill="none" stroke="url(#dragonGold)" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M 300 248 Q 332 242 355 264" fill="none" stroke="url(#dragonGold)" stroke-width="3.5" stroke-linecap="round"/>
+
+    <!-- Blushing Cheeks -->
+    <circle cx="188" cy="246" r="20" fill="url(#dragonBlush)"/>
+    <circle cx="312" cy="246" r="20" fill="url(#dragonBlush)"/>
+
+    <!-- BIG PLAYFUL SPARKLING EYES -->
     <!-- Left Eye -->
-    <ellipse cx="209" cy="218" rx="14" ry="17" fill="#0d1b2a"/>
-    <circle cx="213" cy="213" r="6.5" fill="#ffffff"/>
-    <circle cx="204" cy="223" r="3" fill="#ffffff"/>
-    <ellipse cx="209" cy="227" rx="8" ry="3" fill="#ff9e00" opacity="0.75"/>
+    <ellipse cx="208" cy="210" rx="16" ry="20" fill="#111827"/>
+    <ellipse cx="208" cy="212" rx="13" ry="17" fill="#1f2937"/>
+    <circle cx="203" cy="204" r="6.5" fill="#ffffff"/>
+    <circle cx="213" cy="218" r="3.2" fill="#ffffff"/>
+    <ellipse cx="208" cy="222" rx="7" ry="3" fill="#f5be38" opacity="0.8"/>
+
     <!-- Right Eye -->
-    <ellipse cx="291" cy="218" rx="14" ry="17" fill="#0d1b2a"/>
-    <circle cx="295" cy="213" r="6.5" fill="#ffffff"/>
-    <circle cx="286" cy="223" r="3" fill="#ffffff"/>
-    <ellipse cx="291" cy="227" rx="8" ry="3" fill="#ff9e00" opacity="0.75"/>
+    <ellipse cx="292" cy="210" rx="16" ry="20" fill="#111827"/>
+    <ellipse cx="292" cy="212" rx="13" ry="17" fill="#1f2937"/>
+    <circle cx="287" cy="204" r="6.5" fill="#ffffff"/>
+    <circle cx="297" cy="218" r="3.2" fill="#ffffff"/>
+    <ellipse cx="292" cy="222" rx="7" ry="3" fill="#f5be38" opacity="0.8"/>
 
-    <!-- ROSY BLUSH CHEEKS -->
-    <circle cx="170" cy="245" r="20" fill="url(#pandaBlush)"/>
-    <circle cx="330" cy="245" r="20" fill="url(#pandaBlush)"/>
+    <!-- Forehead Pearl Mark -->
+    <ellipse cx="250" cy="172" rx="10" ry="14" fill="url(#dragonGold)"/>
+    <circle cx="250" cy="170" r="5.5" fill="#ffffff"/>
 
-    <!-- PANDA NOSE -->
-    <ellipse cx="250" cy="242" rx="9" ry="6.5" fill="#1f2421"/>
-    <ellipse cx="250" cy="240" rx="3.5" ry="1.5" fill="#ffffff" opacity="0.6"/>
+    <!-- WIZARD / SORCERER HAT (Đội lệch quý tộc) -->
+    <g class="hat-sway">
+      <!-- Hat Brim (Vành mũ nhung tím cong vút) -->
+      <ellipse cx="250" cy="155" rx="120" ry="24" fill="url(#witchPurple)" stroke="url(#spookyGold)" stroke-width="3" transform="rotate(-5 250 155)"/>
 
-    <!-- CUTE HALLOWEEN SMILE WITH TINY FANGS -->
-    <path d="M 238 250 C 242 258, 248 258, 250 253 C 252 258, 258 258, 262 250" fill="none" stroke="#1f2421" stroke-width="3" stroke-linecap="round"/>
-    <!-- Cute Left Fang -->
-    <polygon points="241,250 244,250 242.5,256" fill="#ffffff" stroke="#1f2421" stroke-width="1"/>
-    <!-- Cute Right Fang -->
-    <polygon points="257,250 260,250 258.5,256" fill="#ffffff" stroke="#1f2421" stroke-width="1"/>
+      <!-- Hat Cone (Chóp nón phù thủy uốn lượn) -->
+      <path d="M 180 150 Q 220 80 270 30 Q 300 20 315 40 Q 290 90 320 140 Z" fill="url(#witchPurple)" filter="url(#spookyShadow)"/>
 
-    <!-- ======================================================== -->
-    <!-- HALLOWEEN COSTUME: JIANGSHI / WIZARD HAT & TALISMAN -->
-    <!-- ======================================================== -->
-    <!-- Cloak Front Collar / Ribbon with Pumpkin Gem -->
-    <path d="M 185 275 Q 250 295 315 275 Q 295 315 250 320 Q 205 315 185 275 Z" fill="#2d0a38"/>
-    <path d="M 185 275 Q 250 295 315 275" fill="none" stroke="#ff9e00" stroke-width="3"/>
-    <!-- Collar Pumpkin Pin -->
-    <circle cx="250" cy="298" r="9" fill="#ff9e00" stroke="#d4af37" stroke-width="2"/>
-    <polygon points="246,296 248,296 247,299" fill="#2d0a38"/>
-    <polygon points="252,296 254,296 253,299" fill="#2d0a38"/>
-    <path d="M 247 302 Q 250 305 253 302" fill="none" stroke="#2d0a38" stroke-width="1.5"/>
+      <!-- Hat Band: Royal Gold Silk Ribbon -->
+      <path d="M 195 146 Q 250 138 305 137 L 308 147 Q 250 148 193 156 Z" fill="url(#spookyGold)"/>
 
-    <!-- CHINESE SCHOLAR / WIZARD HAT (Mũ Quan Cổ Phong Kết Hợp Chóp Phù Thủy) -->
-    <!-- Hat Brim (Wide Oval) -->
-    <ellipse cx="250" cy="145" rx="108" ry="24" fill="#2d0a38" stroke="#ff9e00" stroke-width="3.5" filter="drop-shadow(0 4px 6px rgba(0,0,0,0.3))"/>
-    <!-- Hat Brim Gold Trim -->
-    <ellipse cx="250" cy="145" rx="98" ry="18" fill="none" stroke="#ffd166" stroke-width="1.8"/>
+      <!-- Golden Buckle -->
+      <rect x="238" y="136" width="24" height="18" rx="4" fill="none" stroke="url(#dragonGold)" stroke-width="4"/>
+      <rect x="246" y="142" width="8" height="6" fill="url(#witchPurple)"/>
 
-    <!-- Hat Crown (Tall Wizard Cone blending with Official Mandarin Hat) -->
-    <path d="M 175 142 C 185 90, 210 35, 230 18 C 242 8, 258 8, 270 18 C 290 35, 315 90, 325 142 Z" fill="url(#witchPurple)"/>
-
-    <!-- Hat Ribbon / Band around base (Pumpkin Orange & Gold) -->
-    <path d="M 174 140 C 190 133, 310 133, 326 140 L 327 126 C 310 119, 190 119, 173 126 Z" fill="#ff9e00"/>
-    <circle cx="250" cy="128" r="11" fill="#ffd166" stroke="#9d0208" stroke-width="2.5"/>
-    <!-- Ruby Gem on Hat Center -->
-    <polygon points="250,121 257,128 250,135 243,128" fill="#e63946"/>
-
-    <!-- Spooky/Cute Witch Tip Top Pom-pom -->
-    <circle cx="248" cy="16" r="9" fill="#ffb703" filter="drop-shadow(0 0 6px #ff9e00)"/>
-
-    <!-- CHINESE TAOIST TALISMAN (Bùa Vàng May Mắn Dán Trên Mũ/Trán) -->
-    <g class="talisman-flutter">
-      <!-- Yellow Talisman Paper -->
-      <polygon points="230,138 270,138 273,205 264,200 250,205 236,200 227,205" fill="url(#talismanYellow)" filter="drop-shadow(0 3px 4px rgba(0,0,0,0.25))"/>
-      <!-- Red Talisman Borders & Runes: "学霸" (Học Bá) or "万圣" (Vạn Thánh) -->
-      <path d="M 235 145 L 265 145 L 265 195 L 235 195 Z" fill="none" stroke="#d90429" stroke-width="1.8"/>
-      <!-- Top Rune Circle -->
-      <circle cx="250" cy="153" r="4" fill="none" stroke="#d90429" stroke-width="1.5"/>
-      <!-- Chinese Characters "万 圣" (Vạn Thánh / Halloween) with Cinnabar Ink -->
-      <text x="250" y="172" font-family="'Noto Serif SC', serif, 'SimSun'" font-size="13" font-weight="900" fill="#d90429" text-anchor="middle">万</text>
-      <text x="250" y="188" font-family="'Noto Serif SC', serif, 'SimSun'" font-size="13" font-weight="900" fill="#d90429" text-anchor="middle">圣</text>
+      <!-- Dangling Bell / Star from Tip of Hat -->
+      <circle cx="315" cy="40" r="7" fill="url(#dragonGold)"/>
     </g>
 
-    <!-- LEFT ARM & MAGIC WRITING BRUSH (Tay Trái Cầm Bút Thư Pháp Ma Thuật) -->
-    <g transform="translate(0, 0)">
-      <!-- Left Sleeve -->
-      <path d="M 180 290 C 150 295, 120 330, 115 365 C 135 375, 160 365, 175 330 Z" fill="#2d0a38"/>
-      <!-- Left Sleeve Orange Trim -->
-      <path d="M 115 365 C 135 375, 160 365, 175 330" fill="none" stroke="#ff9e00" stroke-width="3"/>
-      <!-- Black Paw -->
-      <circle cx="120" cy="360" r="16" fill="#1f2421"/>
+    <!-- DRAGON PAWS HOLDING PUMPKIN -->
+    <!-- Left Paw -->
+    <ellipse cx="178" cy="342" rx="18" ry="24" fill="url(#dragonJade)" transform="rotate(-30 178 342)"/>
+    <circle cx="168" cy="358" r="8" fill="url(#dragonJade)"/>
 
-      <!-- Magic Calligraphy Brush Wand -->
-      <g transform="rotate(-35 120 360)">
-        <!-- Bamboo Brush Handle -->
-        <rect x="117" y="270" width="8" height="95" rx="3" fill="#d4a373" stroke="#bc6c25" stroke-width="1.5"/>
-        <rect x="115" y="266" width="12" height="10" rx="2" fill="#d4af37"/>
-        <!-- Glowing Purple/Orange Magic Bristles -->
-        <path d="M 116 266 C 114 246, 121 230, 121 230 C 121 230, 128 246, 126 266 Z" fill="#ffb703" filter="drop-shadow(0 0 6px #fb8500)"/>
-        <!-- Magic Sparkles from Brush -->
-        <circle cx="121" cy="225" r="4" fill="#fff3b0"/>
-        <circle cx="115" cy="216" r="2.5" fill="#ffb703"/>
-        <circle cx="130" cy="218" r="3" fill="#ff7b89"/>
-      </g>
-    </g>
+    <!-- Right Paw -->
+    <ellipse cx="322" cy="342" rx="18" ry="24" fill="url(#dragonJade)" transform="rotate(30 322 342)"/>
+    <circle cx="332" cy="358" r="8" fill="url(#dragonJade)"/>
+  </g>
 
-    <!-- RIGHT ARM & PUMPKIN JACK-O-LANTERN (Tay Phải Ôm Đèn Bí Ngô) -->
-    <!-- Right Sleeve -->
-    <path d="M 320 290 C 350 295, 375 325, 385 360 C 365 370, 340 360, 325 330 Z" fill="#2d0a38"/>
-    <!-- Right Sleeve Orange Trim -->
-    <path d="M 385 360 C 365 370, 340 360, 325 330" fill="none" stroke="#ff9e00" stroke-width="3"/>
-    <!-- Black Paw holding pumpkin -->
-    <circle cx="375" cy="355" r="16" fill="#1f2421"/>
+  <!-- GLOWING JACK-O'-LANTERN PUMPKIN (Lồng đèn bí ngô phát sáng ấm áp) -->
+  <g class="pumpkin-lantern" filter="url(#pumpkinGlow)">
+    <!-- Pumpkin Stalk (Cuống bí) -->
+    <path d="M 248 312 Q 250 295 260 290 Q 256 305 253 312 Z" fill="#40916c"/>
 
-    <!-- GLOWING JACK-O-LANTERN PUMPKIN (Đèn Lồng Bí Ngô Phát Sáng) -->
-    <g class="lantern-light" filter="url(#lanternGlow)">
-      <!-- Pumpkin Stem & Vine -->
-      <path d="M 345 285 Q 343 270 335 268 Q 346 270 348 285 Z" fill="#52b788" stroke="#2d6a4f" stroke-width="1.5"/>
-      <!-- Little Vine Leaf -->
-      <ellipse cx="352" cy="272" rx="6" ry="4" fill="#74c69d" transform="rotate(25 352 272)"/>
+    <!-- Pumpkin Back / Body Segments -->
+    <ellipse cx="250" cy="360" rx="64" ry="48" fill="url(#pumpkinOrange)" filter="url(#spookyShadow)"/>
+    <ellipse cx="220" cy="360" rx="38" ry="46" fill="url(#pumpkinOrange)"/>
+    <ellipse cx="280" cy="360" rx="38" ry="46" fill="url(#pumpkinOrange)"/>
+    <ellipse cx="250" cy="360" rx="32" ry="46" fill="url(#pumpkinOrange)"/>
 
-      <!-- Pumpkin Body Segments -->
-      <!-- Back segments -->
-      <ellipse cx="326" cy="325" rx="20" ry="29" fill="#e85d04"/>
-      <ellipse cx="364" cy="325" rx="20" ry="29" fill="#e85d04"/>
-      <!-- Middle segments -->
-      <ellipse cx="334" cy="326" rx="22" ry="32" fill="url(#pumpkinOrange)"/>
-      <ellipse cx="356" cy="326" rx="22" ry="32" fill="url(#pumpkinOrange)"/>
-      <!-- Center Front segment -->
-      <ellipse cx="345" cy="327" rx="22" ry="34" fill="url(#pumpkinOrange)"/>
+    <!-- Pumpkin Rib Lines -->
+    <path d="M 235 316 C 215 335 215 385 235 404" fill="none" stroke="#ba181b" stroke-width="2.5" opacity="0.6"/>
+    <path d="M 265 316 C 285 335 285 385 265 404" fill="none" stroke="#ba181b" stroke-width="2.5" opacity="0.6"/>
 
-      <!-- Carved Face: Happy Chinese Scholar Pumpkin Face (Glowing Warm Fire) -->
-      <!-- Left Triangle Eye -->
-      <polygon points="332,318 340,314 338,324" fill="url(#candleFire)"/>
-      <!-- Right Triangle Eye -->
-      <polygon points="358,318 350,314 352,324" fill="url(#candleFire)"/>
-      <!-- Triangle Nose -->
-      <polygon points="345,324 342,330 348,330" fill="url(#candleFire)"/>
-      <!-- Carved Spooky Tooth Smile -->
-      <path d="M 330 336 Q 345 350 360 336 Q 355 344 352 338 Q 348 346 345 338 Q 342 346 338 338 Q 334 344 330 336 Z" fill="url(#candleFire)"/>
+    <!-- Glowing Pumpkin Carved Eyes -->
+    <polygon points="228,345 242,345 235,332" fill="url(#candleFire)"/>
+    <polygon points="258,345 272,345 265,332" fill="url(#candleFire)"/>
 
-      <!-- Mini Chinese Tassel Hanging from Pumpkin -->
-      <g transform="translate(345, 362)">
-        <circle cx="0" cy="0" r="3" fill="#d4af37"/>
-        <line x1="0" y1="3" x2="0" y2="16" stroke="#d90429" stroke-width="3"/>
-        <circle cx="0" cy="17" r="2" fill="#d4af37"/>
-      </g>
-    </g>
+    <!-- Glowing Pumpkin Carved Nose -->
+    <polygon points="250,352 245,360 255,360" fill="url(#candleFire)"/>
 
+    <!-- Glowing Pumpkin Carved Grin -->
+    <path d="M 224 372 Q 235 388 250 388 Q 265 388 276 372 Q 268 380 250 380 Q 232 380 224 372 Z" fill="url(#candleFire)"/>
+    <!-- Pumpkin Teeth -->
+    <polygon points="236,373 242,373 239,379" fill="url(#pumpkinOrange)"/>
+    <polygon points="258,373 264,373 261,379" fill="url(#pumpkinOrange)"/>
   </g>
 </svg>

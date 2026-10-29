@@ -38,11 +38,11 @@ const SideBar = () => {
             type="button"
             onClick={isHalloweenTheme ? triggerSpookyConfetti : undefined}
             className="w-10 h-10 rounded-2xl bg-white border border-border shadow-xs p-1 shrink-0 flex items-center justify-center transition-transform hover:scale-105 relative cursor-pointer group"
-            title={isHalloweenTheme ? "Bấm vào Tiểu Lu để nhận kẹo & pháo hoa Halloween! 🍬" : "Tiểu Lu"}
+            title={isHalloweenTheme ? "Bấm vào Tiểu Long để nhận kẹo & pháo hoa Halloween! 🍬" : "Tiểu Long"}
           >
             <Image
               src="/chibi-loading.svg"
-              alt="Tiểu Lu"
+              alt="Rồng nhỏ Tiểu Long"
               width={34}
               height={34}
               priority
@@ -126,7 +126,7 @@ const SideBar = () => {
           <div className="w-8 h-8 rounded-xl bg-white border border-border shadow-2xs p-1 flex items-center justify-center relative">
             <Image
               src="/chibi-loading.svg"
-              alt="Tiểu Lu"
+              alt="Rồng nhỏ Tiểu Long"
               width={26}
               height={26}
               priority

@@ -252,7 +252,7 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
               />
             </div>
           ) : (
-            /* Animated Audio Stage with Chibi Panda */
+            /* Animated Audio Stage with Chibi Little Dragon */
             <div className="relative aspect-video w-full rounded-3xl overflow-hidden bg-gradient-to-b from-[#1a1c23] to-[#0f1117] text-white shadow-md border border-border flex flex-col items-center justify-center p-6 text-center select-none">
               {/* Audio Visualizer Waves */}
               <div className="absolute inset-0 opacity-20 flex items-center justify-around px-8 pointer-events-none">
@@ -271,7 +271,7 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
               <div className="relative z-10 w-24 h-24 sm:w-28 sm:h-28 mb-3 transition-transform hover:scale-105">
                 <Image
                   src="/chibi-loading.svg"
-                  alt="Tiểu Lu Audio Studio"
+                  alt="Tiểu Long Audio Studio"
                   width={112}
                   height={112}
                   priority
@@ -615,19 +615,19 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
             </div>
           </div>
 
-          {/* Little Panda Chibi Encouragement Note */}
+          {/* Little Dragon Chibi Encouragement Note */}
           <div className="p-4 rounded-2xl bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-transparent border border-amber-300/40 flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-white p-1 border border-border shadow-2xs shrink-0 flex items-center justify-center">
               <Image
                 src="/chibi-loading.svg"
-                alt="Tiểu Lu"
+                alt="Tiểu Long"
                 width={30}
                 height={30}
                 className="object-contain"
               />
             </div>
             <div className="text-xs text-china-ink leading-relaxed">
-              <span className="font-bold text-amber-900">Mẹo luyện của Tiểu Lu: </span>
+              <span className="font-bold text-amber-900">Mẹo luyện của Tiểu Long: </span>
               Hãy nghe mẫu 2–3 lần để bắt đúng ngữ điệu và ngắt nghỉ, sau đó bấm Micro thu âm đọc to rõ nhé!
             </div>
           </div>

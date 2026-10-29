@@ -25,7 +25,7 @@ export default function AuthGate({ children }: { children: React.ReactNode }) {
         <div className="mt-4 flex flex-col items-center space-y-2 animate-fade-in text-center">
           <div className="flex items-center gap-2">
             <span className="font-serif font-bold text-china-ink text-base">
-              Tiểu Lu đang kiểm tra phiên học...
+              Tiểu Long đang kiểm tra phiên học...
             </span>
             <span className="inline-flex gap-1">
               <span className="w-1.5 h-1.5 rounded-full bg-china-red animate-bounce" />
@@ -77,7 +77,7 @@ export default function AuthGate({ children }: { children: React.ReactNode }) {
           <div className="relative w-64 h-64 sm:w-72 sm:h-72 select-none filter drop-shadow-sm transition-transform duration-500 hover:scale-105">
             <Image
               src="/chibi-loading.svg"
-              alt="Tiểu Lu đợi đăng nhập"
+              alt="Tiểu Long đợi đăng nhập"
               fill
               sizes="(max-width: 640px) 256px, 288px"
               priority
@@ -93,7 +93,7 @@ export default function AuthGate({ children }: { children: React.ReactNode }) {
             </div>
 
             <h1 className="text-2xl sm:text-3xl font-serif font-extrabold text-china-ink tracking-tight pt-1">
-              Tiểu Lu đang đợi bạn vào học!
+              Tiểu Long đang đợi bạn vào học!
             </h1>
 
             <p className="text-xs sm:text-sm text-muted max-w-md mx-auto leading-relaxed">

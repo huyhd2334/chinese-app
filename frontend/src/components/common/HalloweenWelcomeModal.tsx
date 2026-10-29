@@ -86,7 +86,7 @@ export default function HalloweenWelcomeModal() {
               <div className="w-full h-full rounded-full bg-gradient-to-b from-[#1c1226] to-[#0c0812] flex items-center justify-center overflow-hidden border border-amber-300/15">
                 <Image
                   src="/chibi-halloween.svg"
-                  alt="Tiểu Lu"
+                  alt="Tiểu Long"
                   width={130}
                   height={130}
                   priority
@@ -111,7 +111,7 @@ export default function HalloweenWelcomeModal() {
             </div>
 
             <p className="text-xs text-stone-300/80 max-w-[320px] mx-auto leading-relaxed pt-0.5">
-              Đồng hành cùng Tiểu Lu trong mùa lễ hội Vạn Thánh: chúc bạn phản xạ tự nhiên, ghi nhớ sâu sắc và chạm mốc điểm cao!
+              Đồng hành cùng Rồng nhỏ Tiểu Long trong mùa lễ hội Vạn Thánh: chúc bạn phản xạ tự nhiên, ghi nhớ sâu sắc và chạm mốc điểm cao!
             </p>
           </div>
 

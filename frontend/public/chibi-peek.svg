@@ -1,22 +1,31 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 130" width="100%" height="100%">
   <defs>
+    <!-- Jade Dragon Gradient -->
+    <linearGradient id="peekJadeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#48ca9b"/>
+      <stop offset="50%" stop-color="#2ca579"/>
+      <stop offset="100%" stop-color="#1b7855"/>
+    </linearGradient>
+
+    <!-- Golden Antlers Gradient -->
+    <linearGradient id="peekGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff085"/>
+      <stop offset="50%" stop-color="#f5be38"/>
+      <stop offset="100%" stop-color="#d4920a"/>
+    </linearGradient>
+
+    <!-- Cheek Blush -->
     <radialGradient id="peekBlush" cx="50%" cy="50%" r="50%">
       <stop offset="0%" stop-color="#ff7b89" stop-opacity="0.65"/>
       <stop offset="100%" stop-color="#ff7b89" stop-opacity="0"/>
     </radialGradient>
 
-    <linearGradient id="peekJadeCap" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#5ca38e"/>
-      <stop offset="100%" stop-color="#2d5e51"/>
-    </linearGradient>
-
     <filter id="peekShadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#2b2b2b" flood-opacity="0.1"/>
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.12"/>
     </filter>
   </defs>
 
   <style>
-    /* Playful peeking animation */
     .peek-motion {
       animation: peekBob 3.6s ease-in-out infinite;
       transform-origin: 100px 120px;
@@ -25,13 +34,9 @@
       animation: peekEyeBlink 3.8s ease-in-out infinite;
       transform-origin: 100px 72px;
     }
-    .ear-left {
-      animation: earTwitchL 4s ease-in-out infinite;
-      transform-origin: 50px 42px;
-    }
-    .ear-right {
-      animation: earTwitchR 4s ease-in-out infinite;
-      transform-origin: 150px 42px;
+    .antler-sway {
+      animation: antlerTwitch 4s ease-in-out infinite;
+      transform-origin: 100px 45px;
     }
     .star-twinkle {
       animation: starTwinkle 2.2s ease-in-out infinite alternate;
@@ -42,103 +47,119 @@
         transform: translateY(0);
       }
       50% {
-        transform: translateY(-5px);
+        transform: translateY(-6px);
       }
     }
-
     @keyframes peekEyeBlink {
       0%, 93%, 100% {
         transform: scaleY(1);
       }
       96% {
-        transform: scaleY(0.1);
+        transform: scaleY(0.12);
       }
     }
-
-    @keyframes earTwitchL {
-      0%, 85%, 100% { transform: rotate(0deg); }
-      88% { transform: rotate(-3deg); }
-      92% { transform: rotate(2deg); }
+    @keyframes antlerTwitch {
+      0%, 100% {
+        transform: rotate(0deg);
+      }
+      50% {
+        transform: rotate(2deg);
+      }
     }
-
-    @keyframes earTwitchR {
-      0%, 85%, 100% { transform: rotate(0deg); }
-      88% { transform: rotate(3deg); }
-      92% { transform: rotate(-2deg); }
-    }
-
     @keyframes starTwinkle {
-      0% { opacity: 0.3; transform: scale(0.8) rotate(0deg); }
-      100% { opacity: 1; transform: scale(1.15) rotate(20deg); }
+      0% {
+        opacity: 0.3;
+        transform: scale(0.8);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1.15);
+      }
     }
   </style>
 
-  <g class="peek-motion">
-    <!-- Ears -->
-    <g class="ear-left">
-      <circle cx="50" cy="42" r="22" fill="#31333b"/>
-      <circle cx="50" cy="42" r="13" fill="#434752"/>
-      <circle cx="52" cy="40" r="7" fill="#fca5a5" opacity="0.3"/>
-    </g>
-
-    <g class="ear-right">
-      <circle cx="150" cy="42" r="22" fill="#31333b"/>
-      <circle cx="150" cy="42" r="13" fill="#434752"/>
-      <circle cx="148" cy="40" r="7" fill="#fca5a5" opacity="0.3"/>
-    </g>
-
-    <!-- Head (Peeking up) -->
-    <path d="M40 95 C 38 48 64 26 100 26 C 136 26 162 48 160 95 C 160 115 140 120 100 120 C 60 120 40 115 40 95 Z" fill="#ffffff" filter="url(#peekShadow)"/>
-
-    <!-- Scholar Cap -->
-    <path d="M85 28 C 85 18 91 14 100 14 C 109 14 115 18 115 28 Z" fill="url(#peekJadeCap)"/>
-    <rect x="81" y="25" width="38" height="4" rx="2" fill="#20453b"/>
-    <circle cx="100" cy="21" r="3.5" fill="#f5d77f"/>
-    <circle cx="100" cy="12" r="2.5" fill="#c8102e"/>
-
-    <!-- Eye Patches -->
-    <ellipse cx="72" cy="68" rx="15" ry="19" fill="#31333b" transform="rotate(-10 72 68)"/>
-    <ellipse cx="128" cy="68" rx="15" ry="19" fill="#31333b" transform="rotate(10 128 68)"/>
-
-    <!-- Eyes (Sparkly & Cute) -->
-    <g class="peek-blink">
-      <circle cx="74" cy="68" r="8" fill="#1e2026"/>
-      <circle cx="72" cy="65" r="3.8" fill="#ffffff"/>
-      <circle cx="77" cy="71" r="1.8" fill="#ffffff"/>
-
-      <circle cx="126" cy="68" r="8" fill="#1e2026"/>
-      <circle cx="124" cy="65" r="3.8" fill="#ffffff"/>
-      <circle cx="129" cy="71" r="1.8" fill="#ffffff"/>
-    </g>
-
-    <!-- Blushing Cheeks -->
-    <ellipse cx="58" cy="86" rx="11" ry="7" fill="url(#peekBlush)"/>
-    <ellipse cx="142" cy="86" rx="11" ry="7" fill="url(#peekBlush)"/>
-
-    <!-- Nose & Smile -->
-    <circle cx="100" cy="78" r="2.6" fill="#31333b"/>
-    <path d="M95 84 C 97 88 103 88 105 84" fill="none" stroke="#31333b" stroke-width="2.2" stroke-linecap="round"/>
-
-    <!-- Two Little Paws Clinging to Edge (Đôi tay nhỏ bám vào mép hộp) -->
-    <g>
-      <!-- Left Paw -->
-      <ellipse cx="54" cy="116" rx="13" ry="10" fill="#31333b"/>
-      <ellipse cx="54" cy="113" rx="7" ry="5" fill="#434752"/>
-      <line x1="48" y1="117" x2="48" y2="120" stroke="#1e2026" stroke-width="1.5" stroke-linecap="round"/>
-      <line x1="54" y1="118" x2="54" y2="121" stroke="#1e2026" stroke-width="1.5" stroke-linecap="round"/>
-      <line x1="60" y1="117" x2="60" y2="120" stroke="#1e2026" stroke-width="1.5" stroke-linecap="round"/>
-
-      <!-- Right Paw -->
-      <ellipse cx="146" cy="116" rx="13" ry="10" fill="#31333b"/>
-      <ellipse cx="146" cy="113" rx="7" ry="5" fill="#434752"/>
-      <line x1="140" y1="117" x2="140" y2="120" stroke="#1e2026" stroke-width="1.5" stroke-linecap="round"/>
-      <line x1="146" y1="118" x2="146" y2="121" stroke="#1e2026" stroke-width="1.5" stroke-linecap="round"/>
-      <line x1="152" y1="117" x2="152" y2="120" stroke="#1e2026" stroke-width="1.5" stroke-linecap="round"/>
-    </g>
+  <!-- MAGIC SPARKLES -->
+  <g class="star-twinkle">
+    <path d="M 28 42 Q 33 42 33 37 Q 33 42 38 42 Q 33 42 33 47 Q 33 42 28 42 Z" fill="url(#peekGoldGrad)"/>
+    <path d="M 168 35 Q 173 35 173 30 Q 173 35 178 35 Q 173 35 173 40 Q 173 35 168 35 Z" fill="url(#peekGoldGrad)"/>
+    <circle cx="22" cy="70" r="2.5" fill="#f5be38"/>
+    <circle cx="178" cy="65" r="2.5" fill="#48ca9b"/>
   </g>
 
-  <!-- Little Sparkle Star near ear -->
-  <g class="star-twinkle" transform="translate(168, 28)">
-    <path d="M0 -5 Q 0 0 5 0 Q 0 0 0 5 Q 0 0 -5 0 Q 0 0 0 -5 Z" fill="#d4af37"/>
+  <!-- DRAGON PEEKING HEAD & PAWS -->
+  <g class="peek-motion" filter="url(#peekShadow)">
+    <!-- Golden Antlers -->
+    <g class="antler-sway">
+      <!-- Left Antler -->
+      <path d="M 76 52 C 68 32, 52 16, 42 10 C 48 20, 58 28, 62 44 C 54 36, 46 34, 38 38 C 48 44, 56 46, 68 54 Z" fill="url(#peekGoldGrad)"/>
+      <!-- Right Antler -->
+      <path d="M 124 52 C 132 32, 148 16, 158 10 C 152 20, 142 28, 138 44 C 146 36, 154 34, 162 38 C 152 44, 144 46, 132 54 Z" fill="url(#peekGoldGrad)"/>
+      <!-- Scholar Mini Tuft -->
+      <path d="M 95 38 Q 100 24 105 38 Z" fill="url(#peekGoldGrad)"/>
+    </g>
+
+    <!-- Dragon Head -->
+    <circle cx="100" cy="80" r="50" fill="url(#peekJadeGrad)"/>
+
+    <!-- Dragon Ears / Fins -->
+    <ellipse cx="52" cy="75" rx="14" ry="10" fill="url(#peekJadeGrad)" transform="rotate(-20 52 75)"/>
+    <ellipse cx="52" cy="75" rx="9" ry="6" fill="url(#peekGoldGrad)" transform="rotate(-20 52 75)"/>
+
+    <ellipse cx="148" cy="75" rx="14" ry="10" fill="url(#peekJadeGrad)" transform="rotate(20 148 75)"/>
+    <ellipse cx="148" cy="75" rx="9" ry="6" fill="url(#peekGoldGrad)" transform="rotate(20 148 75)"/>
+
+    <!-- Forehead Golden Pearl -->
+    <ellipse cx="100" cy="52" rx="6" ry="8" fill="url(#peekGoldGrad)"/>
+    <circle cx="100" cy="50" r="3" fill="#ffffff"/>
+
+    <!-- Snout / Muzzle -->
+    <ellipse cx="100" cy="94" rx="35" ry="22" fill="#cbf3e4"/>
+
+    <!-- Cute Nostrils -->
+    <ellipse cx="92" cy="90" rx="3" ry="4" fill="#1b7855"/>
+    <ellipse cx="108" cy="90" rx="3" ry="4" fill="#1b7855"/>
+
+    <!-- Gentle Dragon Smile -->
+    <path d="M 92 98 Q 100 106 108 98" fill="none" stroke="#1b7855" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- Dragon Whiskers -->
+    <path d="M 72 92 Q 55 88 44 98" fill="none" stroke="url(#peekGoldGrad)" stroke-width="2" stroke-linecap="round"/>
+    <path d="M 128 92 Q 145 88 156 98" fill="none" stroke="url(#peekGoldGrad)" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Cute Blushing Cheeks -->
+    <circle cx="68" cy="92" r="11" fill="url(#peekBlush)"/>
+    <circle cx="132" cy="92" r="11" fill="url(#peekBlush)"/>
+
+    <!-- SPARKLING EYES (Blinking) -->
+    <g class="peek-blink">
+      <!-- Left Eye -->
+      <ellipse cx="78" cy="74" rx="9" ry="11" fill="#111827"/>
+      <ellipse cx="78" cy="75" rx="7" ry="9" fill="#1f2937"/>
+      <circle cx="75" cy="70" r="3.5" fill="#ffffff"/>
+      <circle cx="81" cy="78" r="1.8" fill="#ffffff"/>
+      <ellipse cx="78" cy="81" rx="4" ry="1.8" fill="#f5be38" opacity="0.8"/>
+
+      <!-- Right Eye -->
+      <ellipse cx="122" cy="74" rx="9" ry="11" fill="#111827"/>
+      <ellipse cx="122" cy="75" rx="7" ry="9" fill="#1f2937"/>
+      <circle cx="119" cy="70" r="3.5" fill="#ffffff"/>
+      <circle cx="125" cy="78" r="1.8" fill="#ffffff"/>
+      <ellipse cx="122" cy="81" rx="4" ry="1.8" fill="#f5be38" opacity="0.8"/>
+    </g>
+
+    <!-- LITTLE DRAGON CLAWS / PAWS (Holding the bottom ledge) -->
+    <g>
+      <!-- Left Paw -->
+      <ellipse cx="64" cy="120" rx="14" ry="9" fill="url(#peekJadeGrad)"/>
+      <ellipse cx="57" cy="118" rx="3" ry="4" fill="url(#peekGoldGrad)"/>
+      <ellipse cx="64" cy="116" rx="3" ry="4.5" fill="url(#peekGoldGrad)"/>
+      <ellipse cx="71" cy="118" rx="3" ry="4" fill="url(#peekGoldGrad)"/>
+
+      <!-- Right Paw -->
+      <ellipse cx="136" cy="120" rx="14" ry="9" fill="url(#peekJadeGrad)"/>
+      <ellipse cx="129" cy="118" rx="3" ry="4" fill="url(#peekGoldGrad)"/>
+      <ellipse cx="136" cy="116" rx="3" ry="4.5" fill="url(#peekGoldGrad)"/>
+      <ellipse cx="143" cy="118" rx="3" ry="4" fill="url(#peekGoldGrad)"/>
+    </g>
   </g>
 </svg>
