@@ -40,43 +40,43 @@ export default function HalloweenWelcomeModal() {
   const formattedName = formatName(rawName)
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md animate-fade-in overflow-y-auto">
       {/* Background Dim Dismiss click */}
       <div className="fixed inset-0" onClick={closeHalloweenModal} />
 
-      {/* Clean Minimalist Modal */}
+      {/* Hero Mascot Spotlight Modal */}
       <div
-        className="relative w-full max-w-[360px] my-auto overflow-hidden rounded-3xl border border-amber-500/20 bg-[#120d1a]/95 text-white shadow-[0_20px_60px_rgba(0,0,0,0.8),0_0_50px_rgba(251,133,0,0.15)] backdrop-blur-2xl animate-in fade-in zoom-in-95 duration-200"
+        className="relative w-full max-w-[420px] my-auto overflow-hidden rounded-[32px] border border-amber-500/25 bg-[#120d1a]/95 text-white shadow-[0_25px_70px_rgba(0,0,0,0.85),0_0_60px_rgba(251,133,0,0.22)] backdrop-blur-2xl animate-in fade-in zoom-in-95 duration-200"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Soft Ambient Light Glow */}
-        <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-64 h-64 rounded-full bg-gradient-to-b from-amber-500/25 to-orange-500/5 blur-3xl pointer-events-none" />
+        {/* Soft Ambient Light Glow Behind Mascot */}
+        <div className="absolute top-4 left-1/2 -translate-x-1/2 w-80 h-80 rounded-full bg-gradient-to-b from-amber-500/30 via-orange-500/10 to-transparent blur-3xl pointer-events-none" />
 
         {/* Minimal Close Button */}
         <button
           onClick={closeHalloweenModal}
-          className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-white/5 hover:bg-white/15 text-white/60 hover:text-white transition-all cursor-pointer flex items-center justify-center active:scale-90 border border-white/10"
+          className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white/70 hover:text-white transition-all cursor-pointer flex items-center justify-center active:scale-90 border border-white/10"
           aria-label="Đóng"
         >
           <X className="w-4 h-4" />
         </button>
 
-        <div className="relative z-10 px-6 pt-6 pb-6 flex flex-col items-center text-center space-y-3">
+        <div className="relative z-10 px-5 sm:px-7 pt-4 pb-6 flex flex-col items-center text-center space-y-3">
           
-          {/* Mascot To Rõ, Nổi Bật Tự Do (Không bị đóng khung vòng tròn) */}
-          <div className="relative w-56 h-56 sm:w-60 sm:h-60 select-none flex items-center justify-center transition-transform hover:scale-105 duration-300">
+          {/* Mascot Siêu To, Nổi Bật Trung Tâm */}
+          <div className="relative w-72 h-72 sm:w-80 sm:h-80 select-none flex items-center justify-center transition-transform hover:scale-105 duration-300">
             <Image
               src="/chibi-halloween.svg"
               alt="Tiểu Lu Halloween"
-              width={240}
-              height={240}
+              width={340}
+              height={340}
               priority
-              className="w-full h-full object-contain drop-shadow-[0_8px_24px_rgba(251,133,0,0.35)]"
+              className="w-full h-full object-contain drop-shadow-[0_12px_32px_rgba(251,133,0,0.45)]"
             />
           </div>
 
           {/* Vài Chữ Ngắn Gọn, Tinh Tế */}
-          <div className="space-y-1 w-full">
+          <div className="space-y-1 w-full -mt-2">
             <h2 className="text-xl sm:text-2xl font-serif font-black tracking-tight text-white">
               Chào <span className="text-amber-300">{formattedName}</span>! 🎃
             </h2>
@@ -86,11 +86,11 @@ export default function HalloweenWelcomeModal() {
           </div>
 
           {/* Nút Hành Động Gọn Gàng */}
-          <div className="w-full pt-2">
+          <div className="w-full pt-1">
             <button
               type="button"
               onClick={closeHalloweenModal}
-              className="w-full py-3 px-5 rounded-2xl bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-400 hover:from-amber-300 hover:to-yellow-300 text-stone-950 text-sm font-extrabold tracking-wide transition-all shadow-[0_4px_16px_rgba(245,158,11,0.35)] active:scale-98 cursor-pointer flex items-center justify-center gap-1.5 group"
+              className="w-full py-3.5 px-5 rounded-2xl bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-400 hover:from-amber-300 hover:to-yellow-300 text-stone-950 text-sm font-extrabold tracking-wide transition-all shadow-[0_4px_20px_rgba(245,158,11,0.4)] active:scale-98 cursor-pointer flex items-center justify-center gap-2 group"
             >
               <span>Vào Bàn Học Cùng Tiểu Lu</span>
               <ChevronRight className="w-4 h-4 stroke-[2.5] text-stone-950 transition-transform group-hover:translate-x-0.5" />
