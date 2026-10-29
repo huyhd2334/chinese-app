@@ -27,7 +27,7 @@ const SideBar = () => {
         
         {/* Brand Header */}
         <div className="flex items-center gap-3 px-1 lg:px-2 py-1 mb-5 lg:mb-6">
-          <div className="w-10 h-10 rounded-2xl bg-white border border-border shadow-xs p-1 shrink-0 flex items-center justify-center transition-transform hover:scale-105">
+          <div className="w-10 h-10 rounded-2xl bg-white border border-border shadow-xs p-1 shrink-0 flex items-center justify-center transition-transform hover:scale-105 relative">
             <Image
               src="/chibi-loading.svg"
               alt="Tiểu Lu"
@@ -36,6 +36,11 @@ const SideBar = () => {
               priority
               className="object-contain"
             />
+            {isHalloweenTheme && (
+              <span className="absolute -top-1.5 -right-1 text-xs select-none pointer-events-none drop-shadow-xs">
+                🎃
+              </span>
+            )}
           </div>
           <div className="hidden lg:flex flex-col leading-tight min-w-0">
             <div className="flex items-center gap-1">

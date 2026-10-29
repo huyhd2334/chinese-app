@@ -67,6 +67,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     })
   }
 
+  useEffect(() => {
+    if (typeof document === "undefined") return
+    if (isHalloweenTheme) {
+      document.documentElement.classList.add("halloween-event-theme")
+    } else {
+      document.documentElement.classList.remove("halloween-event-theme")
+    }
+  }, [isHalloweenTheme])
+
   const triggerWelcomeIfFresh = (userId: string) => {
     if (typeof sessionStorage === "undefined") return
     if (!isHalloweenTheme) return

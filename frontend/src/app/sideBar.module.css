@@ -46,3 +46,16 @@
   stroke: var(--china-red) !important;
   fill: rgba(200, 16, 46, 0.12) !important;
 }
+
+/* Biến tấu nav khi sự kiện Halloween đang bật */
+:global(html.halloween-event-theme) .activate {
+  color: #e65100 !important;
+  background-color: rgba(230, 81, 0, 0.1) !important;
+  border-color: rgba(230, 81, 0, 0.28) !important;
+  box-shadow: 0 1px 4px rgba(230, 81, 0, 0.1);
+}
+
+:global(html.halloween-event-theme) .activate svg {
+  stroke: #e65100 !important;
+  fill: rgba(230, 81, 0, 0.15) !important;
+}

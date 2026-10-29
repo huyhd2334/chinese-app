@@ -21,6 +21,43 @@
   --font-chinese-sans: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 
+/* =====================================================================
+   SỰ KIỆN HALLOWEEN TOÀN TRANG (Áp dụng cho mọi trang khi bật sự kiện)
+   ===================================================================== */
+html.halloween-event-theme {
+  --background: #fbf7f2;
+  --china-paper: #fbf7f2;
+  --border: #eddac6;
+  --primary: #e65100; /* Cam bí ngô ấm áp */
+  --china-red: #e65100;
+  --china-red-hover: #c43c00;
+  --china-gold: #f59e0b; /* Vàng hổ phách */
+  --china-jade: #2d6a4f;
+  --muted: #8c7b6c;
+}
+
+html.halloween-event-theme body {
+  background: var(--background);
+}
+
+html.halloween-event-theme ::selection {
+  background-color: #e65100;
+  color: #ffffff;
+}
+
+/* Ánh sáng ấm bí ngô huyền ảo dịu nhẹ ở góc phải trên */
+html.halloween-event-theme::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 260px;
+  height: 260px;
+  pointer-events: none;
+  background: radial-gradient(circle at top right, rgba(230, 81, 0, 0.07), transparent 70%);
+  z-index: 50;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
