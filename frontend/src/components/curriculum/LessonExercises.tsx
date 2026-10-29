@@ -313,7 +313,7 @@ export default function LessonExercises({
             </div>
 
             <div className="flex items-center gap-2">
-              <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-200">
+              <span className="text-xs font-semibold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-500/15 px-2.5 py-1 rounded-lg border border-emerald-200 dark:border-emerald-500/30">
                 Đã nối: {matchedPairs.size} / {matchWords.length}
               </span>
               <button
@@ -358,7 +358,7 @@ export default function LessonExercises({
                       onClick={() => handleSelectLeftWord(w.hanzi)}
                       className={`w-full p-4 rounded-2xl border text-center font-serif text-2xl font-bold transition-all shadow-xs ${
                         isDone
-                          ? 'bg-emerald-50 border-emerald-300 text-emerald-800 opacity-50 cursor-default'
+                          ? 'bg-emerald-50 dark:bg-emerald-500/20 border-emerald-300 dark:border-emerald-500/40 text-emerald-800 dark:text-emerald-300 opacity-60 cursor-default'
                           : isSelected
                           ? 'bg-china-red text-white border-china-red scale-[1.02] shadow-md'
                           : matchError && isSelected
@@ -388,7 +388,7 @@ export default function LessonExercises({
                       onClick={() => handleSelectRightMeaning(w.hanzi)}
                       className={`w-full p-3.5 rounded-2xl border text-left transition-all shadow-xs ${
                         isDone
-                          ? 'bg-emerald-50 border-emerald-300 text-emerald-800 opacity-50 cursor-default'
+                          ? 'bg-emerald-50 dark:bg-emerald-500/20 border-emerald-300 dark:border-emerald-500/40 text-emerald-800 dark:text-emerald-300 opacity-60 cursor-default'
                           : isSelected
                           ? 'bg-china-red text-white border-china-red scale-[1.02] shadow-md'
                           : matchError && isSelected
@@ -443,7 +443,7 @@ export default function LessonExercises({
           </div>
 
           {/* User Assembled Sentence Area */}
-          <div className="min-h-[70px] p-4 bg-neutral-50 border-2 border-dashed border-border rounded-2xl flex flex-wrap items-center gap-2">
+          <div className="min-h-[70px] p-4 bg-neutral-50 dark:bg-white/[0.03] border-2 border-dashed border-border rounded-2xl flex flex-wrap items-center gap-2">
             {userSentenceTokens.length > 0 ? (
               userSentenceTokens.map((token, idx) => (
                 <button
@@ -464,7 +464,7 @@ export default function LessonExercises({
 
           {/* Result Alert */}
           {reorderResult === 'correct' && (
-            <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-xs text-emerald-800 flex items-center justify-between">
+            <div className="p-3 bg-emerald-50 dark:bg-emerald-500/15 border border-emerald-200 dark:border-emerald-500/30 rounded-xl text-xs text-emerald-800 dark:text-emerald-300 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                 <span className="font-bold">Chính xác! Cấu trúc câu chuẩn ngữ pháp.</span>
@@ -588,14 +588,14 @@ export default function LessonExercises({
                   const isSelected = selectedQuizAnswer === opt.id
                   const isCorrect = opt.id === quizQuestions[quizIndex].word.id
 
-                  let btnStyle = 'bg-white border-border hover:border-china-red/50 text-china-ink'
+                  let btnStyle = 'bg-white dark:bg-card border-border hover:border-china-red/50 text-china-ink'
                   if (selectedQuizAnswer !== null) {
                     if (isCorrect) {
-                      btnStyle = 'bg-emerald-50 border-emerald-400 text-emerald-800 ring-2 ring-emerald-300'
+                      btnStyle = 'bg-emerald-50 dark:bg-emerald-500/20 border-emerald-400 dark:border-emerald-500 text-emerald-800 dark:text-emerald-300 ring-2 ring-emerald-300 dark:ring-emerald-500/40'
                     } else if (isSelected) {
-                      btnStyle = 'bg-red-50 border-red-400 text-red-800'
+                      btnStyle = 'bg-red-50 dark:bg-red-500/20 border-red-400 dark:border-red-500 text-red-800 dark:text-red-300'
                     } else {
-                      btnStyle = 'bg-neutral-50 border-border text-muted opacity-50'
+                      btnStyle = 'bg-neutral-50 dark:bg-white/[0.02] border-border text-muted opacity-40'
                     }
                   }
 
@@ -733,14 +733,14 @@ export default function LessonExercises({
                   const isSelected = selectedLisAnswer === optIdx
                   const isCorrect = optIdx === listeningExercises[lisIndex].answerIndex
 
-                  let btnStyle = 'bg-white border-border hover:border-china-red/50 text-china-ink'
+                  let btnStyle = 'bg-white dark:bg-card border-border hover:border-china-red/50 text-china-ink'
                   if (selectedLisAnswer !== null) {
                     if (isCorrect) {
-                      btnStyle = 'bg-emerald-50 border-emerald-500 text-emerald-800 font-bold ring-2 ring-emerald-300'
+                      btnStyle = 'bg-emerald-50 dark:bg-emerald-500/20 border-emerald-500 text-emerald-800 dark:text-emerald-300 font-bold ring-2 ring-emerald-300 dark:ring-emerald-500/40'
                     } else if (isSelected) {
-                      btnStyle = 'bg-red-50 border-red-500 text-red-800 font-bold'
+                      btnStyle = 'bg-red-50 dark:bg-red-500/20 border-red-500 text-red-800 dark:text-red-300 font-bold'
                     } else {
-                      btnStyle = 'bg-neutral-50 border-border text-muted opacity-50'
+                      btnStyle = 'bg-neutral-50 dark:bg-white/[0.02] border-border text-muted opacity-40'
                     }
                   }
 
@@ -772,8 +772,8 @@ export default function LessonExercises({
                   <div
                     className={`p-4 rounded-2xl border ${
                       selectedLisAnswer === listeningExercises[lisIndex].answerIndex
-                        ? 'bg-emerald-50 border-emerald-300 text-emerald-900'
-                        : 'bg-red-50 border-red-300 text-red-900'
+                        ? 'bg-emerald-50 dark:bg-emerald-500/15 border-emerald-300 dark:border-emerald-500/40 text-emerald-900 dark:text-emerald-200'
+                        : 'bg-red-50 dark:bg-red-500/15 border-red-300 dark:border-red-500/40 text-red-900 dark:text-red-200'
                     }`}
                   >
                     <div className="flex items-center gap-2 font-bold text-sm mb-2">

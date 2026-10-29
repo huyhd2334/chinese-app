@@ -354,10 +354,10 @@ export default function LessonDetailPage() {
       </div>
 
       {/* Sticky Quick Nav Bar */}
-      <div className="sticky top-2 z-20 bg-white/95 backdrop-blur-md border border-border rounded-xl p-1 shadow-xs flex items-center justify-between gap-1 overflow-x-auto text-xs font-medium text-slate-600">
+      <div className="sticky top-2 z-20 bg-white/95 dark:bg-card/95 backdrop-blur-md border border-border rounded-xl p-1 shadow-xs flex items-center justify-between gap-1 overflow-x-auto text-xs font-medium text-slate-600 dark:text-slate-300">
         <button
           onClick={() => scrollToSection('sec-reader')}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-neutral-100 hover:text-china-ink transition shrink-0 cursor-pointer"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-neutral-100 dark:hover:bg-white/10 hover:text-china-ink dark:hover:text-white transition shrink-0 cursor-pointer"
         >
           <BookOpen className="w-3.5 h-3.5" />
           <span>I. Bài khóa</span>
@@ -365,7 +365,7 @@ export default function LessonDetailPage() {
 
         <button
           onClick={() => scrollToSection('sec-vocab')}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-neutral-100 hover:text-china-ink transition shrink-0 cursor-pointer"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-neutral-100 dark:hover:bg-white/10 hover:text-china-ink dark:hover:text-white transition shrink-0 cursor-pointer"
         >
           <Layers className="w-3.5 h-3.5" />
           <span>II. Từ mới ({lesson.vocabulary?.length || 0})</span>
@@ -374,7 +374,7 @@ export default function LessonDetailPage() {
         {lesson.grammarNotes && lesson.grammarNotes.length > 0 && (
           <button
             onClick={() => scrollToSection('sec-grammar')}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-neutral-100 hover:text-china-ink transition shrink-0 cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-neutral-100 dark:hover:bg-white/10 hover:text-china-ink dark:hover:text-white transition shrink-0 cursor-pointer"
           >
             <Bookmark className="w-3.5 h-3.5" />
             <span>III. Ngữ pháp</span>
@@ -383,7 +383,7 @@ export default function LessonDetailPage() {
 
         <button
           onClick={() => scrollToSection('sec-flashcards')}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-neutral-100 hover:text-china-ink transition shrink-0 cursor-pointer"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-neutral-100 dark:hover:bg-white/10 hover:text-china-ink dark:hover:text-white transition shrink-0 cursor-pointer"
         >
           <RotateCw className="w-3.5 h-3.5" />
           <span>IV. Thẻ từ</span>
@@ -391,7 +391,7 @@ export default function LessonDetailPage() {
 
         <button
           onClick={() => scrollToSection('sec-exercises')}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-neutral-100 hover:text-china-ink transition shrink-0 cursor-pointer"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-neutral-100 dark:hover:bg-white/10 hover:text-china-ink dark:hover:text-white transition shrink-0 cursor-pointer"
         >
           <Puzzle className="w-3.5 h-3.5" />
           <span>V. Luyện tập</span>
@@ -402,7 +402,7 @@ export default function LessonDetailPage() {
       <section id="sec-reader" className="space-y-4 pt-2 scroll-mt-16">
         <div className="flex items-center justify-between pb-2 border-b border-border">
           <div className="flex items-center gap-2.5">
-            <span className="w-6 h-6 rounded-md bg-neutral-100 text-slate-700 flex items-center justify-center font-bold text-xs">
+            <span className="w-6 h-6 rounded-md bg-neutral-100 dark:bg-white/10 text-slate-700 dark:text-slate-200 flex items-center justify-center font-bold text-xs">
               I
             </span>
             <div>
@@ -415,7 +415,7 @@ export default function LessonDetailPage() {
             </div>
           </div>
 
-          <span className="text-xs font-medium text-slate-500">
+          <span className="text-xs font-medium text-slate-500 dark:text-slate-400">
             {lesson.dialogues?.length || 0} câu hội thoại
           </span>
         </div>
@@ -432,7 +432,7 @@ export default function LessonDetailPage() {
       <section id="sec-vocab" className="space-y-4 pt-4 scroll-mt-16">
         <div className="flex items-center justify-between pb-2 border-b border-border">
           <div className="flex items-center gap-2.5">
-            <span className="w-6 h-6 rounded-md bg-neutral-100 text-slate-700 flex items-center justify-center font-bold text-xs">
+            <span className="w-6 h-6 rounded-md bg-neutral-100 dark:bg-white/10 text-slate-700 dark:text-slate-200 flex items-center justify-center font-bold text-xs">
               II
             </span>
             <div>
@@ -445,7 +445,7 @@ export default function LessonDetailPage() {
             </div>
           </div>
 
-          <span className="text-xs font-medium text-slate-500">
+          <span className="text-xs font-medium text-slate-500 dark:text-slate-400">
             {lesson.vocabulary?.length || 0} từ vựng
           </span>
         </div>
@@ -454,10 +454,10 @@ export default function LessonDetailPage() {
           {lesson.vocabulary.map((w, idx) => (
             <div
               key={w.id || idx}
-              className="bg-white border border-border hover:border-slate-300 rounded-xl p-3.5 shadow-xs transition flex items-start justify-between gap-3 group"
+              className="bg-white dark:bg-card border border-border hover:border-slate-300 dark:hover:border-slate-600 rounded-xl p-3.5 shadow-xs transition flex items-start justify-between gap-3 group"
             >
               <div className="flex items-start gap-2.5">
-                <span className="w-5 h-5 rounded bg-neutral-100 text-muted text-[11px] font-mono flex items-center justify-center shrink-0 mt-0.5">
+                <span className="w-5 h-5 rounded bg-neutral-100 dark:bg-white/10 text-muted dark:text-slate-400 text-[11px] font-mono flex items-center justify-center shrink-0 mt-0.5">
                   {idx + 1}
                 </span>
 
@@ -479,7 +479,7 @@ export default function LessonDetailPage() {
 
                   <div className="flex items-center gap-2 mt-0.5">
                     {w.hanViet && (
-                      <span className="text-[11px] text-slate-600 bg-neutral-100 px-1.5 py-0.2 rounded">
+                      <span className="text-[11px] text-slate-600 dark:text-slate-300 bg-neutral-100 dark:bg-white/10 px-1.5 py-0.2 rounded">
                         {w.hanViet}
                       </span>
                     )}
@@ -490,7 +490,7 @@ export default function LessonDetailPage() {
                     )}
                   </div>
 
-                  <p className="text-xs text-slate-700 mt-1 font-medium">
+                  <p className="text-xs text-slate-700 dark:text-slate-200 mt-1 font-medium">
                     {w.meaning}
                   </p>
                 </div>
@@ -500,7 +500,7 @@ export default function LessonDetailPage() {
                 <button
                   type="button"
                   onClick={() => playPronunciation(w.hanzi)}
-                  className="w-8 h-8 flex items-center justify-center rounded-lg text-slate-400 hover:text-china-ink hover:bg-neutral-100 transition cursor-pointer"
+                  className="w-8 h-8 flex items-center justify-center rounded-lg text-slate-400 hover:text-china-ink dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/10 transition cursor-pointer"
                   title="Nghe phát âm"
                   aria-label={`Phát âm từ ${w.hanzi}`}
                 >
@@ -517,7 +517,7 @@ export default function LessonDetailPage() {
         <section id="sec-grammar" className="space-y-4 pt-4 scroll-mt-16">
           <div className="flex items-center justify-between pb-2 border-b border-border">
             <div className="flex items-center gap-2.5">
-              <span className="w-6 h-6 rounded-md bg-neutral-100 text-slate-700 flex items-center justify-center font-bold text-xs">
+              <span className="w-6 h-6 rounded-md bg-neutral-100 dark:bg-white/10 text-slate-700 dark:text-slate-200 flex items-center justify-center font-bold text-xs">
                 III
               </span>
               <div>
@@ -530,18 +530,18 @@ export default function LessonDetailPage() {
               </div>
             </div>
 
-            <span className="text-xs font-medium text-slate-500">
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400">
               {lesson.grammarNotes.length} điểm ngữ pháp
             </span>
           </div>
 
-          <div className="bg-white border border-border rounded-2xl p-5 shadow-xs space-y-2.5">
+          <div className="bg-white dark:bg-card border border-border rounded-2xl p-5 shadow-xs space-y-2.5">
             {lesson.grammarNotes.map((note, idx) => (
               <div
                 key={idx}
-                className="flex items-start gap-3 p-3 rounded-xl bg-neutral-50/80 border border-border/60 text-xs sm:text-sm text-slate-800 leading-relaxed"
+                className="flex items-start gap-3 p-3 rounded-xl bg-neutral-50/80 dark:bg-white/[0.04] border border-border/60 text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-relaxed"
               >
-                <span className="w-5 h-5 rounded-full bg-neutral-200 text-slate-700 font-bold text-[11px] flex items-center justify-center shrink-0 mt-0.5">
+                <span className="w-5 h-5 rounded-full bg-neutral-200 dark:bg-white/10 text-slate-700 dark:text-slate-200 font-bold text-[11px] flex items-center justify-center shrink-0 mt-0.5">
                   {idx + 1}
                 </span>
                 <span className="font-normal">{note}</span>
@@ -555,7 +555,7 @@ export default function LessonDetailPage() {
       <section id="sec-flashcards" className="space-y-4 pt-4 scroll-mt-16">
         <div className="flex items-center justify-between pb-2 border-b border-border">
           <div className="flex items-center gap-2.5">
-            <span className="w-6 h-6 rounded-md bg-neutral-100 text-slate-700 flex items-center justify-center font-bold text-xs">
+            <span className="w-6 h-6 rounded-md bg-neutral-100 dark:bg-white/10 text-slate-700 dark:text-slate-200 flex items-center justify-center font-bold text-xs">
               IV
             </span>
             <div>
@@ -569,7 +569,7 @@ export default function LessonDetailPage() {
           </div>
         </div>
 
-        <div className="p-4 sm:p-5 bg-neutral-50/70 border border-border rounded-2xl">
+        <div className="p-4 sm:p-5 bg-neutral-50/70 dark:bg-white/[0.03] border border-border rounded-2xl">
           <LessonFlashcards words={lesson.vocabulary} lessonTitle={lesson.title} />
         </div>
       </section>
@@ -578,6 +578,9 @@ export default function LessonDetailPage() {
       <section id="sec-exercises" className="space-y-4 pt-4 scroll-mt-16">
         <div className="flex items-center justify-between pb-2 border-b border-border">
           <div className="flex items-center gap-2.5">
+            <span className="w-6 h-6 rounded-md bg-neutral-100 dark:bg-white/10 text-slate-700 dark:text-slate-200 flex items-center justify-center font-bold text-xs">
+              V
+            </span>
             <span className="w-6 h-6 rounded-md bg-neutral-100 text-slate-700 flex items-center justify-center font-bold text-xs">
               V
             </span>

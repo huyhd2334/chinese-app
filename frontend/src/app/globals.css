@@ -181,17 +181,26 @@ html.dark .bg-china-paper\/60 {
 }
 
 html.dark .bg-neutral-50, 
-html.dark .bg-gray-50 {
+html.dark .bg-gray-50,
+html.dark [class*="bg-neutral-50/"],
+html.dark [class*="bg-gray-50/"] {
   background-color: rgba(255, 255, 255, 0.04) !important;
 }
 
 html.dark .bg-neutral-100, 
-html.dark .bg-gray-100 {
-  background-color: rgba(255, 255, 255, 0.07) !important;
+html.dark .bg-gray-100,
+html.dark .bg-slate-100,
+html.dark [class*="bg-neutral-100/"],
+html.dark [class*="bg-gray-100/"],
+html.dark [class*="bg-slate-100/"] {
+  background-color: rgba(255, 255, 255, 0.08) !important;
 }
 
 html.dark .bg-neutral-200, 
-html.dark .bg-gray-200 {
+html.dark .bg-gray-200,
+html.dark .bg-slate-200,
+html.dark [class*="bg-neutral-200/"],
+html.dark [class*="bg-gray-200/"] {
   background-color: rgba(255, 255, 255, 0.12) !important;
 }
 
@@ -475,7 +484,38 @@ body {
   transition: stroke-dashoffset 1s ease-out;
 }
 
-/* Scrollbar styling */
+/* Scrollbar styling toàn cục chuẩn mực - loại bỏ vệt thanh cuộn trắng của trình duyệt trên Windows */
+* {
+  scrollbar-color: var(--border) transparent;
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.16) !important;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.28) !important;
+}
+
 .custom-scrollbar::-webkit-scrollbar {
   width: 6px;
   height: 6px;

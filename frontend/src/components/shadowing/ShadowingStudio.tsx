@@ -182,7 +182,7 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
                 {completedSentenceIds.length}/{video.sentences.length} câu ({progressPercentage}%)
               </span>
             </div>
-            <div className="w-full h-2 rounded-full bg-neutral-100 overflow-hidden">
+            <div className="w-full h-2 rounded-full bg-neutral-100 dark:bg-neutral-800 overflow-hidden">
               <div
                 className="h-full bg-gradient-to-r from-china-red to-amber-500 transition-all duration-300 rounded-full"
                 style={{ width: `${progressPercentage}%` }}
@@ -306,7 +306,7 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
           )}
 
           {/* Quick Settings & Navigation Bar */}
-          <div className="flex items-center justify-between p-3 rounded-2xl bg-white border border-border shadow-xs text-xs">
+          <div className="flex items-center justify-between p-3 rounded-2xl bg-white dark:bg-card border border-border shadow-xs text-xs">
             {/* Speed Selector */}
             <div className="flex items-center gap-1">
               <span className="text-muted font-medium hidden sm:inline mr-1">Tốc độ:</span>
@@ -314,10 +314,10 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
                 <button
                   key={rate}
                   onClick={() => setPlaybackSpeed(rate)}
-                  className={`px-2 py-1 rounded-lg font-bold transition-all ${
+                  className={`px-2 py-1 rounded-lg font-bold transition-all cursor-pointer ${
                     playbackSpeed === rate
                       ? "bg-china-red text-white shadow-2xs"
-                      : "bg-china-paper text-china-ink hover:bg-neutral-200"
+                      : "bg-china-paper dark:bg-white/5 text-china-ink dark:text-slate-300 hover:bg-neutral-200 dark:hover:bg-white/10"
                   }`}
                 >
                   {rate}x
@@ -329,10 +329,10 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
             <div className="flex items-center gap-1.5">
               <button
                 onClick={() => setShowPinyin(!showPinyin)}
-                className={`flex items-center gap-1 px-2.5 py-1 rounded-lg font-semibold transition-all ${
+                className={`flex items-center gap-1 px-2.5 py-1 rounded-lg font-semibold transition-all cursor-pointer ${
                   showPinyin
-                    ? "bg-amber-100 text-amber-900 border border-amber-300"
-                    : "bg-china-paper text-muted hover:text-china-ink"
+                    ? "bg-amber-100 dark:bg-amber-500/20 text-amber-900 dark:text-amber-300 border border-amber-300 dark:border-amber-500/40"
+                    : "bg-china-paper dark:bg-white/5 text-muted hover:text-china-ink dark:hover:text-white border border-transparent dark:border-white/10"
                 }`}
                 title="Bật/Tắt Pinyin"
               >
@@ -342,10 +342,10 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
 
               <button
                 onClick={() => setShowVietnamese(!showVietnamese)}
-                className={`flex items-center gap-1 px-2.5 py-1 rounded-lg font-semibold transition-all ${
+                className={`flex items-center gap-1 px-2.5 py-1 rounded-lg font-semibold transition-all cursor-pointer ${
                   showVietnamese
-                    ? "bg-blue-100 text-blue-900 border border-blue-300"
-                    : "bg-china-paper text-muted hover:text-china-ink"
+                    ? "bg-blue-100 dark:bg-blue-500/20 text-blue-900 dark:text-blue-300 border border-blue-300 dark:border-blue-500/40"
+                    : "bg-china-paper dark:bg-white/5 text-muted hover:text-china-ink dark:hover:text-white border border-transparent dark:border-white/10"
                 }`}
                 title="Bật/Tắt Tiếng Việt"
               >
@@ -357,17 +357,17 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
 
           {/* Focus Sentence Card */}
           {currentSentence && (
-            <div className="p-5 sm:p-6 rounded-3xl bg-white border-2 border-china-red/20 shadow-sm space-y-4 relative">
+            <div className="p-5 sm:p-6 rounded-3xl bg-white dark:bg-card border-2 border-china-red/20 shadow-sm space-y-4 relative">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-china-paper text-china-ink border border-border">
+                  <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-china-paper dark:bg-white/5 text-china-ink dark:text-slate-200 border border-border">
                     Câu {currentSentenceIndex + 1}/{video.sentences.length}
                   </span>
                   <span className="px-2 py-0.5 rounded-full text-[11px] font-mono font-bold bg-amber-500/10 text-amber-800 dark:text-amber-400 border border-amber-500/20">
                     ⏱️ {formatTimestamp(currentSentence.startTime)} - {formatTimestamp(currentSentence.endTime)}
                   </span>
                   {currentSentence.speaker && (
-                    <span className="text-xs font-semibold text-amber-700">
+                    <span className="text-xs font-semibold text-amber-700 dark:text-amber-400">
                       👤 {currentSentence.speaker}
                     </span>
                   )}
@@ -377,8 +377,8 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
                   onClick={() => handleToggleCompleted(currentSentence.id)}
                   className={`flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold transition-all cursor-pointer ${
                     completedSentenceIds.includes(currentSentence.id)
-                      ? "bg-emerald-100 text-emerald-800 border border-emerald-300"
-                      : "bg-china-paper text-muted hover:text-china-ink border border-border"
+                      ? "bg-emerald-100 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-500/40"
+                      : "bg-china-paper dark:bg-white/5 text-muted hover:text-china-ink dark:hover:text-white border border-border dark:border-white/10"
                   }`}
                 >
                   <CheckCircle2 className="w-3.5 h-3.5" />
@@ -398,13 +398,13 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
                 </p>
 
                 {showPinyin && (
-                  <p className="text-sm sm:text-base font-semibold text-amber-800 tracking-wide">
+                  <p className="text-sm sm:text-base font-semibold text-amber-800 dark:text-amber-400 tracking-wide">
                     {currentSentence.pinyin}
                   </p>
                 )}
 
                 {showVietnamese && (
-                  <p className="text-xs sm:text-sm text-slate-600 max-w-lg mx-auto italic">
+                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-lg mx-auto italic">
                     "{currentSentence.vietnamese}"
                   </p>
                 )}
@@ -426,7 +426,7 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
                   type="button"
                   onClick={handlePlayNativeAudio}
                   disabled={isPlayingNativeAudio}
-                  className="px-4 py-2 rounded-2xl bg-china-paper hover:bg-neutral-200 text-china-ink text-xs font-bold transition-all flex items-center gap-2 shadow-2xs active:scale-95 cursor-pointer disabled:opacity-60"
+                  className="px-4 py-2 rounded-2xl bg-china-paper dark:bg-white/10 hover:bg-neutral-200 dark:hover:bg-white/15 text-china-ink dark:text-slate-200 text-xs font-bold transition-all flex items-center gap-2 shadow-2xs active:scale-95 cursor-pointer disabled:opacity-60"
                 >
                   <Volume2
                     className={`w-4 h-4 text-china-red ${isPlayingNativeAudio ? "animate-bounce" : ""}`}
@@ -437,13 +437,13 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
 
               {/* Voice Recorder & Comparison Deck */}
               <div className="pt-3 border-t border-border/80">
-                <div className="p-4 rounded-2xl bg-china-paper/60 border border-border/70 flex flex-col items-center text-center space-y-3">
-                  <span className="text-xs font-bold text-china-ink">
+                <div className="p-4 rounded-2xl bg-china-paper/60 dark:bg-white/[0.03] border border-border/70 dark:border-white/10 flex flex-col items-center text-center space-y-3">
+                  <span className="text-xs font-bold text-china-ink dark:text-slate-200">
                     🎙️ Phòng Thu Âm &amp; Đối Chiếu Shadowing (Miễn phí 100%)
                   </span>
 
                   {recorderError && (
-                    <p className="text-xs text-red-600 bg-red-50 p-2 rounded-xl border border-red-200">
+                    <p className="text-xs text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-950/40 p-2 rounded-xl border border-red-200 dark:border-red-900/40">
                       {recorderError}
                     </p>
                   )}
@@ -487,7 +487,7 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
                         className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer shadow-xs active:scale-95 ${
                           isPlayingUserAudio
                             ? "bg-emerald-600 text-white animate-pulse"
-                            : "bg-emerald-100 hover:bg-emerald-200 text-emerald-900 border border-emerald-300"
+                            : "bg-emerald-100 hover:bg-emerald-200 dark:bg-emerald-500/20 dark:hover:bg-emerald-500/30 text-emerald-900 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-500/40"
                         }`}
                       >
                         <Play className="w-4 h-4 fill-current" />
@@ -497,7 +497,7 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
                       <button
                         type="button"
                         onClick={startRecording}
-                        className="px-3 py-2 rounded-xl bg-white hover:bg-neutral-100 border border-border text-china-ink text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer"
+                        className="px-3 py-2 rounded-xl bg-white dark:bg-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-700 border border-border text-china-ink dark:text-slate-200 text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer"
                         title="Thu âm lại"
                       >
                         <RotateCcw className="w-3.5 h-3.5" />
@@ -514,7 +514,7 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
                   type="button"
                   onClick={handlePrevSentence}
                   disabled={currentSentenceIndex === 0}
-                  className="px-4 py-2 rounded-xl bg-china-paper hover:bg-neutral-200 text-china-ink text-xs font-bold transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-1"
+                  className="px-4 py-2 rounded-xl bg-china-paper dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 text-china-ink dark:text-slate-200 text-xs font-bold transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-1 cursor-pointer"
                 >
                   <ChevronLeft className="w-4 h-4" />
                   <span>Câu trước</span>
@@ -524,7 +524,7 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
                   type="button"
                   onClick={handleNextSentence}
                   disabled={currentSentenceIndex === video.sentences.length - 1}
-                  className="px-4 py-2 rounded-xl bg-china-paper hover:bg-neutral-200 text-china-ink text-xs font-bold transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-1"
+                  className="px-4 py-2 rounded-xl bg-china-paper dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 text-china-ink dark:text-slate-200 text-xs font-bold transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-1 cursor-pointer"
                 >
                   <span>Câu kế tiếp</span>
                   <ChevronRight className="w-4 h-4" />
@@ -536,7 +536,7 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
 
         {/* Right Column: Interactive Subtitles Timeline (5 cols) */}
         <div className="lg:col-span-5 space-y-3">
-          <div className="bg-white p-4 sm:p-5 rounded-3xl border border-border shadow-xs space-y-3">
+          <div className="bg-white dark:bg-card p-4 sm:p-5 rounded-3xl border border-border shadow-xs space-y-3">
             <div className="flex items-center justify-between pb-2 border-b border-border">
               <div className="flex items-center gap-2">
                 <Headphones className="w-4 h-4 text-china-red" />
@@ -557,8 +557,8 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
                     onClick={() => handleSelectSentence(index)}
                     className={`p-3.5 rounded-2xl border transition-all cursor-pointer ${
                       isActive
-                        ? "bg-amber-50/80 border-china-red/40 shadow-xs ring-1 ring-china-red/20"
-                        : "bg-china-paper/40 hover:bg-china-paper border-border/80"
+                        ? "bg-amber-50/80 dark:bg-amber-500/15 border-china-red/40 dark:border-china-red/50 shadow-xs ring-1 ring-china-red/20 dark:ring-china-red/30"
+                        : "bg-china-paper/40 dark:bg-white/[0.03] hover:bg-china-paper dark:hover:bg-white/[0.06] border-border/80 dark:border-white/10"
                     }`}
                   >
                     <div className="flex items-center justify-between gap-2 mb-1.5">
@@ -567,7 +567,7 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
                           className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold ${
                             isActive
                               ? "bg-china-red text-white"
-                              : "bg-neutral-200 text-china-ink"
+                              : "bg-neutral-200 dark:bg-white/10 text-china-ink dark:text-slate-300"
                           }`}
                         >
                           {index + 1}
@@ -591,7 +591,7 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
 
                     <p
                       className={`font-chinese text-sm sm:text-base leading-relaxed ${
-                        isActive ? "font-bold text-china-ink" : "text-neutral-700"
+                        isActive ? "font-bold text-china-ink dark:text-white" : "text-neutral-700 dark:text-neutral-300"
                       }`}
                       lang="zh"
                     >
@@ -599,13 +599,13 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
                     </p>
 
                     {showPinyin && (
-                      <p className="text-[11px] text-amber-800 font-medium mt-0.5 line-clamp-1">
+                      <p className="text-[11px] text-amber-800 dark:text-amber-400 font-medium mt-0.5 line-clamp-1">
                         {sentence.pinyin}
                       </p>
                     )}
 
                     {showVietnamese && (
-                      <p className="text-[11px] text-muted mt-0.5 line-clamp-1">
+                      <p className="text-[11px] text-muted dark:text-slate-400 mt-0.5 line-clamp-1">
                         {sentence.vietnamese}
                       </p>
                     )}
@@ -616,8 +616,8 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
           </div>
 
           {/* Little Dragon Chibi Encouragement Note */}
-          <div className="p-4 rounded-2xl bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-transparent border border-amber-300/40 flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-white p-1 border border-border shadow-2xs shrink-0 flex items-center justify-center">
+          <div className="p-4 rounded-2xl bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-transparent border border-amber-300/40 dark:border-amber-500/30 flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-white dark:bg-neutral-800 p-1 border border-border dark:border-white/10 shadow-2xs shrink-0 flex items-center justify-center">
               <Image
                 src="/chibi-loading.svg"
                 alt="Tiểu Lu"
@@ -626,8 +626,8 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
                 className="object-contain"
               />
             </div>
-            <div className="text-xs text-china-ink leading-relaxed">
-              <span className="font-bold text-amber-900">Mẹo luyện của Tiểu Lu: </span>
+            <div className="text-xs text-china-ink dark:text-slate-300 leading-relaxed">
+              <span className="font-bold text-amber-900 dark:text-amber-400">Mẹo luyện của Tiểu Lu: </span>
               Hãy nghe mẫu 2–3 lần để bắt đúng ngữ điệu và ngắt nghỉ, sau đó bấm Micro thu âm đọc to rõ nhé!
             </div>
           </div>

@@ -327,7 +327,7 @@ export default function InteractiveReader({
                   )}
 
                   {showTranslation && d.vietnamese && (
-                    <p className="text-xs font-medium text-slate-700 pt-0.5 leading-relaxed">
+                    <p className="text-xs font-medium text-slate-700 dark:text-slate-300 pt-0.5 leading-relaxed">
                       {d.vietnamese}
                     </p>
                   )}
@@ -344,7 +344,7 @@ export default function InteractiveReader({
 
       {/* Floating Word Card Popover */}
       {activeWordInfo && (
-        <div className="p-4 bg-white border border-china-red/30 rounded-2xl shadow-lg flex items-start justify-between gap-4 animate-in fade-in slide-in-from-bottom-2">
+        <div className="p-4 bg-white dark:bg-card border border-china-red/30 rounded-2xl shadow-lg flex items-start justify-between gap-4 animate-in fade-in slide-in-from-bottom-2">
           <div className="space-y-1">
             <div className="flex items-baseline gap-2.5">
               <span className="font-serif text-3xl font-bold text-china-ink">
@@ -356,13 +356,13 @@ export default function InteractiveReader({
                 </span>
               )}
               {activeWordInfo.hanViet && (
-                <span className="text-xs font-semibold text-slate-600 bg-slate-100 px-2 py-0.5 rounded">
+                <span className="text-xs font-semibold text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-white/10 px-2 py-0.5 rounded">
                   Hán-Việt: {activeWordInfo.hanViet}
                 </span>
               )}
             </div>
 
-            <p className="text-xs font-medium text-slate-800 pt-1">
+            <p className="text-xs font-medium text-slate-800 dark:text-slate-200 pt-1">
               {activeWordInfo.meaning}
             </p>
           </div>

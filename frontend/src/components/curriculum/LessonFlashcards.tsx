@@ -104,16 +104,16 @@ export default function LessonFlashcards({ words, lessonTitle }: LessonFlashcard
   return (
     <div className="space-y-5 max-w-2xl mx-auto">
       {/* Top Deck Stats & Controls */}
-      <div className="flex items-center justify-between gap-4 bg-white border border-border p-3.5 rounded-2xl shadow-xs">
+      <div className="flex items-center justify-between gap-4 bg-white dark:bg-card border border-border p-3.5 rounded-2xl shadow-xs">
         <div className="flex items-center gap-3">
           <div className="text-xs font-semibold text-china-ink">
             Thẻ <span className="text-china-red font-bold text-sm">{currentIndex + 1}</span> / {deck.length}
           </div>
           <div className="hidden sm:flex items-center gap-2">
-            <span className="text-[11px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md font-medium border border-emerald-200">
+            <span className="text-[11px] text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-500/15 px-2 py-0.5 rounded-md font-medium border border-emerald-200 dark:border-emerald-500/30">
               Đã thuộc: {masteredIds.size}
             </span>
-            <span className="text-[11px] text-amber-700 bg-amber-50 px-2 py-0.5 rounded-md font-medium border border-amber-200">
+            <span className="text-[11px] text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-500/15 px-2 py-0.5 rounded-md font-medium border border-amber-200 dark:border-amber-500/30">
               Cần ôn: {reviewLaterIds.size}
             </span>
           </div>
@@ -122,7 +122,7 @@ export default function LessonFlashcards({ words, lessonTitle }: LessonFlashcard
         <div className="flex items-center gap-2">
           <button
             onClick={handleShuffle}
-            className="flex items-center gap-1 px-2.5 py-1 text-xs font-semibold text-muted hover:text-china-ink bg-china-paper hover:bg-neutral-100 rounded-lg transition"
+            className="flex items-center gap-1 px-2.5 py-1 text-xs font-semibold text-muted hover:text-china-ink dark:hover:text-white bg-china-paper dark:bg-white/5 hover:bg-neutral-100 dark:hover:bg-white/10 rounded-lg transition cursor-pointer"
             title="Xáo trộn thứ tự từ"
           >
             <Shuffle className="w-3.5 h-3.5" />
@@ -132,7 +132,7 @@ export default function LessonFlashcards({ words, lessonTitle }: LessonFlashcard
       </div>
 
       {/* Progress Bar */}
-      <div className="w-full bg-neutral-200 h-1.5 rounded-full overflow-hidden">
+      <div className="w-full bg-neutral-200 dark:bg-neutral-800 h-1.5 rounded-full overflow-hidden">
         <div
           className="bg-china-red h-full transition-all duration-300"
           style={{ width: `${progressPercent}%` }}
@@ -147,8 +147,8 @@ export default function LessonFlashcards({ words, lessonTitle }: LessonFlashcard
         <div
           className={`relative w-full min-h-[320px] rounded-3xl p-8 flex flex-col items-center justify-between transition-transform duration-500 transform-style-3d shadow-md border ${
             isFlipped
-              ? 'bg-gradient-to-br from-china-paper via-white to-amber-50/40 border-amber-200 rotate-y-180'
-              : 'bg-white border-border hover:border-china-red/40'
+              ? 'bg-gradient-to-br from-china-paper via-white to-amber-50/40 dark:from-card dark:via-card dark:to-amber-950/20 border-amber-200 dark:border-amber-500/30 rotate-y-180'
+              : 'bg-white dark:bg-card border-border hover:border-china-red/40'
           }`}
           style={{
             transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
@@ -158,25 +158,25 @@ export default function LessonFlashcards({ words, lessonTitle }: LessonFlashcard
         >
           {/* Card Badges */}
           <div className="w-full flex items-center justify-between text-xs">
-            <span className="px-2.5 py-0.5 rounded-full bg-china-paper text-muted font-medium border border-border">
+            <span className="px-2.5 py-0.5 rounded-full bg-china-paper dark:bg-white/5 text-muted dark:text-slate-300 font-medium border border-border">
               {currentWord.partOfSpeech || 'Từ vựng'}
             </span>
 
             <div className="flex items-center gap-1.5">
               {isMastered && (
-                <span className="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-bold">
+                <span className="px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-300 text-[11px] font-bold">
                   Đã thuộc
                 </span>
               )}
               {isReview && (
-                <span className="px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 text-[11px] font-bold">
+                <span className="px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-500/20 text-amber-800 dark:text-amber-300 text-[11px] font-bold">
                   Cần ôn lại
                 </span>
               )}
               <button
                 type="button"
                 onClick={(e) => playAudio(currentWord.hanzi, e)}
-                className="w-9 h-9 flex items-center justify-center rounded-full bg-china-paper hover:bg-china-red hover:text-white active:bg-china-red active:text-white text-china-ink transition touch-manipulation cursor-pointer"
+                className="w-9 h-9 flex items-center justify-center rounded-full bg-china-paper dark:bg-white/10 hover:bg-china-red hover:text-white active:bg-china-red active:text-white text-china-ink dark:text-slate-200 transition touch-manipulation cursor-pointer"
                 title="Phát âm"
                 aria-label="Phát âm từ"
               >
@@ -193,7 +193,7 @@ export default function LessonFlashcards({ words, lessonTitle }: LessonFlashcard
               </div>
 
               {currentWord.hanViet && (
-                <div className="inline-block px-3 py-1 bg-slate-100 text-slate-700 text-xs font-semibold rounded-lg">
+                <div className="inline-block px-3 py-1 bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-slate-200 text-xs font-semibold rounded-lg border border-transparent dark:border-white/10">
                   Âm Hán-Việt: {currentWord.hanViet}
                 </div>
               )}
@@ -218,12 +218,12 @@ export default function LessonFlashcards({ words, lessonTitle }: LessonFlashcard
               </div>
 
               {currentWord.hanViet && (
-                <div className="text-xs font-semibold text-slate-600">
-                  Hán-Việt: <span className="text-china-ink">{currentWord.hanViet}</span>
+                <div className="text-xs font-semibold text-slate-600 dark:text-slate-400">
+                  Hán-Việt: <span className="text-china-ink dark:text-slate-200">{currentWord.hanViet}</span>
                 </div>
               )}
 
-              <div className="p-3 bg-white/90 border border-border/80 rounded-2xl max-w-md mx-auto shadow-xs">
+              <div className="p-3 bg-white/90 dark:bg-neutral-900/90 border border-border/80 dark:border-white/10 rounded-2xl max-w-md mx-auto shadow-xs">
                 <p className="text-sm font-semibold text-china-ink leading-relaxed">
                   {currentWord.meaning}
                 </p>
@@ -241,9 +241,9 @@ export default function LessonFlashcards({ words, lessonTitle }: LessonFlashcard
             <button
               type="button"
               onClick={handleMarkReview}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 text-xs font-bold border border-amber-200 transition"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-50 dark:bg-amber-500/15 hover:bg-amber-100 dark:hover:bg-amber-500/25 text-amber-800 dark:text-amber-300 text-xs font-bold border border-amber-200 dark:border-amber-500/40 transition cursor-pointer"
             >
-              <XCircle className="w-4 h-4 text-amber-600" />
+              <XCircle className="w-4 h-4 text-amber-600 dark:text-amber-400" />
               <span>Chưa nhớ</span>
             </button>
 
@@ -254,9 +254,9 @@ export default function LessonFlashcards({ words, lessonTitle }: LessonFlashcard
             <button
               type="button"
               onClick={handleMarkMastered}
-              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 text-xs font-bold border border-emerald-200 transition"
+              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-emerald-50 dark:bg-emerald-500/15 hover:bg-emerald-100 dark:hover:bg-emerald-500/25 text-emerald-800 dark:text-emerald-300 text-xs font-bold border border-emerald-200 dark:border-emerald-500/40 transition cursor-pointer"
             >
-              <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+              <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
               <span>Đã thuộc</span>
             </button>
           </div>
@@ -267,7 +267,7 @@ export default function LessonFlashcards({ words, lessonTitle }: LessonFlashcard
       <div className="flex items-center justify-between gap-4">
         <button
           onClick={handlePrev}
-          className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-white border border-border hover:bg-china-paper text-xs font-bold text-china-ink shadow-xs transition"
+          className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-white dark:bg-card border border-border hover:bg-china-paper dark:hover:bg-white/5 text-xs font-bold text-china-ink shadow-xs transition cursor-pointer"
         >
           <ChevronLeft className="w-4 h-4" />
           <span>Thẻ trước</span>
@@ -275,7 +275,7 @@ export default function LessonFlashcards({ words, lessonTitle }: LessonFlashcard
 
         <button
           onClick={handleFlip}
-          className="flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-china-paper hover:bg-neutral-100 border border-border text-xs font-bold text-china-ink transition shadow-xs"
+          className="flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-china-paper dark:bg-card hover:bg-neutral-100 dark:hover:bg-white/5 border border-border text-xs font-bold text-china-ink transition shadow-xs cursor-pointer"
         >
           <RotateCw className="w-3.5 h-3.5 text-china-red" />
           <span>Lật thẻ</span>
@@ -283,7 +283,7 @@ export default function LessonFlashcards({ words, lessonTitle }: LessonFlashcard
 
         <button
           onClick={handleNext}
-          className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-china-red hover:bg-china-red/90 text-white text-xs font-bold shadow-xs transition"
+          className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-china-red hover:bg-china-red/90 text-white text-xs font-bold shadow-xs transition cursor-pointer"
         >
           <span>Thẻ tiếp theo</span>
           <ChevronRight className="w-4 h-4" />

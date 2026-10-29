@@ -18,6 +18,8 @@ import {
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts"
 import { getHanViet } from "@/utils/hanviet"
 import { playChineseAudio } from "@/utils/audioTts"
+import { RoadmapCard } from "@/components/roadmap/RoadmapCard"
+import { RoadmapWizardModal } from "@/components/roadmap/RoadmapWizardModal"
 
 const PROVERBS = [
   { cn: "千里之行，始于足下", pinyin: "Qiān lǐ zhī xíng, shǐ yú zú xià", en: "A journey of a thousand miles begins with a single step" },
@@ -66,6 +68,7 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true)
   const [dailyWord, setDailyWord] = useState<Word | null>(null)
   const [isDailyWordAdded, setIsDailyWordAdded] = useState(false)
+  const [isRoadmapWizardOpen, setIsRoadmapWizardOpen] = useState(false)
 
   const playAudio = (text: string, e?: React.MouseEvent) => {
     if (e) {
@@ -486,6 +489,11 @@ export default function Dashboard() {
           </button>
         </div>
       </header>
+
+      {/* 1.2. Roadmap & "Cần gì để đạt mục tiêu" Section */}
+      <section>
+        <RoadmapCard onOpenWizard={() => setIsRoadmapWizardOpen(true)} />
+      </section>
 
       {/* 1.5. Daily Goal & Streak Requirement Bar */}
       <section className={`relative rounded-xl sm:rounded-2xl p-4 sm:p-5 border transition-all ${
@@ -1234,6 +1242,12 @@ export default function Dashboard() {
           {streakToast}
         </div>
       )}
+
+      {/* Roadmap Setup Modal */}
+      <RoadmapWizardModal
+        isOpen={isRoadmapWizardOpen}
+        onClose={() => setIsRoadmapWizardOpen(false)}
+      />
     </main>
   )
 }
