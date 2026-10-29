@@ -1,238 +1,220 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
   <defs>
-    <!-- Soft Jade Dragon Skin -->
-    <linearGradient id="cheerSkin" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#5eead4"/>
-      <stop offset="35%" stop-color="#2dd4bf"/>
-      <stop offset="80%" stop-color="#0d9488"/>
-      <stop offset="100%" stop-color="#115e59"/>
+    <!-- Gradients & Warm Colors -->
+    <linearGradient id="cheerCloudGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fff9f0" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#f5ecdb" stop-opacity="0.75"/>
     </linearGradient>
 
-    <!-- Royal Silk Vest: Imperial Crimson & Gold Trim (CHIA CẮT KHỐI ĐẦU VÀ THÂN) -->
-    <linearGradient id="cheerVest" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#dc2626"/>
-      <stop offset="50%" stop-color="#b91c1c"/>
-      <stop offset="100%" stop-color="#7f1d1d"/>
+    <linearGradient id="cheerGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fce28b"/>
+      <stop offset="50%" stop-color="#d4af37"/>
+      <stop offset="100%" stop-color="#a3821a"/>
     </linearGradient>
 
-    <!-- Golden Antlers & Robe Trims -->
-    <linearGradient id="cheerGold" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#fff176"/>
-      <stop offset="45%" stop-color="#ffd54f"/>
-      <stop offset="85%" stop-color="#ffa000"/>
-      <stop offset="100%" stop-color="#ff6f00"/>
+    <linearGradient id="bannerRedGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c8102e"/>
+      <stop offset="50%" stop-color="#e82b48"/>
+      <stop offset="100%" stop-color="#a80b24"/>
     </linearGradient>
 
-    <!-- Warm Cream Belly -->
-    <linearGradient id="cheerBelly" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#fffbeb"/>
-      <stop offset="100%" stop-color="#fef3c7"/>
+    <linearGradient id="cheerJadeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5ca38e"/>
+      <stop offset="100%" stop-color="#2d5e51"/>
     </linearGradient>
 
-    <!-- Soft Muzzle Glow -->
-    <radialGradient id="cheerMuzzle" cx="50%" cy="40%" r="60%">
-      <stop offset="0%" stop-color="#ccfbf1" stop-opacity="0.95"/>
-      <stop offset="65%" stop-color="#99f6e4" stop-opacity="0.6"/>
-      <stop offset="100%" stop-color="#5eead4" stop-opacity="0"/>
-    </radialGradient>
-
-    <!-- Peach Blush -->
     <radialGradient id="cheerBlush" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#fb7185" stop-opacity="0.75"/>
-      <stop offset="60%" stop-color="#f43f5e" stop-opacity="0.3"/>
-      <stop offset="100%" stop-color="#e11d48" stop-opacity="0"/>
+      <stop offset="0%" stop-color="#ff7b89" stop-opacity="0.65"/>
+      <stop offset="100%" stop-color="#ff7b89" stop-opacity="0"/>
     </radialGradient>
 
-    <!-- Festive Banner Red -->
-    <linearGradient id="bannerRed" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#b91c1c"/>
-      <stop offset="50%" stop-color="#dc2626"/>
-      <stop offset="100%" stop-color="#991b1b"/>
-    </linearGradient>
-
-    <!-- Drop Shadows -->
-    <filter id="softDrop" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.25"/>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#2b2b2b" flood-opacity="0.08"/>
     </filter>
   </defs>
 
   <style>
-    .cheer-jump {
-      animation: dragonJump 2.4s ease-in-out infinite;
-      transform-origin: 200px 310px;
+    /* CSS Animations for lively cheering panda */
+    .cheer-bounce {
+      animation: cheerBounce 2.8s ease-in-out infinite;
+      transform-origin: 200px 320px;
     }
     .banner-wave {
-      animation: bannerFloat 2.4s ease-in-out infinite;
-      transform-origin: 200px 85px;
+      animation: bannerWave 2.8s ease-in-out infinite;
+      transform-origin: 200px 105px;
     }
-    .tail-wag {
-      animation: tailCheerWag 1.8s ease-in-out infinite;
-      transform-origin: 265px 290px;
+    .confetti-pop-1 {
+      animation: popSparkle 2.2s ease-in-out infinite alternate;
     }
-    .confetti-pop {
-      animation: sparklePop 2s ease-in-out infinite alternate;
+    .confetti-pop-2 {
+      animation: popSparkle 2.2s ease-in-out infinite alternate 1.1s;
+    }
+    .ears-wiggle {
+      animation: earTwitch 3.4s ease-in-out infinite;
+      transform-origin: 200px 175px;
     }
 
-    @keyframes dragonJump {
-      0%, 100% { transform: translateY(0) scale(1); }
-      40% { transform: translateY(-15px) scale(1.02); }
-      70% { transform: translateY(-5px) scale(1.01); }
+    @keyframes cheerBounce {
+      0%, 100% {
+        transform: translateY(0) scale(1, 1);
+      }
+      30% {
+        transform: translateY(-8px) scale(1.02, 0.98);
+      }
+      50% {
+        transform: translateY(-12px) scale(0.98, 1.02);
+      }
+      70% {
+        transform: translateY(-2px) scale(1.01, 0.99);
+      }
     }
-    @keyframes bannerFloat {
-      0%, 100% { transform: rotate(0deg); }
-      50% { transform: rotate(2deg) translateY(-2px); }
+
+    @keyframes bannerWave {
+      0%, 100% {
+        transform: rotate(-1deg);
+      }
+      50% {
+        transform: rotate(2deg) translateY(-2px);
+      }
     }
-    @keyframes tailCheerWag {
-      0%, 100% { transform: rotate(-4deg); }
-      50% { transform: rotate(10deg); }
+
+    @keyframes popSparkle {
+      0% {
+        opacity: 0.3;
+        transform: scale(0.7) rotate(0deg);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1.15) rotate(20deg);
+      }
     }
-    @keyframes sparklePop {
-      0% { opacity: 0.35; transform: scale(0.85); }
-      100% { opacity: 1; transform: scale(1.15); }
+
+    @keyframes earTwitch {
+      0%, 80%, 100% { transform: rotate(0deg); }
+      85% { transform: rotate(-2deg); }
+      90% { transform: rotate(2deg); }
     }
   </style>
 
-  <!-- AUSPICIOUS CLOUDS -->
-  <g filter="url(#softDrop)">
-    <ellipse cx="200" cy="358" rx="145" ry="30" fill="#ffffff" opacity="0.95"/>
-    <ellipse cx="130" cy="348" rx="46" ry="22" fill="#ffffff"/>
-    <ellipse cx="270" cy="348" rx="46" ry="22" fill="#ffffff"/>
-    <path d="M 125 350 Q 135 342 145 350" fill="none" stroke="url(#cheerGold)" stroke-width="2" stroke-linecap="round"/>
-    <path d="M 255 350 Q 265 342 275 350" fill="none" stroke="url(#cheerGold)" stroke-width="2" stroke-linecap="round"/>
-  </g>
+  <!-- Ambient Light Halo -->
+  <circle cx="200" cy="205" r="140" fill="url(#cheerCloudGrad)" opacity="0.6"/>
+  <circle cx="200" cy="205" r="140" fill="none" stroke="#e6dbcc" stroke-width="2" stroke-dasharray="5 7" opacity="0.6"/>
 
-  <!-- CONFETTI & GOLDEN STARS -->
-  <g class="confetti-pop">
-    <path d="M 65 140 Q 75 140 75 130 Q 75 140 85 140 Q 75 140 75 150 Q 75 140 65 140 Z" fill="url(#cheerGold)"/>
-    <path d="M 330 130 Q 340 130 340 120 Q 340 130 350 130 Q 340 130 340 140 Q 340 130 330 130 Z" fill="url(#cheerGold)"/>
-    <circle cx="95" cy="180" r="4" fill="#dc2626"/>
-    <circle cx="310" cy="190" r="4.5" fill="#2dd4bf"/>
-    <circle cx="60" cy="220" r="3.5" fill="#ffd54f"/>
-  </g>
+  <!-- Floor Ground Shadow -->
+  <ellipse cx="200" cy="342" rx="105" ry="16" fill="#2b2b2b" opacity="0.08"/>
+  <ellipse cx="200" cy="340" rx="75" ry="10" fill="#2b2b2b" opacity="0.1"/>
 
-  <!-- DRAGON TAIL (Vẫy tít mù vui sướng) -->
-  <g class="tail-wag">
-    <path d="M 265 275 C 310 255, 350 270, 352 305 C 350 325, 320 325, 290 300 Z" fill="url(#cheerSkin)" stroke="#0d9488" stroke-width="1.5"/>
-    <path d="M 345 295 Q 375 285 378 308 Q 365 328 345 315 Z" fill="url(#cheerGold)"/>
-  </g>
+  <!-- Cheering Character Group -->
+  <g class="cheer-bounce">
+    <!-- Paws holding Banner Up High -->
+    <g class="banner-wave">
+      <!-- Cheering Red Scroll / Banner (加油 - Cố lên!) -->
+      <g filter="url(#softShadow)">
+        <rect x="110" y="86" width="180" height="42" rx="12" fill="url(#bannerRedGrad)"/>
+        <!-- Gold Trim -->
+        <rect x="114" y="90" width="172" height="34" rx="8" fill="none" stroke="url(#cheerGoldGrad)" stroke-width="2" stroke-dasharray="8 4" opacity="0.85"/>
+        <!-- Scroll rods -->
+        <rect x="104" y="82" width="9" height="50" rx="4" fill="#a0714f"/>
+        <circle cx="108.5" cy="82" r="6" fill="#d4af37"/>
+        <circle cx="108.5" cy="132" r="6" fill="#d4af37"/>
 
-  <!-- MAIN DRAGON (Nhảy múa reo mừng) -->
-  <g class="cheer-jump" filter="url(#softDrop)">
+        <rect x="287" y="82" width="9" height="50" rx="4" fill="#a0714f"/>
+        <circle cx="291.5" cy="82" r="6" fill="#d4af37"/>
+        <circle cx="291.5" cy="132" r="6" fill="#d4af37"/>
 
-    <!-- 1. DRAGON BODY (Thân múp) -->
-    <ellipse cx="200" cy="272" rx="72" ry="66" fill="url(#cheerSkin)"/>
+        <!-- Text "加油" (Jiāyóu) and Stars -->
+        <text x="200" y="114" font-family="'Noto Serif SC', serif" font-size="20" fill="#fdfaf3" font-weight="900" text-anchor="middle" letter-spacing="4">加 油 ！</text>
+        <circle cx="140" cy="107" r="3" fill="#fce28b"/>
+        <circle cx="260" cy="107" r="3" fill="#fce28b"/>
+      </g>
 
-    <!-- 2. ÁO YẾM GẤM ĐỎ HOÀNG GIA (CHIA CẮT ĐẦU VÀ THÂN!) -->
-    <path d="M 152 245 C 148 280, 154 310, 162 325 L 238 325 C 246 310, 252 280, 248 245 Z" fill="url(#cheerVest)"/>
-    <path d="M 166 238 L 200 278 L 234 238" fill="none" stroke="url(#cheerGold)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Left Raised Paw -->
+      <circle cx="126" cy="126" r="14" fill="#31333b"/>
+      <ellipse cx="126" cy="123" rx="7" ry="5" fill="#434752"/>
 
-    <!-- Ngọc Bội Treo Cổ -->
-    <circle cx="200" cy="282" r="6.5" fill="url(#cheerGold)"/>
-    <circle cx="200" cy="282" r="3.8" fill="#2dd4bf"/>
-
-    <!-- Bụng Vảy Rồng Màu Kem -->
-    <ellipse cx="200" cy="316" rx="34" ry="18" fill="url(#cheerBelly)"/>
-    <path d="M 182 314 Q 200 320 218 314" fill="none" stroke="#d4af37" stroke-width="2" stroke-linecap="round"/>
-
-    <!-- Chân Tròn Xinh Với Đệm Móng Vàng -->
-    <ellipse cx="160" cy="336" rx="19" ry="12" fill="url(#cheerSkin)" stroke="#0d9488" stroke-width="1.5"/>
-    <circle cx="152" cy="337" r="2.8" fill="url(#cheerGold)"/>
-    <circle cx="160" cy="339" r="2.8" fill="url(#cheerGold)"/>
-    <circle cx="168" cy="337" r="2.8" fill="url(#cheerGold)"/>
-
-    <ellipse cx="240" cy="336" rx="19" ry="12" fill="url(#cheerSkin)" stroke="#0d9488" stroke-width="1.5"/>
-    <circle cx="232" cy="337" r="2.8" fill="url(#cheerGold)"/>
-    <circle cx="240" cy="339" r="2.8" fill="url(#cheerGold)"/>
-    <circle cx="248" cy="337" r="2.8" fill="url(#cheerGold)"/>
-
-    <!-- SỪNG RỒNG HOÀNG KIM -->
-    <path d="M 152 120 C 142 90, 116 66, 100 56 C 110 72, 124 82, 132 106 C 118 96, 106 94, 96 98 C 112 108, 125 112, 138 124 Z" fill="url(#cheerGold)"/>
-    <path d="M 248 120 C 258 90, 284 66, 300 56 C 290 72, 276 82, 268 106 C 282 96, 294 94, 304 98 C 288 108, 275 112, 262 124 Z" fill="url(#cheerGold)"/>
-
-    <!-- 3. DRAGON HEAD (Má phúng phính đáng yêu, không viền oval cắt mặt!) -->
-    <path d="M 145 132 C 130 148, 118 182, 130 210 C 142 236, 172 242, 200 242 C 228 242, 258 236, 270 210 C 282 182, 270 148, 255 132 C 235 112, 165 112, 145 132 Z" fill="url(#cheerSkin)" stroke="#0d9488" stroke-width="1.5"/>
-
-    <!-- Bờm Rồng Hoàng Kim 2 bên má -->
-    <path d="M 134 202 C 118 207, 106 219, 110 231 C 118 227, 126 219, 140 215 Z" fill="url(#cheerGold)"/>
-    <path d="M 266 202 C 282 207, 294 219, 290 231 C 282 227, 274 219, 260 215 Z" fill="url(#cheerGold)"/>
-
-    <!-- Vây Tai Rồng Mềm Mại -->
-    <ellipse cx="126" cy="168" rx="17" ry="12" fill="url(#cheerSkin)" stroke="#0d9488" stroke-width="1.5" transform="rotate(-20 126 168)"/>
-    <ellipse cx="126" cy="168" rx="10" ry="6" fill="url(#cheerGold)" transform="rotate(-20 126 168)"/>
-
-    <ellipse cx="274" cy="168" rx="17" ry="12" fill="url(#cheerSkin)" stroke="#0d9488" stroke-width="1.5" transform="rotate(20 274 168)"/>
-    <ellipse cx="274" cy="168" rx="10" ry="6" fill="url(#cheerGold)" transform="rotate(20 274 168)"/>
-
-    <!-- Soft Muzzle Glow -->
-    <ellipse cx="200" cy="200" rx="52" ry="28" fill="url(#cheerMuzzle)"/>
-
-    <!-- Má Đào Ửng Hồng -->
-    <circle cx="146" cy="200" r="16" fill="url(#cheerBlush)"/>
-    <circle cx="254" cy="200" r="16" fill="url(#cheerBlush)"/>
-
-    <!-- Râu Rồng Hoàng Kim -->
-    <path d="M 165 198 Q 132 200 114 216" fill="none" stroke="url(#cheerGold)" stroke-width="2.5" stroke-linecap="round"/>
-    <path d="M 235 198 Q 268 200 286 216" fill="none" stroke="url(#cheerGold)" stroke-width="2.5" stroke-linecap="round"/>
-
-    <!-- MŨI RỒNG LI TI (CÁCH XA MIỆNG 20px) -->
-    <g opacity="0.85">
-      <ellipse cx="193" cy="186" rx="2.5" ry="3" fill="#0f766e"/>
-      <ellipse cx="207" cy="186" rx="2.5" ry="3" fill="#0f766e"/>
+      <!-- Right Raised Paw -->
+      <circle cx="274" cy="126" r="14" fill="#31333b"/>
+      <ellipse cx="274" cy="123" rx="7" ry="5" fill="#434752"/>
     </g>
 
-    <!-- MIỆNG CƯỜI RẠNG RỠ VỚI RĂNG KHỂNH XINH XẮN & LƯỠI HỒNG (KHÔNG PHẢI MIỆNG TAM GIÁC THÔ!) -->
-    <path d="M 186 204 Q 200 224 214 204 Q 200 208 186 204 Z" fill="#9d0208" stroke="#0f766e" stroke-width="1.5" stroke-linejoin="round"/>
-    <path d="M 191 213 Q 200 221 209 213 Q 200 209 191 213 Z" fill="#fb7185"/>
-    <polygon points="188,205 192,205 190,209" fill="#ffffff"/>
-    <polygon points="208,205 212,205 210,209" fill="#ffffff"/>
-    <path d="M 184 205 Q 186 202 188 204" fill="none" stroke="#0f766e" stroke-width="1.5" stroke-linecap="round"/>
-    <path d="M 216 205 Q 214 202 212 204" fill="none" stroke="#0f766e" stroke-width="1.5" stroke-linecap="round"/>
+    <!-- Ears -->
+    <g class="ears-wiggle">
+      <!-- Left Ear -->
+      <circle cx="132" cy="155" r="26" fill="#31333b"/>
+      <circle cx="132" cy="155" r="16" fill="#434752"/>
+      <circle cx="135" cy="153" r="9" fill="#fca5a5" opacity="0.3"/>
 
-    <!-- ĐÔI MẮT CƯỜI TÍT HÌNH TRĂNG KHUYẾT HẠNH PHÚC (JOYFUL CURVED EYES) -->
-    <g>
-      <path d="M 152 165 Q 165 148 178 165" fill="none" stroke="#090d16" stroke-width="4.5" stroke-linecap="round"/>
-      <path d="M 150 168 Q 153 162 155 167" fill="none" stroke="#090d16" stroke-width="2" stroke-linecap="round"/>
-
-      <path d="M 222 165 Q 235 148 248 165" fill="none" stroke="#090d16" stroke-width="4.5" stroke-linecap="round"/>
-      <path d="M 245 167 Q 247 162 250 168" fill="none" stroke="#090d16" stroke-width="2" stroke-linecap="round"/>
+      <!-- Right Ear -->
+      <circle cx="268" cy="155" r="26" fill="#31333b"/>
+      <circle cx="268" cy="155" r="16" fill="#434752"/>
+      <circle cx="265" cy="153" r="9" fill="#fca5a5" opacity="0.3"/>
     </g>
 
-    <!-- Ấn Ngọc Trán -->
-    <ellipse cx="200" cy="132" rx="6" ry="8.5" fill="url(#cheerGold)"/>
-    <circle cx="200" cy="130" r="3.5" fill="#ffffff"/>
+    <!-- Chubby Body with Hanfu Robe -->
+    <g id="cheer-body">
+      <!-- Base body -->
+      <ellipse cx="200" cy="285" rx="64" ry="46" fill="#ffffff"/>
+      <!-- Soft shading -->
+      <path d="M145 285 C 160 324 240 324 255 285 C 245 304 225 315 200 315 C 175 315 155 304 145 285 Z" fill="#ebe4d8" opacity="0.6"/>
 
-    <!-- TAY RỒNG NGỌC GIƠ CAO ĐỠ DẢI LIỄN -->
-    <ellipse cx="132" cy="225" rx="14" ry="22" fill="url(#cheerSkin)" stroke="#0d9488" stroke-width="1.5" transform="rotate(-35 132 225)"/>
-    <circle cx="120" cy="204" r="10" fill="url(#cheerSkin)" stroke="#0d9488" stroke-width="1.5"/>
-    <circle cx="116" cy="198" r="2.5" fill="url(#cheerGold)"/>
-    <circle cx="122" cy="196" r="2.5" fill="url(#cheerGold)"/>
+      <!-- Red Robe -->
+      <path d="M148 266 C 148 296 162 316 200 316 C 238 316 252 296 252 266 C 242 258 222 254 200 254 C 178 254 158 258 148 266 Z" fill="#c8102e"/>
+      <!-- Collar Overlap -->
+      <path d="M180 254 L 208 296" stroke="#f5d77f" stroke-width="4.5" stroke-linecap="round"/>
+      <path d="M220 254 L 195 290" stroke="#faf8f5" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="206" cy="293" r="3.5" fill="#d4af37"/>
 
-    <ellipse cx="268" cy="225" rx="14" ry="22" fill="url(#cheerSkin)" stroke="#0d9488" stroke-width="1.5" transform="rotate(35 268 225)"/>
-    <circle cx="280" cy="204" r="10" fill="url(#cheerSkin)" stroke="#0d9488" stroke-width="1.5"/>
-    <circle cx="278" cy="196" r="2.5" fill="url(#cheerGold)"/>
-    <circle cx="284" cy="198" r="2.5" fill="url(#cheerGold)"/>
+      <!-- Golden belt -->
+      <path d="M154 304 C 172 312 228 312 246 304" fill="none" stroke="#d4af37" stroke-width="2.5" stroke-linecap="round"/>
+
+      <!-- Little feet / seated legs -->
+      <ellipse cx="160" cy="330" rx="16" ry="11" fill="#31333b"/>
+      <ellipse cx="240" cy="330" rx="16" ry="11" fill="#31333b"/>
+      <ellipse cx="160" cy="331" rx="9" ry="6" fill="#434752"/>
+      <ellipse cx="240" cy="331" rx="9" ry="6" fill="#434752"/>
+    </g>
+
+    <!-- Head -->
+    <g id="cheer-head">
+      <!-- Main chubby head -->
+      <path d="M125 205 C 122 160 152 130 200 130 C 248 130 278 160 275 205 C 275 242 248 264 200 264 C 152 264 125 242 125 205 Z" fill="#ffffff" filter="url(#softShadow)"/>
+
+      <!-- Eye Patches -->
+      <ellipse cx="162" cy="198" rx="18" ry="22" fill="#31333b" transform="rotate(-10 162 198)"/>
+      <ellipse cx="238" cy="198" rx="18" ry="22" fill="#31333b" transform="rotate(10 238 198)"/>
+
+      <!-- Big Happy Smiling Eyes (Arc crescent cute shape ^_^) -->
+      <path d="M152 198 C 158 190 168 190 174 198" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>
+      <path d="M226 198 C 232 190 242 190 248 198" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>
+
+      <!-- Rosy Cheeks -->
+      <ellipse cx="146" cy="222" rx="14" ry="9" fill="url(#cheerBlush)"/>
+      <ellipse cx="254" cy="222" rx="14" ry="9" fill="url(#cheerBlush)"/>
+
+      <!-- Tiny Nose & Cheerful Open Smile -->
+      <circle cx="200" cy="211" r="3" fill="#31333b"/>
+      <path d="M192 218 C 195 228 205 228 208 218 Z" fill="#c8102e"/>
+      <path d="M194 221 C 198 224 202 224 206 221" fill="#ff7b89"/>
+
+      <!-- Jade Scholar Cap -->
+      <g id="cheer-cap">
+        <path d="M180 132 C 180 122 188 116 200 116 C 212 116 220 122 220 132 Z" fill="url(#cheerJadeGrad)"/>
+        <rect x="176" y="129" width="48" height="5" rx="2.5" fill="#20453b"/>
+        <circle cx="200" cy="124" r="4" fill="#f5d77f"/>
+        <circle cx="200" cy="114" r="3" fill="#c8102e"/>
+      </g>
+    </g>
   </g>
 
-  <!-- LIỄN ĐỎ HOÀNG GIA "太棒了" (Tài bàng le! - Quá Xuất Sắc!) -->
-  <g class="banner-wave" filter="url(#softDrop)">
-    <!-- Thân Liễn -->
-    <path d="M 105 75 Q 200 60 295 75 L 290 115 Q 200 100 110 115 Z" fill="url(#bannerRed)"/>
-    <!-- Viền Vàng Hoàng Kim -->
-    <path d="M 105 75 Q 200 60 295 75" fill="none" stroke="url(#cheerGold)" stroke-width="3.5" stroke-linecap="round"/>
-    <path d="M 110 115 Q 200 100 290 115" fill="none" stroke="url(#cheerGold)" stroke-width="3.5" stroke-linecap="round"/>
-
-    <!-- Đầu Trục Liễn Dát Vàng -->
-    <rect x="98" y="70" width="10" height="50" rx="3" fill="url(#cheerGold)"/>
-    <rect x="292" y="70" width="10" height="50" rx="3" fill="url(#cheerGold)"/>
-
-    <!-- Dải Tua Rua Đỏ Hoàng Cung -->
-    <line x1="103" y1="120" x2="103" y2="138" stroke="url(#cheerGold)" stroke-width="2"/>
-    <polygon points="100,138 106,138 103,146" fill="#dc2626"/>
-
-    <line x1="297" y1="120" x2="297" y2="138" stroke="url(#cheerGold)" stroke-width="2"/>
-    <polygon points="294,138 300,138 297,146" fill="#dc2626"/>
-
-    <!-- Dòng Chữ Hoàng Kim "太棒了!" -->
-    <text x="200" y="98" font-family="'Noto Serif SC', 'Songti SC', 'STSong', serif" font-size="22" font-weight="900" fill="#fff59d" text-anchor="middle" letter-spacing="4" filter="drop-shadow(0 1px 2px rgba(0,0,0,0.5))">太棒了!</text>
+  <!-- Sparkles & Cheering Confetti -->
+  <g class="confetti-pop-1" transform="translate(85, 110)">
+    <path d="M0 -7 Q 0 0 7 0 Q 0 0 0 7 Q 0 0 -7 0 Q 0 0 0 -7 Z" fill="#d4af37"/>
   </g>
+  <g class="confetti-pop-2" transform="translate(315, 105)">
+    <path d="M0 -8 Q 0 0 8 0 Q 0 0 0 8 Q 0 0 -8 0 Q 0 0 0 -8 Z" fill="#c8102e"/>
+  </g>
+  <circle cx="95" cy="180" r="3" fill="#5ca38e" opacity="0.8"/>
+  <circle cx="308" cy="175" r="3.5" fill="#f5d77f" opacity="0.8"/>
+  <circle cx="115" cy="275" r="2.5" fill="#e82b48" opacity="0.7"/>
+  <circle cx="290" cy="285" r="2.5" fill="#d4af37" opacity="0.7"/>
 </svg>

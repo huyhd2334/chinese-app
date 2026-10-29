@@ -1,266 +1,380 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
   <defs>
-    <!-- Soft Jade Dragon Skin -->
-    <linearGradient id="loadSkin" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#5eead4"/>
-      <stop offset="35%" stop-color="#2dd4bf"/>
-      <stop offset="80%" stop-color="#0d9488"/>
-      <stop offset="100%" stop-color="#115e59"/>
+    <!-- Gradients & Shadows -->
+    <linearGradient id="cloudGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fdfbf7" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#f4eee1" stop-opacity="0.8"/>
     </linearGradient>
 
-    <!-- Royal Scholar Silk Robe: Imperial Crimson & Gold Trim (CHIA CẮT KHỐI ĐẦU & THÂN) -->
-    <linearGradient id="scholarRobe" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#dc2626"/>
-      <stop offset="50%" stop-color="#b91c1c"/>
-      <stop offset="100%" stop-color="#7f1d1d"/>
+    <linearGradient id="cushionGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e86a78"/>
+      <stop offset="50%" stop-color="#c8102e"/>
+      <stop offset="100%" stop-color="#990b21"/>
     </linearGradient>
 
-    <!-- Golden Antlers & Robe Trims -->
-    <linearGradient id="loadGold" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#fff176"/>
-      <stop offset="45%" stop-color="#ffd54f"/>
-      <stop offset="85%" stop-color="#ffa000"/>
-      <stop offset="100%" stop-color="#ff6f00"/>
+    <linearGradient id="goldTrimGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f5d77f"/>
+      <stop offset="50%" stop-color="#d4af37"/>
+      <stop offset="100%" stop-color="#aa861c"/>
     </linearGradient>
 
-    <!-- Warm Cream Belly -->
-    <linearGradient id="loadBelly" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#fffbeb"/>
-      <stop offset="100%" stop-color="#fef3c7"/>
+    <linearGradient id="jadeCapGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#529984"/>
+      <stop offset="100%" stop-color="#2d5e51"/>
     </linearGradient>
 
-    <!-- Soft Muzzle Glow (Chuyển êm, không cắt thô) -->
-    <radialGradient id="loadMuzzle" cx="50%" cy="40%" r="60%">
-      <stop offset="0%" stop-color="#ccfbf1" stop-opacity="0.95"/>
-      <stop offset="65%" stop-color="#99f6e4" stop-opacity="0.6"/>
-      <stop offset="100%" stop-color="#5eead4" stop-opacity="0"/>
+    <linearGradient id="tableWoodGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a0714f"/>
+      <stop offset="100%" stop-color="#6e462c"/>
+    </linearGradient>
+
+    <linearGradient id="bookPageGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#faf5ea"/>
+      <stop offset="50%" stop-color="#fffdfa"/>
+      <stop offset="100%" stop-color="#f2ebd9"/>
+    </linearGradient>
+
+    <radialGradient id="blushGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff7b89" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#ff7b89" stop-opacity="0"/>
     </radialGradient>
 
-    <!-- Peach Blush -->
-    <radialGradient id="loadBlush" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#fb7185" stop-opacity="0.75"/>
-      <stop offset="60%" stop-color="#f43f5e" stop-opacity="0.3"/>
-      <stop offset="100%" stop-color="#e11d48" stop-opacity="0"/>
+    <radialGradient id="teaGlowGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#79c299" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#79c299" stop-opacity="0"/>
     </radialGradient>
 
-    <!-- Wooden Desk -->
-    <linearGradient id="deskWood" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#9c6644"/>
-      <stop offset="60%" stop-color="#7f4f24"/>
-      <stop offset="100%" stop-color="#582f0e"/>
-    </linearGradient>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
 
-    <!-- Drop Shadows -->
-    <filter id="softDrop" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.25"/>
+    <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#2b2b2b" flood-opacity="0.08"/>
     </filter>
   </defs>
 
   <style>
-    .dragon-breathe {
-      animation: dragonSway 3.8s ease-in-out infinite;
+    /* CSS Animations for smooth, organic Chibi motion */
+    .chibi-breathe {
+      animation: chibiFloat 3.6s ease-in-out infinite;
       transform-origin: 200px 290px;
     }
-    .antlers-sway {
-      animation: antlerWave 4.2s ease-in-out infinite;
-      transform-origin: 200px 120px;
+    .chibi-ears {
+      animation: earTwitch 4s ease-in-out infinite;
+      transform-origin: 200px 145px;
     }
-    .eyes-blink {
-      animation: blinkEyes 4.2s ease-in-out infinite;
+    .chibi-eye-blink {
+      animation: eyeBlink 3.8s ease-in-out infinite;
       transform-origin: 200px 172px;
     }
-    .tail-wag {
-      animation: tailCheer 3.2s ease-in-out infinite;
-      transform-origin: 275px 295px;
+    .tea-steam-1 {
+      animation: steamFloat 2.6s ease-out infinite;
+      transform-origin: 298px 270px;
     }
-    .tea-steam {
-      animation: steamFloat 3s ease-in-out infinite;
-      transform-origin: 290px 285px;
+    .tea-steam-2 {
+      animation: steamFloat 2.6s ease-out infinite 1.3s;
+      transform-origin: 298px 270px;
+    }
+    .loading-dot-1 {
+      animation: pulseDot 1.4s ease-in-out infinite 0s;
+    }
+    .loading-dot-2 {
+      animation: pulseDot 1.4s ease-in-out infinite 0.2s;
+    }
+    .loading-dot-3 {
+      animation: pulseDot 1.4s ease-in-out infinite 0.4s;
+    }
+    .sparkle-twinkle {
+      animation: twinkle 2.5s ease-in-out infinite alternate;
+    }
+    .sparkle-twinkle-delay {
+      animation: twinkle 3s ease-in-out infinite alternate 1.2s;
+    }
+    .ribbon-sway {
+      animation: ribbonSway 3.6s ease-in-out infinite;
+      transform-origin: 200px 85px;
     }
 
-    @keyframes dragonSway {
-      0%, 100% { transform: translateY(0px) scale(1); }
-      50% { transform: translateY(-5px) scale(1.01); }
+    @keyframes chibiFloat {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-5px) rotate(0.4deg);
+      }
     }
-    @keyframes antlerWave {
-      0%, 100% { transform: rotate(0deg); }
-      50% { transform: rotate(1.5deg); }
+
+    @keyframes earTwitch {
+      0%, 85%, 100% {
+        transform: rotate(0deg);
+      }
+      88% {
+        transform: rotate(-1.5deg);
+      }
+      92% {
+        transform: rotate(1.5deg);
+      }
+      95% {
+        transform: rotate(0deg);
+      }
     }
-    @keyframes tailCheer {
-      0%, 100% { transform: rotate(0deg); }
-      50% { transform: rotate(7deg); }
+
+    @keyframes eyeBlink {
+      0%, 93%, 100% {
+        transform: scaleY(1);
+      }
+      96% {
+        transform: scaleY(0.08);
+      }
     }
-    @keyframes blinkEyes {
-      0%, 94%, 98%, 100% { transform: scaleY(1); }
-      96% { transform: scaleY(0.12); }
-    }
+
     @keyframes steamFloat {
-      0% { opacity: 0; transform: translateY(3px) scale(0.85); }
-      50% { opacity: 0.65; transform: translateY(-4px) scale(1); }
-      100% { opacity: 0; transform: translateY(-12px) scale(1.15); }
+      0% {
+        opacity: 0;
+        transform: translateY(0) scale(0.7);
+      }
+      35% {
+        opacity: 0.65;
+      }
+      80% {
+        opacity: 0.3;
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-24px) scale(1.3) translateX(4px);
+      }
+    }
+
+    @keyframes pulseDot {
+      0%, 100% {
+        opacity: 0.3;
+        transform: scale(0.85);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.2);
+      }
+    }
+
+    @keyframes twinkle {
+      0% {
+        opacity: 0.2;
+        transform: scale(0.7) rotate(0deg);
+      }
+      100% {
+        opacity: 0.9;
+        transform: scale(1.1) rotate(25deg);
+      }
+    }
+
+    @keyframes ribbonSway {
+      0%, 100% {
+        transform: rotate(0deg);
+      }
+      50% {
+        transform: rotate(-3deg);
+      }
     }
   </style>
 
-  <!-- CLOUD BASE -->
-  <g filter="url(#softDrop)">
-    <ellipse cx="200" cy="355" rx="145" ry="30" fill="#ffffff" opacity="0.95"/>
-    <ellipse cx="130" cy="346" rx="46" ry="22" fill="#ffffff"/>
-    <ellipse cx="270" cy="346" rx="46" ry="22" fill="#ffffff"/>
+  <!-- Ambient decorative circle / halo -->
+  <circle cx="200" cy="205" r="145" fill="url(#cloudGrad)" opacity="0.6"/>
+  <circle cx="200" cy="205" r="145" fill="none" stroke="#e0d4c3" stroke-width="2" stroke-dasharray="6 8" opacity="0.5"/>
+
+  <!-- Floor Shadow -->
+  <ellipse cx="200" cy="336" rx="120" ry="18" fill="#2b2b2b" opacity="0.07"/>
+  <ellipse cx="200" cy="334" rx="90" ry="12" fill="#2b2b2b" opacity="0.09"/>
+
+  <!-- Auspicious Cushion (Bồ đoàn đỏ hoàng gia) -->
+  <g id="cushion">
+    <ellipse cx="200" cy="320" rx="92" ry="24" fill="url(#cushionGrad)" filter="url(#dropShadow)"/>
+    <!-- Cushion Golden Trim & Pattern -->
+    <ellipse cx="200" cy="318" rx="86" ry="20" fill="none" stroke="url(#goldTrimGrad)" stroke-width="2.5" opacity="0.85"/>
+    <ellipse cx="200" cy="316" rx="80" ry="17" fill="none" stroke="#ffffff" stroke-width="1" stroke-dasharray="3 4" opacity="0.4"/>
+    <!-- Little tassels -->
+    <path d="M110 322 C 105 328 102 334 100 338" stroke="#d4af37" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M290 322 C 295 328 298 334 300 338" stroke="#d4af37" stroke-width="2.5" stroke-linecap="round"/>
   </g>
 
-  <!-- DRAGON TAIL (Đuôi rồng ngọc uốn lượn chùm lửa vàng) -->
-  <g class="tail-wag">
-    <path d="M 270 280 C 315 270, 350 285, 345 315 C 340 330, 310 325, 290 305 Z" fill="url(#loadSkin)" stroke="#0d9488" stroke-width="1.5"/>
-    <path d="M 340 310 Q 365 295 370 316 Q 360 335 340 325 Z" fill="url(#loadGold)"/>
-  </g>
-
-  <!-- MAIN DRAGON SCHOLAR -->
-  <g class="dragon-breathe" filter="url(#softDrop)">
-
-    <!-- 1. DRAGON BODY (Thân tròn múp) -->
-    <ellipse cx="200" cy="275" rx="72" ry="68" fill="url(#loadSkin)"/>
-
-    <!-- 2. HÁN PHỤC THƯ SINH ĐỎ SON VIỀN VÀNG (CHIA CẮT RÕ RÀNG GIỮA ĐẦU VÀ THÂN!) -->
-    <!-- Áo Hán phục ôm lấy vai và ngực -->
-    <path d="M 148 245 C 145 285, 150 315, 160 330 L 240 330 C 250 315, 255 285, 252 245 Z" fill="url(#scholarRobe)"/>
-
-    <!-- Cổ áo Hán phục vắt chéo chữ Y viền vàng hoàng kim (Imperial Cross Collar) -->
-    <path d="M 168 238 L 200 280 L 232 238" fill="none" stroke="url(#loadGold)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M 172 238 L 200 274 L 228 238" fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
-
-    <!-- Ngọc Bội Hoàng Gia Treo Trước Ngực (Imperial Jade Pendant) -->
-    <circle cx="200" cy="285" r="7" fill="url(#loadGold)"/>
-    <circle cx="200" cy="285" r="4" fill="#2dd4bf"/>
-    <!-- Tua rua đỏ hoàng cung (Silk Tassel) -->
-    <line x1="200" y1="292" x2="200" y2="305" stroke="url(#loadGold)" stroke-width="2"/>
-    <polygon points="197,305 203,305 200,314" fill="#dc2626"/>
-
-    <!-- Bụng Vảy Rồng Màu Kem Lộ Ra Dưới Áo -->
-    <ellipse cx="200" cy="318" rx="32" ry="16" fill="url(#loadBelly)"/>
-    <path d="M 185 316 Q 200 322 215 316" fill="none" stroke="#d4af37" stroke-width="2" stroke-linecap="round"/>
-
-    <!-- Bờm Rồng Sau Gáy & Gai Lưng Hoàng Kim -->
-    <polygon points="196,105 204,105 200,90" fill="url(#loadGold)"/>
-    <polygon points="196,122 204,122 200,108" fill="url(#loadGold)"/>
-
-    <!-- SỪNG RỒNG HOÀNG KIM (LỘC NHUNG QUÝ TỘC) -->
-    <g class="antlers-sway">
-      <!-- Left Antler -->
-      <path d="M 152 125 C 142 95, 118 70, 102 60 C 112 75, 126 86, 134 110 C 120 100, 108 98, 98 102 C 114 112, 126 116, 140 128 Z" fill="url(#loadGold)"/>
-      <!-- Right Antler -->
-      <path d="M 248 125 C 258 95, 282 70, 298 60 C 288 75, 274 86, 266 110 C 280 100, 292 98, 302 102 C 286 112, 274 116, 260 128 Z" fill="url(#loadGold)"/>
-      <!-- Scholar Topknot Mini Crown -->
-      <path d="M 192 108 Q 200 86 208 108 Z" fill="url(#loadGold)"/>
-      <circle cx="200" cy="88" r="3.5" fill="#ffffff"/>
+  <!-- Animated Panda Character -->
+  <g class="chibi-breathe">
+    <!-- Back ribbon tail sway -->
+    <g class="ribbon-sway">
+      <path d="M216 102 C 228 115 235 130 236 150 C 233 146 226 138 221 128" fill="#366c5d" opacity="0.85"/>
+      <path d="M184 102 C 172 115 165 130 164 150 C 167 146 174 138 179 128" fill="#366c5d" opacity="0.85"/>
     </g>
 
-    <!-- 3. DRAGON HEAD (Má phúng phính nựng xỉu, không viền oval cắt mặt!) -->
-    <!-- Form đầu má bầu bĩnh đáng yêu -->
-    <path d="M 145 135 C 130 150, 118 185, 130 212 C 142 238, 172 244, 200 244 C 228 244, 258 238, 270 212 C 282 185, 270 150, 255 135 C 235 115, 165 115, 145 135 Z" fill="url(#loadSkin)" stroke="#0d9488" stroke-width="1.5"/>
-
-    <!-- Bờm Rồng Hoàng Kim 2 bên má (Fluffy Dragon Mane) -->
-    <path d="M 134 205 C 118 210, 106 222, 110 234 C 118 230, 126 222, 140 218 Z" fill="url(#loadGold)"/>
-    <path d="M 266 205 C 282 210, 294 222, 290 234 C 282 230, 274 222, 260 218 Z" fill="url(#loadGold)"/>
-
-    <!-- Vây Tai Rồng Mềm Mại -->
-    <ellipse cx="126" cy="172" rx="17" ry="12" fill="url(#loadSkin)" stroke="#0d9488" stroke-width="1.5" transform="rotate(-20 126 172)"/>
-    <ellipse cx="126" cy="172" rx="10" ry="6" fill="url(#loadGold)" transform="rotate(-20 126 172)"/>
-
-    <ellipse cx="274" cy="172" rx="17" ry="12" fill="url(#loadSkin)" stroke="#0d9488" stroke-width="1.5" transform="rotate(20 274 172)"/>
-    <ellipse cx="274" cy="172" rx="10" ry="6" fill="url(#loadGold)" transform="rotate(20 274 172)"/>
-
-    <!-- Soft Muzzle Glow (Má mõm phớt sáng mịn màng) -->
-    <ellipse cx="200" cy="204" rx="52" ry="28" fill="url(#loadMuzzle)"/>
-
-    <!-- Má Đào Ửng Hồng Phúng Phính -->
-    <circle cx="146" cy="204" r="16" fill="url(#loadBlush)"/>
-    <circle cx="254" cy="204" r="16" fill="url(#loadBlush)"/>
-
-    <!-- Râu Rồng Hoàng Kim Uốn Lượn Tự Nhiên -->
-    <path d="M 165 202 Q 132 204 114 220" fill="none" stroke="url(#loadGold)" stroke-width="2.5" stroke-linecap="round"/>
-    <path d="M 235 202 Q 268 204 286 220" fill="none" stroke="url(#loadGold)" stroke-width="2.5" stroke-linecap="round"/>
-
-    <!-- MŨI RỒNG LI TI NHỎ XINH (CÁCH XA MIỆNG 20px, KHÔNG PHẢI ICON :)) -->
-    <g opacity="0.85">
-      <ellipse cx="193" cy="190" rx="2.5" ry="3" fill="#0f766e"/>
-      <ellipse cx="207" cy="190" rx="2.5" ry="3" fill="#0f766e"/>
-      <path d="M 196 186 Q 200 184 204 186" fill="none" stroke="#2dd4bf" stroke-width="1.2" stroke-linecap="round"/>
-    </g>
-
-    <!-- MIỆNG CƯỜI CHIBI CÁNH SEN CÓ 2 RĂNG KHỂNH XINH XẮN & LƯỠI HỒNG -->
-    <path d="M 186 210 Q 200 226 214 210 Q 200 213 186 210 Z" fill="#9d0208" stroke="#0f766e" stroke-width="1.5" stroke-linejoin="round"/>
-    <path d="M 192 218 Q 200 224 208 218 Q 200 214 192 218 Z" fill="#fb7185"/>
-    <!-- 2 chiếc răng khểnh nhỏ xíu trắng muốt -->
-    <polygon points="189,211 193,211 191,215" fill="#ffffff"/>
-    <polygon points="207,211 211,211 209,215" fill="#ffffff"/>
-    <!-- Khóe môi chúm chím -->
-    <path d="M 184 211 Q 186 208 188 210" fill="none" stroke="#0f766e" stroke-width="1.5" stroke-linecap="round"/>
-    <path d="M 216 211 Q 214 208 212 210" fill="none" stroke="#0f766e" stroke-width="1.5" stroke-linecap="round"/>
-
-    <!-- ĐÔI MẮT LONG LANH CHỚP CHỚP (ANIME CHIBI EYES) -->
-    <g class="eyes-blink">
-      <!-- Left Eye -->
+    <!-- Ears (with subtle twitch) -->
+    <g class="chibi-ears">
+      <!-- Left Ear -->
       <g>
-        <ellipse cx="164" cy="172" rx="13" ry="16" fill="#0f172a"/>
-        <ellipse cx="164" cy="174" rx="11" ry="14" fill="#1e1b4b"/>
-        <ellipse cx="164" cy="181" rx="8" ry="5" fill="#f59e0b" opacity="0.85"/>
-        <circle cx="160" cy="167" r="5" fill="#ffffff"/>
-        <circle cx="169" cy="179" r="2.5" fill="#ffffff"/>
-        <path d="M 150 166 Q 164 154 178 166" fill="none" stroke="#090d16" stroke-width="2.8" stroke-linecap="round"/>
+        <circle cx="132" cy="126" r="26" fill="#31333b"/>
+        <circle cx="132" cy="126" r="17" fill="#434752"/>
+        <circle cx="135" cy="124" r="10" fill="#fca5a5" opacity="0.3"/>
       </g>
-
-      <!-- Right Eye -->
+      <!-- Right Ear -->
       <g>
-        <ellipse cx="236" cy="172" rx="13" ry="16" fill="#0f172a"/>
-        <ellipse cx="236" cy="174" rx="11" ry="14" fill="#1e1b4b"/>
-        <ellipse cx="236" cy="181" rx="8" ry="5" fill="#f59e0b" opacity="0.85"/>
-        <circle cx="232" cy="167" r="5" fill="#ffffff"/>
-        <circle cx="241" cy="179" r="2.5" fill="#ffffff"/>
-        <path d="M 222 166 Q 236 154 250 166" fill="none" stroke="#090d16" stroke-width="2.8" stroke-linecap="round"/>
+        <circle cx="268" cy="126" r="26" fill="#31333b"/>
+        <circle cx="268" cy="126" r="17" fill="#434752"/>
+        <circle cx="265" cy="124" r="10" fill="#fca5a5" opacity="0.3"/>
       </g>
     </g>
 
-    <!-- Ấn Ngọc Quý Tộc Trên Trán -->
-    <ellipse cx="200" cy="138" rx="6" ry="8.5" fill="url(#loadGold)"/>
-    <circle cx="200" cy="136" r="3.5" fill="#ffffff"/>
+    <!-- Chubby Body with Chinese Hanfu Robe -->
+    <g id="body">
+      <!-- Body base silhouette -->
+      <ellipse cx="200" cy="272" rx="66" ry="50" fill="#ffffff"/>
+      <!-- Soft body shadow -->
+      <path d="M142 278 C 158 312 242 312 258 278 C 248 296 226 308 200 308 C 174 308 152 296 142 278 Z" fill="#ebe4d8" opacity="0.5"/>
+      
+      <!-- Red Scholar Robe (Áo cổ phong Trung Hoa) -->
+      <path d="M145 258 C 145 285 160 305 200 306 C 240 305 255 285 255 258 C 245 250 225 244 200 244 C 175 244 155 250 145 258 Z" fill="#c8102e"/>
+      <!-- Robe Collar Cross (Cổ áo vắt chéo truyền thống) -->
+      <path d="M178 244 L 208 290" stroke="#f5d77f" stroke-width="4.5" stroke-linecap="round"/>
+      <path d="M222 244 L 195 282" stroke="#faf8f5" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="206" cy="286" r="3.5" fill="#d4af37"/>
+
+      <!-- Robe Hem Gold trim -->
+      <path d="M152 296 C 170 304 230 304 248 296" fill="none" stroke="#d4af37" stroke-width="2.5" stroke-linecap="round" opacity="0.9"/>
+    </g>
+
+    <!-- Head -->
+    <g id="head">
+      <!-- Main chubby head shape -->
+      <path d="M125 180 C 122 135 152 105 200 105 C 248 105 278 135 275 180 C 275 215 248 238 200 238 C 152 238 125 215 125 180 Z" fill="#ffffff" filter="url(#dropShadow)"/>
+      <!-- Soft cheek shading for 3D warmth -->
+      <ellipse cx="200" cy="226" rx="42" ry="12" fill="#f5ede1" opacity="0.6"/>
+
+      <!-- Eye Patches (Characteristic Chibi Panda Marks) -->
+      <!-- Left Eye Patch (slightly rotated inwards for cute look) -->
+      <ellipse cx="162" cy="172" rx="19" ry="24" fill="#31333b" transform="rotate(-12 162 172)"/>
+      <!-- Right Eye Patch -->
+      <ellipse cx="238" cy="172" rx="19" ry="24" fill="#31333b" transform="rotate(12 238 172)"/>
+
+      <!-- Blushing Cheeks (Warm soft pink) -->
+      <ellipse cx="146" cy="196" rx="14" ry="9" fill="url(#blushGrad)"/>
+      <ellipse cx="254" cy="196" rx="14" ry="9" fill="url(#blushGrad)"/>
+
+      <!-- Eyes with Natural Blink Animation -->
+      <g class="chibi-eye-blink">
+        <!-- Left Big Sparkly Eye -->
+        <circle cx="164" cy="172" r="10" fill="#1e2026"/>
+        <circle cx="162" cy="169" r="4.5" fill="#ffffff"/>
+        <circle cx="168" cy="176" r="2.2" fill="#ffffff"/>
+
+        <!-- Right Big Sparkly Eye -->
+        <circle cx="236" cy="172" r="10" fill="#1e2026"/>
+        <circle cx="234" cy="169" r="4.5" fill="#ffffff"/>
+        <circle cx="240" cy="176" r="2.2" fill="#ffffff"/>
+      </g>
+
+      <!-- Little Nose -->
+      <path d="M195 186 C 197 183 203 183 205 186 C 205 189 195 189 195 186 Z" fill="#31333b"/>
+
+      <!-- Sweet Cute Smile -->
+      <path d="M193 194 C 196 198 200 198 200 198 C 200 198 204 198 207 194" fill="none" stroke="#31333b" stroke-width="2.4" stroke-linecap="round"/>
+
+      <!-- Jade Scholar Cap (Mũ tiểu tú tài ngọc bích) -->
+      <g id="scholar-cap">
+        <!-- Cap Base -->
+        <path d="M178 106 C 178 96 186 90 200 90 C 214 90 222 96 222 106 Z" fill="url(#jadeCapGrad)"/>
+        <!-- Cap Brim -->
+        <rect x="174" y="103" width="52" height="6" rx="3" fill="#20453b"/>
+        <rect x="176" y="104" width="48" height="2" rx="1" fill="#79c299" opacity="0.6"/>
+        <!-- Golden Central Jade Gem -->
+        <circle cx="200" cy="98" r="4.5" fill="#f5d77f" stroke="#aa861c" stroke-width="1"/>
+        <circle cx="200" cy="98" r="2" fill="#ffffff"/>
+        <!-- Red bead knot on top -->
+        <circle cx="200" cy="88" r="3" fill="#c8102e"/>
+      </g>
+    </g>
+
+    <!-- Paws resting gracefully -->
+    <!-- Left Paw -->
+    <ellipse cx="152" cy="254" rx="13" ry="11" fill="#31333b" transform="rotate(15 152 254)"/>
+    <!-- Right Paw -->
+    <ellipse cx="248" cy="254" rx="13" ry="11" fill="#31333b" transform="rotate(-15 248 254)"/>
   </g>
 
-  <!-- BÀN HỌC GỖ LIM & SÁCH TRE HSK (STUDY DESK & SCROLL) -->
-  <g filter="url(#softDrop)">
-    <!-- Wooden Study Desk -->
-    <path d="M 85 286 L 315 286 L 330 330 L 70 330 Z" fill="url(#deskWood)"/>
-    <rect x="70" y="330" width="260" height="12" rx="4" fill="#3d1e03"/>
+  <!-- Front Wooden Desk & Study Props -->
+  <g id="desk-scene">
+    <!-- Little Traditional Low Desk -->
+    <path d="M112 284 C 112 278 116 274 122 274 L 278 274 C 284 274 288 278 288 284 L 282 300 C 280 303 277 305 273 305 L 127 305 C 123 305 120 303 118 300 Z" fill="url(#tableWoodGrad)" filter="url(#dropShadow)"/>
+    <!-- Desk Highlights -->
+    <path d="M122 276 L 278 276" stroke="#c4936d" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
 
-    <!-- Open HSK Study Book with gold ribbon edge -->
-    <rect x="132" y="292" width="136" height="30" rx="4" fill="#fffbeb" stroke="#d4af37" stroke-width="1.5"/>
-    <line x1="200" y1="292" x2="200" y2="322" stroke="#d4af37" stroke-width="1.5"/>
-    <!-- Book Text Lines (Chữ Hán thư pháp mô phỏng) -->
-    <line x1="142" y1="300" x2="190" y2="300" stroke="#7f4f24" stroke-width="2" stroke-linecap="round"/>
-    <line x1="142" y1="308" x2="185" y2="308" stroke="#7f4f24" stroke-width="2" stroke-linecap="round"/>
-    <line x1="142" y1="315" x2="172" y2="315" stroke="#dc2626" stroke-width="2" stroke-linecap="round"/>
+    <!-- Open Book / Study Scroll (Vở bài tập tiếng Trung) -->
+    <g id="open-book">
+      <!-- Left Page -->
+      <path d="M174 278 C 174 278 185 277 197 280 L 196 295 C 185 292 174 294 174 294 Z" fill="url(#bookPageGrad)"/>
+      <!-- Right Page -->
+      <path d="M224 278 C 224 278 213 277 201 280 L 202 295 C 213 292 224 294 224 294 Z" fill="url(#bookPageGrad)"/>
+      <!-- Book spine -->
+      <line x1="199" y1="279" x2="199" y2="295" stroke="#d4af37" stroke-width="1.8"/>
+      <!-- Tiny Chinese Character "学" (Học) on page -->
+      <text x="182" y="289" font-family="'Noto Serif SC', serif" font-size="8" fill="#c8102e" font-weight="bold" opacity="0.85">学</text>
+      <!-- Tiny strokes on right page -->
+      <line x1="206" y1="284" x2="218" y2="284" stroke="#8c857d" stroke-width="1" stroke-linecap="round"/>
+      <line x1="206" y1="288" x2="215" y2="288" stroke="#8c857d" stroke-width="1" stroke-linecap="round"/>
+      <!-- Bookmark ribbon -->
+      <path d="M199 295 C 201 300 205 304 207 306" stroke="#c8102e" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
 
-    <line x1="210" y1="300" x2="258" y2="300" stroke="#7f4f24" stroke-width="2" stroke-linecap="round"/>
-    <line x1="210" y1="308" x2="252" y2="308" stroke="#7f4f24" stroke-width="2" stroke-linecap="round"/>
-    <line x1="210" y1="315" x2="242" y2="315" stroke="#7f4f24" stroke-width="2" stroke-linecap="round"/>
+    <!-- Small Jade Teacup & Rising Steam -->
+    <g id="tea-cup">
+      <!-- Teacup Shadow -->
+      <ellipse cx="254" cy="288" rx="10" ry="4" fill="#2b2b2b" opacity="0.15"/>
+      <!-- Teacup Body -->
+      <path d="M246 278 C 246 287 262 287 262 278 Z" fill="#4d917d"/>
+      <ellipse cx="254" cy="278" rx="8" ry="2.5" fill="#79c299"/>
+      <ellipse cx="254" cy="278" rx="6" ry="1.8" fill="#6ba75f"/>
 
-    <!-- Tay Rồng Ngọc & Vòng Tay Lông Bờm Đặt Trên Bàn Học -->
-    <!-- Left Hand -->
-    <ellipse cx="140" cy="288" rx="15" ry="11" fill="url(#loadSkin)" stroke="#0d9488" stroke-width="1.5"/>
-    <circle cx="134" cy="287" r="2.5" fill="url(#loadGold)"/>
-    <circle cx="140" cy="285" r="2.5" fill="url(#loadGold)"/>
-    <circle cx="146" cy="287" r="2.5" fill="url(#loadGold)"/>
+      <!-- Rising Animated Fragrant Tea Steam (Delicate curling clouds) -->
+      <g>
+        <path class="tea-steam-1" d="M254 274 C 251 267 256 261 253 254" fill="none" stroke="#79c299" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+        <path class="tea-steam-2" d="M256 273 C 259 265 254 260 258 252" fill="none" stroke="#d4af37" stroke-width="1.6" stroke-linecap="round" opacity="0.6"/>
+      </g>
+    </g>
 
-    <!-- Right Hand -->
-    <ellipse cx="260" cy="288" rx="15" ry="11" fill="url(#loadSkin)" stroke="#0d9488" stroke-width="1.5"/>
-    <circle cx="254" cy="287" r="2.5" fill="url(#loadGold)"/>
-    <circle cx="260" cy="285" r="2.5" fill="url(#loadGold)"/>
-    <circle cx="266" cy="287" r="2.5" fill="url(#loadGold)"/>
+    <!-- Calligraphy Brush resting -->
+    <g id="brush">
+      <path d="M136 292 L 158 285" stroke="#7d4e2d" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M158 285 L 163 283" stroke="#2b2b2b" stroke-width="2.6" stroke-linecap="round"/>
+      <path d="M157 285 L 159 284" stroke="#d4af37" stroke-width="2.2"/>
+    </g>
+  </g>
 
-    <!-- Tách Trà Sen Ngọc Bích -->
-    <ellipse cx="295" cy="305" rx="13" ry="8" fill="#2dd4bf"/>
-    <path d="M 282 305 C 282 316, 308 316, 308 305 Z" fill="#0d9488"/>
+  <!-- Floating Thought Cloud / Subtle Waiting Dots -->
+  <g id="waiting-indicator" transform="translate(0, -5)">
+    <!-- Elegant Cloud-shaped speech thought bubble -->
+    <g filter="url(#dropShadow)">
+      <path d="M165 62 C 165 52 175 44 190 44 C 196 38 206 38 212 43 C 224 41 236 49 235 60 C 242 66 240 76 232 80 C 228 85 172 85 168 80 C 162 76 160 67 165 62 Z" fill="#ffffff" stroke="#eae0d5" stroke-width="1.5"/>
+      <!-- Connecting thought pebbles -->
+      <circle cx="180" cy="87" r="3.5" fill="#ffffff" stroke="#eae0d5" stroke-width="1.2"/>
+      <circle cx="176" cy="95" r="2" fill="#ffffff" stroke="#eae0d5" stroke-width="1"/>
+    </g>
 
-    <!-- Làn Khói Trà Bốc Lên -->
-    <path class="tea-steam" d="M 295 295 Q 300 285 292 277 Q 297 269 293 263" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+    <!-- Three Rhythmically Pulsing Loading Dots -->
+    <g transform="translate(0, 0)">
+      <circle class="loading-dot-1" cx="188" cy="63" r="3.5" fill="#c8102e"/>
+      <circle class="loading-dot-2" cx="200" cy="63" r="3.5" fill="#d4af37"/>
+      <circle class="loading-dot-3" cx="212" cy="63" r="3.5" fill="#366c5d"/>
+    </g>
+  </g>
+
+  <!-- Subtle Cute Sparkles (Twinkles) -->
+  <g id="sparkles">
+    <!-- Star 1 (Top Left) -->
+    <g class="sparkle-twinkle" transform="translate(95, 120)">
+      <path d="M0 -6 Q 0 0 6 0 Q 0 0 0 6 Q 0 0 -6 0 Q 0 0 0 -6 Z" fill="#d4af37"/>
+    </g>
+    <!-- Star 2 (Top Right) -->
+    <g class="sparkle-twinkle-delay" transform="translate(305, 140)">
+      <path d="M0 -7 Q 0 0 7 0 Q 0 0 0 7 Q 0 0 -7 0 Q 0 0 0 -7 Z" fill="#c8102e" opacity="0.8"/>
+    </g>
+    <!-- Tiny Gold Dot -->
+    <circle cx="110" cy="180" r="2" fill="#d4af37" opacity="0.6"/>
+    <circle cx="295" cy="205" r="2.5" fill="#529984" opacity="0.6"/>
   </g>
 </svg>
