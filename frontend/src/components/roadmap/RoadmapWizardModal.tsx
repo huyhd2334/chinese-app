@@ -106,17 +106,17 @@ export function RoadmapWizardModal({ isOpen, onClose }: RoadmapWizardModalProps)
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-md animate-fade-in">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-background/80 backdrop-blur-md animate-fade-in">
       <div 
-        className="relative w-full max-w-2xl bg-card border border-border/80 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]"
+        className="relative w-full max-w-2xl bg-card border border-border/80 rounded-2xl shadow-2xl overflow-hidden flex flex-col h-[94dvh] sm:h-auto sm:max-h-[90vh]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header with Progress Bar */}
-        <div className="p-5 border-b border-border/60 bg-secondary/20">
-          <div className="flex items-center justify-between mb-3">
-            <div className="flex items-center gap-2 text-indigo-400 font-semibold text-sm">
-              <Compass className="w-4 h-4" />
-              <span>Thiết lập Lộ trình Học cá nhân (Bước {step}/6)</span>
+        <div className="p-4 sm:p-5 border-b border-border/60 bg-secondary/20 shrink-0">
+          <div className="flex items-center justify-between mb-2.5 sm:mb-3">
+            <div className="flex items-center gap-2 text-indigo-400 font-semibold text-xs sm:text-sm">
+              <Compass className="w-4 h-4 shrink-0" />
+              <span>Thiết lập Lộ trình (Bước {step}/6)</span>
             </div>
             <button
               onClick={onClose}
@@ -136,7 +136,7 @@ export function RoadmapWizardModal({ isOpen, onClose }: RoadmapWizardModalProps)
         </div>
 
         {/* Modal Body: Steps Content */}
-        <div className="p-6 overflow-y-auto space-y-6 flex-1">
+        <div className="p-4 sm:p-6 overflow-y-auto overscroll-contain flex-1 min-h-0 space-y-5 sm:space-y-6">
           {/* BƯỚC 1: MỤC TIÊU & CẤP ĐỘ HSK */}
           {step === 1 && (
             <div className="space-y-5 animate-fade-in">
@@ -481,11 +481,11 @@ export function RoadmapWizardModal({ isOpen, onClose }: RoadmapWizardModalProps)
         </div>
 
         {/* Footer Navigation Buttons */}
-        <div className="p-4 border-t border-border/60 bg-secondary/10 flex items-center justify-between">
+        <div className="p-3.5 sm:p-4 border-t border-border/70 bg-card/95 backdrop-blur-md shrink-0 flex items-center justify-between gap-3 shadow-lg">
           {step > 1 ? (
             <button
               onClick={handlePrev}
-              className="px-4 py-2.5 rounded-xl border border-border/70 hover:bg-secondary text-foreground text-sm font-medium transition-colors flex items-center gap-1.5"
+              className="px-3.5 sm:px-4 py-2.5 rounded-xl border border-border/70 hover:bg-secondary text-foreground text-xs sm:text-sm font-medium transition-colors flex items-center gap-1.5"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>Quay lại</span>
@@ -497,7 +497,7 @@ export function RoadmapWizardModal({ isOpen, onClose }: RoadmapWizardModalProps)
           {step < 6 ? (
             <button
               onClick={handleNext}
-              className="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold transition-colors shadow-md shadow-indigo-500/25 flex items-center gap-1.5"
+              className="px-5 sm:px-6 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 text-white text-xs sm:text-sm font-semibold transition-all shadow-md shadow-indigo-500/25 flex items-center justify-center gap-1.5 min-w-[110px]"
             >
               <span>Tiếp theo</span>
               <ArrowRight className="w-4 h-4" />
@@ -505,10 +505,10 @@ export function RoadmapWizardModal({ isOpen, onClose }: RoadmapWizardModalProps)
           ) : (
             <button
               onClick={handleFinish}
-              className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white text-sm font-bold transition-all shadow-lg shadow-indigo-500/30 flex items-center gap-2 transform active:scale-95"
+              className="px-5 sm:px-6 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 active:from-indigo-700 active:to-purple-700 text-white text-xs sm:text-sm font-bold transition-all shadow-lg shadow-indigo-500/30 flex items-center justify-center gap-2 transform active:scale-95"
             >
               <Flame className="w-4 h-4 text-amber-300" />
-              <span>🚀 Bắt đầu lộ trình ngay</span>
+              <span>🚀 Bắt đầu ngay</span>
             </button>
           )}
         </div>
