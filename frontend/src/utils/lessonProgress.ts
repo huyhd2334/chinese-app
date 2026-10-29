@@ -11,7 +11,7 @@ function isBrowser(): boolean {
   return typeof window !== 'undefined'
 }
 
-function getAllProgressRecords(): Record<string, LessonProgressData> {
+export function getAllProgressRecords(): Record<string, LessonProgressData> {
   if (!isBrowser()) return {}
   try {
     const raw = localStorage.getItem(STORAGE_KEY)
@@ -22,7 +22,7 @@ function getAllProgressRecords(): Record<string, LessonProgressData> {
   }
 }
 
-function saveAllProgressRecords(data: Record<string, LessonProgressData>): void {
+export function saveAllProgressRecords(data: Record<string, LessonProgressData>): void {
   if (!isBrowser()) return
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data))

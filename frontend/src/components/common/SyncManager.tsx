@@ -5,6 +5,7 @@ import { useAuth } from "@/contexts/AuthContext"
 import { installSrsSyncHooks, syncSrsNow } from "@/utils/srsCloudSync"
 import { syncSubscriptionWithCloud } from "@/utils/subscription"
 import { syncCollectionsWithCloud } from "@/utils/bonusCloudSync"
+import { installLessonProgressSyncHooks, syncLessonProgressWithCloud } from "@/utils/lessonProgressSync"
 
 /**
  * Mount 1 lần trong layout: giữ gói cước, từ vựng SRS & bộ thẻ Bonus luôn đồng bộ
@@ -21,6 +22,7 @@ export default function SyncManager() {
 
   useEffect(() => {
     installSrsSyncHooks()
+    installLessonProgressSyncHooks()
   }, [])
 
   useEffect(() => {
@@ -44,12 +46,17 @@ export default function SyncManager() {
         // 1. Làm mới trạng thái gói cước Pro từ server
         await syncSubscriptionWithCloud(uid)
 
-        // 2. Đồng bộ tiến độ từ vựng SRS với Supabase
+        // 2. Đồng bộ tiến độ từ vựng SRS với Supabase (Free: 500 từ, Pro: Không giới hạn)
         if (!cancelled) {
           await syncSrsNow()
         }
 
-        // 3. Đồng bộ bộ thẻ từ vựng mở rộng Bonus
+        // 3. Đồng bộ tiến độ bài học giáo trình (Free: HSK 1 & 2, Pro: Toàn bộ sách)
+        if (!cancelled) {
+          await syncLessonProgressWithCloud(uid)
+        }
+
+        // 4. Đồng bộ bộ thẻ từ vựng mở rộng Bonus
         if (!cancelled) {
           await syncCollectionsWithCloud(uid)
         }

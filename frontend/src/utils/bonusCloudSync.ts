@@ -23,18 +23,20 @@ export async function syncCollectionsWithCloud(userId: string): Promise<BonusCol
       return getLocalCollections()
     }
 
-    const cloudCols: BonusCollection[] = (data || []).map((row: any) => ({
-      id: row.id,
-      slug: row.slug,
-      title: row.title,
-      subtitle: row.subtitle || "",
-      language: row.language || "zh",
-      itemCount: 0,
-      badge: row.badge || "Tự Tạo",
-      description: row.description || "",
-      isCustom: true,
-      createdAt: new Date(row.created_at).getTime(),
-    }))
+    const cloudCols: BonusCollection[] = (data || [])
+      .filter((row: any) => !row.slug?.startsWith("_sys_"))
+      .map((row: any) => ({
+        id: row.id,
+        slug: row.slug,
+        title: row.title,
+        subtitle: row.subtitle || "",
+        language: row.language || "zh",
+        itemCount: 0,
+        badge: row.badge || "Tự Tạo",
+        description: row.description || "",
+        isCustom: true,
+        createdAt: new Date(row.created_at).getTime(),
+      }))
 
     // 2. Kiểm tra nếu có bộ sưu tập local chưa upload lên cloud thì đẩy lên
     const localCols = getLocalCollections()
