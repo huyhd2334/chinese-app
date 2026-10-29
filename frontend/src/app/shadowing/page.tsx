@@ -133,7 +133,7 @@ export default function ShadowingPage() {
           <div className="w-20 h-20 relative flex items-center justify-center">
             <Image
               src="/chibi-loading.svg"
-              alt="Tiểu Long Shadowing"
+              alt="Tiểu Lu Shadowing"
               width={80}
               height={80}
               priority
@@ -141,7 +141,7 @@ export default function ShadowingPage() {
             />
           </div>
           <div className="text-xs max-w-[130px] leading-tight text-muted">
-            <p className="font-bold text-china-ink mb-0.5">Tiểu Long đồng hành</p>
+            <p className="font-bold text-china-ink mb-0.5">Tiểu Lu đồng hành</p>
             <p className="text-[11px]">Cùng bạn luyện nói mỗi ngày không lo ngại ngùng!</p>
           </div>
         </div>

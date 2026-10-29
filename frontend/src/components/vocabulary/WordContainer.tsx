@@ -367,14 +367,14 @@ const WordContainer = ({
                 <div className="relative w-24 h-16 select-none">
                   <Image
                     src="/chibi-peek.svg"
-                    alt="Tiểu Long lấp ló"
+                    alt="Tiểu Lu lấp ló"
                     width={96}
                     height={64}
                     className="object-contain"
                   />
                 </div>
                 <p className="font-bold text-china-ink text-sm sm:text-base">
-                  Tiểu Long không tìm thấy từ vựng nào khớp với bộ lọc!
+                  Tiểu Lu không tìm thấy từ vựng nào khớp với bộ lọc!
                 </p>
                 <p className="text-xs text-muted max-w-xs">
                   Bạn hãy thử đổi cấp độ HSK, xóa từ khóa tìm kiếm hoặc chọn xem &quot;Tất cả&quot; nhé.

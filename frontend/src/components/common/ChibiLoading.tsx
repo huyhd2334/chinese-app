@@ -14,7 +14,7 @@ export interface ChibiLoadingProps {
    */
   variant?: "loading" | "auth-required" | "compact"
   /**
-   * Biểu cảm nhân vật Rồng nhỏ Tiểu Long:
+   * Biểu cảm nhân vật Tiểu Lu:
    * - "loading": Ngồi đọc sách uống trà, chờ đợi
    * - "cheer": Giơ cờ "加油!", nhảy nhót cổ vũ
    * - "brush": Cầm bút lông đại tự, nháy mắt tinh nghịch
@@ -57,7 +57,7 @@ export default function ChibiLoading({
   // Default copy text based on variant
   const defaultTitle =
     variant === "auth-required"
-      ? "Tiểu Long đang đợi bạn đăng nhập..."
+      ? "Tiểu Lu đang đợi bạn đăng nhập..."
       : variant === "compact"
       ? "Đang tải..."
       : "Đang tải bài học..."
@@ -80,7 +80,7 @@ export default function ChibiLoading({
       <div className={`relative ${dim.box} flex items-center justify-center select-none`}>
         <Image
           src={svgSrc}
-          alt={`Chibi Tiểu Long - ${character}`}
+          alt={`Chibi Tiểu Lu - ${character}`}
           width={dim.width}
           height={dim.height}
           priority

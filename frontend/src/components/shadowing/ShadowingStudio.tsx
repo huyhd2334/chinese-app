@@ -271,7 +271,7 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
               <div className="relative z-10 w-24 h-24 sm:w-28 sm:h-28 mb-3 transition-transform hover:scale-105">
                 <Image
                   src="/chibi-loading.svg"
-                  alt="Tiểu Long Audio Studio"
+                  alt="Tiểu Lu Audio Studio"
                   width={112}
                   height={112}
                   priority
@@ -620,14 +620,14 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
             <div className="w-10 h-10 rounded-xl bg-white p-1 border border-border shadow-2xs shrink-0 flex items-center justify-center">
               <Image
                 src="/chibi-loading.svg"
-                alt="Tiểu Long"
+                alt="Tiểu Lu"
                 width={30}
                 height={30}
                 className="object-contain"
               />
             </div>
             <div className="text-xs text-china-ink leading-relaxed">
-              <span className="font-bold text-amber-900">Mẹo luyện của Tiểu Long: </span>
+              <span className="font-bold text-amber-900">Mẹo luyện của Tiểu Lu: </span>
               Hãy nghe mẫu 2–3 lần để bắt đúng ngữ điệu và ngắt nghỉ, sau đó bấm Micro thu âm đọc to rõ nhé!
             </div>
           </div>

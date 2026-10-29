@@ -1,38 +1,49 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
   <defs>
-    <!-- Jade Dragon Gradient -->
-    <linearGradient id="brushJadeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#48ca9b"/>
-      <stop offset="50%" stop-color="#2ca579"/>
-      <stop offset="100%" stop-color="#1b7855"/>
+    <!-- Soft Jade Dragon Skin -->
+    <linearGradient id="brushSkin" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#5eead4"/>
+      <stop offset="35%" stop-color="#2dd4bf"/>
+      <stop offset="80%" stop-color="#0d9488"/>
+      <stop offset="100%" stop-color="#115e59"/>
     </linearGradient>
 
-    <!-- Golden Antlers & Calligraphy Gold Gradient -->
-    <linearGradient id="brushGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#fff085"/>
-      <stop offset="50%" stop-color="#f5be38"/>
-      <stop offset="100%" stop-color="#d4920a"/>
+    <!-- Royal Scholar Silk Robe (CHIA CẮT ĐẦU VÀ THÂN) -->
+    <linearGradient id="brushRobe" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#dc2626"/>
+      <stop offset="50%" stop-color="#b91c1c"/>
+      <stop offset="100%" stop-color="#7f1d1d"/>
     </linearGradient>
 
-    <!-- Dragon Belly -->
-    <linearGradient id="brushBellyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#fefae0"/>
-      <stop offset="100%" stop-color="#faedcd"/>
+    <!-- Golden Antlers & Robe Trims -->
+    <linearGradient id="brushGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff176"/>
+      <stop offset="45%" stop-color="#ffd54f"/>
+      <stop offset="85%" stop-color="#ffa000"/>
+      <stop offset="100%" stop-color="#ff6f00"/>
     </linearGradient>
 
-    <!-- Cloud Gradient -->
-    <linearGradient id="brushCloudGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
-      <stop offset="100%" stop-color="#e2e8f0" stop-opacity="0.8"/>
+    <!-- Warm Cream Belly -->
+    <linearGradient id="brushBelly" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fffbeb"/>
+      <stop offset="100%" stop-color="#fef3c7"/>
     </linearGradient>
 
-    <!-- Cheek Blush -->
-    <radialGradient id="brushBlush" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#ff7b89" stop-opacity="0.65"/>
-      <stop offset="100%" stop-color="#ff7b89" stop-opacity="0"/>
+    <!-- Soft Muzzle Glow -->
+    <radialGradient id="brushMuzzle" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#ccfbf1" stop-opacity="0.95"/>
+      <stop offset="65%" stop-color="#99f6e4" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#5eead4" stop-opacity="0"/>
     </radialGradient>
 
-    <!-- Golden Ink Glow -->
+    <!-- Peach Blush -->
+    <radialGradient id="brushBlush" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fb7185" stop-opacity="0.75"/>
+      <stop offset="60%" stop-color="#f43f5e" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#e11d48" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Golden Calligraphy Ink Glow -->
     <filter id="goldInkGlow" x="-30%" y="-30%" width="160%" height="160%">
       <feGaussianBlur stdDeviation="4" result="blur"/>
       <feMerge>
@@ -41,203 +52,172 @@
       </feMerge>
     </filter>
 
-    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.12"/>
+    <filter id="softDrop" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.25"/>
     </filter>
   </defs>
 
   <style>
-    .brush-sway {
-      animation: brushSwayMotion 3.2s ease-in-out infinite;
+    .brush-motion {
+      animation: brushSwayAnim 3.2s ease-in-out infinite;
       transform-origin: 240px 240px;
     }
-    .dragon-nod {
-      animation: dragonNodMotion 3.6s ease-in-out infinite;
+    .dragon-breathe {
+      animation: dragonNod 3.6s ease-in-out infinite;
       transform-origin: 200px 290px;
     }
     .tail-wag {
-      animation: tailSwayMotion 3s ease-in-out infinite;
+      animation: tailSwayAnim 3s ease-in-out infinite;
       transform-origin: 130px 290px;
     }
     .ink-shimmer {
       animation: inkFloat 3s ease-in-out infinite alternate;
     }
-    .magic-sparkle {
-      animation: sparkleAnim 2.4s ease-in-out infinite alternate;
-    }
 
-    @keyframes brushSwayMotion {
-      0%, 100% {
-        transform: rotate(0deg);
-      }
-      50% {
-        transform: rotate(8deg) translateY(-4px);
-      }
+    @keyframes brushSwayAnim {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(8deg) translateY(-4px); }
     }
-    @keyframes dragonNodMotion {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-5px);
-      }
+    @keyframes dragonNod {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
     }
-    @keyframes tailSwayMotion {
-      0%, 100% {
-        transform: rotate(0deg);
-      }
-      50% {
-        transform: rotate(-6deg);
-      }
+    @keyframes tailSwayAnim {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(-6deg); }
     }
     @keyframes inkFloat {
-      0% {
-        opacity: 0.85;
-        transform: translateY(0) scale(1);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(-5px) scale(1.04);
-      }
-    }
-    @keyframes sparkleAnim {
-      0% {
-        opacity: 0.3;
-        transform: scale(0.85);
-      }
-      100% {
-        opacity: 1;
-        transform: scale(1.2);
-      }
+      0% { opacity: 0.85; transform: translateY(0) scale(1); }
+      100% { opacity: 1; transform: translateY(-5px) scale(1.04); }
     }
   </style>
 
   <!-- CLOUD BASE -->
-  <g filter="url(#softShadow)">
-    <ellipse cx="200" cy="355" rx="145" ry="32" fill="url(#brushCloudGrad)"/>
-    <ellipse cx="130" cy="345" rx="46" ry="24" fill="#ffffff"/>
-    <ellipse cx="270" cy="345" rx="46" ry="24" fill="#ffffff"/>
+  <g filter="url(#softDrop)">
+    <ellipse cx="200" cy="355" rx="145" ry="30" fill="#ffffff" opacity="0.95"/>
+    <ellipse cx="130" cy="345" rx="46" ry="22" fill="#ffffff"/>
+    <ellipse cx="270" cy="345" rx="46" ry="22" fill="#ffffff"/>
   </g>
 
-  <!-- INKSTONE & JADE INKPOT (Nghiên mực rồng ngọc) -->
-  <g filter="url(#softShadow)">
+  <!-- INKSTONE & INK DROPLET -->
+  <g filter="url(#softDrop)">
     <ellipse cx="90" cy="335" rx="34" ry="16" fill="#1e293b"/>
     <ellipse cx="90" cy="334" rx="26" ry="11" fill="#0f172a"/>
-    <ellipse cx="88" cy="333" rx="18" ry="7" fill="url(#brushGoldGrad)" opacity="0.85"/>
+    <ellipse cx="88" cy="333" rx="18" ry="7" fill="url(#brushGold)" opacity="0.85"/>
   </g>
 
-  <!-- DRAGON TAIL (Left side) -->
+  <!-- DRAGON TAIL (Uốn lượn bên trái) -->
   <g class="tail-wag">
-    <path d="M 140 280 C 100 270, 65 285, 70 315 C 75 330, 100 325, 120 305 Z" fill="url(#brushJadeGrad)"/>
-    <path d="M 75 310 Q 50 295 45 315 Q 55 335 75 325 Z" fill="url(#brushGoldGrad)"/>
+    <path d="M 140 280 C 100 270, 65 285, 70 315 C 75 330, 100 325, 120 305 Z" fill="url(#brushSkin)" stroke="#0d9488" stroke-width="1.5"/>
+    <path d="M 75 310 Q 50 295 45 316 Q 55 335 75 325 Z" fill="url(#brushGold)"/>
   </g>
 
   <!-- MAIN DRAGON SCHOLAR -->
-  <g class="dragon-nod" filter="url(#softShadow)">
-    <!-- Dragon Body -->
-    <ellipse cx="200" cy="275" rx="72" ry="68" fill="url(#brushJadeGrad)"/>
+  <g class="dragon-breathe" filter="url(#softDrop)">
 
-    <!-- Dragon Belly -->
-    <ellipse cx="200" cy="282" rx="48" ry="46" fill="url(#brushBellyGrad)"/>
-    <path d="M 172 268 Q 200 278 228 268" fill="none" stroke="#d4af37" stroke-width="2.5" stroke-linecap="round"/>
-    <path d="M 168 288 Q 200 298 232 288" fill="none" stroke="#d4af37" stroke-width="2.5" stroke-linecap="round"/>
-    <path d="M 175 308 Q 200 318 225 308" fill="none" stroke="#d4af37" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- 1. DRAGON BODY (Thân múp) -->
+    <ellipse cx="200" cy="275" rx="72" ry="68" fill="url(#brushSkin)"/>
 
-    <!-- Dorsal Fins -->
-    <polygon points="196,105 204,105 200,90" fill="url(#brushGoldGrad)"/>
-    <polygon points="196,122 204,122 200,108" fill="url(#brushGoldGrad)"/>
+    <!-- 2. HÁN PHỤC THƯ SINH ĐỎ SON VIỀN VÀNG (CHIA CẮT ĐẦU VÀ THÂN!) -->
+    <path d="M 148 245 C 145 285, 150 315, 160 330 L 240 330 C 250 315, 255 285, 252 245 Z" fill="url(#brushRobe)"/>
+    <path d="M 168 238 L 200 280 L 232 238" fill="none" stroke="url(#brushGold)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
 
-    <!-- Dragon Feet -->
-    <ellipse cx="160" cy="338" rx="18" ry="12" fill="url(#brushJadeGrad)"/>
-    <ellipse cx="240" cy="338" rx="18" ry="12" fill="url(#brushJadeGrad)"/>
+    <!-- Ngọc Bội Hoàng Gia Treo Trước Ngực -->
+    <circle cx="200" cy="285" r="7" fill="url(#brushGold)"/>
+    <circle cx="200" cy="285" r="4" fill="#2dd4bf"/>
 
-    <!-- GOLDEN ANTLERS -->
-    <path d="M 155 125 C 145 95, 120 70, 105 60 C 115 75, 128 85, 135 110 C 122 100, 110 98, 100 102 C 115 112, 128 116, 142 128 Z" fill="url(#brushGoldGrad)"/>
-    <path d="M 245 125 C 255 95, 280 70, 295 60 C 285 75, 272 85, 265 110 C 278 100, 290 98, 300 102 C 285 112, 272 116, 258 128 Z" fill="url(#brushGoldGrad)"/>
+    <!-- Bụng Vảy Rồng Màu Kem -->
+    <ellipse cx="200" cy="318" rx="32" ry="16" fill="url(#brushBelly)"/>
+    <path d="M 185 316 Q 200 322 215 316" fill="none" stroke="#d4af37" stroke-width="2" stroke-linecap="round"/>
 
-    <!-- DRAGON HEAD -->
-    <circle cx="200" cy="170" r="76" fill="url(#brushJadeGrad)"/>
+    <!-- Chân Rồng Ngọc -->
+    <ellipse cx="160" cy="338" rx="18" ry="12" fill="url(#brushSkin)" stroke="#0d9488" stroke-width="1.5"/>
+    <ellipse cx="240" cy="338" rx="18" ry="12" fill="url(#brushSkin)" stroke="#0d9488" stroke-width="1.5"/>
 
-    <!-- Ears / Fins -->
-    <ellipse cx="128" cy="165" rx="20" ry="14" fill="url(#brushJadeGrad)" transform="rotate(-20 128 165)"/>
-    <ellipse cx="128" cy="165" rx="13" ry="8" fill="url(#brushGoldGrad)" transform="rotate(-20 128 165)"/>
+    <!-- SỪNG RỒNG HOÀNG KIM -->
+    <path d="M 152 125 C 142 95, 118 70, 102 60 C 112 75, 126 86, 134 110 C 120 100, 108 98, 98 102 C 114 112, 126 116, 140 128 Z" fill="url(#brushGold)"/>
+    <path d="M 248 125 C 258 95, 282 70, 298 60 C 288 75, 274 86, 266 110 C 280 100, 292 98, 302 102 C 286 112, 274 116, 260 128 Z" fill="url(#brushGold)"/>
 
-    <ellipse cx="272" cy="165" rx="20" ry="14" fill="url(#brushJadeGrad)" transform="rotate(20 272 165)"/>
-    <ellipse cx="272" cy="165" rx="13" ry="8" fill="url(#brushGoldGrad)" transform="rotate(20 272 165)"/>
+    <!-- 3. DRAGON HEAD (Má phúng phính đáng yêu, không viền oval cắt mặt!) -->
+    <path d="M 145 135 C 130 150, 118 185, 130 212 C 142 238, 172 244, 200 244 C 228 244, 258 238, 270 212 C 282 185, 270 150, 255 135 C 235 115, 165 115, 145 135 Z" fill="url(#brushSkin)" stroke="#0d9488" stroke-width="1.5"/>
 
-    <!-- Forehead Pearl -->
-    <ellipse cx="200" cy="132" rx="8" ry="11" fill="url(#brushGoldGrad)"/>
-    <circle cx="200" cy="130" r="4.5" fill="#ffffff"/>
+    <!-- Bờm Rồng Hoàng Kim 2 bên má -->
+    <path d="M 134 205 C 118 210, 106 222, 110 234 C 118 230, 126 222, 140 218 Z" fill="url(#brushGold)"/>
+    <path d="M 266 205 C 282 210, 294 222, 290 234 C 282 230, 274 222, 260 218 Z" fill="url(#brushGold)"/>
 
-    <!-- Snout / Muzzle -->
-    <ellipse cx="200" cy="192" rx="52" ry="34" fill="#cbf3e4"/>
+    <!-- Vây Tai Rồng -->
+    <ellipse cx="126" cy="172" rx="17" ry="12" fill="url(#brushSkin)" stroke="#0d9488" stroke-width="1.5" transform="rotate(-20 126 172)"/>
+    <ellipse cx="126" cy="172" rx="10" ry="6" fill="url(#brushGold)" transform="rotate(-20 126 172)"/>
 
-    <!-- Nostrils -->
-    <ellipse cx="188" cy="186" rx="4" ry="5.5" fill="#1b7855"/>
-    <ellipse cx="212" cy="186" rx="4" ry="5.5" fill="#1b7855"/>
+    <ellipse cx="274" cy="172" rx="17" ry="12" fill="url(#brushSkin)" stroke="#0d9488" stroke-width="1.5" transform="rotate(20 274 172)"/>
+    <ellipse cx="274" cy="172" rx="10" ry="6" fill="url(#brushGold)" transform="rotate(20 274 172)"/>
 
-    <!-- Smiling Mouth -->
-    <path d="M 188 198 Q 200 210 212 198" fill="none" stroke="#1b7855" stroke-width="3.5" stroke-linecap="round"/>
+    <!-- Soft Muzzle Glow -->
+    <ellipse cx="200" cy="204" rx="52" ry="28" fill="url(#brushMuzzle)"/>
 
-    <!-- Whiskers -->
-    <path d="M 160 190 Q 135 185 118 202" fill="none" stroke="url(#brushGoldGrad)" stroke-width="3" stroke-linecap="round"/>
-    <path d="M 240 190 Q 265 185 282 202" fill="none" stroke="url(#brushGoldGrad)" stroke-width="3" stroke-linecap="round"/>
+    <!-- Má Đào Ửng Hồng -->
+    <circle cx="146" cy="204" r="16" fill="url(#brushBlush)"/>
+    <circle cx="254" cy="204" r="16" fill="url(#brushBlush)"/>
 
-    <!-- Cheeks Blush -->
-    <circle cx="150" cy="190" r="16" fill="url(#brushBlush)"/>
-    <circle cx="250" cy="190" r="16" fill="url(#brushBlush)"/>
+    <!-- Râu Rồng Hoàng Kim -->
+    <path d="M 165 202 Q 132 204 114 220" fill="none" stroke="url(#brushGold)" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M 235 202 Q 268 204 286 220" fill="none" stroke="url(#brushGold)" stroke-width="2.5" stroke-linecap="round"/>
 
-    <!-- Sparkling Focused Eyes (Nghiên cứu say mê) -->
-    <g>
-      <ellipse cx="166" cy="162" rx="13" ry="16" fill="#111827"/>
-      <ellipse cx="166" cy="164" rx="11" ry="14" fill="#1f2937"/>
-      <circle cx="162" cy="157" r="5" fill="#ffffff"/>
-      <circle cx="170" cy="168" r="2.5" fill="#ffffff"/>
-      <ellipse cx="166" cy="172" rx="6" ry="2.5" fill="#f5be38" opacity="0.8"/>
-
-      <ellipse cx="234" cy="162" rx="13" ry="16" fill="#111827"/>
-      <ellipse cx="234" cy="164" rx="11" ry="14" fill="#1f2937"/>
-      <circle cx="230" cy="157" r="5" fill="#ffffff"/>
-      <circle cx="238" cy="168" r="2.5" fill="#ffffff"/>
-      <ellipse cx="234" cy="172" rx="6" ry="2.5" fill="#f5be38" opacity="0.8"/>
+    <!-- MŨI RỒNG LI TI (CÁCH XA MIỆNG 20px) -->
+    <g opacity="0.85">
+      <ellipse cx="193" cy="190" rx="2.5" ry="3" fill="#0f766e"/>
+      <ellipse cx="207" cy="190" rx="2.5" ry="3" fill="#0f766e"/>
     </g>
 
-    <!-- Scholar Crown / Top Knot -->
-    <path d="M 190 108 Q 200 86 210 108 Z" fill="url(#brushGoldGrad)"/>
+    <!-- MIỆNG CƯỜI CHÚM CHÍM CÓ RĂNG KHỂNH XINH XẮN & LƯỠI HỒNG -->
+    <path d="M 186 210 Q 200 226 214 210 Q 200 213 186 210 Z" fill="#9d0208" stroke="#0f766e" stroke-width="1.5" stroke-linejoin="round"/>
+    <path d="M 192 218 Q 200 224 208 218 Q 200 214 192 218 Z" fill="#fb7185"/>
+    <polygon points="189,211 193,211 191,215" fill="#ffffff"/>
+    <polygon points="207,211 211,211 209,215" fill="#ffffff"/>
 
-    <!-- Left Arm holding parchment scroll -->
-    <ellipse cx="140" cy="255" rx="14" ry="20" fill="url(#brushJadeGrad)" transform="rotate(25 140 255)"/>
+    <!-- ĐÔI MẮT LONG LANH CHĂM CHÚ VẼ THƯ PHÁP -->
+    <g>
+      <ellipse cx="164" cy="172" rx="13" ry="16" fill="#0f172a"/>
+      <ellipse cx="164" cy="174" rx="11" ry="14" fill="#1e1b4b"/>
+      <ellipse cx="164" cy="181" rx="8" ry="5" fill="#f59e0b" opacity="0.85"/>
+      <circle cx="160" cy="167" r="5" fill="#ffffff"/>
+      <circle cx="169" cy="179" r="2.5" fill="#ffffff"/>
+      <path d="M 150 166 Q 164 154 178 166" fill="none" stroke="#090d16" stroke-width="2.8" stroke-linecap="round"/>
+
+      <ellipse cx="236" cy="172" rx="13" ry="16" fill="#0f172a"/>
+      <ellipse cx="236" cy="174" rx="11" ry="14" fill="#1e1b4b"/>
+      <ellipse cx="236" cy="181" rx="8" ry="5" fill="#f59e0b" opacity="0.85"/>
+      <circle cx="232" cy="167" r="5" fill="#ffffff"/>
+      <circle cx="241" cy="179" r="2.5" fill="#ffffff"/>
+      <path d="M 222 166 Q 236 154 250 166" fill="none" stroke="#090d16" stroke-width="2.8" stroke-linecap="round"/>
+    </g>
+
+    <!-- Ấn Ngọc Trán -->
+    <ellipse cx="200" cy="138" rx="6" ry="8.5" fill="url(#brushGold)"/>
+    <circle cx="200" cy="136" r="3.5" fill="#ffffff"/>
+
+    <!-- Tay Trái Cầm Cuộn Thư Tịch -->
+    <ellipse cx="140" cy="255" rx="14" ry="20" fill="url(#brushSkin)" stroke="#0d9488" stroke-width="1.5" transform="rotate(25 140 255)"/>
   </g>
 
-  <!-- CALLIGRAPHY BRUSH (Tay rồng vung bút lông dát vàng) -->
-  <g class="brush-sway" filter="url(#softShadow)">
-    <!-- Right Dragon Arm holding the brush -->
-    <ellipse cx="250" cy="245" rx="16" ry="22" fill="url(#brushJadeGrad)" transform="rotate(-30 250 245)"/>
-    <circle cx="265" cy="235" r="11" fill="url(#brushJadeGrad)"/>
+  <!-- BÚT LÔNG THƯ PHÁP DÁT VÀNG (CALLIGRAPHY BRUSH) -->
+  <g class="brush-motion" filter="url(#softDrop)">
+    <!-- Tay Phải Cầm Bút Lông -->
+    <ellipse cx="250" cy="245" rx="16" ry="22" fill="url(#brushSkin)" stroke="#0d9488" stroke-width="1.5" transform="rotate(-30 250 245)"/>
+    <circle cx="265" cy="235" r="10" fill="url(#brushSkin)" stroke="#0d9488" stroke-width="1.5"/>
 
-    <!-- Bamboo & Wood Brush Handle -->
-    <rect x="262" y="145" width="8" height="95" rx="4" fill="#6e462c" transform="rotate(22 266 192)"/>
-    <rect x="260" y="140" width="12" height="10" rx="3" fill="url(#brushGoldGrad)" transform="rotate(22 266 145)"/>
+    <!-- Cán Bút Trúc Gỗ & Khâu Kim Loại Dát Vàng -->
+    <rect x="262" y="145" width="8" height="95" rx="4" fill="#582f0e" transform="rotate(22 266 192)"/>
+    <rect x="260" y="140" width="12" height="10" rx="3" fill="url(#brushGold)" transform="rotate(22 266 145)"/>
 
-    <!-- Brush Tip (Lông thỏ dát vàng thấm mực óng ánh) -->
+    <!-- Ngòi Lông Thỏ Dát Mực Vàng -->
     <path d="M 288 128 C 298 120, 310 115, 312 110 C 310 125, 298 138, 284 142 Z" fill="#1e293b"/>
-    <path d="M 306 112 C 312 110, 316 106, 318 102 C 315 110, 310 116, 304 120 Z" fill="url(#brushGoldGrad)"/>
+    <path d="M 306 112 C 312 110, 316 106, 318 102 C 315 110, 310 116, 304 120 Z" fill="url(#brushGold)"/>
   </g>
 
-  <!-- GLOWING GOLDEN INK CHARACTER: "学" (HỌC) or "龙" (LONG) -->
+  <!-- DẢI MỰC VÀNG PHÁT SÁNG & CHỮ "龙" THƯ PHÁP -->
   <g class="ink-shimmer" filter="url(#goldInkGlow)">
-    <!-- Golden Ink Swirl Ribbon in the Air -->
-    <path d="M 315 105 C 335 85, 345 50, 310 40 C 275 30, 260 70, 290 85 C 320 100, 335 120, 350 140" fill="none" stroke="url(#brushGoldGrad)" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="140" stroke-dashoffset="10"/>
-
-    <!-- Chinese Character "龙" (Dragon) in Imperial Gold Calligraphy -->
-    <text x="325" y="75" font-family="'Noto Serif SC', 'Songti SC', 'STSong', serif" font-size="34" font-weight="900" fill="url(#brushGoldGrad)" text-anchor="middle" filter="drop-shadow(0 2px 4px rgba(212,175,55,0.6))">龙</text>
-  </g>
-
-  <!-- TWINKLING STARS -->
-  <g class="magic-sparkle">
-    <path d="M 80 120 Q 90 120 90 110 Q 90 120 100 120 Q 90 120 90 130 Q 90 120 80 120 Z" fill="url(#brushGoldGrad)"/>
-    <path d="M 320 180 Q 328 180 328 172 Q 328 180 336 180 Q 328 180 328 188 Q 328 180 320 180 Z" fill="url(#brushGoldGrad)"/>
-    <circle cx="280" cy="90" r="3.5" fill="#48ca9b"/>
-    <circle cx="355" cy="110" r="3" fill="#fff085"/>
+    <path d="M 315 105 C 335 85, 345 50, 310 40 C 275 30, 260 70, 290 85 C 320 100, 335 120, 350 140" fill="none" stroke="url(#brushGold)" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="140" stroke-dashoffset="10"/>
+    <text x="325" y="75" font-family="'Noto Serif SC', 'Songti SC', 'STSong', serif" font-size="34" font-weight="900" fill="url(#brushGold)" text-anchor="middle" filter="drop-shadow(0 2px 4px rgba(212,175,55,0.6))">龙</text>
   </g>
 </svg>

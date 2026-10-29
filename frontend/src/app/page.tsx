@@ -427,7 +427,7 @@ export default function Dashboard() {
         <ChibiLoading
           variant="loading"
           size="md"
-          title="Tiểu Long đang mở sách..."
+          title="Tiểu Lu đang mở sách..."
           description="Đang chuẩn bị từ vựng và tiến độ ôn tập cho bạn nhé!"
         />
       </div>
@@ -443,7 +443,7 @@ export default function Dashboard() {
           <div className="relative w-14 h-14 sm:w-16 sm:h-16 shrink-0 select-none drop-shadow-xs p-1 bg-white rounded-2xl border border-border/80 shadow-2xs flex items-center justify-center">
             <Image
               src={isDailyGoalAchieved ? "/chibi-cheer.svg" : "/chibi-loading.svg"}
-              alt="Tiểu Long"
+              alt="Tiểu Lu"
               width={60}
               height={60}
               priority
@@ -493,11 +493,11 @@ export default function Dashboard() {
           ? "bg-gradient-to-r from-china-jade/10 via-card to-china-gold/10 border-china-jade/40 shadow-xs" 
           : "bg-card border-border shadow-xs"
       }`}>
-        {/* Tiểu Long Lấp Ló bên Thang Trạng Thái */}
+        {/* Tiểu Lu Lấp Ló bên Thang Trạng Thái */}
         <div className="absolute -top-7 sm:-top-9 right-6 sm:right-12 w-16 sm:w-20 h-10 sm:h-12 z-10 pointer-events-none select-none transition-transform hover:scale-110">
           <Image
             src="/chibi-peek.svg"
-            alt="Tiểu Long lấp ló"
+            alt="Tiểu Lu lấp ló"
             width={80}
             height={52}
             priority
@@ -701,7 +701,7 @@ export default function Dashboard() {
           <div className="flex items-center gap-2">
             <span className="w-1.5 h-4 rounded-full bg-china-red" />
             <h2 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-china-ink">
-              Không Gian Luyện Tập Cùng Tiểu Long
+              Không Gian Luyện Tập Của Tiểu Lu
             </h2>
           </div>
           <span className="text-[11px] text-muted font-medium">Bấm vào để bắt đầu</span>
@@ -751,7 +751,7 @@ export default function Dashboard() {
               <div className="relative w-16 h-16 sm:w-18 sm:h-18 shrink-0 rounded-2xl bg-china-paper/80 border border-border/60 p-1 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-2 shadow-2xs">
                 <Image
                   src="/chibi-loading.svg"
-                  alt="Tiểu Long Ôn Tập"
+                  alt="Tiểu Lu Ôn Tập"
                   width={60}
                   height={60}
                   className="object-contain"
@@ -802,7 +802,7 @@ export default function Dashboard() {
               <div className="relative w-16 h-16 sm:w-18 sm:h-18 shrink-0 rounded-2xl bg-china-paper/80 border border-border/60 p-1 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-2 shadow-2xs">
                 <Image
                   src="/chibi-peek.svg"
-                  alt="Tiểu Long Kho Từ"
+                  alt="Tiểu Lu Kho Từ"
                   width={60}
                   height={44}
                   className="object-contain"
@@ -853,7 +853,7 @@ export default function Dashboard() {
               <div className="relative w-16 h-16 sm:w-18 sm:h-18 shrink-0 rounded-2xl bg-china-paper/80 border border-border/60 p-1 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-2 shadow-2xs">
                 <Image
                   src="/chibi-brush.svg"
-                  alt="Tiểu Long Thư Sinh"
+                  alt="Tiểu Lu Thư Sinh"
                   width={60}
                   height={60}
                   className="object-contain"
@@ -904,7 +904,7 @@ export default function Dashboard() {
               <div className="relative w-16 h-16 sm:w-18 sm:h-18 shrink-0 rounded-2xl bg-china-paper/80 border border-border/60 p-1 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-2 shadow-2xs">
                 <Image
                   src="/chibi-cheer.svg"
-                  alt="Tiểu Long Cổ Vũ"
+                  alt="Tiểu Lu Cổ Vũ"
                   width={60}
                   height={60}
                   className="object-contain"
