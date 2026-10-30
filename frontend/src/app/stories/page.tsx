@@ -205,11 +205,11 @@ export default function StoriesPage() {
                     {novel.chineseTitle} • {novel.pinyinTitle}
                   </p>
 
-                  <p className="text-xs text-stone-500 dark:text-stone-400">
-                    Tác giả: <span className="font-medium text-stone-700 dark:text-stone-300">{novel.author}</span>
+                  <p className="text-xs text-stone-600 dark:text-stone-400">
+                    Tác giả: <span className="font-medium text-stone-800 dark:text-stone-300">{novel.author}</span>
                   </p>
 
-                  <p className="text-xs text-stone-500 dark:text-stone-400 line-clamp-2 leading-relaxed pt-1">
+                  <p className="text-xs text-stone-600 dark:text-stone-400 line-clamp-2 leading-relaxed pt-1">
                     {novel.description}
                   </p>
                 </div>
@@ -220,7 +220,7 @@ export default function StoriesPage() {
                 <div className="flex items-center gap-2">
                   {progressChapter > 0 ? (
                     <div className="space-y-1">
-                      <div className="flex items-center gap-1.5 text-stone-500 dark:text-stone-400 font-medium text-[11px]">
+                      <div className="flex items-center gap-1.5 text-stone-600 dark:text-stone-400 font-medium text-[11px]">
                         <BookmarkCheck className="w-3.5 h-3.5 text-emerald-600" />
                         <span>Đang đọc chương {progressChapter}/{novel.totalChapters} ({progressPercent}%)</span>
                       </div>
@@ -238,7 +238,7 @@ export default function StoriesPage() {
 
                 <button
                   type="button"
-                  className="px-4 py-2 rounded-xl bg-stone-900 hover:bg-black dark:bg-stone-100 dark:text-stone-900 text-white font-semibold text-xs transition-all flex items-center gap-1.5 group-hover:bg-emerald-700 dark:group-hover:bg-emerald-500 group-hover:text-white shadow-2xs active:scale-95 cursor-pointer"
+                  className="px-4 py-2 rounded-xl bg-stone-900 hover:bg-black dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white font-semibold text-xs transition-all flex items-center gap-1.5 group-hover:bg-emerald-700 dark:group-hover:bg-emerald-500 shadow-2xs active:scale-95 cursor-pointer"
                 >
                   <span>{progressChapter > 0 ? "Đọc tiếp" : "Bắt đầu đọc"}</span>
                   <ArrowRight className="w-3.5 h-3.5" />

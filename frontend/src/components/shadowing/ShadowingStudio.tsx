@@ -312,8 +312,8 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
           </div>
 
           {/* Visibility Controls Bar - Clean, Low Glare */}
-          <div className="flex items-center justify-between p-3 rounded-2xl bg-white dark:bg-card border border-slate-200/90 dark:border-neutral-800 shadow-xs text-xs">
-            <div className="flex items-center gap-2 text-slate-500 text-xs">
+          <div className="flex items-center justify-between p-3 rounded-2xl bg-white dark:bg-[#1a1a24] border border-stone-200/90 dark:border-[#2c2d3d] shadow-xs text-xs">
+            <div className="flex items-center gap-2 text-stone-500 dark:text-stone-400 text-xs font-medium">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               <span>Đồng bộ tự động theo lời thoại</span>
             </div>
@@ -321,10 +321,10 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setShowPinyin(!showPinyin)}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-medium transition-all cursor-pointer ${
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-semibold transition-all cursor-pointer ${
                   showPinyin
-                    ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-2xs"
-                    : "bg-slate-100 text-slate-500 hover:text-slate-900 dark:bg-neutral-800 dark:text-neutral-400"
+                    ? "bg-stone-900 text-white dark:bg-emerald-600 dark:text-white shadow-2xs"
+                    : "bg-stone-100 text-stone-600 hover:text-stone-900 dark:bg-[#20202c] dark:text-stone-300 dark:hover:bg-[#282838] border border-stone-200 dark:border-stone-700"
                 }`}
                 title="Bật/Tắt Pinyin"
               >
@@ -334,10 +334,10 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
 
               <button
                 onClick={() => setShowVietnamese(!showVietnamese)}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-medium transition-all cursor-pointer ${
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-semibold transition-all cursor-pointer ${
                   showVietnamese
-                    ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-2xs"
-                    : "bg-slate-100 text-slate-500 hover:text-slate-900 dark:bg-neutral-800 dark:text-neutral-400"
+                    ? "bg-stone-900 text-white dark:bg-emerald-600 dark:text-white shadow-2xs"
+                    : "bg-stone-100 text-stone-600 hover:text-stone-900 dark:bg-[#20202c] dark:text-stone-300 dark:hover:bg-[#282838] border border-stone-200 dark:border-stone-700"
                 }`}
                 title="Bật/Tắt Tiếng Việt"
               >
@@ -349,18 +349,18 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
 
           {/* Focus Sentence Practice Card - Có nhánh dây leo SVG góc */}
           {currentSentence && (
-            <div className="p-5 sm:p-6 rounded-3xl bg-white dark:bg-card border border-stone-200/90 dark:border-neutral-800 shadow-xs space-y-5 relative overflow-hidden">
+            <div className="p-5 sm:p-6 rounded-3xl bg-white dark:bg-[#1a1a24] border border-stone-200/90 dark:border-[#2c2d3d] shadow-xs space-y-5 relative overflow-hidden">
               <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-8 h-8 opacity-60" />
               <div className="flex items-center justify-between relative z-10">
                 <div className="flex items-center gap-2">
-                  <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-slate-100 dark:bg-neutral-800 text-slate-700 dark:text-neutral-300">
+                  <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 border border-stone-200/80 dark:border-stone-700">
                     Câu {currentSentenceIndex + 1}/{video.sentences.length}
                   </span>
-                  <span className="px-2.5 py-0.5 rounded-full text-xs font-mono font-medium bg-slate-100 dark:bg-neutral-800 text-slate-600 dark:text-neutral-400">
+                  <span className="px-2.5 py-0.5 rounded-full text-xs font-mono font-medium bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 border border-stone-200/80 dark:border-stone-700">
                     ⏱️ {formatTimestamp(currentSentence.startTime)} - {formatTimestamp(currentSentence.endTime)}
                   </span>
                   {currentSentence.speaker && (
-                    <span className="text-xs font-medium text-slate-500 dark:text-neutral-400">
+                    <span className="text-xs font-medium text-stone-500 dark:text-stone-400">
                       • {currentSentence.speaker}
                     </span>
                   )}
@@ -370,11 +370,11 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
                   onClick={() => handleToggleCompleted(currentSentence.id)}
                   className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium transition-all cursor-pointer ${
                     completedSentenceIds.includes(currentSentence.id)
-                      ? "bg-emerald-50 text-emerald-700 border border-emerald-200 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-900/50"
-                      : "bg-slate-100 text-slate-500 hover:text-slate-700 dark:bg-neutral-800 dark:text-neutral-400"
+                      ? "bg-emerald-50 text-emerald-800 border border-emerald-200 dark:bg-emerald-950/40 dark:text-emerald-300 dark:border-emerald-800"
+                      : "bg-stone-100 text-stone-600 hover:text-stone-900 dark:bg-stone-800 dark:text-stone-300"
                   }`}
                 >
-                  <CheckCircle2 className="w-3.5 h-3.5" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
                   <span>
                     {completedSentenceIds.includes(currentSentence.id) ? "Đã luyện" : "Đánh dấu đã học"}
                   </span>
@@ -384,20 +384,20 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
               {/* Chinese Character Display - Độ tương phản cao, chống mỏi mắt */}
               <div className="space-y-3 py-2 text-center">
                 <p
-                  className="font-chinese font-bold text-2xl sm:text-3xl text-slate-900 dark:text-white tracking-wide leading-relaxed"
+                  className="font-chinese font-bold text-2xl sm:text-3xl text-stone-900 dark:text-[#edeae4] tracking-wide leading-relaxed"
                   lang="zh"
                 >
                   {currentSentence.chinese}
                 </p>
 
                 {showPinyin && (
-                  <p className="text-sm sm:text-base font-semibold text-blue-600 dark:text-blue-400 tracking-wide">
+                  <p className="text-sm sm:text-base font-semibold text-emerald-700 dark:text-emerald-400 tracking-wide font-mono">
                     {currentSentence.pinyin}
                   </p>
                 )}
 
                 {showVietnamese && (
-                  <p className="text-sm text-slate-600 dark:text-slate-300 max-w-lg mx-auto">
+                  <p className="text-sm text-stone-600 dark:text-stone-300 max-w-lg mx-auto">
                     {currentSentence.vietnamese}
                   </p>
                 )}
@@ -408,23 +408,23 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
                 <button
                   type="button"
                   onClick={() => handleSelectSentence(currentSentenceIndex)}
-                  className="px-4 py-2 rounded-2xl bg-slate-100 hover:bg-slate-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 text-slate-800 dark:text-neutral-200 text-xs font-semibold transition-all flex items-center gap-2 cursor-pointer active:scale-95"
+                  className="px-4 py-2 rounded-2xl bg-stone-100 hover:bg-stone-200 dark:bg-[#222230] dark:hover:bg-[#2a2a3c] text-stone-800 dark:text-stone-200 text-xs font-semibold transition-all flex items-center gap-2 cursor-pointer active:scale-95 border border-stone-200 dark:border-stone-700"
                   title="Phát lại đoạn này trên video"
                 >
-                  <Play className="w-3.5 h-3.5 fill-current text-blue-600" />
+                  <Play className="w-3.5 h-3.5 fill-current text-emerald-600 dark:text-emerald-400" />
                   <span>Phát lại đoạn này ({formatTimestamp(currentSentence.startTime)})</span>
                 </button>
               </div>
 
               {/* Voice Recorder & Comparison Deck */}
-              <div className="pt-3 border-t border-slate-100 dark:border-neutral-800">
-                <div className="p-4 rounded-2xl bg-slate-50 dark:bg-neutral-900/50 border border-slate-200/60 dark:border-neutral-800/80 flex flex-col items-center text-center space-y-3">
-                  <span className="text-xs font-semibold text-slate-600 dark:text-neutral-400">
+              <div className="pt-3 border-t border-stone-100 dark:border-stone-800">
+                <div className="p-4 rounded-2xl bg-stone-50 dark:bg-[#15151e] border border-stone-200/60 dark:border-stone-800 flex flex-col items-center text-center space-y-3">
+                  <span className="text-xs font-semibold text-stone-600 dark:text-stone-400">
                     Thu âm nhại giọng của bạn (Shadowing)
                   </span>
 
                   {recorderError && (
-                    <p className="text-xs text-red-600 bg-red-50 p-2 rounded-xl border border-red-200">
+                    <p className="text-xs text-rose-700 dark:text-rose-300 bg-rose-50 dark:bg-rose-950/40 p-2 rounded-xl border border-rose-200 dark:border-rose-900/50">
                       {recorderError}
                     </p>
                   )}
@@ -434,9 +434,9 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
                     <button
                       type="button"
                       onClick={startRecording}
-                      className="px-5 py-2.5 rounded-2xl bg-slate-900 hover:bg-black text-white font-medium text-xs sm:text-sm shadow-xs transition-all active:scale-95 cursor-pointer flex items-center gap-2"
+                      className="px-5 py-2.5 rounded-2xl bg-rose-600 hover:bg-rose-700 text-white font-semibold text-xs sm:text-sm shadow-xs transition-all active:scale-95 cursor-pointer flex items-center gap-2"
                     >
-                      <Mic className="w-4 h-4 text-rose-400" />
+                      <Mic className="w-4 h-4 text-white" />
                       <span>Bắt đầu thu âm</span>
                     </button>
                   )}
@@ -444,14 +444,14 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
                   {/* Recording In-progress Indicator */}
                   {isRecording && (
                     <div className="flex flex-col items-center gap-2">
-                      <div className="flex items-center gap-2 text-rose-600 font-medium text-xs">
+                      <div className="flex items-center gap-2 text-rose-600 font-semibold text-xs">
                         <span className="w-2.5 h-2.5 rounded-full bg-rose-600 animate-ping" />
                         <span>Đang ghi âm: 00:{recordingTime < 10 ? `0${recordingTime}` : recordingTime}s</span>
                       </div>
                       <button
                         type="button"
                         onClick={stopRecording}
-                        className="px-5 py-2 rounded-2xl bg-slate-900 hover:bg-black text-white font-medium text-xs transition-all active:scale-95 cursor-pointer flex items-center gap-2"
+                        className="px-5 py-2 rounded-2xl bg-stone-900 hover:bg-black text-white font-semibold text-xs transition-all active:scale-95 cursor-pointer flex items-center gap-2"
                       >
                         <Square className="w-3.5 h-3.5 text-rose-400 fill-current" />
                         <span>Dừng thu âm &amp; Nghe lại</span>
@@ -468,7 +468,7 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
                         className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all flex items-center gap-2 cursor-pointer shadow-xs active:scale-95 ${
                           isPlayingUserAudio
                             ? "bg-emerald-600 text-white"
-                            : "bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 dark:bg-emerald-950/40 dark:text-emerald-300 dark:border-emerald-900/50"
+                            : "bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 dark:bg-emerald-950/40 dark:text-emerald-300 dark:border-emerald-800"
                         }`}
                       >
                         <Play className="w-3.5 h-3.5 fill-current" />
@@ -478,7 +478,7 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
                       <button
                         type="button"
                         onClick={startRecording}
-                        className="px-3 py-2 rounded-xl bg-white hover:bg-slate-100 dark:bg-neutral-800 dark:hover:bg-neutral-700 border border-slate-200 dark:border-neutral-700 text-slate-700 dark:text-neutral-300 text-xs font-medium transition-all flex items-center gap-1.5 cursor-pointer"
+                        className="px-3 py-2 rounded-xl bg-white hover:bg-stone-100 dark:bg-stone-800 dark:hover:bg-stone-700 border border-stone-200 dark:border-stone-700 text-stone-700 dark:text-stone-300 text-xs font-medium transition-all flex items-center gap-1.5 cursor-pointer"
                         title="Thu âm lại"
                       >
                         <RotateCcw className="w-3.5 h-3.5" />
@@ -495,7 +495,7 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
                   type="button"
                   onClick={handlePrevSentence}
                   disabled={currentSentenceIndex === 0}
-                  className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 text-slate-700 dark:text-neutral-300 text-xs font-medium transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-1 cursor-pointer"
+                  className="px-4 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 dark:bg-stone-800 dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 text-xs font-semibold transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-1 cursor-pointer border border-stone-200 dark:border-stone-700"
                 >
                   <ChevronLeft className="w-4 h-4" />
                   <span>Câu trước</span>
@@ -505,7 +505,7 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
                   type="button"
                   onClick={handleNextSentence}
                   disabled={currentSentenceIndex === video.sentences.length - 1}
-                  className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 text-slate-700 dark:text-neutral-300 text-xs font-medium transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-1 cursor-pointer"
+                  className="px-4 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 dark:bg-stone-800 dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 text-xs font-semibold transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-1 cursor-pointer border border-stone-200 dark:border-stone-700"
                 >
                   <span>Câu tiếp</span>
                   <ChevronRight className="w-4 h-4" />
@@ -517,9 +517,9 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
 
         {/* Right Column: Interactive Subtitles Timeline (5 cols) */}
         <div className="lg:col-span-5 space-y-3">
-          <div className="relative bg-white dark:bg-card p-4 sm:p-5 rounded-3xl border border-stone-200/90 dark:border-neutral-800 shadow-xs space-y-3 overflow-hidden">
+          <div className="relative bg-white dark:bg-[#1a1a24] p-4 sm:p-5 rounded-3xl border border-stone-200/90 dark:border-[#2c2d3d] shadow-xs space-y-3 overflow-hidden">
             <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-8 h-8 opacity-60" />
-            <div className="flex items-center justify-between pb-3 border-b border-stone-100 dark:border-neutral-800 relative z-10">
+            <div className="flex items-center justify-between pb-3 border-b border-stone-100 dark:border-stone-800 relative z-10">
               <div className="flex items-center gap-2">
                 <Headphones className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                 <h3 className="text-sm font-bold text-stone-900 dark:text-stone-100">
@@ -545,8 +545,8 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
                     onClick={() => handleSelectSentence(index)}
                     className={`p-3 rounded-2xl border transition-all cursor-pointer ${
                       isActive
-                        ? "bg-blue-50/70 dark:bg-blue-950/40 border-blue-400 dark:border-blue-600 shadow-2xs"
-                        : "bg-white hover:bg-slate-50 dark:bg-neutral-900/30 dark:hover:bg-neutral-900/60 border-slate-200/70 dark:border-neutral-800"
+                        ? "bg-emerald-50/90 dark:bg-emerald-950/40 border-emerald-500 dark:border-emerald-600 shadow-2xs"
+                        : "bg-white hover:bg-stone-50 dark:bg-[#161622] dark:hover:bg-[#1e1e2c] border-stone-200/80 dark:border-stone-800"
                     }`}
                   >
                     <div className="flex items-center justify-between gap-2 mb-1">
@@ -554,14 +554,14 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
                         <span
                           className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold ${
                             isActive
-                              ? "bg-blue-600 text-white"
-                              : "bg-slate-100 dark:bg-neutral-800 text-slate-600 dark:text-neutral-400"
+                              ? "bg-emerald-600 text-white"
+                              : "bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300"
                           }`}
                         >
                           {index + 1}
                         </span>
                         {sentence.speaker && (
-                          <span className="text-[11px] font-medium text-slate-500 dark:text-neutral-400">
+                          <span className="text-[11px] font-medium text-stone-500 dark:text-stone-400">
                             {sentence.speaker}
                           </span>
                         )}
@@ -571,8 +571,8 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
                         <span
                           className={`text-[10px] font-mono px-2 py-0.5 rounded-md ${
                             isActive
-                              ? "bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300 font-bold"
-                              : "bg-slate-100 text-slate-500 dark:bg-neutral-800 dark:text-neutral-400 font-medium"
+                              ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300 font-bold"
+                              : "bg-stone-100 text-stone-500 dark:bg-stone-800 dark:text-stone-400 font-medium"
                           }`}
                         >
                           {formatTimestamp(sentence.startTime)}
@@ -586,8 +586,8 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
                     <p
                       className={`font-chinese text-sm leading-relaxed ${
                         isActive
-                          ? "font-bold text-slate-900 dark:text-white"
-                          : "text-slate-800 dark:text-slate-200"
+                          ? "font-bold text-stone-900 dark:text-[#edeae4]"
+                          : "text-stone-800 dark:text-stone-200"
                       }`}
                       lang="zh"
                     >
@@ -596,14 +596,14 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
 
                     {showPinyin && (
                       <p className={`text-[11px] font-medium mt-0.5 line-clamp-1 ${
-                        isActive ? "text-blue-600 dark:text-blue-400" : "text-slate-600 dark:text-slate-400"
+                        isActive ? "text-emerald-700 dark:text-emerald-400 font-semibold" : "text-stone-500 dark:text-stone-400"
                       }`}>
                         {sentence.pinyin}
                       </p>
                     )}
 
                     {showVietnamese && (
-                      <p className="text-[11px] text-slate-500 dark:text-neutral-400 mt-0.5 line-clamp-1">
+                      <p className="text-[11px] text-stone-500 dark:text-stone-400 mt-0.5 line-clamp-1">
                         {sentence.vietnamese}
                       </p>
                     )}

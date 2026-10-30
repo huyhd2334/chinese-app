@@ -96,10 +96,10 @@ export default function ShadowingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50/70 dark:bg-background p-4 sm:p-6 lg:p-8 space-y-6 max-w-6xl mx-auto pb-24">
+    <div className="min-h-screen bg-[#faf8f5] dark:bg-[#111116] p-4 sm:p-6 lg:p-8 space-y-6 max-w-6xl mx-auto pb-24 font-sans text-stone-900 dark:text-stone-100 transition-colors animate-fade-in">
       
       {/* Hero Banner Header - Viền dây leo SVG mộc mạc thanh nhã */}
-      <div className="relative overflow-hidden rounded-3xl bg-white dark:bg-card border border-stone-200/90 dark:border-neutral-800 shadow-xs p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div className="relative overflow-hidden rounded-3xl bg-white dark:bg-[#1a1a24] border border-stone-200/90 dark:border-[#2c2d3d] shadow-xs p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
         <LeafVineCornerSvg position="top-left" className="top-0 left-0 w-9 h-9 sm:w-11 sm:h-11 opacity-80" />
         <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-9 h-9 sm:w-11 sm:h-11 opacity-80" />
         <LeafVineCornerSvg position="bottom-left" className="bottom-0 left-0 w-8 h-8 sm:w-10 sm:h-10 opacity-60" />
@@ -123,7 +123,7 @@ export default function ShadowingPage() {
           <div className="pt-1 flex flex-wrap items-center gap-3">
             <button
               onClick={() => setIsAddModalOpen(true)}
-              className="px-4 py-2.5 rounded-2xl bg-stone-900 hover:bg-black dark:bg-stone-100 dark:hover:bg-white text-white dark:text-stone-900 font-semibold text-xs sm:text-sm shadow-xs transition-all active:scale-95 cursor-pointer flex items-center gap-2"
+              className="px-4 py-2.5 rounded-2xl bg-stone-900 hover:bg-black dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white font-semibold text-xs sm:text-sm shadow-xs transition-all active:scale-95 cursor-pointer flex items-center gap-2"
             >
               <Plus className="w-4 h-4" />
               <span>Thêm Video Của Bạn</span>
@@ -154,7 +154,7 @@ export default function ShadowingPage() {
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-white dark:bg-card p-3.5 sm:p-4 rounded-2xl border border-slate-200/90 dark:border-neutral-800 shadow-xs">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-white dark:bg-[#1a1a24] p-3.5 sm:p-4 rounded-2xl border border-stone-200/90 dark:border-[#2c2d3d] shadow-xs">
         {/* Level Filter Tabs */}
         <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 custom-scrollbar">
           {[
@@ -169,8 +169,8 @@ export default function ShadowingPage() {
               onClick={() => setLevelFilter(tab.id)}
               className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
                 levelFilter === tab.id
-                  ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-2xs"
-                  : "bg-slate-100 text-slate-600 hover:text-slate-900 dark:bg-neutral-800 dark:text-slate-300"
+                  ? "bg-stone-900 text-white dark:bg-emerald-600 dark:text-white shadow-2xs"
+                  : "bg-stone-100 text-stone-700 hover:text-stone-900 hover:bg-stone-200 dark:bg-stone-800 dark:text-stone-300 dark:hover:bg-stone-700"
               }`}
             >
               {tab.label}
@@ -180,13 +180,13 @@ export default function ShadowingPage() {
 
         {/* Search Input */}
         <div className="relative min-w-[220px]">
-          <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-stone-400 absolute left-3 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Tìm chủ đề, từ khóa..."
-            className="w-full pl-9 pr-3.5 py-2 rounded-xl border border-slate-200 dark:border-neutral-800 text-xs focus:outline-none focus:ring-2 focus:ring-blue-500/30 bg-white dark:bg-neutral-900 text-slate-900 dark:text-white"
+            className="w-full pl-9 pr-3.5 py-2 rounded-xl border border-stone-200 dark:border-[#2c2d3d] text-xs focus:outline-none focus:ring-1 focus:ring-emerald-600 bg-white dark:bg-[#16161f] text-stone-900 dark:text-stone-100 placeholder:text-stone-400 dark:placeholder:text-stone-500"
           />
         </div>
       </div>
@@ -197,13 +197,13 @@ export default function ShadowingPage() {
           <div
             key={video.id}
             onClick={() => setSelectedVideo(video)}
-            className="group relative bg-white dark:bg-card rounded-3xl border border-stone-200/90 dark:border-neutral-800 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col overflow-hidden cursor-pointer"
+            className="group relative bg-white dark:bg-[#1a1a24] rounded-3xl border border-stone-200/90 dark:border-[#2c2d3d] shadow-xs hover:shadow-md transition-all duration-300 flex flex-col overflow-hidden cursor-pointer"
           >
             {/* Nhánh dây leo góc card */}
             <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-8 h-8 opacity-60 group-hover:opacity-100 transition-opacity" />
 
             {/* Thumbnail Preview with Play Overlay */}
-            <div className="relative aspect-video w-full bg-slate-900 overflow-hidden">
+            <div className="relative aspect-video w-full bg-stone-900 overflow-hidden">
               <img
                 src={`https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`}
                 alt={video.title}
@@ -248,12 +248,12 @@ export default function ShadowingPage() {
                 <h3 className="font-bold text-stone-900 dark:text-stone-100 text-sm sm:text-base line-clamp-2 group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">
                   {video.title}
                 </h3>
-                <p className="text-xs text-stone-500 dark:text-stone-400 line-clamp-2 leading-relaxed">
+                <p className="text-xs text-stone-600 dark:text-stone-400 line-clamp-2 leading-relaxed">
                   {video.description}
                 </p>
               </div>
 
-              <div className="pt-2 border-t border-stone-100 dark:border-neutral-800 flex items-center justify-between text-xs">
+              <div className="pt-2 border-t border-stone-100 dark:border-stone-800 flex items-center justify-between text-xs">
                 <div className="flex items-center gap-1 text-stone-500 dark:text-stone-400 font-medium">
                   <Layers className="w-3.5 h-3.5 text-emerald-600" />
                   <span>{video.sentencesCount} câu thoại</span>
