@@ -10,7 +10,6 @@ import {
   Moon,
   Coffee,
   CheckCircle2,
-  BookmarkCheck,
 } from "lucide-react"
 import { Novel, NovelChapter } from "@/types/novel"
 import WordLookupModal from "./WordLookupModal"
@@ -25,15 +24,62 @@ interface NovelReaderProps {
 
 type ReaderTheme = "light" | "sepia" | "dark"
 
+// Theme Palette độc lập, dùng inline style để đảm bảo tương phản 100% không bao giờ bị CSS đè bẹp
+const READER_THEMES = {
+  light: {
+    pageBg: "#faf8f5",
+    headerBg: "#ffffff",
+    cardBg: "#ffffff",
+    border: "#e7e5e4",
+    title: "#1c1917",
+    chineseText: "#1c1917",
+    subText: "#78716c",
+    accentButtonBg: "#1c1917",
+    accentButtonText: "#ffffff",
+    outlineButtonBg: "#ffffff",
+    outlineButtonText: "#292524",
+    outlineBorder: "#d6d3d1",
+  },
+  sepia: {
+    pageBg: "#f4ede2",
+    headerBg: "#faf4ea",
+    cardBg: "#faf4ea",
+    border: "#e2d5c3",
+    title: "#3c3022",
+    chineseText: "#3c3022",
+    subText: "#7c6953",
+    accentButtonBg: "#4a3b2c",
+    accentButtonText: "#faf4ea",
+    outlineButtonBg: "#faf4ea",
+    outlineButtonText: "#4a3b2c",
+    outlineBorder: "#d8c8b2",
+  },
+  dark: {
+    pageBg: "#111116",
+    headerBg: "#161620",
+    cardBg: "#1c1c28",
+    border: "#2d2d3d",
+    title: "#edeae4",
+    chineseText: "#edeae4",
+    subText: "#9a958b",
+    accentButtonBg: "#059669",
+    accentButtonText: "#ffffff",
+    outlineButtonBg: "#1a1a24",
+    outlineButtonText: "#edeae4",
+    outlineBorder: "#3a3b4e",
+  },
+}
+
 export default function NovelReader({
   novel,
   initialChapterNumber = 1,
   onBack,
 }: NovelReaderProps) {
-  const { isDarkMode } = useAuth()
+  const { isDarkMode, toggleDarkMode } = useAuth()
   const [currentChapterNum, setCurrentChapterNum] = useState(initialChapterNumber)
   const [fontSize, setFontSize] = useState<number>(19)
-  // Khởi tạo theme đọc dựa trên dark mode toàn app
+  
+  // Khởi tạo theme đọc theo dark mode toàn app
   const [readerTheme, setReaderTheme] = useState<ReaderTheme>(() => (isDarkMode ? "dark" : "light"))
   const [isChapterDrawerOpen, setIsChapterDrawerOpen] = useState(false)
   
@@ -46,7 +92,7 @@ export default function NovelReader({
   const currentChapter: NovelChapter | undefined =
     novel.chapters.find((ch) => ch.chapterNumber === currentChapterNum) || novel.chapters[0]
 
-  // Đồng bộ readerTheme khi user toggle dark mode ở sidebar
+  // Đồng bộ readerTheme khi dark mode toàn app thay đổi
   useEffect(() => {
     setReaderTheme(isDarkMode ? "dark" : "light")
   }, [isDarkMode])
@@ -88,6 +134,16 @@ export default function NovelReader({
     }
   }
 
+  // Chuyển theme đọc sách và đồng bộ trạng thái Dark Mode toàn app
+  const handleSwitchTheme = (newTheme: ReaderTheme) => {
+    setReaderTheme(newTheme)
+    if (newTheme === "dark" && !isDarkMode) {
+      toggleDarkMode()
+    } else if (newTheme === "light" && isDarkMode) {
+      toggleDarkMode()
+    }
+  }
+
   // Handle Text Selection for Lookup
   const handleMouseUp = () => {
     const selection = window.getSelection()
@@ -102,57 +158,38 @@ export default function NovelReader({
     }
   }
 
-  // Theme styling definitions chuẩn mực: Tương phản cao, không bao giờ chữ đen trên nền đen
-  const themeStyles = {
-    light: {
-      pageBg: "bg-[#faf8f5] text-stone-900",
-      headerBg: "bg-white/95 border-stone-200 text-stone-900 shadow-xs",
-      cardBg: "bg-white border-stone-200 text-stone-900 shadow-xs",
-      subText: "text-stone-600",
-      chineseText: "text-stone-900",
-      accentButton: "bg-stone-900 hover:bg-black text-white",
-      outlineButton: "border-stone-300 text-stone-800 hover:bg-stone-100 bg-white",
-    },
-    sepia: {
-      pageBg: "bg-[#f5ede0] text-[#3c3022]",
-      headerBg: "bg-[#f5ede0]/95 border-[#e2d5c3] text-[#3c3022] shadow-xs",
-      cardBg: "bg-[#faf4ea] border-[#e2d5c3] text-[#3c3022] shadow-xs",
-      subText: "text-[#7c6953]",
-      chineseText: "text-[#3c3022]",
-      accentButton: "bg-[#4a3b2c] hover:bg-[#34291e] text-[#faf4ea]",
-      outlineButton: "border-[#d8c8b2] text-[#4a3b2c] hover:bg-[#ede3d3] bg-[#faf4ea]",
-    },
-    dark: {
-      pageBg: "bg-[#111116] text-[#edeae4]",
-      headerBg: "bg-[#161620]/95 border-[#2c2d3d] text-[#edeae4] shadow-md",
-      cardBg: "bg-[#1a1a24] border-[#2c2d3d] text-[#edeae4] shadow-md",
-      subText: "text-[#9a958b]",
-      chineseText: "text-[#edeae4]",
-      accentButton: "bg-emerald-600 hover:bg-emerald-500 text-white",
-      outlineButton: "border-[#3a3b4e] text-[#edeae4] hover:bg-[#252533] bg-[#1a1a24]",
-    },
-  }[readerTheme]
+  const t = READER_THEMES[readerTheme]
 
   return (
-    <div className={`min-h-screen ${themeStyles.pageBg} transition-colors duration-200 font-sans pb-28 select-text`}>
-      
+    <div
+      style={{ backgroundColor: t.pageBg, color: t.title }}
+      className="min-h-screen transition-colors duration-200 font-sans pb-28 select-text"
+    >
       {/* Top Fixed Navigation & Reading Bar */}
-      <header className={`sticky top-0 z-30 ${themeStyles.headerBg} border-b backdrop-blur-md px-4 py-2.5 transition-colors`}>
+      <header
+        style={{
+          backgroundColor: t.headerBg,
+          color: t.title,
+          borderColor: t.border,
+        }}
+        className="sticky top-0 z-30 border-b shadow-2xs backdrop-blur-md px-4 py-2.5 transition-colors"
+      >
         <div className="max-w-4xl mx-auto flex items-center justify-between gap-3">
           {/* Back & Book Info */}
           <div className="flex items-center gap-3 min-w-0">
             <button
               onClick={onBack}
-              className="p-2 rounded-xl hover:bg-black/5 dark:hover:bg-white/10 transition-colors cursor-pointer active:scale-95 shrink-0"
+              style={{ color: t.title }}
+              className="p-2 rounded-xl hover:opacity-70 transition-opacity cursor-pointer active:scale-95 shrink-0"
               title="Quay lại Tủ truyện"
             >
               <ArrowLeft className="w-5 h-5" />
             </button>
             <div className="min-w-0">
-              <h1 className="text-xs sm:text-sm font-bold truncate">
+              <h1 className="text-xs sm:text-sm font-bold truncate" style={{ color: t.title }}>
                 {novel.title} <span className="opacity-70 font-normal">({novel.chineseTitle})</span>
               </h1>
-              <p className={`text-[11px] ${themeStyles.subText} truncate font-medium`}>
+              <p className="text-[11px] truncate font-medium" style={{ color: t.subText }}>
                 Chương {currentChapter?.chapterNumber}/{novel.totalChapters}: {currentChapter?.title}
               </p>
             </div>
@@ -163,7 +200,12 @@ export default function NovelReader({
             {/* Table of Contents Drawer Toggle */}
             <button
               onClick={() => setIsChapterDrawerOpen(true)}
-              className={`px-3 py-1.5 rounded-xl border text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${themeStyles.outlineButton}`}
+              style={{
+                backgroundColor: t.outlineButtonBg,
+                color: t.outlineButtonText,
+                borderColor: t.outlineBorder,
+              }}
+              className="px-3 py-1.5 rounded-xl border text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer shadow-2xs"
               title="Mục lục 51 chương"
             >
               <List className="w-3.5 h-3.5" />
@@ -171,10 +213,17 @@ export default function NovelReader({
             </button>
 
             {/* Font Size Adjuster */}
-            <div className={`hidden sm:flex items-center rounded-xl border overflow-hidden text-xs ${themeStyles.outlineButton}`}>
+            <div
+              style={{
+                backgroundColor: t.outlineButtonBg,
+                color: t.outlineButtonText,
+                borderColor: t.outlineBorder,
+              }}
+              className="hidden sm:flex items-center rounded-xl border overflow-hidden text-xs shadow-2xs"
+            >
               <button
                 onClick={() => setFontSize((prev) => Math.max(16, prev - 1))}
-                className="px-2.5 py-1 hover:bg-black/5 dark:hover:bg-white/10 font-bold cursor-pointer"
+                className="px-2.5 py-1 hover:opacity-70 font-bold cursor-pointer"
                 title="Giảm cỡ chữ"
               >
                 A-
@@ -184,39 +233,59 @@ export default function NovelReader({
               </span>
               <button
                 onClick={() => setFontSize((prev) => Math.min(26, prev + 1))}
-                className="px-2.5 py-1 hover:bg-black/5 dark:hover:bg-white/10 font-bold cursor-pointer"
+                className="px-2.5 py-1 hover:opacity-70 font-bold cursor-pointer"
                 title="Tăng cỡ chữ"
               >
                 A+
               </button>
             </div>
 
-            {/* Reading Theme Palette Toggle */}
-            <div className="flex items-center rounded-xl border border-stone-300 dark:border-neutral-700 p-0.5 gap-0.5 text-xs bg-stone-100 dark:bg-stone-800">
+            {/* Reading Theme Palette Toggle: [Sáng] [Sepia] [Tối] */}
+            <div
+              style={{
+                backgroundColor: readerTheme === "dark" ? "#20202c" : "#eae7e1",
+                borderColor: t.outlineBorder,
+              }}
+              className="flex items-center rounded-xl border p-0.5 gap-0.5 text-xs shadow-2xs"
+            >
               <button
-                onClick={() => setReaderTheme("light")}
+                onClick={() => handleSwitchTheme("light")}
+                style={{
+                  backgroundColor: readerTheme === "light" ? "#ffffff" : "transparent",
+                  color: readerTheme === "light" ? "#b45309" : t.subText,
+                }}
                 className={`p-1.5 rounded-lg transition-all cursor-pointer ${
-                  readerTheme === "light" ? "bg-white shadow-2xs text-amber-700 font-bold" : "opacity-60 hover:opacity-100"
+                  readerTheme === "light" ? "shadow-xs font-bold scale-105" : "opacity-70 hover:opacity-100"
                 }`}
-                title="Giấy sáng mát mắt"
+                title="Chế độ đọc Sáng (Giấy Tuyên Trắng)"
               >
                 <Sun className="w-3.5 h-3.5" />
               </button>
+
               <button
-                onClick={() => setReaderTheme("sepia")}
+                onClick={() => handleSwitchTheme("sepia")}
+                style={{
+                  backgroundColor: readerTheme === "sepia" ? "#faf4ea" : "transparent",
+                  color: readerTheme === "sepia" ? "#4a3b2c" : t.subText,
+                }}
                 className={`p-1.5 rounded-lg transition-all cursor-pointer ${
-                  readerTheme === "sepia" ? "bg-[#faf4ea] shadow-2xs text-[#4a3b2c] font-bold" : "opacity-60 hover:opacity-100"
+                  readerTheme === "sepia" ? "shadow-xs font-bold scale-105" : "opacity-70 hover:opacity-100"
                 }`}
-                title="Giấy ấm cổ điển"
+                title="Chế độ đọc Sepia (Giấy Ấm Hoàng Cung)"
               >
                 <Coffee className="w-3.5 h-3.5" />
               </button>
+
               <button
-                onClick={() => setReaderTheme("dark")}
+                onClick={() => handleSwitchTheme("dark")}
+                style={{
+                  backgroundColor: readerTheme === "dark" ? "#2d2d3e" : "transparent",
+                  color: readerTheme === "dark" ? "#fcd34d" : t.subText,
+                }}
                 className={`p-1.5 rounded-lg transition-all cursor-pointer ${
-                  readerTheme === "dark" ? "bg-[#1a1a24] shadow-2xs text-amber-300 font-bold" : "opacity-60 hover:opacity-100"
+                  readerTheme === "dark" ? "shadow-xs font-bold scale-105" : "opacity-70 hover:opacity-100"
                 }`}
-                title="Ban đêm dịu mắt"
+                title="Chế độ đọc Ban Đêm (Nghiên Mực Sâu Lắng)"
               >
                 <Moon className="w-3.5 h-3.5" />
               </button>
@@ -232,7 +301,12 @@ export default function NovelReader({
         <div
           ref={contentContainerRef}
           onMouseUp={handleMouseUp}
-          className={`relative rounded-3xl p-6 sm:p-10 border transition-colors select-text ${themeStyles.cardBg}`}
+          style={{
+            backgroundColor: t.cardBg,
+            color: t.chineseText,
+            borderColor: t.border,
+          }}
+          className="relative rounded-3xl p-6 sm:p-10 border transition-colors select-text shadow-xs"
         >
           {/* 4 Dây leo lá cây thanh mảnh ở 4 góc - Không dùng viền neon */}
           <LeafVineCornerSvg position="top-left" className="top-0 left-0 w-8 h-8 sm:w-10 sm:h-10 opacity-70" />
@@ -241,30 +315,41 @@ export default function NovelReader({
           <LeafVineCornerSvg position="bottom-right" className="bottom-0 right-0 w-7 h-7 sm:w-8 sm:h-8 opacity-50" />
 
           {/* Chapter Heading */}
-          <div className="relative z-10 text-center pb-6 border-b border-inherit/15 space-y-2">
-            <span className={`text-xs font-semibold uppercase tracking-wider ${themeStyles.subText}`}>
+          <div
+            style={{ borderColor: t.border }}
+            className="relative z-10 text-center pb-6 border-b space-y-2"
+          >
+            <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: t.subText }}>
               {novel.title} • {novel.author}
             </span>
-            <h2 className={`font-chinese text-2xl sm:text-3xl font-bold tracking-wide ${themeStyles.chineseText}`} lang="zh">
+            <h2
+              style={{ color: t.chineseText }}
+              className="font-chinese text-2xl sm:text-3xl font-bold tracking-wide"
+              lang="zh"
+            >
               {currentChapter?.title}
             </h2>
-            <div className={`flex items-center justify-center gap-2 text-xs ${themeStyles.subText} pt-1`}>
+            <div
+              style={{ color: t.subText }}
+              className="flex items-center justify-center gap-2 text-xs pt-1 font-medium"
+            >
               <span>{currentChapter?.paragraphs.length} đoạn</span>
               <span>•</span>
               <span>{currentChapter?.charCount} chữ Hán</span>
             </div>
           </div>
 
-          {/* Story Paragraphs - Văn bản rõ ràng, tương phản hoàn hảo */}
+          {/* Story Paragraphs - Văn bản rõ ràng 100%, áp dụng trực tiếp màu chữ Hán */}
           <div
-            className={`relative z-10 font-chinese space-y-6 pt-6 leading-loose select-text ${themeStyles.chineseText}`}
-            style={{ fontSize: `${fontSize}px` }}
+            className="relative z-10 font-chinese space-y-6 pt-6 leading-loose select-text"
+            style={{ fontSize: `${fontSize}px`, color: t.chineseText }}
             lang="zh"
           >
             {currentChapter?.paragraphs.map((para, pIdx) => (
               <p
                 key={pIdx}
-                className="indent-8 text-justify cursor-text selection:bg-amber-200 selection:text-stone-900 dark:selection:bg-emerald-900/60 dark:selection:text-emerald-100"
+                style={{ color: t.chineseText }}
+                className="indent-8 text-justify cursor-text selection:bg-amber-300 selection:text-stone-900"
               >
                 {para}
               </p>
@@ -272,24 +357,36 @@ export default function NovelReader({
           </div>
 
           {/* Chapter Navigation Bottom */}
-          <div className="relative z-10 pt-8 mt-8 border-t border-inherit/15 flex items-center justify-between gap-3">
+          <div
+            style={{ borderColor: t.border }}
+            className="relative z-10 pt-8 mt-8 border-t flex items-center justify-between gap-3"
+          >
             <button
               onClick={handlePrevChapter}
               disabled={currentChapterNum <= 1}
-              className={`px-4 py-2.5 rounded-2xl border text-xs sm:text-sm font-semibold flex items-center gap-1.5 transition-all disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer ${themeStyles.outlineButton}`}
+              style={{
+                backgroundColor: t.outlineButtonBg,
+                color: t.outlineButtonText,
+                borderColor: t.outlineBorder,
+              }}
+              className="px-4 py-2.5 rounded-2xl border text-xs sm:text-sm font-semibold flex items-center gap-1.5 transition-all disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer shadow-2xs"
             >
               <ChevronLeft className="w-4 h-4" />
               <span>Chương trước</span>
             </button>
 
-            <span className={`text-xs font-mono font-bold ${themeStyles.subText}`}>
+            <span className="text-xs font-mono font-bold" style={{ color: t.subText }}>
               {currentChapterNum} / {novel.totalChapters}
             </span>
 
             <button
               onClick={handleNextChapter}
               disabled={currentChapterNum >= novel.totalChapters}
-              className={`px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-semibold flex items-center gap-1.5 shadow-2xs transition-all disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer ${themeStyles.accentButton}`}
+              style={{
+                backgroundColor: t.accentButtonBg,
+                color: t.accentButtonText,
+              }}
+              className="px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-semibold flex items-center gap-1.5 shadow-2xs transition-all disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
             >
               <span>Chương kế tiếp</span>
               <ChevronRight className="w-4 h-4" />
@@ -300,18 +397,26 @@ export default function NovelReader({
 
       {/* Chapter Table of Contents Drawer */}
       {isChapterDrawerOpen && (
-        <div className="fixed inset-0 z-50 flex justify-end bg-black/40 backdrop-blur-2xs animate-fade-in">
+        <div className="fixed inset-0 z-50 flex justify-end bg-black/50 backdrop-blur-2xs animate-fade-in">
           <div
-            className={`w-full max-w-sm h-full border-l shadow-2xl p-5 flex flex-col space-y-4 ${themeStyles.cardBg}`}
+            style={{
+              backgroundColor: t.cardBg,
+              color: t.title,
+              borderColor: t.border,
+            }}
+            className="w-full max-w-sm h-full border-l shadow-2xl p-5 flex flex-col space-y-4"
           >
-            <div className="flex items-center justify-between pb-3 border-b border-inherit/15">
+            <div style={{ borderColor: t.border }} className="flex items-center justify-between pb-3 border-b">
               <div>
-                <h3 className="font-bold text-sm sm:text-base">Mục lục ({novel.totalChapters} chương)</h3>
-                <p className={`text-xs ${themeStyles.subText}`}>{novel.title}</p>
+                <h3 className="font-bold text-sm sm:text-base" style={{ color: t.title }}>
+                  Mục lục ({novel.totalChapters} chương)
+                </h3>
+                <p className="text-xs" style={{ color: t.subText }}>{novel.title}</p>
               </div>
               <button
                 onClick={() => setIsChapterDrawerOpen(false)}
-                className="p-1.5 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition-colors cursor-pointer"
+                style={{ color: t.subText }}
+                className="p-1.5 rounded-full hover:opacity-70 transition-opacity cursor-pointer"
               >
                 ✕
               </button>
@@ -324,10 +429,12 @@ export default function NovelReader({
                   <button
                     key={ch.id}
                     onClick={() => handleSelectChapter(ch.chapterNumber)}
+                    style={{
+                      backgroundColor: isCurrent ? t.accentButtonBg : "transparent",
+                      color: isCurrent ? t.accentButtonText : t.title,
+                    }}
                     className={`w-full p-2.5 rounded-xl text-left text-xs font-medium transition-all flex items-center justify-between gap-2 cursor-pointer ${
-                      isCurrent
-                        ? "bg-emerald-700 text-white shadow-2xs font-bold"
-                        : "hover:bg-black/5 dark:hover:bg-white/5 opacity-80 hover:opacity-100"
+                      isCurrent ? "shadow-2xs font-bold" : "opacity-80 hover:opacity-100 hover:bg-black/5 dark:hover:bg-white/5"
                     }`}
                   >
                     <span className="truncate">
