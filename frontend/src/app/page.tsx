@@ -443,7 +443,7 @@ export default function Dashboard() {
       {/* 1. Dynamic Greeting with Chibi Mascot */}
       <header className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-4 sm:pb-6 border-b border-border/50">
         <div className="flex items-center gap-3.5 sm:gap-4">
-          <div className="relative w-14 h-14 sm:w-16 sm:h-16 shrink-0 select-none drop-shadow-xs p-1 bg-white rounded-2xl border border-border/80 shadow-2xs flex items-center justify-center">
+          <div className="relative w-14 h-14 sm:w-16 sm:h-16 shrink-0 select-none drop-shadow-xs p-1 bg-card rounded-2xl border border-border/80 shadow-2xs flex items-center justify-center">
             <Image
               src={isDailyGoalAchieved ? "/chibi-cheer.svg" : "/chibi-loading.svg"}
               alt="Tiểu Lu"
@@ -719,10 +719,10 @@ export default function Dashboard() {
           {/* Card 1: Ôn tập SRS (Phục Tập - 溫故知新) */}
           <Link 
             href="/review" 
-            className="group relative overflow-hidden rounded-3xl bg-white border border-border/80 hover:border-china-red/50 hover:shadow-lg p-5 text-china-ink transition-all duration-300 flex flex-col justify-between min-h-[195px]"
+            className="group relative overflow-hidden rounded-3xl bg-card border border-border/80 hover:border-china-red/50 hover:shadow-lg p-5 text-china-ink transition-all duration-300 flex flex-col justify-between min-h-[195px]"
           >
             {/* Calligraphy Watermark chìm nghệ thuật */}
-            <div className="absolute right-2 -bottom-4 text-stone-200/50 font-chinese text-8xl font-black select-none pointer-events-none group-hover:text-china-red/5 transition-colors" lang="zh">
+            <div className="absolute right-2 -bottom-4 text-stone-200/50 dark:text-stone-700/25 font-chinese text-8xl font-black select-none pointer-events-none group-hover:text-china-red/5 transition-colors" lang="zh">
               省
             </div>
 
@@ -756,7 +756,7 @@ export default function Dashboard() {
               </div>
 
               {/* Mascot Art Frame */}
-              <div className="relative w-16 h-16 sm:w-18 sm:h-18 shrink-0 rounded-2xl bg-china-paper/80 border border-border/60 p-1 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-2 shadow-2xs">
+              <div className="relative w-16 h-16 sm:w-18 sm:h-18 shrink-0 rounded-2xl bg-china-paper border border-border/60 p-1 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-2 shadow-2xs">
                 <Image
                   src="/chibi-loading.svg"
                   alt="Tiểu Lu Ôn Tập"
@@ -777,10 +777,10 @@ export default function Dashboard() {
           {/* Card 2: Kho Từ Vựng HSK (Tự Hải - 字海尋珠) */}
           <Link 
             href="/vocabulary" 
-            className="group relative overflow-hidden rounded-3xl bg-white border border-border/80 hover:border-china-red/50 hover:shadow-lg p-5 text-china-ink transition-all duration-300 flex flex-col justify-between min-h-[195px]"
+            className="group relative overflow-hidden rounded-3xl bg-card border border-border/80 hover:border-china-red/50 hover:shadow-lg p-5 text-china-ink transition-all duration-300 flex flex-col justify-between min-h-[195px]"
           >
             {/* Calligraphy Watermark chìm */}
-            <div className="absolute right-2 -bottom-4 text-stone-200/50 font-chinese text-8xl font-black select-none pointer-events-none group-hover:text-china-red/5 transition-colors" lang="zh">
+            <div className="absolute right-2 -bottom-4 text-stone-200/50 dark:text-stone-700/25 font-chinese text-8xl font-black select-none pointer-events-none group-hover:text-china-red/5 transition-colors" lang="zh">
               詞
             </div>
 
@@ -807,7 +807,7 @@ export default function Dashboard() {
               </div>
 
               {/* Mascot Art Frame */}
-              <div className="relative w-16 h-16 sm:w-18 sm:h-18 shrink-0 rounded-2xl bg-china-paper/80 border border-border/60 p-1 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-2 shadow-2xs">
+              <div className="relative w-16 h-16 sm:w-18 sm:h-18 shrink-0 rounded-2xl bg-china-paper border border-border/60 p-1 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-2 shadow-2xs">
                 <Image
                   src="/chibi-peek.svg"
                   alt="Tiểu Lu Kho Từ"
@@ -828,10 +828,10 @@ export default function Dashboard() {
           {/* Card 3: Giáo Trình Chuẩn HSK (Kinh Thư - 經書正課) */}
           <Link 
             href="/books" 
-            className="group relative overflow-hidden rounded-3xl bg-white border border-border/80 hover:border-china-red/50 hover:shadow-lg p-5 text-china-ink transition-all duration-300 flex flex-col justify-between min-h-[195px]"
+            className="group relative overflow-hidden rounded-3xl bg-card border border-border/80 hover:border-china-red/50 hover:shadow-lg p-5 text-china-ink transition-all duration-300 flex flex-col justify-between min-h-[195px]"
           >
             {/* Calligraphy Watermark chìm */}
-            <div className="absolute right-2 -bottom-4 text-stone-200/50 font-chinese text-8xl font-black select-none pointer-events-none group-hover:text-china-red/5 transition-colors" lang="zh">
+            <div className="absolute right-2 -bottom-4 text-stone-200/50 dark:text-stone-700/25 font-chinese text-8xl font-black select-none pointer-events-none group-hover:text-china-red/5 transition-colors" lang="zh">
               書
             </div>
 
@@ -858,7 +858,7 @@ export default function Dashboard() {
               </div>
 
               {/* Mascot Art Frame */}
-              <div className="relative w-16 h-16 sm:w-18 sm:h-18 shrink-0 rounded-2xl bg-china-paper/80 border border-border/60 p-1 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-2 shadow-2xs">
+              <div className="relative w-16 h-16 sm:w-18 sm:h-18 shrink-0 rounded-2xl bg-china-paper border border-border/60 p-1 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-2 shadow-2xs">
                 <Image
                   src="/chibi-brush.svg"
                   alt="Tiểu Lu Thư Sinh"
@@ -879,10 +879,10 @@ export default function Dashboard() {
           {/* Card 4: Từ Mở Rộng & Bổ Trợ (Thác Triển - 博採眾長) */}
           <Link 
             href="/bonus" 
-            className="group relative overflow-hidden rounded-3xl bg-white border border-border/80 hover:border-china-red/50 hover:shadow-lg p-5 text-china-ink transition-all duration-300 flex flex-col justify-between min-h-[195px]"
+            className="group relative overflow-hidden rounded-3xl bg-card border border-border/80 hover:border-china-red/50 hover:shadow-lg p-5 text-china-ink transition-all duration-300 flex flex-col justify-between min-h-[195px]"
           >
             {/* Calligraphy Watermark chìm */}
-            <div className="absolute right-2 -bottom-4 text-stone-200/50 font-chinese text-8xl font-black select-none pointer-events-none group-hover:text-china-red/5 transition-colors" lang="zh">
+            <div className="absolute right-2 -bottom-4 text-stone-200/50 dark:text-stone-700/25 font-chinese text-8xl font-black select-none pointer-events-none group-hover:text-china-red/5 transition-colors" lang="zh">
               博
             </div>
 
@@ -909,7 +909,7 @@ export default function Dashboard() {
               </div>
 
               {/* Mascot Art Frame */}
-              <div className="relative w-16 h-16 sm:w-18 sm:h-18 shrink-0 rounded-2xl bg-china-paper/80 border border-border/60 p-1 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-2 shadow-2xs">
+              <div className="relative w-16 h-16 sm:w-18 sm:h-18 shrink-0 rounded-2xl bg-china-paper border border-border/60 p-1 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-2 shadow-2xs">
                 <Image
                   src="/chibi-cheer.svg"
                   alt="Tiểu Lu Cổ Vũ"
@@ -936,7 +936,7 @@ export default function Dashboard() {
             <div className="flex items-start sm:items-center gap-3 sm:gap-5 w-full md:w-auto">
               {/* Hanzi Box */}
               <div className="relative shrink-0">
-                <div className={`rounded-xl sm:rounded-2xl bg-white border border-border shadow-xs flex items-center justify-center font-serif font-bold text-china-ink group-hover:text-china-red transition-colors whitespace-nowrap px-3 sm:px-4 py-2 h-16 sm:h-20 md:h-24 ${
+                <div className={`rounded-xl sm:rounded-2xl bg-card border border-border shadow-xs flex items-center justify-center font-serif font-bold text-china-ink group-hover:text-china-red transition-colors whitespace-nowrap px-3 sm:px-4 py-2 h-16 sm:h-20 md:h-24 ${
                   dailyWord.hanzi.length <= 1 
                     ? "w-16 sm:w-20 md:w-24 text-3xl sm:text-4xl md:text-5xl" 
                     : dailyWord.hanzi.length === 2
@@ -981,7 +981,7 @@ export default function Dashboard() {
                     <Volume2 className="w-4 h-4" />
                   </button>
                   {getHanViet(dailyWord.hanzi, dailyWord.traditional, dailyWord.pinyinNumeric) && (
-                    <span className="px-2 py-0.5 bg-amber-50 text-amber-800 border border-amber-200/80 rounded-md text-[11px] sm:text-xs font-semibold">
+                    <span className="px-2 py-0.5 bg-amber-500/10 text-amber-700 dark:text-amber-300 border border-amber-500/20 rounded-md text-[11px] sm:text-xs font-semibold">
                       Hán-Việt: {getHanViet(dailyWord.hanzi, dailyWord.traditional, dailyWord.pinyinNumeric)}
                     </span>
                   )}
@@ -997,7 +997,7 @@ export default function Dashboard() {
             <div className="flex items-center gap-2 w-full md:w-auto">
               <Link
                 href={`/vocabulary/${dailyWord.id}`}
-                className="flex-1 md:flex-none flex items-center justify-center gap-1 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl border border-border bg-white text-china-ink hover:text-china-red hover:border-china-red/30 text-xs sm:text-sm font-medium transition-all shadow-xs"
+                className="flex-1 md:flex-none flex items-center justify-center gap-1 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl border border-border bg-card text-china-ink hover:text-china-red hover:border-china-red/30 text-xs sm:text-sm font-medium transition-all shadow-xs"
               >
                 <PenTool className="w-3.5 h-3.5" /> Luyện viết chữ
               </Link>
@@ -1200,7 +1200,7 @@ export default function Dashboard() {
       </section>
 
       {/* 8. Overall Progress Footer */}
-      <section className="bg-white dark:bg-card border border-border rounded-2xl sm:rounded-3xl p-5 sm:p-7 md:p-8 shadow-xs flex flex-col md:flex-row items-center justify-between gap-6 transition-colors">
+      <section className="bg-card border border-border rounded-2xl sm:rounded-3xl p-5 sm:p-7 md:p-8 shadow-xs flex flex-col md:flex-row items-center justify-between gap-6 transition-colors">
         
         <div className="flex items-center gap-4 sm:gap-6 w-full md:w-auto">
           {/* CSS Circular Progress */}
@@ -1209,7 +1209,7 @@ export default function Dashboard() {
               background: `conic-gradient(#366c5d ${progress * 3.6}deg, rgba(0,0,0,0.08) 0deg)`
             }}
           >
-            <div className="absolute w-14 h-14 sm:w-18 sm:h-18 bg-white dark:bg-card rounded-full flex items-center justify-center shadow-xs">
+            <div className="absolute w-14 h-14 sm:w-18 sm:h-18 bg-card rounded-full flex items-center justify-center shadow-xs">
               <span className="text-lg sm:text-2xl font-serif font-bold text-china-jade">{progress}%</span>
             </div>
           </div>
