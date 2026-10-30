@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState, useEffect, useRef, useMemo } from "react"
 import {
   ArrowLeft,
   ChevronLeft,
@@ -10,11 +10,21 @@ import {
   Moon,
   Coffee,
   CheckCircle2,
+  Layers,
+  Compass,
 } from "lucide-react"
 import { Novel, NovelChapter } from "@/types/novel"
 import WordLookupModal from "./WordLookupModal"
 import { LeafVineCornerSvg } from "@/components/roadmap/VineBorders"
 import { useAuth } from "@/contexts/AuthContext"
+import {
+  getHskWordMap,
+  tokenizeParagraph,
+  calculateChapterStats,
+  HSK_LEVEL_STYLES,
+  NovelToken,
+  HskWordInfo,
+} from "@/utils/novelTokenizer"
 
 interface NovelReaderProps {
   novel: Novel
@@ -87,10 +97,78 @@ export default function NovelReader({
   const [selectedHanzi, setSelectedHanzi] = useState<string>("")
   const [isLookupOpen, setIsLookupOpen] = useState<boolean>(false)
 
+  // HSK Word Segmentation & Color Underlining State
+  const [wordDict, setWordDict] = useState<Map<string, HskWordInfo>>(new Map())
+  const [showHskUnderline, setShowHskUnderline] = useState<boolean>(true)
+
   const contentContainerRef = useRef<HTMLDivElement | null>(null)
 
   const currentChapter: NovelChapter | undefined =
     novel.chapters.find((ch) => ch.chapterNumber === currentChapterNum) || novel.chapters[0]
+
+  // Tải từ điển HSK từ IndexedDB (kho 11,470 từ) vào bộ nhớ RAM
+  useEffect(() => {
+    let isMounted = true
+    getHskWordMap().then((dict) => {
+      if (isMounted && dict.size > 0) {
+        setWordDict(dict)
+      }
+    })
+    return () => {
+      isMounted = false
+    }
+  }, [])
+
+  // Đọc cài đặt bật/tắt gạch chân HSK từ localStorage
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("novel_show_hsk_levels")
+      if (saved !== null) {
+        setShowHskUnderline(saved === "true")
+      }
+    } catch {
+      // ignore
+    }
+  }, [])
+
+  const handleToggleHskUnderline = () => {
+    setShowHskUnderline((prev) => {
+      const next = !prev
+      try {
+        localStorage.setItem("novel_show_hsk_levels", String(next))
+      } catch {
+        // ignore
+      }
+      return next
+    })
+  }
+
+  // Tách từ thông minh theo thuật toán Forward Maximum Matching cho toàn bộ đoạn văn
+  const tokenizedParagraphs = useMemo<NovelToken[][]>(() => {
+    if (!currentChapter?.paragraphs || currentChapter.paragraphs.length === 0) return []
+    return currentChapter.paragraphs.map((para, pIdx) =>
+      tokenizeParagraph(para, pIdx, wordDict)
+    )
+  }, [currentChapter, wordDict])
+
+  // Thống kê độ khó và tỷ lệ các cấp độ HSK trong chương
+  const chapterStats = useMemo(() => {
+    return calculateChapterStats(tokenizedParagraphs)
+  }, [tokenizedParagraphs])
+
+  // Khi click trực tiếp vào một từ (1-click tra từ chính xác 100%, không bị thừa/thiếu chữ)
+  const handleTokenClick = (word: string) => {
+    const selection = window.getSelection()?.toString().trim()
+    if (selection && selection.length > 1) {
+      // Nếu người dùng chủ động kéo bôi đen chuột, để handleMouseUp xử lý
+      return
+    }
+    const cleanChinese = word.replace(/[^\u4e00-\u9fff]/g, "")
+    if (cleanChinese.length > 0 && cleanChinese.length <= 8) {
+      setSelectedHanzi(cleanChinese)
+      setIsLookupOpen(true)
+    }
+  }
 
   // Đồng bộ readerTheme khi dark mode toàn app thay đổi
   useEffect(() => {
@@ -210,6 +288,29 @@ export default function NovelReader({
             >
               <List className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">Mục lục</span>
+            </button>
+
+            {/* HSK Level Underline Toggle Button */}
+            <button
+              onClick={handleToggleHskUnderline}
+              style={{
+                backgroundColor: showHskUnderline
+                  ? (readerTheme === "dark" ? "#222232" : readerTheme === "sepia" ? "#ece3d4" : "#f1ede6")
+                  : t.outlineButtonBg,
+                color: showHskUnderline
+                  ? (readerTheme === "dark" ? "#38bdf8" : "#0284c7")
+                  : t.outlineButtonText,
+                borderColor: showHskUnderline
+                  ? (readerTheme === "dark" ? "#0284c7" : "#38bdf8")
+                  : t.outlineBorder,
+              }}
+              className="px-2.5 sm:px-3 py-1.5 rounded-xl border text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer shadow-2xs"
+              title={showHskUnderline ? "Đang bật gạch chân HSK (Bấm để ẩn)" : "Đang ẩn gạch chân HSK (Bấm để hiện)"}
+            >
+              <Layers className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">
+                {showHskUnderline ? "Màu HSK: Bật" : "Màu HSK: Tắt"}
+              </span>
             </button>
 
             {/* Font Size Adjuster */}
@@ -339,19 +440,106 @@ export default function NovelReader({
             </div>
           </div>
 
-          {/* Story Paragraphs - Văn bản rõ ràng 100%, áp dụng trực tiếp màu chữ Hán */}
+          {/* Chapter Difficulty Breakdown Bar & HSK Legend */}
+          {showHskUnderline && chapterStats && chapterStats.totalWords > 0 && (
+            <div
+              style={{
+                backgroundColor: readerTheme === "dark" ? "#181824" : readerTheme === "sepia" ? "#f5ede1" : "#f8f7f4",
+                borderColor: t.border,
+              }}
+              className="relative z-10 my-4 p-3 sm:p-4 rounded-2xl border text-xs transition-colors space-y-2.5"
+            >
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="font-semibold flex items-center gap-1.5" style={{ color: t.title }}>
+                    <Compass className="w-3.5 h-3.5 text-china-red" />
+                    Ước lượng độ khó:
+                  </span>
+                  <span className={`px-2 py-0.5 rounded-md text-[11px] font-bold border ${chapterStats.estimatedBadgeColor}`}>
+                    {chapterStats.estimatedLevel}
+                  </span>
+                  <span className="text-[11px]" style={{ color: t.subText }}>
+                    ({chapterStats.totalWords.toLocaleString()} từ ngữ)
+                  </span>
+                </div>
+
+                <span className="text-[10px] italic" style={{ color: t.subText }}>
+                  * Chạm vào từ bất kỳ để tra nghĩa &amp; nạp SRS
+                </span>
+              </div>
+
+              {/* Mini Level Percentages Bar - Màu sắc thanh nhã, không chói */}
+              <div className="flex items-center gap-2 sm:gap-3 flex-wrap pt-1 border-t border-inherit/40 text-[11px]">
+                {([1, 2, 3, 4, 5, 6] as const).map((lvl) => {
+                  const style = HSK_LEVEL_STYLES[lvl]
+                  const pct = chapterStats.percentages[lvl] || 0
+                  if (pct === 0 && (chapterStats.hskCounts[lvl] || 0) === 0) return null
+                  return (
+                    <div key={lvl} className="flex items-center gap-1.5">
+                      <span
+                        className="w-2 h-2 rounded-full shrink-0"
+                        style={{ backgroundColor: style.dotColor }}
+                      />
+                      <span className="font-medium" style={{ color: t.subText }}>
+                        {style.shortLabel}{" "}
+                        <span className="font-mono text-[10px] font-semibold" style={{ color: t.title }}>
+                          {pct}%
+                        </span>
+                      </span>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* Story Paragraphs - Tách từ chuẩn xác 100%, gạch chân phân tầng HSK thanh mảnh dịu mắt */}
           <div
-            className="relative z-10 font-chinese space-y-6 pt-6 leading-loose select-text"
+            className="relative z-10 font-chinese space-y-6 pt-4 leading-loose select-text"
             style={{ fontSize: `${fontSize}px`, color: t.chineseText }}
             lang="zh"
           >
-            {currentChapter?.paragraphs.map((para, pIdx) => (
+            {tokenizedParagraphs.map((paraTokens, pIdx) => (
               <p
                 key={pIdx}
                 style={{ color: t.chineseText }}
                 className="indent-8 text-justify cursor-text selection:bg-amber-300 selection:text-stone-900"
               >
-                {para}
+                {paraTokens.map((token) => {
+                  if (!token.isWord) {
+                    return <span key={token.id}>{token.text}</span>
+                  }
+
+                  const style = token.hskLevel ? HSK_LEVEL_STYLES[token.hskLevel] : null
+                  const hasUnderline = showHskUnderline && style
+
+                  return (
+                    <span
+                      key={token.id}
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        handleTokenClick(token.text)
+                      }}
+                      title={
+                        token.hskLevel
+                          ? `${token.text} (${style?.label}) • Chạm để tra nghĩa & nạp SRS`
+                          : `${token.text} • Chạm để tra nghĩa`
+                      }
+                      style={{
+                        borderBottomColor: hasUnderline ? style.underlineColor : "transparent",
+                        borderBottomWidth: hasUnderline ? "1.5px" : "0px",
+                        borderBottomStyle: "solid",
+                      }}
+                      className={`inline transition-colors duration-150 cursor-pointer select-text rounded-2xs px-[0.5px] ${
+                        hasUnderline
+                          ? "hover:bg-black/5 dark:hover:bg-white/10"
+                          : "hover:bg-black/5 dark:hover:bg-white/5"
+                      }`}
+                    >
+                      {token.text}
+                    </span>
+                  )
+                })}
               </p>
             ))}
           </div>
