@@ -2,6 +2,7 @@
 
 import React from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { 
   Compass, 
   Target, 
@@ -12,11 +13,13 @@ import {
   Clock, 
   ArrowRight, 
   Zap, 
-  AlertCircle,
-  TrendingUp,
-  Settings2
+  Settings2,
+  Trophy,
+  Flame,
+  Award
 } from "lucide-react"
 import { useRoadmap } from "@/hooks/useRoadmap"
+import { MountainSummitSvg, TreasureChestSvg, RocketPaceSvg } from "./RoadmapIllustrations"
 
 interface RoadmapCardProps {
   onOpenWizard: () => void
@@ -27,200 +30,216 @@ export function RoadmapCard({ onOpenWizard }: RoadmapCardProps) {
 
   if (loading) {
     return (
-      <div className="w-full bg-card/60 backdrop-blur-md border border-border/50 rounded-2xl p-6 animate-pulse">
-        <div className="h-6 w-48 bg-muted rounded mb-4" />
-        <div className="h-4 w-full bg-muted rounded mb-2" />
-        <div className="h-4 w-2/3 bg-muted rounded" />
+      <div className="w-full bg-card/60 backdrop-blur-md border-2 border-border/50 rounded-3xl p-6 animate-pulse">
+        <div className="h-6 w-48 bg-muted rounded-xl mb-4" />
+        <div className="h-4 w-full bg-muted rounded-xl mb-2" />
+        <div className="h-4 w-2/3 bg-muted rounded-xl" />
       </div>
     )
   }
 
-  // 1. Chưa thiết lập lộ trình -> Hiện Banner Call-to-Action mời gọi tạo lộ trình
+  // 1. TRẠNG THÁI CHƯA CÓ LỘ TRÌNH: Banner tươi sáng, mascot Tiểu Lu vẫy tay mời gọi
   if (!stats || !stats.hasRoadmap) {
     return (
-      <div className="relative overflow-hidden w-full bg-gradient-to-br from-indigo-950/40 via-card/80 to-purple-950/30 border border-indigo-500/30 rounded-2xl p-6 shadow-xl backdrop-blur-md">
-        <div className="absolute -right-8 -bottom-8 w-40 h-40 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none" />
-        
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative z-10">
-          <div className="space-y-2 max-w-xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
-              <Compass className="w-3.5 h-3.5 animate-spin-slow" />
-              Lộ trình học cá nhân hóa
+      <div className="relative overflow-hidden w-full rounded-3xl bg-gradient-to-r from-amber-500/15 via-rose-500/10 to-indigo-500/15 border-2 border-amber-500/40 p-6 sm:p-7 shadow-xl backdrop-blur-md transition-all hover:border-amber-500/60">
+        {/* Glow ambient background */}
+        <div className="absolute top-0 right-10 w-60 h-60 bg-amber-400/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-10 w-60 h-60 bg-rose-400/15 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
+          {/* Mascot & SVG Illustration */}
+          <div className="flex items-center gap-4 sm:gap-6">
+            <div className="relative w-20 h-20 sm:w-24 sm:h-24 shrink-0 p-1 bg-white/90 dark:bg-card/90 rounded-2xl border-2 border-amber-400/50 shadow-md flex items-center justify-center select-none transform hover:scale-105 transition-transform">
+              <Image
+                src="/chibi-cheer.svg"
+                alt="Tiểu Lu cổ vũ"
+                width={80}
+                height={80}
+                priority
+                className="object-contain"
+              />
             </div>
-            <h3 className="text-xl font-bold text-foreground flex items-center gap-2">
-              Chưa biết bắt đầu từ đâu?
-              <span className="text-indigo-400 text-sm font-normal">Thiết lập lộ trình trong 1 phút</span>
-            </h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Hệ thống sẽ đo lường số bài học và số từ vựng bạn đã biết, sau đó tự động tính toán chi tiết <strong className="text-foreground">cần học bao nhiêu từ mỗi ngày và còn thiếu bao nhiêu bài</strong> để cán đích đúng hạn.
-            </p>
+
+            <div className="space-y-1.5 max-w-lg">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-amber-500/20 text-amber-700 dark:text-amber-300 border border-amber-500/40">
+                <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+                Lộ trình Cá nhân hóa Mới
+              </div>
+              <h3 className="text-xl sm:text-2xl font-black text-foreground tracking-tight">
+                Chưa biết bắt đầu học từ đâu?
+              </h3>
+              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                Tạo lộ trình trong 1 phút! Hệ thống sẽ đo vốn từ vựng hiện có, phân tích bạn <strong className="text-foreground">còn thiếu bao nhiêu bài học & bao nhiêu từ</strong> để cán đích HSK đúng hạn.
+              </p>
+            </div>
           </div>
 
-          <button
-            onClick={onOpenWizard}
-            className="group whitespace-nowrap px-5 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-medium shadow-lg shadow-indigo-500/25 transition-all duration-300 transform active:scale-95 flex items-center gap-2"
-          >
-            <Sparkles className="w-4 h-4 text-amber-300 group-hover:rotate-12 transition-transform" />
-            Tạo lộ trình ngay
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </button>
+          {/* Call to action Button */}
+          <div className="shrink-0 w-full md:w-auto">
+            <button
+              onClick={onOpenWizard}
+              className="w-full md:w-auto px-6 py-3.5 rounded-2xl bg-gradient-to-r from-amber-500 via-rose-500 to-indigo-600 hover:from-amber-400 hover:via-rose-400 hover:to-indigo-500 text-white font-black text-sm shadow-lg shadow-rose-500/30 transition-all duration-300 transform active:scale-95 flex items-center justify-center gap-2"
+            >
+              <Trophy className="w-4 h-4 text-amber-200" />
+              <span>Thiết lập lộ trình ngay</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
         </div>
       </div>
     )
   }
 
-  // 2. Đã có lộ trình -> Dashboard hiển thị chính xác "Còn thiếu gì để đạt mục tiêu"
+  // 2. TRẠNG THÁI ĐÃ CÓ LỘ TRÌNH: Thẻ tươi sáng, đầy màu sắc với đo lường chi tiết
   const paceBadgeConfig = {
-    ahead: { label: "Vượt tiến độ 🚀", color: "text-emerald-400 bg-emerald-500/10 border-emerald-500/30" },
-    on_track: { label: "Đúng tiến độ ✨", color: "text-indigo-400 bg-indigo-500/10 border-indigo-500/30" },
-    behind: { label: "Cần tăng tốc ⚡", color: "text-amber-400 bg-amber-500/10 border-amber-500/30" },
-    danger: { label: "Chậm tiến độ ⚠️", color: "text-rose-400 bg-rose-500/10 border-rose-500/30" },
+    ahead: { label: "Vượt tiến độ 🚀", color: "bg-emerald-500 text-white shadow-xs shadow-emerald-500/30" },
+    on_track: { label: "Chuẩn nhịp ✨", color: "bg-indigo-500 text-white shadow-xs shadow-indigo-500/30" },
+    behind: { label: "Cần tăng tốc ⚡", color: "bg-amber-500 text-slate-950 font-black shadow-xs shadow-amber-500/30" },
+    danger: { label: "Chậm tiến độ ⚠️", color: "bg-rose-500 text-white shadow-xs shadow-rose-500/30" },
   }[stats.paceStatus]
 
   return (
-    <div className="relative overflow-hidden w-full bg-card/75 backdrop-blur-md border border-border/70 rounded-2xl p-6 shadow-xl transition-all duration-300 hover:border-indigo-500/40">
-      {/* Background Glow */}
-      <div className="absolute top-0 right-0 w-80 h-80 bg-indigo-500/5 rounded-full blur-3xl pointer-events-none" />
+    <div className="relative overflow-hidden w-full rounded-3xl bg-gradient-to-br from-card/95 via-card/85 to-indigo-500/5 border-2 border-indigo-500/30 p-5 sm:p-7 shadow-xl backdrop-blur-md transition-all hover:border-indigo-500/50">
+      {/* Decorative mountain background artwork */}
+      <div className="absolute -top-6 -right-6 opacity-15 sm:opacity-20 pointer-events-none select-none">
+        <MountainSummitSvg className="w-48 h-48" />
+      </div>
 
-      {/* Header Info */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-border/50 relative z-10">
-        <div className="space-y-1">
-          <div className="flex items-center gap-2">
-            <span className="px-2.5 py-0.5 rounded-md text-xs font-bold uppercase tracking-wider bg-indigo-500/20 text-indigo-400 border border-indigo-500/30">
-              HSK {stats.targetLevel}
-            </span>
-            <span className={`px-2.5 py-0.5 rounded-md text-xs font-medium border ${paceBadgeConfig.color}`}>
-              {paceBadgeConfig.label}
-            </span>
+      {/* Header Bar */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-border/60 relative z-10">
+        <div className="flex items-center gap-3.5">
+          <div className="relative w-12 h-12 sm:w-14 sm:h-14 p-1 rounded-2xl bg-white dark:bg-card border-2 border-indigo-400/50 shadow-sm shrink-0 flex items-center justify-center select-none">
+            <Image
+              src="/chibi-scholar-gold.svg"
+              alt="Mascot Học giả"
+              width={48}
+              height={48}
+              className="object-contain"
+            />
           </div>
-          <h3 className="text-xl font-bold text-foreground tracking-tight">
-            {stats.goalTitle}
-          </h3>
+
+          <div>
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="px-2.5 py-0.5 rounded-lg text-xs font-black uppercase tracking-wider bg-indigo-600 text-white">
+                HSK {stats.targetLevel}
+              </span>
+              <span className={`px-2.5 py-0.5 rounded-lg text-xs font-bold ${paceBadgeConfig.color}`}>
+                {paceBadgeConfig.label}
+              </span>
+            </div>
+            <h3 className="text-xl sm:text-2xl font-black text-foreground mt-0.5 tracking-tight">
+              {stats.goalTitle}
+            </h3>
+          </div>
         </div>
 
-        <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-secondary/60 border border-border/60 text-xs text-muted-foreground font-medium">
-            <Calendar className="w-3.5 h-3.5 text-indigo-400" />
-            <span>Còn <strong className="text-foreground">{stats.daysRemaining}</strong> ngày ({stats.targetDate})</span>
+        <div className="flex items-center gap-2 sm:gap-3 self-end sm:self-auto">
+          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-secondary/80 border border-border/80 text-xs font-bold text-foreground">
+            <Calendar className="w-3.5 h-3.5 text-indigo-500" />
+            <span>Còn <strong>{stats.daysRemaining} ngày</strong> ({stats.targetDate})</span>
           </div>
 
           <button
             onClick={onOpenWizard}
             title="Điều chỉnh mục tiêu"
-            className="p-2 rounded-xl text-muted-foreground hover:text-foreground hover:bg-secondary/70 transition-colors"
+            className="p-2 rounded-xl text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
           >
             <Settings2 className="w-4 h-4" />
           </button>
         </div>
       </div>
 
-      {/* Grid: Đo lường tiến độ "CẦN GÌ ĐỂ ĐẠT MỤC TIÊU" */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-5 relative z-10">
-        {/* Card 1: Tiến độ Bài học */}
-        <div className="p-4 rounded-xl bg-secondary/30 border border-border/50 space-y-3">
-          <div className="flex items-center justify-between text-xs text-muted-foreground">
-            <span className="flex items-center gap-1.5 font-medium">
-              <BookOpen className="w-4 h-4 text-emerald-400" />
-              Bài học giáo trình
+      {/* 2 Thước đo lớn: BÀI HỌC & TỪ VỰNG CÒN THIẾU */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-5 relative z-10">
+        {/* Box Bài học - Màu Xanh Ngọc Bích / Teal */}
+        <div className="rounded-2xl bg-gradient-to-r from-emerald-500/10 to-teal-500/5 border-2 border-emerald-500/30 p-4 sm:p-5 flex flex-col justify-between space-y-3">
+          <div className="flex items-center justify-between text-xs">
+            <span className="flex items-center gap-1.5 font-black text-emerald-700 dark:text-emerald-300">
+              <BookOpen className="w-4 h-4 text-emerald-500" />
+              BÀI HỌC GIÁO TRÌNH
             </span>
-            <span className="font-semibold text-foreground">{stats.lessonProgressPercent}%</span>
+            <span className="font-black text-sm text-foreground">{stats.lessonProgressPercent}%</span>
           </div>
 
-          <div className="w-full bg-secondary rounded-full h-2 overflow-hidden">
-            <div 
-              className="bg-gradient-to-r from-emerald-500 to-teal-400 h-2 rounded-full transition-all duration-500"
+          <div className="w-full bg-secondary/80 rounded-full h-3 p-0.5 overflow-hidden">
+            <div
+              className="bg-gradient-to-r from-teal-400 to-emerald-500 h-full rounded-full transition-all duration-700"
               style={{ width: `${stats.lessonProgressPercent}%` }}
             />
           </div>
 
-          <div className="text-sm">
-            <div className="text-foreground font-semibold">
-              Đã học {stats.completedLessons} / {stats.totalTargetLessons} bài
+          <div className="flex items-end justify-between pt-1">
+            <div>
+              <div className="text-sm font-bold text-foreground">
+                Đã học {stats.completedLessons}/{stats.totalTargetLessons} bài
+              </div>
+              <div className="text-xs font-black text-emerald-600 dark:text-emerald-400 mt-0.5">
+                {stats.remainingLessons > 0 ? (
+                  <>👉 Còn thiếu <span className="text-sm text-foreground underline decoration-emerald-500">{stats.remainingLessons} bài</span></>
+                ) : (
+                  <>🎉 Đã hoàn tất 100% bài học!</>
+                )}
+              </div>
             </div>
-            <div className="text-xs text-emerald-400/90 font-medium mt-0.5">
-              {stats.remainingLessons > 0 ? (
-                <>👉 Còn thiếu <strong className="text-foreground">{stats.remainingLessons} bài</strong> để cán đích</>
-              ) : (
-                <>🎉 Đã hoàn thành 100% bài học!</>
-              )}
+
+            <div className="text-right text-[11px] text-muted-foreground">
+              ~{stats.weeklyLessonsRequired} bài/tuần
             </div>
           </div>
         </div>
 
-        {/* Card 2: Tiến độ Từ vựng */}
-        <div className="p-4 rounded-xl bg-secondary/30 border border-border/50 space-y-3">
-          <div className="flex items-center justify-between text-xs text-muted-foreground">
-            <span className="flex items-center gap-1.5 font-medium">
-              <Target className="w-4 h-4 text-indigo-400" />
-              Từ vựng cốt lõi
+        {/* Box Từ vựng - Màu Vàng Cam / Hổ Phách */}
+        <div className="rounded-2xl bg-gradient-to-r from-amber-500/10 to-rose-500/5 border-2 border-amber-500/30 p-4 sm:p-5 flex flex-col justify-between space-y-3">
+          <div className="flex items-center justify-between text-xs">
+            <span className="flex items-center gap-1.5 font-black text-amber-700 dark:text-amber-300">
+              <Target className="w-4 h-4 text-amber-500" />
+              TỪ VỰNG CỐT LÕI
             </span>
-            <span className="font-semibold text-foreground">{stats.wordProgressPercent}%</span>
+            <span className="font-black text-sm text-foreground">{stats.wordProgressPercent}%</span>
           </div>
 
-          <div className="w-full bg-secondary rounded-full h-2 overflow-hidden">
-            <div 
-              className="bg-gradient-to-r from-indigo-500 to-purple-500 h-2 rounded-full transition-all duration-500"
+          <div className="w-full bg-secondary/80 rounded-full h-3 p-0.5 overflow-hidden">
+            <div
+              className="bg-gradient-to-r from-amber-400 to-rose-500 h-full rounded-full transition-all duration-700"
               style={{ width: `${stats.wordProgressPercent}%` }}
             />
           </div>
 
-          <div className="text-sm">
-            <div className="text-foreground font-semibold">
-              Đã nạp {stats.learnedWords} / {stats.totalTargetWords} từ
+          <div className="flex items-end justify-between pt-1">
+            <div>
+              <div className="text-sm font-bold text-foreground">
+                Đã nạp {stats.learnedWords}/{stats.totalTargetWords} từ
+              </div>
+              <div className="text-xs font-black text-amber-600 dark:text-amber-400 mt-0.5">
+                {stats.remainingWords > 0 ? (
+                  <>👉 Còn thiếu <span className="text-sm text-foreground underline decoration-amber-500">{stats.remainingWords} từ</span></>
+                ) : (
+                  <>🎉 Đã nắm trọn vốn từ vựng!</>
+                )}
+              </div>
             </div>
-            <div className="text-xs text-indigo-400/90 font-medium mt-0.5">
-              {stats.remainingWords > 0 ? (
-                <>👉 Còn thiếu <strong className="text-foreground">{stats.remainingWords} từ</strong> ({stats.masteredWords} từ đã thuộc sâu)</>
-              ) : (
-                <>🎉 Đã làm chủ toàn bộ từ vựng!</>
-              )}
-            </div>
-          </div>
-        </div>
 
-        {/* Card 3: Vận tốc cần duy trì (Pace) */}
-        <div className="p-4 rounded-xl bg-secondary/30 border border-border/50 space-y-3">
-          <div className="flex items-center justify-between text-xs text-muted-foreground">
-            <span className="flex items-center gap-1.5 font-medium">
-              <Zap className="w-4 h-4 text-amber-400" />
-              Vận tốc cần đạt
-            </span>
-            <span className="font-semibold text-amber-400">
-              {stats.dailyPaceRequired} từ / ngày
-            </span>
-          </div>
-
-          <div className="flex items-center gap-2 pt-1">
-            <div className="text-2xl font-black text-foreground">
-              ~{stats.weeklyLessonsRequired}
+            <div className="text-right text-[11px] text-muted-foreground">
+              ~{stats.dailyPaceRequired} từ/ngày
             </div>
-            <div className="text-xs text-muted-foreground leading-tight">
-              bài học / tuần<br />
-              <span className="text-foreground font-medium">để kịp ngày thi</span>
-            </div>
-          </div>
-
-          <div className="text-xs text-muted-foreground flex items-center gap-1">
-            <Clock className="w-3.5 h-3.5 text-muted-foreground/70" />
-            <span>Đã tích lũy {stats.totalTimeSpentMinutes} phút học</span>
           </div>
         </div>
       </div>
 
-      {/* Footer: Kế hoạch hành động hôm nay (Actionable Tasks) */}
-      <div className="pt-4 border-t border-border/50 flex flex-col sm:flex-row sm:items-center justify-between gap-3 relative z-10">
-        <div className="flex items-center gap-2 text-xs text-muted-foreground">
-          <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-          <span>Hôm nay bạn cần: <strong>{stats.dailyPlan.newWordsTargetCount} từ mới</strong> & <strong>{stats.dailyPlan.wordsToReviewCount} thẻ cần ôn</strong></span>
+      {/* Footer Actions: Tươi vui, nút bấm 3D mềm */}
+      <div className="pt-4 border-t border-border/60 flex flex-col sm:flex-row sm:items-center justify-between gap-3 relative z-10">
+        <div className="flex items-center gap-2 text-xs font-semibold text-muted-foreground">
+          <Sparkles className="w-4 h-4 text-amber-500" />
+          <span>Hôm nay cần: <strong className="text-foreground">{stats.dailyPlan.newWordsTargetCount} từ mới</strong> & <strong className="text-foreground">{stats.dailyPlan.wordsToReviewCount} thẻ ôn</strong></span>
         </div>
 
-        <div className="flex items-center gap-2 flex-wrap">
+        <div className="flex items-center gap-2.5 flex-wrap">
           {stats.dailyPlan.recommendedLesson && (
             <Link
               href={`/books/${stats.dailyPlan.recommendedLesson.bookId}/${stats.dailyPlan.recommendedLesson.lessonId}`}
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-medium transition-colors shadow-sm"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white text-xs font-black transition-all shadow-md shadow-indigo-500/25 active:scale-95"
             >
-              <span>Vào học: {stats.dailyPlan.recommendedLesson.title}</span>
+              <span>Vào học tiếp: {stats.dailyPlan.recommendedLesson.title}</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           )}
@@ -228,7 +247,7 @@ export function RoadmapCard({ onOpenWizard }: RoadmapCardProps) {
           {stats.dailyPlan.wordsToReviewCount > 0 && (
             <Link
               href="/review"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-secondary hover:bg-secondary/80 text-foreground text-xs font-medium border border-border/70 transition-colors"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 text-amber-700 dark:text-amber-300 border border-amber-500/30 text-xs font-bold transition-all"
             >
               <span>Ôn tập ({stats.dailyPlan.wordsToReviewCount})</span>
             </Link>
@@ -236,10 +255,11 @@ export function RoadmapCard({ onOpenWizard }: RoadmapCardProps) {
 
           <Link
             href="/roadmap"
-            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs text-indigo-400 hover:text-indigo-300 font-medium transition-colors"
+            className="inline-flex items-center gap-1 px-3.5 py-2 rounded-xl bg-secondary/80 hover:bg-secondary text-foreground text-xs font-bold border border-border/70 transition-colors"
           >
-            <span>Xem chi tiết lộ trình</span>
-            <ArrowRight className="w-3 h-3" />
+            <Trophy className="w-3.5 h-3.5 text-amber-500" />
+            <span>Bản đồ lộ trình</span>
+            <ArrowRight className="w-3 h-3 text-muted-foreground" />
           </Link>
         </div>
       </div>
