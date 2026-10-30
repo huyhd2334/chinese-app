@@ -20,6 +20,7 @@ import {
 } from "lucide-react"
 import { useRoadmap } from "@/hooks/useRoadmap"
 import { MountainSummitSvg, TreasureChestSvg, RocketPaceSvg } from "./RoadmapIllustrations"
+import { LeafVineCornerSvg, FoliageEdgeBorder } from "./VineBorders"
 
 interface RoadmapCardProps {
   onOpenWizard: () => void
@@ -41,7 +42,14 @@ export function RoadmapCard({ onOpenWizard }: RoadmapCardProps) {
   // 1. TRẠNG THÁI CHƯA CÓ LỘ TRÌNH: Banner tươi sáng, mascot Tiểu Lu vẫy tay mời gọi
   if (!stats || !stats.hasRoadmap) {
     return (
-      <div className="relative overflow-hidden w-full rounded-3xl bg-gradient-to-r from-amber-500/15 via-rose-500/10 to-indigo-500/15 border-2 border-amber-500/40 p-6 sm:p-7 shadow-xl backdrop-blur-md transition-all hover:border-amber-500/60">
+      <div className="relative overflow-hidden w-full rounded-3xl bg-gradient-to-r from-amber-500/15 via-rose-500/10 to-indigo-500/15 border-2 border-emerald-500/40 p-6 sm:p-7 shadow-xl backdrop-blur-md transition-all hover:border-emerald-500/60">
+        {/* Dây leo lá cây quấn 4 góc banner */}
+        <LeafVineCornerSvg position="top-left" className="top-0 left-0 w-14 h-14 sm:w-16 sm:h-16" />
+        <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-14 h-14 sm:w-16 sm:h-16" />
+        <LeafVineCornerSvg position="bottom-left" className="bottom-0 left-0 w-12 h-12 sm:w-14 sm:h-14" />
+        <LeafVineCornerSvg position="bottom-right" className="bottom-0 right-0 w-12 h-12 sm:w-14 sm:h-14" />
+        <FoliageEdgeBorder position="top" className="h-3 opacity-60" />
+
         {/* Glow ambient background */}
         <div className="absolute top-0 right-10 w-60 h-60 bg-amber-400/20 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 left-10 w-60 h-60 bg-rose-400/15 rounded-full blur-3xl pointer-events-none" />
@@ -99,7 +107,15 @@ export function RoadmapCard({ onOpenWizard }: RoadmapCardProps) {
   }[stats.paceStatus]
 
   return (
-    <div className="relative overflow-hidden w-full rounded-3xl bg-gradient-to-br from-card/95 via-card/85 to-indigo-500/5 border-2 border-indigo-500/30 p-5 sm:p-7 shadow-xl backdrop-blur-md transition-all hover:border-indigo-500/50">
+    <div className="relative overflow-hidden w-full rounded-3xl bg-gradient-to-br from-card/95 via-card/85 to-emerald-500/5 border-2 border-emerald-500/35 p-5 sm:p-7 shadow-xl backdrop-blur-md transition-all hover:border-emerald-500/60">
+      {/* 4 Góc Dây Leo Lá Cây Tươi Sáng & Viền Lá Thiên Nhiên Quấn Quanh */}
+      <LeafVineCornerSvg position="top-left" className="top-0 left-0 w-14 h-14 sm:w-16 sm:h-16" />
+      <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-14 h-14 sm:w-16 sm:h-16" />
+      <LeafVineCornerSvg position="bottom-left" className="bottom-0 left-0 w-12 h-12 sm:w-14 sm:h-14" />
+      <LeafVineCornerSvg position="bottom-right" className="bottom-0 right-0 w-12 h-12 sm:w-14 sm:h-14" />
+      <FoliageEdgeBorder position="top" className="h-3.5 opacity-60" />
+      <FoliageEdgeBorder position="bottom" className="h-3.5 opacity-60" />
+
       {/* Decorative mountain background artwork */}
       <div className="absolute -top-6 -right-6 opacity-15 sm:opacity-20 pointer-events-none select-none">
         <MountainSummitSvg className="w-48 h-48" />

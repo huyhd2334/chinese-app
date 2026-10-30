@@ -4,6 +4,7 @@ import React from "react"
 import { BookOpen, Sparkles, Target, Zap, Clock, TrendingUp, Flame } from "lucide-react"
 import type { RoadmapStats } from "@/types/roadmap"
 import { RocketPaceSvg, TreasureChestSvg } from "./RoadmapIllustrations"
+import { LeafVineCornerSvg } from "./VineBorders"
 
 interface RoadmapDeficitGaugeProps {
   stats: RoadmapStats
@@ -13,8 +14,11 @@ export function RoadmapDeficitGauge({ stats }: RoadmapDeficitGaugeProps) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
       {/* 1. Bình Năng Lượng: BÀI HỌC GIÁO TRÌNH */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-500/10 via-teal-500/5 to-cyan-500/10 border-2 border-emerald-500/30 p-5 sm:p-6 shadow-md transition-all hover:shadow-lg hover:border-emerald-500/50 flex flex-col justify-between">
-        <div className="space-y-3">
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-500/10 via-teal-500/5 to-cyan-500/10 border-2 border-emerald-500/35 p-5 sm:p-6 shadow-md transition-all hover:shadow-lg hover:border-emerald-500/60 flex flex-col justify-between">
+        <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-12 h-12 opacity-80" />
+        <LeafVineCornerSvg position="bottom-left" className="bottom-0 left-0 w-10 h-10 opacity-70" />
+
+        <div className="space-y-3 relative z-10">
           <div className="flex items-center justify-between">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30">
               <BookOpen className="w-3.5 h-3.5 text-emerald-500" />
@@ -67,8 +71,11 @@ export function RoadmapDeficitGauge({ stats }: RoadmapDeficitGaugeProps) {
       </div>
 
       {/* 2. Bình Năng Lượng: TỪ VỰNG CỐT LÕI */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-amber-500/10 via-orange-500/5 to-rose-500/10 border-2 border-amber-500/30 p-5 sm:p-6 shadow-md transition-all hover:shadow-lg hover:border-amber-500/50 flex flex-col justify-between">
-        <div className="space-y-3">
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-amber-500/10 via-orange-500/5 to-rose-500/10 border-2 border-amber-500/35 p-5 sm:p-6 shadow-md transition-all hover:shadow-lg hover:border-amber-500/60 flex flex-col justify-between">
+        <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-12 h-12 opacity-80" />
+        <LeafVineCornerSvg position="bottom-left" className="bottom-0 left-0 w-10 h-10 opacity-70" />
+
+        <div className="space-y-3 relative z-10">
           <div className="flex items-center justify-between">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black bg-amber-500/20 text-amber-700 dark:text-amber-300 border border-amber-500/30">
               <Target className="w-3.5 h-3.5 text-amber-500" />
@@ -124,7 +131,10 @@ export function RoadmapDeficitGauge({ stats }: RoadmapDeficitGaugeProps) {
       </div>
 
       {/* 3. Bình Vận Tốc: TÊN LỬA TĂNG TỐC (PACE) */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-500/10 via-purple-500/5 to-pink-500/10 border-2 border-indigo-500/30 p-5 sm:p-6 shadow-md transition-all hover:shadow-lg hover:border-indigo-500/50 flex flex-col justify-between">
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-500/10 via-purple-500/5 to-pink-500/10 border-2 border-indigo-500/35 p-5 sm:p-6 shadow-md transition-all hover:shadow-lg hover:border-indigo-500/60 flex flex-col justify-between">
+        <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-12 h-12 opacity-80" />
+        <LeafVineCornerSvg position="bottom-left" className="bottom-0 left-0 w-10 h-10 opacity-70" />
+
         {/* Minh họa Tên Lửa Pastel ở góc */}
         <div className="absolute -top-3 -right-3 opacity-30 sm:opacity-40 pointer-events-none">
           <RocketPaceSvg className="w-24 h-24" />
