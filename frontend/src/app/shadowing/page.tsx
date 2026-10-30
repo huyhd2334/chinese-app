@@ -85,7 +85,7 @@ export default function ShadowingPage() {
   // If in practice studio
   if (selectedVideo) {
     return (
-      <div className="min-h-screen bg-china-paper p-3 sm:p-6 lg:p-8">
+      <div className="min-h-screen bg-slate-50/70 dark:bg-background p-3 sm:p-6 lg:p-8">
         <ShadowingStudio
           video={selectedVideo}
           onBack={() => setSelectedVideo(null)}
@@ -95,33 +95,33 @@ export default function ShadowingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-china-paper p-4 sm:p-6 lg:p-8 space-y-6 max-w-6xl mx-auto pb-24">
+    <div className="min-h-screen bg-slate-50/70 dark:bg-background p-4 sm:p-6 lg:p-8 space-y-6 max-w-6xl mx-auto pb-24">
       
-      {/* Hero Banner Header - Soft Paper Theme */}
-      <div className="relative overflow-hidden rounded-3xl bg-white border border-border shadow-xs p-5 sm:p-7 flex flex-col md:flex-row items-center justify-between gap-6">
+      {/* Hero Banner Header - Thanh lịch, không chói */}
+      <div className="relative overflow-hidden rounded-3xl bg-white dark:bg-card border border-slate-200/90 dark:border-neutral-800 shadow-xs p-5 sm:p-7 flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="space-y-3 max-w-xl">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-china-red/10 border border-china-red/20 text-china-red">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300">
             <Headphones className="w-3.5 h-3.5" />
             <span>PHÒNG LUYỆN NÓI SHADOWING TIỂU LU</span>
           </div>
 
-          <h1 className="text-xl sm:text-2xl lg:text-3xl font-serif font-black text-china-ink tracking-tight leading-snug">
+          <h1 className="text-xl sm:text-2xl lg:text-3xl font-serif font-black text-slate-900 dark:text-white tracking-tight leading-snug">
             Nhại Giọng Bản Xứ • Bứt Phá Khẩu Ngữ HSK
           </h1>
 
-          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
             Phương pháp Shadowing giúp bạn bắt chước ngữ điệu, thanh điệu và nối âm tự nhiên của người bản xứ:{" "}
-            <span className="font-semibold text-china-ink">Nghe mẫu → Thu âm nhại theo → Nghe lại đối chiếu trực tiếp</span> hoàn toàn miễn phí!
+            <span className="font-semibold text-slate-900 dark:text-white">Nghe mẫu trên YouTube → Bấm câu nhảy video → Thu âm đối chiếu</span> hoàn toàn miễn phí!
           </p>
 
           <div className="pt-1 flex flex-wrap items-center gap-3">
             <button
               onClick={() => setIsAddModalOpen(true)}
-              className="px-4 py-2.5 rounded-2xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-xs sm:text-sm shadow-sm transition-all active:scale-95 cursor-pointer flex items-center gap-2"
+              className="px-4 py-2.5 rounded-2xl bg-slate-900 hover:bg-black dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-900 font-semibold text-xs sm:text-sm shadow-xs transition-all active:scale-95 cursor-pointer flex items-center gap-2"
             >
               <Plus className="w-4 h-4" />
               <span>Thêm Video Của Bạn</span>
-              <span className="px-1.5 py-0.5 rounded-md bg-slate-950 text-amber-300 text-[10px] font-extrabold uppercase">
+              <span className="px-1.5 py-0.5 rounded-md bg-amber-400 text-slate-950 text-[10px] font-extrabold uppercase">
                 PRO 👑
               </span>
             </button>
@@ -129,7 +129,7 @@ export default function ShadowingPage() {
         </div>
 
         {/* Mascot decoration - Clean side container */}
-        <div className="hidden sm:flex items-center gap-3 p-4 rounded-3xl bg-china-paper border border-border/80 shrink-0">
+        <div className="hidden sm:flex items-center gap-3 p-4 rounded-3xl bg-slate-50 dark:bg-neutral-800/50 border border-slate-200/80 dark:border-neutral-700/80 shrink-0">
           <div className="w-20 h-20 relative flex items-center justify-center">
             <Image
               src="/chibi-loading.svg"
@@ -140,15 +140,15 @@ export default function ShadowingPage() {
               className="object-contain"
             />
           </div>
-          <div className="text-xs max-w-[130px] leading-tight text-muted">
-            <p className="font-bold text-china-ink mb-0.5">Tiểu Lu đồng hành</p>
+          <div className="text-xs max-w-[130px] leading-tight text-slate-500 dark:text-slate-400">
+            <p className="font-bold text-slate-900 dark:text-white mb-0.5">Tiểu Lu đồng hành</p>
             <p className="text-[11px]">Cùng bạn luyện nói mỗi ngày không lo ngại ngùng!</p>
           </div>
         </div>
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-white p-3.5 sm:p-4 rounded-2xl border border-border shadow-xs">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-white dark:bg-card p-3.5 sm:p-4 rounded-2xl border border-slate-200/90 dark:border-neutral-800 shadow-xs">
         {/* Level Filter Tabs */}
         <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 custom-scrollbar">
           {[
@@ -161,10 +161,10 @@ export default function ShadowingPage() {
             <button
               key={tab.id}
               onClick={() => setLevelFilter(tab.id)}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
+              className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
                 levelFilter === tab.id
-                  ? "bg-china-red text-white shadow-2xs"
-                  : "bg-china-paper text-muted hover:text-china-ink"
+                  ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-2xs"
+                  : "bg-slate-100 text-slate-600 hover:text-slate-900 dark:bg-neutral-800 dark:text-slate-300"
               }`}
             >
               {tab.label}
@@ -174,13 +174,13 @@ export default function ShadowingPage() {
 
         {/* Search Input */}
         <div className="relative min-w-[220px]">
-          <Search className="w-4 h-4 text-muted absolute left-3 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Tìm chủ đề, từ khóa..."
-            className="w-full pl-9 pr-3.5 py-2 rounded-xl border border-border text-xs focus:outline-none focus:ring-2 focus:ring-china-red/30 bg-white"
+            className="w-full pl-9 pr-3.5 py-2 rounded-xl border border-slate-200 dark:border-neutral-800 text-xs focus:outline-none focus:ring-2 focus:ring-blue-500/30 bg-white dark:bg-neutral-900 text-slate-900 dark:text-white"
           />
         </div>
       </div>
@@ -191,7 +191,7 @@ export default function ShadowingPage() {
           <div
             key={video.id}
             onClick={() => setSelectedVideo(video)}
-            className="group bg-white rounded-3xl border border-border shadow-xs hover:shadow-md hover:border-china-red/40 transition-all duration-300 flex flex-col overflow-hidden cursor-pointer"
+            className="group bg-white dark:bg-card rounded-3xl border border-slate-200/90 dark:border-neutral-800 shadow-xs hover:shadow-md hover:border-blue-400 dark:hover:border-blue-500 transition-all duration-300 flex flex-col overflow-hidden cursor-pointer"
           >
             {/* Thumbnail Preview with Play Overlay */}
             <div className="relative aspect-video w-full bg-slate-900 overflow-hidden">
@@ -205,7 +205,7 @@ export default function ShadowingPage() {
               
               {/* Play Icon Center Button */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-12 h-12 rounded-full bg-white/90 group-hover:bg-china-red text-china-red group-hover:text-white flex items-center justify-center shadow-lg transition-all group-hover:scale-110">
+                <div className="w-12 h-12 rounded-full bg-white/95 group-hover:bg-blue-600 text-slate-900 group-hover:text-white flex items-center justify-center shadow-lg transition-all group-hover:scale-110">
                   <Play className="w-5 h-5 fill-current ml-0.5" />
                 </div>
               </div>
@@ -233,24 +233,24 @@ export default function ShadowingPage() {
             {/* Video Card Content */}
             <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between space-y-3">
               <div className="space-y-1.5">
-                <span className="text-[11px] font-bold text-amber-700 tracking-wide uppercase">
+                <span className="text-[11px] font-bold text-blue-600 dark:text-blue-400 tracking-wide uppercase">
                   {video.category}
                 </span>
-                <h3 className="font-bold text-china-ink text-sm sm:text-base line-clamp-2 group-hover:text-china-red transition-colors">
+                <h3 className="font-bold text-slate-900 dark:text-white text-sm sm:text-base line-clamp-2 group-hover:text-blue-600 transition-colors">
                   {video.title}
                 </h3>
-                <p className="text-xs text-muted line-clamp-2 leading-relaxed">
+                <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-2 leading-relaxed">
                   {video.description}
                 </p>
               </div>
 
-              <div className="pt-2 border-t border-border flex items-center justify-between text-xs">
-                <div className="flex items-center gap-1 text-muted font-medium">
-                  <Layers className="w-3.5 h-3.5 text-china-red" />
+              <div className="pt-2 border-t border-slate-100 dark:border-neutral-800 flex items-center justify-between text-xs">
+                <div className="flex items-center gap-1 text-slate-500 font-medium">
+                  <Layers className="w-3.5 h-3.5 text-blue-600" />
                   <span>{video.sentencesCount} câu thoại</span>
                 </div>
 
-                <span className="font-bold text-china-red group-hover:underline flex items-center gap-1">
+                <span className="font-bold text-blue-600 dark:text-blue-400 group-hover:underline flex items-center gap-1">
                   <span>Luyện tập ngay</span>
                   <span>→</span>
                 </span>

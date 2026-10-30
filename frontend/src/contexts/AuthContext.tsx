@@ -47,8 +47,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false)
   const [isHalloweenModalOpen, setIsHalloweenModalOpen] = useState(false)
   const [isHalloweenTheme, setIsHalloweenTheme] = useState(() => {
-    if (typeof window === "undefined") return true
-    return localStorage.getItem("hsk_halloween_event_theme") !== "off"
+    if (typeof window === "undefined") return false
+    return localStorage.getItem("hsk_halloween_event_theme") === "on"
   })
   const [isDarkMode, setIsDarkMode] = useState(() => {
     if (typeof window === "undefined") return false
