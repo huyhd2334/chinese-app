@@ -3,6 +3,7 @@
 import React from "react"
 import { BookOpen, Target, Clock, Zap } from "lucide-react"
 import type { RoadmapStats } from "@/types/roadmap"
+import { LeafVineCornerSvg } from "./VineBorders"
 
 interface RoadmapDeficitGaugeProps {
   stats: RoadmapStats
@@ -12,8 +13,9 @@ export function RoadmapDeficitGauge({ stats }: RoadmapDeficitGaugeProps) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
       {/* 1. BÀI HỌC GIÁO TRÌNH */}
-      <div className="rounded-xl bg-card border border-border/80 p-5 flex flex-col justify-between space-y-4 shadow-xs">
-        <div className="space-y-3">
+      <div className="relative overflow-hidden rounded-xl bg-card border border-border/80 p-5 flex flex-col justify-between space-y-4 shadow-xs">
+        <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-7 h-7 opacity-60" />
+        <div className="space-y-3 relative z-10">
           <div className="flex items-center justify-between">
             <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
               <BookOpen className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
@@ -50,8 +52,9 @@ export function RoadmapDeficitGauge({ stats }: RoadmapDeficitGaugeProps) {
       </div>
 
       {/* 2. TỪ VỰNG CỐT LÕI */}
-      <div className="rounded-xl bg-card border border-border/80 p-5 flex flex-col justify-between space-y-4 shadow-xs">
-        <div className="space-y-3">
+      <div className="relative overflow-hidden rounded-xl bg-card border border-border/80 p-5 flex flex-col justify-between space-y-4 shadow-xs">
+        <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-7 h-7 opacity-60" />
+        <div className="space-y-3 relative z-10">
           <div className="flex items-center justify-between">
             <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
               <Target className="w-4 h-4 text-amber-600 dark:text-amber-400" />
@@ -88,8 +91,9 @@ export function RoadmapDeficitGauge({ stats }: RoadmapDeficitGaugeProps) {
       </div>
 
       {/* 3. VẬN TỐC CẦN DUY TRÌ */}
-      <div className="rounded-xl bg-card border border-border/80 p-5 flex flex-col justify-between space-y-4 shadow-xs">
-        <div className="space-y-3">
+      <div className="relative overflow-hidden rounded-xl bg-card border border-border/80 p-5 flex flex-col justify-between space-y-4 shadow-xs">
+        <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-7 h-7 opacity-60" />
+        <div className="space-y-3 relative z-10">
           <div className="flex items-center justify-between">
             <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
               <Zap className="w-4 h-4 text-blue-600 dark:text-blue-400" />

@@ -4,6 +4,7 @@ import React from "react"
 import { Check, Lock, ChevronRight } from "lucide-react"
 import type { RoadmapStats, HskLevelNumber } from "@/types/roadmap"
 import { HSK_CUMULATIVE_STANDARDS } from "@/utils/roadmapStorage"
+import { LeafVineCornerSvg } from "./VineBorders"
 
 interface RoadmapJourneyMapProps {
   stats: RoadmapStats
@@ -14,8 +15,11 @@ export function RoadmapJourneyMapWidget({ stats }: RoadmapJourneyMapProps) {
   const levels: HskLevelNumber[] = [1, 2, 3, 4, 5, 6].filter((lvl) => lvl <= Math.max(targetLevel, 3)) as HskLevelNumber[]
 
   return (
-    <div className="rounded-2xl bg-card border border-border/80 p-5 sm:p-6 shadow-xs space-y-5">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-border/60">
+    <div className="relative overflow-hidden rounded-2xl bg-card border border-emerald-600/30 dark:border-emerald-500/30 p-5 sm:p-6 shadow-xs space-y-5">
+      <LeafVineCornerSvg position="top-left" className="top-0 left-0 w-8 h-8 sm:w-9 sm:h-9" />
+      <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-8 h-8 sm:w-9 sm:h-9" />
+
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-border/60 relative z-10">
         <div>
           <h3 className="text-base sm:text-lg font-bold text-foreground">
             Lộ trình từng cấp độ (HSK 1 – HSK {targetLevel})

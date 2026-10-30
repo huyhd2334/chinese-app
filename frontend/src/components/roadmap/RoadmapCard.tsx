@@ -11,10 +11,10 @@ import {
   Clock, 
   ArrowRight, 
   Settings2,
-  CheckCircle2,
   MapPin
 } from "lucide-react"
 import { useRoadmap } from "@/hooks/useRoadmap"
+import { LeafVineCornerSvg, FoliageEdgeBorder } from "./VineBorders"
 
 interface RoadmapCardProps {
   onOpenWizard: () => void
@@ -33,11 +33,18 @@ export function RoadmapCard({ onOpenWizard }: RoadmapCardProps) {
     )
   }
 
-  // 1. TRẠNG THÁI CHƯA CÓ LỘ TRÌNH: Giao diện tối giản, sạch sẽ, không icon slop / không gradient chói
+  // 1. TRẠNG THÁI CHƯA CÓ LỘ TRÌNH: Giao diện sạch sẽ, có viền dây leo thanh mảnh
   if (!stats || !stats.hasRoadmap) {
     return (
-      <div className="relative overflow-hidden w-full rounded-2xl bg-card border border-border/80 p-5 sm:p-6 shadow-xs">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
+      <div className="relative overflow-hidden w-full rounded-2xl bg-card border border-emerald-600/30 dark:border-emerald-500/30 p-5 sm:p-6 shadow-xs">
+        {/* Dây leo lá cây thanh mảnh uốn lượn theo viền */}
+        <LeafVineCornerSvg position="top-left" className="top-0 left-0 w-9 h-9 sm:w-10 sm:h-10" />
+        <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-9 h-9 sm:w-10 sm:h-10" />
+        <LeafVineCornerSvg position="bottom-left" className="bottom-0 left-0 w-7 h-7 sm:w-8 sm:h-8" />
+        <LeafVineCornerSvg position="bottom-right" className="bottom-0 right-0 w-7 h-7 sm:w-8 sm:h-8" />
+        <FoliageEdgeBorder position="top" className="h-2 opacity-60" />
+
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-5 relative z-10">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-xl bg-muted/30 border border-border/60 flex items-center justify-center shrink-0">
               <Compass className="w-6 h-6 text-foreground" />
@@ -79,9 +86,16 @@ export function RoadmapCard({ onOpenWizard }: RoadmapCardProps) {
   }[stats.paceStatus]
 
   return (
-    <div className="relative w-full rounded-2xl bg-card border border-border/80 p-5 sm:p-6 shadow-xs">
+    <div className="relative overflow-hidden w-full rounded-2xl bg-card border border-emerald-600/30 dark:border-emerald-500/30 p-5 sm:p-6 shadow-xs">
+      {/* Sợi dây leo thanh mảnh uốn lượn theo viền card tự nhiên */}
+      <LeafVineCornerSvg position="top-left" className="top-0 left-0 w-9 h-9 sm:w-10 sm:h-10" />
+      <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-9 h-9 sm:w-10 sm:h-10" />
+      <LeafVineCornerSvg position="bottom-left" className="bottom-0 left-0 w-7 h-7 sm:w-8 sm:h-8" />
+      <LeafVineCornerSvg position="bottom-right" className="bottom-0 right-0 w-7 h-7 sm:w-8 sm:h-8" />
+      <FoliageEdgeBorder position="top" className="h-2 opacity-60" />
+
       {/* Header Bar */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-border/60">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-border/60 relative z-10">
         <div className="space-y-1.5">
           <div className="flex items-center gap-2 flex-wrap">
             <span className="px-2.5 py-0.5 rounded-md text-xs font-bold bg-foreground text-background">

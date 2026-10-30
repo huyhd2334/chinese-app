@@ -15,6 +15,7 @@ import { useRoadmap } from "@/hooks/useRoadmap"
 import { RoadmapWizardModal } from "@/components/roadmap/RoadmapWizardModal"
 import { RoadmapDeficitGauge } from "@/components/roadmap/RoadmapDeficitGauge"
 import { RoadmapJourneyMapWidget } from "@/components/roadmap/RoadmapJourneyMapWidget"
+import { LeafVineCornerSvg, FoliageEdgeBorder } from "@/components/roadmap/VineBorders"
 import { HSK_CUMULATIVE_STANDARDS } from "@/utils/roadmapStorage"
 
 export default function RoadmapDetailPage() {
@@ -88,9 +89,13 @@ export default function RoadmapDetailPage() {
         </div>
       </div>
 
-      {/* HEADER SECTION: SẠCH SẼ, HIỆN ĐẠI, KHÔNG MÀU MÈ */}
-      <div className="rounded-2xl bg-card border border-border/80 p-5 sm:p-6 shadow-xs space-y-3">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      {/* HEADER SECTION: SẠCH SẼ, HIỆN ĐẠI, DÂY LEO THANH MẢNH */}
+      <div className="relative overflow-hidden rounded-2xl bg-card border border-emerald-600/30 dark:border-emerald-500/30 p-5 sm:p-6 shadow-xs space-y-3">
+        <LeafVineCornerSvg position="top-left" className="top-0 left-0 w-9 h-9 sm:w-10 sm:h-10" />
+        <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-9 h-9 sm:w-10 sm:h-10" />
+        <FoliageEdgeBorder position="top" className="h-2 opacity-60" />
+
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 relative z-10">
           <div className="space-y-1">
             <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
               Kế hoạch học tập cá nhân
