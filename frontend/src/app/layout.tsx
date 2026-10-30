@@ -49,7 +49,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="theme-color" content="#c0392b" />
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem("hsk_color_theme");if(t==="dark"){document.documentElement.classList.add("dark");}else{document.documentElement.classList.remove("dark");}var h=localStorage.getItem("hsk_halloween_event_theme");if(h!=="off"){document.documentElement.classList.add("halloween-event-theme");}}catch(e){}})();`,
+            __html: `(function(){try{var t=localStorage.getItem("hsk_color_theme");if(t==="dark"){document.documentElement.classList.add("dark");}else{document.documentElement.classList.remove("dark");}var h=localStorage.getItem("hsk_halloween_event_theme");if(h==="on"){document.documentElement.classList.add("halloween-event-theme");}else{document.documentElement.classList.remove("halloween-event-theme");}}catch(e){}})();`,
           }}
         />
       </head>
