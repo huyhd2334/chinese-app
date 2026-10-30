@@ -109,14 +109,13 @@ export default function RoadmapDetailPage() {
       </div>
 
       {/* HERO SECTION: MÀU SẮC TƯƠI SÁNG, MASCOT TIỂU LU & MINH HỌA SVG */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-amber-500/20 via-rose-500/15 to-emerald-500/20 border-2 border-emerald-500/35 p-6 sm:p-9 shadow-2xl backdrop-blur-md">
-        {/* Khung Dây Leo Lá Cây Tươi Mát Quấn Quanh Hero Banner */}
-        <LeafVineCornerSvg position="top-left" className="top-0 left-0 w-16 h-16 sm:w-20 sm:h-20" />
-        <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-16 h-16 sm:w-20 sm:h-20" />
-        <LeafVineCornerSvg position="bottom-left" className="bottom-0 left-0 w-14 h-14 sm:w-16 sm:h-16" />
-        <LeafVineCornerSvg position="bottom-right" className="bottom-0 right-0 w-14 h-14 sm:w-16 sm:h-16" />
-        <FoliageEdgeBorder position="top" className="h-4 opacity-70" />
-        <FoliageEdgeBorder position="bottom" className="h-4 opacity-70" />
+      <div className="relative overflow-hidden rounded-3xl bg-card border border-emerald-600/30 dark:border-emerald-500/35 p-6 sm:p-9 shadow-sm">
+        {/* Khung Dây Leo Lá Cây Thanh Mảnh Quấn Quanh Hero Banner */}
+        <LeafVineCornerSvg position="top-left" className="top-0 left-0 w-11 h-11 sm:w-13 sm:h-13" />
+        <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-11 h-11 sm:w-13 sm:h-13" />
+        <LeafVineCornerSvg position="bottom-left" className="bottom-0 left-0 w-9 h-9 sm:w-11 sm:h-11" />
+        <LeafVineCornerSvg position="bottom-right" className="bottom-0 right-0 w-9 h-9 sm:w-11 sm:h-11" />
+        <FoliageEdgeBorder position="top" className="h-3 opacity-60" />
 
         {/* SVG Decorative Artworks */}
         <div className="absolute top-2 right-4 sm:right-12 opacity-80 sm:opacity-100 pointer-events-none select-none hidden md:block">

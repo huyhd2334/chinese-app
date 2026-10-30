@@ -16,14 +16,13 @@ export function RoadmapJourneyMapWidget({ stats }: RoadmapJourneyMapProps) {
   const levels: HskLevelNumber[] = [1, 2, 3, 4, 5, 6].filter((lvl) => lvl <= Math.max(targetLevel, 3)) as HskLevelNumber[]
 
   return (
-    <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-amber-500/10 via-rose-500/5 to-emerald-500/10 border-2 border-emerald-500/35 p-5 sm:p-7 shadow-xl">
-      {/* Khung Dây Leo Lá Cây Tươi Sáng Bao Quanh Bản Đồ */}
-      <LeafVineCornerSvg position="top-left" className="top-0 left-0 w-14 h-14 sm:w-16 sm:h-16" />
-      <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-14 h-14 sm:w-16 sm:h-16" />
-      <LeafVineCornerSvg position="bottom-left" className="bottom-0 left-0 w-12 h-12 sm:w-14 sm:h-14" />
-      <LeafVineCornerSvg position="bottom-right" className="bottom-0 right-0 w-12 h-12 sm:w-14 sm:h-14" />
-      <FoliageEdgeBorder position="top" className="h-3.5 opacity-60" />
-      <FoliageEdgeBorder position="bottom" className="h-3.5 opacity-60" />
+    <div className="relative overflow-hidden rounded-3xl bg-card border border-emerald-600/25 dark:border-emerald-500/30 p-5 sm:p-7 shadow-sm">
+      {/* Khung Dây Leo Lá Cây Thanh Mảnh Bao Quanh Bản Đồ */}
+      <LeafVineCornerSvg position="top-left" className="top-0 left-0 w-10 h-10 sm:w-11 sm:h-11" />
+      <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-10 h-10 sm:w-11 sm:h-11" />
+      <LeafVineCornerSvg position="bottom-left" className="bottom-0 left-0 w-8 h-8 sm:w-9 sm:h-9" />
+      <LeafVineCornerSvg position="bottom-right" className="bottom-0 right-0 w-8 h-8 sm:w-9 sm:h-9" />
+      <FoliageEdgeBorder position="top" className="h-2.5 opacity-60" />
 
       {/* Background ambient dots & sparkles */}
       <div className="absolute top-2 right-4 text-amber-400/40 animate-pulse">

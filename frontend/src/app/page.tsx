@@ -20,6 +20,7 @@ import { getHanViet } from "@/utils/hanviet"
 import { playChineseAudio } from "@/utils/audioTts"
 import { RoadmapCard } from "@/components/roadmap/RoadmapCard"
 import { RoadmapWizardModal } from "@/components/roadmap/RoadmapWizardModal"
+import { LeafVineCornerSvg, FoliageEdgeBorder } from "@/components/roadmap/VineBorders"
 
 const PROVERBS = [
   { cn: "千里之行，始于足下", pinyin: "Qiān lǐ zhī xíng, shǐ yú zú xià", en: "A journey of a thousand miles begins with a single step" },
@@ -496,11 +497,16 @@ export default function Dashboard() {
       </section>
 
       {/* 1.5. Daily Goal & Streak Requirement Bar */}
-      <section className={`relative rounded-xl sm:rounded-2xl p-4 sm:p-5 border transition-all ${
+      <section className={`relative rounded-3xl p-4 sm:p-5 border transition-all ${
         isDailyGoalAchieved 
-          ? "bg-gradient-to-r from-china-jade/10 via-card to-china-gold/10 border-china-jade/40 shadow-xs" 
-          : "bg-card border-border shadow-xs"
+          ? "bg-card border-emerald-600/30 dark:border-emerald-500/35 shadow-xs" 
+          : "bg-card border-border/80 shadow-xs"
       }`}>
+        {/* Nhánh dây leo thanh mảnh bò ôm góc card Streak */}
+        <LeafVineCornerSvg position="top-left" className="top-0 left-0 w-8 h-8 sm:w-10 sm:h-10 opacity-75" />
+        <LeafVineCornerSvg position="bottom-right" className="bottom-0 right-0 w-8 h-8 sm:w-10 sm:h-10 opacity-75" />
+        <FoliageEdgeBorder position="top" className="h-2 opacity-50" />
+
         {/* Tiểu Lu Lấp Ló bên Thang Trạng Thái */}
         <div className="absolute -top-7 sm:-top-9 right-6 sm:right-12 w-16 sm:w-20 h-10 sm:h-12 z-10 pointer-events-none select-none transition-transform hover:scale-110">
           <Image
@@ -931,8 +937,9 @@ export default function Dashboard() {
 
       {/* 2.5 Word of the Day Section */}
       {dailyWord && (
-        <section className="bg-gradient-to-r from-card via-china-paper to-card rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-china-gold/30 shadow-xs relative overflow-hidden group">
-          <div className="absolute top-0 right-0 w-36 h-36 bg-china-gold/5 rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform duration-700" />
+        <section className="bg-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 border border-emerald-600/20 dark:border-emerald-500/25 shadow-xs relative overflow-hidden group">
+          {/* Nhánh lá nhỏ thanh mảnh góc từ vựng hôm nay */}
+          <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-8 h-8 sm:w-10 sm:h-10 opacity-70" />
           
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 sm:gap-6 relative z-10">
             <div className="flex items-start sm:items-center gap-3 sm:gap-5 w-full md:w-auto">

@@ -3,13 +3,18 @@
 import React from "react"
 
 /**
- * Bộ khung viền và góc viền SVG thiên nhiên (Dây leo, lá cây phong thủy, hoa mộc lan/đào)
- * Dùng để bọc quanh các thẻ widget tạo phong cách tươi sáng, thiên nhiên và đậm chất Á Đông sinh động.
+ * VineBorders.tsx - Hệ thống viền dây leo lá cây thanh mảnh (Delicate Botanical Vines)
+ * 
+ * TRIẾT LÝ THIẾT KẾ:
+ * - KHÔNG dùng cục lá to thô ở 4 góc để tránh rối mắt và che nội dung.
+ * - Sử dụng đường dây leo mảnh (1.5px - 2px) uốn lượn tự nhiên men theo viền thẻ (border line).
+ * - Các nhánh lá nhỏ điểm xuyết tinh tế, phối màu thiên nhiên dịu mắt (Soft Sage / Emerald / Jade).
+ * - Thay thế viền neon/gradient gắt bằng viền hữu cơ tự nhiên cao cấp.
  */
 
-// 1. Góc dây leo lá xanh & lộc non (Dùng cho 4 góc hoặc góc trên/dưới của card)
+// 1. Dây leo góc thanh mảnh (Chỉ là nhánh dây leo mảnh bò dọc theo góc bo tròn)
 export function LeafVineCornerSvg({ 
-  className = "w-16 h-16", 
+  className = "w-10 h-10", 
   position = "top-left" 
 }: { 
   className?: string
@@ -23,121 +28,80 @@ export function LeafVineCornerSvg({
   }[position]
 
   return (
-    <div className={`pointer-events-none select-none absolute ${className}`}>
+    <div className={`pointer-events-none select-none absolute z-20 ${className}`}>
       <svg
-        viewBox="0 0 100 100"
+        viewBox="0 0 60 60"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className="w-full h-full"
         style={{ transform, transformOrigin: "center" }}
       >
         <defs>
-          <linearGradient id="vineStemGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#10B981" />
-            <stop offset="60%" stopColor="#059669" />
-            <stop offset="100%" stopColor="#047857" />
-          </linearGradient>
-          <linearGradient id="leafGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#6EE7B7" />
+          {/* Màu thân dây leo: Xanh lục mộc mạc dịu nhẹ */}
+          <linearGradient id="delicateStem" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#059669" />
             <stop offset="100%" stopColor="#10B981" />
           </linearGradient>
-          <linearGradient id="leafGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#A7F3D0" />
+
+          {/* Màu lá non xanh tươi nhẹ nhàng */}
+          <linearGradient id="softLeaf" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#6EE7B7" />
             <stop offset="100%" stopColor="#34D399" />
-          </linearGradient>
-          <linearGradient id="berryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#F43F5E" />
-            <stop offset="100%" stopColor="#BE123C" />
           </linearGradient>
         </defs>
 
-        {/* Thân dây leo mềm mại uốn cong quanh góc */}
+        {/* Thân dây leo mảnh bò sát theo đường bo tròn của góc (r=24px) */}
         <path
-          d="M2 18 Q 8 6, 20 2 Q 55 2, 75 12 Q 90 20, 95 35"
-          stroke="url(#vineStemGrad)"
-          strokeWidth="3.5"
-          strokeLinecap="round"
-        />
-        <path
-          d="M18 2 Q 2 8, 2 20 Q 2 55, 12 75 Q 20 90, 35 95"
-          stroke="url(#vineStemGrad)"
-          strokeWidth="3.5"
+          d="M 1 36 C 1 18, 18 1, 36 1 Q 48 1, 56 6"
+          stroke="url(#delicateStem)"
+          strokeWidth="1.8"
           strokeLinecap="round"
         />
 
-        {/* Các nhánh râu dây leo xoăn tít xinh xắn */}
+        {/* Râu xoắn nhỏ xinh ở đầu nhánh */}
         <path
-          d="M75 12 Q 85 8, 88 15 Q 89 22, 82 22"
-          stroke="#34D399"
-          strokeWidth="2"
-          strokeLinecap="round"
-        />
-        <path
-          d="M12 75 Q 8 85, 15 88 Q 22 89, 22 82"
-          stroke="#34D399"
-          strokeWidth="2"
+          d="M 56 6 Q 60 4, 59 1 Q 57 -1, 55 2"
+          stroke="#10B981"
+          strokeWidth="1.2"
           strokeLinecap="round"
         />
 
-        {/* Lá cây 1: Lá to trên đỉnh */}
+        {/* Lá nhỏ 1: Nằm ôm sát góc bo */}
         <path
-          d="M28 2 C 34 -6, 52 4, 46 12 C 40 20, 26 8, 28 2 Z"
-          fill="url(#leafGrad1)"
+          d="M 16 7 C 18 2, 26 5, 23 10 C 20 14, 15 11, 16 7 Z"
+          fill="url(#softLeaf)"
           stroke="#059669"
-          strokeWidth="1"
+          strokeWidth="0.6"
         />
         {/* Gân lá 1 */}
-        <path d="M30 3 Q 38 7, 44 11" stroke="#047857" strokeWidth="0.8" />
+        <line x1="17" y1="7" x2="21" y2="9" stroke="#047857" strokeWidth="0.5" />
 
-        {/* Lá cây 2: Lá dọc mép trái */}
+        {/* Lá nhỏ 2: Nằm mép thẳng trên */}
         <path
-          d="M2 28 C -6 34, 4 52, 12 46 C 20 40, 8 26, 2 28 Z"
-          fill="url(#leafGrad1)"
+          d="M 38 1 C 41 -3, 47 0, 44 4 C 41 8, 37 5, 38 1 Z"
+          fill="url(#softLeaf)"
           stroke="#059669"
-          strokeWidth="1"
-        />
-        {/* Gân lá 2 */}
-        <path d="M3 30 Q 7 38, 11 44" stroke="#047857" strokeWidth="0.8" />
-
-        {/* Lá non 3: Lá vươn ra ngoài góc */}
-        <path
-          d="M10 10 C 6 2, 2 6, 10 10 C 14 14, 18 18, 10 10 Z"
-          fill="url(#leafGrad2)"
-        />
-        <path
-          d="M14 14 C 2 2, 22 -2, 20 12 C 18 20, 16 16, 14 14 Z"
-          fill="url(#leafGrad2)"
-          stroke="#10B981"
-          strokeWidth="0.8"
+          strokeWidth="0.6"
         />
 
-        {/* Lá 4 & 5 ở giữa thân */}
+        {/* Lá nhỏ 3: Nằm mép thẳng bên hông */}
         <path
-          d="M58 8 C 66 2, 74 12, 68 18 C 62 24, 54 12, 58 8 Z"
-          fill="url(#leafGrad2)"
+          d="M 1 24 C -3 21, 0 15, 4 18 C 8 21, 5 25, 1 24 Z"
+          fill="url(#softLeaf)"
           stroke="#059669"
-          strokeWidth="0.8"
-        />
-        <path
-          d="M8 58 C 2 66, 12 74, 18 68 C 24 62, 12 54, 8 58 Z"
-          fill="url(#leafGrad2)"
-          stroke="#059669"
-          strokeWidth="0.8"
+          strokeWidth="0.6"
         />
 
-        {/* Quả mọng / Nụ hoa đỏ son cát tường */}
-        <circle cx="24" cy="24" r="4" fill="url(#berryGrad)" />
-        <circle cx="22.5" cy="22.5" r="1.2" fill="#FFFFFF" opacity="0.8" />
-        <circle cx="32" cy="18" r="3.2" fill="url(#berryGrad)" />
-        <circle cx="18" cy="32" r="3.2" fill="url(#berryGrad)" />
+        {/* Quả mọng nhỏ điểm xuyết (1 hạt nhỏ xíu tinh tế) */}
+        <circle cx="12" cy="12" r="1.8" fill="#F43F5E" />
       </svg>
     </div>
   )
 }
 
-// 2. Viền dây leo nằm ngang trên / dưới (Top/Bottom Foliage Border)
+// 2. Viền dây leo chạy ngang (Top / Bottom Border - Mảnh mai, thanh thoát)
 export function FoliageEdgeBorder({ 
-  className = "w-full h-5",
+  className = "w-full h-3",
   position = "top" 
 }: { 
   className?: string
@@ -145,57 +109,57 @@ export function FoliageEdgeBorder({
 }) {
   return (
     <div
-      className={`pointer-events-none select-none absolute left-0 right-0 overflow-hidden ${
+      className={`pointer-events-none select-none absolute left-0 right-0 overflow-hidden z-10 ${
         position === "top" ? "top-0" : "bottom-0 rotate-180"
       } ${className}`}
     >
       <svg
-        viewBox="0 0 600 24"
+        viewBox="0 0 600 16"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         preserveAspectRatio="none"
-        className="w-full h-full"
+        className="w-full h-full opacity-80"
       >
         <defs>
-          <linearGradient id="edgeStem" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#10B981" />
-            <stop offset="35%" stopColor="#34D399" />
-            <stop offset="70%" stopColor="#10B981" />
-            <stop offset="100%" stopColor="#059669" />
+          <linearGradient id="edgeStemDelicate" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#10B981" stopOpacity="0.4" />
+            <stop offset="25%" stopColor="#059669" stopOpacity="0.8" />
+            <stop offset="50%" stopColor="#10B981" stopOpacity="0.9" />
+            <stop offset="75%" stopColor="#059669" stopOpacity="0.8" />
+            <stop offset="100%" stopColor="#10B981" stopOpacity="0.4" />
           </linearGradient>
         </defs>
 
-        {/* Dây thân lượn sóng nhẹ theo viền */}
+        {/* Thân dây leo lượn sóng nhẹ sát mép viền */}
         <path
-          d="M0 6 Q 75 14, 150 6 T 300 6 T 450 6 T 600 6"
-          stroke="url(#edgeStem)"
-          strokeWidth="2.5"
+          d="M 0 3 Q 100 8, 200 3 T 400 3 T 600 3"
+          stroke="url(#edgeStemDelicate)"
+          strokeWidth="1.2"
           strokeLinecap="round"
         />
 
-        {/* Các cụm lá dọc thân */}
-        {[50, 120, 200, 280, 360, 440, 520].map((x, i) => (
-          <g key={x} transform={`translate(${x}, ${i % 2 === 0 ? 4 : 8})`}>
+        {/* Những chiếc lá nhỏ thưa thớt, không bị dày đặc */}
+        {[80, 160, 260, 360, 460, 540].map((x, i) => (
+          <g key={x} transform={`translate(${x}, ${i % 2 === 0 ? 3 : 5})`}>
             <ellipse
               cx="0"
               cy="0"
-              rx="8"
-              ry="4"
-              transform={`rotate(${i % 2 === 0 ? 25 : -25})`}
+              rx="5"
+              ry="2.2"
+              transform={`rotate(${i % 2 === 0 ? 20 : -20})`}
               fill="#34D399"
+              opacity="0.85"
+            />
+            {/* Điểm xuyết lá non nhạt */}
+            <ellipse
+              cx={i % 2 === 0 ? 4 : -4}
+              cy="1.5"
+              rx="3.5"
+              ry="1.8"
+              transform={`rotate(${i % 2 === 0 ? -30 : 30})`}
+              fill="#A7F3D0"
               opacity="0.9"
             />
-            <ellipse
-              cx={i % 2 === 0 ? 6 : -6}
-              cy="3"
-              rx="6"
-              ry="3"
-              transform={`rotate(${i % 2 === 0 ? -35 : 35})`}
-              fill="#6EE7B7"
-              opacity="0.8"
-            />
-            {/* Chấm quả đỏ tươi */}
-            {i % 3 === 0 && <circle cx={3} cy={-4} r="2.5" fill="#F43F5E" />}
           </g>
         ))}
       </svg>
@@ -203,38 +167,37 @@ export function FoliageEdgeBorder({
   )
 }
 
-// 3. Khung Card Dây Leo Toàn Phần (Card Wrapper with Natural Vine Border)
-export function VineCardWrapper({
+// 3. Khung bọc Dây Leo Thẩm Mỹ (Thay thế viền neon/AI gắt)
+export function BotanicalCardWrapper({
   children,
   className = "",
-  glowColor = "emerald",
+  variant = "subtle"
 }: {
   children: React.ReactNode
   className?: string
-  glowColor?: "emerald" | "amber" | "indigo" | "rose"
+  variant?: "subtle" | "featured" | "warm"
 }) {
-  const glowStyles = {
-    emerald: "border-emerald-500/35 hover:border-emerald-500/60 shadow-emerald-500/10",
-    amber: "border-amber-500/35 hover:border-amber-500/60 shadow-amber-500/10",
-    indigo: "border-indigo-500/35 hover:border-indigo-500/60 shadow-indigo-500/10",
-    rose: "border-rose-500/35 hover:border-rose-500/60 shadow-rose-500/10",
-  }[glowColor]
+  const borderStyles = {
+    // Viền nhẹ nhàng tự nhiên (dành cho đa số card thường)
+    subtle: "border border-emerald-900/15 dark:border-emerald-500/20 bg-card/90 hover:border-emerald-500/35",
+    // Viền nổi bật cho các widget quan trọng (Lộ trình, Banner)
+    featured: "border border-emerald-600/30 dark:border-emerald-400/30 bg-card/95 hover:border-emerald-500/50 shadow-sm",
+    // Viền ấm áp cho Streak, Mục tiêu
+    warm: "border border-amber-900/15 dark:border-amber-500/20 bg-card/90 hover:border-amber-500/35",
+  }[variant]
 
   return (
-    <div
-      className={`relative rounded-3xl border-2 bg-card/90 backdrop-blur-md shadow-xl transition-all duration-300 ${glowStyles} ${className}`}
-    >
-      {/* 4 góc dây leo tự nhiên quấn quanh viền */}
-      <LeafVineCornerSvg position="top-left" className="top-0 left-0 w-14 h-14 sm:w-16 sm:h-16" />
-      <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-14 h-14 sm:w-16 sm:h-16" />
-      <LeafVineCornerSvg position="bottom-left" className="bottom-0 left-0 w-12 h-12 sm:w-14 sm:h-14" />
-      <LeafVineCornerSvg position="bottom-right" className="bottom-0 right-0 w-12 h-12 sm:w-14 sm:h-14" />
+    <div className={`relative rounded-3xl overflow-hidden transition-all duration-300 ${borderStyles} ${className}`}>
+      {/* 4 Nhánh dây leo thanh mảnh bò theo 4 góc */}
+      <LeafVineCornerSvg position="top-left" className="top-0 left-0 w-9 h-9 sm:w-11 sm:h-11" />
+      <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-9 h-9 sm:w-11 sm:h-11" />
+      <LeafVineCornerSvg position="bottom-left" className="bottom-0 left-0 w-8 h-8 sm:w-10 sm:h-10" />
+      <LeafVineCornerSvg position="bottom-right" className="bottom-0 right-0 w-8 h-8 sm:w-10 sm:h-10" />
 
-      {/* Viền dải lá nhẹ ở cạnh trên & cạnh dưới */}
-      <FoliageEdgeBorder position="top" className="h-3 sm:h-4 opacity-70" />
-      <FoliageEdgeBorder position="bottom" className="h-3 sm:h-4 opacity-70" />
+      {/* Dải dây leo mảnh lượn nhẹ ở mép trên */}
+      <FoliageEdgeBorder position="top" className="h-2.5 opacity-60" />
 
-      {/* Nội dung bên trong thẻ */}
+      {/* Nội dung bên trong */}
       <div className="relative z-10">{children}</div>
     </div>
   )

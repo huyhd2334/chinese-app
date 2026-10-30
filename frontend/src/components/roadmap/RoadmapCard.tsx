@@ -42,13 +42,13 @@ export function RoadmapCard({ onOpenWizard }: RoadmapCardProps) {
   // 1. TRẠNG THÁI CHƯA CÓ LỘ TRÌNH: Banner tươi sáng, mascot Tiểu Lu vẫy tay mời gọi
   if (!stats || !stats.hasRoadmap) {
     return (
-      <div className="relative overflow-hidden w-full rounded-3xl bg-gradient-to-r from-amber-500/15 via-rose-500/10 to-indigo-500/15 border-2 border-emerald-500/40 p-6 sm:p-7 shadow-xl backdrop-blur-md transition-all hover:border-emerald-500/60">
-        {/* Dây leo lá cây quấn 4 góc banner */}
-        <LeafVineCornerSvg position="top-left" className="top-0 left-0 w-14 h-14 sm:w-16 sm:h-16" />
-        <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-14 h-14 sm:w-16 sm:h-16" />
-        <LeafVineCornerSvg position="bottom-left" className="bottom-0 left-0 w-12 h-12 sm:w-14 sm:h-14" />
-        <LeafVineCornerSvg position="bottom-right" className="bottom-0 right-0 w-12 h-12 sm:w-14 sm:h-14" />
-        <FoliageEdgeBorder position="top" className="h-3 opacity-60" />
+      <div className="relative overflow-hidden w-full rounded-3xl bg-card border border-emerald-600/25 dark:border-emerald-500/30 p-6 sm:p-7 shadow-sm transition-all hover:border-emerald-500/50">
+        {/* Dây leo lá cây thanh mảnh uốn lượn theo viền */}
+        <LeafVineCornerSvg position="top-left" className="top-0 left-0 w-10 h-10 sm:w-11 sm:h-11" />
+        <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-10 h-10 sm:w-11 sm:h-11" />
+        <LeafVineCornerSvg position="bottom-left" className="bottom-0 left-0 w-8 h-8 sm:w-9 sm:h-9" />
+        <LeafVineCornerSvg position="bottom-right" className="bottom-0 right-0 w-8 h-8 sm:w-9 sm:h-9" />
+        <FoliageEdgeBorder position="top" className="h-2.5 opacity-60" />
 
         {/* Glow ambient background */}
         <div className="absolute top-0 right-10 w-60 h-60 bg-amber-400/20 rounded-full blur-3xl pointer-events-none" />
@@ -107,14 +107,13 @@ export function RoadmapCard({ onOpenWizard }: RoadmapCardProps) {
   }[stats.paceStatus]
 
   return (
-    <div className="relative overflow-hidden w-full rounded-3xl bg-gradient-to-br from-card/95 via-card/85 to-emerald-500/5 border-2 border-emerald-500/35 p-5 sm:p-7 shadow-xl backdrop-blur-md transition-all hover:border-emerald-500/60">
-      {/* 4 Góc Dây Leo Lá Cây Tươi Sáng & Viền Lá Thiên Nhiên Quấn Quanh */}
-      <LeafVineCornerSvg position="top-left" className="top-0 left-0 w-14 h-14 sm:w-16 sm:h-16" />
-      <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-14 h-14 sm:w-16 sm:h-16" />
-      <LeafVineCornerSvg position="bottom-left" className="bottom-0 left-0 w-12 h-12 sm:w-14 sm:h-14" />
-      <LeafVineCornerSvg position="bottom-right" className="bottom-0 right-0 w-12 h-12 sm:w-14 sm:h-14" />
-      <FoliageEdgeBorder position="top" className="h-3.5 opacity-60" />
-      <FoliageEdgeBorder position="bottom" className="h-3.5 opacity-60" />
+    <div className="relative overflow-hidden w-full rounded-3xl bg-card border border-emerald-600/25 dark:border-emerald-500/30 p-5 sm:p-7 shadow-sm transition-all hover:border-emerald-500/50">
+      {/* Dây leo lá cây thanh mảnh uốn lượn theo viền card */}
+      <LeafVineCornerSvg position="top-left" className="top-0 left-0 w-10 h-10 sm:w-11 sm:h-11" />
+      <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-10 h-10 sm:w-11 sm:h-11" />
+      <LeafVineCornerSvg position="bottom-left" className="bottom-0 left-0 w-8 h-8 sm:w-9 sm:h-9" />
+      <LeafVineCornerSvg position="bottom-right" className="bottom-0 right-0 w-8 h-8 sm:w-9 sm:h-9" />
+      <FoliageEdgeBorder position="top" className="h-2.5 opacity-60" />
 
       {/* Decorative mountain background artwork */}
       <div className="absolute -top-6 -right-6 opacity-15 sm:opacity-20 pointer-events-none select-none">
@@ -167,31 +166,31 @@ export function RoadmapCard({ onOpenWizard }: RoadmapCardProps) {
 
       {/* 2 Thước đo lớn: BÀI HỌC & TỪ VỰNG CÒN THIẾU */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-5 relative z-10">
-        {/* Box Bài học - Màu Xanh Ngọc Bích / Teal */}
-        <div className="rounded-2xl bg-gradient-to-r from-emerald-500/10 to-teal-500/5 border-2 border-emerald-500/30 p-4 sm:p-5 flex flex-col justify-between space-y-3">
+        {/* Box Bài học - Màu Xanh Ngọc Bích / Teal dịu mắt */}
+        <div className="rounded-2xl bg-secondary/30 border border-emerald-600/20 dark:border-emerald-500/25 p-4 sm:p-5 flex flex-col justify-between space-y-3">
           <div className="flex items-center justify-between text-xs">
-            <span className="flex items-center gap-1.5 font-black text-emerald-700 dark:text-emerald-300">
-              <BookOpen className="w-4 h-4 text-emerald-500" />
+            <span className="flex items-center gap-1.5 font-bold text-emerald-700 dark:text-emerald-300">
+              <BookOpen className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
               BÀI HỌC GIÁO TRÌNH
             </span>
-            <span className="font-black text-sm text-foreground">{stats.lessonProgressPercent}%</span>
+            <span className="font-bold text-sm text-foreground">{stats.lessonProgressPercent}%</span>
           </div>
 
-          <div className="w-full bg-secondary/80 rounded-full h-3 p-0.5 overflow-hidden">
+          <div className="w-full bg-secondary rounded-full h-2.5 p-0.5 overflow-hidden">
             <div
-              className="bg-gradient-to-r from-teal-400 to-emerald-500 h-full rounded-full transition-all duration-700"
+              className="bg-emerald-500 h-full rounded-full transition-all duration-700"
               style={{ width: `${stats.lessonProgressPercent}%` }}
             />
           </div>
 
           <div className="flex items-end justify-between pt-1">
             <div>
-              <div className="text-sm font-bold text-foreground">
+              <div className="text-sm font-semibold text-foreground">
                 Đã học {stats.completedLessons}/{stats.totalTargetLessons} bài
               </div>
-              <div className="text-xs font-black text-emerald-600 dark:text-emerald-400 mt-0.5">
+              <div className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 mt-0.5">
                 {stats.remainingLessons > 0 ? (
-                  <>👉 Còn thiếu <span className="text-sm text-foreground underline decoration-emerald-500">{stats.remainingLessons} bài</span></>
+                  <>👉 Còn thiếu <span className="text-sm text-foreground font-bold">{stats.remainingLessons} bài</span></>
                 ) : (
                   <>🎉 Đã hoàn tất 100% bài học!</>
                 )}
@@ -204,31 +203,31 @@ export function RoadmapCard({ onOpenWizard }: RoadmapCardProps) {
           </div>
         </div>
 
-        {/* Box Từ vựng - Màu Vàng Cam / Hổ Phách */}
-        <div className="rounded-2xl bg-gradient-to-r from-amber-500/10 to-rose-500/5 border-2 border-amber-500/30 p-4 sm:p-5 flex flex-col justify-between space-y-3">
+        {/* Box Từ vựng - Màu Vàng Cam Hổ Phách dịu mắt */}
+        <div className="rounded-2xl bg-secondary/30 border border-amber-600/20 dark:border-amber-500/25 p-4 sm:p-5 flex flex-col justify-between space-y-3">
           <div className="flex items-center justify-between text-xs">
-            <span className="flex items-center gap-1.5 font-black text-amber-700 dark:text-amber-300">
-              <Target className="w-4 h-4 text-amber-500" />
+            <span className="flex items-center gap-1.5 font-bold text-amber-700 dark:text-amber-300">
+              <Target className="w-4 h-4 text-amber-600 dark:text-amber-400" />
               TỪ VỰNG CỐT LÕI
             </span>
-            <span className="font-black text-sm text-foreground">{stats.wordProgressPercent}%</span>
+            <span className="font-bold text-sm text-foreground">{stats.wordProgressPercent}%</span>
           </div>
 
-          <div className="w-full bg-secondary/80 rounded-full h-3 p-0.5 overflow-hidden">
+          <div className="w-full bg-secondary rounded-full h-2.5 p-0.5 overflow-hidden">
             <div
-              className="bg-gradient-to-r from-amber-400 to-rose-500 h-full rounded-full transition-all duration-700"
+              className="bg-amber-500 h-full rounded-full transition-all duration-700"
               style={{ width: `${stats.wordProgressPercent}%` }}
             />
           </div>
 
           <div className="flex items-end justify-between pt-1">
             <div>
-              <div className="text-sm font-bold text-foreground">
+              <div className="text-sm font-semibold text-foreground">
                 Đã nạp {stats.learnedWords}/{stats.totalTargetWords} từ
               </div>
-              <div className="text-xs font-black text-amber-600 dark:text-amber-400 mt-0.5">
+              <div className="text-xs font-semibold text-amber-600 dark:text-amber-400 mt-0.5">
                 {stats.remainingWords > 0 ? (
-                  <>👉 Còn thiếu <span className="text-sm text-foreground underline decoration-amber-500">{stats.remainingWords} từ</span></>
+                  <>👉 Còn thiếu <span className="text-sm text-foreground font-bold">{stats.remainingWords} từ</span></>
                 ) : (
                   <>🎉 Đã nắm trọn vốn từ vựng!</>
                 )}
