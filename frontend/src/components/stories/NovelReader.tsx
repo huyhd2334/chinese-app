@@ -252,8 +252,6 @@ export default function NovelReader({
               <span>{currentChapter?.paragraphs.length} đoạn</span>
               <span>•</span>
               <span>{currentChapter?.charCount} chữ Hán</span>
-              <span>•</span>
-              <span className="font-medium">Bôi đen chữ bất kỳ để tra nghĩa &amp; nạp SRS</span>
             </div>
           </div>
 
