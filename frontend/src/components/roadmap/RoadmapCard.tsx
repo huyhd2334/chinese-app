@@ -8,19 +8,13 @@ import {
   Target, 
   Calendar, 
   BookOpen, 
-  Sparkles, 
-  CheckCircle2, 
   Clock, 
   ArrowRight, 
-  Zap, 
   Settings2,
-  Trophy,
-  Flame,
-  Award
+  CheckCircle2,
+  MapPin
 } from "lucide-react"
 import { useRoadmap } from "@/hooks/useRoadmap"
-import { MountainSummitSvg, TreasureChestSvg, RocketPaceSvg } from "./RoadmapIllustrations"
-import { LeafVineCornerSvg, FoliageEdgeBorder } from "./VineBorders"
 
 interface RoadmapCardProps {
   onOpenWizard: () => void
@@ -31,230 +25,186 @@ export function RoadmapCard({ onOpenWizard }: RoadmapCardProps) {
 
   if (loading) {
     return (
-      <div className="w-full bg-card/60 backdrop-blur-md border-2 border-border/50 rounded-3xl p-6 animate-pulse">
-        <div className="h-6 w-48 bg-muted rounded-xl mb-4" />
-        <div className="h-4 w-full bg-muted rounded-xl mb-2" />
-        <div className="h-4 w-2/3 bg-muted rounded-xl" />
+      <div className="w-full bg-card rounded-2xl border border-border/80 p-5 animate-pulse">
+        <div className="h-5 w-48 bg-muted rounded mb-3" />
+        <div className="h-4 w-full bg-muted rounded mb-2" />
+        <div className="h-4 w-2/3 bg-muted rounded" />
       </div>
     )
   }
 
-  // 1. TRẠNG THÁI CHƯA CÓ LỘ TRÌNH: Banner tươi sáng, mascot Tiểu Lu vẫy tay mời gọi
+  // 1. TRẠNG THÁI CHƯA CÓ LỘ TRÌNH: Giao diện tối giản, sạch sẽ, không icon slop / không gradient chói
   if (!stats || !stats.hasRoadmap) {
     return (
-      <div className="relative overflow-hidden w-full rounded-3xl bg-card border border-emerald-600/25 dark:border-emerald-500/30 p-6 sm:p-7 shadow-sm transition-all hover:border-emerald-500/50">
-        {/* Dây leo lá cây thanh mảnh uốn lượn theo viền */}
-        <LeafVineCornerSvg position="top-left" className="top-0 left-0 w-10 h-10 sm:w-11 sm:h-11" />
-        <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-10 h-10 sm:w-11 sm:h-11" />
-        <LeafVineCornerSvg position="bottom-left" className="bottom-0 left-0 w-8 h-8 sm:w-9 sm:h-9" />
-        <LeafVineCornerSvg position="bottom-right" className="bottom-0 right-0 w-8 h-8 sm:w-9 sm:h-9" />
-        <FoliageEdgeBorder position="top" className="h-2.5 opacity-60" />
-
-        {/* Glow ambient background */}
-        <div className="absolute top-0 right-10 w-60 h-60 bg-amber-400/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-10 w-60 h-60 bg-rose-400/15 rounded-full blur-3xl pointer-events-none" />
-
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
-          {/* Mascot & SVG Illustration */}
-          <div className="flex items-center gap-4 sm:gap-6">
-            <div className="relative w-20 h-20 sm:w-24 sm:h-24 shrink-0 p-1 bg-white/90 dark:bg-card/90 rounded-2xl border-2 border-amber-400/50 shadow-md flex items-center justify-center select-none transform hover:scale-105 transition-transform">
-              <Image
-                src="/chibi-cheer.svg"
-                alt="Tiểu Lu cổ vũ"
-                width={80}
-                height={80}
-                priority
-                className="object-contain"
-              />
+      <div className="relative overflow-hidden w-full rounded-2xl bg-card border border-border/80 p-5 sm:p-6 shadow-xs">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-xl bg-muted/30 border border-border/60 flex items-center justify-center shrink-0">
+              <Compass className="w-6 h-6 text-foreground" />
             </div>
 
-            <div className="space-y-1.5 max-w-lg">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-amber-500/20 text-amber-700 dark:text-amber-300 border border-amber-500/40">
-                <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-                Lộ trình Cá nhân hóa Mới
+            <div className="space-y-1">
+              <div className="flex items-center gap-2">
+                <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                  Lộ trình học tập
+                </span>
               </div>
-              <h3 className="text-xl sm:text-2xl font-black text-foreground tracking-tight">
-                Chưa biết bắt đầu học từ đâu?
+              <h3 className="text-lg sm:text-xl font-bold text-foreground">
+                Xây dựng lộ trình cá nhân hóa
               </h3>
-              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                Tạo lộ trình trong 1 phút! Hệ thống sẽ đo vốn từ vựng hiện có, phân tích bạn <strong className="text-foreground">còn thiếu bao nhiêu bài học & bao nhiêu từ</strong> để cán đích HSK đúng hạn.
+              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed max-w-xl">
+                Hệ thống tự động đo lường số bài học và số từ vựng bạn đã tích lũy, giúp bạn biết chính xác cần nạp bao nhiêu từ mỗi ngày để đạt mục tiêu HSK.
               </p>
             </div>
           </div>
 
-          {/* Call to action Button */}
-          <div className="shrink-0 w-full md:w-auto">
-            <button
-              onClick={onOpenWizard}
-              className="w-full md:w-auto px-6 py-3.5 rounded-2xl bg-gradient-to-r from-amber-500 via-rose-500 to-indigo-600 hover:from-amber-400 hover:via-rose-400 hover:to-indigo-500 text-white font-black text-sm shadow-lg shadow-rose-500/30 transition-all duration-300 transform active:scale-95 flex items-center justify-center gap-2"
-            >
-              <Trophy className="w-4 h-4 text-amber-200" />
-              <span>Thiết lập lộ trình ngay</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
+          <button
+            onClick={onOpenWizard}
+            className="w-full md:w-auto px-5 py-2.5 rounded-xl bg-foreground text-background hover:bg-foreground/90 text-xs sm:text-sm font-semibold transition-colors flex items-center justify-center gap-2 shrink-0 cursor-pointer"
+          >
+            <span>Thiết lập lộ trình</span>
+            <ArrowRight className="w-4 h-4" />
+          </button>
         </div>
       </div>
     )
   }
 
-  // 2. TRẠNG THÁI ĐÃ CÓ LỘ TRÌNH: Thẻ tươi sáng, đầy màu sắc với đo lường chi tiết
-  const paceBadgeConfig = {
-    ahead: { label: "Vượt tiến độ 🚀", color: "bg-emerald-500 text-white shadow-xs shadow-emerald-500/30" },
-    on_track: { label: "Chuẩn nhịp ✨", color: "bg-indigo-500 text-white shadow-xs shadow-indigo-500/30" },
-    behind: { label: "Cần tăng tốc ⚡", color: "bg-amber-500 text-slate-950 font-black shadow-xs shadow-amber-500/30" },
-    danger: { label: "Chậm tiến độ ⚠️", color: "bg-rose-500 text-white shadow-xs shadow-rose-500/30" },
+  // 2. TRẠNG THÁI ĐÃ CÓ LỘ TRÌNH: Tinh gọn, rõ ràng theo chuẩn thiết kế SaaS hiện đại
+  const paceConfig = {
+    ahead: { label: "Vượt tiến độ", className: "text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/40 border-emerald-200 dark:border-emerald-800/40" },
+    on_track: { label: "Đúng tiến độ", className: "text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-950/40 border-blue-200 dark:border-blue-800/40" },
+    behind: { label: "Cần tăng tốc", className: "text-amber-800 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/40 border-amber-200 dark:border-amber-800/40" },
+    danger: { label: "Chậm tiến độ", className: "text-rose-700 dark:text-rose-300 bg-rose-50 dark:bg-rose-950/40 border-rose-200 dark:border-rose-800/40" },
   }[stats.paceStatus]
 
   return (
-    <div className="relative overflow-hidden w-full rounded-3xl bg-card border border-emerald-600/25 dark:border-emerald-500/30 p-5 sm:p-7 shadow-sm transition-all hover:border-emerald-500/50">
-      {/* Dây leo lá cây thanh mảnh uốn lượn theo viền card */}
-      <LeafVineCornerSvg position="top-left" className="top-0 left-0 w-10 h-10 sm:w-11 sm:h-11" />
-      <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-10 h-10 sm:w-11 sm:h-11" />
-      <LeafVineCornerSvg position="bottom-left" className="bottom-0 left-0 w-8 h-8 sm:w-9 sm:h-9" />
-      <LeafVineCornerSvg position="bottom-right" className="bottom-0 right-0 w-8 h-8 sm:w-9 sm:h-9" />
-      <FoliageEdgeBorder position="top" className="h-2.5 opacity-60" />
-
-      {/* Decorative mountain background artwork */}
-      <div className="absolute -top-6 -right-6 opacity-15 sm:opacity-20 pointer-events-none select-none">
-        <MountainSummitSvg className="w-48 h-48" />
-      </div>
-
+    <div className="relative w-full rounded-2xl bg-card border border-border/80 p-5 sm:p-6 shadow-xs">
       {/* Header Bar */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-border/60 relative z-10">
-        <div className="flex items-center gap-3.5">
-          <div className="relative w-12 h-12 sm:w-14 sm:h-14 p-1 rounded-2xl bg-white dark:bg-card border-2 border-indigo-400/50 shadow-sm shrink-0 flex items-center justify-center select-none">
-            <Image
-              src="/chibi-scholar-gold.svg"
-              alt="Mascot Học giả"
-              width={48}
-              height={48}
-              className="object-contain"
-            />
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-border/60">
+        <div className="space-y-1.5">
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className="px-2.5 py-0.5 rounded-md text-xs font-bold bg-foreground text-background">
+              HSK {stats.targetLevel}
+            </span>
+            <span className={`px-2 py-0.5 rounded-md text-xs font-medium border ${paceConfig.className}`}>
+              {paceConfig.label}
+            </span>
           </div>
 
-          <div>
-            <div className="flex items-center gap-2 flex-wrap">
-              <span className="px-2.5 py-0.5 rounded-lg text-xs font-black uppercase tracking-wider bg-indigo-600 text-white">
-                HSK {stats.targetLevel}
-              </span>
-              <span className={`px-2.5 py-0.5 rounded-lg text-xs font-bold ${paceBadgeConfig.color}`}>
-                {paceBadgeConfig.label}
-              </span>
-            </div>
-            <h3 className="text-xl sm:text-2xl font-black text-foreground mt-0.5 tracking-tight">
-              {stats.goalTitle}
-            </h3>
-          </div>
+          <h3 className="text-lg sm:text-xl font-bold text-foreground">
+            {stats.goalTitle}
+          </h3>
         </div>
 
-        <div className="flex items-center gap-2 sm:gap-3 self-end sm:self-auto">
-          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-secondary/80 border border-border/80 text-xs font-bold text-foreground">
-            <Calendar className="w-3.5 h-3.5 text-indigo-500" />
-            <span>Còn <strong>{stats.daysRemaining} ngày</strong> ({stats.targetDate})</span>
+        <div className="flex items-center gap-2 self-start sm:self-auto">
+          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-muted/40 border border-border/60 text-xs font-medium text-muted-foreground">
+            <Calendar className="w-3.5 h-3.5" />
+            <span>Còn <strong className="text-foreground">{stats.daysRemaining} ngày</strong> ({stats.targetDate})</span>
           </div>
 
           <button
             onClick={onOpenWizard}
             title="Điều chỉnh mục tiêu"
-            className="p-2 rounded-xl text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
+            className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors border border-border/60"
           >
             <Settings2 className="w-4 h-4" />
           </button>
         </div>
       </div>
 
-      {/* 2 Thước đo lớn: BÀI HỌC & TỪ VỰNG CÒN THIẾU */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-5 relative z-10">
-        {/* Box Bài học - Màu Xanh Ngọc Bích / Teal dịu mắt */}
-        <div className="rounded-2xl bg-secondary/30 border border-emerald-600/20 dark:border-emerald-500/25 p-4 sm:p-5 flex flex-col justify-between space-y-3">
-          <div className="flex items-center justify-between text-xs">
-            <span className="flex items-center gap-1.5 font-bold text-emerald-700 dark:text-emerald-300">
+      {/* 2 Khung đo lường: BÀI HỌC & TỪ VỰNG (Tone màu sạch, phẳng, thanh lịch) */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-5">
+        {/* Khung 1: BÀI HỌC GIÁO TRÌNH */}
+        <div className="rounded-xl bg-muted/20 border border-border/60 p-4 space-y-3">
+          <div className="flex items-center justify-between text-xs font-medium">
+            <span className="flex items-center gap-1.5 text-muted-foreground">
               <BookOpen className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
               BÀI HỌC GIÁO TRÌNH
             </span>
-            <span className="font-bold text-sm text-foreground">{stats.lessonProgressPercent}%</span>
+            <span className="font-semibold text-foreground">{stats.lessonProgressPercent}%</span>
           </div>
 
-          <div className="w-full bg-secondary rounded-full h-2.5 p-0.5 overflow-hidden">
+          {/* Progress bar phẳng, màu solid mộc */}
+          <div className="w-full bg-muted/50 rounded-full h-2 overflow-hidden">
             <div
-              className="bg-emerald-500 h-full rounded-full transition-all duration-700"
+              className="bg-emerald-600 dark:bg-emerald-500 h-full rounded-full transition-all duration-500"
               style={{ width: `${stats.lessonProgressPercent}%` }}
             />
           </div>
 
-          <div className="flex items-end justify-between pt-1">
+          <div className="flex items-end justify-between pt-0.5 text-xs">
             <div>
-              <div className="text-sm font-semibold text-foreground">
+              <div className="font-medium text-foreground">
                 Đã học {stats.completedLessons}/{stats.totalTargetLessons} bài
               </div>
-              <div className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 mt-0.5">
+              <div className="text-emerald-700 dark:text-emerald-400 font-semibold mt-0.5">
                 {stats.remainingLessons > 0 ? (
-                  <>👉 Còn thiếu <span className="text-sm text-foreground font-bold">{stats.remainingLessons} bài</span></>
+                  <>Còn thiếu <span className="font-bold text-foreground">{stats.remainingLessons} bài</span></>
                 ) : (
-                  <>🎉 Đã hoàn tất 100% bài học!</>
+                  <>Đã hoàn tất toàn bộ bài học</>
                 )}
               </div>
             </div>
 
-            <div className="text-right text-[11px] text-muted-foreground">
+            <div className="text-muted-foreground text-[11px]">
               ~{stats.weeklyLessonsRequired} bài/tuần
             </div>
           </div>
         </div>
 
-        {/* Box Từ vựng - Màu Vàng Cam Hổ Phách dịu mắt */}
-        <div className="rounded-2xl bg-secondary/30 border border-amber-600/20 dark:border-amber-500/25 p-4 sm:p-5 flex flex-col justify-between space-y-3">
-          <div className="flex items-center justify-between text-xs">
-            <span className="flex items-center gap-1.5 font-bold text-amber-700 dark:text-amber-300">
+        {/* Khung 2: TỪ VỰNG CỐT LÕI */}
+        <div className="rounded-xl bg-muted/20 border border-border/60 p-4 space-y-3">
+          <div className="flex items-center justify-between text-xs font-medium">
+            <span className="flex items-center gap-1.5 text-muted-foreground">
               <Target className="w-4 h-4 text-amber-600 dark:text-amber-400" />
               TỪ VỰNG CỐT LÕI
             </span>
-            <span className="font-bold text-sm text-foreground">{stats.wordProgressPercent}%</span>
+            <span className="font-semibold text-foreground">{stats.wordProgressPercent}%</span>
           </div>
 
-          <div className="w-full bg-secondary rounded-full h-2.5 p-0.5 overflow-hidden">
+          {/* Progress bar phẳng */}
+          <div className="w-full bg-muted/50 rounded-full h-2 overflow-hidden">
             <div
-              className="bg-amber-500 h-full rounded-full transition-all duration-700"
+              className="bg-amber-600 dark:bg-amber-500 h-full rounded-full transition-all duration-500"
               style={{ width: `${stats.wordProgressPercent}%` }}
             />
           </div>
 
-          <div className="flex items-end justify-between pt-1">
+          <div className="flex items-end justify-between pt-0.5 text-xs">
             <div>
-              <div className="text-sm font-semibold text-foreground">
+              <div className="font-medium text-foreground">
                 Đã nạp {stats.learnedWords}/{stats.totalTargetWords} từ
               </div>
-              <div className="text-xs font-semibold text-amber-600 dark:text-amber-400 mt-0.5">
+              <div className="text-amber-800 dark:text-amber-400 font-semibold mt-0.5">
                 {stats.remainingWords > 0 ? (
-                  <>👉 Còn thiếu <span className="text-sm text-foreground font-bold">{stats.remainingWords} từ</span></>
+                  <>Còn thiếu <span className="font-bold text-foreground">{stats.remainingWords} từ</span></>
                 ) : (
-                  <>🎉 Đã nắm trọn vốn từ vựng!</>
+                  <>Đã nắm trọn vốn từ</>
                 )}
               </div>
             </div>
 
-            <div className="text-right text-[11px] text-muted-foreground">
+            <div className="text-muted-foreground text-[11px]">
               ~{stats.dailyPaceRequired} từ/ngày
             </div>
           </div>
         </div>
       </div>
 
-      {/* Footer Actions: Tươi vui, nút bấm 3D mềm */}
-      <div className="pt-4 border-t border-border/60 flex flex-col sm:flex-row sm:items-center justify-between gap-3 relative z-10">
-        <div className="flex items-center gap-2 text-xs font-semibold text-muted-foreground">
-          <Sparkles className="w-4 h-4 text-amber-500" />
-          <span>Hôm nay cần: <strong className="text-foreground">{stats.dailyPlan.newWordsTargetCount} từ mới</strong> & <strong className="text-foreground">{stats.dailyPlan.wordsToReviewCount} thẻ ôn</strong></span>
+      {/* Footer Hành động: Nút phẳng thanh lịch, không màu mè gradient */}
+      <div className="pt-3.5 border-t border-border/60 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+        <div className="text-muted-foreground">
+          Hôm nay cần: <strong className="text-foreground">{stats.dailyPlan.newWordsTargetCount} từ mới</strong> & <strong className="text-foreground">{stats.dailyPlan.wordsToReviewCount} thẻ ôn</strong>
         </div>
 
         <div className="flex items-center gap-2.5 flex-wrap">
           {stats.dailyPlan.recommendedLesson && (
             <Link
               href={`/books/${stats.dailyPlan.recommendedLesson.bookId}/${stats.dailyPlan.recommendedLesson.lessonId}`}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white text-xs font-black transition-all shadow-md shadow-indigo-500/25 active:scale-95"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-foreground text-background hover:bg-foreground/90 font-medium transition-colors"
             >
-              <span>Vào học tiếp: {stats.dailyPlan.recommendedLesson.title}</span>
+              <span>Vào học: {stats.dailyPlan.recommendedLesson.title}</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           )}
@@ -262,7 +212,7 @@ export function RoadmapCard({ onOpenWizard }: RoadmapCardProps) {
           {stats.dailyPlan.wordsToReviewCount > 0 && (
             <Link
               href="/review"
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 text-amber-700 dark:text-amber-300 border border-amber-500/30 text-xs font-bold transition-all"
+              className="inline-flex items-center gap-1 px-3 py-2 rounded-lg bg-muted/40 hover:bg-muted/70 text-foreground font-medium border border-border/60 transition-colors"
             >
               <span>Ôn tập ({stats.dailyPlan.wordsToReviewCount})</span>
             </Link>
@@ -270,11 +220,11 @@ export function RoadmapCard({ onOpenWizard }: RoadmapCardProps) {
 
           <Link
             href="/roadmap"
-            className="inline-flex items-center gap-1 px-3.5 py-2 rounded-xl bg-secondary/80 hover:bg-secondary text-foreground text-xs font-bold border border-border/70 transition-colors"
+            className="inline-flex items-center gap-1 px-3 py-2 rounded-lg text-foreground hover:bg-muted/40 font-medium transition-colors"
           >
-            <Trophy className="w-3.5 h-3.5 text-amber-500" />
-            <span>Bản đồ lộ trình</span>
-            <ArrowRight className="w-3 h-3 text-muted-foreground" />
+            <MapPin className="w-3.5 h-3.5 text-muted-foreground" />
+            <span>Chi tiết lộ trình</span>
+            <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
       </div>
