@@ -205,7 +205,7 @@ export default function BonusHubPage() {
                   <p className="text-muted text-xs mb-2">
                     {col.subtitle}
                   </p>
-                  <p className="text-xs sm:text-sm text-china-ink/80 leading-relaxed mb-4">
+                  <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 leading-relaxed mb-4">
                     {col.description}
                   </p>
                 </div>
@@ -220,7 +220,7 @@ export default function BonusHubPage() {
                   </Link>
                   <Link
                     href={`/bonus/${col.slug}?mode=gallery`}
-                    className="py-2.5 px-4 rounded-xl bg-white border border-border text-china-ink text-xs sm:text-sm font-medium hover:bg-china-paper transition-all text-center active:scale-95"
+                    className="py-2.5 px-4 rounded-xl bg-white dark:bg-[#20202c] border border-border text-china-ink dark:text-[#edeae4] text-xs sm:text-sm font-semibold hover:bg-china-paper dark:hover:bg-[#2a2a3a] transition-all text-center active:scale-95 shadow-2xs"
                   >
                     Xem & Thêm Thẻ
                   </Link>
@@ -260,7 +260,7 @@ export default function BonusHubPage() {
                   <p className="text-muted text-xs mb-2">
                     {col.subtitle}
                   </p>
-                  <p className="text-xs sm:text-sm text-china-ink/80 leading-relaxed mb-3">
+                  <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 leading-relaxed mb-3">
                     {col.description}
                   </p>
 
@@ -269,12 +269,12 @@ export default function BonusHubPage() {
                     {col.previewWords.map((pw, i) => (
                       <div
                         key={i}
-                        className="px-2.5 py-1 bg-china-paper border border-border/80 rounded-lg text-xs flex items-center gap-1.5"
+                        className="px-2.5 py-1 bg-china-paper dark:bg-[#1a1a24] border border-border/80 rounded-lg text-xs flex items-center gap-1.5"
                       >
-                        <span className={`font-serif font-semibold ${col.language === "zh" ? "text-china-ink" : "text-china-ink font-sans"}`}>
+                        <span className={`font-serif font-semibold text-china-ink dark:text-[#edeae4] ${col.language === "zh" ? "" : "font-sans"}`}>
                           {pw.word}
                         </span>
-                        <span className="text-muted text-[11px]">{pw.pinyin}</span>
+                        <span className="text-stone-500 dark:text-stone-400 font-mono text-[11px]">{pw.pinyin}</span>
                       </div>
                     ))}
                   </div>
@@ -290,7 +290,7 @@ export default function BonusHubPage() {
                   </Link>
                   <Link
                     href={`/bonus/${col.slug}?mode=gallery`}
-                    className="py-2.5 px-4 rounded-xl bg-white border border-border text-china-ink text-xs sm:text-sm font-medium hover:bg-china-paper transition-all text-center active:scale-95"
+                    className="py-2.5 px-4 rounded-xl bg-white dark:bg-[#20202c] border border-border text-china-ink dark:text-[#edeae4] text-xs sm:text-sm font-semibold hover:bg-china-paper dark:hover:bg-[#2a2a3a] transition-all text-center active:scale-95 shadow-2xs"
                   >
                     Xem & Thêm Thẻ
                   </Link>

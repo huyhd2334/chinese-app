@@ -48,12 +48,13 @@ html.dark:not(.halloween-event-theme) {
   --foreground: #edeae4; /* Chữ trắng ngà mềm dịu */
   --card: #1c1c24; /* Khối thẻ nổi bật */
   --border: #2d2d3a; /* Đường viền thanh thoát */
-  --muted: #9a9489; /* Chữ phụ sắc nét */
+  --muted: #a39e93; /* Chữ phụ sắc nét */
   --primary: #ff4d5e; /* Đỏ chu sa rực rỡ trên nền tối */
   --china-red: #ff4d5e;
   --china-red-hover: #ff3347;
   --china-gold: #f5be38; /* Hoàng kim phát sáng */
   --china-paper: #16161d; /* Nền giấy tối */
+  --china-ink: #edeae4; /* Mực chữ trong Dark Mode: ngà sáng rõ nét, không bị đen chìm */
   --china-jade: #38b28a; /* Ngọc bích phát sáng */
 }
 
@@ -65,12 +66,13 @@ html.dark.halloween-event-theme {
   --foreground: #f4eff8;
   --card: #1a1624; /* Đá cung điện đêm */
   --border: #382c47; /* Viền mận tím dịu */
-  --muted: #a195b0;
+  --muted: #b5aac4;
   --primary: #ff6a2b; /* Cam bí ngô neon phát sáng */
   --china-red: #ff6a2b;
   --china-red-hover: #e65314;
   --china-gold: #f59e0b; /* Vàng hổ phách */
   --china-paper: #15121e;
+  --china-ink: #f4eff8; /* Mực chữ ngà sáng */
   --china-jade: #2fa37e;
 }
 

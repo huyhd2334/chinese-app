@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useMemo, useCallback, use } from "react"
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
-import { ArrowLeft, Volume2, Star, Search, ChevronLeft, ChevronRight } from "lucide-react"
+import { ArrowLeft, Volume2, Bookmark, Search, ChevronLeft, ChevronRight } from "lucide-react"
 import type { BonusWord, BonusCollection } from "@/types/bonus"
 import { getHanViet } from "@/utils/hanviet"
 import { playChineseAudio } from "@/utils/audioTts"
@@ -563,15 +563,15 @@ export default function BonusStudyPage({ params }: PageProps) {
                       <div className="flex items-center gap-1.5">
                         <button
                           onClick={(e) => toggleFavorite(currentCard.id, e)}
-                          title="Lưu từ yêu thích"
-                          className="p-2 text-muted hover:text-amber-500 transition-colors"
+                          title="Lưu thẻ này"
+                          className="p-2 text-muted hover:text-amber-500 transition-colors cursor-pointer"
                         >
-                          <Star className={`w-5 h-5 ${favorites.has(currentCard.id) ? "fill-amber-500 text-amber-500" : ""}`} />
+                          <Bookmark className={`w-5 h-5 ${favorites.has(currentCard.id) ? "fill-amber-500 text-amber-500" : ""}`} />
                         </button>
                         <button
                           onClick={(e) => playAudio(currentCard.word, e)}
                           title="Phát âm"
-                          className="p-2 text-china-red hover:bg-china-red/10 rounded-full transition-colors active:scale-95"
+                          className="p-2 text-china-red hover:bg-china-red/10 rounded-full transition-colors active:scale-95 cursor-pointer"
                         >
                           <Volume2 className="w-5 h-5 sm:w-6 sm:h-6" />
                         </button>
@@ -587,13 +587,13 @@ export default function BonusStudyPage({ params }: PageProps) {
                       }`}>
                         {currentCard.word}
                       </h2>
-                      <p className="text-xs sm:text-sm text-muted">
-                        Bấm hoặc nhấn phím <kbd className="px-2 py-0.5 bg-china-paper border border-border rounded font-mono text-[11px]">Space</kbd> để lật xem đáp án
+                      <p className="text-xs sm:text-sm text-stone-500 dark:text-stone-400">
+                        Bấm hoặc nhấn phím <kbd className="px-2 py-0.5 bg-china-paper dark:bg-stone-800 border border-border rounded font-mono text-[11px] text-china-ink">Space</kbd> để lật xem đáp án
                       </p>
                     </div>
 
                     {/* Hint bottom */}
-                    <div className="flex items-center justify-between text-xs text-muted/80 border-t border-border/60 pt-3">
+                    <div className="flex items-center justify-between text-xs text-stone-500 dark:text-stone-400 border-t border-border/60 pt-3">
                       <span>Thẻ #{currentIndex + 1}</span>
                       <span className="text-china-red font-medium">Bấm để lật ↺</span>
                     </div>
@@ -610,12 +610,12 @@ export default function BonusStudyPage({ params }: PageProps) {
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2 flex-wrap">
                         <span className={`text-2xl sm:text-3xl font-medium tracking-wide ${
-                          isZh ? "text-china-red font-mono" : "text-blue-600 font-sans"
+                          isZh ? "text-china-red font-mono" : "text-sky-600 dark:text-sky-400 font-sans"
                         }`}>
                           {currentCard.pinyin || currentCard.phonetic}
                         </span>
                         {currentHanViet && (
-                          <span className="px-2.5 py-0.5 bg-amber-50 text-amber-900 border border-amber-200/80 rounded-lg text-xs font-bold tracking-wide">
+                          <span className="px-2.5 py-0.5 bg-amber-50 dark:bg-amber-950/40 text-amber-900 dark:text-amber-300 border border-amber-200/80 dark:border-amber-800 rounded-lg text-xs font-bold tracking-wide">
                             Hán-Việt: {currentHanViet}
                           </span>
                         )}
@@ -624,7 +624,7 @@ export default function BonusStudyPage({ params }: PageProps) {
                       <button
                         onClick={(e) => playAudio(currentCard.word, e)}
                         title="Nghe phát âm"
-                        className="p-2 text-china-red hover:bg-china-red/10 rounded-full transition-colors active:scale-95"
+                        className="p-2 text-china-red hover:bg-china-red/10 rounded-full transition-colors active:scale-95 cursor-pointer"
                       >
                         <Volume2 className="w-5 h-5 sm:w-6 sm:h-6" />
                       </button>
@@ -632,8 +632,8 @@ export default function BonusStudyPage({ params }: PageProps) {
 
                     {/* Meaning in Center */}
                     <div className="my-auto py-4 space-y-4 text-center">
-                      <div className="bg-white/80 p-4 rounded-2xl border border-border shadow-2xs max-w-lg mx-auto">
-                        <p className="text-xs uppercase tracking-wider text-muted font-bold mb-1">Nghĩa tiếng Việt</p>
+                      <div className="bg-stone-50 dark:bg-[#161622] p-4 rounded-2xl border border-border shadow-2xs max-w-lg mx-auto">
+                        <p className="text-xs uppercase tracking-wider text-stone-500 dark:text-stone-400 font-bold mb-1">Nghĩa tiếng Việt</p>
                         <p className="text-xl sm:text-2xl font-bold text-china-ink leading-snug">
                           {currentCard.meaning}
                         </p>
@@ -641,9 +641,9 @@ export default function BonusStudyPage({ params }: PageProps) {
 
                       {/* Example sentence if available */}
                       {currentCard.example && (
-                        <div className="bg-white/60 p-4 rounded-2xl border border-border/80 text-left max-w-lg mx-auto space-y-1">
+                        <div className="bg-stone-50/70 dark:bg-[#161622] p-4 rounded-2xl border border-border/80 text-left max-w-lg mx-auto space-y-1">
                           <div className="flex items-center justify-between">
-                            <span className="text-[11px] uppercase tracking-wider text-muted font-bold">
+                            <span className="text-[11px] uppercase tracking-wider text-stone-500 dark:text-stone-400 font-bold">
                               Ví dụ minh họa
                             </span>
                             <button
@@ -751,17 +751,17 @@ export default function BonusStudyPage({ params }: PageProps) {
                     setAddModalTab("bulk")
                     setIsAddModalOpen(true)
                   }}
-                  className="px-3 py-2 rounded-xl border border-border bg-white hover:bg-china-paper text-china-ink text-xs font-semibold transition-all active:scale-95 shadow-2xs"
+                  className="px-3 py-2 rounded-xl border border-border bg-white dark:bg-[#20202c] hover:bg-china-paper dark:hover:bg-[#2a2a3a] text-china-ink dark:text-[#edeae4] text-xs font-semibold transition-all active:scale-95 shadow-2xs cursor-pointer"
                 >
                   + Thêm nhiều từ
                 </button>
 
                 <button
                   onClick={() => setHidePhonetic(p => !p)}
-                  className={`px-3 py-2 rounded-xl border text-xs font-medium transition-colors ${
+                  className={`px-3 py-2 rounded-xl border text-xs font-semibold transition-colors cursor-pointer ${
                     hidePhonetic
                       ? "bg-china-red text-white border-china-red"
-                      : "bg-white border-border text-china-ink hover:bg-china-paper"
+                      : "bg-white dark:bg-[#20202c] border-border text-china-ink dark:text-[#edeae4] hover:bg-china-paper dark:hover:bg-[#2a2a3a]"
                   }`}
                 >
                   {hidePhonetic ? "Hiện phiên âm" : "Ẩn phiên âm"}
@@ -769,10 +769,10 @@ export default function BonusStudyPage({ params }: PageProps) {
 
                 <button
                   onClick={() => setHideMeaning(m => !m)}
-                  className={`px-3 py-2 rounded-xl border text-xs font-medium transition-colors ${
+                  className={`px-3 py-2 rounded-xl border text-xs font-semibold transition-colors cursor-pointer ${
                     hideMeaning
                       ? "bg-china-red text-white border-china-red"
-                      : "bg-white border-border text-china-ink hover:bg-china-paper"
+                      : "bg-white dark:bg-[#20202c] border-border text-china-ink dark:text-[#edeae4] hover:bg-china-paper dark:hover:bg-[#2a2a3a]"
                   }`}
                 >
                   {hideMeaning ? "Hiện nghĩa" : "Ẩn nghĩa"}
@@ -783,13 +783,13 @@ export default function BonusStudyPage({ params }: PageProps) {
                     setOnlyFavorites(f => !f)
                     setGalleryPage(0)
                   }}
-                  className={`flex items-center gap-1.5 px-3 py-2 rounded-xl border text-xs font-semibold transition-colors ${
+                  className={`flex items-center gap-1.5 px-3 py-2 rounded-xl border text-xs font-semibold transition-colors cursor-pointer ${
                     onlyFavorites
-                      ? "bg-amber-500 text-white border-amber-500"
-                      : "bg-white border-border text-china-ink hover:bg-china-paper"
+                      ? "bg-amber-500 text-white border-amber-500 shadow-2xs"
+                      : "bg-white dark:bg-[#20202c] border-border text-china-ink dark:text-[#edeae4] hover:bg-china-paper dark:hover:bg-[#2a2a3a]"
                   }`}
                 >
-                  <Star className={`w-3.5 h-3.5 ${onlyFavorites ? "fill-white" : ""}`} />
+                  <Bookmark className={`w-3.5 h-3.5 ${onlyFavorites ? "fill-white" : ""}`} />
                   <span>Đã lưu ({favorites.size})</span>
                 </button>
               </div>
@@ -804,10 +804,10 @@ export default function BonusStudyPage({ params }: PageProps) {
                     setSelectedTopic("all")
                     setGalleryPage(0)
                   }}
-                  className={`px-3 py-1 rounded-lg font-medium whitespace-nowrap transition-colors ${
+                  className={`px-3 py-1 rounded-lg font-medium whitespace-nowrap transition-colors cursor-pointer ${
                     selectedTopic === "all"
                       ? "bg-china-red text-white shadow-2xs"
-                      : "bg-china-paper text-china-ink hover:bg-neutral-200"
+                      : "bg-china-paper dark:bg-[#1a1a24] text-china-ink dark:text-[#edeae4] hover:bg-neutral-200 dark:hover:bg-[#282838]"
                   }`}
                 >
                   Tất cả ({allWords.length})
@@ -821,10 +821,10 @@ export default function BonusStudyPage({ params }: PageProps) {
                         setSelectedTopic(t)
                         setGalleryPage(0)
                       }}
-                      className={`px-3 py-1 rounded-lg font-medium whitespace-nowrap transition-colors ${
+                      className={`px-3 py-1 rounded-lg font-medium whitespace-nowrap transition-colors cursor-pointer ${
                         selectedTopic === t
                           ? "bg-china-red text-white shadow-2xs"
-                          : "bg-china-paper text-china-ink hover:bg-neutral-200"
+                          : "bg-china-paper dark:bg-[#1a1a24] text-china-ink dark:text-[#edeae4] hover:bg-neutral-200 dark:hover:bg-[#282838]"
                       }`}
                     >
                       {t} ({count})
@@ -845,7 +845,7 @@ export default function BonusStudyPage({ params }: PageProps) {
                 <div
                   key={word.id}
                   onClick={() => setSelectedDetailWord(word)}
-                  className="bg-card rounded-2xl border border-border p-4 shadow-2xs hover:shadow-md hover:border-china-red/40 transition-all duration-200 flex flex-col justify-between cursor-pointer group relative"
+                  className="bg-card dark:bg-[#1a1a24] rounded-2xl border border-border dark:border-[#2c2d3d] p-4 shadow-2xs hover:shadow-md hover:border-china-red/40 transition-all duration-200 flex flex-col justify-between cursor-pointer group relative"
                 >
                   <div>
                     {/* Top row */}
@@ -857,7 +857,7 @@ export default function BonusStudyPage({ params }: PageProps) {
                           </span>
                         )}
                         {word.partOfSpeech && (
-                          <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-china-paper border border-border text-muted">
+                          <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-china-paper dark:bg-stone-800 border border-border text-muted">
                             {word.partOfSpeech}
                           </span>
                         )}
@@ -871,15 +871,15 @@ export default function BonusStudyPage({ params }: PageProps) {
                       <div className="flex items-center gap-1">
                         <button
                           onClick={(e) => toggleFavorite(word.id, e)}
-                          title="Lưu từ yêu thích"
-                          className="p-1 text-muted hover:text-amber-500 transition-colors"
+                          title="Lưu thẻ này"
+                          className="p-1 text-muted hover:text-amber-500 transition-colors cursor-pointer"
                         >
-                          <Star className={`w-4 h-4 ${isFav ? "fill-amber-500 text-amber-500" : ""}`} />
+                          <Bookmark className={`w-4 h-4 ${isFav ? "fill-amber-500 text-amber-500" : ""}`} />
                         </button>
                         <button
                           onClick={(e) => playAudio(word.word, e)}
                           title="Nghe phát âm"
-                          className="p-1 text-muted hover:text-china-red transition-colors"
+                          className="p-1 text-muted hover:text-china-red transition-colors cursor-pointer"
                         >
                           <Volume2 className="w-4 h-4" />
                         </button>
@@ -897,11 +897,11 @@ export default function BonusStudyPage({ params }: PageProps) {
                       {/* Phonetic & Hán-Việt */}
                       {!hidePhonetic ? (
                         <div className="flex items-center gap-2 flex-wrap mt-1">
-                          <span className={`text-xs font-medium ${isZh ? "text-china-red font-mono" : "text-blue-600 font-sans"}`}>
+                          <span className={`text-xs font-semibold ${isZh ? "text-china-red font-mono" : "text-sky-600 dark:text-sky-400 font-sans"}`}>
                             {word.pinyin || word.phonetic}
                           </span>
                           {wordHanViet && (
-                            <span className="text-[10px] bg-amber-50 text-amber-800 border border-amber-200/80 px-1.5 py-0.2 rounded font-medium">
+                            <span className="text-[10px] bg-amber-50 dark:bg-amber-950/40 text-amber-900 dark:text-amber-300 border border-amber-200/80 dark:border-amber-800 px-1.5 py-0.2 rounded font-medium">
                               {wordHanViet}
                             </span>
                           )}
@@ -911,9 +911,9 @@ export default function BonusStudyPage({ params }: PageProps) {
                       )}
                     </div>
 
-                    {/* Meaning */}
+                    {/* Meaning - Sáng rõ 100%, không bị đen trên nền đen */}
                     {!hideMeaning ? (
-                      <p className="text-xs text-china-ink/90 font-medium line-clamp-2 leading-relaxed">
+                      <p className="text-xs text-stone-700 dark:text-stone-200 font-medium line-clamp-2 leading-relaxed">
                         {word.meaning}
                       </p>
                     ) : (
