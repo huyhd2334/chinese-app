@@ -951,116 +951,2204 @@ export const SHADOWING_VIDEOS: ShadowingVideo[] = [
     "category": "Giao tiếp đời sống",
     "description": "Chuỗi đối thoại tình huống thực tế chuẩn giáo trình HSK 1, âm điệu nhẹ nhàng truyền cảm, giúp tai quen với ngữ điệu nói tự nhiên của người bản xứ.",
     "youtubeId": "cADmN8CU7HY",
-    "sentencesCount": 12,
+    "sentencesCount": 244,
     "isFree": true,
     "sentences": [
       {
         "id": 1,
-        "startTime": 0,
-        "endTime": 6,
+        "startTime": 8.5,
+        "endTime": 10.0,
         "speaker": "A",
-        "chinese": "请问，你在做什么呢？",
-        "pinyin": "Qǐngwèn, nǐ zài zuò shénme ne?",
-        "vietnamese": "Xin hỏi, bạn đang làm gì đấy?"
+        "chinese": "你是学生吗？",
+        "pinyin": "Nǐ shì xué shēng ma?",
+        "vietnamese": "Bạn là học sinh phải không?"
       },
       {
         "id": 2,
-        "startTime": 6,
-        "endTime": 13,
+        "startTime": 11.0,
+        "endTime": 13.0,
         "speaker": "B",
-        "chinese": "我在看书呢，这本书非常有意思。",
-        "pinyin": "Wǒ zài kàn shū ne, zhè běn shū fēicháng yǒu yìsi.",
-        "vietnamese": "Tôi đang đọc sách, cuốn sách này vô cùng thú vị."
+        "chinese": "不是，我是老师。",
+        "pinyin": "Bú shì, wǒ shì lǎo shī.",
+        "vietnamese": "Không phải, tôi là giáo viên."
       },
       {
         "id": 3,
-        "startTime": 13,
-        "endTime": 20,
+        "startTime": 14.9,
+        "endTime": 16.4,
         "speaker": "A",
-        "chinese": "明天天气怎么样？会下雨吗？",
-        "pinyin": "Míngtiān tiānqì zěnmeyàng? Huì xiàyǔ ma?",
-        "vietnamese": "Thời tiết ngày mai thế nào? Có mưa không?"
+        "chinese": "你是学生吗？",
+        "pinyin": "Nǐ shì xué shēng ma?",
+        "vietnamese": "Bạn là học sinh phải không?"
       },
       {
         "id": 4,
-        "startTime": 20,
-        "endTime": 28,
+        "startTime": 17.5,
+        "endTime": 20.0,
         "speaker": "B",
-        "chinese": "天气预报说明天是晴天，不冷也不热。",
-        "pinyin": "Tiānqì yùbào shuō míngtiān shì qíngtiān, bù lěng yě bú rè.",
-        "vietnamese": "Dự báo thời tiết nói ngày mai trời nắng, không lạnh cũng không nóng."
+        "chinese": "不是，我是老师。",
+        "pinyin": "Bú shì, wǒ shì lǎo shī.",
+        "vietnamese": "Không phải, tôi là giáo viên."
       },
       {
         "id": 5,
-        "startTime": 28,
-        "endTime": 36,
+        "startTime": 21.7,
+        "endTime": 23.2,
         "speaker": "A",
-        "chinese": "你认识前面那个人吗？",
-        "pinyin": "Nǐ rènshi qiánmiàn nàge rén ma?",
-        "vietnamese": "Bạn có quen người ở phía trước kia không?"
+        "chinese": "你是中国学生吗？",
+        "pinyin": "Nǐ shì zhōng guó xué shēng ma?",
+        "vietnamese": "Bạn là học sinh Trung Quốc phải không?"
       },
       {
         "id": 6,
-        "startTime": 36,
-        "endTime": 44,
+        "startTime": 24.0,
+        "endTime": 26.5,
         "speaker": "B",
-        "chinese": "认识，那是我们学校的汉语老师。",
-        "pinyin": "Rènshi, nà shì wǒmen xuéxiào de hànyǔ lǎoshī.",
-        "vietnamese": "Quen chứ, đó là giáo viên tiếng Trung của trường chúng tôi."
+        "chinese": "不是，我是美国学生。",
+        "pinyin": "Bú shì, wǒ shì měi guó xué shēng.",
+        "vietnamese": "Không phải, tôi là học sinh Mỹ."
       },
       {
         "id": 7,
-        "startTime": 44,
-        "endTime": 52,
+        "startTime": 28.1,
+        "endTime": 30.1,
         "speaker": "A",
-        "chinese": "他教汉语教得非常好。",
-        "pinyin": "Tā jiāo hànyǔ jiāo de fēicháng hǎo.",
-        "vietnamese": "Thầy ấy dạy tiếng Trung rất hay."
+        "chinese": "你是中国学生吗？",
+        "pinyin": "Nǐ shì zhōng guó xué shēng ma?",
+        "vietnamese": "Bạn là học sinh Trung Quốc phải không?"
       },
       {
         "id": 8,
-        "startTime": 52,
-        "endTime": 61,
-        "speaker": "A",
-        "chinese": "你喜欢喝茶还是喝咖啡？",
-        "pinyin": "Nǐ xǐhuan hē chá háishi hē kāfēi?",
-        "vietnamese": "Bạn thích uống trà hay uống cà phê?"
+        "startTime": 31.1,
+        "endTime": 34.1,
+        "speaker": "B",
+        "chinese": "不是，我是美国学生。",
+        "pinyin": "Bú shì, wǒ shì měi guó xué shēng.",
+        "vietnamese": "Không phải, tôi là học sinh Mỹ."
       },
       {
         "id": 9,
-        "startTime": 61,
-        "endTime": 70,
-        "speaker": "B",
-        "chinese": "我喜欢喝茶，尤其是绿茶。",
-        "pinyin": "Wǒ xǐhuan hē chá, yóuqí shì lǜchá.",
-        "vietnamese": "Tôi thích uống trà, đặc biệt là trà xanh."
+        "startTime": 36.0,
+        "endTime": 38.9,
+        "speaker": "A",
+        "chinese": "你好，您是美国人吗？",
+        "pinyin": "Nǐ hǎo, nín shì měi guó rén ma?",
+        "vietnamese": "Xin chào, ngài là người Mỹ phải không ạ?"
       },
       {
         "id": 10,
-        "startTime": 70,
-        "endTime": 79,
-        "speaker": "A",
-        "chinese": "昨天下午你去哪儿了？",
-        "pinyin": "Zuótiān xiàwǔ nǐ qù nǎr le?",
-        "vietnamese": "Chiều hôm qua bạn đã đi đâu thế?"
+        "startTime": 39.4,
+        "endTime": 42.7,
+        "speaker": "B",
+        "chinese": "是，我是美国人。",
+        "pinyin": "Shì, wǒ shì měi guó rén.",
+        "vietnamese": "Vâng, tôi là người Mỹ."
       },
       {
         "id": 11,
-        "startTime": 79,
-        "endTime": 88,
-        "speaker": "B",
-        "chinese": "我和朋友一起去商店买衣服了。",
-        "pinyin": "Wǒ hé péngyou yìqǐ qù shāngdiàn mǎi yīfu le.",
-        "vietnamese": "Tôi cùng bạn đi đến cửa hàng mua quần áo."
+        "startTime": 43.2,
+        "endTime": 46.6,
+        "speaker": "A",
+        "chinese": "你好，您是美国人吗？",
+        "pinyin": "Nǐ hǎo, nín shì měi guó rén ma?",
+        "vietnamese": "Xin chào, ngài là người Mỹ phải không ạ?"
       },
       {
         "id": 12,
-        "startTime": 88,
-        "endTime": 98,
+        "startTime": 46.6,
+        "endTime": 49.1,
+        "speaker": "B",
+        "chinese": "是，我是美国人。",
+        "pinyin": "Shì, wǒ shì měi guó rén.",
+        "vietnamese": "Vâng, tôi là người Mỹ."
+      },
+      {
+        "id": 13,
+        "startTime": 51.0,
+        "endTime": 52.8,
         "speaker": "A",
-        "chinese": "这件衣服很漂亮，也很适合你。",
-        "pinyin": "Zhè jiàn yīfu hěn piàoliang, yě hěn shìhé nǐ.",
-        "vietnamese": "Bộ quần áo này rất đẹp, cũng rất hợp với bạn."
+        "chinese": "老师，您叫什么名字？",
+        "pinyin": "Lǎo shī, nín jiào shén me míng zì?",
+        "vietnamese": "Thưa thầy, thầy tên là gì ạ?"
+      },
+      {
+        "id": 14,
+        "startTime": 54.2,
+        "endTime": 55.2,
+        "speaker": "B",
+        "chinese": "我叫李月。",
+        "pinyin": "Wǒ jiào lǐ yuè.",
+        "vietnamese": "Tôi tên là Lý Nguyệt."
+      },
+      {
+        "id": 15,
+        "startTime": 57.4,
+        "endTime": 59.7,
+        "speaker": "A",
+        "chinese": "老师，您叫什么名字？",
+        "pinyin": "Lǎo shī, nín jiào shén me míng zì?",
+        "vietnamese": "Thưa thầy, thầy tên là gì ạ?"
+      },
+      {
+        "id": 16,
+        "startTime": 61.3,
+        "endTime": 62.6,
+        "speaker": "B",
+        "chinese": "我叫李月。",
+        "pinyin": "Wǒ jiào lǐ yuè.",
+        "vietnamese": "Tôi tên là Lý Nguyệt."
+      },
+      {
+        "id": 17,
+        "startTime": 64.8,
+        "endTime": 65.8,
+        "speaker": "A",
+        "chinese": "他是谁？",
+        "pinyin": "Tā shì shuí?",
+        "vietnamese": "Anh ấy là ai?"
+      },
+      {
+        "id": 18,
+        "startTime": 67.2,
+        "endTime": 68.8,
+        "speaker": "B",
+        "chinese": "他是我的汉语老师。",
+        "pinyin": "Tā shì wǒ de hàn yǔ lǎo shī.",
+        "vietnamese": "Thầy ấy là giáo viên tiếng Trung của tôi."
+      },
+      {
+        "id": 19,
+        "startTime": 70.8,
+        "endTime": 71.9,
+        "speaker": "A",
+        "chinese": "他是谁？",
+        "pinyin": "Tā shì shuí?",
+        "vietnamese": "Anh ấy là ai?"
+      },
+      {
+        "id": 20,
+        "startTime": 73.5,
+        "endTime": 75.5,
+        "speaker": "B",
+        "chinese": "他是我的汉语老师。",
+        "pinyin": "Tā shì wǒ de hàn yǔ lǎo shī.",
+        "vietnamese": "Thầy ấy là giáo viên tiếng Trung của tôi."
+      },
+      {
+        "id": 21,
+        "startTime": 77.7,
+        "endTime": 78.9,
+        "speaker": "A",
+        "chinese": "他叫什么名字？",
+        "pinyin": "Tā jiào shén me míng zì?",
+        "vietnamese": "Cậu ấy tên là gì?"
+      },
+      {
+        "id": 22,
+        "startTime": 80.2,
+        "endTime": 82.5,
+        "speaker": "B",
+        "chinese": "他叫大卫，他是美国人。",
+        "pinyin": "Tā jiào dà wèi, tā shì měi guó rén.",
+        "vietnamese": "Cậu ấy tên là David, cậu ấy là người Mỹ."
+      },
+      {
+        "id": 23,
+        "startTime": 84.6,
+        "endTime": 86.1,
+        "speaker": "A",
+        "chinese": "他叫什么名字？",
+        "pinyin": "Tā jiào shén me míng zì?",
+        "vietnamese": "Cậu ấy tên là gì?"
+      },
+      {
+        "id": 24,
+        "startTime": 87.4,
+        "endTime": 90.3,
+        "speaker": "B",
+        "chinese": "他叫大卫，他是美国人。",
+        "pinyin": "Tā jiào dà wèi, tā shì měi guó rén.",
+        "vietnamese": "Cậu ấy tên là David, cậu ấy là người Mỹ."
+      },
+      {
+        "id": 25,
+        "startTime": 92.4,
+        "endTime": 93.6,
+        "speaker": "A",
+        "chinese": "他是哪国人？",
+        "pinyin": "Tā shì nǎ guó rén?",
+        "vietnamese": "Anh ấy là người nước nào?"
+      },
+      {
+        "id": 26,
+        "startTime": 94.8,
+        "endTime": 96.0,
+        "speaker": "B",
+        "chinese": "他是中国人。",
+        "pinyin": "Tā shì zhōng guó rén.",
+        "vietnamese": "Anh ấy là người Trung Quốc."
+      },
+      {
+        "id": 27,
+        "startTime": 97.8,
+        "endTime": 99.3,
+        "speaker": "A",
+        "chinese": "他是哪国人？",
+        "pinyin": "Tā shì nǎ guó rén?",
+        "vietnamese": "Anh ấy là người nước nào?"
+      },
+      {
+        "id": 28,
+        "startTime": 100.6,
+        "endTime": 102.1,
+        "speaker": "B",
+        "chinese": "他是中国人。",
+        "pinyin": "Tā shì zhōng guó rén.",
+        "vietnamese": "Anh ấy là người Trung Quốc."
+      },
+      {
+        "id": 29,
+        "startTime": 104.2,
+        "endTime": 105.1,
+        "speaker": "A",
+        "chinese": "他是谁？",
+        "pinyin": "Tā shì shuí?",
+        "vietnamese": "Cô ấy là ai?"
+      },
+      {
+        "id": 30,
+        "startTime": 106.6,
+        "endTime": 108.9,
+        "speaker": "B",
+        "chinese": "她是我同学，她叫玛丽。",
+        "pinyin": "Tā shì wǒ tóng xué, tā jiào mǎ lì.",
+        "vietnamese": "Cô ấy là bạn học của tôi, cô ấy tên là Mary."
+      },
+      {
+        "id": 31,
+        "startTime": 110.9,
+        "endTime": 112.1,
+        "speaker": "A",
+        "chinese": "他是谁？",
+        "pinyin": "Tā shì shuí?",
+        "vietnamese": "Cô ấy là ai?"
+      },
+      {
+        "id": 32,
+        "startTime": 113.6,
+        "endTime": 116.4,
+        "speaker": "B",
+        "chinese": "她是我同学，她叫玛丽。",
+        "pinyin": "Tā shì wǒ tóng xué, tā jiào mǎ lì.",
+        "vietnamese": "Cô ấy là bạn học của tôi, cô ấy tên là Mary."
+      },
+      {
+        "id": 33,
+        "startTime": 118.3,
+        "endTime": 119.9,
+        "speaker": "A",
+        "chinese": "你女儿今年几岁了？",
+        "pinyin": "Nǐ nǚ ér jīn nián jǐ suì le?",
+        "vietnamese": "Con gái bạn năm nay mấy tuổi rồi?"
+      },
+      {
+        "id": 34,
+        "startTime": 121.3,
+        "endTime": 122.7,
+        "speaker": "B",
+        "chinese": "她今年五岁了。",
+        "pinyin": "Tā jīn nián wǔ suì le.",
+        "vietnamese": "Cháu năm nay 5 tuổi rồi."
+      },
+      {
+        "id": 35,
+        "startTime": 124.6,
+        "endTime": 126.6,
+        "speaker": "A",
+        "chinese": "你女儿今年几岁了？",
+        "pinyin": "Nǐ nǚ ér jīn nián jǐ suì le?",
+        "vietnamese": "Con gái bạn năm nay mấy tuổi rồi?"
+      },
+      {
+        "id": 36,
+        "startTime": 128.2,
+        "endTime": 130.0,
+        "speaker": "B",
+        "chinese": "她今年五岁了。",
+        "pinyin": "Tā jīn nián wǔ suì le.",
+        "vietnamese": "Cháu năm nay 5 tuổi rồi."
+      },
+      {
+        "id": 37,
+        "startTime": 131.8,
+        "endTime": 133.9,
+        "speaker": "A",
+        "chinese": "你们的汉语老师今年多大了？",
+        "pinyin": "Nǐ men de hàn yǔ lǎo shī jīn nián duō dà le?",
+        "vietnamese": "Giáo viên tiếng Trung của các bạn năm nay bao nhiêu tuổi rồi?"
+      },
+      {
+        "id": 38,
+        "startTime": 135.3,
+        "endTime": 137.0,
+        "speaker": "B",
+        "chinese": "他今年三十三岁了。",
+        "pinyin": "Tā jīn nián sān shí sān suì le.",
+        "vietnamese": "Thầy năm nay 33 tuổi rồi."
+      },
+      {
+        "id": 39,
+        "startTime": 138.8,
+        "endTime": 141.5,
+        "speaker": "A",
+        "chinese": "你们的汉语老师今年多大了？",
+        "pinyin": "Nǐ men de hàn yǔ lǎo shī jīn nián duō dà le?",
+        "vietnamese": "Giáo viên tiếng Trung của các bạn năm nay bao nhiêu tuổi rồi?"
+      },
+      {
+        "id": 40,
+        "startTime": 142.9,
+        "endTime": 145.1,
+        "speaker": "B",
+        "chinese": "他今年三十三岁了。",
+        "pinyin": "Tā jīn nián sān shí sān suì le.",
+        "vietnamese": "Thầy năm nay 33 tuổi rồi."
+      },
+      {
+        "id": 41,
+        "startTime": 147.1,
+        "endTime": 148.4,
+        "speaker": "A",
+        "chinese": "你家有几口人？",
+        "pinyin": "Nǐ jiā yǒu jǐ kǒu rén?",
+        "vietnamese": "Nhà bạn có mấy người?"
+      },
+      {
+        "id": 42,
+        "startTime": 149.8,
+        "endTime": 151.2,
+        "speaker": "B",
+        "chinese": "我家有六口人。",
+        "pinyin": "Wǒ jiā yǒu liù kǒu rén.",
+        "vietnamese": "Nhà tôi có 6 người."
+      },
+      {
+        "id": 43,
+        "startTime": 153.3,
+        "endTime": 155.0,
+        "speaker": "A",
+        "chinese": "你家有几口人？",
+        "pinyin": "Nǐ jiā yǒu jǐ kǒu rén?",
+        "vietnamese": "Nhà bạn có mấy người?"
+      },
+      {
+        "id": 44,
+        "startTime": 156.5,
+        "endTime": 158.3,
+        "speaker": "B",
+        "chinese": "我家有六口人。",
+        "pinyin": "Wǒ jiā yǒu liù kǒu rén.",
+        "vietnamese": "Nhà tôi có 6 người."
+      },
+      {
+        "id": 45,
+        "startTime": 160.3,
+        "endTime": 161.8,
+        "speaker": "A",
+        "chinese": "您今年多大了？",
+        "pinyin": "Nín jīn nián duō dà le?",
+        "vietnamese": "Cụ năm nay bao nhiêu tuổi rồi ạ?"
+      },
+      {
+        "id": 46,
+        "startTime": 163.2,
+        "endTime": 164.7,
+        "speaker": "B",
+        "chinese": "我今年八十岁了。",
+        "pinyin": "Wǒ jīn nián bā shí suì le.",
+        "vietnamese": "Năm nay tôi 80 tuổi rồi."
+      },
+      {
+        "id": 47,
+        "startTime": 166.6,
+        "endTime": 168.4,
+        "speaker": "A",
+        "chinese": "您今年多大了？",
+        "pinyin": "Nín jīn nián duō dà le?",
+        "vietnamese": "Cụ năm nay bao nhiêu tuổi rồi ạ?"
+      },
+      {
+        "id": 48,
+        "startTime": 169.8,
+        "endTime": 171.8,
+        "speaker": "B",
+        "chinese": "我今年八十岁了。",
+        "pinyin": "Wǒ jīn nián bā shí suì le.",
+        "vietnamese": "Năm nay tôi 80 tuổi rồi."
+      },
+      {
+        "id": 49,
+        "startTime": 173.9,
+        "endTime": 175.4,
+        "speaker": "A",
+        "chinese": "你们家谁会说汉语？",
+        "pinyin": "Nǐ men jiā shuí huì shuō hàn yǔ?",
+        "vietnamese": "Trong nhà bạn ai biết nói tiếng Trung?"
+      },
+      {
+        "id": 50,
+        "startTime": 176.9,
+        "endTime": 178.5,
+        "speaker": "B",
+        "chinese": "我妈妈会说汉语。",
+        "pinyin": "Wǒ mā mā huì shuō hàn yǔ.",
+        "vietnamese": "Mẹ tôi biết nói tiếng Trung."
+      },
+      {
+        "id": 51,
+        "startTime": 180.7,
+        "endTime": 182.6,
+        "speaker": "A",
+        "chinese": "你们家谁会说汉语？",
+        "pinyin": "Nǐ men jiā shuí huì shuō hàn yǔ?",
+        "vietnamese": "Trong nhà bạn ai biết nói tiếng Trung?"
+      },
+      {
+        "id": 52,
+        "startTime": 184.0,
+        "endTime": 186.1,
+        "speaker": "B",
+        "chinese": "我妈妈会说汉语。",
+        "pinyin": "Wǒ mā mā huì shuō hàn yǔ.",
+        "vietnamese": "Mẹ tôi biết nói tiếng Trung."
+      },
+      {
+        "id": 53,
+        "startTime": 188.0,
+        "endTime": 189.6,
+        "speaker": "A",
+        "chinese": "你会做中国菜吗？",
+        "pinyin": "Nǐ huì zuò zhōng guó cài ma?",
+        "vietnamese": "Bạn biết nấu món ăn Trung Quốc không?"
+      },
+      {
+        "id": 54,
+        "startTime": 191.0,
+        "endTime": 193.5,
+        "speaker": "B",
+        "chinese": "我不会做，我的好朋友会做。",
+        "pinyin": "Wǒ bú huì zuò, wǒ de hǎo péng yǒu huì zuò.",
+        "vietnamese": "Tôi không biết nấu, bạn thân của tôi biết nấu."
+      },
+      {
+        "id": 55,
+        "startTime": 195.6,
+        "endTime": 197.5,
+        "speaker": "A",
+        "chinese": "你会做中国菜吗？",
+        "pinyin": "Nǐ huì zuò zhōng guó cài ma?",
+        "vietnamese": "Bạn biết nấu món ăn Trung Quốc không?"
+      },
+      {
+        "id": 56,
+        "startTime": 199.1,
+        "endTime": 202.3,
+        "speaker": "B",
+        "chinese": "我不会做，我的好朋友会做。",
+        "pinyin": "Wǒ bú huì zuò, wǒ de hǎo péng yǒu huì zuò.",
+        "vietnamese": "Tôi không biết nấu, bạn thân của tôi biết nấu."
+      },
+      {
+        "id": 57,
+        "startTime": 204.5,
+        "endTime": 205.9,
+        "speaker": "A",
+        "chinese": "这个汉字怎么写？",
+        "pinyin": "Zhè ge hàn zì zěn me xiě?",
+        "vietnamese": "Chữ Hán này viết như thế nào?"
+      },
+      {
+        "id": 58,
+        "startTime": 207.2,
+        "endTime": 209.8,
+        "speaker": "B",
+        "chinese": "对不起，我会读，不会写。",
+        "pinyin": "Duì bù qǐ, wǒ huì dú, bú huì xiě.",
+        "vietnamese": "Xin lỗi, tôi biết đọc chứ không biết viết."
+      },
+      {
+        "id": 59,
+        "startTime": 212.0,
+        "endTime": 213.7,
+        "speaker": "A",
+        "chinese": "这个汉字怎么写？",
+        "pinyin": "Zhè ge hàn zì zěn me xiě?",
+        "vietnamese": "Chữ Hán này viết như thế nào?"
+      },
+      {
+        "id": 60,
+        "startTime": 215.3,
+        "endTime": 218.6,
+        "speaker": "B",
+        "chinese": "对不起，我会读，不会写。",
+        "pinyin": "Duì bù qǐ, wǒ huì dú, bú huì xiě.",
+        "vietnamese": "Xin lỗi, tôi biết đọc chứ không biết viết."
+      },
+      {
+        "id": 61,
+        "startTime": 220.8,
+        "endTime": 222.4,
+        "speaker": "A",
+        "chinese": "中国菜好吃吗？",
+        "pinyin": "Zhōng guó cài hǎo chī ma?",
+        "vietnamese": "Món ăn Trung Quốc có ngon không?"
+      },
+      {
+        "id": 62,
+        "startTime": 223.8,
+        "endTime": 225.3,
+        "speaker": "B",
+        "chinese": "中国菜很好吃。",
+        "pinyin": "Zhōng guó cài hěn hǎo chī.",
+        "vietnamese": "Món ăn Trung Quốc rất ngon."
+      },
+      {
+        "id": 63,
+        "startTime": 227.5,
+        "endTime": 229.4,
+        "speaker": "A",
+        "chinese": "中国菜好吃吗？",
+        "pinyin": "Zhōng guó cài hǎo chī ma?",
+        "vietnamese": "Món ăn Trung Quốc có ngon không?"
+      },
+      {
+        "id": 64,
+        "startTime": 230.9,
+        "endTime": 232.9,
+        "speaker": "B",
+        "chinese": "中国菜很好吃。",
+        "pinyin": "Zhōng guó cài hěn hǎo chī.",
+        "vietnamese": "Món ăn Trung Quốc rất ngon."
+      },
+      {
+        "id": 65,
+        "startTime": 235.2,
+        "endTime": 236.6,
+        "speaker": "A",
+        "chinese": "今天是几月几号？",
+        "pinyin": "Jīn tiān shì jǐ yuè jǐ hào?",
+        "vietnamese": "Hôm nay là ngày mấy tháng mấy?"
+      },
+      {
+        "id": 66,
+        "startTime": 238.1,
+        "endTime": 239.7,
+        "speaker": "B",
+        "chinese": "今天是九月十二号。",
+        "pinyin": "Jīn tiān shì jiǔ yuè shí èr hào.",
+        "vietnamese": "Hôm nay là ngày 12 tháng 9."
+      },
+      {
+        "id": 67,
+        "startTime": 241.9,
+        "endTime": 243.7,
+        "speaker": "A",
+        "chinese": "今天是几月几号？",
+        "pinyin": "Jīn tiān shì jǐ yuè jǐ hào?",
+        "vietnamese": "Hôm nay là ngày mấy tháng mấy?"
+      },
+      {
+        "id": 68,
+        "startTime": 245.2,
+        "endTime": 247.3,
+        "speaker": "B",
+        "chinese": "今天是九月十二号。",
+        "pinyin": "Jīn tiān shì jiǔ yuè shí èr hào.",
+        "vietnamese": "Hôm nay là ngày 12 tháng 9."
+      },
+      {
+        "id": 69,
+        "startTime": 249.5,
+        "endTime": 250.6,
+        "speaker": "A",
+        "chinese": "明天你做什么？",
+        "pinyin": "Míng tiān nǐ zuò shén me?",
+        "vietnamese": "Ngày mai bạn làm gì?"
+      },
+      {
+        "id": 70,
+        "startTime": 252.2,
+        "endTime": 254.0,
+        "speaker": "B",
+        "chinese": "明天我去学校看书。",
+        "pinyin": "Míng tiān wǒ qù xué xiào kàn shū.",
+        "vietnamese": "Ngày mai tôi đến trường đọc sách."
+      },
+      {
+        "id": 71,
+        "startTime": 256.1,
+        "endTime": 257.6,
+        "speaker": "A",
+        "chinese": "明天你做什么？",
+        "pinyin": "Míng tiān nǐ zuò shén me?",
+        "vietnamese": "Ngày mai bạn làm gì?"
+      },
+      {
+        "id": 72,
+        "startTime": 259.1,
+        "endTime": 261.4,
+        "speaker": "B",
+        "chinese": "明天我去学校看书。",
+        "pinyin": "Míng tiān wǒ qù xué xiào kàn shū.",
+        "vietnamese": "Ngày mai tôi đến trường đọc sách."
+      },
+      {
+        "id": 73,
+        "startTime": 263.6,
+        "endTime": 265.4,
+        "speaker": "A",
+        "chinese": "三十一号是星期几？",
+        "pinyin": "Sān shí yī hào shì xīng qī jǐ?",
+        "vietnamese": "Ngày 31 là thứ mấy?"
+      },
+      {
+        "id": 74,
+        "startTime": 266.7,
+        "endTime": 268.5,
+        "speaker": "A",
+        "chinese": "三十一号是星期几？",
+        "pinyin": "Sān shí yī hào shì xīng qī jǐ?",
+        "vietnamese": "Ngày 31 là thứ mấy?"
+      },
+      {
+        "id": 75,
+        "startTime": 270.7,
+        "endTime": 272.9,
+        "speaker": "A",
+        "chinese": "三十一号是星期几？",
+        "pinyin": "Sān shí yī hào shì xīng qī jǐ?",
+        "vietnamese": "Ngày 31 là thứ mấy?"
+      },
+      {
+        "id": 76,
+        "startTime": 274.4,
+        "endTime": 276.7,
+        "speaker": "A",
+        "chinese": "三十一号是星期几？",
+        "pinyin": "Sān shí yī hào shì xīng qī jǐ?",
+        "vietnamese": "Ngày 31 là thứ mấy?"
+      },
+      {
+        "id": 77,
+        "startTime": 278.7,
+        "endTime": 280.8,
+        "speaker": "A",
+        "chinese": "明天是星期六，你做什么？",
+        "pinyin": "Míng tiān shì xīng qī liù, nǐ zuò shén me?",
+        "vietnamese": "Ngày mai là thứ Bảy, bạn làm gì?"
+      },
+      {
+        "id": 78,
+        "startTime": 282.0,
+        "endTime": 284.7,
+        "speaker": "B",
+        "chinese": "明天我去中国朋友家吃中国菜。",
+        "pinyin": "Míng tiān wǒ qù zhōng guó péng yǒu jiā chī zhōng guó cài.",
+        "vietnamese": "Ngày mai tôi đến nhà bạn Trung Quốc ăn món Trung Quốc."
+      },
+      {
+        "id": 79,
+        "startTime": 286.9,
+        "endTime": 289.5,
+        "speaker": "A",
+        "chinese": "明天是星期六，你做什么？",
+        "pinyin": "Míng tiān shì xīng qī liù, nǐ zuò shén me?",
+        "vietnamese": "Ngày mai là thứ Bảy, bạn làm gì?"
+      },
+      {
+        "id": 80,
+        "startTime": 291.1,
+        "endTime": 294.6,
+        "speaker": "B",
+        "chinese": "明天我去中国朋友家吃中国菜。",
+        "pinyin": "Míng tiān wǒ qù zhōng guó péng yǒu jiā chī zhōng guó cài.",
+        "vietnamese": "Ngày mai tôi đến nhà bạn Trung Quốc ăn món Trung Quốc."
+      },
+      {
+        "id": 81,
+        "startTime": 296.7,
+        "endTime": 298.1,
+        "speaker": "A",
+        "chinese": "你想吃米饭吗？",
+        "pinyin": "Nǐ xiǎng chī mǐ fàn ma?",
+        "vietnamese": "Bạn có muốn ăn cơm không?"
+      },
+      {
+        "id": 82,
+        "startTime": 299.5,
+        "endTime": 300.2,
+        "speaker": "B",
+        "chinese": "好。",
+        "pinyin": "Hǎo.",
+        "vietnamese": "Được chứ."
+      },
+      {
+        "id": 83,
+        "startTime": 302.2,
+        "endTime": 304.0,
+        "speaker": "A",
+        "chinese": "你想吃米饭吗？",
+        "pinyin": "Nǐ xiǎng chī mǐ fàn ma?",
+        "vietnamese": "Bạn có muốn ăn cơm không?"
+      },
+      {
+        "id": 84,
+        "startTime": 305.6,
+        "endTime": 306.4,
+        "speaker": "B",
+        "chinese": "好。",
+        "pinyin": "Hǎo.",
+        "vietnamese": "Được chứ."
+      },
+      {
+        "id": 85,
+        "startTime": 308.5,
+        "endTime": 309.9,
+        "speaker": "A",
+        "chinese": "明天你想吃什么？",
+        "pinyin": "Míng tiān nǐ xiǎng chī shén me?",
+        "vietnamese": "Ngày mai bạn muốn ăn gì?"
+      },
+      {
+        "id": 86,
+        "startTime": 311.4,
+        "endTime": 312.8,
+        "speaker": "B",
+        "chinese": "我想吃中国菜。",
+        "pinyin": "Wǒ xiǎng chī zhōng guó cài.",
+        "vietnamese": "Tôi muốn ăn món Trung Quốc."
+      },
+      {
+        "id": 87,
+        "startTime": 315.1,
+        "endTime": 316.8,
+        "speaker": "A",
+        "chinese": "明天你想吃什么？",
+        "pinyin": "Míng tiān nǐ xiǎng chī shén me?",
+        "vietnamese": "Ngày mai bạn muốn ăn gì?"
+      },
+      {
+        "id": 88,
+        "startTime": 318.5,
+        "endTime": 320.3,
+        "speaker": "B",
+        "chinese": "我想吃中国菜。",
+        "pinyin": "Wǒ xiǎng chī zhōng guó cài.",
+        "vietnamese": "Tôi muốn ăn món Trung Quốc."
+      },
+      {
+        "id": 89,
+        "startTime": 322.5,
+        "endTime": 324.7,
+        "speaker": "A",
+        "chinese": "请问这个杯子多少钱？",
+        "pinyin": "Qǐng wèn zhè ge bēi zi duō shǎo qián?",
+        "vietnamese": "Xin hỏi chiếc cốc này bao nhiêu tiền?"
+      },
+      {
+        "id": 90,
+        "startTime": 326.2,
+        "endTime": 327.4,
+        "speaker": "B",
+        "chinese": "三十八块。",
+        "pinyin": "Sān shí bā kuài.",
+        "vietnamese": "38 tệ."
+      },
+      {
+        "id": 91,
+        "startTime": 329.5,
+        "endTime": 332.3,
+        "speaker": "A",
+        "chinese": "请问这个杯子多少钱？",
+        "pinyin": "Qǐng wèn zhè ge bēi zi duō shǎo qián?",
+        "vietnamese": "Xin hỏi chiếc cốc này bao nhiêu tiền?"
+      },
+      {
+        "id": 92,
+        "startTime": 334.1,
+        "endTime": 335.6,
+        "speaker": "B",
+        "chinese": "三十八块。",
+        "pinyin": "Sān shí bā kuài.",
+        "vietnamese": "38 tệ."
+      },
+      {
+        "id": 93,
+        "startTime": 337.7,
+        "endTime": 339.3,
+        "speaker": "A",
+        "chinese": "你朋友家有几口人？",
+        "pinyin": "Nǐ péng yǒu jiā yǒu jǐ kǒu rén?",
+        "vietnamese": "Nhà bạn của bạn có mấy người?"
+      },
+      {
+        "id": 94,
+        "startTime": 340.8,
+        "endTime": 342.2,
+        "speaker": "B",
+        "chinese": "他家有四口人。",
+        "pinyin": "Tā jiā yǒu sì kǒu rén.",
+        "vietnamese": "Nhà cậu ấy có 4 người."
+      },
+      {
+        "id": 95,
+        "startTime": 342.2,
+        "endTime": 344.9,
+        "speaker": "A",
+        "chinese": "我的猫呢？",
+        "pinyin": "Wǒ de māo ne?",
+        "vietnamese": "Con mèo của tôi đâu rồi?"
+      },
+      {
+        "id": 96,
+        "startTime": 345.5,
+        "endTime": 346.7,
+        "speaker": "B",
+        "chinese": "在椅子下面。",
+        "pinyin": "Zài yǐ zi xià miàn.",
+        "vietnamese": "Ở dưới ghế."
+      },
+      {
+        "id": 97,
+        "startTime": 348.5,
+        "endTime": 349.9,
+        "speaker": "A",
+        "chinese": "我的猫呢？",
+        "pinyin": "Wǒ de māo ne?",
+        "vietnamese": "Con mèo của tôi đâu rồi?"
+      },
+      {
+        "id": 98,
+        "startTime": 351.9,
+        "endTime": 353.2,
+        "speaker": "B",
+        "chinese": "在椅子下面。",
+        "pinyin": "Zài yǐ zi xià miàn.",
+        "vietnamese": "Ở dưới ghế."
+      },
+      {
+        "id": 99,
+        "startTime": 354.7,
+        "endTime": 356.0,
+        "speaker": "A",
+        "chinese": "你妈妈是医生吗？",
+        "pinyin": "Nǐ mā mā shì yī shēng ma?",
+        "vietnamese": "Mẹ bạn là bác sĩ phải không?"
+      },
+      {
+        "id": 100,
+        "startTime": 358.0,
+        "endTime": 364.0,
+        "speaker": "B",
+        "chinese": "不是，我妈妈是老师，她在学校工作。",
+        "pinyin": "Bú shì, wǒ mā mā shì lǎo shī, tā zài xué xiào gōng zuò.",
+        "vietnamese": "Không phải, mẹ tôi là giáo viên, bà làm việc ở trường học."
+      },
+      {
+        "id": 101,
+        "startTime": 364.8,
+        "endTime": 367.3,
+        "speaker": "A",
+        "chinese": "你妈妈是医生吗？",
+        "pinyin": "Nǐ mā mā shì yī shēng ma?",
+        "vietnamese": "Mẹ bạn là bác sĩ phải không?"
+      },
+      {
+        "id": 102,
+        "startTime": 367.7,
+        "endTime": 373.7,
+        "speaker": "B",
+        "chinese": "不是，我妈妈是老师，她在学校工作。",
+        "pinyin": "Bú shì, wǒ mā mā shì lǎo shī, tā zài xué xiào gōng zuò.",
+        "vietnamese": "Không phải, mẹ tôi là giáo viên, bà làm việc ở trường học."
+      },
+      {
+        "id": 103,
+        "startTime": 374.5,
+        "endTime": 376.8,
+        "speaker": "A",
+        "chinese": "我的狗在哪儿？",
+        "pinyin": "Wǒ de gǒu zài nǎr?",
+        "vietnamese": "Con chó của tôi ở đâu?"
+      },
+      {
+        "id": 104,
+        "startTime": 377.3,
+        "endTime": 378.5,
+        "speaker": "B",
+        "chinese": "在椅子上面。",
+        "pinyin": "Zài yǐ zi shàng miàn.",
+        "vietnamese": "Ở trên ghế."
+      },
+      {
+        "id": 105,
+        "startTime": 379.1,
+        "endTime": 380.5,
+        "speaker": "A",
+        "chinese": "我的狗在哪儿？",
+        "pinyin": "Wǒ de gǒu zài nǎr?",
+        "vietnamese": "Con chó của tôi ở đâu?"
+      },
+      {
+        "id": 106,
+        "startTime": 382.6,
+        "endTime": 383.8,
+        "speaker": "B",
+        "chinese": "在椅子上面。",
+        "pinyin": "Zài yǐ zi shàng miàn.",
+        "vietnamese": "Ở trên ghế."
+      },
+      {
+        "id": 107,
+        "startTime": 385.3,
+        "endTime": 386.6,
+        "speaker": "B",
+        "chinese": "在椅子上面。",
+        "pinyin": "Zài yǐ zi shàng miàn.",
+        "vietnamese": "Ở trên ghế."
+      },
+      {
+        "id": 108,
+        "startTime": 388.7,
+        "endTime": 390.3,
+        "speaker": "A",
+        "chinese": "我的狗在哪儿？",
+        "pinyin": "Wǒ de gǒu zài nǎr?",
+        "vietnamese": "Con chó của tôi ở đâu?"
+      },
+      {
+        "id": 109,
+        "startTime": 391.8,
+        "endTime": 393.3,
+        "speaker": "B",
+        "chinese": "在椅子上面。",
+        "pinyin": "Zài yǐ zi shàng miàn.",
+        "vietnamese": "Ở trên ghế."
+      },
+      {
+        "id": 110,
+        "startTime": 395.1,
+        "endTime": 396.7,
+        "speaker": "A",
+        "chinese": "你朋友在哪儿工作？",
+        "pinyin": "Nǐ péng yǒu zài nǎrgōng zuò?",
+        "vietnamese": "Bạn của bạn làm việc ở đâu?"
+      },
+      {
+        "id": 111,
+        "startTime": 398.0,
+        "endTime": 400.5,
+        "speaker": "B",
+        "chinese": "她是医生，在医院工作。",
+        "pinyin": "Tā shì yī shēng, zài yī yuàn gōng zuò.",
+        "vietnamese": "Cô ấy là bác sĩ, làm việc ở bệnh viện."
+      },
+      {
+        "id": 112,
+        "startTime": 402.4,
+        "endTime": 404.4,
+        "speaker": "A",
+        "chinese": "你朋友在哪儿工作？",
+        "pinyin": "Nǐ péng yǒu zài nǎrgōng zuò?",
+        "vietnamese": "Bạn của bạn làm việc ở đâu?"
+      },
+      {
+        "id": 113,
+        "startTime": 405.8,
+        "endTime": 408.9,
+        "speaker": "B",
+        "chinese": "她是医生，在医院工作。",
+        "pinyin": "Tā shì yī shēng, zài yī yuàn gōng zuò.",
+        "vietnamese": "Cô ấy là bác sĩ, làm việc ở bệnh viện."
+      },
+      {
+        "id": 114,
+        "startTime": 411.0,
+        "endTime": 412.6,
+        "speaker": "A",
+        "chinese": "你的桌子上有什么？",
+        "pinyin": "Nǐ de zhuō zi shàng yǒu shén me?",
+        "vietnamese": "Trên bàn của bạn có gì?"
+      },
+      {
+        "id": 115,
+        "startTime": 414.1,
+        "endTime": 416.1,
+        "speaker": "B",
+        "chinese": "我的桌子上有一个电脑。",
+        "pinyin": "Wǒ de zhuō zi shàng yǒu yí gè diàn nǎo.",
+        "vietnamese": "Trên bàn của tôi có một chiếc máy tính."
+      },
+      {
+        "id": 116,
+        "startTime": 418.1,
+        "endTime": 420.1,
+        "speaker": "A",
+        "chinese": "你的桌子上有什么？",
+        "pinyin": "Nǐ de zhuō zi shàng yǒu shén me?",
+        "vietnamese": "Trên bàn của bạn có gì?"
+      },
+      {
+        "id": 117,
+        "startTime": 421.8,
+        "endTime": 424.3,
+        "speaker": "B",
+        "chinese": "我的桌子上有一个电脑。",
+        "pinyin": "Wǒ de zhuō zi shàng yǒu yí gè diàn nǎo.",
+        "vietnamese": "Trên bàn của tôi có một chiếc máy tính."
+      },
+      {
+        "id": 118,
+        "startTime": 426.3,
+        "endTime": 427.5,
+        "speaker": "A",
+        "chinese": "你女儿呢？",
+        "pinyin": "Nǐ nǚ ér ne?",
+        "vietnamese": "Con gái bạn đâu rồi?"
+      },
+      {
+        "id": 119,
+        "startTime": 429.1,
+        "endTime": 431.0,
+        "speaker": "B",
+        "chinese": "在那儿，她在桌子下面。",
+        "pinyin": "Zài nàr, tā zài zhuō zi xià miàn.",
+        "vietnamese": "Ở đằng kia, cháu đang ở dưới bàn."
+      },
+      {
+        "id": 120,
+        "startTime": 433.1,
+        "endTime": 434.5,
+        "speaker": "A",
+        "chinese": "你女儿呢？",
+        "pinyin": "Nǐ nǚ ér ne?",
+        "vietnamese": "Con gái bạn đâu rồi?"
+      },
+      {
+        "id": 121,
+        "startTime": 436.3,
+        "endTime": 438.7,
+        "speaker": "B",
+        "chinese": "在那儿，她在桌子下面。",
+        "pinyin": "Zài nàr, tā zài zhuō zi xià miàn.",
+        "vietnamese": "Ở đằng kia, cháu đang ở dưới bàn."
+      },
+      {
+        "id": 122,
+        "startTime": 439.1,
+        "endTime": 442.1,
+        "speaker": "A",
+        "chinese": "谁是大卫？",
+        "pinyin": "Shuí shì dà wèi?",
+        "vietnamese": "Ai là David?"
+      },
+      {
+        "id": 123,
+        "startTime": 443.5,
+        "endTime": 445.6,
+        "speaker": "B",
+        "chinese": "我后面的那个人是大卫。",
+        "pinyin": "Wǒ hòu miàn de nà ge rén shì dà wèi.",
+        "vietnamese": "Người ở phía sau tôi là David."
+      },
+      {
+        "id": 124,
+        "startTime": 446.0,
+        "endTime": 449.4,
+        "speaker": "A",
+        "chinese": "谁是大卫？",
+        "pinyin": "Shuí shì dà wèi?",
+        "vietnamese": "Ai là David?"
+      },
+      {
+        "id": 125,
+        "startTime": 451.1,
+        "endTime": 453.8,
+        "speaker": "B",
+        "chinese": "我后面的那个人是大卫。",
+        "pinyin": "Wǒ hòu miàn de nà ge rén shì dà wèi.",
+        "vietnamese": "Người ở phía sau tôi là David."
+      },
+      {
+        "id": 126,
+        "startTime": 455.9,
+        "endTime": 457.4,
+        "speaker": "A",
+        "chinese": "李老师家在后面吗？",
+        "pinyin": "Lǐ lǎo shī jiā zài hòu miàn ma?",
+        "vietnamese": "Nhà thầy Lý ở phía sau phải không?"
+      },
+      {
+        "id": 127,
+        "startTime": 458.9,
+        "endTime": 461.3,
+        "speaker": "B",
+        "chinese": "不是，李老师家在前面。",
+        "pinyin": "Bú shì, lǐ lǎo shī jiā zài qián miàn.",
+        "vietnamese": "Không phải, nhà thầy Lý ở phía trước."
+      },
+      {
+        "id": 128,
+        "startTime": 463.3,
+        "endTime": 465.2,
+        "speaker": "A",
+        "chinese": "李老师家在后面吗？",
+        "pinyin": "Lǐ lǎo shī jiā zài hòu miàn ma?",
+        "vietnamese": "Nhà thầy Lý ở phía sau phải không?"
+      },
+      {
+        "id": 129,
+        "startTime": 466.8,
+        "endTime": 469.8,
+        "speaker": "B",
+        "chinese": "不是，李老师家在前面。",
+        "pinyin": "Bú shì, lǐ lǎo shī jiā zài qián miàn.",
+        "vietnamese": "Không phải, nhà thầy Lý ở phía trước."
+      },
+      {
+        "id": 130,
+        "startTime": 471.8,
+        "endTime": 472.9,
+        "speaker": "A",
+        "chinese": "现在几点？",
+        "pinyin": "Xiàn zài jǐ diǎn?",
+        "vietnamese": "Bây giờ là mấy giờ?"
+      },
+      {
+        "id": 131,
+        "startTime": 474.2,
+        "endTime": 475.3,
+        "speaker": "B",
+        "chinese": "现在五点。",
+        "pinyin": "Xiàn zài wǔ diǎn.",
+        "vietnamese": "Bây giờ là 5 giờ."
+      },
+      {
+        "id": 132,
+        "startTime": 477.6,
+        "endTime": 478.9,
+        "speaker": "A",
+        "chinese": "现在几点？",
+        "pinyin": "Xiàn zài jǐ diǎn?",
+        "vietnamese": "Bây giờ là mấy giờ?"
+      },
+      {
+        "id": 133,
+        "startTime": 480.7,
+        "endTime": 482.0,
+        "speaker": "B",
+        "chinese": "现在五点。",
+        "pinyin": "Xiàn zài wǔ diǎn.",
+        "vietnamese": "Bây giờ là 5 giờ."
+      },
+      {
+        "id": 134,
+        "startTime": 483.9,
+        "endTime": 485.6,
+        "speaker": "A",
+        "chinese": "你什么时候见李老师？",
+        "pinyin": "Nǐ shén me shí hòu jiàn lǐ lǎo shī?",
+        "vietnamese": "Khi nào bạn gặp thầy Lý?"
+      },
+      {
+        "id": 135,
+        "startTime": 487.1,
+        "endTime": 490.4,
+        "speaker": "B",
+        "chinese": "我下午一点十分去学校见李老师。",
+        "pinyin": "Wǒ xià wǔ yì diǎn shí fēn qù xué xiào jiàn lǐ lǎo shī.",
+        "vietnamese": "1 giờ 10 phút chiều tôi đến trường gặp thầy Lý."
+      },
+      {
+        "id": 136,
+        "startTime": 492.8,
+        "endTime": 494.9,
+        "speaker": "A",
+        "chinese": "你什么时候见李老师？",
+        "pinyin": "Nǐ shén me shí hòu jiàn lǐ lǎo shī?",
+        "vietnamese": "Khi nào bạn gặp thầy Lý?"
+      },
+      {
+        "id": 137,
+        "startTime": 496.6,
+        "endTime": 500.8,
+        "speaker": "B",
+        "chinese": "我下午一点十分去学校见李老师。",
+        "pinyin": "Wǒ xià wǔ yì diǎn shí fēn qù xué xiào jiàn lǐ lǎo shī.",
+        "vietnamese": "1 giờ 10 phút chiều tôi đến trường gặp thầy Lý."
+      },
+      {
+        "id": 138,
+        "startTime": 503.0,
+        "endTime": 504.1,
+        "speaker": "A",
+        "chinese": "我想看电影。",
+        "pinyin": "Wǒ xiǎng kàn diàn yǐng.",
+        "vietnamese": "Tôi muốn đi xem phim."
+      },
+      {
+        "id": 139,
+        "startTime": 505.6,
+        "endTime": 508.9,
+        "speaker": "B",
+        "chinese": "好啊，下午我有时间，我们一起去。",
+        "pinyin": "Hǎo a, xià wǔ wǒ yǒu shí jiān, wǒ men yì qǐ qù.",
+        "vietnamese": "Được thôi, chiều nay tôi có thời gian, chúng mình cùng đi."
+      },
+      {
+        "id": 140,
+        "startTime": 510.9,
+        "endTime": 512.4,
+        "speaker": "A",
+        "chinese": "我想看电影。",
+        "pinyin": "Wǒ xiǎng kàn diàn yǐng.",
+        "vietnamese": "Tôi muốn đi xem phim."
+      },
+      {
+        "id": 141,
+        "startTime": 514.1,
+        "endTime": 518.3,
+        "speaker": "B",
+        "chinese": "好啊，下午我有时间，我们一起去。",
+        "pinyin": "Hǎo a, xià wǔ wǒ yǒu shí jiān, wǒ men yì qǐ qù.",
+        "vietnamese": "Được thôi, chiều nay tôi có thời gian, chúng mình cùng đi."
+      },
+      {
+        "id": 142,
+        "startTime": 520.5,
+        "endTime": 521.9,
+        "speaker": "A",
+        "chinese": "你星期六工作吗？",
+        "pinyin": "Nǐ xīng qī liù gōng zuò ma?",
+        "vietnamese": "Thứ Bảy bạn có làm việc không?"
+      },
+      {
+        "id": 143,
+        "startTime": 523.5,
+        "endTime": 524.4,
+        "speaker": "B",
+        "chinese": "不工作。",
+        "pinyin": "Bù gōng zuò.",
+        "vietnamese": "Không làm việc."
+      },
+      {
+        "id": 144,
+        "startTime": 526.6,
+        "endTime": 528.3,
+        "speaker": "A",
+        "chinese": "你星期六工作吗？",
+        "pinyin": "Nǐ xīng qī liù gōng zuò ma?",
+        "vietnamese": "Thứ Bảy bạn có làm việc không?"
+      },
+      {
+        "id": 145,
+        "startTime": 529.9,
+        "endTime": 531.0,
+        "speaker": "B",
+        "chinese": "不工作。",
+        "pinyin": "Bù gōng zuò.",
+        "vietnamese": "Không làm việc."
+      },
+      {
+        "id": 146,
+        "startTime": 533.0,
+        "endTime": 534.5,
+        "speaker": "A",
+        "chinese": "你什么时候去北京？",
+        "pinyin": "Nǐ shén me shí hòu qù běi jīng?",
+        "vietnamese": "Khi nào bạn đi Bắc Kinh?"
+      },
+      {
+        "id": 147,
+        "startTime": 535.9,
+        "endTime": 538.3,
+        "speaker": "B",
+        "chinese": "九月十七号去，住三天。",
+        "pinyin": "Jiǔ yuè shí qī hào qù, zhù sān tiān.",
+        "vietnamese": "Ngày 17 tháng 9 đi, ở lại 3 ngày."
+      },
+      {
+        "id": 148,
+        "startTime": 540.6,
+        "endTime": 542.4,
+        "speaker": "A",
+        "chinese": "你什么时候去北京？",
+        "pinyin": "Nǐ shén me shí hòu qù běi jīng?",
+        "vietnamese": "Khi nào bạn đi Bắc Kinh?"
+      },
+      {
+        "id": 149,
+        "startTime": 544.0,
+        "endTime": 547.2,
+        "speaker": "B",
+        "chinese": "九月十七号去，住三天。",
+        "pinyin": "Jiǔ yuè shí qī hào qù, zhù sān tiān.",
+        "vietnamese": "Ngày 17 tháng 9 đi, ở lại 3 ngày."
+      },
+      {
+        "id": 150,
+        "startTime": 549.2,
+        "endTime": 551.5,
+        "speaker": "A",
+        "chinese": "今天天气不好，会下雨吗？",
+        "pinyin": "Jīn tiān tiān qì bù hǎo, huì xià yǔ ma?",
+        "vietnamese": "Hôm nay thời tiết không tốt, có mưa không?"
+      },
+      {
+        "id": 151,
+        "startTime": 553.1,
+        "endTime": 554.3,
+        "speaker": "B",
+        "chinese": "下午会下雨。",
+        "pinyin": "Xià wǔ huì xià yǔ.",
+        "vietnamese": "Chiều nay sẽ mưa."
+      },
+      {
+        "id": 152,
+        "startTime": 556.4,
+        "endTime": 559.3,
+        "speaker": "A",
+        "chinese": "今天天气不好，会下雨吗？",
+        "pinyin": "Jīn tiān tiān qì bù hǎo, huì xià yǔ ma?",
+        "vietnamese": "Hôm nay thời tiết không tốt, có mưa không?"
+      },
+      {
+        "id": 153,
+        "startTime": 561.0,
+        "endTime": 562.6,
+        "speaker": "B",
+        "chinese": "下午会下雨。",
+        "pinyin": "Xià wǔ huì xià yǔ.",
+        "vietnamese": "Chiều nay sẽ mưa."
+      },
+      {
+        "id": 154,
+        "startTime": 564.8,
+        "endTime": 566.4,
+        "speaker": "A",
+        "chinese": "今天天气太热了。",
+        "pinyin": "Jīn tiān tiān qì tài rè le.",
+        "vietnamese": "Hôm nay trời nóng quá."
+      },
+      {
+        "id": 155,
+        "startTime": 567.9,
+        "endTime": 569.7,
+        "speaker": "B",
+        "chinese": "是啊，你多喝水。",
+        "pinyin": "Shì a, nǐ duō hē shuǐ.",
+        "vietnamese": "Đúng vậy, bạn nhớ uống nhiều nước nhé."
+      },
+      {
+        "id": 156,
+        "startTime": 571.8,
+        "endTime": 573.8,
+        "speaker": "A",
+        "chinese": "今天天气太热了。",
+        "pinyin": "Jīn tiān tiān qì tài rè le.",
+        "vietnamese": "Hôm nay trời nóng quá."
+      },
+      {
+        "id": 157,
+        "startTime": 575.5,
+        "endTime": 577.9,
+        "speaker": "B",
+        "chinese": "是啊，你多喝水。",
+        "pinyin": "Shì a, nǐ duō hē shuǐ.",
+        "vietnamese": "Đúng vậy, bạn nhớ uống nhiều nước nhé."
+      },
+      {
+        "id": 158,
+        "startTime": 580.0,
+        "endTime": 582.3,
+        "speaker": "A",
+        "chinese": "明天天气很好，你去学校吗？",
+        "pinyin": "Míng tiān tiān qì hěn hǎo, nǐ qù xué xiào ma?",
+        "vietnamese": "Ngày mai thời tiết rất đẹp, bạn có đến trường không?"
+      },
+      {
+        "id": 159,
+        "startTime": 584.0,
+        "endTime": 586.2,
+        "speaker": "B",
+        "chinese": "不去，明天我去医院。",
+        "pinyin": "Bù qù, míng tiān wǒ qù yī yuàn.",
+        "vietnamese": "Không đi, ngày mai tôi đi bệnh viện."
+      },
+      {
+        "id": 160,
+        "startTime": 588.3,
+        "endTime": 591.3,
+        "speaker": "A",
+        "chinese": "明天天气很好，你去学校吗？",
+        "pinyin": "Míng tiān tiān qì hěn hǎo, nǐ qù xué xiào ma?",
+        "vietnamese": "Ngày mai thời tiết rất đẹp, bạn có đến trường không?"
+      },
+      {
+        "id": 161,
+        "startTime": 593.1,
+        "endTime": 595.8,
+        "speaker": "B",
+        "chinese": "不去，明天我去医院。",
+        "pinyin": "Bù qù, míng tiān wǒ qù yī yuàn.",
+        "vietnamese": "Không đi, ngày mai tôi đi bệnh viện."
+      },
+      {
+        "id": 162,
+        "startTime": 597.7,
+        "endTime": 599.0,
+        "speaker": "A",
+        "chinese": "你身体怎么样？",
+        "pinyin": "Nǐ shēn tǐ zěn me yàng?",
+        "vietnamese": "Sức khỏe của bạn thế nào?"
+      },
+      {
+        "id": 163,
+        "startTime": 600.5,
+        "endTime": 602.4,
+        "speaker": "B",
+        "chinese": "不太好，不爱吃饭。",
+        "pinyin": "Bù tài hǎo, bù ài chī fàn.",
+        "vietnamese": "Không tốt lắm, không muốn ăn cơm."
+      },
+      {
+        "id": 164,
+        "startTime": 604.5,
+        "endTime": 606.0,
+        "speaker": "A",
+        "chinese": "你身体怎么样？",
+        "pinyin": "Nǐ shēn tǐ zěn me yàng?",
+        "vietnamese": "Sức khỏe của bạn thế nào?"
+      },
+      {
+        "id": 165,
+        "startTime": 607.6,
+        "endTime": 610.0,
+        "speaker": "B",
+        "chinese": "不太好，不爱吃饭。",
+        "pinyin": "Bù tài hǎo, bù ài chī fàn.",
+        "vietnamese": "Không tốt lắm, không muốn ăn cơm."
+      },
+      {
+        "id": 166,
+        "startTime": 612.1,
+        "endTime": 613.5,
+        "speaker": "A",
+        "chinese": "大卫今天会来吗？",
+        "pinyin": "Dà wèi jīn tiān huì lái ma?",
+        "vietnamese": "Hôm nay David có đến không?"
+      },
+      {
+        "id": 167,
+        "startTime": 615.0,
+        "endTime": 617.0,
+        "speaker": "B",
+        "chinese": "他身体不好，不会来。",
+        "pinyin": "Tā shēn tǐ bù hǎo, bú huì lái.",
+        "vietnamese": "Cậu ấy không khỏe, sẽ không đến."
+      },
+      {
+        "id": 168,
+        "startTime": 619.3,
+        "endTime": 621.0,
+        "speaker": "A",
+        "chinese": "大卫今天会来吗？",
+        "pinyin": "Dà wèi jīn tiān huì lái ma?",
+        "vietnamese": "Hôm nay David có đến không?"
+      },
+      {
+        "id": 169,
+        "startTime": 622.6,
+        "endTime": 625.2,
+        "speaker": "B",
+        "chinese": "他身体不好，不会来。",
+        "pinyin": "Tā shēn tǐ bù hǎo, bú huì lái.",
+        "vietnamese": "Cậu ấy không khỏe, sẽ không đến."
+      },
+      {
+        "id": 170,
+        "startTime": 627.3,
+        "endTime": 629.4,
+        "speaker": "A",
+        "chinese": "你昨天上午九点，在做什么呢？",
+        "pinyin": "Nǐ zuó tiān shàng wǔ jiǔ diǎn, zài zuò shén me ne?",
+        "vietnamese": "9 giờ sáng hôm qua bạn đang làm gì thế?"
+      },
+      {
+        "id": 171,
+        "startTime": 631.0,
+        "endTime": 632.1,
+        "speaker": "B",
+        "chinese": "我在睡觉呢。",
+        "pinyin": "Wǒ zài shuì jiào ne.",
+        "vietnamese": "Tôi đang ngủ."
+      },
+      {
+        "id": 172,
+        "startTime": 634.4,
+        "endTime": 637.1,
+        "speaker": "A",
+        "chinese": "你昨天上午九点，在做什么呢？",
+        "pinyin": "Nǐ zuó tiān shàng wǔ jiǔ diǎn, zài zuò shén me ne?",
+        "vietnamese": "9 giờ sáng hôm qua bạn đang làm gì thế?"
+      },
+      {
+        "id": 173,
+        "startTime": 639.0,
+        "endTime": 640.4,
+        "speaker": "B",
+        "chinese": "我在睡觉呢。",
+        "pinyin": "Wǒ zài shuì jiào ne.",
+        "vietnamese": "Tôi đang ngủ."
+      },
+      {
+        "id": 174,
+        "startTime": 642.7,
+        "endTime": 643.7,
+        "speaker": "A",
+        "chinese": "小猫在哪儿？",
+        "pinyin": "Xiǎo māo zài nǎr?",
+        "vietnamese": "Mèo con ở đâu?"
+      },
+      {
+        "id": 175,
+        "startTime": 645.3,
+        "endTime": 646.8,
+        "speaker": "B",
+        "chinese": "小猫在椅子上面。",
+        "pinyin": "Xiǎo māo zài yǐ zi shàng miàn.",
+        "vietnamese": "Mèo con ở trên ghế."
+      },
+      {
+        "id": 176,
+        "startTime": 649.1,
+        "endTime": 650.5,
+        "speaker": "A",
+        "chinese": "小猫在哪儿？",
+        "pinyin": "Xiǎo māo zài nǎr?",
+        "vietnamese": "Mèo con ở đâu?"
+      },
+      {
+        "id": 177,
+        "startTime": 652.1,
+        "endTime": 654.0,
+        "speaker": "B",
+        "chinese": "小猫在椅子上面。",
+        "pinyin": "Xiǎo māo zài yǐ zi shàng miàn.",
+        "vietnamese": "Mèo con ở trên ghế."
+      },
+      {
+        "id": 178,
+        "startTime": 656.5,
+        "endTime": 657.7,
+        "speaker": "A",
+        "chinese": "你喜欢做饭吗？",
+        "pinyin": "Nǐ xǐ huān zuò fàn ma?",
+        "vietnamese": "Bạn có thích nấu ăn không?"
+      },
+      {
+        "id": 179,
+        "startTime": 659.2,
+        "endTime": 662.4,
+        "speaker": "B",
+        "chinese": "很喜欢，我在学习做中国菜。",
+        "pinyin": "Hěn xǐ huān, wǒ zài xué xí zuò zhōng guó cài.",
+        "vietnamese": "Rất thích, tôi đang học nấu món ăn Trung Quốc."
+      },
+      {
+        "id": 180,
+        "startTime": 664.5,
+        "endTime": 666.0,
+        "speaker": "A",
+        "chinese": "你喜欢做饭吗？",
+        "pinyin": "Nǐ xǐ huān zuò fàn ma?",
+        "vietnamese": "Bạn có thích nấu ăn không?"
+      },
+      {
+        "id": 181,
+        "startTime": 667.7,
+        "endTime": 671.8,
+        "speaker": "B",
+        "chinese": "很喜欢，我在学习做中国菜。",
+        "pinyin": "Hěn xǐ huān, wǒ zài xué xí zuò zhōng guó cài.",
+        "vietnamese": "Rất thích, tôi đang học nấu món ăn Trung Quốc."
+      },
+      {
+        "id": 182,
+        "startTime": 674.1,
+        "endTime": 675.7,
+        "speaker": "A",
+        "chinese": "喂，小明在吗？",
+        "pinyin": "Wèi, xiǎo míng zài ma?",
+        "vietnamese": "Alo, Tiểu Minh có ở đó không?"
+      },
+      {
+        "id": 183,
+        "startTime": 677.3,
+        "endTime": 679.3,
+        "speaker": "B",
+        "chinese": "他在打电话呢，你是谁？",
+        "pinyin": "Tā zài dǎ diàn huà ne, nǐ shì shuí?",
+        "vietnamese": "Cậu ấy đang nghe điện thoại, bạn là ai thế?"
+      },
+      {
+        "id": 184,
+        "startTime": 679.3,
+        "endTime": 682.8,
+        "speaker": "A",
+        "chinese": "昨天上午你去哪儿了？",
+        "pinyin": "Zuó tiān shàng wǔ nǐ qù nǎrle?",
+        "vietnamese": "Sáng hôm qua bạn đi đâu thế?"
+      },
+      {
+        "id": 185,
+        "startTime": 683.5,
+        "endTime": 686.6,
+        "speaker": "B",
+        "chinese": "我去学校学汉语了。",
+        "pinyin": "Wǒ qù xué xiào xué hàn yǔ le.",
+        "vietnamese": "Tôi đến trường học tiếng Trung."
+      },
+      {
+        "id": 186,
+        "startTime": 687.2,
+        "endTime": 690.8,
+        "speaker": "A",
+        "chinese": "昨天上午你去哪儿了？",
+        "pinyin": "Zuó tiān shàng wǔ nǐ qù nǎrle?",
+        "vietnamese": "Sáng hôm qua bạn đi đâu thế?"
+      },
+      {
+        "id": 187,
+        "startTime": 691.4,
+        "endTime": 694.5,
+        "speaker": "B",
+        "chinese": "我去学校学汉语了。",
+        "pinyin": "Wǒ qù xué xiào xué hàn yǔ le.",
+        "vietnamese": "Tôi đến trường học tiếng Trung."
+      },
+      {
+        "id": 188,
+        "startTime": 695.1,
+        "endTime": 698.4,
+        "speaker": "A",
+        "chinese": "你去商店买苹果了吗？",
+        "pinyin": "Nǐ qù shāng diàn mǎi píng guǒ le ma?",
+        "vietnamese": "Bạn đã đến cửa hàng mua táo chưa?"
+      },
+      {
+        "id": 189,
+        "startTime": 699.1,
+        "endTime": 702.4,
+        "speaker": "B",
+        "chinese": "没有，我买了不少菜。",
+        "pinyin": "Méi yǒu, wǒ mǎi le bù shǎo cài.",
+        "vietnamese": "Chưa, tôi mua khá nhiều rau củ thức ăn."
+      },
+      {
+        "id": 190,
+        "startTime": 703.0,
+        "endTime": 706.6,
+        "speaker": "A",
+        "chinese": "你去商店买苹果了吗？",
+        "pinyin": "Nǐ qù shāng diàn mǎi píng guǒ le ma?",
+        "vietnamese": "Bạn đã đến cửa hàng mua táo chưa?"
+      },
+      {
+        "id": 191,
+        "startTime": 707.1,
+        "endTime": 710.8,
+        "speaker": "B",
+        "chinese": "没有，我买了不少菜。",
+        "pinyin": "Méi yǒu, wǒ mǎi le bù shǎo cài.",
+        "vietnamese": "Chưa, tôi mua khá nhiều rau củ thức ăn."
+      },
+      {
+        "id": 192,
+        "startTime": 713.0,
+        "endTime": 714.8,
+        "speaker": "A",
+        "chinese": "你看见张先生了吗？",
+        "pinyin": "Nǐ kàn jiàn zhāng xiān shēng le ma?",
+        "vietnamese": "Bạn có nhìn thấy ông Trương không?"
+      },
+      {
+        "id": 193,
+        "startTime": 716.7,
+        "endTime": 719.6,
+        "speaker": "B",
+        "chinese": "没有，我买了不少菜。",
+        "pinyin": "Méi yǒu, wǒ mǎi le bù shǎo cài.",
+        "vietnamese": "Chưa, tôi mua khá nhiều rau củ thức ăn."
+      },
+      {
+        "id": 194,
+        "startTime": 722.0,
+        "endTime": 723.5,
+        "speaker": "A",
+        "chinese": "你看见张先生了吗？",
+        "pinyin": "Nǐ kàn jiàn zhāng xiān shēng le ma?",
+        "vietnamese": "Bạn có nhìn thấy ông Trương không?"
+      },
+      {
+        "id": 195,
+        "startTime": 724.9,
+        "endTime": 727.4,
+        "speaker": "B",
+        "chinese": "看见了，他开车去医院了。",
+        "pinyin": "Kàn jiàn le, tā kāi chē qù yī yuàn le.",
+        "vietnamese": "Thấy rồi, ông ấy lái xe đi bệnh viện rồi."
+      },
+      {
+        "id": 196,
+        "startTime": 729.6,
+        "endTime": 731.5,
+        "speaker": "A",
+        "chinese": "你看见张先生了吗？",
+        "pinyin": "Nǐ kàn jiàn zhāng xiān shēng le ma?",
+        "vietnamese": "Bạn có nhìn thấy ông Trương không?"
+      },
+      {
+        "id": 197,
+        "startTime": 733.2,
+        "endTime": 736.4,
+        "speaker": "B",
+        "chinese": "看见了，他开车去医院了。",
+        "pinyin": "Kàn jiàn le, tā kāi chē qù yī yuàn le.",
+        "vietnamese": "Thấy rồi, ông ấy lái xe đi bệnh viện rồi."
+      },
+      {
+        "id": 198,
+        "startTime": 738.6,
+        "endTime": 740.1,
+        "speaker": "A",
+        "chinese": "这些是谁的衣服？",
+        "pinyin": "Zhè xiē shì shéi de yī fú?",
+        "vietnamese": "Mấy bộ quần áo này là của ai?"
+      },
+      {
+        "id": 199,
+        "startTime": 741.6,
+        "endTime": 744.3,
+        "speaker": "B",
+        "chinese": "莉莉的，她昨天买了不少衣服。",
+        "pinyin": "Lì lì de, tā zuó tiān mǎi le bù shǎo yī fú.",
+        "vietnamese": "Của Lily, hôm qua cô ấy mua rất nhiều quần áo."
+      },
+      {
+        "id": 200,
+        "startTime": 746.5,
+        "endTime": 748.3,
+        "speaker": "A",
+        "chinese": "这些是谁的衣服？",
+        "pinyin": "Zhè xiē shì shéi de yī fú?",
+        "vietnamese": "Mấy bộ quần áo này là của ai?"
+      },
+      {
+        "id": 201,
+        "startTime": 750.1,
+        "endTime": 753.5,
+        "speaker": "B",
+        "chinese": "莉莉的，她昨天买了不少衣服。",
+        "pinyin": "Lì lì de, tā zuó tiān mǎi le bù shǎo yī fú.",
+        "vietnamese": "Của Lily, hôm qua cô ấy mua rất nhiều quần áo."
+      },
+      {
+        "id": 202,
+        "startTime": 755.7,
+        "endTime": 758.0,
+        "speaker": "A",
+        "chinese": "喂，请问王小姐回来了吗？",
+        "pinyin": "Wèi, qǐng wèn wáng xiǎo jiě huí lái le ma?",
+        "vietnamese": "Alo, xin hỏi cô Vương đã về chưa?"
+      },
+      {
+        "id": 203,
+        "startTime": 759.6,
+        "endTime": 761.8,
+        "speaker": "B",
+        "chinese": "没有，她一个小时后回来。",
+        "pinyin": "Méi yǒu, tā yí gè xiǎo shí hòu huí lái.",
+        "vietnamese": "Chưa, một tiếng nữa cô ấy mới về."
+      },
+      {
+        "id": 204,
+        "startTime": 764.1,
+        "endTime": 767.0,
+        "speaker": "A",
+        "chinese": "喂，请问王小姐回来了吗？",
+        "pinyin": "Wèi, qǐng wèn wáng xiǎo jiě huí lái le ma?",
+        "vietnamese": "Alo, xin hỏi cô Vương đã về chưa?"
+      },
+      {
+        "id": 205,
+        "startTime": 768.8,
+        "endTime": 771.7,
+        "speaker": "B",
+        "chinese": "没有，她一个小时后回来。",
+        "pinyin": "Méi yǒu, tā yí gè xiǎo shí hòu huí lái.",
+        "vietnamese": "Chưa, một tiếng nữa cô ấy mới về."
+      },
+      {
+        "id": 206,
+        "startTime": 773.9,
+        "endTime": 775.6,
+        "speaker": "A",
+        "chinese": "你是什么时候来中国的？",
+        "pinyin": "Nǐ shì shén me shí hòu lái zhōng guó de?",
+        "vietnamese": "Bạn đến Trung Quốc từ khi nào?"
+      },
+      {
+        "id": 207,
+        "startTime": 777.1,
+        "endTime": 779.9,
+        "speaker": "B",
+        "chinese": "我是二零一一年来的，已经两年了。",
+        "pinyin": "Wǒ shì èr líng yī yī nián lái de, yǐ jīng liǎng nián le.",
+        "vietnamese": "Tôi đến vào năm 2011, đã được hai năm rồi."
+      },
+      {
+        "id": 208,
+        "startTime": 782.2,
+        "endTime": 784.3,
+        "speaker": "A",
+        "chinese": "你是什么时候来中国的？",
+        "pinyin": "Nǐ shì shén me shí hòu lái zhōng guó de?",
+        "vietnamese": "Bạn đến Trung Quốc từ khi nào?"
+      },
+      {
+        "id": 209,
+        "startTime": 786.0,
+        "endTime": 789.6,
+        "speaker": "B",
+        "chinese": "我是二零一一年来的，已经两年了。",
+        "pinyin": "Wǒ shì èr líng yī yī nián lái de, yǐ jīng liǎng nián le.",
+        "vietnamese": "Tôi đến vào năm 2011, đã được hai năm rồi."
+      },
+      {
+        "id": 210,
+        "startTime": 792.0,
+        "endTime": 793.9,
+        "speaker": "A",
+        "chinese": "这些苹果是在哪儿买的？",
+        "pinyin": "Zhè xiē píng guǒ shì zài nǎrmǎi de?",
+        "vietnamese": "Những quả táo này mua ở đâu thế?"
+      },
+      {
+        "id": 211,
+        "startTime": 795.6,
+        "endTime": 797.3,
+        "speaker": "B",
+        "chinese": "在前面的商店买的。",
+        "pinyin": "Zài qián miàn de shāng diàn mǎi de.",
+        "vietnamese": "Mua ở cửa hàng phía trước."
+      },
+      {
+        "id": 212,
+        "startTime": 797.4,
+        "endTime": 800.5,
+        "speaker": "A",
+        "chinese": "你爸爸是怎么去商店的？",
+        "pinyin": "Nǐ bà bà shì zěn me qù shāng diàn de?",
+        "vietnamese": "Bố bạn đến cửa hàng bằng phương tiện gì?"
+      },
+      {
+        "id": 213,
+        "startTime": 801.1,
+        "endTime": 803.9,
+        "speaker": "B",
+        "chinese": "我们一起开车去的。",
+        "pinyin": "Wǒ men yì qǐ kāi chē qù de.",
+        "vietnamese": "Chúng tôi cùng lái xe đi."
+      },
+      {
+        "id": 214,
+        "startTime": 804.5,
+        "endTime": 808.5,
+        "speaker": "A",
+        "chinese": "你爸爸是怎么去商店的？",
+        "pinyin": "Nǐ bà bà shì zěn me qù shāng diàn de?",
+        "vietnamese": "Bố bạn đến cửa hàng bằng phương tiện gì?"
+      },
+      {
+        "id": 215,
+        "startTime": 809.1,
+        "endTime": 812.4,
+        "speaker": "B",
+        "chinese": "我们一起开车去的。",
+        "pinyin": "Wǒ men yì qǐ kāi chē qù de.",
+        "vietnamese": "Chúng tôi cùng lái xe đi."
+      },
+      {
+        "id": 216,
+        "startTime": 813.0,
+        "endTime": 815.8,
+        "speaker": "A",
+        "chinese": "李老师睡觉了吗？",
+        "pinyin": "Lǐ lǎo shī shuì jiào le ma?",
+        "vietnamese": "Thầy Lý đã đi ngủ chưa?"
+      },
+      {
+        "id": 217,
+        "startTime": 816.3,
+        "endTime": 819.8,
+        "speaker": "B",
+        "chinese": "睡了，他是五点睡的。",
+        "pinyin": "Shuì le, tā shì wǔ diǎn shuì de.",
+        "vietnamese": "Ngủ rồi, thầy ấy đi ngủ lúc 5 giờ."
+      },
+      {
+        "id": 218,
+        "startTime": 820.3,
+        "endTime": 822.0,
+        "speaker": "A",
+        "chinese": "李老师睡觉了吗？",
+        "pinyin": "Lǐ lǎo shī shuì jiào le ma?",
+        "vietnamese": "Thầy Lý đã đi ngủ chưa?"
+      },
+      {
+        "id": 219,
+        "startTime": 824.0,
+        "endTime": 827.6,
+        "speaker": "B",
+        "chinese": "睡了，他是五点睡的。",
+        "pinyin": "Shuì le, tā shì wǔ diǎn shuì de.",
+        "vietnamese": "Ngủ rồi, thầy ấy đi ngủ lúc 5 giờ."
+      },
+      {
+        "id": 220,
+        "startTime": 828.2,
+        "endTime": 829.4,
+        "speaker": "A",
+        "chinese": "我们怎么去？",
+        "pinyin": "Wǒ men zěn me qù?",
+        "vietnamese": "Chúng mình đi bằng cách nào?"
+      },
+      {
+        "id": 221,
+        "startTime": 831.5,
+        "endTime": 834.8,
+        "speaker": "A",
+        "chinese": "李老师睡觉了吗？",
+        "pinyin": "Lǐ lǎo shī shuì jiào le ma?",
+        "vietnamese": "Thầy Lý đã đi ngủ chưa?"
+      },
+      {
+        "id": 222,
+        "startTime": 835.3,
+        "endTime": 837.6,
+        "speaker": "B",
+        "chinese": "睡了，他是五点睡的。",
+        "pinyin": "Shuì le, tā shì wǔ diǎn shuì de.",
+        "vietnamese": "Ngủ rồi, thầy ấy đi ngủ lúc 5 giờ."
+      },
+      {
+        "id": 223,
+        "startTime": 839.8,
+        "endTime": 840.9,
+        "speaker": "A",
+        "chinese": "我们怎么去？",
+        "pinyin": "Wǒ men zěn me qù?",
+        "vietnamese": "Chúng mình đi bằng cách nào?"
+      },
+      {
+        "id": 224,
+        "startTime": 842.4,
+        "endTime": 846.0,
+        "speaker": "B",
+        "chinese": "小王是坐出租车去的，我们也坐出租车吧。",
+        "pinyin": "Xiǎo wáng shì zuò chū zū chē qù de, wǒ men yě zuò chū zū chē ba.",
+        "vietnamese": "Tiểu Vương đi taxi, chúng mình cũng đi taxi đi."
+      },
+      {
+        "id": 225,
+        "startTime": 848.0,
+        "endTime": 849.3,
+        "speaker": "A",
+        "chinese": "我们怎么去？",
+        "pinyin": "Wǒ men zěn me qù?",
+        "vietnamese": "Chúng mình đi bằng cách nào?"
+      },
+      {
+        "id": 226,
+        "startTime": 851.0,
+        "endTime": 855.6,
+        "speaker": "B",
+        "chinese": "小王是坐出租车去的，我们也坐出租车吧。",
+        "pinyin": "Xiǎo wáng shì zuò chū zū chē qù de, wǒ men yě zuò chū zū chē ba.",
+        "vietnamese": "Tiểu Vương đi taxi, chúng mình cũng đi taxi đi."
+      },
+      {
+        "id": 227,
+        "startTime": 857.7,
+        "endTime": 859.2,
+        "speaker": "A",
+        "chinese": "你女儿在哪儿工作？",
+        "pinyin": "Nǐ nǚ ér zài nǎrgōng zuò?",
+        "vietnamese": "Con gái bạn làm việc ở đâu?"
+      },
+      {
+        "id": 228,
+        "startTime": 860.7,
+        "endTime": 863.0,
+        "speaker": "B",
+        "chinese": "她在医院工作，她是大夫。",
+        "pinyin": "Tā zài yī yuàn gōng zuò, tā shì dà fū.",
+        "vietnamese": "Cô ấy làm việc ở bệnh viện, cô ấy là bác sĩ."
+      },
+      {
+        "id": 229,
+        "startTime": 865.2,
+        "endTime": 867.0,
+        "speaker": "A",
+        "chinese": "你女儿在哪儿工作？",
+        "pinyin": "Nǐ nǚ ér zài nǎrgōng zuò?",
+        "vietnamese": "Con gái bạn làm việc ở đâu?"
+      },
+      {
+        "id": 230,
+        "startTime": 868.7,
+        "endTime": 871.7,
+        "speaker": "B",
+        "chinese": "她在医院工作，她是大夫。",
+        "pinyin": "Tā zài yī yuàn gōng zuò, tā shì dà fū.",
+        "vietnamese": "Cô ấy làm việc ở bệnh viện, cô ấy là bác sĩ."
+      },
+      {
+        "id": 231,
+        "startTime": 873.7,
+        "endTime": 875.3,
+        "speaker": "A",
+        "chinese": "你会做中国菜吗？",
+        "pinyin": "Nǐ huì zuò zhōng guó cài ma?",
+        "vietnamese": "Bạn biết nấu món Trung Quốc không?"
+      },
+      {
+        "id": 232,
+        "startTime": 876.6,
+        "endTime": 878.7,
+        "speaker": "B",
+        "chinese": "我不会，我妈妈会做。",
+        "pinyin": "Wǒ bú huì, wǒ mā mā huì zuò.",
+        "vietnamese": "Tôi không biết, mẹ tôi biết nấu."
+      },
+      {
+        "id": 233,
+        "startTime": 880.6,
+        "endTime": 882.0,
+        "speaker": "A",
+        "chinese": "你在北京住哪儿？",
+        "pinyin": "Nǐ zài běi jīng zhù nǎr?",
+        "vietnamese": "Ở Bắc Kinh bạn ở đâu?"
+      },
+      {
+        "id": 234,
+        "startTime": 882.5,
+        "endTime": 884.7,
+        "speaker": "B",
+        "chinese": "北京饭店。",
+        "pinyin": "Běi jīng fàn diàn.",
+        "vietnamese": "Khách sạn Bắc Kinh."
+      },
+      {
+        "id": 235,
+        "startTime": 885.4,
+        "endTime": 887.0,
+        "speaker": "A",
+        "chinese": "你在北京住哪儿？",
+        "pinyin": "Nǐ zài běi jīng zhù nǎr?",
+        "vietnamese": "Ở Bắc Kinh bạn ở đâu?"
+      },
+      {
+        "id": 236,
+        "startTime": 889.1,
+        "endTime": 890.6,
+        "speaker": "B",
+        "chinese": "北京饭店。",
+        "pinyin": "Běi jīng fàn diàn.",
+        "vietnamese": "Khách sạn Bắc Kinh."
+      },
+      {
+        "id": 237,
+        "startTime": 892.0,
+        "endTime": 895.1,
+        "speaker": "A",
+        "chinese": "大卫去哪儿了？",
+        "pinyin": "Dà wèi qù nǎrle?",
+        "vietnamese": "David đi đâu rồi?"
+      },
+      {
+        "id": 238,
+        "startTime": 895.6,
+        "endTime": 896.8,
+        "speaker": "B",
+        "chinese": "他去学车了。",
+        "pinyin": "Tā qù xué chē le.",
+        "vietnamese": "Cậu ấy đi học lái xe rồi."
+      },
+      {
+        "id": 239,
+        "startTime": 898.5,
+        "endTime": 900.0,
+        "speaker": "A",
+        "chinese": "大卫去哪儿了？",
+        "pinyin": "Dà wèi qù nǎrle?",
+        "vietnamese": "David đi đâu rồi?"
+      },
+      {
+        "id": 240,
+        "startTime": 902.0,
+        "endTime": 903.4,
+        "speaker": "B",
+        "chinese": "他去学车了。",
+        "pinyin": "Tā qù xué chē le.",
+        "vietnamese": "Cậu ấy đi học lái xe rồi."
+      },
+      {
+        "id": 241,
+        "startTime": 914.5,
+        "endTime": 916.6,
+        "speaker": "A",
+        "chinese": "老师，谢谢您，再见。",
+        "pinyin": "Lǎo shī, xiè xiè nín, zài jiàn.",
+        "vietnamese": "Em cảm ơn thầy, tạm biệt thầy."
+      },
+      {
+        "id": 242,
+        "startTime": 918.2,
+        "endTime": 918.6,
+        "speaker": "B",
+        "chinese": "再见。",
+        "pinyin": "Zài jiàn.",
+        "vietnamese": "Tạm biệt."
+      },
+      {
+        "id": 243,
+        "startTime": 921.0,
+        "endTime": 923.3,
+        "speaker": "A",
+        "chinese": "老师，谢谢您，再见。",
+        "pinyin": "Lǎo shī, xiè xiè nín, zài jiàn.",
+        "vietnamese": "Em cảm ơn thầy, tạm biệt thầy."
+      },
+      {
+        "id": 244,
+        "startTime": 925.1,
+        "endTime": 925.5,
+        "speaker": "B",
+        "chinese": "再见。",
+        "pinyin": "Zài jiàn.",
+        "vietnamese": "Tạm biệt."
       }
     ]
   },
