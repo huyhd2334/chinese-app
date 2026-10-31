@@ -132,14 +132,14 @@ export default function WordDetailPage({ params }: PageProps) {
       <div className="sticky top-0 z-20 bg-china-paper/80 backdrop-blur-md border-b border-border px-3 sm:px-6 py-3 sm:py-4 flex flex-col md:flex-row gap-3 items-center justify-between">
         <button
           onClick={handleBack}
-          className="flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium text-china-ink hover:text-china-red bg-white border border-border rounded-xl shadow-xs transition-all group w-full md:w-auto justify-center"
+          className="flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium text-china-ink hover:text-china-red bg-card border border-border rounded-xl shadow-xs transition-all group w-full md:w-auto justify-center"
         >
           <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
           Quay lại
         </button>
         
         {/* Navigation Tabs */}
-        <div className="flex bg-white border border-border p-0.5 rounded-xl shadow-xs w-full md:w-auto overflow-x-auto scrollbar-hide">
+        <div className="flex bg-card border border-border p-0.5 rounded-xl shadow-xs w-full md:w-auto overflow-x-auto scrollbar-hide">
           {[
             { id: 'overview', icon: BookOpen, label: 'Tổng quan' },
             { id: 'writing', icon: PenTool, label: 'Luyện viết' },
@@ -152,7 +152,7 @@ export default function WordDetailPage({ params }: PageProps) {
               className={`flex-1 md:flex-none flex items-center justify-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium rounded-lg whitespace-nowrap transition-all ${
                 activeTab === t.id 
                   ? 'bg-china-red text-white shadow-xs font-semibold' 
-                  : 'text-muted hover:text-china-ink hover:bg-gray-50'
+                  : 'text-muted hover:text-china-ink hover:bg-stone-100 dark:hover:bg-stone-800'
               }`}
             >
               <t.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -167,7 +167,7 @@ export default function WordDetailPage({ params }: PageProps) {
           disabled={isAdding}
           className={`flex items-center justify-center gap-1.5 px-4 py-2 text-xs sm:text-sm font-bold rounded-xl shadow-xs transition-all w-full md:w-auto
             ${review 
-              ? 'bg-white border border-china-red/30 text-china-red hover:bg-china-red/5' 
+              ? 'bg-card border border-china-red/30 text-china-red hover:bg-china-red/5' 
               : 'bg-china-red text-white hover:bg-china-red-hover'}`}
         >
           {isAdding ? (
@@ -184,7 +184,7 @@ export default function WordDetailPage({ params }: PageProps) {
       <div className="p-3 sm:p-6 md:p-8 max-w-5xl mx-auto w-full flex-1 space-y-6">
         
         {/* Hero Card */}
-        <div className="bg-white border border-border rounded-3xl p-6 sm:p-8 shadow-xs relative overflow-hidden flex flex-col md:flex-row items-center gap-6 group">
+        <div className="bg-card border border-border rounded-3xl p-6 sm:p-8 shadow-xs relative overflow-hidden flex flex-col md:flex-row items-center gap-6 group">
           <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-china-red/5 to-transparent rounded-bl-full pointer-events-none transition-transform duration-700 group-hover:scale-110" />
           
           <div className="text-center md:text-left flex-1 z-10">
@@ -270,7 +270,7 @@ export default function WordDetailPage({ params }: PageProps) {
           {activeTab === 'overview' && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-6">
-                <div className="bg-white border border-border rounded-3xl p-5 sm:p-6 shadow-xs">
+                <div className="bg-card border border-border rounded-3xl p-5 sm:p-6 shadow-xs">
                   <h3 className="text-base sm:text-lg font-serif font-semibold text-china-ink mb-4 flex items-center gap-2">
                     <BarChart3 className="w-4 h-4 sm:w-5 sm:h-5 text-china-red" />
                     Đặc điểm ngôn ngữ
@@ -280,7 +280,7 @@ export default function WordDetailPage({ params }: PageProps) {
                     {hanViet && (
                       <div>
                         <p className="text-xs text-muted mb-1 uppercase tracking-wider font-semibold">Âm Hán-Việt</p>
-                        <p className="text-xl sm:text-2xl font-serif text-amber-900 font-bold">{hanViet}</p>
+                        <p className="text-xl sm:text-2xl font-serif text-amber-700 dark:text-amber-400 font-bold">{hanViet}</p>
                       </div>
                     )}
                     {word.radical && (
@@ -300,7 +300,7 @@ export default function WordDetailPage({ params }: PageProps) {
                         <p className="text-xs text-muted mb-1.5 uppercase tracking-wider font-semibold">Từ loại</p>
                         <div className="flex flex-wrap gap-1.5">
                           {word.partOfSpeech.map((pos, idx) => (
-                            <span key={idx} className="px-2.5 py-1 bg-gray-100 text-china-ink text-xs rounded-lg font-medium">
+                            <span key={idx} className="px-2.5 py-1 bg-stone-100 dark:bg-stone-800 text-china-ink text-xs rounded-lg font-medium">
                               {pos}
                             </span>
                           ))}
@@ -313,7 +313,7 @@ export default function WordDetailPage({ params }: PageProps) {
 
               {/* Review Statistics */}
               <div>
-                <div className="bg-white border border-border rounded-3xl p-5 sm:p-6 shadow-xs h-full">
+                <div className="bg-card border border-border rounded-3xl p-5 sm:p-6 shadow-xs h-full">
                   <h3 className="text-base sm:text-lg font-serif font-semibold text-china-ink mb-4 flex items-center gap-2">
                     <BarChart3 className="w-4 h-4 sm:w-5 sm:h-5 text-china-jade" />
                     Thống kê ôn tập (Spaced Repetition)
@@ -322,13 +322,13 @@ export default function WordDetailPage({ params }: PageProps) {
                   {review ? (
                     <div className="space-y-4">
                       <div className="grid grid-cols-2 gap-3">
-                        <div className="p-3.5 bg-green-50 rounded-2xl border border-green-100">
-                          <p className="text-xs text-green-700 font-medium mb-0.5">Số lần đúng</p>
-                          <p className="text-2xl sm:text-3xl font-bold text-green-600">{review.correctCount}</p>
+                        <div className="p-3.5 bg-emerald-50 dark:bg-emerald-950/40 rounded-2xl border border-emerald-200 dark:border-emerald-800">
+                          <p className="text-xs text-emerald-700 dark:text-emerald-400 font-medium mb-0.5">Số lần đúng</p>
+                          <p className="text-2xl sm:text-3xl font-bold text-emerald-600 dark:text-emerald-400">{review.correctCount}</p>
                         </div>
-                        <div className="p-3.5 bg-red-50 rounded-2xl border border-red-100">
-                          <p className="text-xs text-red-700 font-medium mb-0.5">Số lần sai</p>
-                          <p className="text-2xl sm:text-3xl font-bold text-red-600">{review.wrongCount}</p>
+                        <div className="p-3.5 bg-red-50 dark:bg-red-950/40 rounded-2xl border border-red-200 dark:border-red-800">
+                          <p className="text-xs text-red-700 dark:text-red-400 font-medium mb-0.5">Số lần sai</p>
+                          <p className="text-2xl sm:text-3xl font-bold text-red-600 dark:text-red-400">{review.wrongCount}</p>
                         </div>
                       </div>
 
@@ -372,7 +372,7 @@ export default function WordDetailPage({ params }: PageProps) {
           )}
 
           {activeTab === 'writing' && (
-            <div className="bg-white border border-border rounded-3xl p-4 sm:p-6 shadow-xs min-h-[450px] flex flex-col">
+            <div className="bg-card border border-border rounded-3xl p-4 sm:p-6 shadow-xs min-h-[450px] flex flex-col">
               <h3 className="text-lg sm:text-xl font-serif font-semibold text-china-ink flex items-center gap-2 mb-4">
                 <PenTool className="w-4 h-4 sm:w-5 sm:h-5 text-china-red" />
                 Bảng vẽ tương tác luyện viết từng nét
@@ -384,7 +384,7 @@ export default function WordDetailPage({ params }: PageProps) {
           )}
 
           {activeTab === 'examples' && (
-            <div className="bg-white border border-border rounded-3xl p-5 sm:p-6 shadow-xs">
+            <div className="bg-card border border-border rounded-3xl p-5 sm:p-6 shadow-xs">
                <h3 className="text-lg sm:text-xl font-serif font-semibold text-china-ink flex items-center gap-2 mb-4">
                 <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 text-china-red" />
                 Câu ví dụ mẫu
@@ -411,7 +411,7 @@ export default function WordDetailPage({ params }: PageProps) {
 
           {/* Notes & Mnemonics Tab */}
           {activeTab === 'notes' && (
-            <div className="bg-white border border-border rounded-3xl p-5 sm:p-6 shadow-xs space-y-4">
+            <div className="bg-card border border-border rounded-3xl p-5 sm:p-6 shadow-xs space-y-4">
               <div className="flex items-center justify-between">
                 <div>
                   <h3 className="text-lg sm:text-xl font-serif font-semibold text-china-ink flex items-center gap-2">

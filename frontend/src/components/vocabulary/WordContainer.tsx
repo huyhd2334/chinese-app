@@ -235,7 +235,7 @@ const WordContainer = ({
                     key={w.id}
                     id={`word-card-${w.id}`}
                     href={`/vocabulary/${w.id}`}
-                    className={`flex flex-col border border-border dark:border-border bg-white dark:bg-card p-4 sm:p-5 rounded-2xl transition-all duration-300 group relative overflow-hidden content-visibility-auto
+                    className={`flex flex-col border border-border dark:border-border bg-card p-4 sm:p-5 rounded-2xl transition-all duration-300 group relative overflow-hidden content-visibility-auto
                       ${isJustAdded ? 'ring-2 ring-china-jade/50 bg-china-jade/5 scale-[1.02]' : 'hover:shadow-xl hover:border-china-red/40 hover:-translate-y-1'}`}
                     onClick={() => {
                       sessionStorage.setItem("vocab-scroll-y", String(window.scrollY || document.documentElement.scrollTop || 0))
@@ -394,7 +394,7 @@ const WordContainer = ({
               sessionStorage.setItem("vocab-page", String(prev));
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            className="px-3 py-2 text-sm font-medium rounded-lg border border-border bg-white text-china-ink disabled:opacity-50 hover:bg-gray-50 transition-colors"
+            className="px-3 py-2 text-sm font-medium rounded-lg border border-border bg-card text-china-ink disabled:opacity-50 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
           >
             Trước
           </button>
@@ -413,7 +413,7 @@ const WordContainer = ({
                     className={`w-8 h-8 flex items-center justify-center text-sm font-medium rounded-lg transition-colors ${
                       page === i 
                         ? 'bg-china-red text-white' 
-                        : 'bg-white border border-border text-china-ink hover:bg-gray-50'
+                        : 'bg-card border border-border text-china-ink hover:bg-stone-100 dark:hover:bg-stone-800'
                     }`}
                   >
                     {i + 1}
@@ -435,7 +435,7 @@ const WordContainer = ({
               sessionStorage.setItem("vocab-page", String(next));
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            className="px-3 py-2 text-sm font-medium rounded-lg border border-border bg-white text-china-ink disabled:opacity-50 hover:bg-gray-50 transition-colors"
+            className="px-3 py-2 text-sm font-medium rounded-lg border border-border bg-card text-china-ink disabled:opacity-50 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
           >
             Sau
           </button>

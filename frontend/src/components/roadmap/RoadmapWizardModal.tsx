@@ -498,15 +498,15 @@ export function RoadmapWizardModal({ isOpen, onClose }: RoadmapWizardModalProps)
 
                 {/* Nhận xét / Cảnh báo khả thi */}
                 {isPaceChallenging ? (
-                  <div className="flex items-start gap-2.5 p-3 rounded-lg bg-amber-50 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-800 text-amber-800 dark:text-amber-300 text-xs">
-                    <AlertTriangle className="w-4 h-4 shrink-0 mt-0.5" />
+                  <div className="flex items-start gap-2.5 p-3 rounded-xl bg-amber-100/90 dark:bg-amber-950/60 border border-amber-300 dark:border-amber-700 text-amber-950 dark:text-amber-200 text-xs font-semibold">
+                    <AlertTriangle className="w-4 h-4 shrink-0 mt-0.5 text-amber-600 dark:text-amber-400" />
                     <span>
                       Mục tiêu này khá gắt với quỹ thời gian {minutesPerDay} phút/ngày. Bạn nên cân nhắc tăng lên 45 phút hoặc kéo dài thêm 2-3 tuần để học không bị quá tải.
                     </span>
                   </div>
                 ) : (
-                  <div className="flex items-center gap-2 p-3 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-300 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 text-xs">
-                    <CheckCircle2 className="w-4 h-4 shrink-0" />
+                  <div className="flex items-center gap-2.5 p-3 rounded-xl bg-emerald-100/90 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-700 text-emerald-950 dark:text-emerald-200 text-xs font-semibold">
+                    <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-600 dark:text-emerald-400" />
                     <span>
                       Kế hoạch rất khả thi và cân bằng! Duy trì {minutesPerDay} phút mỗi ngày bạn sẽ chắc chắn về đích đúng hạn.
                     </span>

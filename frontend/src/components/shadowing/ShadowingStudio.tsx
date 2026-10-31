@@ -13,10 +13,12 @@ import {
   Eye,
   EyeOff,
   Headphones,
+  Crown,
 } from "lucide-react"
 import { ShadowingVideo, ShadowingSentence } from "@/data/shadowingData"
 import { useAudioRecorder } from "@/hooks/useAudioRecorder"
 import { LeafVineCornerSvg } from "@/components/roadmap/VineBorders"
+import { isProUser, triggerUpgradeModal } from "@/utils/subscription"
 
 interface ShadowingStudioProps {
   video: ShadowingVideo
@@ -31,6 +33,9 @@ declare global {
 }
 
 export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps) {
+  const isPro = isProUser()
+  const isLocked = !video.isFree && !isPro
+
   const [currentSentenceIndex, setCurrentSentenceIndex] = useState(0)
   const [showPinyin, setShowPinyin] = useState(true)
   const [showVietnamese, setShowVietnamese] = useState(true)
@@ -252,6 +257,37 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
   const progressPercentage = Math.round(
     (completedSentenceIds.length / video.sentences.length) * 100
   )
+
+  if (isLocked) {
+    return (
+      <div className="max-w-xl mx-auto p-8 bg-white dark:bg-[#1a1a24] border border-stone-200 dark:border-stone-800 rounded-3xl text-center space-y-4 my-16 shadow-xs animate-fade-in">
+        <div className="w-16 h-16 rounded-full bg-amber-100 dark:bg-amber-950/40 text-amber-500 mx-auto flex items-center justify-center">
+          <Crown className="w-8 h-8" />
+        </div>
+        <h2 className="text-xl font-bold text-stone-900 dark:text-stone-100">Video Luyện Nói PRO</h2>
+        <p className="text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
+          Video <strong>{video.title}</strong> thuộc gói tính năng PRO. Tài khoản miễn phí được trải nghiệm 5 video luyện nói nền tảng.
+        </p>
+        <div className="flex justify-center gap-3 pt-3">
+          <button
+            type="button"
+            onClick={onBack}
+            className="px-5 py-2.5 rounded-xl border border-stone-200 dark:border-stone-700 text-sm font-semibold hover:bg-stone-100 dark:hover:bg-stone-800 cursor-pointer"
+          >
+            Quay lại
+          </button>
+          <button
+            type="button"
+            onClick={() => triggerUpgradeModal("manual")}
+            className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold text-sm shadow-xs cursor-pointer flex items-center gap-2"
+          >
+            <Crown className="w-4 h-4" />
+            <span>Nâng cấp PRO</span>
+          </button>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="w-full max-w-6xl mx-auto space-y-5 pb-16 animate-fade-in font-sans">

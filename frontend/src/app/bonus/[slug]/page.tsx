@@ -383,7 +383,7 @@ export default function BonusStudyPage({ params }: PageProps) {
     <div className="p-3 sm:p-6 md:p-8 max-w-7xl mx-auto space-y-6 animate-fade-in">
       
       {/* 1. Sticky Navigation Header */}
-      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 bg-white/80 backdrop-blur-md p-4 rounded-2xl border border-border shadow-xs">
+      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 bg-card/90 backdrop-blur-md p-4 rounded-2xl border border-border shadow-xs">
         <div className="flex items-center gap-3">
           <Link
             href="/bonus"
@@ -977,7 +977,7 @@ export default function BonusStudyPage({ params }: PageProps) {
                   setGalleryPage(p => Math.max(0, p - 1))
                   window.scrollTo({ top: 0, behavior: "smooth" })
                 }}
-                className="px-3 py-1.5 rounded-lg border border-border bg-white text-xs font-semibold text-china-ink disabled:opacity-40 hover:bg-china-paper transition-colors shadow-2xs"
+                className="px-3 py-1.5 rounded-lg border border-border bg-card text-xs font-semibold text-china-ink disabled:opacity-40 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors shadow-2xs"
               >
                 Trước
               </button>
@@ -995,7 +995,7 @@ export default function BonusStudyPage({ params }: PageProps) {
                         className={`w-8 h-8 rounded-lg text-xs font-bold transition-colors ${
                           galleryPage === i 
                             ? "bg-china-red text-white" 
-                            : "bg-white border border-border text-china-ink hover:bg-china-paper"
+                            : "bg-card border border-border text-china-ink hover:bg-stone-100 dark:hover:bg-stone-800"
                         }`}
                       >
                         {i + 1}
@@ -1015,7 +1015,7 @@ export default function BonusStudyPage({ params }: PageProps) {
                   setGalleryPage(p => Math.min(totalPages - 1, p + 1))
                   window.scrollTo({ top: 0, behavior: "smooth" })
                 }}
-                className="px-3 py-1.5 rounded-lg border border-border bg-white text-xs font-semibold text-china-ink disabled:opacity-40 hover:bg-china-paper transition-colors shadow-2xs"
+                className="px-3 py-1.5 rounded-lg border border-border bg-card text-xs font-semibold text-china-ink disabled:opacity-40 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors shadow-2xs"
               >
                 Sau
               </button>

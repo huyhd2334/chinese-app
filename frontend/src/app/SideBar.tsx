@@ -38,7 +38,7 @@ const SideBar = () => {
           <button
             type="button"
             onClick={isHalloweenTheme ? triggerSpookyConfetti : undefined}
-            className="w-10 h-10 rounded-2xl bg-white border border-border shadow-xs p-1 shrink-0 flex items-center justify-center transition-transform hover:scale-105 relative cursor-pointer group"
+            className="w-10 h-10 rounded-2xl bg-card border border-border shadow-xs p-1 shrink-0 flex items-center justify-center transition-transform hover:scale-105 relative cursor-pointer group"
             title={isHalloweenTheme ? "Bấm vào Tiểu Lu để nhận kẹo & pháo hoa Halloween! 🍬" : "Tiểu Lu"}
           >
             <Image
@@ -122,9 +122,9 @@ const SideBar = () => {
       </aside>
 
       {/* Mobile Top Brand Bar */}
-      <header className="md:hidden sticky top-0 z-30 flex items-center justify-between px-4 py-2.5 bg-white/95 backdrop-blur-md border-b border-border shadow-xs">
+      <header className="md:hidden sticky top-0 z-30 flex items-center justify-between px-4 py-2.5 bg-china-paper/95 backdrop-blur-md border-b border-border shadow-xs">
         <Link href="/" className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-xl bg-white border border-border shadow-2xs p-1 flex items-center justify-center relative">
+          <div className="w-8 h-8 rounded-xl bg-card border border-border shadow-2xs p-1 flex items-center justify-center relative">
             <Image
               src="/chibi-loading.svg"
               alt="Tiểu Lu"
@@ -153,7 +153,7 @@ const SideBar = () => {
       </header>
 
       {/* Mobile Bottom Navigation Bar */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-lg border-t border-border shadow-[0_-4px_20px_rgba(0,0,0,0.05)] flex items-center justify-around py-1.5 px-2 safe-area-pb">
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-china-paper/95 backdrop-blur-lg border-t border-border shadow-[0_-4px_20px_rgba(0,0,0,0.05)] flex items-center justify-around py-1.5 px-2 safe-area-pb">
         {navItems.map((item) => {
           const isActive = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href)
           const Icon = item.icon

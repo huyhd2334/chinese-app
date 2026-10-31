@@ -761,7 +761,7 @@ export default function Dashboard() {
           {/* Card 1: Ôn tập SRS (Phục Tập - 溫故知新) */}
           <Link 
             href="/review" 
-            className="group relative overflow-hidden rounded-3xl bg-white dark:bg-[#1a1624] border border-border/80 dark:border-[#382c47] hover:border-china-red/50 hover:shadow-lg p-5 text-china-ink transition-all duration-300 flex flex-col justify-between min-h-[195px]"
+            className="group relative overflow-hidden rounded-3xl bg-card dark:bg-[#1a1624] border border-border/80 dark:border-[#382c47] hover:border-china-red/50 hover:shadow-lg p-5 text-china-ink transition-all duration-300 flex flex-col justify-between min-h-[195px]"
           >
             {/* Calligraphy Watermark chìm nghệ thuật */}
             <div className="absolute right-2 -bottom-4 text-stone-200/50 dark:text-stone-700/25 font-chinese text-8xl font-black select-none pointer-events-none group-hover:text-china-red/5 transition-colors" lang="zh">
@@ -819,7 +819,7 @@ export default function Dashboard() {
           {/* Card 2: Kho Từ Vựng HSK (Tự Hải - 字海尋珠) */}
           <Link 
             href="/vocabulary" 
-            className="group relative overflow-hidden rounded-3xl bg-white dark:bg-[#1a1624] border border-border/80 dark:border-[#382c47] hover:border-china-red/50 hover:shadow-lg p-5 text-china-ink transition-all duration-300 flex flex-col justify-between min-h-[195px]"
+            className="group relative overflow-hidden rounded-3xl bg-card dark:bg-[#1a1624] border border-border/80 dark:border-[#382c47] hover:border-china-red/50 hover:shadow-lg p-5 text-china-ink transition-all duration-300 flex flex-col justify-between min-h-[195px]"
           >
             {/* Calligraphy Watermark chìm */}
             <div className="absolute right-2 -bottom-4 text-stone-200/50 dark:text-stone-700/25 font-chinese text-8xl font-black select-none pointer-events-none group-hover:text-china-red/5 transition-colors" lang="zh">
@@ -870,7 +870,7 @@ export default function Dashboard() {
           {/* Card 3: Giáo Trình Chuẩn HSK (Kinh Thư - 經書正課) */}
           <Link 
             href="/books" 
-            className="group relative overflow-hidden rounded-3xl bg-white dark:bg-[#1a1624] border border-border/80 dark:border-[#382c47] hover:border-china-red/50 hover:shadow-lg p-5 text-china-ink transition-all duration-300 flex flex-col justify-between min-h-[195px]"
+            className="group relative overflow-hidden rounded-3xl bg-card dark:bg-[#1a1624] border border-border/80 dark:border-[#382c47] hover:border-china-red/50 hover:shadow-lg p-5 text-china-ink transition-all duration-300 flex flex-col justify-between min-h-[195px]"
           >
             {/* Calligraphy Watermark chìm */}
             <div className="absolute right-2 -bottom-4 text-stone-200/50 dark:text-stone-700/25 font-chinese text-8xl font-black select-none pointer-events-none group-hover:text-china-red/5 transition-colors" lang="zh">
@@ -921,7 +921,7 @@ export default function Dashboard() {
           {/* Card 4: Từ Mở Rộng & Bổ Trợ (Thác Triển - 博採眾長) */}
           <Link 
             href="/bonus" 
-            className="group relative overflow-hidden rounded-3xl bg-white dark:bg-[#1a1624] border border-border/80 dark:border-[#382c47] hover:border-china-red/50 hover:shadow-lg p-5 text-china-ink transition-all duration-300 flex flex-col justify-between min-h-[195px]"
+            className="group relative overflow-hidden rounded-3xl bg-card dark:bg-[#1a1624] border border-border/80 dark:border-[#382c47] hover:border-china-red/50 hover:shadow-lg p-5 text-china-ink transition-all duration-300 flex flex-col justify-between min-h-[195px]"
           >
             {/* Calligraphy Watermark chìm */}
             <div className="absolute right-2 -bottom-4 text-stone-200/50 dark:text-stone-700/25 font-chinese text-8xl font-black select-none pointer-events-none group-hover:text-china-red/5 transition-colors" lang="zh">

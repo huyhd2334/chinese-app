@@ -185,7 +185,7 @@ export default function VocabQuizModal({ isOpen, onClose, words, onWordMastered 
             </div>
 
             {/* Question Card */}
-            <div className="w-full bg-white rounded-2xl border border-border p-6 shadow-xs flex flex-col items-center justify-center text-center relative mb-6 min-h-[140px]">
+            <div className="w-full bg-card rounded-2xl border border-border p-6 shadow-xs flex flex-col items-center justify-center text-center relative mb-6 min-h-[140px]">
               {/* Level Badge */}
               {currentQ.word.hskLevel && currentQ.word.hskLevel.length > 0 && (
                 <span className="absolute top-3 left-3 px-2 py-0.5 bg-china-red/10 text-china-red text-[10px] font-bold rounded-md">

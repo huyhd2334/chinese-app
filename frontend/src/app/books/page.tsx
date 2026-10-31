@@ -252,7 +252,7 @@ export default function BooksDirectoryPage() {
                   return (
                     <div
                       key={lesson.id}
-                      className="bg-white dark:bg-card border border-border hover:border-slate-300 dark:hover:border-stone-600 rounded-xl p-4 shadow-xs transition-all flex flex-col justify-between gap-3"
+                      className="bg-card border border-border hover:border-slate-300 dark:hover:border-stone-600 rounded-xl p-4 shadow-xs transition-all flex flex-col justify-between gap-3"
                     >
                       <div className="flex items-start gap-3">
                         <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold shrink-0 ${
@@ -301,7 +301,7 @@ export default function BooksDirectoryPage() {
                           href={`/books/${selectedBook.id}/${lesson.id}`}
                           className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
                             isCompleted
-                              ? 'bg-neutral-100 text-slate-700 hover:bg-neutral-200'
+                              ? 'bg-stone-100 dark:bg-stone-800 text-slate-700 dark:text-stone-300 hover:bg-stone-200 dark:hover:bg-stone-700'
                               : 'bg-china-red text-white hover:bg-china-red/90'
                           }`}
                         >
@@ -314,7 +314,7 @@ export default function BooksDirectoryPage() {
                 })}
               </div>
             ) : (
-              <div className="bg-white border border-border rounded-2xl p-8 text-center space-y-2">
+              <div className="bg-card border border-border rounded-2xl p-8 text-center space-y-2">
                 <h4 className="text-sm font-bold text-china-ink">
                   Đang cập nhật nội dung HSK {selectedBook.level}
                 </h4>

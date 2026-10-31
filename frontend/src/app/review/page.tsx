@@ -401,7 +401,7 @@ export default function ReviewPage() {
             {hskFilter !== "all" ? (
               <button
                 onClick={() => setHskFilter("all")}
-                className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-border bg-white text-china-ink text-xs sm:text-sm font-semibold hover:bg-china-paper"
+                className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-border bg-card text-china-ink text-xs sm:text-sm font-semibold hover:bg-stone-100 dark:hover:bg-stone-800"
               >
                 <RotateCw className="w-4 h-4" /> Xem tất cả cấp độ
               </button>
@@ -409,7 +409,7 @@ export default function ReviewPage() {
               filter !== "all" && (
                 <button
                   onClick={() => setFilter("all")}
-                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-border bg-white text-china-ink text-xs sm:text-sm font-semibold hover:bg-china-paper"
+                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-border bg-card text-china-ink text-xs sm:text-sm font-semibold hover:bg-stone-100 dark:hover:bg-stone-800"
                 >
                   <RotateCw className="w-4 h-4" /> Ôn toàn bộ ({statusCounts.all} từ)
                 </button>
@@ -450,7 +450,7 @@ export default function ReviewPage() {
                 </span>
               )}
               {currentCard.word.radical && (
-                <span className="px-2.5 py-1 text-xs rounded-lg bg-white border border-border text-muted">
+                <span className="px-2.5 py-1 text-xs rounded-lg bg-stone-100 dark:bg-stone-800 border border-border text-muted">
                   Bộ thủ: <b className="font-chinese text-china-ink">{currentCard.word.radical}</b>
                 </span>
               )}
@@ -463,7 +463,7 @@ export default function ReviewPage() {
                 className={`px-2.5 py-1 rounded-lg text-xs font-bold border transition-colors cursor-pointer ${
                   autoAudio
                     ? "bg-china-red text-white border-china-red"
-                    : "bg-white text-muted border-border hover:text-china-ink"
+                    : "bg-card text-muted border-border hover:text-china-ink"
                 }`}
                 title="Tự động đọc khi hiện đáp án"
               >
@@ -473,7 +473,7 @@ export default function ReviewPage() {
                 type="button"
                 title="Nghe phát âm (Phím R)"
                 onClick={() => playAudio(currentCard.word.hanzi)}
-                className="w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center rounded-xl bg-white border border-border text-china-red hover:bg-china-red hover:text-white transition-colors active:scale-95 cursor-pointer shadow-2xs touch-manipulation"
+                className="w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center rounded-xl bg-card border border-border text-china-red hover:bg-china-red hover:text-white transition-colors active:scale-95 cursor-pointer shadow-2xs touch-manipulation"
               >
                 <Volume2 className="w-5 h-5" />
               </button>
@@ -533,7 +533,7 @@ export default function ReviewPage() {
                 {/* Phân loại & Link luyện viết */}
                 <div className="flex items-center justify-center gap-3 text-xs text-muted pt-0.5">
                   {currentCard.word.partOfSpeech && currentCard.word.partOfSpeech.length > 0 && (
-                    <span className="bg-white border border-border px-2 py-0.5 rounded-md font-medium text-china-ink">
+                    <span className="bg-card border border-border px-2 py-0.5 rounded-md font-medium text-china-ink">
                       {currentCard.word.partOfSpeech.join(", ")}
                     </span>
                   )}
@@ -567,7 +567,7 @@ export default function ReviewPage() {
                 <button
                   type="button"
                   onClick={() => handleResult("again")}
-                  className="flex flex-col items-center justify-between py-2.5 px-3 rounded-2xl border border-border/90 dark:border-[#382c47] bg-white dark:bg-[#1a1624] hover:border-china-red hover:bg-stone-50 dark:hover:bg-[#231d30] shadow-2xs transition-all duration-200 active:scale-95 cursor-pointer group"
+                  className="flex flex-col items-center justify-between py-2.5 px-3 rounded-2xl border border-border/90 dark:border-[#382c47] bg-card dark:bg-[#1a1624] hover:border-china-red hover:bg-stone-50 dark:hover:bg-[#231d30] shadow-2xs transition-all duration-200 active:scale-95 cursor-pointer group"
                 >
                   <div className="w-9 h-9 sm:w-10 sm:h-10 mb-1.5 transition-transform group-hover:scale-110">
                     <Image
@@ -595,7 +595,7 @@ export default function ReviewPage() {
                 <button
                   type="button"
                   onClick={() => handleResult("hard")}
-                  className="flex flex-col items-center justify-between py-2.5 px-3 rounded-2xl border border-border/90 dark:border-[#382c47] bg-white dark:bg-[#1a1624] hover:border-amber-400 hover:bg-stone-50 dark:hover:bg-[#231d30] shadow-2xs transition-all duration-200 active:scale-95 cursor-pointer group"
+                  className="flex flex-col items-center justify-between py-2.5 px-3 rounded-2xl border border-border/90 dark:border-[#382c47] bg-card dark:bg-[#1a1624] hover:border-amber-400 hover:bg-stone-50 dark:hover:bg-[#231d30] shadow-2xs transition-all duration-200 active:scale-95 cursor-pointer group"
                 >
                   <div className="w-9 h-9 sm:w-10 sm:h-10 mb-1.5 transition-transform group-hover:scale-110">
                     <Image
@@ -623,7 +623,7 @@ export default function ReviewPage() {
                 <button
                   type="button"
                   onClick={() => handleResult("good")}
-                  className="flex flex-col items-center justify-between py-2.5 px-3 rounded-2xl border border-border/90 dark:border-[#382c47] bg-white dark:bg-[#1a1624] hover:border-china-jade hover:bg-stone-50 dark:hover:bg-[#231d30] shadow-2xs transition-all duration-200 active:scale-95 cursor-pointer group"
+                  className="flex flex-col items-center justify-between py-2.5 px-3 rounded-2xl border border-border/90 dark:border-[#382c47] bg-card dark:bg-[#1a1624] hover:border-china-jade hover:bg-stone-50 dark:hover:bg-[#231d30] shadow-2xs transition-all duration-200 active:scale-95 cursor-pointer group"
                 >
                   <div className="w-9 h-9 sm:w-10 sm:h-10 mb-1.5 transition-transform group-hover:scale-110">
                     <Image
@@ -651,7 +651,7 @@ export default function ReviewPage() {
                 <button
                   type="button"
                   onClick={() => handleResult("easy")}
-                  className="flex flex-col items-center justify-between py-2.5 px-3 rounded-2xl border border-border/90 dark:border-[#382c47] bg-white dark:bg-[#1a1624] hover:border-china-gold hover:bg-stone-50 dark:hover:bg-[#231d30] shadow-2xs transition-all duration-200 active:scale-95 cursor-pointer group"
+                  className="flex flex-col items-center justify-between py-2.5 px-3 rounded-2xl border border-border/90 dark:border-[#382c47] bg-card dark:bg-[#1a1624] hover:border-china-gold hover:bg-stone-50 dark:hover:bg-[#231d30] shadow-2xs transition-all duration-200 active:scale-95 cursor-pointer group"
                 >
                   <div className="w-9 h-9 sm:w-10 sm:h-10 mb-1.5 transition-transform group-hover:scale-110">
                     <Image
