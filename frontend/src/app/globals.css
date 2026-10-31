@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-@variant dark (&:is(.dark, .dark *));
+@custom-variant dark (&:is(.dark, .dark *));
 
 :root {
   --background: #f8fafc; /* Nền xám mát dịu mắt, chống chói lóa */

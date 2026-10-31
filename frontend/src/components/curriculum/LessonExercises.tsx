@@ -249,7 +249,7 @@ export default function LessonExercises({
           className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition ${
             activeType === 'match'
               ? 'bg-china-red text-white shadow-xs'
-              : 'text-muted hover:text-china-ink hover:bg-white'
+              : 'text-muted hover:text-china-ink hover:bg-stone-100 dark:hover:bg-stone-800'
           }`}
         >
           <Puzzle className="w-3.5 h-3.5" />
@@ -262,7 +262,7 @@ export default function LessonExercises({
             className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition ${
               activeType === 'reorder'
                 ? 'bg-china-red text-white shadow-xs'
-                : 'text-muted hover:text-china-ink hover:bg-white'
+                : 'text-muted hover:text-china-ink hover:bg-stone-100 dark:hover:bg-stone-800'
             }`}
           >
             <Layers className="w-3.5 h-3.5" />
@@ -276,7 +276,7 @@ export default function LessonExercises({
             className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition ${
               activeType === 'quiz'
                 ? 'bg-china-red text-white shadow-xs'
-                : 'text-muted hover:text-china-ink hover:bg-white'
+                : 'text-muted hover:text-china-ink hover:bg-stone-100 dark:hover:bg-stone-800'
             }`}
           >
             <HelpCircle className="w-3.5 h-3.5" />
@@ -290,7 +290,7 @@ export default function LessonExercises({
             className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition ${
               activeType === 'listening'
                 ? 'bg-china-red text-white shadow-xs'
-                : 'text-muted hover:text-china-ink hover:bg-white'
+                : 'text-muted hover:text-china-ink hover:bg-stone-100 dark:hover:bg-stone-800'
             }`}
           >
             <Mic className="w-3.5 h-3.5" />
@@ -301,7 +301,7 @@ export default function LessonExercises({
 
       {/* EXERCISE 1: MATCHING PAIRS */}
       {activeType === 'match' && (
-        <div className="bg-white border border-border rounded-3xl p-6 shadow-xs space-y-6">
+        <div className="bg-card border border-border rounded-3xl p-6 shadow-xs space-y-6">
           <div className="flex items-center justify-between pb-3 border-b border-border">
             <div>
               <h3 className="text-base font-bold text-china-ink">
@@ -363,7 +363,7 @@ export default function LessonExercises({
                           ? 'bg-china-red text-white border-china-red scale-[1.02] shadow-md'
                           : matchError && isSelected
                           ? 'bg-red-100 border-red-400 text-red-700 animate-shake'
-                          : 'bg-china-paper/60 border-border hover:bg-white hover:border-china-red/50 text-china-ink'
+                          : 'bg-china-paper/60 border-border hover:bg-stone-100 dark:hover:bg-[#201a2e] hover:border-china-red/50 text-china-ink'
                       }`}
                     >
                       {w.hanzi}
@@ -393,7 +393,7 @@ export default function LessonExercises({
                           ? 'bg-china-red text-white border-china-red scale-[1.02] shadow-md'
                           : matchError && isSelected
                           ? 'bg-red-100 border-red-400 text-red-700 animate-shake'
-                          : 'bg-china-paper/60 border-border hover:bg-white hover:border-china-red/50 text-china-ink'
+                          : 'bg-china-paper/60 border-border hover:bg-stone-100 dark:hover:bg-[#201a2e] hover:border-china-red/50 text-china-ink'
                       }`}
                     >
                       <div className="flex items-center justify-between">
@@ -416,7 +416,7 @@ export default function LessonExercises({
 
       {/* EXERCISE 2: SENTENCE REORDER */}
       {activeType === 'reorder' && sentenceQuestions.length > 0 && (
-        <div className="bg-white border border-border rounded-3xl p-6 shadow-xs space-y-6">
+        <div className="bg-card border border-border rounded-3xl p-6 shadow-xs space-y-6">
           <div className="flex items-center justify-between pb-3 border-b border-border">
             <div>
               <h3 className="text-base font-bold text-china-ink">
@@ -494,7 +494,7 @@ export default function LessonExercises({
                 <button
                   key={idx}
                   onClick={() => handlePickToken(token, idx)}
-                  className="px-4 py-2.5 bg-white border border-border hover:border-china-red font-serif text-lg font-bold text-china-ink rounded-xl shadow-xs hover:bg-china-paper transition transform active:scale-95"
+                  className="px-4 py-2.5 bg-card border border-border hover:border-china-red font-serif text-lg font-bold text-china-ink rounded-xl shadow-xs hover:bg-stone-100 dark:hover:bg-stone-800 transition transform active:scale-95"
                 >
                   {token}
                 </button>
@@ -529,7 +529,7 @@ export default function LessonExercises({
               {reorderIndex + 1 < sentenceQuestions.length && (
                 <button
                   onClick={() => setReorderIndex((prev) => prev + 1)}
-                  className="px-3.5 py-2 bg-china-paper hover:bg-neutral-100 text-china-ink text-xs font-bold rounded-xl border border-border transition flex items-center gap-1"
+                  className="px-3.5 py-2 bg-china-paper hover:bg-neutral-100 dark:hover:bg-stone-800 text-china-ink text-xs font-bold rounded-xl border border-border transition flex items-center gap-1"
                 >
                   <span>Câu kế</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -542,7 +542,7 @@ export default function LessonExercises({
 
       {/* EXERCISE 3: MULTIPLE CHOICE QUIZ */}
       {activeType === 'quiz' && quizQuestions.length > 0 && (
-        <div className="bg-white border border-border rounded-3xl p-6 shadow-xs space-y-6">
+        <div className="bg-card border border-border rounded-3xl p-6 shadow-xs space-y-6">
           <div className="flex items-center justify-between pb-3 border-b border-border">
             <div>
               <h3 className="text-base font-bold text-china-ink">
@@ -671,7 +671,7 @@ export default function LessonExercises({
 
       {/* EXERCISE 4: LISTENING COMPREHENSION (听力) */}
       {activeType === 'listening' && (
-        <div className="bg-white border border-border rounded-3xl p-6 sm:p-8 shadow-xs space-y-6">
+        <div className="bg-card border border-border rounded-3xl p-6 sm:p-8 shadow-xs space-y-6">
           {listeningExercises && listeningExercises.length > 0 ? (
             /* TEXTBOOK AUTHENTIC LISTENING EXERCISE */
             <div className="space-y-6">
@@ -714,7 +714,7 @@ export default function LessonExercises({
               </div>
 
               {/* Question */}
-              <div className="p-4 bg-white border-2 border-border/80 rounded-2xl space-y-1">
+              <div className="p-4 bg-card border-2 border-border/80 rounded-2xl space-y-1">
                 <span className="text-xs font-bold text-muted uppercase">Câu hỏi:</span>
                 <p className="text-lg sm:text-xl font-bold font-serif text-china-ink">
                   {listeningExercises[lisIndex].question}
@@ -869,7 +869,7 @@ export default function LessonExercises({
                       playAudio(opt.hanzi)
                       handleSelectQuiz(opt.id)
                     }}
-                    className="p-5 bg-china-paper/60 border border-border hover:border-china-red hover:bg-white rounded-2xl text-center font-serif text-3xl font-bold text-china-ink transition shadow-xs"
+                    className="p-5 bg-china-paper/60 border border-border hover:border-china-red hover:bg-stone-100 dark:hover:bg-stone-800 rounded-2xl text-center font-serif text-3xl font-bold text-china-ink transition shadow-xs"
                   >
                     {opt.hanzi}
                   </button>

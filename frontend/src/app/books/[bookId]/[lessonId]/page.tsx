@@ -235,11 +235,11 @@ export default function LessonDetailPage() {
       </div>
 
       {/* Lesson Header Banner */}
-      <div className="bg-white border border-border rounded-2xl p-6 sm:p-7 shadow-xs">
+      <div className="bg-card border border-border rounded-2xl p-6 sm:p-7 shadow-xs">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-5">
           <div className="space-y-2 max-w-xl">
             <div className="flex items-center gap-2">
-              <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-neutral-100 text-slate-700">
+              <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-stone-100 dark:bg-stone-800 text-slate-700 dark:text-stone-300">
                 HSK {book?.level || 1} • Bài {lesson.lessonNumber}
               </span>
               <span className="text-xs text-muted font-chinese" lang="zh">
@@ -252,13 +252,13 @@ export default function LessonDetailPage() {
                 {lesson.title}
               </h1>
               {lesson.titlePinyin && (
-                <span className="text-sm sm:text-base text-slate-500 font-normal">
+                <span className="text-sm sm:text-base text-slate-500 dark:text-stone-400 font-normal">
                   {lesson.titlePinyin}
                 </span>
               )}
             </div>
 
-            <p className="text-sm text-slate-700 font-medium">
+            <p className="text-sm text-slate-700 dark:text-stone-300 font-medium">
               {lesson.titleVi}
             </p>
           </div>
@@ -266,16 +266,16 @@ export default function LessonDetailPage() {
           <div className="shrink-0 flex items-center gap-2.5">
             <button
               onClick={handleAddAllToReview}
-              className="flex items-center justify-center gap-2 px-3.5 py-2 rounded-xl bg-neutral-100 hover:bg-neutral-200 text-slate-800 text-xs font-semibold transition cursor-pointer"
+              className="flex items-center justify-center gap-2 px-3.5 py-2 rounded-xl bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 text-slate-800 dark:text-stone-200 text-xs font-semibold transition cursor-pointer"
             >
-              <Eye className="w-3.5 h-3.5 text-slate-600" />
+              <Eye className="w-3.5 h-3.5 text-slate-600 dark:text-stone-400" />
               <span>Thêm {lesson.vocabulary?.length || 0} từ vào Ôn tập</span>
             </button>
           </div>
         </div>
 
         {addedReviewStatus && (
-          <div className="mt-4 p-3 bg-neutral-50 border border-border rounded-xl text-xs text-slate-700 flex items-center justify-between">
+          <div className="mt-4 p-3 bg-neutral-50 dark:bg-stone-800/60 border border-border rounded-xl text-xs text-slate-700 dark:text-stone-300 flex items-center justify-between">
             <span className="font-medium">{addedReviewStatus}</span>
             <Link href="/review" className="underline font-semibold text-china-red">
               Xem danh sách ôn tập →
@@ -285,10 +285,10 @@ export default function LessonDetailPage() {
       </div>
 
       {/* Tiến độ bài học & thời gian */}
-      <div className="bg-white border border-border rounded-2xl p-4 sm:p-5 shadow-xs space-y-3.5">
+      <div className="bg-card border border-border rounded-2xl p-4 sm:p-5 shadow-xs space-y-3.5">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2 text-xs text-slate-700">
+            <div className="flex items-center gap-2 text-xs text-slate-700 dark:text-stone-300">
               <Clock className="w-3.5 h-3.5 text-muted shrink-0" />
               <span>Thời gian học:</span>
               <span className="font-bold text-china-ink font-mono">
@@ -307,15 +307,15 @@ export default function LessonDetailPage() {
             {progress.percent < 100 ? (
               <button
                 onClick={handleMarkComplete}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-neutral-100 hover:bg-neutral-200 text-slate-700 text-xs font-semibold transition cursor-pointer"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 text-slate-700 dark:text-stone-200 text-xs font-semibold transition cursor-pointer"
               >
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
                 <span>Đánh dấu hoàn thành</span>
               </button>
             ) : (
               <button
                 onClick={() => setProgress(saveLessonProgress(bookId, lessonId, { percent: 0, completedSections: [] }))}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-muted hover:text-slate-700 hover:bg-neutral-100 transition"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-muted hover:text-slate-700 dark:hover:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition"
               >
                 <RotateCw className="w-3 h-3" />
                 <span>Học lại</span>
@@ -334,8 +334,8 @@ export default function LessonDetailPage() {
                 onClick={() => handleToggleSection(sec.id)}
                 className={`flex items-center justify-between p-2 rounded-lg border text-xs font-medium transition cursor-pointer ${
                   isDone
-                    ? 'bg-neutral-50 border-slate-300 text-slate-800 font-semibold'
-                    : 'bg-white border-border/70 text-muted hover:border-slate-300 hover:text-slate-700'
+                    ? 'bg-stone-100 dark:bg-stone-800 border-slate-300 dark:border-stone-700 text-slate-800 dark:text-stone-200 font-semibold'
+                    : 'bg-card border-border/70 dark:border-stone-800 text-muted hover:border-slate-300 dark:hover:border-stone-600 hover:text-slate-700 dark:hover:text-stone-200'
                 }`}
                 title="Bấm để đánh dấu phần này"
               >
@@ -608,7 +608,7 @@ export default function LessonDetailPage() {
         {prevLesson ? (
           <Link
             href={`/books/${bookId}/${prevLesson.id}`}
-            className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-white border border-border hover:bg-neutral-50 text-xs font-semibold text-slate-700 transition"
+            className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-card border border-border dark:border-stone-700 hover:bg-stone-100 dark:hover:bg-stone-800 text-xs font-semibold text-slate-700 dark:text-stone-300 transition"
           >
             <ChevronLeft className="w-4 h-4" />
             <span>Bài trước: {prevLesson.title}</span>

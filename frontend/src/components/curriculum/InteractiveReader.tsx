@@ -105,7 +105,7 @@ export default function InteractiveReader({
   return (
     <div className="space-y-5 max-w-3xl mx-auto">
       {/* Reader Controls Toolbar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 bg-white border border-border rounded-2xl shadow-xs">
+      <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 bg-card border border-border rounded-2xl shadow-xs">
         {/* Switch View Tabs */}
         <div className="flex items-center gap-1.5 bg-china-paper p-1 rounded-xl border border-border/80">
           <button
@@ -165,7 +165,7 @@ export default function InteractiveReader({
       {/* TAB 1: ĐOẠN VĂN ĐỌC HIỂU (READING PASSAGE / 短文阅读) */}
       {/* ========================================================= */}
       {activeTab === 'passage' && (
-        <div className="bg-white border border-border rounded-3xl p-6 sm:p-8 shadow-xs space-y-6">
+        <div className="bg-card border border-border rounded-3xl p-6 sm:p-8 shadow-xs space-y-6">
           {readingPassage ? (
             <div className="space-y-6">
               {/* Passage Title & Audio Action */}
@@ -247,11 +247,11 @@ export default function InteractiveReader({
 
               {/* Vietnamese Translation */}
               {showTranslation && readingPassage.vietnamese && (
-                <div className="p-4 sm:p-5 rounded-2xl bg-white border border-border space-y-1.5">
+                <div className="p-4 sm:p-5 rounded-2xl bg-china-paper dark:bg-[#1a1624] border border-border space-y-1.5">
                   <span className="text-[11px] font-bold text-china-ink/70 uppercase tracking-wider block">
                     Bản dịch tiếng Việt tham khảo:
                   </span>
-                  <p className="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-700 dark:text-stone-300 font-medium leading-relaxed">
                     {readingPassage.vietnamese}
                   </p>
                 </div>
@@ -269,12 +269,12 @@ export default function InteractiveReader({
       {/* TAB 2: HỘI THOẠI PHÂN VAI (DIALOGUES / 课文对话) */}
       {/* ========================================================= */}
       {activeTab === 'dialogue' && (
-        <div className="bg-white border border-border rounded-3xl p-6 shadow-xs space-y-4">
+        <div className="bg-card border border-border rounded-3xl p-6 shadow-xs space-y-4">
           {dialogues && dialogues.length > 0 ? (
             dialogues.map((d, idx) => (
               <div
                 key={d.id || idx}
-                className="flex items-start gap-3.5 p-4 rounded-2xl bg-china-paper/60 border border-border/70 hover:bg-china-paper transition"
+                className="flex items-start gap-3.5 p-4 rounded-2xl bg-china-paper/60 dark:bg-[#15121e] border border-border/70 dark:border-[#382c47] hover:bg-china-paper dark:hover:bg-[#1c1828] transition"
               >
                 {d.role && (
                   <div className="px-2.5 py-1.5 rounded-xl bg-china-red/10 text-china-red border border-china-red/20 font-serif font-bold text-xs shrink-0 whitespace-nowrap">
@@ -312,7 +312,7 @@ export default function InteractiveReader({
                     <button
                       type="button"
                       onClick={() => playAudio(d.chinese)}
-                      className="w-10 h-10 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center text-muted hover:text-china-red hover:bg-white active:bg-china-red/10 active:text-china-red transition shrink-0 touch-manipulation cursor-pointer"
+                      className="w-10 h-10 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center text-muted hover:text-china-red hover:bg-china-paper dark:hover:bg-white/10 active:bg-china-red/10 active:text-china-red transition shrink-0 touch-manipulation cursor-pointer"
                       title="Nghe câu này"
                       aria-label="Phát âm câu này"
                     >
@@ -327,7 +327,7 @@ export default function InteractiveReader({
                   )}
 
                   {showTranslation && d.vietnamese && (
-                    <p className="text-xs font-medium text-slate-700 dark:text-slate-300 pt-0.5 leading-relaxed">
+                    <p className="text-xs font-medium text-slate-700 dark:text-stone-300 pt-0.5 leading-relaxed">
                       {d.vietnamese}
                     </p>
                   )}
