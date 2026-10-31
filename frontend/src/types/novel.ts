@@ -3,6 +3,7 @@ export interface NovelChapter {
   chapterNumber: number
   title: string
   paragraphs: string[]
+  translations?: string[] // Bản dịch tiếng Việt tương ứng theo từng câu/đoạn
   charCount: number
 }
 

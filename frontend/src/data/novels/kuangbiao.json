@@ -1,0 +1,105 @@
+{
+  "id": "cuong-phong",
+  "title": "Cuồng Phong (The Knockout)",
+  "chineseTitle": "狂飙",
+  "pinyinTitle": "Kuáng Biāo",
+  "author": "Từ Kỷ Chu (徐纪周)",
+  "category": "Hành động • Trinh thám hình sự • Đô thị hiện thực",
+  "tags": [
+    "Trending",
+    "Hình sự",
+    "Trinh thám",
+    "Hành động",
+    "Hiện thực xã hội",
+    "Kịch tính"
+  ],
+  "level": "HSK 3-5",
+  "coverUrl": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80",
+  "description": "Hiện tượng truyền hình và văn học trinh thám hình sự chấn động màn ảnh. Cuộc đấu trí cân não kéo dài hơn hai thập kỷ giữa viên cảnh sát hình sự chính trực An Hân và ông trùm thế giới ngầm Cao Khải Cường - người từng bước sa ngã từ một kẻ bán cá nghèo hèn trở thành kẻ thao túng cả thành phố Kinh Hải.",
+  "totalChapters": 3,
+  "totalWords": 4120,
+  "chapters": [
+    {
+      "id": 1,
+      "chapterNumber": 1,
+      "title": "第 1 章 菜市场的除夕夜",
+      "charCount": 1340,
+      "paragraphs": [
+        "两千年的除夕夜，京海市旧厂街菜市场在一片喧嚣与泥泞中迎来了新春。",
+        "鱼档摊位前，三十多岁的高启强正把双手浸泡在冰冷刺骨的水盆里，熟练地抓起一条活鲤鱼开膛破肚。他的棉袄磨得发亮，双手生满了冻疮，脸上挂着卑微而讨好的笑容。",
+        "市场管理员唐小龙和唐小虎兄弟晃晃悠悠地走了过来，冷冷地敲了敲摊位的铁皮：“老高，明年摊位重新抽签，你这位置可是风水宝地，不少人盯着呢。”",
+        "高启强心里一紧，连忙擦了擦手，陪着笑脸掏出一盒皱巴巴的香烟递过去：“龙哥，虎哥，我弟弟妹妹还要读大学，全家就指着这个鱼摊糊口，你们抬抬贵手……”",
+        "唐小龙一把推开香烟，嗤笑了一声：“老高，现在都什么年代了？光嘴甜顶什么用，连台彩电都买不起，就别怪规矩不留情面。”",
+        "为了保住赖以生存的摊位，高启强咬牙花光积蓄买了一台等离子电视送到唐家，却被唐家兄弟当场羞辱并推下楼梯，电视机摔了个粉碎。",
+        "混乱中双方动了手，满脸是血的高启强被押送进了旧厂街派出所。",
+        "审讯室里，年轻的刑警安欣推门走了进来。看着蹲在墙角瑟瑟发抖、鼻青脸肿的高启强，安欣没有严厉喝斥，而是默默给他倒了一杯冒着热气的白开水，又从食堂端来了一碗热腾腾的猪脚面。",
+        "“大年三十，先吃口热饭吧。”安欣轻声说道。",
+        "那一碗热气腾腾的猪脚面，在除夕夜的寒风中温暖了高启强冰冷的胃，也彻底改变了这两个人往后二十年的命运轨道。"
+      ],
+      "translations": [
+        "Đêm giao thừa năm 2000, khu chợ nông sản phố Cũ thành phố Kinh Hải đón chào năm mới giữa một vùng huyên náo lầy lội.",
+        "Trước quầy bán cá, Cao Khải Cường ngoài ba mươi tuổi đang ngâm đôi bàn tay trong chậu nước lạnh buốt thấu xương, thuần thục tóm lấy một con cá chép sống mổ bụng cạo vảy. Chiếc áo bông chần của anh ta đã sờn bóng mép, đôi bàn tay mọc đầy mụt buốt đông, trên mặt luôn nở nụ cười hèn mọn lấy lòng.",
+        "Anh em quản lý chợ Đường Tiểu Long và Đường Tiểu Hổ lắc lư bước lại gần, gõ cộc cộc lên tấm tôn quầy hàng: 'Lão Cao, sang năm quầy hàng phải bốc thăm lại đấy, vị trí này của anh là khu đất vàng, bao nhiêu con mắt đang nhòm ngó đấy nhé.'",
+        "Cao Khải Cường thót tim một cái, vội vàng lau tay lên tạp dề, cười xòa móc ra bao thuốc lá nhăn nhúm chìa sang: 'Anh Long, anh Hổ, hai đứa em trai em gái tôi còn phải học đại học, cả nhà chỉ trông chờ vào sạp cá này kiếm miếng cơm, hai anh giơ cao đánh khẽ giúp tôi với...'",
+        "Đường Tiểu Long gạt phắt bao thuốc lá, khẩy môi cười nhạt: 'Lão Cao, thời buổi nào rồi? Miệng ngọt thì giải quyết được cái tích sự gì, đến cái tivi màu còn chẳng mua nổi thì đừng trách quy củ không nể tình.'",
+        "Để giữ lại sạp cá mưu sinh duy nhất của gia đình, Cao Khải Cường cắn răng vét sạch tiền tiết kiệm mua một chiếc tivi màn hình phẳng mang tới nhà họ Đường, nào ngờ lại bị hai anh em họ Đường sỉ nhục thậm tệ và xô ngã xuống cầu thang, chiếc tivi vỡ vụn tan tành.",
+        "Trong lúc hỗn loạn hai bên đã xô xát ẩu đả, Cao Khải Cường mặt mày bê bết máu bị áp giải về đồn công an phố Cũ.",
+        "Trong phòng thẩm vấn, chàng cảnh sát hình sự trẻ tuổi An Hân đẩy cửa bước vào. Trông thấy Cao Khải Cường đang ngồi thu lu nơi góc tường run bần bật với gương mặt bầm dập, An Hân không hề quát tháo nạt nộ, mà lặng lẽ rót cho anh ta một ly nước sôi bốc khói, rồi từ căng tin bưng vào một bát mì móng giò nóng hổi thơm phức.",
+        "'Đêm ba mươi Tết, ăn miếng cơm nóng cho ấm người đã.' An Hân khẽ khàng bảo.",
+        "Bát mì móng giò nghi ngút khói ấy đã sưởi ấm chiếc dạ dày giá lạnh của Cao Khải Cường giữa đêm đông giao thừa buốt giá, và cũng làm thay đổi hoàn toàn quỹ đạo số phận của hai con người ấy trong suốt hai mươi năm đằng đẵng về sau."
+      ]
+    },
+    {
+      "id": 2,
+      "chapterNumber": 2,
+      "title": "第 2 章 狐假虎威的转折",
+      "charCount": 1380,
+      "paragraphs": [
+        "从派出所出来的那天清晨，安欣亲自送高启强回旧厂街菜市场。",
+        "身为烈士遗孤的安欣，身后站着京海市公安局的两位副局长。当市场里横行霸道的唐家兄弟看到安欣开着警车、亲切地拍着高启强的肩膀道别时，整条街的商贩全都震惊了。",
+        "唐小龙的脸色瞬间变了，点头哈腰地凑了过来：“强哥！原来你上头有这么硬的公安关系，怎么早不跟兄弟打声招呼啊！”",
+        "高启强愣在原地，原本准备好的卑微求饶全都卡在了喉咙里。他第一次尝到了被别人敬畏、被尊称为“强哥”的滋味。",
+        "虚荣与自保的本能，让他选择没有去澄清这个美丽的误会。他开始阅读安欣推荐给他的《孙子兵法》，一步步学习如何洞察人性、如何借力打力。",
+        "不久后，音像店老板徐雷意外触电身亡，把高启强彻底卷入了涉黑集团的血雨腥风之中。面对黑恶势力头目徐江的步步紧逼，高启强凭借着缜密的心理战术和过人的胆识，在生死边缘绝处逢生。",
+        "安欣多次找到高启强谈话，目光中满是担忧与警惕：“高启强，选择走正道，什么时候都不晚。”",
+        "高启强避开了年轻警察清澈锐利的眼神，点燃了一支烟，声音平淡而沙哑：“安警官，有些人一出生就在罗马，可有些人连活下去都得拼尽全力。”"
+      ],
+      "translations": [
+        "Sáng sớm hôm bước ra khỏi đồn công an, đích thân An Hân đã lái xe đưa Cao Khải Cường trở lại khu chợ phố Cũ.",
+        "Là con trai của liệt sĩ công an, đứng sau lưng An Hân là hai vị Phó Cục trưởng Công an thành phố Kinh Hải. Khi hai anh em họ Đường vốn lộng hành ngang ngược trong chợ nhìn thấy An Hân lái xe cảnh sát, lại ân cần vỗ vai Cao Khải Cường chào tạm biệt, cả con phố tiểu thương thảy đều chấn động kinh ngạc.",
+        "Sắc mặt Đường Tiểu Long lập tức biến đổi hoàn toàn, khúm núm cúi đầu chạy lon ton tới gần: 'Anh Cường! Hóa ra bên trên anh có mối quan hệ công an vững như bàn thạch thế này, sao anh không nói sớm một tiếng với anh em chứ!'",
+        "Cao Khải Cường sững sờ chôn chân tại chỗ, những lời van xin hèn mọn chuẩn bị sẵn trong đầu thảy đều nghẹn ứ nơi cuống họng. Lần đầu tiên trong đời, anh ta nếm trải được tư vị được người khác kính sợ, được người ta cung kính gọi một tiếng 'Anh Cường'.",
+        "Bản năng hư vinh và khao khát tự vệ đã khiến anh ta chọn cách không lên tiếng đính chính hiểu lầm đẹp đẽ này. Anh ta bắt đầu đọc cuốn 《Tôn Tử Binh Pháp》 mà An Hân từng giới thiệu, từng bước học cách thấu hiểu nhân tâm, học cách mượn sức đánh sức.",
+        "Chẳng bao lâu sau, Từ Lôi - con trai của ông trùm băng nhóm xã hội đen Từ Giang - bất ngờ gặp tai nạn điện giật tử vong, kéo Cao Khải Cường cuốn sâu vào vòng xoáy gió tanh mưa máu của giới giang hồ ngầm. Đứng trước sự truy sát gắt gao của Từ Giang, Cao Khải Cường bằng vào tâm lý chiến chặt chẽ và lá gan hơn người đã tìm được đường sống ngay giữa lằn ranh sinh tử.",
+        "An Hân đã nhiều lần tìm gặp Cao Khải Cường khuyên nhủ, trong ánh mắt ngập tràn sự âu lo và cảnh giác: 'Cao Khải Cường, lựa chọn quay lại con đường chính đạo, không bao giờ là quá muộn cả.'",
+        "Cao Khải Cường né tránh ánh nhìn trong trẻo mà sắc sảo của người cảnh sát trẻ, châm một điếu thuốc lá, giọng nói bình thản mà khản đặc: 'Cảnh sát An à, có những người vừa sinh ra đã ở sẵn vạch đích La Mã, nhưng cũng có những kẻ chỉ để sống sót qua ngày thôi cũng phải liều mạng bằng tất cả những gì mình có.'"
+      ]
+    },
+    {
+      "id": 3,
+      "chapterNumber": 3,
+      "title": "第 3 章 二十年后的正邪对决",
+      "charCount": 1400,
+      "paragraphs": [
+        "转眼二十年过去，京海市早已高楼林立，旧貌换了新颜。",
+        "当年的卖鱼贩高启强，如今摇身一变成为了强盛集团的董事局主席、市政协委员，出行保镖随行，在京海呼风唤雨、一手遮天。然而在那张儒雅随和的笑脸背后，是用无数罪恶与白骨筑起的金权帝国。",
+        "而曾经意气风发、满腔热血的刑警安欣，在长达二十年的黑恶势力围剿与保护伞打压下，满头青丝化作了苍苍白发。他没有结婚，没有晋升，甚至被边缘化到了宣传科，但他那双眼睛依旧如鹰隼般敏锐执着。",
+        "省扫黑督导组进驻京海的那一天，漫天阴霾渐渐散开。",
+        "在一家老字号的肠粉店里，安欣与高启强再次面对面坐了下来。桌上摆着两份肠粉，两碗清汤，宛如二十年前派出所里的那一幕。",
+        "“高启强，收手吧。天网恢恢，疏而不漏。”满头白发的安欣平静地注视着眼前这个曾经被他同情过的男人。",
+        "高启强慢条斯理地拌着肠粉，眼中闪过一丝疲惫与狠戾：“安欣，这二十年来我走得太快，早就没有退路了。”",
+        "黑夜终将过去，狂飙的罪恶必将受到法律的正义审判。两个横跨二十年的宿敌，在京海这片土地上，迎来了最终的黎明对决。"
+      ],
+      "translations": [
+        "Thấm thoắt hai mươi năm trôi qua, thành phố Kinh Hải giờ đây nhà cao tầng mọc lên như nấm, thay da đổi thịt hoàn toàn.",
+        "Gã bán cá Cao Khải Cường năm nào nay đã lột xác trở thành Chủ tịch Hội đồng Quản trị Tập đoàn Cường Thịnh, Ủy viên Chính hiệp thành phố, mỗi bước đi đều có vệ sĩ hộ tống, một tay che trời thâu tóm cả Kinh Hải. Thế nhưng đằng sau nụ cười nho nhã hiền hòa ấy là cả một đế chế kim tiền được dựng nên từ vô số tội ác và xương máu đồng loại.",
+        "Còn người cảnh sát hình sự An Hân từng tràn trề nhiệt huyết và hăng hái năm xưa, trải qua hai thập kỷ bị các thế lực ngầm và ô dù bao che chèn ép bóp nghẹt, mái tóc xanh biếc ngày nào nay đã bạc trắng như sương mai. Anh không lập gia đình, không màng thăng quan tiến chức, thậm chí bị điều chuyển sang ban tuyên truyền ngoài lề, thế nhưng đôi mắt anh vẫn kiên định và sắc bén hệt như chim ưng rình mồi.",
+        "Ngày đoàn thanh tra chống tội phạm có tổ chức của tỉnh tiến vào Kinh Hải, bầu trời u ám nhiều năm cuối cùng cũng hé lộ những tia nắng quang đãng.",
+        "Tại một quán bánh cuốn ruột heo lâu năm trên phố, An Hân và Cao Khải Cường lại một lần nữa ngồi đối diện nhau. Trên bàn bày hai đĩa bánh cuốn, hai bát canh thanh đạm, hệt như khung cảnh trong đồn công an hai mươi năm về trước.",
+        "'Cao Khải Cường, dừng tay lại đi thôi. Lưới trời lồng lộng, tuy thưa mà khó lọt.' Người cảnh sát tóc bạc trắng An Hân bình thản nhìn chăm chú vào người đàn ông từng được anh thương cảm năm xưa.",
+        "Cao Khải Cường chậm rãi trộn đều đĩa bánh cuốn, trong đáy mắt thoáng qua một tia mỏi mệt xen lẫn hung hãn: 'An Hân à, hai mươi năm qua tôi đã đi quá nhanh rồi, căn bản sớm đã không còn đường lui nữa.'",
+        "Màn đêm đen tối cuối cùng cũng phải lùi xa, cơn cuồng phong tội ác chắc chắn sẽ phải đón nhận sự phán quyết công minh của lưỡi gươm pháp luật. Hai kỳ phùng địch thủ giằng co suốt hai thập kỷ, trên mảnh đất Kinh Hải này, rốt cuộc cũng đón chào cuộc quyết đấu sau cùng khi ánh bình minh ló dạng."
+      ]
+    }
+  ]
+}

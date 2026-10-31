@@ -22,6 +22,7 @@ import { LeafVineCornerSvg, FoliageEdgeBorder } from "@/components/roadmap/VineB
 export default function StoriesPage() {
   const [selectedNovel, setSelectedNovel] = useState<Novel | null>(null)
   const [searchQuery, setSearchQuery] = useState("")
+  const [selectedTag, setSelectedTag] = useState<string>("all")
   const [savedProgress, setSavedProgress] = useState<Record<string, number>>({})
 
   // Load saved progress for novels
@@ -44,6 +45,13 @@ export default function StoriesPage() {
   }, [])
 
   const filteredNovels = NOVELS.filter((n) => {
+    if (selectedTag !== "all") {
+      const hasTag = n.tags.some(
+        (t) => t.toLowerCase() === selectedTag.toLowerCase()
+      )
+      if (!hasTag) return false
+    }
+
     const q = searchQuery.toLowerCase().trim()
     if (!q) return true
     return (
@@ -96,20 +104,20 @@ export default function StoriesPage() {
           </div>
 
           <h1 className="text-xl sm:text-2xl lg:text-3xl font-serif font-black tracking-tight leading-snug text-stone-900 dark:text-stone-100">
-            Tủ Truyện Ngôn Tình • Đọc Đến Đâu Nạp Từ Đến Đó
+            Tủ Truyện Song Ngữ • Đọc Đến Đâu Nạp Từ Đến Đó
           </h1>
 
           <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 leading-relaxed">
-            Đọc tiểu thuyết nguyên tác chuẩn bản xứ được tuyển chọn từ các tác phẩm kinh điển.{" "}
+            Tuyển chọn các tác phẩm ngôn tình &amp; hiện thực ăn khách nhất (Vụng Trộm Không Thể Giấu, Khó Dỗ Dành, Cuồng Phong...).{" "}
             <span className="font-semibold text-stone-900 dark:text-stone-100">
               Bôi đen hoặc chạm vào từ bất kỳ để đối chiếu với kho 11,470 từ vựng và nạp thẳng vào hàng chờ ôn tập SRS!
             </span>
           </p>
 
-          <div className="flex items-center gap-3 pt-1 text-xs text-stone-500 dark:text-stone-400">
+          <div className="flex items-center gap-3 pt-1 text-xs text-stone-500 dark:text-stone-400 flex-wrap">
             <span className="flex items-center gap-1 font-medium">
               <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-              100% Văn bản Full (Đầy đủ 51 chương)
+              Có bản dịch câu đọc nhanh
             </span>
             <span>•</span>
             <span className="flex items-center gap-1 font-medium">
@@ -133,25 +141,49 @@ export default function StoriesPage() {
           </div>
           <div className="text-xs max-w-[130px] leading-tight text-stone-500 dark:text-stone-400">
             <p className="font-bold text-stone-900 dark:text-stone-100 mb-0.5">Tiểu Lu đọc sách</p>
-            <p className="text-[11px]">Vừa đọc ngôn tình vừa nạp từ vựng cực kỳ cuốn hút!</p>
+            <p className="text-[11px]">Vừa đọc truyện hay vừa nạp từ vựng cực kỳ cuốn hút!</p>
           </div>
         </div>
       </div>
 
-      {/* Search Bar */}
-      <div className="flex items-center justify-between gap-3 bg-white dark:bg-[#1a1a24] p-3.5 sm:p-4 rounded-2xl border border-stone-200/90 dark:border-[#2c2d3d] shadow-xs">
-        <div className="relative flex-1 max-w-md">
+      {/* Filter Tabs & Search Bar */}
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-white dark:bg-[#1a1a24] p-3.5 sm:p-4 rounded-2xl border border-stone-200/90 dark:border-[#2c2d3d] shadow-xs">
+        {/* Category Filter Pills */}
+        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
+          {[
+            { id: "all", label: "Tất cả" },
+            { id: "Trending", label: "Đang Hot 🔥" },
+            { id: "Ngôn tình", label: "Ngôn tình" },
+            { id: "Đô thị", label: "Đô thị" },
+            { id: "Trinh thám", label: "Trinh thám" },
+          ].map((tab) => {
+            const isActive = selectedTag === tab.id
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setSelectedTag(tab.id)}
+                className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
+                  isActive
+                    ? "bg-emerald-600 text-white shadow-2xs"
+                    : "bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300 hover:bg-stone-200 dark:hover:bg-stone-700"
+                }`}
+              >
+                {tab.label}
+              </button>
+            )
+          })}
+        </div>
+
+        {/* Search Bar */}
+        <div className="relative flex-1 max-w-xs">
           <Search className="w-4 h-4 text-stone-400 absolute left-3 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Tìm tên truyện, tác giả, thể loại..."
-            className="w-full pl-9 pr-3.5 py-2 rounded-xl border border-stone-200 dark:border-[#2c2d3d] text-xs focus:outline-none focus:ring-1 focus:ring-emerald-600 bg-white dark:bg-[#16161f] text-stone-900 dark:text-stone-100"
+            placeholder="Tìm tên truyện, tác giả..."
+            className="w-full pl-9 pr-3.5 py-1.5 rounded-xl border border-stone-200 dark:border-[#2c2d3d] text-xs focus:outline-none focus:ring-1 focus:ring-emerald-600 bg-white dark:bg-[#16161f] text-stone-900 dark:text-stone-100"
           />
-        </div>
-        <div className="text-xs text-stone-500 dark:text-stone-400">
-          Có <b>{filteredNovels.length}</b> tác phẩm
         </div>
       </div>
 
