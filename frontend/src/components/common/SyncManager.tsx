@@ -6,6 +6,7 @@ import { installSrsSyncHooks, syncSrsNow } from "@/utils/srsCloudSync"
 import { syncSubscriptionWithCloud } from "@/utils/subscription"
 import { syncCollectionsWithCloud } from "@/utils/bonusCloudSync"
 import { installLessonProgressSyncHooks, syncLessonProgressWithCloud } from "@/utils/lessonProgressSync"
+import { autoSeedWordsForUser } from "@/utils/autoSeedWords"
 
 /**
  * Mount 1 lần trong layout: giữ gói cước, từ vựng SRS & bộ thẻ Bonus luôn đồng bộ
@@ -59,6 +60,18 @@ export default function SyncManager() {
         // 4. Đồng bộ bộ thẻ từ vựng mở rộng Bonus
         if (!cancelled) {
           await syncCollectionsWithCloud(uid)
+        }
+
+        // 5. Tự động lấy từ vựng nếu tài khoản chưa có từ (chưa có tiến độ / người dùng mới hoặc hằng ngày)
+        if (!cancelled) {
+          const seedResult = await autoSeedWordsForUser(uid)
+          if (seedResult.addedCount > 0 && seedResult.message) {
+            window.dispatchEvent(
+              new CustomEvent("hsk-auto-seeded", {
+                detail: seedResult,
+              })
+            )
+          }
         }
 
         if (!cancelled) {

@@ -20,6 +20,8 @@ import { getHanViet } from "@/utils/hanviet"
 import { playChineseAudio } from "@/utils/audioTts"
 import { RoadmapCard } from "@/components/roadmap/RoadmapCard"
 import { RoadmapWizardModal } from "@/components/roadmap/RoadmapWizardModal"
+import { useAuth } from "@/contexts/AuthContext"
+import { autoSeedWordsForUser } from "@/utils/autoSeedWords"
 
 const PROVERBS = [
   { cn: "千里之行，始于足下", pinyin: "Qiān lǐ zhī xíng, shǐ yú zú xià", en: "A journey of a thousand miles begins with a single step" },
@@ -45,6 +47,7 @@ const getYesterdayDateStr = (): string => {
 }
 
 export default function Dashboard() {
+  const { user } = useAuth()
   const [wordCount, setWordCount] = useState(0)
   const [wordReview, setWordReview] = useState(0)
   const [reviews, setReviews] = useState<ReviewItem[]>([])
@@ -102,7 +105,23 @@ export default function Dashboard() {
   const loadData = async () => {
     // High-performance index count: takes <1ms instead of loading 5,000 words into memory
     const totalWordCount = await db.words.count()
-    const allReviews = await reviewRepository.getAll()
+    let allReviews = await reviewRepository.getAll()
+
+    // Tự động lấy từ khi người dùng chưa có từ nào trong kho ôn tập (chưa có tiến độ / người dùng mới)
+    if (allReviews.length === 0 && totalWordCount > 0) {
+      try {
+        const seedResult = await autoSeedWordsForUser(user?.id)
+        if (seedResult.addedCount > 0) {
+          allReviews = await reviewRepository.getAll()
+          if (seedResult.message) {
+            setStreakToast(seedResult.message)
+            setTimeout(() => setStreakToast(null), 4000)
+          }
+        }
+      } catch (err) {
+        console.warn("Auto-seed words error:", err)
+      }
+    }
 
     setReviews(allReviews)
     setWordCount(totalWordCount)
@@ -374,6 +393,29 @@ export default function Dashboard() {
     // Set random proverb
     setProverb(PROVERBS[Math.floor(Math.random() * PROVERBS.length)])
   }, [])
+
+  useEffect(() => {
+    const handleAutoSeeded = (e: Event) => {
+      const customEvent = e as CustomEvent
+      if (customEvent.detail && customEvent.detail.message) {
+        setStreakToast(customEvent.detail.message)
+        setTimeout(() => setStreakToast(null), 4000)
+      }
+      loadData()
+    }
+
+    const handleWordsUpdated = () => {
+      loadData()
+    }
+
+    window.addEventListener("hsk-auto-seeded", handleAutoSeeded)
+    window.addEventListener("hsk-words-updated", handleWordsUpdated)
+
+    return () => {
+      window.removeEventListener("hsk-auto-seeded", handleAutoSeeded)
+      window.removeEventListener("hsk-words-updated", handleWordsUpdated)
+    }
+  }, [user?.id])
 
   const learning = reviews.filter(r => r.status === "learning").length
   const review = reviews.filter(r => r.status === "review").length
