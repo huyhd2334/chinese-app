@@ -162,7 +162,7 @@ export default function ShadowingPage() {
             { id: "hsk1", label: "HSK 1-2" },
             { id: "hsk2", label: "HSK 2-3" },
             { id: "hsk3", label: "HSK 3-4" },
-            { id: "hsk4", label: "HSK 4+" },
+            { id: "hsk4", label: "HSK 4-5" },
           ].map((tab) => (
             <button
               key={tab.id}

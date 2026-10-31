@@ -3544,4 +3544,774 @@ export const SHADOWING_VIDEOS: ShadowingVideo[] = [
       }
     ]
   }
+,
+{
+    "id": "hsk1-panda-100-sentences",
+    "title": "Luyện nghe HSK 1: 100 câu cơ bản chậm rõ (Panda Chinese)",
+    "level": "HSK 1-2",
+    "levelBadgeColor": "text-emerald-700 bg-emerald-50 dark:bg-emerald-950/40 border-emerald-300",
+    "duration": "22:33",
+    "category": "Giao tiếp đời sống",
+    "description": "100 câu giao tiếp nền tảng trình độ HSK 1 với tốc độ đọc chậm rãi, phát âm rõ ràng từng thanh mẫu, vận mẫu và thanh điệu chuẩn bản xứ.",
+    "youtubeId": "EI2UvLKvlEU",
+    "sentencesCount": 15,
+    "isFree": true,
+    "sentences": [
+      {
+        "id": 1,
+        "startTime": 0,
+        "endTime": 5.5,
+        "speaker": "Người bản xứ",
+        "chinese": "你好！",
+        "pinyin": "Nǐ hǎo!",
+        "vietnamese": "Xin chào!"
+      },
+      {
+        "id": 2,
+        "startTime": 5.5,
+        "endTime": 12,
+        "speaker": "Người bản xứ",
+        "chinese": "你叫什么名字？",
+        "pinyin": "Nǐ jiào shénme míngzi?",
+        "vietnamese": "Bạn tên là gì?"
+      },
+      {
+        "id": 3,
+        "startTime": 12,
+        "endTime": 18.5,
+        "speaker": "Người bản xứ",
+        "chinese": "我叫李明，很高兴认识你。",
+        "pinyin": "Wǒ jiào Lǐ Míng, hěn gāoxìng rènshì nǐ.",
+        "vietnamese": "Tôi tên là Lý Minh, rất vui được quen biết bạn."
+      },
+      {
+        "id": 4,
+        "startTime": 18.5,
+        "endTime": 25,
+        "speaker": "Người bản xứ",
+        "chinese": "你是哪国人？",
+        "pinyin": "Nǐ shì nǎ guó rén?",
+        "vietnamese": "Bạn là người nước nào?"
+      },
+      {
+        "id": 5,
+        "startTime": 25,
+        "endTime": 32,
+        "speaker": "Người bản xứ",
+        "chinese": "我是越南人，我学习汉语。",
+        "pinyin": "Wǒ shì Yuènán rén, wǒ xuéxí hànyǔ.",
+        "vietnamese": "Tôi là người Việt Nam, tôi học tiếng Trung."
+      },
+      {
+        "id": 6,
+        "startTime": 32,
+        "endTime": 39.5,
+        "speaker": "Người bản xứ",
+        "chinese": "你今天忙不忙？",
+        "pinyin": "Nǐ jīntiān máng bù máng?",
+        "vietnamese": "Hôm nay bạn có bận không?"
+      },
+      {
+        "id": 7,
+        "startTime": 39.5,
+        "endTime": 47,
+        "speaker": "Người bản xứ",
+        "chinese": "我今天不太忙，我有时间。",
+        "pinyin": "Wǒ jīntiān bú tài máng, wǒ yǒu shíjiān.",
+        "vietnamese": "Hôm nay tôi không bận lắm, tôi có thời gian."
+      },
+      {
+        "id": 8,
+        "startTime": 47,
+        "endTime": 55,
+        "speaker": "Người bản xứ",
+        "chinese": "现在几点了？",
+        "pinyin": "Xiànzài jǐ diǎn le?",
+        "vietnamese": "Bây giờ là mấy giờ rồi?"
+      },
+      {
+        "id": 9,
+        "startTime": 55,
+        "endTime": 63,
+        "speaker": "Người bản xứ",
+        "chinese": "现在是上午十点半。",
+        "pinyin": "Xiànzài shì shàngwǔ shí diǎn bàn.",
+        "vietnamese": "Bây giờ là mười giờ rưỡi sáng."
+      },
+      {
+        "id": 10,
+        "startTime": 63,
+        "endTime": 72,
+        "speaker": "Người bản xứ",
+        "chinese": "你想吃什么？",
+        "pinyin": "Nǐ xiǎng chī shénme?",
+        "vietnamese": "Bạn muốn ăn món gì?"
+      },
+      {
+        "id": 11,
+        "startTime": 72,
+        "endTime": 80,
+        "speaker": "Người bản xứ",
+        "chinese": "我想吃中国菜，米饭和面条都可以。",
+        "pinyin": "Wǒ xiǎng chī zhōngguó cài, mǐfàn hé miàntiáo dōu kěyǐ.",
+        "vietnamese": "Tôi muốn ăn món Trung Quốc, cơm hay mì sợi đều được."
+      },
+      {
+        "id": 12,
+        "startTime": 80,
+        "endTime": 89,
+        "speaker": "Người bản xứ",
+        "chinese": "这个苹果多少钱一斤？",
+        "pinyin": "Zhège píngguǒ duōshao qián yì jīn?",
+        "vietnamese": "Táo này bao nhiêu tiền một cân?"
+      },
+      {
+        "id": 13,
+        "startTime": 89,
+        "endTime": 97,
+        "speaker": "Người bản xứ",
+        "chinese": "太贵了，便宜一点儿吧。",
+        "pinyin": "Tài guì le, piányi yìdiǎnr ba.",
+        "vietnamese": "Đắt quá rồi, bớt một chút đi mà."
+      },
+      {
+        "id": 14,
+        "startTime": 97,
+        "endTime": 106,
+        "speaker": "Người bản xứ",
+        "chinese": "谢谢你的帮助！",
+        "pinyin": "Xièxie nǐ de bāngzhù!",
+        "vietnamese": "Cảm ơn sự giúp đỡ của bạn!"
+      },
+      {
+        "id": 15,
+        "startTime": 106,
+        "endTime": 115,
+        "speaker": "Người bản xứ",
+        "chinese": "不客气，明天见！",
+        "pinyin": "Bú kèqi, míngtiān jiàn!",
+        "vietnamese": "Đừng khách sáo, ngày mai gặp lại nhé!"
+      }
+    ]
+  },
+  {
+    "id": "hsk1-ankhahy-daily-dialogues",
+    "title": "Hội thoại ngắn HSK 1 chuẩn giáo trình (An Khả Hy)",
+    "level": "HSK 1-2",
+    "levelBadgeColor": "text-emerald-700 bg-emerald-50 dark:bg-emerald-950/40 border-emerald-300",
+    "duration": "15:51",
+    "category": "Giao tiếp đời sống",
+    "description": "Chuỗi đối thoại tình huống thực tế chuẩn giáo trình HSK 1, âm điệu nhẹ nhàng truyền cảm, giúp tai quen với ngữ điệu nói tự nhiên của người bản xứ.",
+    "youtubeId": "cADmN8CU7HY",
+    "sentencesCount": 12,
+    "isFree": true,
+    "sentences": [
+      {
+        "id": 1,
+        "startTime": 0,
+        "endTime": 6,
+        "speaker": "A",
+        "chinese": "请问，你在做什么呢？",
+        "pinyin": "Qǐngwèn, nǐ zài zuò shénme ne?",
+        "vietnamese": "Xin hỏi, bạn đang làm gì đấy?"
+      },
+      {
+        "id": 2,
+        "startTime": 6,
+        "endTime": 13,
+        "speaker": "B",
+        "chinese": "我在看书呢，这本书非常有意思。",
+        "pinyin": "Wǒ zài kàn shū ne, zhè běn shū fēicháng yǒu yìsi.",
+        "vietnamese": "Tôi đang đọc sách, cuốn sách này vô cùng thú vị."
+      },
+      {
+        "id": 3,
+        "startTime": 13,
+        "endTime": 20,
+        "speaker": "A",
+        "chinese": "明天天气怎么样？会下雨吗？",
+        "pinyin": "Míngtiān tiānqì zěnmeyàng? Huì xiàyǔ ma?",
+        "vietnamese": "Thời tiết ngày mai thế nào? Có mưa không?"
+      },
+      {
+        "id": 4,
+        "startTime": 20,
+        "endTime": 28,
+        "speaker": "B",
+        "chinese": "天气预报说明天是晴天，不冷也不热。",
+        "pinyin": "Tiānqì yùbào shuō míngtiān shì qíngtiān, bù lěng yě bú rè.",
+        "vietnamese": "Dự báo thời tiết nói ngày mai trời nắng, không lạnh cũng không nóng."
+      },
+      {
+        "id": 5,
+        "startTime": 28,
+        "endTime": 36,
+        "speaker": "A",
+        "chinese": "你认识前面那个人吗？",
+        "pinyin": "Nǐ rènshi qiánmiàn nàge rén ma?",
+        "vietnamese": "Bạn có quen người ở phía trước kia không?"
+      },
+      {
+        "id": 6,
+        "startTime": 36,
+        "endTime": 44,
+        "speaker": "B",
+        "chinese": "认识，那是我们学校的汉语老师。",
+        "pinyin": "Rènshi, nà shì wǒmen xuéxiào de hànyǔ lǎoshī.",
+        "vietnamese": "Quen chứ, đó là giáo viên tiếng Trung của trường chúng tôi."
+      },
+      {
+        "id": 7,
+        "startTime": 44,
+        "endTime": 52,
+        "speaker": "A",
+        "chinese": "他教汉语教得非常好。",
+        "pinyin": "Tā jiāo hànyǔ jiāo de fēicháng hǎo.",
+        "vietnamese": "Thầy ấy dạy tiếng Trung rất hay."
+      },
+      {
+        "id": 8,
+        "startTime": 52,
+        "endTime": 61,
+        "speaker": "A",
+        "chinese": "你喜欢喝茶还是喝咖啡？",
+        "pinyin": "Nǐ xǐhuan hē chá háishi hē kāfēi?",
+        "vietnamese": "Bạn thích uống trà hay uống cà phê?"
+      },
+      {
+        "id": 9,
+        "startTime": 61,
+        "endTime": 70,
+        "speaker": "B",
+        "chinese": "我喜欢喝茶，尤其是绿茶。",
+        "pinyin": "Wǒ xǐhuan hē chá, yóuqí shì lǜchá.",
+        "vietnamese": "Tôi thích uống trà, đặc biệt là trà xanh."
+      },
+      {
+        "id": 10,
+        "startTime": 70,
+        "endTime": 79,
+        "speaker": "A",
+        "chinese": "昨天下午你去哪儿了？",
+        "pinyin": "Zuótiān xiàwǔ nǐ qù nǎr le?",
+        "vietnamese": "Chiều hôm qua bạn đã đi đâu thế?"
+      },
+      {
+        "id": 11,
+        "startTime": 79,
+        "endTime": 88,
+        "speaker": "B",
+        "chinese": "我和朋友一起去商店买衣服了。",
+        "pinyin": "Wǒ hé péngyou yìqǐ qù shāngdiàn mǎi yīfu le.",
+        "vietnamese": "Tôi cùng bạn đi đến cửa hàng mua quần áo."
+      },
+      {
+        "id": 12,
+        "startTime": 88,
+        "endTime": 98,
+        "speaker": "A",
+        "chinese": "这件衣服很漂亮，也很适合你。",
+        "pinyin": "Zhè jiàn yīfu hěn piàoliang, yě hěn shìhé nǐ.",
+        "vietnamese": "Bộ quần áo này rất đẹp, cũng rất hợp với bạn."
+      }
+    ]
+  },
+  {
+    "id": "hsk1-weekend-sunny-ruan",
+    "title": "Cuối tuần bạn thường làm gì? 周末你经常做什么？ (Sunny Ruan)",
+    "level": "HSK 1-2",
+    "levelBadgeColor": "text-emerald-700 bg-emerald-50 dark:bg-emerald-950/40 border-emerald-300",
+    "duration": "8:02",
+    "category": "Giao tiếp đời sống",
+    "description": "Podcast tiếng Trung giao tiếp chủ đề ngày nghỉ cuối tuần từ Sunny Ruan, câu ngắn rõ ràng, tốc độ vừa phải giúp rèn phản xạ nói trôi chảy.",
+    "youtubeId": "pAr6bcn71Nc",
+    "sentencesCount": 10,
+    "isFree": true,
+    "sentences": [
+      {
+        "id": 1,
+        "startTime": 0,
+        "endTime": 7,
+        "speaker": "Sunny",
+        "chinese": "周末你经常做什么？",
+        "pinyin": "Zhōumò nǐ jīngcháng zuò shénme?",
+        "vietnamese": "Cuối tuần bạn thường làm những gì?"
+      },
+      {
+        "id": 2,
+        "startTime": 7,
+        "endTime": 15,
+        "speaker": "Khách mời",
+        "chinese": "周末我经常在家里睡觉或者看电影。",
+        "pinyin": "Zhōumò wǒ jīngcháng zài jiālǐ shuìjiào huòzhě kàn diànyǐng.",
+        "vietnamese": "Cuối tuần tôi thường ở nhà ngủ nướng hoặc xem phim."
+      },
+      {
+        "id": 3,
+        "startTime": 15,
+        "endTime": 23,
+        "speaker": "Sunny",
+        "chinese": "你喜欢去运动或者去公园跑步吗？",
+        "pinyin": "Nǐ xǐhuan qù yùndòng huòzhě qù gōngyuán pǎobù ma?",
+        "vietnamese": "Bạn có thích đi tập thể thao hoặc ra công viên chạy bộ không?"
+      },
+      {
+        "id": 4,
+        "startTime": 23,
+        "endTime": 32,
+        "speaker": "Khách mời",
+        "chinese": "有时候会去，但如果下雨我就留在家里看书。",
+        "pinyin": "Yǒushíhou huì qù, dàn rúguǒ xiàyǔ wǒ jiù liú zài jiālǐ kàn shū.",
+        "vietnamese": "Đôi khi cũng có đi, nhưng nếu trời mưa thì tôi ở lại trong nhà đọc sách."
+      },
+      {
+        "id": 5,
+        "startTime": 32,
+        "endTime": 40,
+        "speaker": "Sunny",
+        "chinese": "这个周末你有什么特别的打算吗？",
+        "pinyin": "Zhège zhōumò nǐ yǒu shénme tèbié de dǎsuàn ma?",
+        "vietnamese": "Cuối tuần này bạn có dự định đặc biệt gì không?"
+      },
+      {
+        "id": 6,
+        "startTime": 40,
+        "endTime": 49,
+        "speaker": "Khách mời",
+        "chinese": "我打算和几个老朋友一起去吃火锅。",
+        "pinyin": "Wǒ dǎsuàn hé jǐ gè lǎo péngyou yìqǐ qù chī huǒguō.",
+        "vietnamese": "Tôi dự định cùng mấy người bạn cũ đi ăn lẩu."
+      },
+      {
+        "id": 7,
+        "startTime": 49,
+        "endTime": 58,
+        "speaker": "Sunny",
+        "chinese": "听起来真不错，那家火锅店好吃吗？",
+        "pinyin": "Tīng qǐlái zhēn búcuò, nà jiā huǒguō diàn hǎochī ma?",
+        "vietnamese": "Nghe tuyệt thật đấy, quán lẩu đó có ngon không?"
+      },
+      {
+        "id": 8,
+        "startTime": 58,
+        "endTime": 68,
+        "speaker": "Khách mời",
+        "chinese": "非常好吃，而且服务态度也特别热情。",
+        "pinyin": "Fēicháng hǎochī, érqiě fúwù tàidu yě tèbié rèqíng.",
+        "vietnamese": "Rất ngon, hơn nữa thái độ phục vụ cũng cực kỳ nhiệt tình."
+      },
+      {
+        "id": 9,
+        "startTime": 68,
+        "endTime": 78,
+        "speaker": "Sunny",
+        "chinese": "祝你周末过得开心愉快！",
+        "pinyin": "Zhù nǐ zhōumò guò de kāixīn yúkuài!",
+        "vietnamese": "Chúc bạn có một kỳ nghỉ cuối tuần vui vẻ thoải mái!"
+      },
+      {
+        "id": 10,
+        "startTime": 78,
+        "endTime": 88,
+        "speaker": "Khách mời",
+        "chinese": "谢谢你，也祝你周末愉快！",
+        "pinyin": "Xièxie nǐ, yě zhù nǐ zhōumò yúkuài!",
+        "vietnamese": "Cảm ơn bạn, cũng chúc bạn cuối tuần vui vẻ nhé!"
+      }
+    ]
+  },
+  {
+    "id": "hsk3-hasu-100-dialogues",
+    "title": "100 câu đối thoại HSK 3: Rèn phản xạ tự nhiên (Hasu)",
+    "level": "HSK 3-4",
+    "levelBadgeColor": "text-blue-700 bg-blue-50 dark:bg-blue-950/40 border-blue-300",
+    "duration": "15:50",
+    "category": "Giao tiếp đời sống",
+    "description": "Chuỗi đối thoại giao tiếp HSK 3 thực tế thường gặp hàng ngày, giúp tăng tốc độ phản xạ miệng, phát âm chuẩn ngữ điệu và tự tin nói tiếng Trung.",
+    "youtubeId": "s-YvdaMeaFU",
+    "sentencesCount": 10,
+    "isFree": false,
+    "sentences": [
+      {
+        "id": 1,
+        "startTime": 0,
+        "endTime": 7.5,
+        "speaker": "Hasu A",
+        "chinese": "你好，请问附近有地铁站吗？",
+        "pinyin": "Nǐ hǎo, qǐngwèn fùjìn yǒu dìtiě zhàn ma?",
+        "vietnamese": "Xin chào, cho hỏi gần đây có ga tàu điện ngầm nào không?"
+      },
+      {
+        "id": 2,
+        "startTime": 7.5,
+        "endTime": 15,
+        "speaker": "Hasu B",
+        "chinese": "往前走大概两百米，过马路就是了。",
+        "pinyin": "Wǎng qián zǒu dàgài liǎng bǎi mǐ, guò mǎlù jiù shì le.",
+        "vietnamese": "Đi thẳng về phía trước khoảng 200 mét, qua đường là đến rồi."
+      },
+      {
+        "id": 3,
+        "startTime": 15,
+        "endTime": 24,
+        "speaker": "Hasu A",
+        "chinese": "今天的会议几点开始？在哪个会议室？",
+        "pinyin": "Jīntiān de huìyì jǐ diǎn kāishǐ? Zài nǎge huìyìshì?",
+        "vietnamese": "Cuộc họp hôm nay mấy giờ bắt đầu? Ở phòng họp nào vậy?"
+      },
+      {
+        "id": 4,
+        "startTime": 24,
+        "endTime": 33,
+        "speaker": "Hasu B",
+        "chinese": "下午两点半开始，在三楼的三零二会议室。",
+        "pinyin": "Xiàwǔ liǎng diǎn bàn kāishǐ, zài sān lóu de sān líng èr huìyìshì.",
+        "vietnamese": "Hai giờ rưỡi chiều bắt đầu, ở phòng họp 302 trên tầng 3."
+      },
+      {
+        "id": 5,
+        "startTime": 33,
+        "endTime": 43,
+        "speaker": "Hasu A",
+        "chinese": "你感冒好点儿了吗？有没有去看医生？",
+        "pinyin": "Nǐ gǎnmào hǎo diǎnr le ma? Yǒu méiyǒu qù kàn yīshēng?",
+        "vietnamese": "Bệnh cảm cúm của bạn đã đỡ hơn chút nào chưa? Đã đi khám bác sĩ chưa?"
+      },
+      {
+        "id": 6,
+        "startTime": 43,
+        "endTime": 53,
+        "speaker": "Hasu B",
+        "chinese": "吃了药已经好多了，谢谢你的关心。",
+        "pinyin": "Chī le yào yǐjīng hǎoduō le, xièxie nǐ de guānxīn.",
+        "vietnamese": "Uống thuốc xong đã đỡ nhiều rồi, cảm ơn sự quan tâm của bạn nhé."
+      },
+      {
+        "id": 7,
+        "startTime": 53,
+        "endTime": 64,
+        "speaker": "Hasu A",
+        "chinese": "你打算什么时候去中国旅游？",
+        "pinyin": "Nǐ dǎsuàn shénme shíhou qù Zhōngguó lǚyóu?",
+        "vietnamese": "Bạn dự định khi nào sẽ đi du lịch Trung Quốc?"
+      },
+      {
+        "id": 8,
+        "startTime": 64,
+        "endTime": 74,
+        "speaker": "Hasu B",
+        "chinese": "我计划明年春天去，那时候天气最舒服。",
+        "pinyin": "Wǒ jìhuà míngnián chūntiān qù, nà shíhou tiānqì zuì shūfu.",
+        "vietnamese": "Tôi lên kế hoạch đi vào mùa xuân năm sau, lúc đó thời tiết dễ chịu nhất."
+      },
+      {
+        "id": 9,
+        "startTime": 74,
+        "endTime": 85,
+        "speaker": "Hasu A",
+        "chinese": "这道题你明白了吗？需要我再讲一遍吗？",
+        "pinyin": "Zhè dào tí nǐ míngbai le ma? Xūyào wǒ zài jiǎng yí biàn ma?",
+        "vietnamese": "Câu hỏi này bạn đã hiểu chưa? Có cần tôi giảng lại một lần nữa không?"
+      },
+      {
+        "id": 10,
+        "startTime": 85,
+        "endTime": 96,
+        "speaker": "Hasu B",
+        "chinese": "我已经完全听懂了，非常感谢你的耐心解答。",
+        "pinyin": "Wǒ yǐjīng wánquán tīng dǒng le, fēicháng gǎnxiè nǐ de nàixīn jiědá.",
+        "vietnamese": "Tôi đã hoàn toàn nghe hiểu rồi, vô cùng cảm ơn sự giải đáp kiên nhẫn của bạn."
+      }
+    ]
+  },
+  {
+    "id": "hsk3-eat-slowly-podcast",
+    "title": "慢慢吃，对身体好！Ăn chậm tốt cho sức khỏe (Chinese Podcast)",
+    "level": "HSK 3-4",
+    "levelBadgeColor": "text-blue-700 bg-blue-50 dark:bg-blue-950/40 border-blue-300",
+    "duration": "14:27",
+    "category": "Ẩm thực & Mua sắm",
+    "description": "Podcast thú vị khám phá thói quen ăn uống, sức khỏe và văn hóa, từ vựng và cấu trúc ngữ pháp HSK 3-4 tự nhiên bản xứ.",
+    "youtubeId": "wZDej3Logc4",
+    "sentencesCount": 6,
+    "isFree": false,
+    "sentences": [
+      {
+        "id": 1,
+        "startTime": 0,
+        "endTime": 7.5,
+        "speaker": "Người dẫn",
+        "chinese": "很多人因为工作太忙，吃饭总是吃得特别快。",
+        "pinyin": "Hěnduō rén yīnwèi gōngzuò tài máng, chīfàn zǒngshì chī de tèbié kuài.",
+        "vietnamese": "Rất nhiều người vì công việc quá bận rộn nên ăn cơm lúc nào cũng ăn cực kỳ nhanh."
+      },
+      {
+        "id": 2,
+        "startTime": 7.5,
+        "endTime": 16,
+        "speaker": "Người dẫn",
+        "chinese": "其实医学专家告诉我们，吃得太快对胃并不好。",
+        "pinyin": "Qíshí yīxué zhuānjiā gàosu wǒmen, chī de tài kuài duì wèi bìng bù hǎo.",
+        "vietnamese": "Thực ra các chuyên gia y tế nhắc nhở chúng ta rằng, ăn quá nhanh không hề tốt cho dạ dày."
+      },
+      {
+        "id": 3,
+        "startTime": 16,
+        "endTime": 25,
+        "speaker": "Người dẫn",
+        "chinese": "细嚼慢咽不仅有助于消化，还能让你更好地品尝食物的味道。",
+        "pinyin": "Xìjiáo mànyàn bùjǐn yǒuzhùyú xiāohuà, hái néng ràng nǐ gèng hǎo de pǐncháng shíwù de wèidao.",
+        "vietnamese": "Nhai kỹ nuốt chậm không chỉ giúp hỗ trợ tiêu hóa, mà còn giúp bạn thưởng thức trọn vẹn hương vị món ăn."
+      },
+      {
+        "id": 4,
+        "startTime": 25,
+        "endTime": 35,
+        "speaker": "Người dẫn",
+        "chinese": "在中国传统文化里，“慢慢吃”也是一种对客人的礼貌用语。",
+        "pinyin": "Zài Zhōngguó chuántǒng wénhuà lǐ, “mànmàn chī” yě shì yì zhǒng duì kèrén de lǐmào yòngyǔ.",
+        "vietnamese": "Trong văn hóa truyền thống Trung Hoa, “ăn từ từ thôi” cũng là một câu nói lịch sự bày tỏ sự hiếu khách."
+      },
+      {
+        "id": 5,
+        "startTime": 35,
+        "endTime": 45,
+        "speaker": "Người dẫn",
+        "chinese": "养成健康的饮食习惯，是保持身体健康的重要一步。",
+        "pinyin": "Yǎngchéng jiànkāng de yǐnshí xíguàn, shì bǎochí shēntǐ jiànkāng de zhòngyào yí bù.",
+        "vietnamese": "Rèn luyện thói quen ăn uống lành mạnh là bước quan trọng để duy trì một cơ thể khỏe mạnh."
+      },
+      {
+        "id": 6,
+        "startTime": 45,
+        "endTime": 56,
+        "speaker": "Người dẫn",
+        "chinese": "每天按时吃饭，少吃油腻的食物，身体才会越来越好。",
+        "pinyin": "Měitiān ànshí chīfàn, shǎo chī yóunì de shíwù, shēntǐ cái huì yuè lái yuè hǎo.",
+        "vietnamese": "Hàng ngày ăn cơm đúng giờ, hạn chế đồ dầu mỡ, cơ thể mới ngày càng khỏe khoắn hơn."
+      }
+    ]
+  },
+  {
+    "id": "hsk3-diet-and-health-hasu",
+    "title": "饮食习惯与健康 – Thói quen ăn uống & Sức khỏe (Hasu)",
+    "level": "HSK 3-4",
+    "levelBadgeColor": "text-blue-700 bg-blue-50 dark:bg-blue-950/40 border-blue-300",
+    "duration": "28:54",
+    "category": "Ẩm thực & Mua sắm",
+    "description": "Chuyên đề luyện nói và phản xạ về chế độ dinh dưỡng, sức khỏe theo phương pháp Shadowing chuẩn cho kỳ thi HSK và HSKK.",
+    "youtubeId": "lJ-47T2h1YM",
+    "sentencesCount": 5,
+    "isFree": false,
+    "sentences": [
+      {
+        "id": 1,
+        "startTime": 0,
+        "endTime": 8,
+        "speaker": "Hasu",
+        "chinese": "拥有良好的饮食习惯对于现代人来说至关重要。",
+        "pinyin": "Yōngyǒu liánghǎo de yǐnshí xíguàn duìyú xiàndàirén láishuō zhìguān zhòngyào.",
+        "vietnamese": "Xây dựng thói quen ăn uống tốt đối với người hiện đại có ý nghĩa vô cùng quan trọng."
+      },
+      {
+        "id": 2,
+        "startTime": 8,
+        "endTime": 17,
+        "speaker": "Hasu",
+        "chinese": "很多年轻人经常熬夜，而且不吃早餐，这非常损害身体健康。",
+        "pinyin": "Hěnduō niánqīngrén jīngcháng áoyè, érqiě bù chī zǎocān, zhè fēicháng sǔnhài shēntǐ jiànkāng.",
+        "vietnamese": "Rất nhiều bạn trẻ thường xuyên thức khuya, lại không chịu ăn sáng, điều này làm tổn hại nghiêm trọng đến sức khỏe."
+      },
+      {
+        "id": 3,
+        "startTime": 17,
+        "endTime": 27,
+        "speaker": "Hasu",
+        "chinese": "我们应该多吃新鲜蔬菜和水果，保证充足的维生素摄入。",
+        "pinyin": "Wǒmen yīnggāi duō chī xīnxiān shūcài hé shuǐguǒ, bǎozhèng chōngzú de wéishēngsù shèrù.",
+        "vietnamese": "Chúng ta nên ăn nhiều rau củ quả tươi sạch để đảm bảo nạp đủ lượng vitamin cần thiết."
+      },
+      {
+        "id": 4,
+        "startTime": 27,
+        "endTime": 37,
+        "speaker": "Hasu",
+        "chinese": "除了合理膳食之外，每天坚持适量运动同样必不可少。",
+        "pinyin": "Chúle hélǐ shànshí zhīwài, měitiān jiānchí shìliàng yùndòng tóngyàng bì bù kě shǎo.",
+        "vietnamese": "Bên cạnh chế độ ăn uống hợp lý, kiên trì tập luyện thể thao điều độ mỗi ngày cũng là điều không thể thiếu."
+      },
+      {
+        "id": 5,
+        "startTime": 37,
+        "endTime": 48,
+        "speaker": "Hasu",
+        "chinese": "只要我们长期坚持科学的生活方式，精神状态就会充满活力。",
+        "pinyin": "Zhǐyào wǒmen chángqī jiānchí kēxué de shēnghuó fāngshì, jīngshén zhuàngtài jiù huì chōngmǎn huólì.",
+        "vietnamese": "Chỉ cần kiên trì lối sống khoa học lâu dài, tinh thần của chúng ta sẽ luôn tràn đầy năng lượng và sức sống."
+      }
+    ]
+  },
+  {
+    "id": "hsk5-wolf-is-coming-speaking",
+    "title": "Ngụ ngôn: 狼来了 Sói Đến Rồi (Shadowing HSK 4-5)",
+    "level": "HSK 4+",
+    "levelBadgeColor": "text-purple-700 bg-purple-50 dark:bg-purple-950/40 border-purple-300",
+    "duration": "7:19",
+    "category": "Phim hoạt hình ngắn",
+    "description": "Câu chuyện ngụ ngôn chú bé chăn cừu kinh điển với giọng kể giàu cảm xúc, chuyển đổi linh hoạt giữa lời thoại và lời dẫn chuyện, rất tốt cho nhại giọng HSK 4-5.",
+    "youtubeId": "eJWg13Ujtrk",
+    "sentencesCount": 10,
+    "isFree": false,
+    "sentences": [
+      {
+        "id": 1,
+        "startTime": 0,
+        "endTime": 7.5,
+        "speaker": "Người kể chuyện",
+        "chinese": "从前，在一个小山村里，住着一个放羊的小男孩。",
+        "pinyin": "Cóngqián, zài yí gè xiǎo shāncūn lǐ, zhùzhe yí gè fàngyáng de xiǎo nánhái.",
+        "vietnamese": "Ngày xưa, ở một ngôi làng miền núi nọ, có một cậu bé làm nghề chăn cừu sinh sống."
+      },
+      {
+        "id": 2,
+        "startTime": 7.5,
+        "endTime": 16,
+        "speaker": "Người kể chuyện",
+        "chinese": "每天赶着羊群上山吃草，小男孩觉得日子过得非常无聊。",
+        "pinyin": "Měitiān gǎnzhe yángqún shàngshān chī cǎo, xiǎo nánhái juéde rìzi guò de fēicháng wúliáo.",
+        "vietnamese": "Mỗi ngày đều lùa đàn cừu lên núi gặm cỏ, cậu bé cảm thấy chuỗi ngày trôi qua thật buồn chán và tẻ nhạt."
+      },
+      {
+        "id": 3,
+        "startTime": 16,
+        "endTime": 25.5,
+        "speaker": "Người kể chuyện",
+        "chinese": "有一天，他灵机一动，突然冲着山下的村民大声呼救。",
+        "pinyin": "Yǒu yì tiān, tā língjī yí dòng, tūrán chòngzhe shān xià de cūnmín dàshēng hūjiù.",
+        "vietnamese": "Một ngày nọ, cậu nảy ra một ý định tinh quái, bèn hướng về phía dân làng dưới chân núi hô to cầu cứu."
+      },
+      {
+        "id": 4,
+        "startTime": 25.5,
+        "endTime": 35,
+        "speaker": "Cậu bé chăn cừu",
+        "chinese": "“狼来了！狼来了！救命啊，狼要吃羊了！”",
+        "pinyin": "“Láng lái le! Láng lái le! Jiùmìng a, láng yào chī yáng le!”",
+        "vietnamese": "“Sói đến rồi! Sói đến rồi! Cứu với, chó sói sắp ăn thịt cừu rồi!”"
+      },
+      {
+        "id": 5,
+        "startTime": 35,
+        "endTime": 45,
+        "speaker": "Người kể chuyện",
+        "chinese": "正在地里劳作的村民们听到喊声，连忙拿起锄头赶上了山。",
+        "pinyin": "Zhèngzài dì lǐ láozuò de cūnmínmen tīngdào hǎnshēng, liánmáng náqǐ chútóu gǎn shàng le shān.",
+        "vietnamese": "Dân làng đang làm lụng ngoài đồng nghe thấy tiếng hét liền vội vàng vác cuốc vội vã chạy lên núi."
+      },
+      {
+        "id": 6,
+        "startTime": 45,
+        "endTime": 55,
+        "speaker": "Người kể chuyện",
+        "chinese": "可是到了山上，他们只见到了羊群，根本没有看到狼的踪影。",
+        "pinyin": "Kěshì dào le shānshàng, tāmen zhǐ jiàndào le yángqún, gēnběn méiyǒu kàndào láng de zōngyǐng.",
+        "vietnamese": "Thế nhưng khi lên tới đỉnh núi, họ chỉ thấy đàn cừu đang gặm cỏ, tuyệt nhiên chẳng thấy bóng dáng con sói nào cả."
+      },
+      {
+        "id": 7,
+        "startTime": 55,
+        "endTime": 66,
+        "speaker": "Người kể chuyện",
+        "chinese": "男孩见大家被骗得团团转，忍不住捧腹大笑。",
+        "pinyin": "Nánhái jiàn dàjiā bèi piàn de tuántuán zhuàn, rěnbúzhù pěngfù dàxiào.",
+        "vietnamese": "Cậu bé thấy mọi người bị lừa một vố tơi bời liền ôm bụng cười ngặt nghẽo khoái chí."
+      },
+      {
+        "id": 8,
+        "startTime": 66,
+        "endTime": 77,
+        "speaker": "Người kể chuyện",
+        "chinese": "过了几天，真正的恶狼终于从茂密的树林里窜了出来。",
+        "pinyin": "Guò le jǐ tiān, zhēnzhèng de èláng zhōngyú cóng màomì de shùlín lǐ cuàn le chūlái.",
+        "vietnamese": "Mấy ngày sau, một con sói hung dữ thực sự rốt cuộc đã lao ra từ cánh rừng rậm rạp."
+      },
+      {
+        "id": 9,
+        "startTime": 77,
+        "endTime": 88,
+        "speaker": "Cậu bé chăn cừu",
+        "chinese": "男孩吓得浑身发抖，声嘶力竭地再次呼救，却再也没有人相信他了。",
+        "pinyin": "Nánhái xià de húnshēn fādǒu, shēngsī lìjié de zàicì hūjiù, què zài yě méiyǒu rén xiāngxìn tā le.",
+        "vietnamese": "Cậu bé sợ hãi run rẩy khắp người, gào thét khản cả giọng để cầu cứu, nhưng chẳng còn ai tin lời cậu nữa."
+      },
+      {
+        "id": 10,
+        "startTime": 88,
+        "endTime": 99,
+        "speaker": "Người kể chuyện",
+        "chinese": "这个故事告诫我们，诚实是立身之本，说谎者终将自食其果。",
+        "pinyin": "Zhège gùshi gàojiè wǒmen, chéngshí shì lìshēn zhī běn, shuōhuǎng zhě zhōng jiāng zì shí qí guǒ.",
+        "vietnamese": "Câu chuyện này răn dạy chúng ta rằng: Trung thực là gốc rễ làm người, kẻ dối trá cuối cùng sẽ tự gánh lấy hậu quả."
+      }
+    ]
+  },
+  {
+    "id": "hsk5-advanced-reflex-hasu",
+    "title": "Luyện phản xạ & nghe chuyên sâu HSK 5 (Hasu)",
+    "level": "HSK 4+",
+    "levelBadgeColor": "text-purple-700 bg-purple-50 dark:bg-purple-950/40 border-purple-300",
+    "duration": "26:51",
+    "category": "Công sở & Phỏng vấn",
+    "description": "Hội thoại và độc thoại tốc độ tự nhiên, cấu trúc câu phức, thành ngữ và từ vựng nâng cao HSK 5 giúp bứt phá khẩu ngữ thành thạo.",
+    "youtubeId": "aF98y_frqZg",
+    "sentencesCount": 5,
+    "isFree": false,
+    "sentences": [
+      {
+        "id": 1,
+        "startTime": 0,
+        "endTime": 9,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "在当今日新月异的职场竞争中，持续学习是一项不可或缺的核心能力。",
+        "pinyin": "Zài dāngjīn rìxīnyuèyì de zhíchǎng jìngzhēng zhōng, chíxù xuéxí shì yì xiàng bùkě huòquē de héxīn nénglì.",
+        "vietnamese": "Trong cuộc cạnh tranh nơi công sở thay đổi từng ngày như hiện nay, không ngừng học hỏi là một năng lực cốt lõi không thể thiếu."
+      },
+      {
+        "id": 2,
+        "startTime": 9,
+        "endTime": 19.5,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "面对突如其来的危机与挑战，团队领导者需要保持清晰冷静的判断力。",
+        "pinyin": "Miànduì tūrúqílái de wēijī yǔ tiǎozhàn, tuánduì lǐngdǎozhě xūyào bǎochí qīngxī lěngjìng de pànduànlì.",
+        "vietnamese": "Đứng trước những khủng hoảng và thách thức ập đến bất ngờ, người lãnh đạo đội ngũ cần duy trì năng lực phán đoán tỉnh táo và sáng suốt."
+      },
+      {
+        "id": 3,
+        "startTime": 19.5,
+        "endTime": 30.5,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "只有深入了解客户的真实需求，我们才能在商业谈判中争取到最大的共赢空间。",
+        "pinyin": "Zhǐyǒu shēnrù liǎojiě kèhù de zhēnshí xūqiú, wǒmen cái néng zài shāngyè tánpàn zhōng zhēngqǔ dào zuì dà de gòngyíng kōngjiān.",
+        "vietnamese": "Chỉ khi thấu hiểu sâu sắc nhu cầu thực tế của khách hàng, chúng ta mới có thể giành được dư địa hợp tác đôi bên cùng có lợi lớn nhất trong đàm phán thương mại."
+      },
+      {
+        "id": 4,
+        "startTime": 30.5,
+        "endTime": 42,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "克服焦虑最有效的方法并非盲目担忧，而是脚踏实地将注意力集中在当下可控的事情上。",
+        "pinyin": "Kèfú jiāolǜ zuì yǒuxiào de fāngfǎ bìng fēi mángmù dānyōu, ér shì jiǎotàshídì jiāng zhùyìlì jízhōng zài dāngxià kěkòng de shìqing shàng.",
+        "vietnamese": "Cách hiệu quả nhất để khắc phục âu lo không phải là lo lắng mù quáng, mà là vững vàng tập trung sự chú ý vào những việc có thể kiểm soát được trong hiện tại."
+      },
+      {
+        "id": 5,
+        "startTime": 42,
+        "endTime": 54,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "无论从事何种行业，严谨负责的态度与卓越的执行力都是取得长远发展的基石。",
+        "pinyin": "Wúlùn cóngshì hé zhǒng hángyè, yánjǐn fùzé de tàidu yǔ zhuóyuè de zhíxínglì dōu shì qǔdé chángyuǎn fāzhǎn de jīshí.",
+        "vietnamese": "Bất kể làm việc trong ngành nghề nào, thái độ cẩn trọng trách nhiệm và năng lực thực thi xuất sắc đều là nền tảng để đạt được sự phát triển bền vững lâu dài."
+      }
+    ]
+  }
 ];
