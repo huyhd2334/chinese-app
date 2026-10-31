@@ -35,7 +35,7 @@ export default function RoadmapDetailPage() {
   }
 
   return (
-    <div className="min-h-screen bg-transparent p-4 sm:p-6 md:p-8 space-y-6 max-w-5xl mx-auto">
+    <div className="min-h-screen bg-transparent p-4 sm:p-6 md:p-8 space-y-6 max-w-5xl mx-auto pb-24">
       {/* Top Navigation Bar */}
       <div className="flex items-center justify-between pb-3 border-b border-border/60">
         <Link 

@@ -117,8 +117,9 @@ export function generateRoadmapMilestones(input: RoadmapSetupInput): RoadmapMile
 export async function computeRoadmapStats(customRoadmap?: UserRoadmap | null): Promise<RoadmapStats> {
   const roadmap = customRoadmap !== undefined ? customRoadmap : getStoredRoadmap()
 
-  // Mặc định mục tiêu HSK 1 nếu người dùng chưa thiết lập lộ trình
-  const targetLevel: HskLevelNumber = roadmap?.targetLevel || 1
+  // Mặc định mục tiêu và trình độ khởi điểm
+  const startLevel = Math.max(0, roadmap?.startLevel ?? 0)
+  const targetLevel: HskLevelNumber = roadmap?.targetLevel || (startLevel > 0 ? (Math.min(6, startLevel + 1) as HskLevelNumber) : 1)
   const targetDateStr = roadmap?.targetDate || new Date(Date.now() + 60 * 24 * 3600 * 1000).toISOString().split("T")[0]
   
   // 1. Tính toán ngày còn lại
@@ -131,6 +132,10 @@ export async function computeRoadmapStats(customRoadmap?: UserRoadmap | null): P
   const targetStandard = HSK_CUMULATIVE_STANDARDS[targetLevel]
   const totalTargetWords = targetStandard.words
   const totalTargetLessons = targetStandard.lessons
+
+  // Trừ bớt khối lượng nếu người học đã có trình độ nền tảng từ trước (không bắt học lại từ HSK 1)
+  const alreadyKnownWords = startLevel > 0 ? (HSK_CUMULATIVE_STANDARDS[startLevel as HskLevelNumber]?.words || 0) : 0
+  const alreadyKnownLessons = startLevel > 0 ? (HSK_CUMULATIVE_STANDARDS[startLevel as HskLevelNumber]?.lessons || 0) : 0
 
   // 3. Đọc tiến độ bài học từ LocalStorage (lessonProgress.ts)
   const lessonRecords = getAllProgressRecords()
@@ -225,15 +230,19 @@ export async function computeRoadmapStats(customRoadmap?: UserRoadmap | null): P
     console.warn("Could not read SRS reviews from IndexedDB:", err)
   }
 
-  // 5. Tính toán "Còn thiếu gì"
-  const remainingLessons = Math.max(0, totalTargetLessons - completedLessonsCount)
-  const remainingWords = Math.max(0, totalTargetWords - learnedWordsCount)
+  // 5. Tính toán "Còn thiếu gì" (kết hợp cả phần đã có nền tảng từ startLevel)
+  const effectiveLearnedWords = Math.min(totalTargetWords, learnedWordsCount + alreadyKnownWords)
+  const effectiveMasteredWords = Math.min(totalTargetWords, masteredWordsCount + alreadyKnownWords)
+  const effectiveCompletedLessons = Math.min(totalTargetLessons, completedLessonsCount + alreadyKnownLessons)
+
+  const remainingLessons = Math.max(0, totalTargetLessons - effectiveCompletedLessons)
+  const remainingWords = Math.max(0, totalTargetWords - effectiveLearnedWords)
 
   const lessonProgressPercent = totalTargetLessons > 0 
-    ? Math.min(100, Math.round((completedLessonsCount / totalTargetLessons) * 100)) 
+    ? Math.min(100, Math.round((effectiveCompletedLessons / totalTargetLessons) * 100)) 
     : 0
   const wordProgressPercent = totalTargetWords > 0 
-    ? Math.min(100, Math.round((learnedWordsCount / totalTargetWords) * 100)) 
+    ? Math.min(100, Math.round((effectiveLearnedWords / totalTargetWords) * 100)) 
     : 0
 
   // 6. Nhịp độ (Pace) & Vận tốc cần thiết
@@ -264,19 +273,35 @@ export async function computeRoadmapStats(customRoadmap?: UserRoadmap | null): P
   for (let l = 1; l <= targetLevel; l++) {
     const lvlNum = l as HskLevelNumber
     const inc = HSK_LEVEL_INCREMENTS[lvlNum]
+    const isAlreadyKnownLevel = l <= startLevel
+
+    // Cấp độ đã có nền tảng tự động được tính đã hoàn thành
+    const actualLearnedWords = isAlreadyKnownLevel
+      ? inc.words
+      : Math.min(inc.words, learnedWordsByLevel[lvlNum] || 0)
+
+    const actualMasteredWords = isAlreadyKnownLevel
+      ? inc.words
+      : Math.min(inc.words, masteredWordsByLevel[lvlNum] || 0)
+
+    const actualCompletedLessons = isAlreadyKnownLevel
+      ? inc.lessons
+      : Math.min(inc.lessons, completedLessonsByBook[inc.bookId] || 0)
+
     breakdown.push({
       level: lvlNum,
       targetWords: inc.words,
-      learnedWords: Math.min(inc.words, learnedWordsByLevel[lvlNum] || 0),
-      masteredWords: Math.min(inc.words, masteredWordsByLevel[lvlNum] || 0),
+      learnedWords: actualLearnedWords,
+      masteredWords: actualMasteredWords,
       targetLessons: inc.lessons,
-      completedLessons: Math.min(inc.lessons, completedLessonsByBook[inc.bookId] || 0),
+      completedLessons: actualCompletedLessons,
     })
   }
 
-  // 8. Đề xuất bài học tiếp theo cho hôm nay
+  // 8. Đề xuất bài học tiếp theo cho hôm nay (bắt đầu từ cấp độ chưa hoàn thành)
   let recommendedLesson: { bookId: string; lessonId: number | string; title: string } | undefined
-  for (let l = 1; l <= targetLevel; l++) {
+  const startLearningLevel = startLevel > 0 ? Math.min(targetLevel, startLevel + 1) : 1
+  for (let l = startLearningLevel; l <= targetLevel; l++) {
     const lvlNum = l as HskLevelNumber
     const bookId = HSK_LEVEL_INCREMENTS[lvlNum]?.bookId
     if (!bookId) continue

@@ -38,8 +38,18 @@ export function RoadmapWizardModal({ isOpen, onClose }: RoadmapWizardModalProps)
 
   // Form states
   const [goalType, setGoalType] = useState<RoadmapGoalType>(roadmap?.goalType || "hsk_exam")
-  const [targetLevel, setTargetLevel] = useState<HskLevelNumber>(roadmap?.targetLevel || 2)
   const [startLevel, setStartLevel] = useState<number>(roadmap?.startLevel ?? 0)
+  const [targetLevel, setTargetLevel] = useState<HskLevelNumber>(
+    roadmap?.targetLevel || (roadmap?.startLevel ? (Math.min(6, roadmap.startLevel + 1) as HskLevelNumber) : 2)
+  )
+
+  const handleSelectStartLevel = (lvl: number) => {
+    setStartLevel(lvl)
+    // Nếu cấp độ mục tiêu hiện tại nhỏ hơn hoặc bằng trình độ hiện tại, tự động nâng lên cấp kế tiếp
+    if (targetLevel <= lvl) {
+      setTargetLevel(Math.min(6, lvl + 1) as HskLevelNumber)
+    }
+  }
   
   // Target date (mặc định 60 ngày tới)
   const defaultDate = roadmap?.targetDate || new Date(Date.now() + 60 * 24 * 3600 * 1000).toISOString().split("T")[0]
@@ -137,111 +147,138 @@ export function RoadmapWizardModal({ isOpen, onClose }: RoadmapWizardModalProps)
 
         {/* Modal Body: Steps Content */}
         <div className="p-4 sm:p-6 overflow-y-auto overscroll-contain flex-1 min-h-0 space-y-5 sm:space-y-6">
-          {/* BƯỚC 1: MỤC TIÊU & CẤP ĐỘ HSK */}
+          {/* BƯỚC 1: HỎI TRƯỚC TRÌNH ĐỘ HIỆN TẠI */}
           {step === 1 && (
             <div className="space-y-5 animate-fade-in">
               <div>
-                <h4 className="text-xl font-bold text-foreground">1. Mục đích học tiếng Trung của bạn là gì?</h4>
-                <p className="text-sm text-muted-foreground mt-1">Chọn mục tiêu chính để hệ thống cá nhân hóa trọng tâm bài học cho bạn.</p>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {[
-                  { id: "hsk_exam", title: "Luyện thi chứng chỉ HSK", desc: "Học bài bản theo chuẩn kỳ thi mới nhất", icon: Award },
-                  { id: "conversation", title: "Giao tiếp & Du lịch", desc: "Tập trung phản xạ nghe nói đời sống", icon: Sparkles },
-                  { id: "business", title: "Công việc & Thương mại", desc: "Giao dịch, đàm phán với đối tác", icon: Target },
-                  { id: "foundational", title: "Xây gốc từ con số 0", desc: "Học chuẩn phát âm, nét chữ và từ căn bản", icon: BookOpen },
-                ].map((item) => {
-                  const Icon = item.icon
-                  const isSelected = goalType === item.id
-                  return (
-                    <div
-                      key={item.id}
-                      onClick={() => setGoalType(item.id as RoadmapGoalType)}
-                      className={`p-4 rounded-xl border cursor-pointer transition-all ${
-                        isSelected 
-                          ? "bg-indigo-500/15 border-indigo-500 text-foreground ring-2 ring-indigo-500/30 shadow-sm" 
-                          : "bg-secondary/20 border-border/70 hover:bg-secondary/50 text-muted-foreground"
-                      }`}
-                    >
-                      <div className="flex items-center gap-3">
-                        <div className={`p-2 rounded-lg ${isSelected ? "bg-indigo-500 text-white" : "bg-secondary text-muted-foreground"}`}>
-                          <Icon className="w-4 h-4" />
-                        </div>
-                        <div>
-                          <div className="font-semibold text-foreground text-sm">{item.title}</div>
-                          <div className="text-xs text-muted-foreground mt-0.5">{item.desc}</div>
-                        </div>
-                      </div>
-                    </div>
-                  )
-                })}
-              </div>
-
-              <div className="pt-2">
-                <label className="block text-sm font-semibold text-foreground mb-2">
-                  Cấp độ mục tiêu muốn chinh phục:
-                </label>
-                <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
-                  {([1, 2, 3, 4, 5, 6] as HskLevelNumber[]).map((lvl) => (
-                    <button
-                      key={lvl}
-                      type="button"
-                      onClick={() => setTargetLevel(lvl)}
-                      className={`py-3 px-2 rounded-xl font-bold text-center border transition-all ${
-                        targetLevel === lvl
-                          ? "bg-indigo-600 border-indigo-500 text-white shadow-md shadow-indigo-500/30 scale-105"
-                          : "bg-secondary/40 border-border/70 text-foreground hover:bg-secondary/70"
-                      }`}
-                    >
-                      <div className="text-sm">HSK {lvl}</div>
-                      <div className="text-[10px] font-normal opacity-80 mt-0.5">
-                        {HSK_CUMULATIVE_STANDARDS[lvl].words} từ
-                      </div>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* BƯỚC 2: TRÌNH ĐỘ HIỆN TẠI */}
-          {step === 2 && (
-            <div className="space-y-5 animate-fade-in">
-              <div>
-                <h4 className="text-xl font-bold text-foreground">2. Trình độ tiếng Trung hiện tại của bạn?</h4>
-                <p className="text-sm text-muted-foreground mt-1">Chúng tôi sẽ trừ đi phần bạn đã biết để tính toán đúng khối lượng còn thiếu.</p>
+                <h4 className="text-xl font-bold text-foreground">1. Trình độ tiếng Trung hiện tại của bạn?</h4>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Chọn đúng trình độ để Tiểu Lu miễn học lại các cấp độ bạn đã vững (không bắt buộc phải học lại từ HSK 1).
+                </p>
               </div>
 
               <div className="space-y-2.5">
                 {[
-                  { level: 0, title: "Người mới bắt đầu (Chưa biết gì)", desc: "Bắt đầu học từ bảng chữ cái Pinyin và phát âm" },
-                  { level: 1, title: "Đã vững Pinyin & một số từ cơ bản", desc: "Đã biết chào hỏi, số đếm (~50-100 từ vựng)" },
-                  { level: 2, title: "Đã có trình độ tương đương HSK 1", desc: "Đã thuộc ~150 từ cơ bản, sẵn sàng học lên HSK 2" },
-                  { level: 3, title: "Đã có trình độ tương đương HSK 2", desc: "Đã thuộc ~300 từ, tự tin với hội thoại ngắn" },
-                  { level: 4, title: "Đã có trình độ tương đương HSK 3", desc: "Đã thuộc ~600 từ, muốn bứt phá lên trung cấp" },
+                  { level: 0, title: "Người mới bắt đầu (Chưa biết gì)", desc: "Bắt đầu học từ bảng chữ cái Pinyin & nét chữ cơ bản" },
+                  { level: 1, title: "Đã có trình độ tương đương HSK 1", desc: "Đã thuộc ~150 từ cơ bản, sẵn sàng học thẳng lên HSK 2" },
+                  { level: 2, title: "Đã có trình độ tương đương HSK 2", desc: "Đã thuộc ~300 từ, sẵn sàng học thẳng lên HSK 3" },
+                  { level: 3, title: "Đã có trình độ tương đương HSK 3", desc: "Đã thuộc ~600 từ, tự tin với hội thoại đời sống, muốn lên HSK 4" },
+                  { level: 4, title: "Đã có trình độ tương đương HSK 4", desc: "Đã thuộc ~1,200 từ, muốn bứt phá lên HSK 5" },
+                  { level: 5, title: "Đã có trình độ tương đương HSK 5", desc: "Đã thuộc ~2,500 từ, sẵn sàng chinh phục đỉnh cao HSK 6" },
                 ].map((item) => {
                   const isSelected = startLevel === item.level
                   return (
                     <div
                       key={item.level}
-                      onClick={() => setStartLevel(item.level)}
-                      className={`p-4 rounded-xl border cursor-pointer transition-all ${
+                      onClick={() => handleSelectStartLevel(item.level)}
+                      className={`p-3.5 sm:p-4 rounded-xl border cursor-pointer transition-all ${
                         isSelected 
-                          ? "bg-indigo-500/15 border-indigo-500 text-foreground ring-2 ring-indigo-500/30" 
+                          ? "bg-indigo-500/15 border-indigo-500 text-foreground ring-2 ring-indigo-500/30 shadow-xs" 
                           : "bg-secondary/20 border-border/70 hover:bg-secondary/50 text-muted-foreground"
                       }`}
                     >
-                      <div className="flex items-center justify-between">
+                      <div className="flex items-center justify-between gap-3">
                         <div>
                           <div className="font-semibold text-foreground text-sm">{item.title}</div>
                           <div className="text-xs text-muted-foreground mt-0.5">{item.desc}</div>
                         </div>
-                        {isSelected && <CheckCircle2 className="w-5 h-5 text-indigo-400 shrink-0" />}
+                        {isSelected && <CheckCircle2 className="w-5 h-5 text-indigo-500 shrink-0" />}
                       </div>
                     </div>
                   )
                 })}
+              </div>
+            </div>
+          )}
+
+          {/* BƯỚC 2: CẤP ĐỘ MỤC TIÊU MUỐN CHINH PHỤC & MỤC ĐÍCH */}
+          {step === 2 && (
+            <div className="space-y-5 animate-fade-in">
+              <div>
+                <h4 className="text-xl font-bold text-foreground">2. Bạn muốn chinh phục đến cấp độ nào?</h4>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Chọn mốc mục tiêu mong muốn để xây dựng bài học và từ vựng chuẩn xác.
+                </p>
+              </div>
+
+              {startLevel > 0 && (
+                <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-800 dark:text-emerald-300 text-xs flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-600 dark:text-emerald-400" />
+                  <span>
+                    Bạn đã có nền tảng <strong>HSK {startLevel}</strong>. Lộ trình sẽ bắt đầu ngay từ <strong>HSK {Math.min(6, startLevel + 1)}</strong> (được miễn học lại HSK 1{startLevel > 1 ? `–${startLevel}` : ""})!
+                  </span>
+                </div>
+              )}
+
+              <div>
+                <label className="block text-sm font-semibold text-foreground mb-2">
+                  Cấp độ mục tiêu muốn chinh phục:
+                </label>
+                <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
+                  {([1, 2, 3, 4, 5, 6] as HskLevelNumber[]).map((lvl) => {
+                    const isBelowStart = lvl <= startLevel
+                    const isSelected = targetLevel === lvl
+
+                    return (
+                      <button
+                        key={lvl}
+                        type="button"
+                        disabled={isBelowStart}
+                        onClick={() => setTargetLevel(lvl)}
+                        className={`py-3 px-2 rounded-xl font-bold text-center border transition-all ${
+                          isBelowStart
+                            ? "bg-muted/30 border-border/40 text-muted-foreground/50 opacity-60 cursor-not-allowed"
+                            : isSelected
+                            ? "bg-indigo-600 border-indigo-500 text-white shadow-md shadow-indigo-500/30 scale-105"
+                            : "bg-secondary/40 border-border/70 text-foreground hover:bg-secondary/70 cursor-pointer"
+                        }`}
+                      >
+                        <div className="text-sm">HSK {lvl}</div>
+                        <div className="text-[10px] font-normal opacity-80 mt-0.5">
+                          {isBelowStart ? "✓ Đã có" : `${HSK_CUMULATIVE_STANDARDS[lvl].words} từ`}
+                        </div>
+                      </button>
+                    )
+                  })}
+                </div>
+              </div>
+
+              <div className="pt-2">
+                <label className="block text-sm font-semibold text-foreground mb-2">
+                  Mục đích học chính của bạn:
+                </label>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  {[
+                    { id: "hsk_exam", title: "Luyện thi chứng chỉ HSK", desc: "Học bài bản theo chuẩn kỳ thi mới nhất", icon: Award },
+                    { id: "conversation", title: "Giao tiếp & Du lịch", desc: "Tập trung phản xạ nghe nói đời sống", icon: Sparkles },
+                    { id: "business", title: "Công việc & Thương mại", desc: "Giao dịch, đàm phán với đối tác", icon: Target },
+                    { id: "foundational", title: "Xây gốc vững chắc", desc: "Học chuẩn phát âm, nét chữ và từ căn bản", icon: BookOpen },
+                  ].map((item) => {
+                    const Icon = item.icon
+                    const isSelected = goalType === item.id
+                    return (
+                      <div
+                        key={item.id}
+                        onClick={() => setGoalType(item.id as RoadmapGoalType)}
+                        className={`p-3 sm:p-3.5 rounded-xl border cursor-pointer transition-all ${
+                          isSelected 
+                            ? "bg-indigo-500/15 border-indigo-500 text-foreground ring-1 ring-indigo-500/30 shadow-2xs" 
+                            : "bg-secondary/20 border-border/70 hover:bg-secondary/50 text-muted-foreground"
+                        }`}
+                      >
+                        <div className="flex items-center gap-2.5">
+                          <div className={`p-1.5 rounded-lg shrink-0 ${isSelected ? "bg-indigo-500 text-white" : "bg-secondary text-muted-foreground"}`}>
+                            <Icon className="w-3.5 h-3.5" />
+                          </div>
+                          <div>
+                            <div className="font-semibold text-foreground text-xs sm:text-sm">{item.title}</div>
+                            <div className="text-[11px] text-muted-foreground leading-tight">{item.desc}</div>
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  })}
+                </div>
               </div>
             </div>
           )}

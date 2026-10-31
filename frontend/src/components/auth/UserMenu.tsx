@@ -170,7 +170,7 @@ export default function UserMenu({ compact = false }: UserMenuProps) {
               <div className="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs text-china-ink hover:bg-china-paper transition-colors">
                 <div className="flex items-center gap-2">
                   <span>🎃</span>
-                  <span className="font-semibold">Sự kiện Vạn Thánh</span>
+                  <span className="font-semibold">Sự kiện Halloween</span>
                 </div>
                 <button
                   type="button"
@@ -314,7 +314,7 @@ export default function UserMenu({ compact = false }: UserMenuProps) {
                 <div className="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs text-china-ink hover:bg-china-paper transition-colors">
                   <div className="flex items-center gap-2">
                     <span>🎃</span>
-                    <span className="font-semibold">Sự kiện Vạn Thánh</span>
+                    <span className="font-semibold">Sự kiện Halloween</span>
                   </div>
                   <button
                     type="button"

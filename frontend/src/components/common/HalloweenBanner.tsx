@@ -36,7 +36,7 @@ export default function HalloweenBanner() {
           🎃
         </button>
         <span className="font-bold tracking-wide truncate">
-          <span className="hidden sm:inline">Sự kiện Vạn Thánh: </span>
+          <span className="hidden sm:inline">Sự kiện Halloween: </span>
           Bàn học Tiểu Lu ngập tràn không khí Halloween! 🍬
         </span>
       </div>
