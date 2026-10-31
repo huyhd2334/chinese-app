@@ -47,7 +47,7 @@ const getYesterdayDateStr = (): string => {
 }
 
 export default function Dashboard() {
-  const { user } = useAuth()
+  const { user, isDarkMode } = useAuth()
   const [wordCount, setWordCount] = useState(0)
   const [wordReview, setWordReview] = useState(0)
   const [reviews, setReviews] = useState<ReviewItem[]>([])
@@ -1080,24 +1080,67 @@ export default function Dashboard() {
         
         {/* HSK Progress Chart */}
         <div className="lg:col-span-2 rounded-xl sm:rounded-2xl bg-card p-4 sm:p-6 shadow-xs border border-border flex flex-col">
-          <div className="mb-4 sm:mb-6">
-            <h2 className="text-base sm:text-xl font-semibold font-serif flex items-center gap-2">
-              <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-china-jade" />
-              Tiến độ cấp độ HSK
-            </h2>
-            <p className="text-xs sm:text-sm text-muted">Số lượng từ vựng bạn đã mở khóa theo từng cấp</p>
+          <div className="mb-4 sm:mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <h2 className="text-base sm:text-xl font-semibold font-serif flex items-center gap-2">
+                <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-china-jade" />
+                Tiến độ cấp độ HSK
+              </h2>
+              <p className="text-xs sm:text-sm text-muted">Số lượng từ vựng bạn đã mở khóa theo từng cấp</p>
+            </div>
+            
+            {/* Legend HSK Pills */}
+            <div className="flex items-center gap-2 flex-wrap text-[11px] font-semibold">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 border border-border/80">
+                <span className="w-2 h-2 rounded-full bg-gradient-to-r from-amber-500 to-purple-500" />
+                Tổng từ HSK 1–6
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-700">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                Đang học
+              </span>
+            </div>
           </div>
-          <div className="flex-grow h-52 sm:h-64 min-h-[220px]">
+
+          <div className="flex-grow h-56 sm:h-68 min-h-[240px]">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={hskData} margin={{ top: 10, right: 10, left: -25, bottom: 0 }}>
-                <XAxis dataKey="name" stroke="#8c857d" tick={{fontSize: 11}} tickLine={false} axisLine={false} />
-                <YAxis stroke="#8c857d" tick={{fontSize: 11}} tickLine={false} axisLine={false} />
-                <Tooltip 
-                  cursor={{fill: '#f5f0ea', opacity: 0.4}} 
-                  contentStyle={{borderRadius: '12px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)', fontSize: '12px'}} 
+              <BarChart data={hskData} margin={{ top: 15, right: 10, left: -22, bottom: 5 }}>
+                <defs>
+                  {HSK_LEVEL_CONFIG.map((cfg) => (
+                    <linearGradient key={`hsk-grad-total-${cfg.level}`} id={`hsk-grad-total-${cfg.level}`} x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor={isDarkMode ? cfg.darkColor : cfg.gradFrom} stopOpacity={isDarkMode ? 0.95 : 0.9} />
+                      <stop offset="100%" stopColor={isDarkMode ? cfg.gradFrom : cfg.lightColor} stopOpacity={isDarkMode ? 0.75 : 0.8} />
+                    </linearGradient>
+                  ))}
+                  <linearGradient id="hsk-grad-learning" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#34d399" stopOpacity={1} />
+                    <stop offset="100%" stopColor="#059669" stopOpacity={0.85} />
+                  </linearGradient>
+                </defs>
+
+                <XAxis 
+                  dataKey="name" 
+                  stroke={isDarkMode ? "#a39e93" : "#8c857d"} 
+                  tick={{ fontSize: 11, fontWeight: 600, fill: isDarkMode ? "#e2ddf0" : "#475569" }} 
+                  tickLine={false} 
+                  axisLine={{ stroke: isDarkMode ? "#2d2d3a" : "#e2e8f0" }} 
                 />
-                <Bar dataKey="total" name="Tổng từ" fill="#eae0d5" radius={[4, 4, 0, 0]} />
-                <Bar dataKey="learning" name="Đang học" fill="#366c5d" radius={[4, 4, 0, 0]} />
+                <YAxis 
+                  stroke={isDarkMode ? "#a39e93" : "#8c857d"} 
+                  tick={{ fontSize: 10, fill: isDarkMode ? "#a39e93" : "#8c857d" }} 
+                  tickLine={false} 
+                  axisLine={false} 
+                />
+                <Tooltip 
+                  cursor={{ fill: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.04)' }} 
+                  content={<CustomHskBarTooltip />}
+                />
+                <Bar dataKey="total" name="Tổng từ" radius={[6, 6, 0, 0]}>
+                  {hskData.map((_, index) => (
+                    <Cell key={`cell-total-${index}`} fill={`url(#hsk-grad-total-${index + 1})`} />
+                  ))}
+                </Bar>
+                <Bar dataKey="learning" name="Đang học" fill="url(#hsk-grad-learning)" radius={[6, 6, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -1119,10 +1162,17 @@ export default function Dashboard() {
                     paddingAngle={4}
                   >
                     {statusData.map((_, i) => (
-                      <Cell key={i} fill={["#366c5d", "#d4af37", "#c8102e", "#8c857d"][i]} />
+                      <Cell 
+                        key={i} 
+                        fill={
+                          isDarkMode 
+                            ? ["#10b981", "#f59e0b", "#ff4d5e", "#64748b"][i] 
+                            : ["#2d6a4f", "#d97706", "#c8102e", "#94a3b8"][i]
+                        } 
+                      />
                     ))}
                   </Pie>
-                  <Tooltip contentStyle={{borderRadius: '12px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)', fontSize: '12px'}} />
+                  <Tooltip content={<CustomPieTooltip />} />
                 </PieChart>
               </ResponsiveContainer>
               <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
@@ -1140,12 +1190,24 @@ export default function Dashboard() {
             <div className="h-20 sm:h-24">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={heatmapData}>
+                  <defs>
+                    <linearGradient id="heatmap-bar-grad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor={isDarkMode ? "#fbbf24" : "#f59e0b"} stopOpacity={1} />
+                      <stop offset="100%" stopColor={isDarkMode ? "#d97706" : "#b45309"} stopOpacity={0.8} />
+                    </linearGradient>
+                  </defs>
                   <Tooltip 
-                    cursor={{fill: 'transparent'}}
-                    contentStyle={{borderRadius: '8px', border: 'none', padding: '4px 8px', fontSize: '11px'}} 
+                    cursor={{fill: isDarkMode ? 'rgba(255, 255, 255, 0.04)' : 'rgba(0, 0, 0, 0.04)'}}
+                    content={<CustomHeatmapTooltip />} 
                   />
-                  <XAxis dataKey="day" stroke="#8c857d" tick={{fontSize: 10}} tickLine={false} axisLine={false} />
-                  <Bar dataKey="activity" fill="#d4af37" radius={[3, 3, 3, 3]} />
+                  <XAxis 
+                    dataKey="day" 
+                    stroke={isDarkMode ? "#a39e93" : "#8c857d"} 
+                    tick={{fontSize: 10, fill: isDarkMode ? "#a39e93" : "#8c857d"}} 
+                    tickLine={false} 
+                    axisLine={false} 
+                  />
+                  <Bar dataKey="activity" fill="url(#heatmap-bar-grad)" radius={[3, 3, 3, 3]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -1303,6 +1365,101 @@ function StatBar({ title, value, icon, color, delay }: { title: string, value: n
         <span className="text-2xl sm:text-3xl font-serif font-bold text-china-ink">{value}</span>
       </div>
       <div className={`h-1 w-8 sm:w-10 rounded-full ${color}`}></div>
+    </div>
+  )
+}
+
+const HSK_LEVEL_CONFIG = [
+  { level: 1, name: "HSK 1", label: "Căn bản", lightColor: "#d97706", darkColor: "#fbbf24", gradFrom: "#f59e0b", gradTo: "#fef08a" },
+  { level: 2, name: "HSK 2", label: "Sơ cấp 1", lightColor: "#0d9488", darkColor: "#2dd4bf", gradFrom: "#14b8a6", gradTo: "#99f6e4" },
+  { level: 3, name: "HSK 3", label: "Sơ cấp 2", lightColor: "#ea580c", darkColor: "#fb923c", gradFrom: "#f97316", gradTo: "#fed7aa" },
+  { level: 4, name: "HSK 4", label: "Trung cấp 1", lightColor: "#e11d48", darkColor: "#fb7185", gradFrom: "#f43f5e", gradTo: "#fecdd3" },
+  { level: 5, name: "HSK 5", label: "Trung cấp 2", lightColor: "#2563eb", darkColor: "#60a5fa", gradFrom: "#3b82f6", gradTo: "#bfdbfe" },
+  { level: 6, name: "HSK 6", label: "Cao cấp", lightColor: "#7c3aed", darkColor: "#c084fc", gradFrom: "#a855f7", gradTo: "#e9d5ff" },
+]
+
+function CustomHskBarTooltip({ active, payload, label }: any) {
+  if (!active || !payload || !payload.length) return null
+  const lvlNum = parseInt(label?.replace("HSK ", "") || "1", 10)
+  const cfg = HSK_LEVEL_CONFIG[lvlNum - 1] || HSK_LEVEL_CONFIG[0]
+  const total = payload.find((p: any) => p.dataKey === "total")?.value || 0
+  const learning = payload.find((p: any) => p.dataKey === "learning")?.value || 0
+  const percent = total > 0 ? Math.round((learning / total) * 100) : 0
+
+  return (
+    <div className="rounded-xl p-3 shadow-xl backdrop-blur-md border border-border/80 bg-white/95 dark:bg-[#1a1624]/95 dark:border-[#382c47] min-w-[170px] space-y-2 text-xs">
+      <div className="flex items-center justify-between gap-2 pb-1.5 border-b border-border/60 dark:border-stone-800">
+        <span className="font-bold text-china-ink dark:text-stone-100 flex items-center gap-1.5">
+          <span 
+            className="w-2.5 h-2.5 rounded-full shrink-0" 
+            style={{ backgroundColor: cfg.darkColor }}
+          />
+          {label}
+        </span>
+        <span className="text-[10px] font-semibold px-1.5 py-0.2 rounded-md bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300">
+          {cfg.label}
+        </span>
+      </div>
+
+      <div className="space-y-1">
+        <div className="flex items-center justify-between text-muted text-[11px]">
+          <span>Tổng số từ:</span>
+          <span className="font-bold font-mono text-china-ink dark:text-stone-200">
+            {total.toLocaleString()} từ
+          </span>
+        </div>
+        <div className="flex items-center justify-between text-muted text-[11px]">
+          <span className="flex items-center gap-1">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+            Đã nạp / Đang học:
+          </span>
+          <span className="font-bold font-mono text-emerald-600 dark:text-emerald-400">
+            {learning.toLocaleString()} từ
+          </span>
+        </div>
+      </div>
+
+      {/* Mini Progress Bar */}
+      <div className="pt-1">
+        <div className="flex justify-between text-[10px] text-muted mb-1">
+          <span>Tiến độ:</span>
+          <span className="font-bold text-china-ink dark:text-stone-200">{percent}%</span>
+        </div>
+        <div className="w-full bg-stone-200 dark:bg-stone-800 h-1.5 rounded-full overflow-hidden">
+          <div 
+            className="h-full rounded-full transition-all duration-300" 
+            style={{ 
+              width: `${Math.min(100, Math.max(percent > 0 ? percent : 2, 0))}%`,
+              backgroundColor: cfg.darkColor 
+            }} 
+          />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function CustomPieTooltip({ active, payload }: any) {
+  if (!active || !payload || !payload.length) return null
+  const data = payload[0]
+  return (
+    <div className="rounded-xl px-3 py-2 shadow-xl backdrop-blur-md border border-border/80 bg-white/95 dark:bg-[#1a1624]/95 dark:border-[#382c47] text-xs">
+      <div className="flex items-center gap-2">
+        <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ backgroundColor: data.payload.fill || data.color }} />
+        <span className="text-muted">{data.name}:</span>
+        <span className="font-bold font-mono text-china-ink dark:text-stone-100">{data.value} từ</span>
+      </div>
+    </div>
+  )
+}
+
+function CustomHeatmapTooltip({ active, payload, label }: any) {
+  if (!active || !payload || !payload.length) return null
+  const activity = payload[0]?.value || 0
+  return (
+    <div className="rounded-lg px-2.5 py-1.5 shadow-lg border border-border/80 bg-white/95 dark:bg-[#1a1624]/95 dark:border-[#382c47] text-[11px]">
+      <span className="text-muted">{label}: </span>
+      <span className="font-bold text-amber-500 font-mono">{activity} lượt học</span>
     </div>
   )
 }
