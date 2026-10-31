@@ -3554,145 +3554,910 @@ export const SHADOWING_VIDEOS: ShadowingVideo[] = [
     "category": "Giao tiếp đời sống",
     "description": "100 câu giao tiếp nền tảng trình độ HSK 1 với tốc độ đọc chậm rãi, phát âm rõ ràng từng thanh mẫu, vận mẫu và thanh điệu chuẩn bản xứ.",
     "youtubeId": "EI2UvLKvlEU",
-    "sentencesCount": 15,
+    "sentencesCount": 100,
     "isFree": true,
     "sentences": [
       {
-        "id": 1,
-        "startTime": 0,
-        "endTime": 5.5,
-        "speaker": "Người bản xứ",
-        "chinese": "你好！",
-        "pinyin": "Nǐ hǎo!",
-        "vietnamese": "Xin chào!"
+            "id": 1,
+            "startTime": 14.5,
+            "endTime": 24.4,
+            "speaker": "Người bản xứ",
+            "chinese": "你们好。",
+            "pinyin": "nǐ men hǎo。",
+            "vietnamese": "Chåo cåc ban."
       },
       {
-        "id": 2,
-        "startTime": 5.5,
-        "endTime": 12,
-        "speaker": "Người bản xứ",
-        "chinese": "你叫什么名字？",
-        "pinyin": "Nǐ jiào shénme míngzi?",
-        "vietnamese": "Bạn tên là gì?"
+            "id": 2,
+            "startTime": 24.4,
+            "endTime": 35.2,
+            "speaker": "Người bản xứ",
+            "chinese": "你叫什么名字？",
+            "pinyin": "nǐ jiào shén me míng zì？",
+            "vietnamese": "Ban tén lå gi?"
       },
       {
-        "id": 3,
-        "startTime": 12,
-        "endTime": 18.5,
-        "speaker": "Người bản xứ",
-        "chinese": "我叫李明，很高兴认识你。",
-        "pinyin": "Wǒ jiào Lǐ Míng, hěn gāoxìng rènshì nǐ.",
-        "vietnamese": "Tôi tên là Lý Minh, rất vui được quen biết bạn."
+            "id": 3,
+            "startTime": 35.2,
+            "endTime": 47.8,
+            "speaker": "Người bản xứ",
+            "chinese": "我住在北京。",
+            "pinyin": "wǒ zhù zài běi jīng。",
+            "vietnamese": "Töi söngd Båc Kinh."
       },
       {
-        "id": 4,
-        "startTime": 18.5,
-        "endTime": 25,
-        "speaker": "Người bản xứ",
-        "chinese": "你是哪国人？",
-        "pinyin": "Nǐ shì nǎ guó rén?",
-        "vietnamese": "Bạn là người nước nào?"
+            "id": 4,
+            "startTime": 47.8,
+            "endTime": 61.8,
+            "speaker": "Người bản xứ",
+            "chinese": "他是我的老师。",
+            "pinyin": "Tā shì wǒ de lǎoshī.",
+            "vietnamese": "Cô ấy là giáo viên của tôi."
       },
       {
-        "id": 5,
-        "startTime": 25,
-        "endTime": 32,
-        "speaker": "Người bản xứ",
-        "chinese": "我是越南人，我学习汉语。",
-        "pinyin": "Wǒ shì Yuènán rén, wǒ xuéxí hànyǔ.",
-        "vietnamese": "Tôi là người Việt Nam, tôi học tiếng Trung."
+            "id": 5,
+            "startTime": 61.8,
+            "endTime": 79.0,
+            "speaker": "Người bản xứ",
+            "chinese": "我今年十八岁了。",
+            "pinyin": "wǒ jīn nián shí bā suì le。",
+            "vietnamese": "Näm nay töi mudi tåm tuöi."
       },
       {
-        "id": 6,
-        "startTime": 32,
-        "endTime": 39.5,
-        "speaker": "Người bản xứ",
-        "chinese": "你今天忙不忙？",
-        "pinyin": "Nǐ jīntiān máng bù máng?",
-        "vietnamese": "Hôm nay bạn có bận không?"
+            "id": 6,
+            "startTime": 79.0,
+            "endTime": 94.4,
+            "speaker": "Người bản xứ",
+            "chinese": "今天是星期一。",
+            "pinyin": "Jīntiān shì xīngqīyī.",
+            "vietnamese": "Hôm nay là thứ Hai."
       },
       {
-        "id": 7,
-        "startTime": 39.5,
-        "endTime": 47,
-        "speaker": "Người bản xứ",
-        "chinese": "我今天不太忙，我有时间。",
-        "pinyin": "Wǒ jīntiān bú tài máng, wǒ yǒu shíjiān.",
-        "vietnamese": "Hôm nay tôi không bận lắm, tôi có thời gian."
+            "id": 7,
+            "startTime": 94.4,
+            "endTime": 109.2,
+            "speaker": "Người bản xứ",
+            "chinese": "很高兴认识你。",
+            "pinyin": "Hěn gāoxìng rènshi nǐ.",
+            "vietnamese": "Rất vui được gặp bạn."
       },
       {
-        "id": 8,
-        "startTime": 47,
-        "endTime": 55,
-        "speaker": "Người bản xứ",
-        "chinese": "现在几点了？",
-        "pinyin": "Xiànzài jǐ diǎn le?",
-        "vietnamese": "Bây giờ là mấy giờ rồi?"
+            "id": 8,
+            "startTime": 109.2,
+            "endTime": 123.0,
+            "speaker": "Người bản xứ",
+            "chinese": "我喜欢喝咖啡。",
+            "pinyin": "wǒ xǐ huān hē kā fēi。",
+            "vietnamese": "Töi thich uöngcå phé."
       },
       {
-        "id": 9,
-        "startTime": 55,
-        "endTime": 63,
-        "speaker": "Người bản xứ",
-        "chinese": "现在是上午十点半。",
-        "pinyin": "Xiànzài shì shàngwǔ shí diǎn bàn.",
-        "vietnamese": "Bây giờ là mười giờ rưỡi sáng."
+            "id": 9,
+            "startTime": 123.0,
+            "endTime": 135.4,
+            "speaker": "Người bản xứ",
+            "chinese": "我在医院工作。",
+            "pinyin": "Wǒ zài yīyuàn gōngzuò.",
+            "vietnamese": "Tôi làm việc ở bệnh viện."
       },
       {
-        "id": 10,
-        "startTime": 63,
-        "endTime": 72,
-        "speaker": "Người bản xứ",
-        "chinese": "你想吃什么？",
-        "pinyin": "Nǐ xiǎng chī shénme?",
-        "vietnamese": "Bạn muốn ăn món gì?"
+            "id": 10,
+            "startTime": 135.4,
+            "endTime": 151.8,
+            "speaker": "Người bản xứ",
+            "chinese": "我可以坐在这里吗？",
+            "pinyin": "Wǒ kěyǐ zuò zài zhèlǐ ma?",
+            "vietnamese": "Tôi có thể ngồi ở đây không?"
       },
       {
-        "id": 11,
-        "startTime": 72,
-        "endTime": 80,
-        "speaker": "Người bản xứ",
-        "chinese": "我想吃中国菜，米饭和面条都可以。",
-        "pinyin": "Wǒ xiǎng chī zhōngguó cài, mǐfàn hé miàntiáo dōu kěyǐ.",
-        "vietnamese": "Tôi muốn ăn món Trung Quốc, cơm hay mì sợi đều được."
+            "id": 11,
+            "startTime": 151.8,
+            "endTime": 164.4,
+            "speaker": "Người bản xứ",
+            "chinese": "现在几点了？",
+            "pinyin": "Xiànzài jǐ diǎn le?",
+            "vietnamese": "Bây giờ là mấy giờ?"
       },
       {
-        "id": 12,
-        "startTime": 80,
-        "endTime": 89,
-        "speaker": "Người bản xứ",
-        "chinese": "这个苹果多少钱一斤？",
-        "pinyin": "Zhège píngguǒ duōshao qián yì jīn?",
-        "vietnamese": "Táo này bao nhiêu tiền một cân?"
+            "id": 12,
+            "startTime": 164.4,
+            "endTime": 180.6,
+            "speaker": "Người bản xứ",
+            "chinese": "现在是五点十分。",
+            "pinyin": "Xiànzài shì wǔ diǎn shí fēn.",
+            "vietnamese": "Bây giờ là năm giờ mười phút."
       },
       {
-        "id": 13,
-        "startTime": 89,
-        "endTime": 97,
-        "speaker": "Người bản xứ",
-        "chinese": "太贵了，便宜一点儿吧。",
-        "pinyin": "Tài guì le, piányi yìdiǎnr ba.",
-        "vietnamese": "Đắt quá rồi, bớt một chút đi mà."
+            "id": 13,
+            "startTime": 180.6,
+            "endTime": 195.4,
+            "speaker": "Người bản xứ",
+            "chinese": "今天的天气怎么样？",
+            "pinyin": "Jīntiān de tiānqì zěnmeyàng?",
+            "vietnamese": "Thời tiết hôm nay thế nào?"
       },
       {
-        "id": 14,
-        "startTime": 97,
-        "endTime": 106,
-        "speaker": "Người bản xứ",
-        "chinese": "谢谢你的帮助！",
-        "pinyin": "Xièxie nǐ de bāngzhù!",
-        "vietnamese": "Cảm ơn sự giúp đỡ của bạn!"
+            "id": 14,
+            "startTime": 195.4,
+            "endTime": 208.6,
+            "speaker": "Người bản xứ",
+            "chinese": "北京在下雪。",
+            "pinyin": "Běijīng zài xià xuě.",
+            "vietnamese": "Bắc Kinh đang có tuyết."
       },
       {
-        "id": 15,
-        "startTime": 106,
-        "endTime": 115,
-        "speaker": "Người bản xứ",
-        "chinese": "不客气，明天见！",
-        "pinyin": "Bú kèqi, míngtiān jiàn!",
-        "vietnamese": "Đừng khách sáo, ngày mai gặp lại nhé!"
+            "id": 15,
+            "startTime": 208.6,
+            "endTime": 223.6,
+            "speaker": "Người bản xứ",
+            "chinese": "我喜欢吃面条。",
+            "pinyin": "Wǒ xǐhuan chī miàntiáo.",
+            "vietnamese": "Tôi thích ăn mì."
+      },
+      {
+            "id": 16,
+            "startTime": 223.6,
+            "endTime": 240.2,
+            "speaker": "Người bản xứ",
+            "chinese": "桌子上有一本书。",
+            "pinyin": "Zhuōzi shang yǒu yì běn shū.",
+            "vietnamese": "Trên bàn có một cuốn sách."
+      },
+      {
+            "id": 17,
+            "startTime": 240.2,
+            "endTime": 253.4,
+            "speaker": "Người bản xứ",
+            "chinese": "我喜欢猫和狗。",
+            "pinyin": "Wǒ xǐhuan māo hé gǒu.",
+            "vietnamese": "Tôi thích mèo và chó."
+      },
+      {
+            "id": 18,
+            "startTime": 253.4,
+            "endTime": 264.8,
+            "speaker": "Người bản xứ",
+            "chinese": "你吃饭了吗？",
+            "pinyin": "Nǐ chī fàn le ma?",
+            "vietnamese": "Bạn đã ăn cơm chưa?"
+      },
+      {
+            "id": 19,
+            "startTime": 264.8,
+            "endTime": 278.0,
+            "speaker": "Người bản xứ",
+            "chinese": "明天会下雨。",
+            "pinyin": "Míngtiān huì xià yǔ.",
+            "vietnamese": "Ngày mai sẽ có mưa."
+      },
+      {
+            "id": 20,
+            "startTime": 278.0,
+            "endTime": 290.0,
+            "speaker": "Người bản xứ",
+            "chinese": "你长得真高！",
+            "pinyin": "Nǐ zhǎng de zhēn gāo!",
+            "vietnamese": "Bạn thật cao!"
+      },
+      {
+            "id": 21,
+            "startTime": 290.0,
+            "endTime": 303.0,
+            "speaker": "Người bản xứ",
+            "chinese": "星星在天上。",
+            "pinyin": "Xīngxing zài tiānshang.",
+            "vietnamese": "Những ngôi sao ở trên bầu trời."
+      },
+      {
+            "id": 22,
+            "startTime": 303.0,
+            "endTime": 317.4,
+            "speaker": "Người bản xứ",
+            "chinese": "我们去商店吧。",
+            "pinyin": "Wǒmen qù shāngdiàn ba.",
+            "vietnamese": "Chúng ta đi cửa hàng nhé."
+      },
+      {
+            "id": 23,
+            "startTime": 317.4,
+            "endTime": 333.2,
+            "speaker": "Người bản xứ",
+            "chinese": "我很喜欢吃水果。",
+            "pinyin": "Wǒ hěn xǐhuan chī shuǐguǒ.",
+            "vietnamese": "Tôi rất thích ăn trái cây."
+      },
+      {
+            "id": 24,
+            "startTime": 333.2,
+            "endTime": 344.4,
+            "speaker": "Người bản xứ",
+            "chinese": "我在看电视。",
+            "pinyin": "Wǒ zài kàn diànshì.",
+            "vietnamese": "Tôi đang xem TV."
+      },
+      {
+            "id": 25,
+            "startTime": 344.4,
+            "endTime": 353.5,
+            "speaker": "Người bản xứ",
+            "chinese": "对不起！",
+            "pinyin": "Duìbuqǐ!",
+            "vietnamese": "Xin lỗi!"
+      },
+      {
+            "id": 26,
+            "startTime": 353.5,
+            "endTime": 362.2,
+            "speaker": "Người bản xứ",
+            "chinese": "没关系。",
+            "pinyin": "Méi guānxi.",
+            "vietnamese": "Không sao."
+      },
+      {
+            "id": 27,
+            "startTime": 362.2,
+            "endTime": 377.8,
+            "speaker": "Người bản xứ",
+            "chinese": "今天是六月一日。",
+            "pinyin": "Jīntiān shì liù yuè yī rì.",
+            "vietnamese": "Hôm nay là ngày mùng 1 tháng 6."
+      },
+      {
+            "id": 28,
+            "startTime": 377.8,
+            "endTime": 393.2,
+            "speaker": "Người bản xứ",
+            "chinese": "这个杯子多少钱？",
+            "pinyin": "Zhège bēizi duōshao qián?",
+            "vietnamese": "Cái cốc này bao nhiêu tiền?"
+      },
+      {
+            "id": 29,
+            "startTime": 393.2,
+            "endTime": 405.2,
+            "speaker": "Người bản xứ",
+            "chinese": "我的爸爸是医生。",
+            "pinyin": "Wǒ de bàba shì yīshēng.",
+            "vietnamese": "Bố tôi là bác sĩ."
+      },
+      {
+            "id": 30,
+            "startTime": 405.2,
+            "endTime": 418.8,
+            "speaker": "Người bản xứ",
+            "chinese": "你喜欢喝茶吗？",
+            "pinyin": "Nǐ xǐhuan hē chá ma?",
+            "vietnamese": "Bạn có thích uống trà không?"
+      },
+      {
+            "id": 31,
+            "startTime": 418.8,
+            "endTime": 431.4,
+            "speaker": "Người bản xứ",
+            "chinese": "面包很好吃。",
+            "pinyin": "Miànbāo hěn hǎochī.",
+            "vietnamese": "Bánh mì rất ngon."
+      },
+      {
+            "id": 32,
+            "startTime": 431.4,
+            "endTime": 445.2,
+            "speaker": "Người bản xứ",
+            "chinese": "我有一个中国朋友。",
+            "pinyin": "Wǒ yǒu yí gè zhōngguó péngyou.",
+            "vietnamese": "Tôi có một người bạn Trung Quốc."
+      },
+      {
+            "id": 33,
+            "startTime": 445.2,
+            "endTime": 462.0,
+            "speaker": "Người bản xứ",
+            "chinese": "下午，我要去饭店。",
+            "pinyin": "Xiàwǔ, wǒ yào qù fàndiàn.",
+            "vietnamese": "Buổi chiều, tôi sẽ đi nhà hàng."
+      },
+      {
+            "id": 34,
+            "startTime": 462.0,
+            "endTime": 473.4,
+            "speaker": "Người bản xứ",
+            "chinese": "我在学汉语。",
+            "pinyin": "Wǒ zài xué hànyǔ.",
+            "vietnamese": "Tôi đang học tiếng Trung."
+      },
+      {
+            "id": 35,
+            "startTime": 473.4,
+            "endTime": 487.0,
+            "speaker": "Người bản xứ",
+            "chinese": "我买了一件新衣服。",
+            "pinyin": "Wǒ mǎi le yí jiàn xīn yīfu.",
+            "vietnamese": "Tôi đã mua một chiếc áo mới."
+      },
+      {
+            "id": 36,
+            "startTime": 487.0,
+            "endTime": 499.4,
+            "speaker": "Người bản xứ",
+            "chinese": "我喜欢看电视。",
+            "pinyin": "Wǒ xǐhuan kàn diànshì.",
+            "vietnamese": "Buổi tối, tôi thích xem TV."
+      },
+      {
+            "id": 37,
+            "startTime": 499.4,
+            "endTime": 510.4,
+            "speaker": "Người bản xứ",
+            "chinese": "我养了一只猫。",
+            "pinyin": "Wǒ yǎng le yì zhī māo.",
+            "vietnamese": "Tôi nuôi một con mèo."
+      },
+      {
+            "id": 38,
+            "startTime": 510.4,
+            "endTime": 519.4,
+            "speaker": "Người bản xứ",
+            "chinese": "我爱你！",
+            "pinyin": "Wǒ ài nǐ!",
+            "vietnamese": "Tôi yêu bạn!"
+      },
+      {
+            "id": 39,
+            "startTime": 519.4,
+            "endTime": 533.8,
+            "speaker": "Người bản xứ",
+            "chinese": "我爱我的爸爸和妈妈。",
+            "pinyin": "Wǒ ài wǒ de bàba hé māma.",
+            "vietnamese": "Tôi yêu bố và mẹ của tôi."
+      },
+      {
+            "id": 40,
+            "startTime": 533.8,
+            "endTime": 545.6,
+            "speaker": "Người bản xứ",
+            "chinese": "这个字怎么读？",
+            "pinyin": "Zhège zì zěnme dú?",
+            "vietnamese": "Chữ này đọc thế nào?"
+      },
+      {
+            "id": 41,
+            "startTime": 545.6,
+            "endTime": 557.0,
+            "speaker": "Người bản xứ",
+            "chinese": "有什么问题吗？",
+            "pinyin": "Yǒu shénme wèntí ma?",
+            "vietnamese": "Có câu hỏi gì không?"
+      },
+      {
+            "id": 42,
+            "startTime": 557.0,
+            "endTime": 573.0,
+            "speaker": "Người bản xứ",
+            "chinese": "我儿子今年四岁。",
+            "pinyin": "Wǒ érzi jīnnián sì suì.",
+            "vietnamese": "Con trai tôi năm nay bốn tuổi."
+      },
+      {
+            "id": 43,
+            "startTime": 573.0,
+            "endTime": 590.2,
+            "speaker": "Người bản xứ",
+            "chinese": "这台电脑太贵了。",
+            "pinyin": "Zhè tái diànnǎo tài guì le.",
+            "vietnamese": "Cái máy tính này quá đắt."
+      },
+      {
+            "id": 44,
+            "startTime": 590.2,
+            "endTime": 600.4,
+            "speaker": "Người bản xứ",
+            "chinese": "我不认识他。",
+            "pinyin": "Wǒ bú rènshi tā.",
+            "vietnamese": "Tôi không quen anh ấy."
+      },
+      {
+            "id": 45,
+            "startTime": 600.4,
+            "endTime": 613.2,
+            "speaker": "Người bản xứ",
+            "chinese": "小丽是我的朋友。",
+            "pinyin": "Xiǎolì shì wǒ de péngyou.",
+            "vietnamese": "Tiểu Lệ là bạn của tôi."
+      },
+      {
+            "id": 46,
+            "startTime": 613.2,
+            "endTime": 625.2,
+            "speaker": "Người bản xứ",
+            "chinese": "我喜欢玩游戏。",
+            "pinyin": "Wǒ xǐhuan wán yóuxì.",
+            "vietnamese": "Tôi thích chơi game."
+      },
+      {
+            "id": 47,
+            "startTime": 625.2,
+            "endTime": 635.8,
+            "speaker": "Người bản xứ",
+            "chinese": "狗坐在地上。",
+            "pinyin": "Gǒu zuò zài dìshang.",
+            "vietnamese": "Chó ngồi trên sàn."
+      },
+      {
+            "id": 48,
+            "startTime": 635.8,
+            "endTime": 651.2,
+            "speaker": "Người bản xứ",
+            "chinese": "大卫站在我的左边。",
+            "pinyin": "Dàwèi zhàn zài wǒ de zuǒbian.",
+            "vietnamese": "David đứng bên trái tôi."
+      },
+      {
+            "id": 49,
+            "startTime": 651.2,
+            "endTime": 664.0,
+            "speaker": "Người bản xứ",
+            "chinese": "我在超市工作。",
+            "pinyin": "Wǒ zài chāoshì gōngzuò.",
+            "vietnamese": "Tôi làm việc ở siêu thị."
+      },
+      {
+            "id": 50,
+            "startTime": 664.0,
+            "endTime": 678.4,
+            "speaker": "Người bản xứ",
+            "chinese": "妈妈什么时候回家？",
+            "pinyin": "Māma shénme shíhou huíjiā?",
+            "vietnamese": "Khi nào mẹ về nhà?"
+      },
+      {
+            "id": 51,
+            "startTime": 678.4,
+            "endTime": 693.0,
+            "speaker": "Người bản xứ",
+            "chinese": "我们去看电影吧！",
+            "pinyin": "Wǒmen qù kàn diànyǐng ba!",
+            "vietnamese": "Chúng ta đi xem phim nhé!"
+      },
+      {
+            "id": 52,
+            "startTime": 693.0,
+            "endTime": 708.0,
+            "speaker": "Người bản xứ",
+            "chinese": "我家有五口人。",
+            "pinyin": "Wǒ jiā yǒu wǔ kǒu rén.",
+            "vietnamese": "Nhà tôi có năm người."
+      },
+      {
+            "id": 53,
+            "startTime": 708.0,
+            "endTime": 720.6,
+            "speaker": "Người bản xứ",
+            "chinese": "我看见你了！",
+            "pinyin": "Wǒ kànjiàn nǐ le!",
+            "vietnamese": "Tôi đã thấy bạn!"
+      },
+      {
+            "id": 54,
+            "startTime": 720.6,
+            "endTime": 733.0,
+            "speaker": "Người bản xứ",
+            "chinese": "我爱吃苹果。",
+            "pinyin": "Wǒ ài chī píngguǒ.",
+            "vietnamese": "Tôi thích ăn táo."
+      },
+      {
+            "id": 55,
+            "startTime": 733.0,
+            "endTime": 747.2,
+            "speaker": "Người bản xứ",
+            "chinese": "外面的雨很小。",
+            "pinyin": "Wàimiàn de yǔ hěn xiǎo.",
+            "vietnamese": "Mưa bên ngoài rất nhỏ."
+      },
+      {
+            "id": 56,
+            "startTime": 747.2,
+            "endTime": 761.0,
+            "speaker": "Người bản xứ",
+            "chinese": "这个东西多少钱？",
+            "pinyin": "Zhège dōngxi duōshao qián?",
+            "vietnamese": "Cái này bao nhiêu tiền?"
+      },
+      {
+            "id": 57,
+            "startTime": 761.0,
+            "endTime": 774.0,
+            "speaker": "Người bản xứ",
+            "chinese": "我想喝可乐。",
+            "pinyin": "Wǒ xiǎng hē kělè.",
+            "vietnamese": "Tôi muốn uống coca."
+      },
+      {
+            "id": 58,
+            "startTime": 774.0,
+            "endTime": 788.2,
+            "speaker": "Người bản xứ",
+            "chinese": "我不喜欢喝牛奶。",
+            "pinyin": "Wǒ bù xǐhuan hē niúnǎi.",
+            "vietnamese": "Tôi không thích uống sữa."
+      },
+      {
+            "id": 59,
+            "startTime": 788.2,
+            "endTime": 801.4,
+            "speaker": "Người bản xứ",
+            "chinese": "我喜欢玩手机。",
+            "pinyin": "Wǒ xǐhuan wán shǒujī.",
+            "vietnamese": "Tôi thích chơi điện thoại."
+      },
+      {
+            "id": 60,
+            "startTime": 801.4,
+            "endTime": 819.4,
+            "speaker": "Người bản xứ",
+            "chinese": "你的电话号码是多少？",
+            "pinyin": "Nǐ de diànhuà hàomǎ shì duōshao?",
+            "vietnamese": "Số điện thoại của bạn là bao nhiêu?"
+      },
+      {
+            "id": 61,
+            "startTime": 819.4,
+            "endTime": 833.4,
+            "speaker": "Người bản xứ",
+            "chinese": "她戴了一个手表。",
+            "pinyin": "Tā dài le yí gè shǒubiǎo.",
+            "vietnamese": "Cô ấy đeo đồng hồ."
+      },
+      {
+            "id": 62,
+            "startTime": 833.4,
+            "endTime": 847.8,
+            "speaker": "Người bản xứ",
+            "chinese": "中午我要睡觉。",
+            "pinyin": "Zhōngwǔ wǒ yào shuìjiào.",
+            "vietnamese": "Buổi trưa tôi muốn ngủ."
+      },
+      {
+            "id": 63,
+            "startTime": 847.8,
+            "endTime": 862.6,
+            "speaker": "Người bản xứ",
+            "chinese": "这个手套多少钱？",
+            "pinyin": "Zhège shǒutào duōshao qián?",
+            "vietnamese": "Cái găng tay này bao nhiêu tiền?"
+      },
+      {
+            "id": 64,
+            "startTime": 862.6,
+            "endTime": 878.0,
+            "speaker": "Người bản xứ",
+            "chinese": "她的头上戴着帽子。",
+            "pinyin": "Tā de tóushang dàizhe màozi.",
+            "vietnamese": "Trên đầu cô ấy đang đội mũ."
+      },
+      {
+            "id": 65,
+            "startTime": 878.0,
+            "endTime": 893.8,
+            "speaker": "Người bản xứ",
+            "chinese": "你是哪个国家的人？",
+            "pinyin": "Nǐ shì nǎge guójiā de rén?",
+            "vietnamese": "Bạn là người nước nào?"
+      },
+      {
+            "id": 66,
+            "startTime": 893.8,
+            "endTime": 907.6,
+            "speaker": "Người bản xứ",
+            "chinese": "李娜是运动员。",
+            "pinyin": "Lǐ Nà shì yùndòngyuán.",
+            "vietnamese": "Lý Na là vận động viên."
+      },
+      {
+            "id": 67,
+            "startTime": 907.6,
+            "endTime": 917.5,
+            "speaker": "Người bản xứ",
+            "chinese": "请坐下。",
+            "pinyin": "Qǐng zuòxià.",
+            "vietnamese": "Xin mời ngồi xuống."
+      },
+      {
+            "id": 68,
+            "startTime": 917.5,
+            "endTime": 928.0,
+            "speaker": "Người bản xứ",
+            "chinese": "冬天很冷。",
+            "pinyin": "Dōngtiān hěn lěng.",
+            "vietnamese": "Mùa đông rất lạnh."
+      },
+      {
+            "id": 69,
+            "startTime": 928.0,
+            "endTime": 942.6,
+            "speaker": "Người bản xứ",
+            "chinese": "夏天天气太热了！",
+            "pinyin": "Xiàtiān tiānqì tài rè le!",
+            "vietnamese": "Thời tiết mùa hè quá nóng!"
+      },
+      {
+            "id": 70,
+            "startTime": 942.6,
+            "endTime": 955.2,
+            "speaker": "Người bản xứ",
+            "chinese": "现在是春天。",
+            "pinyin": "Xiànzài shì chūntiān.",
+            "vietnamese": "Bây giờ là mùa xuân."
+      },
+      {
+            "id": 71,
+            "startTime": 955.2,
+            "endTime": 966.2,
+            "speaker": "Người bản xứ",
+            "chinese": "花很漂亮。",
+            "pinyin": "Huā hěn piàoliang.",
+            "vietnamese": "Hoa rất đẹp."
+      },
+      {
+            "id": 72,
+            "startTime": 966.2,
+            "endTime": 979.6,
+            "speaker": "Người bản xứ",
+            "chinese": "我爱踢足球。",
+            "pinyin": "Wǒ ài tī zúqiú.",
+            "vietnamese": "Tôi thích đá bóng."
+      },
+      {
+            "id": 73,
+            "startTime": 979.6,
+            "endTime": 995.4,
+            "speaker": "Người bản xứ",
+            "chinese": "他在学校打篮球。",
+            "pinyin": "Tā zài xuéxiào dǎ lánqiú.",
+            "vietnamese": "Anh ấy chơi bóng rổ ở trường."
+      },
+      {
+            "id": 74,
+            "startTime": 995.4,
+            "endTime": 1009.4,
+            "speaker": "Người bản xứ",
+            "chinese": "他站在我的右边。",
+            "pinyin": "Tā zhàn zài wǒ de yòubian.",
+            "vietnamese": "Anh ấy đứng bên phải tôi."
+      },
+      {
+            "id": 75,
+            "startTime": 1009.4,
+            "endTime": 1022.0,
+            "speaker": "Người bản xứ",
+            "chinese": "我坐在椅子上。",
+            "pinyin": "Wǒ zuò zài yǐzi shang.",
+            "vietnamese": "Tôi ngồi trên ghế."
+      },
+      {
+            "id": 76,
+            "startTime": 1022.0,
+            "endTime": 1038.4,
+            "speaker": "Người bản xứ",
+            "chinese": "昨天，我去了车站。",
+            "pinyin": "Zuótiān, wǒ qù le chēzhàn.",
+            "vietnamese": "Hôm qua, tôi đã đi nhà ga."
+      },
+      {
+            "id": 77,
+            "startTime": 1038.4,
+            "endTime": 1051.6,
+            "speaker": "Người bản xứ",
+            "chinese": "我喜欢坐火车。",
+            "pinyin": "Wǒ xǐhuan zuò huǒchē.",
+            "vietnamese": "Tôi thích đi tàu."
+      },
+      {
+            "id": 78,
+            "startTime": 1051.6,
+            "endTime": 1065.6,
+            "speaker": "Người bản xứ",
+            "chinese": "飞机飞得很快。",
+            "pinyin": "Fēijī fēi de hěn kuài.",
+            "vietnamese": "Máy bay bay rất nhanh."
+      },
+      {
+            "id": 79,
+            "startTime": 1065.6,
+            "endTime": 1079.8,
+            "speaker": "Người bản xứ",
+            "chinese": "我爱吃中国菜。",
+            "pinyin": "Wǒ ài chī zhōngguó cài.",
+            "vietnamese": "Tôi thích ăn món Trung Quốc."
+      },
+      {
+            "id": 80,
+            "startTime": 1079.8,
+            "endTime": 1090.8,
+            "speaker": "Người bản xứ",
+            "chinese": "我想喝水。",
+            "pinyin": "Wǒ xiǎng hē shuǐ.",
+            "vietnamese": "Tôi muốn uống nước."
+      },
+      {
+            "id": 81,
+            "startTime": 1090.8,
+            "endTime": 1101.0,
+            "speaker": "Người bản xứ",
+            "chinese": "我很忙。",
+            "pinyin": "Wǒ hěn máng.",
+            "vietnamese": "Tôi rất bận."
+      },
+      {
+            "id": 82,
+            "startTime": 1101.0,
+            "endTime": 1113.8,
+            "speaker": "Người bản xứ",
+            "chinese": "小张生气了。",
+            "pinyin": "Xiǎozhāng shēngqì le.",
+            "vietnamese": "Tiểu Trương đã tức giận."
+      },
+      {
+            "id": 83,
+            "startTime": 1113.8,
+            "endTime": 1125.0,
+            "speaker": "Người bản xứ",
+            "chinese": "我很开心。",
+            "pinyin": "Wǒ hěn kāixīn.",
+            "vietnamese": "Tôi rất vui."
+      },
+      {
+            "id": 84,
+            "startTime": 1125.0,
+            "endTime": 1135.8,
+            "speaker": "Người bản xứ",
+            "chinese": "她是谁？",
+            "pinyin": "Tā shì shéi?",
+            "vietnamese": "Cô ấy là ai?"
+      },
+      {
+            "id": 85,
+            "startTime": 1135.8,
+            "endTime": 1153.4,
+            "speaker": "Người bản xứ",
+            "chinese": "我们认识很长时间了。",
+            "pinyin": "Wǒmen rènshi hěn cháng shíjiān le.",
+            "vietnamese": "Chúng ta đã quen nhau lâu rồi."
+      },
+      {
+            "id": 86,
+            "startTime": 1153.4,
+            "endTime": 1171.4,
+            "speaker": "Người bản xứ",
+            "chinese": "今年是2024年。",
+            "pinyin": "Jīnnián shì èr líng èr sì nián.",
+            "vietnamese": "Năm nay là năm 2024."
+      },
+      {
+            "id": 87,
+            "startTime": 1171.4,
+            "endTime": 1182.6,
+            "speaker": "Người bản xứ",
+            "chinese": "我在开车。",
+            "pinyin": "Wǒ zài kāichē.",
+            "vietnamese": "Tôi đang lái xe."
+      },
+      {
+            "id": 88,
+            "startTime": 1182.6,
+            "endTime": 1196.0,
+            "speaker": "Người bản xứ",
+            "chinese": "杯子里有水。",
+            "pinyin": "Bēizi li yǒu shuǐ.",
+            "vietnamese": "Trong cốc có nước."
+      },
+      {
+            "id": 89,
+            "startTime": 1196.0,
+            "endTime": 1205.4,
+            "speaker": "Người bản xứ",
+            "chinese": "我听不见。",
+            "pinyin": "Wǒ tīng bu jiàn.",
+            "vietnamese": "Tôi không nghe thấy."
+      },
+      {
+            "id": 90,
+            "startTime": 1205.4,
+            "endTime": 1216.0,
+            "speaker": "Người bản xứ",
+            "chinese": "你说什么？",
+            "pinyin": "Nǐ shuō shénme?",
+            "vietnamese": "Bạn nói gì?"
+      },
+      {
+            "id": 91,
+            "startTime": 1216.0,
+            "endTime": 1227.0,
+            "speaker": "Người bản xứ",
+            "chinese": "你很漂亮。",
+            "pinyin": "Nǐ hěn piàoliang.",
+            "vietnamese": "Bạn rất đẹp."
+      },
+      {
+            "id": 92,
+            "startTime": 1227.0,
+            "endTime": 1242.6,
+            "speaker": "Người bản xứ",
+            "chinese": "李小姐是我的朋友。",
+            "pinyin": "Lǐ xiǎojie shì wǒ de péngyou.",
+            "vietnamese": "Cô Lý là bạn của tôi."
+      },
+      {
+            "id": 93,
+            "startTime": 1242.6,
+            "endTime": 1253.6,
+            "speaker": "Người bản xứ",
+            "chinese": "吃一口饭。",
+            "pinyin": "Chī yì kǒu fàn.",
+            "vietnamese": "Ăn một miếng cơm."
+      },
+      {
+            "id": 94,
+            "startTime": 1253.6,
+            "endTime": 1265.2,
+            "speaker": "Người bản xứ",
+            "chinese": "菜很好吃。",
+            "pinyin": "Cài hěn hǎochī.",
+            "vietnamese": "Món ăn rất ngon."
+      },
+      {
+            "id": 95,
+            "startTime": 1265.2,
+            "endTime": 1277.2,
+            "speaker": "Người bản xứ",
+            "chinese": "先生，你好。",
+            "pinyin": "Xiānsheng, nǐ hǎo.",
+            "vietnamese": "Chào ông."
+      },
+      {
+            "id": 96,
+            "startTime": 1277.2,
+            "endTime": 1290.6,
+            "speaker": "Người bản xứ",
+            "chinese": "我在公园跑步。",
+            "pinyin": "Wǒ zài gōngyuán pǎobù.",
+            "vietnamese": "Tôi chạy bộ trong công viên."
+      },
+      {
+            "id": 97,
+            "startTime": 1290.6,
+            "endTime": 1305.6,
+            "speaker": "Người bản xứ",
+            "chinese": "我有一个女儿。",
+            "pinyin": "Wǒ yǒu yí gè nǚ'ér.",
+            "vietnamese": "Tôi có một cô con gái."
+      },
+      {
+            "id": 98,
+            "startTime": 1305.6,
+            "endTime": 1319.2,
+            "speaker": "Người bản xứ",
+            "chinese": "我现在要回家。",
+            "pinyin": "Wǒ xiànzài yào huíjiā.",
+            "vietnamese": "Bây giờ tôi muốn về nhà."
+      },
+      {
+            "id": 99,
+            "startTime": 1319.2,
+            "endTime": 1330.0,
+            "speaker": "Người bản xứ",
+            "chinese": "下次再见！",
+            "pinyin": "Xià cì zàijiàn!",
+            "vietnamese": "Hẹn gặp lại lần sau!"
+      },
+      {
+            "id": 100,
+            "startTime": 1330.0,
+            "endTime": 1342.0,
+            "speaker": "Người bản xứ",
+            "chinese": "好的，再见！",
+            "pinyin": "Hǎo de, zàijiàn!",
+            "vietnamese": "Được rồi, tạm biệt!"
       }
-    ]
+]
   },
   {
     "id": "hsk1-ankhahy-daily-dialogues",

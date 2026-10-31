@@ -1,6 +1,6 @@
 import { db, type Word, type Reading, type ListeningTriad } from "./database"
 
-const HSK_IMPORTED_FLAG = "hsk_words_v1_imported"
+const HSK_IMPORTED_FLAG = "hsk_words_v2_clean_vi_imported"
 
 export async function importHsk(): Promise<number> {
   try {
@@ -10,16 +10,7 @@ export async function importHsk(): Promise<number> {
       if (count > 0) return count
     }
 
-    // 2. Fast check IndexedDB count directly
-    const existingCount = await db.words.count()
-    if (existingCount > 0) {
-      if (typeof window !== "undefined") {
-        localStorage.setItem(HSK_IMPORTED_FLAG, "true")
-      }
-      return existingCount
-    }
-
-    // 3. Only fetch from network on initial clean install
+    // 2. Fetch updated clean Vietnamese vocabulary
     const response = await fetch(`/content/words.json`)
     if (!response.ok) {
       throw new Error(`Failed to load HSK words`)
