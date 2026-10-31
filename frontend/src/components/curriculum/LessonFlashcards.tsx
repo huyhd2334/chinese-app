@@ -34,7 +34,7 @@ export default function LessonFlashcards({ words, lessonTitle }: LessonFlashcard
 
   if (!deck || deck.length === 0) {
     return (
-      <div className="bg-white border border-border rounded-2xl p-8 text-center text-muted">
+      <div className="bg-card border border-border rounded-2xl p-8 text-center text-muted">
         <p>Chưa có từ vựng nào trong bài học này để tạo flashcard.</p>
       </div>
     )

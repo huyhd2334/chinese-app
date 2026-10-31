@@ -81,7 +81,7 @@ export default function BooksDirectoryPage() {
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 pb-24 space-y-6">
       {/* Top Header: Giáo trình HSK Chuẩn */}
-      <div className="bg-white dark:bg-card border border-border rounded-2xl p-6 sm:p-7 shadow-xs">
+      <div className="bg-card border border-border rounded-2xl p-6 sm:p-7 shadow-xs">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="space-y-1.5 max-w-2xl">
             <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-stone-100 dark:bg-stone-800 text-slate-700 dark:text-stone-300">
@@ -105,7 +105,7 @@ export default function BooksDirectoryPage() {
       </div>
 
       {/* Danh sách giáo trình theo cấp độ */}
-      <section className="bg-white dark:bg-card border border-border rounded-2xl p-5 sm:p-6 shadow-xs space-y-5">
+      <section className="bg-card border border-border rounded-2xl p-5 sm:p-6 shadow-xs space-y-5">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-border/70">
           <div>
             <h2 className="text-base font-bold text-china-ink">
@@ -134,7 +134,7 @@ export default function BooksDirectoryPage() {
                   className={`group flex flex-col items-center text-center p-3 rounded-xl border transition-all cursor-pointer ${
                     isSelected
                       ? 'bg-stone-100 dark:bg-[#201a2e] border-china-red ring-1 ring-china-red shadow-xs'
-                      : 'bg-white dark:bg-stone-900/60 border-border dark:border-[#382c47] hover:border-slate-300 dark:hover:border-stone-600 hover:bg-neutral-50/60 dark:hover:bg-stone-800/60'
+                      : 'bg-card border-border dark:border-[#382c47] hover:border-slate-300 dark:hover:border-stone-600 hover:bg-neutral-50/60 dark:hover:bg-stone-800/60'
                   }`}
                 >
                   {/* Book Cover Image */}
@@ -164,7 +164,7 @@ export default function BooksDirectoryPage() {
                     <p className="text-[11px] text-muted truncate">
                       {book.totalLessons} bài học
                     </p>
-                    <span className="inline-block text-[10px] font-medium text-slate-600">
+                    <span className="inline-block text-[10px] font-medium text-slate-600 dark:text-stone-400">
                       {book.badge}
                     </span>
                   </div>
@@ -179,7 +179,7 @@ export default function BooksDirectoryPage() {
       {selectedBook && (
         <section className="space-y-4">
           {/* Selected Book Header Card */}
-          <div className="bg-white dark:bg-card border border-border rounded-2xl p-5 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="bg-card border border-border rounded-2xl p-5 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div className="flex items-center gap-3.5 min-w-0">
               <div className="relative w-14 sm:w-16 aspect-[1/1.38] shrink-0 rounded-lg overflow-hidden border border-border/70">
                 {selectedBook.coverImage ? (
