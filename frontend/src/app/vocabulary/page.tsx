@@ -107,16 +107,16 @@ const Page = () => {
               placeholder="Tìm chữ Hán, pinyin..." 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-3 py-1.5 text-xs sm:text-sm bg-white border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-china-red/20 focus:border-china-red transition-all shadow-xs"
+              className="w-full pl-9 pr-3 py-1.5 text-xs sm:text-sm bg-white dark:bg-[#1a1624] text-china-ink border border-border dark:border-[#382c47] rounded-xl focus:outline-none focus:ring-2 focus:ring-china-red/20 focus:border-china-red transition-all shadow-xs"
             />
           </div>
 
           {/* Active Recall Toggles */}
-          <div className="flex items-center bg-white border border-border p-0.5 rounded-xl shadow-xs text-xs font-medium">
+          <div className="flex items-center bg-stone-100 dark:bg-[#1a1624] border border-border dark:border-[#382c47] p-0.5 rounded-xl shadow-xs text-xs font-medium">
             <button
               onClick={() => setHidePinyin(!hidePinyin)}
               className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg transition-colors ${
-                hidePinyin ? "bg-china-red text-white" : "text-muted hover:text-china-ink hover:bg-gray-50"
+                hidePinyin ? "bg-china-red text-white" : "text-muted hover:text-china-ink hover:bg-stone-200 dark:hover:bg-stone-800"
               }`}
               title="Ẩn Pinyin để tự kiểm tra mặt chữ"
             >
@@ -126,7 +126,7 @@ const Page = () => {
             <button
               onClick={() => setHideMeaning(!hideMeaning)}
               className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg transition-colors ${
-                hideMeaning ? "bg-china-red text-white" : "text-muted hover:text-china-ink hover:bg-gray-50"
+                hideMeaning ? "bg-china-red text-white" : "text-muted hover:text-china-ink hover:bg-stone-200 dark:hover:bg-stone-800"
               }`}
               title="Ẩn Nghĩa để tự suy nghĩ"
             >
@@ -140,7 +140,7 @@ const Page = () => {
       {/* Filter Tabs & HSK Levels */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         {/* Status Filters */}
-        <div className="flex bg-white border border-border p-1 rounded-xl shadow-xs overflow-x-auto scrollbar-hide gap-1">
+        <div className="flex bg-stone-100 dark:bg-[#1a1624] border border-border dark:border-[#382c47] p-1 rounded-xl shadow-xs overflow-x-auto scrollbar-hide gap-1">
           {[
             { id: 'all', label: 'Tất cả' },
             { id: 'studying', label: 'Đang học' },
@@ -158,7 +158,7 @@ const Page = () => {
               className={`px-3 py-1 text-xs font-medium rounded-lg whitespace-nowrap transition-all ${
                 filter === f.id 
                   ? 'bg-china-red text-white shadow-xs font-bold' 
-                  : 'text-muted hover:text-china-ink hover:bg-gray-50'
+                  : 'text-muted hover:text-china-ink hover:bg-stone-200 dark:hover:bg-stone-800'
               }`}
             >
               {f.label}
@@ -180,8 +180,8 @@ const Page = () => {
                 }}              
                 className={`flex items-center gap-1 px-2.5 py-1.5 font-medium transition-all text-xs rounded-t-xl border-b-2 whitespace-nowrap ${
                   level === lv 
-                    ? "border-china-red text-china-red bg-white font-bold shadow-xs" 
-                    : "border-transparent text-muted hover:text-china-ink hover:bg-gray-50"
+                    ? "border-china-red text-china-red bg-white dark:bg-[#1a1624] font-bold shadow-xs" 
+                    : "border-transparent text-muted hover:text-china-ink hover:bg-stone-100 dark:hover:bg-stone-800/60"
                 }`}
               >
                 HSK {lv}

@@ -220,7 +220,7 @@ export default function BonusHubPage() {
                   </Link>
                   <Link
                     href={`/bonus/${col.slug}?mode=gallery`}
-                    className="py-2.5 px-4 rounded-xl bg-white dark:bg-[#20202c] border border-border text-china-ink dark:text-[#edeae4] text-xs sm:text-sm font-semibold hover:bg-china-paper dark:hover:bg-[#2a2a3a] transition-all text-center active:scale-95 shadow-2xs"
+                    className="py-2.5 px-4 rounded-xl bg-stone-100 dark:bg-[#201a2e] border border-border dark:border-[#382c47] text-stone-800 dark:text-stone-200 text-xs sm:text-sm font-semibold hover:bg-stone-200 dark:hover:bg-[#2a223c] transition-all text-center active:scale-95 shadow-2xs"
                   >
                     Xem & Thêm Thẻ
                   </Link>
@@ -290,7 +290,7 @@ export default function BonusHubPage() {
                   </Link>
                   <Link
                     href={`/bonus/${col.slug}?mode=gallery`}
-                    className="py-2.5 px-4 rounded-xl bg-white dark:bg-[#20202c] border border-border text-china-ink dark:text-[#edeae4] text-xs sm:text-sm font-semibold hover:bg-china-paper dark:hover:bg-[#2a2a3a] transition-all text-center active:scale-95 shadow-2xs"
+                    className="py-2.5 px-4 rounded-xl bg-stone-100 dark:bg-[#201a2e] border border-border dark:border-[#382c47] text-stone-800 dark:text-stone-200 text-xs sm:text-sm font-semibold hover:bg-stone-200 dark:hover:bg-[#2a223c] transition-all text-center active:scale-95 shadow-2xs"
                   >
                     Xem & Thêm Thẻ
                   </Link>

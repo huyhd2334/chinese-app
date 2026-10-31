@@ -761,7 +761,7 @@ export default function Dashboard() {
           {/* Card 1: Ôn tập SRS (Phục Tập - 溫故知新) */}
           <Link 
             href="/review" 
-            className="group relative overflow-hidden rounded-3xl bg-card border border-border/80 hover:border-china-red/50 hover:shadow-lg p-5 text-china-ink transition-all duration-300 flex flex-col justify-between min-h-[195px]"
+            className="group relative overflow-hidden rounded-3xl bg-white dark:bg-[#1a1624] border border-border/80 dark:border-[#382c47] hover:border-china-red/50 hover:shadow-lg p-5 text-china-ink transition-all duration-300 flex flex-col justify-between min-h-[195px]"
           >
             {/* Calligraphy Watermark chìm nghệ thuật */}
             <div className="absolute right-2 -bottom-4 text-stone-200/50 dark:text-stone-700/25 font-chinese text-8xl font-black select-none pointer-events-none group-hover:text-china-red/5 transition-colors" lang="zh">
@@ -774,7 +774,7 @@ export default function Dashboard() {
                 印 • 復習
               </span>
 
-              <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-china-paper border border-border text-china-ink inline-flex items-center gap-1.5">
+              <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-stone-100 dark:bg-stone-800/90 border border-border dark:border-stone-700 text-china-ink inline-flex items-center gap-1.5">
                 {wordReview > 0 ? (
                   <>
                     <span className="w-1.5 h-1.5 rounded-full bg-china-red animate-pulse" />
@@ -792,13 +792,13 @@ export default function Dashboard() {
                 <h3 className="text-lg font-bold text-china-ink group-hover:text-china-red transition-colors">
                   Ôn tập SRS
                 </h3>
-                <p className="text-xs text-muted leading-relaxed line-clamp-2">
+                <p className="text-xs text-stone-500 dark:text-stone-300 leading-relaxed line-clamp-2">
                   Lặp lại ngắt quãng theo đường cong trí nhớ
                 </p>
               </div>
 
               {/* Mascot Art Frame */}
-              <div className="relative w-16 h-16 sm:w-18 sm:h-18 shrink-0 rounded-2xl bg-china-paper border border-border/60 p-1 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-2 shadow-2xs">
+              <div className="relative w-16 h-16 sm:w-18 sm:h-18 shrink-0 rounded-2xl bg-stone-100 dark:bg-[#120f1a] border border-border/60 dark:border-[#382c47] p-1 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-2 shadow-2xs">
                 <Image
                   src="/chibi-loading.svg"
                   alt="Tiểu Lu Ôn Tập"
@@ -810,7 +810,7 @@ export default function Dashboard() {
             </div>
 
             {/* Bottom: Action Link */}
-            <div className="relative z-10 pt-2 border-t border-border/50 flex items-center justify-between text-xs font-semibold text-china-ink group-hover:text-china-red transition-colors">
+            <div className="relative z-10 pt-2 border-t border-border/50 dark:border-[#382c47] flex items-center justify-between text-xs font-semibold text-china-ink group-hover:text-china-red transition-colors">
               <span>Vào thư phòng ôn tập</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
             </div>
@@ -819,7 +819,7 @@ export default function Dashboard() {
           {/* Card 2: Kho Từ Vựng HSK (Tự Hải - 字海尋珠) */}
           <Link 
             href="/vocabulary" 
-            className="group relative overflow-hidden rounded-3xl bg-card border border-border/80 hover:border-china-red/50 hover:shadow-lg p-5 text-china-ink transition-all duration-300 flex flex-col justify-between min-h-[195px]"
+            className="group relative overflow-hidden rounded-3xl bg-white dark:bg-[#1a1624] border border-border/80 dark:border-[#382c47] hover:border-china-red/50 hover:shadow-lg p-5 text-china-ink transition-all duration-300 flex flex-col justify-between min-h-[195px]"
           >
             {/* Calligraphy Watermark chìm */}
             <div className="absolute right-2 -bottom-4 text-stone-200/50 dark:text-stone-700/25 font-chinese text-8xl font-black select-none pointer-events-none group-hover:text-china-red/5 transition-colors" lang="zh">
@@ -832,7 +832,7 @@ export default function Dashboard() {
                 印 • 詞海
               </span>
 
-              <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-china-paper border border-border text-china-ink">
+              <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-stone-100 dark:bg-stone-800/90 border border-border dark:border-stone-700 text-china-ink">
                 {wordCount} từ HSK
               </span>
             </div>
@@ -843,13 +843,13 @@ export default function Dashboard() {
                 <h3 className="text-lg font-bold text-china-ink group-hover:text-china-red transition-colors">
                   Từ vựng HSK
                 </h3>
-                <p className="text-xs text-muted leading-relaxed line-clamp-2">
+                <p className="text-xs text-stone-500 dark:text-stone-300 leading-relaxed line-clamp-2">
                   Tra cứu và học từ vựng toàn bộ cấp độ HSK 1–6
                 </p>
               </div>
 
               {/* Mascot Art Frame */}
-              <div className="relative w-16 h-16 sm:w-18 sm:h-18 shrink-0 rounded-2xl bg-china-paper border border-border/60 p-1 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-2 shadow-2xs">
+              <div className="relative w-16 h-16 sm:w-18 sm:h-18 shrink-0 rounded-2xl bg-stone-100 dark:bg-[#120f1a] border border-border/60 dark:border-[#382c47] p-1 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-2 shadow-2xs">
                 <Image
                   src="/chibi-peek.svg"
                   alt="Tiểu Lu Kho Từ"
@@ -861,7 +861,7 @@ export default function Dashboard() {
             </div>
 
             {/* Bottom */}
-            <div className="relative z-10 pt-2 border-t border-border/50 flex items-center justify-between text-xs font-semibold text-china-ink group-hover:text-china-red transition-colors">
+            <div className="relative z-10 pt-2 border-t border-border/50 dark:border-[#382c47] flex items-center justify-between text-xs font-semibold text-china-ink group-hover:text-china-red transition-colors">
               <span>Mở kho từ vựng</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
             </div>
@@ -870,7 +870,7 @@ export default function Dashboard() {
           {/* Card 3: Giáo Trình Chuẩn HSK (Kinh Thư - 經書正課) */}
           <Link 
             href="/books" 
-            className="group relative overflow-hidden rounded-3xl bg-card border border-border/80 hover:border-china-red/50 hover:shadow-lg p-5 text-china-ink transition-all duration-300 flex flex-col justify-between min-h-[195px]"
+            className="group relative overflow-hidden rounded-3xl bg-white dark:bg-[#1a1624] border border-border/80 dark:border-[#382c47] hover:border-china-red/50 hover:shadow-lg p-5 text-china-ink transition-all duration-300 flex flex-col justify-between min-h-[195px]"
           >
             {/* Calligraphy Watermark chìm */}
             <div className="absolute right-2 -bottom-4 text-stone-200/50 dark:text-stone-700/25 font-chinese text-8xl font-black select-none pointer-events-none group-hover:text-china-red/5 transition-colors" lang="zh">
@@ -883,7 +883,7 @@ export default function Dashboard() {
                 印 • 教程
               </span>
 
-              <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-china-paper border border-border text-china-ink">
+              <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-stone-100 dark:bg-stone-800/90 border border-border dark:border-stone-700 text-china-ink">
                 Chuẩn HSK 3.0
               </span>
             </div>
@@ -894,13 +894,13 @@ export default function Dashboard() {
                 <h3 className="text-lg font-bold text-china-ink group-hover:text-china-red transition-colors">
                   Giáo trình HSK 3.0
                 </h3>
-                <p className="text-xs text-muted leading-relaxed line-clamp-2">
+                <p className="text-xs text-stone-500 dark:text-stone-300 leading-relaxed line-clamp-2">
                   Đoạn văn đọc hiểu, bài khóa tương tác &amp; bài tập luyện nghe
                 </p>
               </div>
 
               {/* Mascot Art Frame */}
-              <div className="relative w-16 h-16 sm:w-18 sm:h-18 shrink-0 rounded-2xl bg-china-paper border border-border/60 p-1 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-2 shadow-2xs">
+              <div className="relative w-16 h-16 sm:w-18 sm:h-18 shrink-0 rounded-2xl bg-stone-100 dark:bg-[#120f1a] border border-border/60 dark:border-[#382c47] p-1 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-2 shadow-2xs">
                 <Image
                   src="/chibi-brush.svg"
                   alt="Tiểu Lu Thư Sinh"
@@ -912,7 +912,7 @@ export default function Dashboard() {
             </div>
 
             {/* Bottom */}
-            <div className="relative z-10 pt-2 border-t border-border/50 flex items-center justify-between text-xs font-semibold text-china-ink group-hover:text-china-red transition-colors">
+            <div className="relative z-10 pt-2 border-t border-border/50 dark:border-[#382c47] flex items-center justify-between text-xs font-semibold text-china-ink group-hover:text-china-red transition-colors">
               <span>Vào kệ sách chính khóa</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
             </div>
@@ -921,7 +921,7 @@ export default function Dashboard() {
           {/* Card 4: Từ Mở Rộng & Bổ Trợ (Thác Triển - 博採眾長) */}
           <Link 
             href="/bonus" 
-            className="group relative overflow-hidden rounded-3xl bg-card border border-border/80 hover:border-china-red/50 hover:shadow-lg p-5 text-china-ink transition-all duration-300 flex flex-col justify-between min-h-[195px]"
+            className="group relative overflow-hidden rounded-3xl bg-white dark:bg-[#1a1624] border border-border/80 dark:border-[#382c47] hover:border-china-red/50 hover:shadow-lg p-5 text-china-ink transition-all duration-300 flex flex-col justify-between min-h-[195px]"
           >
             {/* Calligraphy Watermark chìm */}
             <div className="absolute right-2 -bottom-4 text-stone-200/50 dark:text-stone-700/25 font-chinese text-8xl font-black select-none pointer-events-none group-hover:text-china-red/5 transition-colors" lang="zh">
@@ -934,7 +934,7 @@ export default function Dashboard() {
                 印 • 拓展
               </span>
 
-              <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-china-paper border border-border text-china-ink">
+              <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-stone-100 dark:bg-stone-800/90 border border-border dark:border-stone-700 text-china-ink">
                 2,056 từ bổ trợ
               </span>
             </div>
@@ -945,13 +945,13 @@ export default function Dashboard() {
                 <h3 className="text-lg font-bold text-china-ink group-hover:text-china-red transition-colors">
                   Từ mở rộng
                 </h3>
-                <p className="text-xs text-muted leading-relaxed line-clamp-2">
+                <p className="text-xs text-stone-500 dark:text-stone-300 leading-relaxed line-clamp-2">
                   Bộ từ nâng cao HSK 5+ và chuyên đề giao tiếp đời sống
                 </p>
               </div>
 
               {/* Mascot Art Frame */}
-              <div className="relative w-16 h-16 sm:w-18 sm:h-18 shrink-0 rounded-2xl bg-china-paper border border-border/60 p-1 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-2 shadow-2xs">
+              <div className="relative w-16 h-16 sm:w-18 sm:h-18 shrink-0 rounded-2xl bg-stone-100 dark:bg-[#120f1a] border border-border/60 dark:border-[#382c47] p-1 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-2 shadow-2xs">
                 <Image
                   src="/chibi-cheer.svg"
                   alt="Tiểu Lu Cổ Vũ"
@@ -963,7 +963,7 @@ export default function Dashboard() {
             </div>
 
             {/* Bottom */}
-            <div className="relative z-10 pt-2 border-t border-border/50 flex items-center justify-between text-xs font-semibold text-china-ink group-hover:text-china-red transition-colors">
+            <div className="relative z-10 pt-2 border-t border-border/50 dark:border-[#382c47] flex items-center justify-between text-xs font-semibold text-china-ink group-hover:text-china-red transition-colors">
               <span>Khám phá kho tàng thư</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
             </div>

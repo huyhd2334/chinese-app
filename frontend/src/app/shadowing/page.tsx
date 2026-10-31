@@ -126,9 +126,9 @@ export default function ShadowingPage() {
               className="px-4 py-2.5 rounded-2xl bg-stone-900 hover:bg-black dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white font-semibold text-xs sm:text-sm shadow-xs transition-all active:scale-95 cursor-pointer flex items-center gap-2"
             >
               <Plus className="w-4 h-4" />
-              <span>Thêm Video Của Bạn</span>
-              <span className="px-1.5 py-0.5 rounded-md bg-amber-400 text-slate-950 text-[10px] font-extrabold uppercase">
-                PRO 👑
+              <span>Tự Thêm Video Mới</span>
+              <span className="px-2 py-0.5 rounded-md bg-gradient-to-r from-amber-400 to-yellow-400 text-slate-950 text-[10px] font-black uppercase tracking-wider shadow-xs">
+                PRO &bull; &lt; 30 PHÚT 👑
               </span>
             </button>
           </div>

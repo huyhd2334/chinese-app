@@ -429,7 +429,7 @@ export default function BonusStudyPage({ params }: PageProps) {
                 setAddModalTab("bulk")
                 setIsAddModalOpen(true)
               }}
-              className="px-3.5 py-1.5 rounded-xl border border-border bg-white hover:bg-china-paper text-china-ink text-xs sm:text-sm font-semibold transition-all active:scale-95 whitespace-nowrap shadow-2xs"
+              className="px-3.5 py-1.5 rounded-xl border border-border dark:border-[#382c47] bg-stone-100 dark:bg-[#201a2e] hover:bg-stone-200 dark:hover:bg-[#2a223c] text-stone-800 dark:text-stone-200 text-xs sm:text-sm font-semibold transition-all active:scale-95 whitespace-nowrap shadow-2xs"
             >
               + Thêm nhiều từ
             </button>
@@ -486,13 +486,13 @@ export default function BonusStudyPage({ params }: PageProps) {
                     setEditingCard(null)
                     setIsAddModalOpen(true)
                   }}
-                  className="px-3 py-1.5 rounded-xl border border-border bg-china-paper hover:bg-gray-200 text-xs font-semibold text-china-ink transition-colors"
+                  className="px-3 py-1.5 rounded-xl border border-border dark:border-[#382c47] bg-stone-100 dark:bg-[#201a2e] hover:bg-stone-200 dark:hover:bg-[#2a223c] text-xs font-semibold text-stone-800 dark:text-stone-200 transition-colors"
                 >
                   + Thêm thẻ
                 </button>
                 <button
                   onClick={handleShuffle}
-                  className="px-3 py-1.5 rounded-xl border border-border bg-white hover:bg-china-paper text-xs font-medium text-china-ink transition-colors shadow-2xs"
+                  className="px-3 py-1.5 rounded-xl border border-border dark:border-[#382c47] bg-stone-100 dark:bg-[#201a2e] hover:bg-stone-200 dark:hover:bg-[#2a223c] text-xs font-medium text-stone-800 dark:text-stone-200 transition-colors shadow-2xs"
                 >
                   Xáo trộn
                 </button>
@@ -501,7 +501,7 @@ export default function BonusStudyPage({ params }: PageProps) {
                   className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all shadow-2xs ${
                     isAutoPlay 
                       ? "bg-china-jade text-white" 
-                      : "bg-white border border-border text-china-ink hover:bg-china-paper"
+                      : "bg-stone-100 dark:bg-[#201a2e] border border-border dark:border-[#382c47] text-stone-800 dark:text-stone-200 hover:bg-stone-200 dark:hover:bg-[#2a223c]"
                   }`}
                 >
                   {isAutoPlay ? "Dừng tự động" : "Tự động đọc"}
@@ -678,7 +678,7 @@ export default function BonusStudyPage({ params }: PageProps) {
               <div className="w-full max-w-2xl mt-6 grid grid-cols-2 gap-4">
                 <button
                   onClick={() => handleCardResult(false)}
-                  className="flex items-center justify-center gap-1.5 py-3.5 px-4 rounded-2xl border border-red-200 bg-red-50 hover:bg-red-100 text-red-600 font-bold text-sm sm:text-base transition-all shadow-xs active:scale-95"
+                  className="flex items-center justify-center gap-1.5 py-3.5 px-4 rounded-2xl border border-red-200 dark:border-red-900/60 bg-red-50 dark:bg-red-950/40 hover:bg-red-100 dark:hover:bg-red-900/40 text-red-600 dark:text-red-300 font-bold text-sm sm:text-base transition-all shadow-xs active:scale-95"
                 >
                   <ChevronLeft className="w-5 h-5" />
                   <span>Chưa nhớ (←)</span>
@@ -751,7 +751,7 @@ export default function BonusStudyPage({ params }: PageProps) {
                     setAddModalTab("bulk")
                     setIsAddModalOpen(true)
                   }}
-                  className="px-3 py-2 rounded-xl border border-border bg-white dark:bg-[#20202c] hover:bg-china-paper dark:hover:bg-[#2a2a3a] text-china-ink dark:text-[#edeae4] text-xs font-semibold transition-all active:scale-95 shadow-2xs cursor-pointer"
+                  className="px-3 py-2 rounded-xl border border-border dark:border-[#382c47] bg-stone-100 dark:bg-[#201a2e] hover:bg-stone-200 dark:hover:bg-[#2a223c] text-stone-800 dark:text-stone-200 text-xs font-semibold transition-all active:scale-95 shadow-2xs cursor-pointer"
                 >
                   + Thêm nhiều từ
                 </button>
@@ -761,7 +761,7 @@ export default function BonusStudyPage({ params }: PageProps) {
                   className={`px-3 py-2 rounded-xl border text-xs font-semibold transition-colors cursor-pointer ${
                     hidePhonetic
                       ? "bg-china-red text-white border-china-red"
-                      : "bg-white dark:bg-[#20202c] border-border text-china-ink dark:text-[#edeae4] hover:bg-china-paper dark:hover:bg-[#2a2a3a]"
+                      : "bg-stone-100 dark:bg-[#201a2e] border-border dark:border-[#382c47] text-stone-800 dark:text-stone-200 hover:bg-stone-200 dark:hover:bg-[#2a223c]"
                   }`}
                 >
                   {hidePhonetic ? "Hiện phiên âm" : "Ẩn phiên âm"}
@@ -772,7 +772,7 @@ export default function BonusStudyPage({ params }: PageProps) {
                   className={`px-3 py-2 rounded-xl border text-xs font-semibold transition-colors cursor-pointer ${
                     hideMeaning
                       ? "bg-china-red text-white border-china-red"
-                      : "bg-white dark:bg-[#20202c] border-border text-china-ink dark:text-[#edeae4] hover:bg-china-paper dark:hover:bg-[#2a2a3a]"
+                      : "bg-stone-100 dark:bg-[#201a2e] border-border dark:border-[#382c47] text-stone-800 dark:text-stone-200 hover:bg-stone-200 dark:hover:bg-[#2a223c]"
                   }`}
                 >
                   {hideMeaning ? "Hiện nghĩa" : "Ẩn nghĩa"}
@@ -786,7 +786,7 @@ export default function BonusStudyPage({ params }: PageProps) {
                   className={`flex items-center gap-1.5 px-3 py-2 rounded-xl border text-xs font-semibold transition-colors cursor-pointer ${
                     onlyFavorites
                       ? "bg-amber-500 text-white border-amber-500 shadow-2xs"
-                      : "bg-white dark:bg-[#20202c] border-border text-china-ink dark:text-[#edeae4] hover:bg-china-paper dark:hover:bg-[#2a2a3a]"
+                      : "bg-stone-100 dark:bg-[#201a2e] border-border dark:border-[#382c47] text-stone-800 dark:text-stone-200 hover:bg-stone-200 dark:hover:bg-[#2a223c]"
                   }`}
                 >
                   <Bookmark className={`w-3.5 h-3.5 ${onlyFavorites ? "fill-white" : ""}`} />
@@ -857,12 +857,12 @@ export default function BonusStudyPage({ params }: PageProps) {
                           </span>
                         )}
                         {word.partOfSpeech && (
-                          <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-china-paper dark:bg-stone-800 border border-border text-muted">
+                          <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-stone-100 dark:bg-stone-800 border border-border dark:border-stone-700 text-stone-700 dark:text-stone-300">
                             {word.partOfSpeech}
                           </span>
                         )}
                         {word.topic && (
-                          <span className="text-[10px] text-muted truncate max-w-[120px]" title={word.topic}>
+                          <span className="text-[10px] text-stone-500 dark:text-stone-400 truncate max-w-[120px]" title={word.topic}>
                             {word.topic}
                           </span>
                         )}
@@ -922,7 +922,7 @@ export default function BonusStudyPage({ params }: PageProps) {
                   </div>
 
                   {/* Card bottom hint */}
-                  <div className="mt-3 pt-2.5 border-t border-border/50 flex items-center justify-between text-[11px] text-muted">
+                  <div className="mt-3 pt-2.5 border-t border-border/50 dark:border-stone-800 flex items-center justify-between text-[11px] text-stone-500 dark:text-stone-400">
                     {word.isCustom ? (
                       <div className="flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
                         <button

@@ -81,23 +81,23 @@ export default function BooksDirectoryPage() {
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 pb-24 space-y-6">
       {/* Top Header: Giáo trình HSK Chuẩn */}
-      <div className="bg-white border border-border rounded-2xl p-6 sm:p-7 shadow-xs">
+      <div className="bg-white dark:bg-card border border-border rounded-2xl p-6 sm:p-7 shadow-xs">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="space-y-1.5 max-w-2xl">
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-neutral-100 text-slate-700">
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-stone-100 dark:bg-stone-800 text-slate-700 dark:text-stone-300">
               <BookOpen className="w-3.5 h-3.5 text-china-red" />
               <span>Giáo trình HSK 3.0</span>
             </div>
             <h1 className="text-xl sm:text-2xl font-bold text-china-ink">
               Giáo trình Chuẩn HSK 3.0
             </h1>
-            <p className="text-sm text-slate-600 leading-relaxed">
+            <p className="text-sm text-slate-600 dark:text-stone-300 leading-relaxed">
               Lộ trình học theo giáo trình chuẩn: từ vựng trọng tâm, bài khóa hội thoại tương tác, giải thích ngữ pháp và bài tập thực hành.
             </p>
           </div>
 
           <div className="flex items-center gap-2 self-start md:self-auto text-xs text-muted">
-            <span className="px-3 py-1.5 rounded-xl bg-neutral-50 border border-border/80 font-medium text-slate-700">
+            <span className="px-3 py-1.5 rounded-xl bg-stone-100 dark:bg-stone-800 border border-border/80 font-medium text-slate-700 dark:text-stone-300">
               {books.length} cấp độ
             </span>
           </div>
@@ -105,7 +105,7 @@ export default function BooksDirectoryPage() {
       </div>
 
       {/* Danh sách giáo trình theo cấp độ */}
-      <section className="bg-white border border-border rounded-2xl p-5 sm:p-6 shadow-xs space-y-5">
+      <section className="bg-white dark:bg-card border border-border rounded-2xl p-5 sm:p-6 shadow-xs space-y-5">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-border/70">
           <div>
             <h2 className="text-base font-bold text-china-ink">
@@ -133,8 +133,8 @@ export default function BooksDirectoryPage() {
                   onClick={() => handleSelectBook(book)}
                   className={`group flex flex-col items-center text-center p-3 rounded-xl border transition-all cursor-pointer ${
                     isSelected
-                      ? 'bg-neutral-50 border-china-red ring-1 ring-china-red shadow-xs'
-                      : 'bg-white border-border hover:border-slate-300 hover:bg-neutral-50/60'
+                      ? 'bg-stone-100 dark:bg-[#201a2e] border-china-red ring-1 ring-china-red shadow-xs'
+                      : 'bg-white dark:bg-stone-900/60 border-border dark:border-[#382c47] hover:border-slate-300 dark:hover:border-stone-600 hover:bg-neutral-50/60 dark:hover:bg-stone-800/60'
                   }`}
                 >
                   {/* Book Cover Image */}
@@ -179,7 +179,7 @@ export default function BooksDirectoryPage() {
       {selectedBook && (
         <section className="space-y-4">
           {/* Selected Book Header Card */}
-          <div className="bg-white border border-border rounded-2xl p-5 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="bg-white dark:bg-card border border-border rounded-2xl p-5 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div className="flex items-center gap-3.5 min-w-0">
               <div className="relative w-14 sm:w-16 aspect-[1/1.38] shrink-0 rounded-lg overflow-hidden border border-border/70">
                 {selectedBook.coverImage ? (
@@ -192,7 +192,7 @@ export default function BooksDirectoryPage() {
                     className="object-cover"
                   />
                 ) : (
-                  <div className="w-full h-full bg-neutral-200 flex items-center justify-center text-china-ink font-bold text-sm">
+                  <div className="w-full h-full bg-neutral-200 dark:bg-stone-800 flex items-center justify-center text-china-ink font-bold text-sm">
                     H{selectedBook.level}
                   </div>
                 )}
@@ -211,17 +211,17 @@ export default function BooksDirectoryPage() {
                 <h2 className="text-base sm:text-lg font-bold text-china-ink truncate">
                   {selectedBook.title}
                 </h2>
-                <p className="text-xs text-slate-600 line-clamp-1 max-w-xl">
+                <p className="text-xs text-slate-600 dark:text-stone-300 line-clamp-1 max-w-xl">
                   {selectedBook.description}
                 </p>
               </div>
             </div>
 
             <div className="flex items-center gap-2.5 shrink-0 self-start sm:self-auto text-xs">
-              <span className="px-3 py-1.5 rounded-lg bg-neutral-50 border border-border font-medium text-slate-700">
+              <span className="px-3 py-1.5 rounded-lg bg-stone-100 dark:bg-stone-800/80 border border-border font-medium text-slate-700 dark:text-stone-300">
                 Đã học: <b className="text-china-ink">{overallStats.completedLessons}/{lessons.length} bài</b> ({overallStats.avgPercent}%)
               </span>
-              <span className="px-3 py-1.5 rounded-lg bg-neutral-50 border border-border font-medium text-slate-700">
+              <span className="px-3 py-1.5 rounded-lg bg-stone-100 dark:bg-stone-800/80 border border-border font-medium text-slate-700 dark:text-stone-300">
                 Thời gian: <b className="text-china-ink font-mono">{formatStudyHoursShort(overallStats.totalStudyTimeSeconds)}</b>
               </span>
             </div>
@@ -230,7 +230,7 @@ export default function BooksDirectoryPage() {
           {/* Lessons Grid */}
           <div className="space-y-3">
             <div className="flex items-center justify-between px-1">
-              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-2">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-stone-400 flex items-center gap-2">
                 <span>Danh sách bài học</span>
                 <span className="text-[11px] font-normal text-muted">({lessons.length} bài)</span>
               </h3>
@@ -252,13 +252,13 @@ export default function BooksDirectoryPage() {
                   return (
                     <div
                       key={lesson.id}
-                      className="bg-white border border-border hover:border-slate-300 rounded-xl p-4 shadow-xs transition-all flex flex-col justify-between gap-3"
+                      className="bg-white dark:bg-card border border-border hover:border-slate-300 dark:hover:border-stone-600 rounded-xl p-4 shadow-xs transition-all flex flex-col justify-between gap-3"
                     >
                       <div className="flex items-start gap-3">
                         <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold shrink-0 ${
                           isCompleted
-                            ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
-                            : 'bg-neutral-100 text-slate-700'
+                            ? 'bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800'
+                            : 'bg-stone-100 dark:bg-stone-800 text-slate-700 dark:text-stone-300'
                         }`}>
                           {isCompleted ? '✓' : lesson.lessonNumber}
                         </div>
@@ -269,12 +269,12 @@ export default function BooksDirectoryPage() {
                               {lesson.title}
                             </h4>
                             {lesson.titlePinyin && (
-                              <span className="text-xs text-slate-500 font-normal">
+                              <span className="text-xs text-slate-500 dark:text-stone-400 font-normal">
                                 {lesson.titlePinyin}
                               </span>
                             )}
                           </div>
-                          <p className="text-xs text-slate-600 mt-0.5 line-clamp-1">
+                          <p className="text-xs text-slate-600 dark:text-stone-300 mt-0.5 line-clamp-1">
                             {lesson.titleVi}
                           </p>
 
@@ -289,9 +289,9 @@ export default function BooksDirectoryPage() {
                       <div className="flex items-center justify-between pt-2.5 border-t border-border/60">
                         <div className="text-[11px]">
                           {isCompleted ? (
-                            <span className="font-semibold text-emerald-700">Đã hoàn thành</span>
+                            <span className="font-semibold text-emerald-700 dark:text-emerald-400">Đã hoàn thành</span>
                           ) : p.percent > 0 ? (
-                            <span className="font-semibold text-slate-700">Tiến độ: {p.percent}%</span>
+                            <span className="font-semibold text-slate-700 dark:text-stone-300">Tiến độ: {p.percent}%</span>
                           ) : (
                             <span className="text-muted">Chưa học</span>
                           )}

@@ -118,26 +118,26 @@ export function RoadmapWizardModal({ isOpen, onClose }: RoadmapWizardModalProps)
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-background/80 backdrop-blur-md animate-fade-in">
       <div 
-        className="relative w-full max-w-2xl bg-card border border-border/80 rounded-2xl shadow-2xl overflow-hidden flex flex-col h-[94dvh] sm:h-auto sm:max-h-[90vh]"
+        className="relative w-full max-w-2xl bg-white dark:bg-[#1a1624] border border-border/80 dark:border-[#382c47] rounded-2xl shadow-2xl overflow-hidden flex flex-col h-[94dvh] sm:h-auto sm:max-h-[90vh]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header with Progress Bar */}
-        <div className="p-4 sm:p-5 border-b border-border/60 bg-secondary/20 shrink-0">
+        <div className="p-4 sm:p-5 border-b border-border/60 dark:border-[#382c47] bg-stone-50 dark:bg-[#201b2c] shrink-0">
           <div className="flex items-center justify-between mb-2.5 sm:mb-3">
-            <div className="flex items-center gap-2 text-indigo-400 font-semibold text-xs sm:text-sm">
+            <div className="flex items-center gap-2 text-indigo-500 dark:text-indigo-400 font-semibold text-xs sm:text-sm">
               <Compass className="w-4 h-4 shrink-0" />
               <span>Thiết lập Lộ trình (Bước {step}/6)</span>
             </div>
             <button
               onClick={onClose}
-              className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
+              className="p-1.5 rounded-lg text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-200 dark:hover:bg-stone-800 transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
           </div>
 
           {/* Stepper Dots / Bar */}
-          <div className="w-full bg-secondary rounded-full h-1.5 overflow-hidden">
+          <div className="w-full bg-stone-200 dark:bg-stone-800 rounded-full h-1.5 overflow-hidden">
             <div 
               className="bg-indigo-500 h-1.5 rounded-full transition-all duration-300"
               style={{ width: `${(step / 6) * 100}%` }}
@@ -463,34 +463,34 @@ export function RoadmapWizardModal({ isOpen, onClose }: RoadmapWizardModalProps)
               </div>
 
               {/* Dự báo tổng quan */}
-              <div className="p-4 rounded-xl bg-gradient-to-br from-indigo-950/30 to-purple-950/20 border border-indigo-500/30 space-y-4">
+              <div className="p-4 rounded-xl bg-gradient-to-br from-indigo-50/70 to-purple-50/60 dark:from-indigo-950/40 dark:to-purple-950/30 border border-indigo-200 dark:border-indigo-500/30 space-y-4">
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-center">
-                  <div className="p-3 rounded-lg bg-card/60 border border-border/50">
-                    <div className="text-xs text-muted-foreground">Khối lượng còn thiếu</div>
-                    <div className="text-lg font-bold text-foreground mt-1">
-                      {remainingWordsToLearn} <span className="text-xs font-normal text-muted-foreground">từ</span>
+                  <div className="p-3 rounded-lg bg-white dark:bg-[#201a2e] border border-stone-200 dark:border-[#382c47]">
+                    <div className="text-xs text-stone-500 dark:text-stone-400">Khối lượng còn thiếu</div>
+                    <div className="text-lg font-bold text-stone-900 dark:text-stone-100 mt-1">
+                      {remainingWordsToLearn} <span className="text-xs font-normal text-stone-500 dark:text-stone-400">từ</span>
                     </div>
-                    <div className="text-[11px] text-indigo-400 font-medium">
+                    <div className="text-[11px] text-indigo-600 dark:text-indigo-400 font-medium">
                       ({remainingLessonsToLearn} bài học)
                     </div>
                   </div>
 
-                  <div className="p-3 rounded-lg bg-card/60 border border-border/50">
-                    <div className="text-xs text-muted-foreground">Tốc độ yêu cầu</div>
-                    <div className="text-lg font-bold text-amber-400 mt-1">
-                      ~{requiredWordsPerDay} <span className="text-xs font-normal text-muted-foreground">từ / ngày</span>
+                  <div className="p-3 rounded-lg bg-white dark:bg-[#201a2e] border border-stone-200 dark:border-[#382c47]">
+                    <div className="text-xs text-stone-500 dark:text-stone-400">Tốc độ yêu cầu</div>
+                    <div className="text-lg font-bold text-amber-600 dark:text-amber-400 mt-1">
+                      ~{requiredWordsPerDay} <span className="text-xs font-normal text-stone-500 dark:text-stone-400">từ / ngày</span>
                     </div>
-                    <div className="text-[11px] text-muted-foreground">
+                    <div className="text-[11px] text-stone-500 dark:text-stone-400">
                       (~{requiredLessonsPerWeek} bài / tuần)
                     </div>
                   </div>
 
-                  <div className="p-3 rounded-lg bg-card/60 border border-border/50 col-span-2 sm:col-span-1">
-                    <div className="text-xs text-muted-foreground">Thời gian dự kiến</div>
-                    <div className="text-lg font-bold text-emerald-400 mt-1">
-                      {daysDiff} <span className="text-xs font-normal text-muted-foreground">ngày</span>
+                  <div className="p-3 rounded-lg bg-white dark:bg-[#201a2e] border border-stone-200 dark:border-[#382c47] col-span-2 sm:col-span-1">
+                    <div className="text-xs text-stone-500 dark:text-stone-400">Thời gian dự kiến</div>
+                    <div className="text-lg font-bold text-emerald-600 dark:text-emerald-400 mt-1">
+                      {daysDiff} <span className="text-xs font-normal text-stone-500 dark:text-stone-400">ngày</span>
                     </div>
-                    <div className="text-[11px] text-muted-foreground">
+                    <div className="text-[11px] text-stone-500 dark:text-stone-400">
                       Cán đích {targetDate}
                     </div>
                   </div>
@@ -498,14 +498,14 @@ export function RoadmapWizardModal({ isOpen, onClose }: RoadmapWizardModalProps)
 
                 {/* Nhận xét / Cảnh báo khả thi */}
                 {isPaceChallenging ? (
-                  <div className="flex items-start gap-2.5 p-3 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs">
+                  <div className="flex items-start gap-2.5 p-3 rounded-lg bg-amber-50 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-800 text-amber-800 dark:text-amber-300 text-xs">
                     <AlertTriangle className="w-4 h-4 shrink-0 mt-0.5" />
                     <span>
                       Mục tiêu này khá gắt với quỹ thời gian {minutesPerDay} phút/ngày. Bạn nên cân nhắc tăng lên 45 phút hoặc kéo dài thêm 2-3 tuần để học không bị quá tải.
                     </span>
                   </div>
                 ) : (
-                  <div className="flex items-center gap-2 p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs">
+                  <div className="flex items-center gap-2 p-3 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-300 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 text-xs">
                     <CheckCircle2 className="w-4 h-4 shrink-0" />
                     <span>
                       Kế hoạch rất khả thi và cân bằng! Duy trì {minutesPerDay} phút mỗi ngày bạn sẽ chắc chắn về đích đúng hạn.
@@ -518,11 +518,11 @@ export function RoadmapWizardModal({ isOpen, onClose }: RoadmapWizardModalProps)
         </div>
 
         {/* Footer Navigation Buttons */}
-        <div className="p-3.5 sm:p-4 border-t border-border/70 bg-card/95 backdrop-blur-md shrink-0 flex items-center justify-between gap-3 shadow-lg">
+        <div className="p-3.5 sm:p-4 border-t border-border/70 dark:border-[#382c47] bg-white dark:bg-[#1a1624] backdrop-blur-md shrink-0 flex items-center justify-between gap-3 shadow-lg">
           {step > 1 ? (
             <button
               onClick={handlePrev}
-              className="px-3.5 sm:px-4 py-2.5 rounded-xl border border-border/70 hover:bg-secondary text-foreground text-xs sm:text-sm font-medium transition-colors flex items-center gap-1.5"
+              className="px-3.5 sm:px-4 py-2.5 rounded-xl border border-border/70 dark:border-[#382c47] hover:bg-stone-100 dark:hover:bg-[#201a2e] text-stone-800 dark:text-stone-200 text-xs sm:text-sm font-medium transition-colors flex items-center gap-1.5"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>Quay lại</span>

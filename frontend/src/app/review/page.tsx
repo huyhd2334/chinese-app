@@ -567,7 +567,7 @@ export default function ReviewPage() {
                 <button
                   type="button"
                   onClick={() => handleResult("again")}
-                  className="flex flex-col items-center justify-between py-2.5 px-3 rounded-2xl border border-border/90 bg-white hover:border-china-red hover:bg-china-paper/70 shadow-2xs transition-all duration-200 active:scale-95 cursor-pointer group"
+                  className="flex flex-col items-center justify-between py-2.5 px-3 rounded-2xl border border-border/90 dark:border-[#382c47] bg-white dark:bg-[#1a1624] hover:border-china-red hover:bg-stone-50 dark:hover:bg-[#231d30] shadow-2xs transition-all duration-200 active:scale-95 cursor-pointer group"
                 >
                   <div className="w-9 h-9 sm:w-10 sm:h-10 mb-1.5 transition-transform group-hover:scale-110">
                     <Image
@@ -586,7 +586,7 @@ export default function ReviewPage() {
                       {nextIntervals.again}
                     </span>
                   </div>
-                  <span className="mt-1 px-1.5 py-0.2 rounded text-[10px] font-mono text-muted/70 bg-china-paper border border-border/60">
+                  <span className="mt-1 px-1.5 py-0.2 rounded text-[10px] font-mono text-stone-500 dark:text-stone-400 bg-stone-100 dark:bg-stone-800 border border-border/60 dark:border-stone-700">
                     Phím 1
                   </span>
                 </button>
@@ -595,7 +595,7 @@ export default function ReviewPage() {
                 <button
                   type="button"
                   onClick={() => handleResult("hard")}
-                  className="flex flex-col items-center justify-between py-2.5 px-3 rounded-2xl border border-border/90 bg-white hover:border-amber-400 hover:bg-china-paper/70 shadow-2xs transition-all duration-200 active:scale-95 cursor-pointer group"
+                  className="flex flex-col items-center justify-between py-2.5 px-3 rounded-2xl border border-border/90 dark:border-[#382c47] bg-white dark:bg-[#1a1624] hover:border-amber-400 hover:bg-stone-50 dark:hover:bg-[#231d30] shadow-2xs transition-all duration-200 active:scale-95 cursor-pointer group"
                 >
                   <div className="w-9 h-9 sm:w-10 sm:h-10 mb-1.5 transition-transform group-hover:scale-110">
                     <Image
@@ -607,14 +607,14 @@ export default function ReviewPage() {
                     />
                   </div>
                   <div className="text-center">
-                    <span className="block font-bold text-sm sm:text-base text-china-ink group-hover:text-amber-700 transition-colors">
+                    <span className="block font-bold text-sm sm:text-base text-china-ink group-hover:text-amber-700 dark:group-hover:text-amber-400 transition-colors">
                       Hơi khó
                     </span>
                     <span className="block text-[11px] text-muted font-medium mt-0.5">
                       {nextIntervals.hard}
                     </span>
                   </div>
-                  <span className="mt-1 px-1.5 py-0.2 rounded text-[10px] font-mono text-muted/70 bg-china-paper border border-border/60">
+                  <span className="mt-1 px-1.5 py-0.2 rounded text-[10px] font-mono text-stone-500 dark:text-stone-400 bg-stone-100 dark:bg-stone-800 border border-border/60 dark:border-stone-700">
                     Phím 2
                   </span>
                 </button>
@@ -623,7 +623,7 @@ export default function ReviewPage() {
                 <button
                   type="button"
                   onClick={() => handleResult("good")}
-                  className="flex flex-col items-center justify-between py-2.5 px-3 rounded-2xl border border-border/90 bg-white hover:border-china-jade hover:bg-china-paper/70 shadow-2xs transition-all duration-200 active:scale-95 cursor-pointer group"
+                  className="flex flex-col items-center justify-between py-2.5 px-3 rounded-2xl border border-border/90 dark:border-[#382c47] bg-white dark:bg-[#1a1624] hover:border-china-jade hover:bg-stone-50 dark:hover:bg-[#231d30] shadow-2xs transition-all duration-200 active:scale-95 cursor-pointer group"
                 >
                   <div className="w-9 h-9 sm:w-10 sm:h-10 mb-1.5 transition-transform group-hover:scale-110">
                     <Image
@@ -635,14 +635,14 @@ export default function ReviewPage() {
                     />
                   </div>
                   <div className="text-center">
-                    <span className="block font-bold text-sm sm:text-base text-china-ink group-hover:text-china-jade transition-colors">
+                    <span className="block font-bold text-sm sm:text-base text-china-ink group-hover:text-china-jade dark:group-hover:text-emerald-400 transition-colors">
                       Nhớ tốt
                     </span>
                     <span className="block text-[11px] text-muted font-medium mt-0.5">
                       {nextIntervals.good}
                     </span>
                   </div>
-                  <span className="mt-1 px-1.5 py-0.2 rounded text-[10px] font-mono text-muted/70 bg-china-paper border border-border/60">
+                  <span className="mt-1 px-1.5 py-0.2 rounded text-[10px] font-mono text-stone-500 dark:text-stone-400 bg-stone-100 dark:bg-stone-800 border border-border/60 dark:border-stone-700">
                     Phím 3
                   </span>
                 </button>
@@ -651,7 +651,7 @@ export default function ReviewPage() {
                 <button
                   type="button"
                   onClick={() => handleResult("easy")}
-                  className="flex flex-col items-center justify-between py-2.5 px-3 rounded-2xl border border-border/90 bg-white hover:border-china-gold hover:bg-china-paper/70 shadow-2xs transition-all duration-200 active:scale-95 cursor-pointer group"
+                  className="flex flex-col items-center justify-between py-2.5 px-3 rounded-2xl border border-border/90 dark:border-[#382c47] bg-white dark:bg-[#1a1624] hover:border-china-gold hover:bg-stone-50 dark:hover:bg-[#231d30] shadow-2xs transition-all duration-200 active:scale-95 cursor-pointer group"
                 >
                   <div className="w-9 h-9 sm:w-10 sm:h-10 mb-1.5 transition-transform group-hover:scale-110">
                     <Image
@@ -663,14 +663,14 @@ export default function ReviewPage() {
                     />
                   </div>
                   <div className="text-center">
-                    <span className="block font-bold text-sm sm:text-base text-china-ink group-hover:text-amber-600 transition-colors">
+                    <span className="block font-bold text-sm sm:text-base text-china-ink group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
                       Rất dễ
                     </span>
                     <span className="block text-[11px] text-muted font-medium mt-0.5">
                       {nextIntervals.easy}
                     </span>
                   </div>
-                  <span className="mt-1 px-1.5 py-0.2 rounded text-[10px] font-mono text-muted/70 bg-china-paper border border-border/60">
+                  <span className="mt-1 px-1.5 py-0.2 rounded text-[10px] font-mono text-stone-500 dark:text-stone-400 bg-stone-100 dark:bg-stone-800 border border-border/60 dark:border-stone-700">
                     Phím 4
                   </span>
                 </button>

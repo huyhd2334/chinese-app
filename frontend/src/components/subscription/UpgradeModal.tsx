@@ -334,14 +334,14 @@ export default function UpgradeModal() {
                   type="button"
                   disabled={isProcessing}
                   onClick={handleResetToFree}
-                  className="px-3 py-2 rounded-xl border border-border bg-white text-muted hover:text-red-600 hover:border-red-200 text-xs font-medium transition-colors"
+                  className="px-3 py-2 rounded-xl border border-border dark:border-stone-700 bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:text-red-600 dark:hover:text-red-400 text-xs font-medium transition-colors"
                 >
                   Chuyển về Gói Miễn phí
                 </button>
                 <button
                   type="button"
                   onClick={() => setIsOpen(false)}
-                  className="px-4 py-2 rounded-xl bg-china-ink text-white text-xs font-semibold hover:bg-china-ink/85 transition-colors"
+                  className="px-4 py-2 rounded-xl bg-stone-900 dark:bg-stone-700 hover:bg-stone-800 dark:hover:bg-stone-600 text-white text-xs font-semibold transition-colors"
                 >
                   Đóng
                 </button>
@@ -357,7 +357,7 @@ export default function UpgradeModal() {
               className={`cursor-pointer rounded-2xl p-4 sm:p-5 border transition-all flex flex-col justify-between ${
                 selectedPlan === "pro_monthly"
                   ? "border-china-red bg-china-red/[0.03] ring-1 ring-china-red"
-                  : "border-border bg-white hover:border-china-ink/30"
+                  : "border-border dark:border-[#382c47] bg-white dark:bg-[#1a1624] hover:border-china-red/30"
               }`}
             >
               <div>
@@ -400,7 +400,7 @@ export default function UpgradeModal() {
               className={`cursor-pointer rounded-2xl p-4 sm:p-5 border transition-all flex flex-col justify-between ${
                 selectedPlan === "pro_yearly"
                   ? "border-china-red bg-china-red/[0.03] ring-1 ring-china-red"
-                  : "border-border bg-white hover:border-china-ink/30"
+                  : "border-border dark:border-[#382c47] bg-white dark:bg-[#1a1624] hover:border-china-red/30"
               }`}
             >
               <div>
@@ -514,7 +514,7 @@ export default function UpgradeModal() {
                     </div>
                     <div className="flex justify-between py-1 border-b border-border/60">
                       <span className="text-muted">Nội dung CK:</span>
-                      <span className="font-mono font-bold text-china-ink bg-white px-2 py-0.5 rounded border border-border">
+                      <span className="font-mono font-bold text-china-ink bg-stone-100 dark:bg-stone-800 px-2 py-0.5 rounded border border-border dark:border-stone-700">
                         {transferRef}
                       </span>
                     </div>
@@ -542,12 +542,12 @@ export default function UpgradeModal() {
                       value={promoCode}
                       onChange={(e) => setPromoCode(e.target.value)}
                       placeholder="Nhập mã kích hoạt của bạn..."
-                      className="flex-1 px-3.5 py-2 bg-white border border-border rounded-xl text-xs sm:text-sm font-mono uppercase text-china-ink focus:outline-hidden focus:border-china-red"
+                      className="flex-1 px-3.5 py-2 bg-stone-50 dark:bg-stone-800 border border-border dark:border-stone-700 rounded-xl text-xs sm:text-sm font-mono uppercase text-china-ink focus:outline-hidden focus:border-china-red"
                     />
                     <button
                       type="submit"
                       disabled={isProcessing || !promoCode.trim()}
-                      className="px-5 py-2 rounded-xl bg-china-ink hover:bg-china-ink/85 text-white text-xs sm:text-sm font-semibold transition-all disabled:opacity-40 active:scale-95"
+                      className="px-5 py-2 rounded-xl bg-stone-900 dark:bg-stone-700 hover:bg-stone-800 dark:hover:bg-stone-600 text-white text-xs sm:text-sm font-semibold transition-all disabled:opacity-40 active:scale-95"
                     >
                       {isProcessing ? "Đang xác thực..." : "Kích hoạt"}
                     </button>

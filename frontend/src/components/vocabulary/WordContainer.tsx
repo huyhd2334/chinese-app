@@ -231,11 +231,11 @@ const WordContainer = ({
                   const hanViet = getHanViet(w.hanzi, w.traditional, w.pinyinNumeric)
 
                   return (
-                  <Link
+                    <Link
                     key={w.id}
                     id={`word-card-${w.id}`}
                     href={`/vocabulary/${w.id}`}
-                    className={`flex flex-col border border-border bg-white p-4 sm:p-5 rounded-2xl transition-all duration-300 group relative overflow-hidden content-visibility-auto
+                    className={`flex flex-col border border-border dark:border-border bg-white dark:bg-card p-4 sm:p-5 rounded-2xl transition-all duration-300 group relative overflow-hidden content-visibility-auto
                       ${isJustAdded ? 'ring-2 ring-china-jade/50 bg-china-jade/5 scale-[1.02]' : 'hover:shadow-xl hover:border-china-red/40 hover:-translate-y-1'}`}
                     onClick={() => {
                       sessionStorage.setItem("vocab-scroll-y", String(window.scrollY || document.documentElement.scrollTop || 0))
@@ -310,7 +310,7 @@ const WordContainer = ({
                     {w.radical && (
                       <div className="flex items-center gap-2">
                         <span className="text-xs font-semibold text-muted uppercase tracking-wider">Bộ thủ</span>
-                        <span className="text-sm font-serif bg-china-paper px-2 py-0.5 rounded border border-border">{w.radical}</span>
+                        <span className="text-sm font-serif bg-stone-100 dark:bg-stone-800 text-china-ink px-2 py-0.5 rounded border border-border dark:border-stone-700">{w.radical}</span>
                       </div>
                     )}
                     
@@ -336,7 +336,7 @@ const WordContainer = ({
                     <div className="flex items-center justify-between pt-4 border-t border-border/50">
                       <div className="flex gap-1.5 flex-wrap">
                         {w.partOfSpeech && w.partOfSpeech.slice(0,2).map((pos, i) => (
-                          <span key={i} className='text-[10px] px-2 py-1 bg-gray-100 text-china-ink rounded font-semibold uppercase tracking-wider'>
+                          <span key={i} className='text-[10px] px-2 py-1 bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 border border-border/60 dark:border-stone-700 rounded font-semibold uppercase tracking-wider'>
                             {pos}
                           </span>
                         ))}
@@ -349,10 +349,10 @@ const WordContainer = ({
                               disabled={isAdded}
                               className={`text-xs px-4 py-1.5 font-bold rounded-lg transition-all duration-300 ease-out border shadow-sm
                                           ${isAdded 
-                                              ? "bg-gray-50 text-muted border-border cursor-not-allowed" 
+                                              ? "bg-stone-100 dark:bg-stone-800 text-muted dark:text-stone-400 border-border dark:border-stone-700 cursor-not-allowed" 
                                               : loadingAdd === w.id
                                                 ? "bg-china-red/70 text-white border-transparent"
-                                                : "bg-white text-china-red border-china-red/30 hover:bg-china-red hover:text-white hover:border-china-red hover:shadow-md"
+                                                : "bg-stone-50 dark:bg-stone-900 text-china-red border-china-red/30 hover:bg-china-red hover:text-white hover:border-china-red hover:shadow-md"
                                           }`}
                       > 
                         {isAdded ? "✓ Đang học" : loadingAdd === w.id ? "Đang thêm..." : "+ Ôn tập"} 

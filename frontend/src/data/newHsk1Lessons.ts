@@ -272,7 +272,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "名字",
         "pinyin": "míngzi",
         "hanViet": "Danh Tự",
-        "meaning": "tên",
+        "meaning": "tên, họ tên",
         "partOfSpeech": "d.từ"
       },
       {
@@ -538,7 +538,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "的",
         "pinyin": "de",
         "hanViet": "",
-        "meaning": "của ; ~'s (hạt sở hữu); (dùng sau một thuộc tính)",
+        "meaning": "của",
         "partOfSpeech": "u, n"
       },
       {
@@ -570,7 +570,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "工作",
         "pinyin": "gōng zuò",
         "hanViet": "",
-        "meaning": "to work; (of a machine) to operate",
+        "meaning": "làm việc, công việc",
         "partOfSpeech": "vn, v, n"
       },
       {
@@ -1048,7 +1048,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "会",
         "pinyin": "huì",
         "hanViet": "",
-        "meaning": "can; to have the skill; to know how to; to be likely to; to be sure to",
+        "meaning": "biết, có thể",
         "partOfSpeech": "v, n"
       },
       {
@@ -1088,7 +1088,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "做饭",
         "pinyin": "zuò fàn",
         "hanViet": "",
-        "meaning": "chuẩn bị bữa ăn; nấu ăn",
+        "meaning": "nấu ăn, làm cơm",
         "partOfSpeech": "v"
       },
       {
@@ -1136,7 +1136,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "面条儿",
         "pinyin": "miàn tiáo r",
         "hanViet": "",
-        "meaning": "erhua variant of 面条; noodles",
+        "meaning": "mì sợi, sợi mì",
         "partOfSpeech": "từ vựng"
       },
       {
@@ -1152,7 +1152,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "上班",
         "pinyin": "shàng bān",
         "hanViet": "",
-        "meaning": "to go to work; to be on duty",
+        "meaning": "đi làm",
         "partOfSpeech": "v, vn"
       },
       {
@@ -1168,7 +1168,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "名字",
         "pinyin": "míng zi",
         "hanViet": "",
-        "meaning": "tên (của một người hoặc vật)",
+        "meaning": "tên, họ tên",
         "partOfSpeech": "n"
       },
       {
@@ -1176,7 +1176,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "工作",
         "pinyin": "gōng zuò",
         "hanViet": "",
-        "meaning": "to work; (of a machine) to operate",
+        "meaning": "làm việc, công việc",
         "partOfSpeech": "vn, v, n"
       }
     ],
@@ -1412,7 +1412,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "晚饭",
         "pinyin": "wǎn fàn",
         "hanViet": "",
-        "meaning": "bữa tối; bữa tối",
+        "meaning": "bữa tối, cơm tối",
         "partOfSpeech": "n"
       },
       {
@@ -1420,7 +1420,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "超市",
         "pinyin": "chāo shì",
         "hanViet": "",
-        "meaning": "supermarket (abbr. for 超级市场)",
+        "meaning": "siêu thị",
         "partOfSpeech": "n"
       },
       {
@@ -1484,7 +1484,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "菜",
         "pinyin": "cài",
         "hanViet": "",
-        "meaning": "dish (type of food); vegetable",
+        "meaning": "món ăn, rau",
         "partOfSpeech": "n"
       },
       {
@@ -1500,7 +1500,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "东西",
         "pinyin": "dōng xī",
         "hanViet": "",
-        "meaning": "east and west",
+        "meaning": "đồ đạc, thứ đồ",
         "partOfSpeech": "n, f, nr"
       },
       {
@@ -1524,7 +1524,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "面条儿",
         "pinyin": "miàn tiáo r",
         "hanViet": "",
-        "meaning": "erhua variant of 面条; noodles",
+        "meaning": "mì sợi, sợi mì",
         "partOfSpeech": "từ vựng"
       },
       {
@@ -1915,7 +1915,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "呢",
         "pinyin": "ne",
         "hanViet": "",
-        "meaning": "trợ từ chỉ ra rằng câu hỏi đã hỏi trước đó sẽ được áp dụng cho từ trước (\"Còn ...?\", \"Và ...?\"); để hỏi về vị trí (\"Ở đâu ...?\")",
+        "meaning": "thế còn... (trợ từ (\"Còn ...?\", \"Và ...?\"); để hỏi về vị trí (\"Ở đâu ...?\"))",
         "partOfSpeech": "y"
       },
       {
@@ -1971,7 +1971,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "超市",
         "pinyin": "chāo shì",
         "hanViet": "",
-        "meaning": "supermarket (abbr. for 超级市场)",
+        "meaning": "siêu thị",
         "partOfSpeech": "n"
       },
       {
@@ -2003,7 +2003,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "看",
         "pinyin": "kān",
         "hanViet": "",
-        "meaning": "to look after; to take care of",
+        "meaning": "xem, nhìn, đọc",
         "partOfSpeech": "v, u"
       },
       {
@@ -2019,7 +2019,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "下课",
         "pinyin": "xià kè",
         "hanViet": "",
-        "meaning": "kết thúc buổi học; ra khỏi lớp",
+        "meaning": "tan học, hết giờ học",
         "partOfSpeech": "v, vn"
       }
     ],
@@ -2253,7 +2253,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "见",
         "pinyin": "jiàn",
         "hanViet": "",
-        "meaning": "to see; to meet",
+        "meaning": "gặp, thấy",
         "partOfSpeech": "v, g"
       },
       {
@@ -2269,7 +2269,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "午饭",
         "pinyin": "wǔ fàn",
         "hanViet": "",
-        "meaning": "bữa trưa",
+        "meaning": "bữa trưa, cơm trưa",
         "partOfSpeech": "n"
       },
       {
@@ -2285,7 +2285,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "在",
         "pinyin": "zài",
         "hanViet": "",
-        "meaning": "tồn tại; được sống; (của sb hoặc sth) được (nằm) tại",
+        "meaning": "ở, tại, đang",
         "partOfSpeech": "p, v, d"
       },
       {
@@ -2475,7 +2475,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "前边",
         "pinyin": "qián bian",
         "hanViet": "",
-        "meaning": "phía trước; mặt trước",
+        "meaning": "phía trước, đằng trước",
         "partOfSpeech": "f"
       },
       {
@@ -2531,7 +2531,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "白天",
         "pinyin": "bái tiān",
         "hanViet": "",
-        "meaning": "daytime; during the day",
+        "meaning": "ban ngày",
         "partOfSpeech": "t"
       },
       {
@@ -2555,7 +2555,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "好听",
         "pinyin": "hǎo tīng",
         "hanViet": "",
-        "meaning": "pleasant to hear",
+        "meaning": "nghe hay, êm tai",
         "partOfSpeech": "a"
       },
       {
@@ -3330,7 +3330,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "在",
         "pinyin": "zài",
         "hanViet": "",
-        "meaning": "tồn tại; được sống; (của sb hoặc sth) được (nằm) tại",
+        "meaning": "ở, tại, đang",
         "partOfSpeech": "p, v, d"
       },
       {
@@ -3338,7 +3338,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "课",
         "pinyin": "kè",
         "hanViet": "",
-        "meaning": "chủ đề; khóa học",
+        "meaning": "tiết học, bài học",
         "partOfSpeech": "n"
       },
       {
@@ -3346,7 +3346,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "书",
         "pinyin": "Shū",
         "hanViet": "",
-        "meaning": "abbr. cho 书经",
+        "meaning": "sách",
         "partOfSpeech": "n, g"
       },
       {
@@ -3370,7 +3370,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "起床",
         "pinyin": "qǐ chuáng",
         "hanViet": "",
-        "meaning": "to get out of bed; to get up",
+        "meaning": "thức dậy, ngủ dậy",
         "partOfSpeech": "v"
       },
       {
@@ -3386,7 +3386,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "睡觉",
         "pinyin": "shuì jiào",
         "hanViet": "",
-        "meaning": "to go to bed; to sleep",
+        "meaning": "đi ngủ, ngủ",
         "partOfSpeech": "v"
       },
       {
@@ -3394,7 +3394,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "超市",
         "pinyin": "chāo shì",
         "hanViet": "",
-        "meaning": "supermarket (abbr. for 超级市场)",
+        "meaning": "siêu thị",
         "partOfSpeech": "n"
       },
       {
@@ -3402,7 +3402,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "去",
         "pinyin": "qù",
         "hanViet": "",
-        "meaning": "to go; to go to (a place)",
+        "meaning": "đi, tới",
         "partOfSpeech": "v"
       },
       {
@@ -3442,7 +3442,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "小朋友",
         "pinyin": "xiǎo péng yǒu",
         "hanViet": "",
-        "meaning": "đứa trẻ",
+        "meaning": "em nhỏ, bạn nhỏ",
         "partOfSpeech": "n"
       }
     ],
@@ -3742,7 +3742,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "这里",
         "pinyin": "zhè lǐ",
         "hanViet": "",
-        "meaning": "variant of 这里",
+        "meaning": "ở đây, chỗ này",
         "partOfSpeech": "r"
       },
       {
@@ -3774,7 +3774,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "对不起",
         "pinyin": "duì bu qǐ",
         "hanViet": "",
-        "meaning": "Tôi xin lỗi; xin lỗi; Tôi xin lỗi; để (sb) xuống; làm thất vọng",
+        "meaning": "xin lỗi",
         "partOfSpeech": "v"
       },
       {
@@ -3790,7 +3790,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "了",
         "pinyin": "le",
         "hanViet": "",
-        "meaning": "(completed action marker); (modal particle indicating change of state, situation now)",
+        "meaning": "rồi, đã",
         "partOfSpeech": "y, u, v"
       },
       {
@@ -3806,7 +3806,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "上班",
         "pinyin": "shàng bān",
         "hanViet": "",
-        "meaning": "to go to work; to be on duty",
+        "meaning": "đi làm",
         "partOfSpeech": "v, vn"
       },
       {
@@ -3854,7 +3854,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "看",
         "pinyin": "kān",
         "hanViet": "",
-        "meaning": "to look after; to take care of",
+        "meaning": "xem, nhìn, đọc",
         "partOfSpeech": "v, u"
       },
       {
@@ -3862,7 +3862,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "一点儿",
         "pinyin": "yī diǎn r",
         "hanViet": "",
-        "meaning": "biến thể đàn nhị của 一点; một chút; một chút",
+        "meaning": "một chút, một ít",
         "partOfSpeech": "mq"
       }
     ],
@@ -4309,7 +4309,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "面条儿",
         "pinyin": "miàn tiáo r",
         "hanViet": "",
-        "meaning": "erhua variant of 面条; noodles",
+        "meaning": "mì sợi, sợi mì",
         "partOfSpeech": "từ vựng"
       },
       {
@@ -4325,7 +4325,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "女士",
         "pinyin": "nǚ shì",
         "hanViet": "",
-        "meaning": "quý cô; thưa bà",
+        "meaning": "quý cô, quý bà",
         "partOfSpeech": "n"
       },
       {
@@ -4333,7 +4333,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "早饭",
         "pinyin": "zǎo fàn",
         "hanViet": "",
-        "meaning": "bữa ăn sáng",
+        "meaning": "bữa sáng",
         "partOfSpeech": "n"
       },
       {
@@ -4341,7 +4341,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "面包",
         "pinyin": "miàn bāo",
         "hanViet": "",
-        "meaning": "bread",
+        "meaning": "bánh mì",
         "partOfSpeech": "n"
       },
       {
@@ -4349,7 +4349,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "鸡蛋",
         "pinyin": "jī dàn",
         "hanViet": "",
-        "meaning": "(chicken) egg; hen's egg",
+        "meaning": "trứng gà, trứng",
         "partOfSpeech": "n"
       },
       {
@@ -4770,7 +4770,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "中午",
         "pinyin": "zhōng wǔ",
         "hanViet": "",
-        "meaning": "buổi trưa; giữa trưa",
+        "meaning": "buổi trưa",
         "partOfSpeech": "t"
       },
       {
@@ -4794,7 +4794,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "了",
         "pinyin": "le",
         "hanViet": "",
-        "meaning": "(completed action marker); (modal particle indicating change of state, situation now)",
+        "meaning": "rồi, đã",
         "partOfSpeech": "y, u, v"
       },
       {
@@ -4802,7 +4802,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "午饭",
         "pinyin": "wǔ fàn",
         "hanViet": "",
-        "meaning": "bữa trưa",
+        "meaning": "bữa trưa, cơm trưa",
         "partOfSpeech": "n"
       },
       {
@@ -4818,7 +4818,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "超市",
         "pinyin": "chāo shì",
         "hanViet": "",
-        "meaning": "supermarket (abbr. for 超级市场)",
+        "meaning": "siêu thị",
         "partOfSpeech": "n"
       },
       {
@@ -4826,7 +4826,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "合",
         "pinyin": "gě",
         "hanViet": "",
-        "meaning": "100ml; một phần mười của một cái hộp",
+        "meaning": "hộp, gói",
         "partOfSpeech": "v"
       },
       {
@@ -4834,7 +4834,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "分",
         "pinyin": "fēn",
         "hanViet": "",
-        "meaning": "chia ; tách; để phân phối; phân bổ",
+        "meaning": "phút, chia, điểm",
         "partOfSpeech": "t, qt, v, g, n, d"
       },
       {
@@ -4842,7 +4842,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "睡觉",
         "pinyin": "shuì jiào",
         "hanViet": "",
-        "meaning": "to go to bed; to sleep",
+        "meaning": "đi ngủ, ngủ",
         "partOfSpeech": "v"
       },
       {
@@ -4922,7 +4922,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "上学",
         "pinyin": "shàng xué",
         "hanViet": "",
-        "meaning": "to go to school; to attend school",
+        "meaning": "đi học",
         "partOfSpeech": "v"
       },
       {
@@ -5258,7 +5258,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "北京",
         "pinyin": "Běi jīng",
         "hanViet": "",
-        "meaning": "Beijing, capital of the People's Republic of China",
+        "meaning": "Bắc Kinh",
         "partOfSpeech": "ns"
       },
       {
@@ -5290,7 +5290,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "好玩儿",
         "pinyin": "hǎo wán r",
         "hanViet": "",
-        "meaning": "erhua variant of 好玩; amusing",
+        "meaning": "thú vị, vui vẻ",
         "partOfSpeech": "a"
       },
       {
@@ -5378,7 +5378,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "爱",
         "pinyin": "ài",
         "hanViet": "",
-        "meaning": "to love; to be fond of; to like; affection",
+        "meaning": "yêu, thích",
         "partOfSpeech": "v, vn, b"
       }
     ],

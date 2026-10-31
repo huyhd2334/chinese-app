@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
+@variant dark (&:is(.dark, .dark *));
 
 :root {
   --background: #f8fafc; /* Nền xám mát dịu mắt, chống chói lóa */
@@ -43,7 +43,8 @@ html.halloween-event-theme:not(.dark) {
    GIAO DIỆN TỐI (DARK MODE - Nghiên Mực & Đêm Trăng)
    Thiết kế chuẩn mực, nền sâu ấm cúng, tương phản hài hòa không gây mỏi mắt
    ===================================================================== */
-html.dark:not(.halloween-event-theme) {
+html.dark,
+.dark {
   --background: #121216; /* Mực đen than ấm */
   --foreground: #edeae4; /* Chữ trắng ngà mềm dịu */
   --card: #1c1c24; /* Khối thẻ nổi bật */
@@ -61,7 +62,9 @@ html.dark:not(.halloween-event-theme) {
 /* =====================================================================
    GIAO DIỆN TỐI + SỰ KIỆN HALLOWEEN (Đêm Hội Đèn Lồng Huyền Bí)
    ===================================================================== */
-html.dark.halloween-event-theme {
+html.dark.halloween-event-theme,
+.dark.halloween-event-theme,
+html.dark .halloween-event-theme {
   --background: #110e17; /* Đêm tím than huyền bí */
   --foreground: #f4eff8;
   --card: #1a1624; /* Đá cung điện đêm */
@@ -118,12 +121,24 @@ html.dark body {
 }
 
 /* Đồng bộ biến màu truyền thống khi ở Dark Mode */
-html.dark .text-china-ink {
+html.dark .text-china-ink,
+.dark .text-china-ink {
   color: var(--foreground);
 }
 
-html.dark .bg-china-paper {
+html.dark .bg-china-paper,
+.dark .bg-china-paper {
   background-color: var(--china-paper);
+}
+
+html.dark .bg-card,
+.dark .bg-card {
+  background-color: var(--card);
+}
+
+html.dark .border-border,
+.dark .border-border {
+  border-color: var(--border);
 }
 
 html.dark input:not([type="checkbox"]):not([type="radio"]), 
@@ -145,6 +160,8 @@ html.dark textarea::placeholder {
   --color-card: var(--card);
   --color-border: var(--border);
   --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted);
+  --color-secondary: var(--china-paper);
   --color-primary: var(--primary);
 
   --color-china-red: var(--china-red);
