@@ -13,7 +13,7 @@ export const PRESET_BOOKS: BookCourse[] = [
     totalLessons: 15,
     badge: "HSK 3.0 Mới",
     colorTheme: "from-rose-600 to-red-700",
-    coverImage: "/books/hsk1.jpg",
+    coverImage: "/books/hsk1_30.svg",
   },
   {
     id: "new_hsk2_standard",
@@ -24,7 +24,7 @@ export const PRESET_BOOKS: BookCourse[] = [
     totalLessons: 15,
     badge: "HSK 3.0 Mới",
     colorTheme: "from-emerald-600 to-teal-700",
-    coverImage: "/books/hsk2.jpg",
+    coverImage: "/books/hsk2_30.svg",
   },
   {
     id: "new_hsk3_standard",
@@ -35,7 +35,7 @@ export const PRESET_BOOKS: BookCourse[] = [
     totalLessons: 18,
     badge: "HSK 3.0 Mới",
     colorTheme: "from-amber-600 to-orange-700",
-    coverImage: "/books/hsk3.jpg",
+    coverImage: "/books/hsk3_30.svg",
   },
   {
     id: "hsk4_standard",

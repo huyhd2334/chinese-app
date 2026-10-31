@@ -1,0 +1,207 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 828" width="100%" height="100%">
+  <defs>
+    <!-- Background paper gradient (Giấy xuyến chỉ / Xuan paper ivory tone with warm amber tint) -->
+    <linearGradient id="paperGrad3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FCFAF5" />
+      <stop offset="50%" stop-color="#FBF6EC" />
+      <stop offset="100%" stop-color="#F4EDE0" />
+    </linearGradient>
+
+    <!-- Amber primary gradient -->
+    <linearGradient id="amberGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#D97706" />
+      <stop offset="100%" stop-color="#92400E" />
+    </linearGradient>
+
+    <!-- Golden accent gradient -->
+    <linearGradient id="goldGrad3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="50%" stop-color="#FBBF24" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+
+    <!-- Subtle texture pattern -->
+    <pattern id="cloudPattern3" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 0 20 Q 10 10, 20 20 T 40 20" fill="none" stroke="#92400E" stroke-width="0.6" stroke-opacity="0.04" />
+      <path d="M 20 0 Q 30 10, 40 0" fill="none" stroke="#92400E" stroke-width="0.6" stroke-opacity="0.04" />
+    </pattern>
+
+    <!-- Spine shadow -->
+    <linearGradient id="spineShadow3" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0.12" />
+      <stop offset="60%" stop-color="#000000" stop-opacity="0.04" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <!-- Base Paper Background -->
+  <rect width="600" height="828" fill="url(#paperGrad3)" />
+  <rect width="600" height="828" fill="url(#cloudPattern3)" />
+
+  <!-- Left Spine Margin / Book Binding (线装书 style) -->
+  <rect x="0" y="0" width="28" height="828" fill="#EFE8D8" />
+  <rect x="28" y="0" width="12" height="828" fill="url(#spineShadow3)" />
+  <line x1="28" y1="0" x2="28" y2="828" stroke="#D8C9B0" stroke-width="1" />
+
+  <!-- Outer Scholarly Border (Khung nhã nhặn) -->
+  <rect x="46" y="24" width="528" height="780" fill="none" stroke="#B45309" stroke-width="1.2" stroke-opacity="0.4" rx="2" />
+  <rect x="52" y="30" width="516" height="768" fill="none" stroke="#B45309" stroke-width="0.6" stroke-opacity="0.25" rx="1" />
+
+  <!-- Corner Ornamental Marks (Hồi văn góc viền) -->
+  <path d="M 46 44 L 64 44 M 46 44 L 46 64" fill="none" stroke="#B45309" stroke-width="2" stroke-opacity="0.6" />
+  <path d="M 574 44 L 556 44 M 574 44 L 574 64" fill="none" stroke="#B45309" stroke-width="2" stroke-opacity="0.6" />
+  <path d="M 46 784 L 64 784 M 46 784 L 46 764" fill="none" stroke="#B45309" stroke-width="2" stroke-opacity="0.6" />
+  <path d="M 574 784 L 556 784 M 574 784 L 574 764" fill="none" stroke="#B45309" stroke-width="2" stroke-opacity="0.6" />
+
+  <!-- Top Official Header Banner -->
+  <g transform="translate(68, 54)">
+    <rect x="0" y="0" width="484" height="28" rx="4" fill="#92400E" fill-opacity="0.08" />
+    <text x="16" y="19" font-family="'PingFang SC', 'Noto Serif SC', 'Songti SC', 'SimSun', serif" font-size="12" font-weight="700" fill="#92400E" letter-spacing="2">
+      国际中文教育中文水平等级标准
+    </text>
+    <text x="468" y="18" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="800" fill="#92400E" letter-spacing="1">
+      HSK 3.0
+    </text>
+  </g>
+
+  <!-- Big Watermark Character in Background "叁" (Formal 3) -->
+  <text x="310" y="390" text-anchor="middle" font-family="'Songti SC', 'SimSun', 'Noto Serif SC', serif" font-size="280" font-weight="900" fill="#92400E" fill-opacity="0.035">
+    叁
+  </text>
+
+  <!-- Seal of HSK 3.0 (Triện Chu văn hổ phách) -->
+  <g transform="translate(472, 102)">
+    <rect x="0" y="0" width="58" height="58" rx="6" fill="#92400E" />
+    <rect x="3" y="3" width="52" height="52" rx="4" fill="none" stroke="#FDFBF7" stroke-width="1.2" stroke-dasharray="8 2" />
+    <text x="29" y="26" text-anchor="middle" font-family="'Songti SC', 'SimSun', 'Noto Serif SC', serif" font-size="16" font-weight="bold" fill="#FDFBF7" letter-spacing="1">
+      新标
+    </text>
+    <text x="29" y="46" text-anchor="middle" font-family="'Songti SC', 'SimSun', 'Noto Serif SC', serif" font-size="14" font-weight="bold" fill="#FDE68A" letter-spacing="1">
+      3.0
+    </text>
+  </g>
+
+  <!-- Main Title Area -->
+  <g transform="translate(310, 195)">
+    <!-- Sub-badge -->
+    <rect x="-85" y="-14" width="170" height="24" rx="12" fill="#92400E" fill-opacity="0.1" stroke="#92400E" stroke-width="0.8" stroke-opacity="0.4" />
+    <text x="0" y="2" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#92400E" letter-spacing="2">
+      CHUẨN MỚI 3.0
+    </text>
+
+    <!-- Chinese Main Title: 新 HSK -->
+    <text x="0" y="62" text-anchor="middle" font-family="'PingFang SC', 'Noto Serif SC', 'Songti SC', 'SimSun', serif" font-size="44" font-weight="900" fill="#1C1917" letter-spacing="8">
+      新 HSK
+    </text>
+
+    <!-- Chinese Title: 标准教程 -->
+    <text x="0" y="125" text-anchor="middle" font-family="'PingFang SC', 'Noto Serif SC', 'Songti SC', 'SimSun', serif" font-size="52" font-weight="900" fill="#92400E" letter-spacing="6">
+      标准教程
+    </text>
+
+    <!-- Divider Bar with Diamond -->
+    <line x1="-140" y1="150" x2="-20" y2="150" stroke="#92400E" stroke-width="1.2" stroke-opacity="0.4" />
+    <polygon points="0,146 5,150 0,154 -5,150" fill="#92400E" />
+    <line x1="20" y1="150" x2="140" y2="150" stroke="#92400E" stroke-width="1.2" stroke-opacity="0.4" />
+
+    <!-- English & Subtitle -->
+    <text x="0" y="174" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#4B5563" letter-spacing="3">
+      HSK STANDARD COURSE 3
+    </text>
+    <text x="0" y="194" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#78716C">
+      Giáo trình Chuẩn HSK 3.0 • Cấp độ 3
+    </text>
+  </g>
+
+  <!-- Big Level Emblem Medallion -->
+  <g transform="translate(310, 475)">
+    <!-- Outer decorative ring -->
+    <circle cx="0" cy="0" r="48" fill="url(#amberGrad)" stroke="#F59E0B" stroke-width="2.5" />
+    <circle cx="0" cy="0" r="42" fill="none" stroke="#FDE68A" stroke-width="0.8" stroke-dasharray="4 2" />
+    <!-- Level Number -->
+    <text x="0" y="17" text-anchor="middle" font-family="'Times New Roman', 'Songti SC', serif" font-size="52" font-weight="900" fill="#FFFFFF">
+      3
+    </text>
+    <rect x="-38" y="28" width="76" height="17" rx="8.5" fill="#F59E0B" />
+    <text x="0" y="40" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="800" fill="#78350F" letter-spacing="1">
+      TRUNG CẤP 1
+    </text>
+  </g>
+
+  <!-- Key Curriculum Highlights Card -->
+  <g transform="translate(86, 565)">
+    <rect x="0" y="0" width="448" height="118" rx="10" fill="#FFFFFF" fill-opacity="0.75" stroke="#E6DDCF" stroke-width="1" />
+
+    <!-- 3 Specs Badges -->
+    <g transform="translate(18, 20)">
+      <!-- Item 1 -->
+      <rect x="0" y="0" width="126" height="42" rx="6" fill="#FEF3C7" fill-opacity="0.5" stroke="#FDE68A" stroke-width="0.8" />
+      <text x="63" y="18" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#92400E">
+        18 BÀI
+      </text>
+      <text x="63" y="33" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="500" fill="#78350F">
+        Chuyên đề sâu
+      </text>
+
+      <!-- Item 2 -->
+      <rect x="142" y="0" width="126" height="42" rx="6" fill="#FEF3C7" fill-opacity="0.5" stroke="#FDE68A" stroke-width="0.8" />
+      <text x="205" y="18" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#92400E">
+        400+ TỪ
+      </text>
+      <text x="205" y="33" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="500" fill="#78350F">
+        Bứt phá vốn từ
+      </text>
+
+      <!-- Item 3 -->
+      <rect x="284" y="0" width="126" height="42" rx="6" fill="#FEF3C7" fill-opacity="0.5" stroke="#FDE68A" stroke-width="0.8" />
+      <text x="347" y="18" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#92400E">
+        BỔ NGỮ &amp; 把/被
+      </text>
+      <text x="347" y="33" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="500" fill="#78350F">
+        Cú pháp nâng cao
+      </text>
+    </g>
+
+    <!-- Subtext description inside card -->
+    <text x="224" y="94" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600" fill="#4B5563">
+      Luyện đọc hiểu trường thiên • Ngữ pháp toàn diện • Tự tin vượt kỳ thi
+    </text>
+  </g>
+
+  <!-- Footer Publisher & Quality Stamp -->
+  <g transform="translate(68, 715)">
+    <!-- Small Bottom Line -->
+    <line x1="0" y1="0" x2="484" y2="0" stroke="#92400E" stroke-width="0.8" stroke-opacity="0.2" />
+
+    <!-- Publisher branding -->
+    <text x="18" y="32" font-family="'PingFang SC', 'Noto Serif SC', 'Songti SC', serif" font-size="13" font-weight="800" fill="#1C1917">
+      HSK LEARNING <tspan font-weight="400" fill="#78716C">| Bàn học Tiểu Lu</tspan>
+    </text>
+    <text x="18" y="49" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="500" fill="#A8A29E">
+      HỆ THỐNG GIÁO TRÌNH TIẾNG TRUNG CHUẨN MỚI
+    </text>
+
+    <!-- Authentic ISBN / Barcode Graphic -->
+    <g transform="translate(390, 16)">
+      <line x1="0" y1="0" x2="0" y2="28" stroke="#44403C" stroke-width="2" />
+      <line x1="4" y1="0" x2="4" y2="28" stroke="#44403C" stroke-width="1" />
+      <line x1="7" y1="0" x2="7" y2="28" stroke="#44403C" stroke-width="3" />
+      <line x1="13" y1="0" x2="13" y2="28" stroke="#44403C" stroke-width="1.5" />
+      <line x1="17" y1="0" x2="17" y2="28" stroke="#44403C" stroke-width="2.5" />
+      <line x1="23" y1="0" x2="23" y2="28" stroke="#44403C" stroke-width="1" />
+      <line x1="27" y1="0" x2="27" y2="28" stroke="#44403C" stroke-width="2" />
+      <line x1="32" y1="0" x2="32" y2="28" stroke="#44403C" stroke-width="3.5" />
+      <line x1="39" y1="0" x2="39" y2="28" stroke="#44403C" stroke-width="1" />
+      <line x1="43" y1="0" x2="43" y2="28" stroke="#44403C" stroke-width="2" />
+      <line x1="48" y1="0" x2="48" y2="28" stroke="#44403C" stroke-width="1.5" />
+      <line x1="53" y1="0" x2="53" y2="28" stroke="#44403C" stroke-width="2.5" />
+      <line x1="59" y1="0" x2="59" y2="28" stroke="#44403C" stroke-width="1" />
+      <line x1="64" y1="0" x2="64" y2="28" stroke="#44403C" stroke-width="2" />
+      <line x1="68" y1="0" x2="68" y2="28" stroke="#44403C" stroke-width="1.5" />
+      <line x1="74" y1="0" x2="74" y2="28" stroke="#44403C" stroke-width="2" />
+      <text x="37" y="37" text-anchor="middle" font-family="monospace" font-size="8" fill="#78716C">
+        HSK 3.0-03
+      </text>
+    </g>
+  </g>
+</svg>

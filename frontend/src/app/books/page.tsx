@@ -144,6 +144,7 @@ export default function BooksDirectoryPage() {
                         src={book.coverImage}
                         alt={book.title}
                         fill
+                        unoptimized={book.coverImage.endsWith('.svg')}
                         sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw"
                         className="object-cover"
                         priority={book.level <= 2}
@@ -186,6 +187,7 @@ export default function BooksDirectoryPage() {
                     src={selectedBook.coverImage}
                     alt={selectedBook.title}
                     fill
+                    unoptimized={selectedBook.coverImage.endsWith('.svg')}
                     sizes="64px"
                     className="object-cover"
                   />
