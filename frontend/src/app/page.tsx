@@ -18,6 +18,7 @@ import {
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts"
 import { getHanViet } from "@/utils/hanviet"
 import { playChineseAudio } from "@/utils/audioTts"
+import { getShortMeaningVi } from "@/utils/formatMeaning"
 import { RoadmapCard } from "@/components/roadmap/RoadmapCard"
 import { RoadmapWizardModal } from "@/components/roadmap/RoadmapWizardModal"
 import { useAuth } from "@/contexts/AuthContext"
@@ -1039,7 +1040,7 @@ export default function Dashboard() {
                 </div>
 
                 <p className="text-xs sm:text-sm text-china-ink font-medium max-w-lg line-clamp-2">
-                  {dailyWord.meanings_vi ? dailyWord.meanings_vi.join(", ") : dailyWord.meanings?.join(", ")}
+                  {getShortMeaningVi(dailyWord)}
                 </p>
               </div>
             </div>
@@ -1270,8 +1271,8 @@ export default function Dashboard() {
                         </span>
                       )}
                     </div>
-                    <p className="text-xs text-center text-muted line-clamp-2 mb-3 h-8 w-full break-words px-1" title={word?.meanings_vi ? word.meanings_vi.join(', ') : word?.meanings?.join(', ')}>
-                      {word?.meanings_vi ? word.meanings_vi.join(', ') : word?.meanings?.join(', ')}
+                    <p className="text-xs text-center text-muted line-clamp-2 mb-3 h-8 w-full break-words px-1" title={getShortMeaningVi(word)}>
+                      {getShortMeaningVi(word)}
                     </p>
                   </div>
                   <div className="flex items-center justify-center gap-1.5 text-[11px] font-medium text-china-red/90 bg-china-red/5 py-1 px-2.5 rounded-full w-full shrink-0">

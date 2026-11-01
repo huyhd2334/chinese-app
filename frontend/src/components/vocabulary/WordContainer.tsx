@@ -9,6 +9,8 @@ import ChibiLoading from '@/components/common/ChibiLoading'
 import { Volume2, CheckCircle2, AlertCircle, Star, Eye, EyeOff } from 'lucide-react'
 import { getHanViet } from '../../utils/hanviet'
 import { playChineseAudio } from '@/utils/audioTts'
+import { getShortMeaningVi } from '@/utils/formatMeaning'
+import { importHsk } from '../../../db/importContent'
 
 interface WordContainerProps {
   level: number
@@ -95,6 +97,12 @@ const WordContainer = ({
     
     useEffect(() => {
       const handleGetWords = async () => {
+        try {
+          const sample = await db.words.where("hanzi").equals("面包").first()
+          if (!sample || !sample.meanings_vi || sample.meanings_vi.length === 0) {
+            await importHsk(true)
+          }
+        } catch {}
         const count = await getHskVocabCount(level)
         const res = await getHskVocabPaginated(level, 0, count || 5000)
         setAllWords(res)
@@ -329,7 +337,7 @@ const WordContainer = ({
                       <span className={`text-sm font-medium text-china-ink transition-all ${
                         isMeaningHidden ? "blur-sm bg-china-paper px-2 py-0.5 rounded inline-block hover:blur-none" : ""
                       }`}>
-                        {w.meanings_vi ? w.meanings_vi.join(", ") : w.meanings?.join(", ")}
+                        {getShortMeaningVi(w)}
                       </span>
                     </div>
 

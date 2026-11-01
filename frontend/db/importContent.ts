@@ -1,17 +1,22 @@
 import { db, type Word, type Reading, type ListeningTriad } from "./database"
 
-const HSK_IMPORTED_FLAG = "hsk_words_v2_clean_vi_imported"
+const HSK_IMPORTED_FLAG = "hsk_words_v4_clean_vietnamese_short_meanings"
 
-export async function importHsk(): Promise<number> {
+export async function importHsk(force = false): Promise<number> {
   try {
-    // 1. Fast check in local storage flag first
-    if (typeof window !== "undefined" && localStorage.getItem(HSK_IMPORTED_FLAG)) {
-      const count = await db.words.count()
-      if (count > 0) return count
+    // 1. Kiểm tra nhanh: nếu đã có cờ và từ vựng trong IndexedDB thực tế đã có meanings_vi thì trả về ngay
+    if (!force && typeof window !== "undefined" && localStorage.getItem(HSK_IMPORTED_FLAG)) {
+      const sample = await db.words.where("hanzi").equals("面包").first()
+      if (sample && sample.meanings_vi && sample.meanings_vi.length > 0) {
+        const count = await db.words.count()
+        if (count > 0) return count
+      }
     }
 
-    // 2. Fetch updated clean Vietnamese vocabulary
-    const response = await fetch(`/content/words.json`)
+    // 2. Tải toàn bộ từ vựng kèm nghĩa tiếng Việt chuẩn
+    const response = await fetch(`/content/words.json?v=20261101_v4`, {
+      cache: "no-store",
+    })
     if (!response.ok) {
       throw new Error(`Failed to load HSK words`)
     }

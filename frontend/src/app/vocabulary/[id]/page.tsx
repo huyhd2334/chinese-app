@@ -12,6 +12,7 @@ import {
 } from "lucide-react"
 import { getHanViet } from "@/utils/hanviet"
 import { playChineseAudio } from "@/utils/audioTts"
+import { getShortMeaningVi } from "@/utils/formatMeaning"
 
 interface PageProps {
   params: Promise<{
@@ -244,7 +245,7 @@ export default function WordDetailPage({ params }: PageProps) {
                    <BookOpen className="w-3.5 h-3.5 text-china-red" /> Nghĩa tiếng Việt
                 </p>
                 <p className="text-lg sm:text-xl text-china-ink font-semibold mb-2">
-                  {word.meanings_vi ? word.meanings_vi.join("; ") : word.meanings?.join("; ")}
+                  {getShortMeaningVi(word, 3)}
                 </p>
                 {word.meanings && word.meanings_vi && (
                   <p className="text-xs sm:text-sm text-china-ink/70">

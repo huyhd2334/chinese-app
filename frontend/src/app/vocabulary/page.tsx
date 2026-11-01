@@ -5,6 +5,7 @@ import WordContainer from "@/components/vocabulary/WordContainer"
 import { useEffect, useRef, useState } from "react"
 import useVocab from "../../../hooks/useVocab"
 import { db } from "../../../db/database"
+import { importHsk } from "../../../db/importContent"
 import { Search, Eye, EyeOff } from "lucide-react"
 
 const Page = () => {
@@ -35,6 +36,13 @@ const Page = () => {
 
   useEffect(() => {
     const fetchStats = async () => {
+      try {
+        const sample = await db.words.where("hanzi").equals("面包").first()
+        if (!sample || !sample.meanings_vi || sample.meanings_vi.length === 0) {
+          await importHsk(true)
+        }
+      } catch {}
+
       const ids = await getHskVocabIds(level)
       setCount(ids.length)
       

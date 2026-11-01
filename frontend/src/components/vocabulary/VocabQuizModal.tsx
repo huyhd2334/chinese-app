@@ -4,6 +4,7 @@ import React, { useState, useEffect, useCallback, useMemo } from "react"
 import { type Word } from "../../../db/database"
 import { Volume2, X, RotateCw, CheckCircle2, XCircle, Trophy, Sparkles, Headphones, Eye } from "lucide-react"
 import { playChineseAudio } from "@/utils/audioTts"
+import { getShortMeaningVi } from "@/utils/formatMeaning"
 
 interface VocabQuizModalProps {
   isOpen: boolean
@@ -42,14 +43,14 @@ export default function VocabQuizModal({ isOpen, onClose, words, onWordMastered 
     const selectedPool = shuffledWords.slice(0, Math.min(10, words.length))
 
     const newQuestions: Question[] = selectedPool.map((currentWord) => {
-      const correctMeaning = currentWord.meanings_vi?.[0] || currentWord.meanings?.[0] || "Nghĩa"
+      const correctMeaning = getShortMeaningVi(currentWord, 1) || "Nghĩa"
 
       // Pick 3 random distractors from remaining words
       const distractors: string[] = []
       const otherWords = words.filter(w => w.id !== currentWord.id).sort(() => Math.random() - 0.5)
 
       for (const other of otherWords) {
-        const meaning = other.meanings_vi?.[0] || other.meanings?.[0]
+        const meaning = getShortMeaningVi(other, 1)
         if (meaning && meaning !== correctMeaning && !distractors.includes(meaning)) {
           distractors.push(meaning)
           if (distractors.length >= 3) break

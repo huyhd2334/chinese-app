@@ -5,6 +5,7 @@ import { type Word } from "../../../db/database"
 import { Volume2, X, RotateCw, Check, ArrowRight, ArrowLeft, Sparkles, BookOpen } from "lucide-react"
 import { getHanViet } from "../../utils/hanviet"
 import { playChineseAudio } from "@/utils/audioTts"
+import { getShortMeaningVi } from "@/utils/formatMeaning"
 
 interface FlashcardModalProps {
   isOpen: boolean
@@ -185,7 +186,7 @@ export default function FlashcardModal({ isOpen, onClose, words, onMarkLearned }
                   )}
                   <div className="w-12 h-0.5 bg-china-gold/50 my-2" />
                   <p className="text-lg md:text-xl font-medium text-china-ink max-w-sm mb-3">
-                    {currentWord.meanings_vi ? currentWord.meanings_vi.join(", ") : currentWord.meanings?.join(", ")}
+                    {getShortMeaningVi(currentWord)}
                   </p>
                   {currentWord.partOfSpeech && currentWord.partOfSpeech.length > 0 && (
                     <div className="flex gap-1.5 flex-wrap justify-center mb-2">
