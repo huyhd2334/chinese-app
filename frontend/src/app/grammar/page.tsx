@@ -22,6 +22,7 @@ import {
 } from "lucide-react"
 import { playChineseAudio } from "@/utils/audioTts"
 import { GrammarPoint } from "@/types/grammar"
+import { normalizeGrammarList } from "@/utils/grammarNormalize"
 
 const HSK_LEVELS = [
   { label: "Tất cả", value: "all" },
@@ -77,9 +78,15 @@ export default function GrammarPage() {
     async function loadGrammar() {
       setLoading(true)
       try {
-        const res = await fetch("/content/grammar/hsk_grammar_full.json")
+        const res = await fetch(`/content/grammar/hsk_grammar_full.json?v=${Date.now()}`, {
+          cache: "no-store",
+          headers: {
+            "Cache-Control": "no-cache, no-store, must-revalidate",
+            Pragma: "no-cache",
+          },
+        })
         const data = await res.json()
-        setGrammarList(data)
+        setGrammarList(normalizeGrammarList(data))
       } catch (err) {
         console.error("Failed to load grammar data:", err)
       } finally {
