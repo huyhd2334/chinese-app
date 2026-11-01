@@ -1013,8 +1013,8 @@ const WritingPractice = ({ hanzi }: WritingPracticeProps) => {
     return (
       <div className="mt-8">
         <p className="text-red-500">
-          Không tìm thấy dữ liệu cho "
-          {selectedChar}"
+          Không tìm thấy dữ liệu cho &quot;
+          {selectedChar}&quot;
         </p>
       </div>
     )

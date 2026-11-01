@@ -151,7 +151,7 @@ export default function LessonDetailPage() {
       let count = 0
 
       for (const w of lesson.vocabulary) {
-        let wordRecord = await db.words.where('hanzi').equals(w.hanzi).first()
+        const wordRecord = await db.words.where('hanzi').equals(w.hanzi).first()
 
         let wordId = wordRecord?.id
         if (!wordId) {

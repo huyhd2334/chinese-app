@@ -146,7 +146,7 @@ export default function OcrStudio() {
           canvas.height = viewport.height
 
           if (ctx) {
-            // @ts-ignore
+            // @ts-expect-error pdfjs RenderParameters typing requires `canvas`; canvasContext is still supported
             await page.render({ canvasContext: ctx, viewport }).promise
             renderedPages.push(canvas.toDataURL('image/jpeg', 0.9))
           }
@@ -169,7 +169,8 @@ export default function OcrStudio() {
         setImageSrc(imageUrls[0])
         setCropRect(null)
       }
-    } catch (err: any) {
+    } catch (e) {
+      const err = e as Error
       console.error('File load error:', err)
       alert('Không thể mở file: ' + (err?.message || 'Lỗi định dạng'))
     } finally {
@@ -346,7 +347,8 @@ export default function OcrStudio() {
       setOcrProgress(100)
       setOcrStatusText('Hoàn tất số hóa!')
       setTimeout(() => setIsProcessing(false), 600)
-    } catch (err: any) {
+    } catch (e) {
+      const err = e as Error
       console.error('OCR Error:', err)
       setOcrStatusText(`Lỗi OCR: ${err?.message || 'Không thể nhận diện'}`)
       setIsProcessing(false)

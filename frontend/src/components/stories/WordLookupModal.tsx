@@ -83,7 +83,8 @@ export default function WordLookupModal({
       setTimeout(() => {
         setSaveSuccessMsg("")
       }, 3000)
-    } catch (err: any) {
+    } catch (e) {
+      const err = e as Error
       alert(err.message || "Không thể thêm vào SRS")
     } finally {
       setIsSaving(false)

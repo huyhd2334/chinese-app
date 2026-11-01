@@ -230,7 +230,7 @@ export default function Dashboard() {
     let currentStreak = storedConfig.streak
     let currentBest = storedConfig.bestStreak
     let lastCompleted = storedConfig.lastCompletedDate
-    let completedDates = storedConfig.completedDates || []
+    const completedDates = storedConfig.completedDates || []
 
     if (isTodayMet) {
       if (!completedDates.includes(todayStr)) {
@@ -1378,12 +1378,26 @@ const HSK_LEVEL_CONFIG = [
   { level: 6, name: "HSK 6", label: "Cao cấp", lightColor: "#7c3aed", darkColor: "#c084fc", gradFrom: "#a855f7", gradTo: "#e9d5ff" },
 ]
 
-function CustomHskBarTooltip({ active, payload, label }: any) {
+interface ChartTooltipEntry {
+  dataKey?: string | number
+  value?: number
+  name?: string
+  color?: string
+  payload?: { fill?: string }
+}
+
+interface ChartTooltipProps {
+  active?: boolean
+  payload?: ChartTooltipEntry[]
+  label?: string | number
+}
+
+function CustomHskBarTooltip({ active, payload, label }: ChartTooltipProps) {
   if (!active || !payload || !payload.length) return null
-  const lvlNum = parseInt(label?.replace("HSK ", "") || "1", 10)
+  const lvlNum = parseInt(String(label ?? "").replace("HSK ", "") || "1", 10)
   const cfg = HSK_LEVEL_CONFIG[lvlNum - 1] || HSK_LEVEL_CONFIG[0]
-  const total = payload.find((p: any) => p.dataKey === "total")?.value || 0
-  const learning = payload.find((p: any) => p.dataKey === "learning")?.value || 0
+  const total = payload.find((p) => p.dataKey === "total")?.value || 0
+  const learning = payload.find((p) => p.dataKey === "learning")?.value || 0
   const percent = total > 0 ? Math.round((learning / total) * 100) : 0
 
   return (
@@ -1439,13 +1453,13 @@ function CustomHskBarTooltip({ active, payload, label }: any) {
   )
 }
 
-function CustomPieTooltip({ active, payload }: any) {
+function CustomPieTooltip({ active, payload }: ChartTooltipProps) {
   if (!active || !payload || !payload.length) return null
   const data = payload[0]
   return (
     <div className="rounded-xl px-3 py-2 shadow-xl backdrop-blur-md border border-border/80 bg-white/95 dark:bg-[#1a1624]/95 dark:border-[#382c47] text-xs">
       <div className="flex items-center gap-2">
-        <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ backgroundColor: data.payload.fill || data.color }} />
+        <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ backgroundColor: data.payload?.fill || data.color }} />
         <span className="text-muted">{data.name}:</span>
         <span className="font-bold font-mono text-china-ink dark:text-stone-100">{data.value} từ</span>
       </div>
@@ -1453,7 +1467,7 @@ function CustomPieTooltip({ active, payload }: any) {
   )
 }
 
-function CustomHeatmapTooltip({ active, payload, label }: any) {
+function CustomHeatmapTooltip({ active, payload, label }: ChartTooltipProps) {
   if (!active || !payload || !payload.length) return null
   const activity = payload[0]?.value || 0
   return (

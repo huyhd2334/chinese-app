@@ -71,10 +71,11 @@ export default function UpgradeModal() {
     }
   }, [user?.id])
 
+  const [nowMs] = useState(() => Date.now())
   const isPro =
     subInfo.userId !== "guest" &&
     (subInfo.plan === "pro_monthly" || subInfo.plan === "pro_yearly") &&
-    (!subInfo.expiresAt || subInfo.expiresAt > Date.now())
+    (!subInfo.expiresAt || subInfo.expiresAt > nowMs)
 
   const priceAmount = PLANS[selectedPlan].amount
 

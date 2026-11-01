@@ -1,67 +1,145 @@
 "use client"
 
 import { useEffect, useState, use } from "react"
-import { useRouter } from "next/navigation"
 import Link from "next/link"
-import { GraduationCap, Clock, Award, BookOpen, Headset, FileText, ArrowLeft, ArrowRight, CheckCircle } from "lucide-react"
+import {
+  Clock,
+  BookOpen,
+  Headset,
+  FileText,
+  ArrowLeft,
+  CheckCircle2,
+  XCircle,
+  HelpCircle,
+  Volume2,
+  RotateCcw
+} from "lucide-react"
+import { ALL_EXAMS } from "@/data/examsManifest"
 
-interface Question {
+interface UnifiedQuestion {
   id: number
-  type: string
-  options?: string[]
-  words?: string[]
+  section: "listening" | "reading" | "writing"
   prompt?: string
-}
-
-interface ExamData {
-  test_id: string
-  level: number
-  listening: {
-    audio_url: string
-    questions: Question[]
-  }
-  reading: {
-    questions: Question[]
-    passages: string[]
-  }
-  writing: {
-    questions: Question[]
-  }
+  stem?: string
+  context?: string
+  options?: string[]
+  correctIndex?: number
+  correctOption?: string
+  explanation?: string
+  audioUrl?: string
+  words?: string[]
 }
 
 export default function ExamPage({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = use(params)
   const id = resolvedParams.id
-  const router = useRouter()
-  const [exam, setExam] = useState<ExamData | null>(null)
+
+  const examMeta = ALL_EXAMS.find((e) => e.id === id) || ALL_EXAMS[0]
+
+  const [questions, setQuestions] = useState<UnifiedQuestion[]>([])
+  const [loading, setLoading] = useState(true)
   const [activeTab, setActiveTab] = useState<"listening" | "reading" | "writing">("listening")
-  const [answers, setAnswers] = useState<Record<number, string>>({})
-  const [writingAnswers, setWritingAnswers] = useState<Record<number, string>>({})
-  const [timeLeft, setTimeLeft] = useState(125 * 60) // 125 minutes
+  const [answers, setAnswers] = useState<Record<number, number>>({})
+  const [timeLeft, setTimeLeft] = useState(examMeta.timeMinutes * 60)
   const [isSubmitted, setIsSubmitted] = useState(false)
 
+  // Load and adapt exam data
   useEffect(() => {
-    fetch(`/content/hsk5_exams/${id}_structured.json`)
-      .then((res) => res.json())
-      .then((data) => setExam(data))
-      .catch((err) => console.error(err))
-  }, [id])
+    async function loadExam() {
+      setLoading(true)
+      try {
+        const res = await fetch(examMeta.sourceFile)
+        const data = await res.json()
 
+        const unified: UnifiedQuestion[] = []
+
+        if (examMeta.type === "hsk4_mock" && Array.isArray(data.questions)) {
+          // Format Make-dream-clear HSK 4
+          data.questions.forEach((q: {
+            number: number
+            type: string
+            stem?: string
+            text?: string
+            prompt?: string
+            audio?: string
+            options?: string[]
+            correct_answer_index?: number
+          }) => {
+            const isListening = q.type?.includes("listening")
+            const isWriting = q.type?.includes("writing")
+            const section: "listening" | "reading" | "writing" = isListening
+              ? "listening"
+              : isWriting
+              ? "writing"
+              : "reading"
+
+            unified.push({
+              id: q.number,
+              section,
+              prompt: q.text || q.prompt || q.stem || (isListening ? "Nghe và chọn đáp án đúng" : "Chọn đáp án đúng"),
+              options: q.options || [],
+              correctIndex: q.correct_answer_index,
+              audioUrl: q.audio,
+            })
+          })
+        } else if (Array.isArray(data.items)) {
+          // Format Shengdabai HSK 1-6
+          data.items.forEach((item: {
+            id: string
+            sectionCode?: string
+            questionTypeCode?: string
+            prompt?: string
+            stem?: string
+            context?: string
+            explanation?: string
+            options?: Array<{ id: string; label: string; text: string }>
+            correctOptionId?: string
+            audioUrl?: string
+          }, idx: number) => {
+            const secStr = item.sectionCode || ""
+            const section: "listening" | "reading" | "writing" = secStr.includes("listen")
+              ? "listening"
+              : secStr.includes("writ")
+              ? "writing"
+              : "reading"
+
+            const opts = item.options?.map((o) => o.text || o.label) || []
+            const corrIdx = item.options?.findIndex((o) => o.id === item.correctOptionId || o.label === item.correctOptionId)
+
+            unified.push({
+              id: idx + 1,
+              section,
+              stem: item.stem,
+              prompt: item.prompt,
+              context: item.context,
+              options: opts,
+              correctIndex: corrIdx !== -1 ? corrIdx : undefined,
+              correctOption: item.correctOptionId,
+              explanation: item.explanation,
+              audioUrl: item.audioUrl,
+            })
+          })
+        }
+
+        setQuestions(unified)
+      } catch (err) {
+        console.error("Failed to load exam data:", err)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    loadExam()
+  }, [examMeta])
+
+  // Timer
   useEffect(() => {
     if (isSubmitted || timeLeft <= 0) return
     const timer = setInterval(() => {
-      setTimeLeft((prev) => prev - 1)
+      setTimeLeft((prev) => (prev > 0 ? prev - 1 : 0))
     }, 1000)
     return () => clearInterval(timer)
   }, [isSubmitted, timeLeft])
-
-  if (!exam) {
-    return (
-      <div className="flex min-h-[80vh] items-center justify-center">
-        <div className="text-sm text-china-ink animate-pulse">Loading exam content...</div>
-      </div>
-    )
-  }
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60)
@@ -69,24 +147,37 @@ export default function ExamPage({ params }: { params: Promise<{ id: string }> }
     return `${mins}:${secs < 10 ? "0" : ""}${secs}`
   }
 
-  const handleSelectAnswer = (qId: number, option: string) => {
+  const handleSelectAnswer = (qId: number, optionIdx: number) => {
     if (isSubmitted) return
-    setAnswers((prev) => ({ ...prev, [qId]: option }))
+    setAnswers((prev) => ({ ...prev, [qId]: optionIdx }))
   }
 
-  const handleWritingChange = (qId: number, val: string) => {
-    if (isSubmitted) return
-    setWritingAnswers((prev) => ({ ...prev, [qId]: val }))
-  }
+  const filteredQuestions = questions.filter((q) => q.section === activeTab)
 
-  const handleSubmit = () => {
-    setIsSubmitted(true)
+  // Calculate score
+  const totalGraded = questions.filter((q) => q.correctIndex !== undefined).length
+  const correctCount = questions.reduce((acc, q) => {
+    if (q.correctIndex !== undefined && answers[q.id] === q.correctIndex) {
+      return acc + 1
+    }
+    return acc
+  }, 0)
+  const scorePercent = totalGraded > 0 ? Math.round((correctCount / totalGraded) * 100) : 0
+  const isPassed = scorePercent >= 60
+
+  if (loading) {
+    return (
+      <div className="flex min-h-[70vh] flex-col items-center justify-center gap-3">
+        <div className="w-8 h-8 border-4 border-china-red/30 border-t-china-red rounded-full animate-spin" />
+        <p className="text-sm text-china-ink font-medium">Đang tải nội dung đề thi...</p>
+      </div>
+    )
   }
 
   return (
-    <div className="h-full min-h-0 flex flex-col p-4 md:p-8 bg-china-paper/30 overflow-y-auto">
-      {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 border-b border-border pb-6">
+    <div className="min-h-screen flex flex-col p-4 md:p-8 bg-background text-china-ink">
+      {/* Top Header */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 border-b border-border pb-6 max-w-7xl mx-auto w-full">
         <div className="flex items-center gap-3">
           <Link
             href="/exams"
@@ -95,334 +186,245 @@ export default function ExamPage({ params }: { params: Promise<{ id: string }> }
             <ArrowLeft className="w-5 h-5" />
           </Link>
           <div>
-            <h1 className="text-3xl font-serif font-bold text-china-ink">
-              {exam.test_id} - HSK {exam.level} Practice
-            </h1>
-            <p className="text-sm text-muted">Test your Chinese language proficiency</p>
+            <div className="flex items-center gap-2">
+              <span className="px-2 py-0.5 bg-china-red/10 text-china-red text-xs font-bold rounded">
+                HSK {examMeta.level}
+              </span>
+              <h1 className="text-xl md:text-2xl font-serif font-bold text-china-ink">
+                {examMeta.title}
+              </h1>
+            </div>
+            <p className="text-xs text-muted mt-0.5">
+              Tổng số {questions.length} câu hỏi · Thời gian: {examMeta.timeMinutes} phút
+            </p>
           </div>
         </div>
 
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2 px-4 py-2 border border-border bg-card rounded-2xl shadow-sm text-china-ink">
-            <Clock className="w-5 h-5 text-china-gold" />
-            <span className="font-mono font-bold text-lg">{formatTime(timeLeft)}</span>
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 px-4 py-2 border border-border bg-card rounded-2xl shadow-sm">
+            <Clock className={`w-5 h-5 ${timeLeft < 300 ? "text-china-red animate-pulse" : "text-china-gold"}`} />
+            <span className="font-mono font-bold text-base md:text-lg">{formatTime(timeLeft)}</span>
           </div>
 
-          {!isSubmitted && (
+          {!isSubmitted ? (
             <button
-              onClick={handleSubmit}
-              className="px-6 py-2.5 bg-china-red text-white hover:bg-china-red-hover rounded-2xl font-semibold shadow-md shadow-china-red/10 transition-colors"
+              onClick={() => setIsSubmitted(true)}
+              className="px-5 py-2.5 bg-china-red text-white hover:bg-china-red-hover rounded-2xl font-semibold shadow-md shadow-china-red/10 transition-colors text-sm"
             >
-              Submit Exam
+              Nộp bài thi
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                setAnswers({})
+                setIsSubmitted(false)
+                setTimeLeft(examMeta.timeMinutes * 60)
+              }}
+              className="flex items-center gap-1.5 px-4 py-2.5 bg-card border border-border text-china-ink hover:bg-border/20 rounded-2xl font-semibold transition-colors text-sm"
+            >
+              <RotateCcw className="w-4 h-4" /> Làm lại
             </button>
           )}
         </div>
       </div>
 
-      {/* Tabs */}
-      <div className="flex gap-4 border-b border-border mb-6">
-        {(["listening", "reading", "writing"] as const).map((tab) => (
-          <button
-            key={tab}
-            onClick={() => setActiveTab(tab)}
-            className={`pb-3 font-semibold border-b-2 transition-colors capitalize flex items-center gap-2 ${
-              activeTab === tab 
-                ? "border-china-red text-china-red" 
-                : "border-transparent text-muted hover:text-china-ink"
-            }`}
-          >
-            {tab === "listening" && <Headset className="w-4 h-4" />}
-            {tab === "reading" && <BookOpen className="w-4 h-4" />}
-            {tab === "writing" && <FileText className="w-4 h-4" />}
-            {tab}
-          </button>
-        ))}
-      </div>
-
-      {/* Main Content Area */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-7xl mx-auto w-full flex-1">
-        
-        {/* Left Side: Exam content */}
-        <div className="lg:col-span-8 space-y-6">
-          {activeTab === "listening" && (
-            <div className="space-y-6">
-              {/* Audio player card */}
-              <div className="bg-card border border-border rounded-3xl p-6 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <div>
-                  <h3 className="font-serif font-bold text-lg text-china-ink">Listening Section Audio</h3>
-                  <p className="text-xs text-muted">Play the audio file to listen to the test questions</p>
-                </div>
-                {exam.listening.audio_url ? (
-                  <audio controls className="w-full md:max-w-md">
-                    <source src={exam.listening.audio_url} type="audio/mpeg" />
-                    Your browser does not support the audio element.
-                  </audio>
-                ) : (
-                  <p className="text-sm text-china-red font-medium">Audio not available</p>
-                )}
-              </div>
-
-              {/* Listening questions list */}
-              <div className="space-y-4">
-                {exam.listening.questions.map((q) => (
-                  <div key={q.id} className="bg-card border border-border rounded-3xl p-6 shadow-sm">
-                    <div className="flex items-center gap-2 mb-3">
-                      <span className="w-8 h-8 flex items-center justify-center bg-china-red/5 text-china-red border border-china-red/10 rounded-lg text-sm font-bold">
-                        {q.id}
-                      </span>
-                      <span className="text-xs text-muted">Listening Multiple Choice</span>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
-                      {q.options?.map((opt, idx) => {
-                        const optChar = ["A", "B", "C", "D"][idx]
-                        const isSelected = answers[q.id] === optChar
-                        return (
-                          <button
-                            key={idx}
-                            disabled={isSubmitted}
-                            onClick={() => handleSelectAnswer(q.id, optChar)}
-                            className={`text-left p-3.5 rounded-xl border text-sm font-medium transition-all flex items-center gap-3 ${
-                              isSelected
-                                ? "border-china-red bg-china-red/5 text-china-red shadow-sm"
-                                : "border-border hover:border-china-red/30 hover:bg-border/10 text-china-ink"
-                            }`}
-                          >
-                            <span className={`w-6 h-6 flex items-center justify-center rounded-lg text-xs font-bold ${
-                              isSelected ? "bg-china-red text-white" : "bg-border text-muted"
-                            }`}>{optChar}</span>
-                            <span>{opt}</span>
-                          </button>
-                        )
-                      })}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {activeTab === "reading" && (
-            <div className="space-y-6">
-              {/* Passages display */}
-              {exam.reading.passages && exam.reading.passages.length > 0 && (
-                <div className="bg-card border border-border rounded-3xl p-6 shadow-sm max-h-[400px] overflow-y-auto space-y-4">
-                  <h3 className="font-serif font-bold text-lg text-china-ink border-b border-border pb-2">Reading Passages</h3>
-                  {exam.reading.passages.map((p, idx) => (
-                    <p key={idx} className="text-sm leading-relaxed text-china-ink indent-8 whitespace-pre-line">{p}</p>
-                  ))}
-                </div>
+      {/* Result Card after submit */}
+      {isSubmitted && (
+        <div className="max-w-7xl mx-auto w-full mb-8 p-6 rounded-3xl border border-border bg-card shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div>
+            <div className="flex items-center gap-2 mb-2">
+              {isPassed ? (
+                <span className="px-3 py-1 bg-green-500/10 text-green-600 dark:text-green-400 font-bold text-sm rounded-full flex items-center gap-1.5">
+                  <CheckCircle2 className="w-4 h-4" /> ĐẠT YÊU CẦU (PASS)
+                </span>
+              ) : (
+                <span className="px-3 py-1 bg-china-red/10 text-china-red font-bold text-sm rounded-full flex items-center gap-1.5">
+                  <XCircle className="w-4 h-4" /> CHƯA ĐẠT (Cần ôn luyện thêm)
+                </span>
               )}
-
-              {/* Reading questions list */}
-              <div className="space-y-4">
-                {exam.reading.questions.map((q) => (
-                  <div key={q.id} className="bg-card border border-border rounded-3xl p-6 shadow-sm">
-                    <div className="flex items-center gap-2 mb-3">
-                      <span className="w-8 h-8 flex items-center justify-center bg-china-red/5 text-china-red border border-china-red/10 rounded-lg text-sm font-bold">
-                        {q.id}
-                      </span>
-                      <span className="text-xs text-muted">Reading Multiple Choice</span>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
-                      {q.options?.map((opt, idx) => {
-                        const optChar = ["A", "B", "C", "D"][idx]
-                        const isSelected = answers[q.id] === optChar
-                        return (
-                          <button
-                            key={idx}
-                            disabled={isSubmitted}
-                            onClick={() => handleSelectAnswer(q.id, optChar)}
-                            className={`text-left p-3.5 rounded-xl border text-sm font-medium transition-all flex items-center gap-3 ${
-                              isSelected
-                                ? "border-china-red bg-china-red/5 text-china-red shadow-sm"
-                                : "border-border hover:border-china-red/30 hover:bg-border/10 text-china-ink"
-                            }`}
-                          >
-                            <span className={`w-6 h-6 flex items-center justify-center rounded-lg text-xs font-bold ${
-                              isSelected ? "bg-china-red text-white" : "bg-border text-muted"
-                            }`}>{optChar}</span>
-                            <span>{opt}</span>
-                          </button>
-                        )
-                      })}
-                    </div>
-                  </div>
-                ))}
-              </div>
             </div>
-          )}
+            <h2 className="text-2xl font-serif font-bold text-china-ink">
+              Điểm số: {scorePercent}% ({correctCount}/{totalGraded} câu đúng)
+            </h2>
+            <p className="text-xs text-muted mt-1">
+              Điểm chuẩn đỗ HSK là 60%. Bạn có thể xem lại chi tiết từng câu hỏi bên dưới.
+            </p>
+          </div>
 
-          {activeTab === "writing" && (
-            <div className="space-y-6">
-              {exam.writing.questions.map((q) => {
-                if (q.type === "writing_sentence") {
-                  return (
-                    <div key={q.id} className="bg-card border border-border rounded-3xl p-6 shadow-sm">
-                      <div className="flex items-center gap-2 mb-3">
-                        <span className="w-8 h-8 flex items-center justify-center bg-china-red/5 text-china-red border border-china-red/10 rounded-lg text-sm font-bold">
-                          {q.id}
-                        </span>
-                        <span className="text-xs text-muted">Sentence Completion</span>
-                      </div>
-
-                      {/* Jumbled words */}
-                      <div className="flex flex-wrap gap-2 mb-4 mt-2">
-                        {q.words?.map((w, idx) => (
-                          <span key={idx} className="px-3 py-1.5 bg-border/50 text-china-ink text-sm rounded-lg border border-border font-medium">
-                            {w}
-                          </span>
-                        ))}
-                      </div>
-
-                      <input
-                        type="text"
-                        disabled={isSubmitted}
-                        value={writingAnswers[q.id] || ""}
-                        onChange={(e) => handleWritingChange(q.id, e.target.value)}
-                        placeholder="Reorder the words to make a complete sentence..."
-                        className="w-full px-4 py-3 rounded-xl border border-border bg-card text-china-ink outline-none focus:border-china-red/50 transition-colors"
-                      />
-                    </div>
-                  )
-                } else if (q.type === "writing_essay_words") {
-                  return (
-                    <div key={q.id} className="bg-card border border-border rounded-3xl p-6 shadow-sm">
-                      <div className="flex items-center gap-2 mb-3">
-                        <span className="w-8 h-8 flex items-center justify-center bg-china-red/5 text-china-red border border-china-red/10 rounded-lg text-sm font-bold">
-                          {q.id}
-                        </span>
-                        <span className="text-xs text-muted">Essay Writing (Words Prompt)</span>
-                      </div>
-
-                      <p className="text-sm text-china-ink mb-4 leading-relaxed font-medium">
-                        Please write a short passage of around 80 characters using the following words:
-                      </p>
-                      
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {q.prompt?.split("、").map((w, idx) => (
-                          <span key={idx} className="px-3 py-1.5 bg-china-red/5 text-china-red text-sm rounded-lg border border-china-red/10 font-bold">
-                            {w}
-                          </span>
-                        ))}
-                      </div>
-
-                      <textarea
-                        disabled={isSubmitted}
-                        value={writingAnswers[q.id] || ""}
-                        onChange={(e) => handleWritingChange(q.id, e.target.value)}
-                        rows={6}
-                        placeholder="Write your essay here (80 characters)..."
-                        className="w-full p-4 rounded-xl border border-border bg-card text-china-ink outline-none focus:border-china-red/50 transition-colors resize-none"
-                      />
-                    </div>
-                  )
-                } else if (q.type === "writing_essay_image") {
-                  return (
-                    <div key={q.id} className="bg-card border border-border rounded-3xl p-6 shadow-sm">
-                      <div className="flex items-center gap-2 mb-3">
-                        <span className="w-8 h-8 flex items-center justify-center bg-china-red/5 text-china-red border border-china-red/10 rounded-lg text-sm font-bold">
-                          {q.id}
-                        </span>
-                        <span className="text-xs text-muted">Essay Writing (Image Prompt)</span>
-                      </div>
-
-                      <p className="text-sm text-china-ink mb-4 leading-relaxed font-medium">
-                        Please write a short passage of around 80 characters describing an activity or picture.
-                      </p>
-
-                      <textarea
-                        disabled={isSubmitted}
-                        value={writingAnswers[q.id] || ""}
-                        onChange={(e) => handleWritingChange(q.id, e.target.value)}
-                        rows={6}
-                        placeholder="Write your essay here (80 characters)..."
-                        className="w-full p-4 rounded-xl border border-border bg-card text-china-ink outline-none focus:border-china-red/50 transition-colors resize-none"
-                      />
-                    </div>
-                  )
-                }
-                return null
-              })}
+          <div className="flex items-center gap-4 text-center">
+            <div className="p-3 bg-border/20 rounded-2xl min-w-[90px]">
+              <p className="text-xs text-muted">Đã làm</p>
+              <p className="text-lg font-bold text-china-ink">{Object.keys(answers).length}/{questions.length}</p>
             </div>
-          )}
-        </div>
-
-        {/* Right Side: Answer Sheet & Status */}
-        <div className="lg:col-span-4">
-          <div className="bg-card border border-border rounded-3xl p-6 shadow-sm sticky top-8">
-            <h3 className="font-serif font-bold text-lg text-china-ink border-b border-border pb-2 mb-4">Answer Sheet</h3>
-            
-            {isSubmitted ? (
-              <div className="space-y-4">
-                <div className="flex items-center gap-2 text-china-jade">
-                  <CheckCircle className="w-6 h-6" />
-                  <span className="font-bold text-lg">Exam Submitted!</span>
-                </div>
-                <p className="text-sm text-muted">
-                  You have completed the mock test. You can review your selected answers and compare them with standard keys.
-                </p>
-                <div className="border-t border-border pt-4">
-                  <p className="text-xs text-muted font-semibold uppercase tracking-wider mb-2">Completion Status</p>
-                  <p className="text-sm">Multiple choice: {Object.keys(answers).length} / 90 answered</p>
-                  <p className="text-sm">Writing: {Object.keys(writingAnswers).length} / 10 answered</p>
-                </div>
-              </div>
-            ) : (
-              <div className="space-y-4">
-                <p className="text-sm text-muted">Click on the question cards to navigate or view your answers.</p>
-                
-                {/* Listening answers count */}
-                <div>
-                  <p className="text-xs text-muted font-semibold uppercase tracking-wider mb-2">Listening (1-45)</p>
-                  <div className="grid grid-cols-9 gap-1.5">
-                    {Array.from({ length: 45 }).map((_, idx) => {
-                      const num = idx + 1
-                      const answered = !!answers[num]
-                      return (
-                        <div
-                          key={num}
-                          className={`w-7 h-7 flex items-center justify-center rounded-lg text-xs font-bold border transition-colors ${
-                            answered 
-                              ? "bg-china-red/10 border-china-red/20 text-china-red" 
-                              : "bg-border/30 border-border text-muted"
-                          }`}
-                        >
-                          {num}
-                        </div>
-                      )
-                    })}
-                  </div>
-                </div>
-
-                {/* Reading answers count */}
-                <div className="border-t border-border pt-4">
-                  <p className="text-xs text-muted font-semibold uppercase tracking-wider mb-2">Reading (46-90)</p>
-                  <div className="grid grid-cols-9 gap-1.5">
-                    {Array.from({ length: 45 }).map((_, idx) => {
-                      const num = idx + 46
-                      const answered = !!answers[num]
-                      return (
-                        <div
-                          key={num}
-                          className={`w-7 h-7 flex items-center justify-center rounded-lg text-xs font-bold border transition-colors ${
-                            answered 
-                              ? "bg-china-red/10 border-china-red/20 text-china-red" 
-                              : "bg-border/30 border-border text-muted"
-                          }`}
-                        >
-                          {num}
-                        </div>
-                      )
-                    })}
-                  </div>
-                </div>
-              </div>
-            )}
+            <div className="p-3 bg-green-500/10 rounded-2xl min-w-[90px]">
+              <p className="text-xs text-green-600 dark:text-green-400">Số câu đúng</p>
+              <p className="text-lg font-bold text-green-600 dark:text-green-400">{correctCount}</p>
+            </div>
+            <div className="p-3 bg-china-red/10 rounded-2xl min-w-[90px]">
+              <p className="text-xs text-china-red">Số câu sai</p>
+              <p className="text-lg font-bold text-china-red">{totalGraded - correctCount}</p>
+            </div>
           </div>
         </div>
+      )}
 
+      {/* Tabs */}
+      <div className="flex gap-4 border-b border-border mb-6 max-w-7xl mx-auto w-full">
+        {(["listening", "reading", "writing"] as const).map((tab) => {
+          const count = questions.filter((q) => q.section === tab).length
+          if (count === 0) return null
+          return (
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              className={`pb-3 font-semibold border-b-2 transition-colors capitalize flex items-center gap-2 text-sm ${
+                activeTab === tab
+                  ? "border-china-red text-china-red"
+                  : "border-transparent text-muted hover:text-china-ink"
+              }`}
+            >
+              {tab === "listening" && <Headset className="w-4 h-4" />}
+              {tab === "reading" && <BookOpen className="w-4 h-4" />}
+              {tab === "writing" && <FileText className="w-4 h-4" />}
+              <span>{tab === "listening" ? "Phần Nghe" : tab === "reading" ? "Phần Đọc" : "Phần Viết"}</span>
+              <span className="text-xs px-2 py-0.5 rounded-full bg-border/40 text-muted font-mono">{count}</span>
+            </button>
+          )
+        })}
+      </div>
+
+      {/* Questions List */}
+      <div className="max-w-7xl mx-auto w-full space-y-4 flex-1">
+        {filteredQuestions.length === 0 ? (
+          <div className="text-center py-12 text-muted text-sm">
+            Không có câu hỏi nào trong phần này.
+          </div>
+        ) : (
+          filteredQuestions.map((q) => {
+            const userAnswer = answers[q.id]
+            const isAnswered = userAnswer !== undefined
+            const isCorrect = isAnswered && q.correctIndex !== undefined && userAnswer === q.correctIndex
+            const isWrong = isSubmitted && isAnswered && !isCorrect
+
+            return (
+              <div
+                key={q.id}
+                className={`bg-card border rounded-3xl p-5 md:p-6 shadow-sm transition-all ${
+                  isSubmitted
+                    ? isCorrect
+                      ? "border-green-500/40 bg-green-500/[0.02]"
+                      : isWrong
+                      ? "border-china-red/40 bg-china-red/[0.02]"
+                      : "border-border"
+                    : "border-border"
+                }`}
+              >
+                {/* Header question */}
+                <div className="flex items-start justify-between gap-3 mb-3">
+                  <div className="flex items-center gap-2">
+                    <span className="w-7 h-7 flex items-center justify-center bg-china-red/10 text-china-red rounded-lg text-xs font-bold font-mono">
+                      {q.id}
+                    </span>
+                    {q.stem && <span className="text-xs text-muted font-medium">{q.stem}</span>}
+                  </div>
+
+                  {isSubmitted && q.correctIndex !== undefined && (
+                    <div>
+                      {isCorrect ? (
+                        <span className="px-2.5 py-1 bg-green-500/10 text-green-600 dark:text-green-400 text-xs font-bold rounded-lg flex items-center gap-1">
+                          <CheckCircle2 className="w-3.5 h-3.5" /> Đúng
+                        </span>
+                      ) : (
+                        <span className="px-2.5 py-1 bg-china-red/10 text-china-red text-xs font-bold rounded-lg flex items-center gap-1">
+                          <XCircle className="w-3.5 h-3.5" /> Sai
+                        </span>
+                      )}
+                    </div>
+                  )}
+                </div>
+
+                {/* Audio if available */}
+                {q.audioUrl && (
+                  <div className="mb-4 p-3 bg-border/20 rounded-2xl flex items-center gap-3">
+                    <Volume2 className="w-5 h-5 text-china-red shrink-0" />
+                    <audio controls className="h-8 w-full max-w-md">
+                      <source src={q.audioUrl} type="audio/mpeg" />
+                      Trình duyệt không hỗ trợ phát âm thanh.
+                    </audio>
+                  </div>
+                )}
+
+                {/* Context (Transcript hoặc đoạn văn) */}
+                {q.context && (
+                  <div className="p-3.5 rounded-2xl bg-border/20 text-sm leading-relaxed text-china-ink mb-4 font-serif">
+                    {q.context}
+                  </div>
+                )}
+
+                {/* Prompt */}
+                {q.prompt && (
+                  <p className="text-base font-medium text-china-ink mb-4">
+                    {q.prompt}
+                  </p>
+                )}
+
+                {/* Options */}
+                {q.options && q.options.length > 0 && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {q.options.map((opt, optIdx) => {
+                      const optLabel = ["A", "B", "C", "D", "E", "F"][optIdx] || `${optIdx + 1}`
+                      const isSelected = userAnswer === optIdx
+                      const isActualCorrect = isSubmitted && q.correctIndex === optIdx
+
+                      return (
+                        <button
+                          key={optIdx}
+                          disabled={isSubmitted}
+                          onClick={() => handleSelectAnswer(q.id, optIdx)}
+                          className={`text-left p-3.5 rounded-2xl border text-sm font-medium transition-all flex items-center gap-3 ${
+                            isActualCorrect
+                              ? "border-green-500 bg-green-500/10 text-green-700 dark:text-green-300 font-semibold"
+                              : isSelected
+                              ? isWrong
+                                ? "border-china-red bg-china-red/10 text-china-red"
+                                : "border-china-red bg-china-red/5 text-china-red shadow-sm"
+                              : "border-border hover:border-china-red/30 hover:bg-border/10 text-china-ink"
+                          }`}
+                        >
+                          <span
+                            className={`w-6 h-6 flex items-center justify-center rounded-lg text-xs font-bold shrink-0 ${
+                              isActualCorrect
+                                ? "bg-green-500 text-white"
+                                : isSelected
+                                ? isWrong
+                                  ? "bg-china-red text-white"
+                                  : "bg-china-red text-white"
+                                : "bg-border text-muted"
+                            }`}
+                          >
+                            {optLabel}
+                          </span>
+                          <span className="leading-snug">{opt}</span>
+                        </button>
+                      )
+                    })}
+                  </div>
+                )}
+
+                {/* Explanation if submitted */}
+                {isSubmitted && q.explanation && (
+                  <div className="mt-4 p-3.5 bg-china-gold/10 border border-china-gold/20 rounded-2xl text-xs text-china-ink flex items-start gap-2">
+                    <HelpCircle className="w-4 h-4 text-china-gold shrink-0 mt-0.5" />
+                    <div>
+                      <span className="font-bold">Giải thích: </span>
+                      <span>{q.explanation}</span>
+                    </div>
+                  </div>
+                )}
+              </div>
+            )
+          })
+        )}
       </div>
     </div>
   )

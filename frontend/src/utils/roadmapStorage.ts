@@ -183,7 +183,7 @@ export async function computeRoadmapStats(customRoadmap?: UserRoadmap | null): P
   try {
     if (db && db.reviewItems) {
       const allReviews: ReviewItem[] = await db.reviewItems.toArray()
-      let wordsMap: Map<string, Word> = new Map()
+      const wordsMap: Map<string, Word> = new Map()
 
       try {
         if (db.words) {

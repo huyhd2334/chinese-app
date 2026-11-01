@@ -1,6 +1,28 @@
 import { supabase } from "@/lib/supabase"
 import type { BonusCollection, BonusWord } from "@/types/bonus"
 
+/** Dòng dữ liệu thô trả về từ Supabase (các cột đều tùy chọn vì lấy từ DB). */
+interface CloudRow {
+  id: string
+  slug: string
+  title: string
+  subtitle?: string | null
+  language?: "zh" | "en" | null
+  badge?: string | null
+  description?: string | null
+  created_at: string
+  hanzi: string
+  word: string
+  pinyin: string
+  phonetic: string
+  meaning: string
+  han_viet: string
+  part_of_speech: string
+  example: string
+  example_pinyin: string
+  topic: string
+}
+
 // Table names
 const COLLECTIONS_TABLE = "bonus_collections"
 const CARDS_TABLE = "bonus_cards"
@@ -24,8 +46,8 @@ export async function syncCollectionsWithCloud(userId: string): Promise<BonusCol
     }
 
     const cloudCols: BonusCollection[] = (data || [])
-      .filter((row: any) => !row.slug?.startsWith("_sys_"))
-      .map((row: any) => ({
+      .filter((row: CloudRow) => !row.slug?.startsWith("_sys_"))
+      .map((row: CloudRow) => ({
         id: row.id,
         slug: row.slug,
         title: row.title,
@@ -113,7 +135,7 @@ export async function syncCardsWithCloud(userId: string, collectionSlug: string)
       return getLocalCards(collectionSlug)
     }
 
-    const cloudCards: BonusWord[] = (data || []).map((row: any) => ({
+    const cloudCards: BonusWord[] = (data || []).map((row: CloudRow) => ({
       id: row.id,
       stt: new Date(row.created_at).getTime(),
       word: row.word,

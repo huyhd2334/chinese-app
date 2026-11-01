@@ -88,7 +88,7 @@ export default function ReviewPage() {
     setShowAnswer(false)
   }, [cards, hskFilter])
 
-  const getHskLevelNumber = useCallback((word: any) => {
+  const getHskLevelNumber = useCallback((word: { hskLevel?: number[]; hskLevels?: number[] } | null | undefined) => {
     if (word?.hskLevel && Array.isArray(word.hskLevel) && word.hskLevel.length > 0) {
       return word.hskLevel[0]
     }

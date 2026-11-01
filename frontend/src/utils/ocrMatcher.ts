@@ -43,7 +43,7 @@ export async function matchAndStructureOcrText(rawText: string): Promise<Curricu
 
       // Attempt to extract adjacent pinyin/meaning if present on the same line
       let inlinePinyin = ""
-      let inlineMeaning = ""
+      const inlineMeaning = ""
 
       // Remove the hanzi chunk from line to see what remains
       const remainder = line.replace(chunk, " ").replace(/[0-9\.\,\:\;\(\)\[\]\/\-\_]/g, " ").trim()

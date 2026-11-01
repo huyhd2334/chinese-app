@@ -148,7 +148,7 @@ export default function WordDetailPage({ params }: PageProps) {
           ].map(t => (
             <button
               key={t.id}
-              onClick={() => setActiveTab(t.id as any)}
+              onClick={() => setActiveTab(t.id as typeof activeTab)}
               className={`flex-1 md:flex-none flex items-center justify-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium rounded-lg whitespace-nowrap transition-all ${
                 activeTab === t.id 
                   ? 'bg-china-red text-white shadow-xs font-semibold' 

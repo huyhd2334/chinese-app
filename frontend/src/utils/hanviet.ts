@@ -1,4 +1,3 @@
-// @ts-ignore
 import { hanvietData, getHanviet } from 'hanviet-pinyin-words'
 
 /**

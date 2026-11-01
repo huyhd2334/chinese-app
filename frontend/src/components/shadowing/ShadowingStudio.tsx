@@ -25,9 +25,16 @@ interface ShadowingStudioProps {
   onBack: () => void
 }
 
+interface YTPlayer {
+  destroy(): void
+  getCurrentTime(): number
+  playVideo(): void
+  seekTo(seconds: number, allowSeekAhead?: boolean): void
+}
+
 declare global {
   interface Window {
-    YT: any
+    YT: { Player: new (elementId: string, options: unknown) => YTPlayer }
     onYouTubeIframeAPIReady?: () => void
   }
 }
@@ -57,7 +64,7 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
   } = useAudioRecorder()
 
   const userAudioPlayerRef = useRef<HTMLAudioElement | null>(null)
-  const ytPlayerRef = useRef<any>(null)
+  const ytPlayerRef = useRef<YTPlayer | null>(null)
   const syncIntervalRef = useRef<NodeJS.Timeout | null>(null)
   const sentenceListRef = useRef<HTMLDivElement | null>(null)
   const activeSentenceRef = useRef<HTMLDivElement | null>(null)
@@ -68,6 +75,43 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
     const s = Math.floor(sec % 60)
     return `${m < 10 ? "0" : ""}${m}:${s < 10 ? "0" : ""}${s}`
   }
+
+  // Timer đồng bộ thời gian video với câu thoại trong kịch bản
+  const startSyncTimer = useCallback(() => {
+    if (syncIntervalRef.current) clearInterval(syncIntervalRef.current)
+
+    syncIntervalRef.current = setInterval(() => {
+      if (!ytPlayerRef.current || typeof ytPlayerRef.current.getCurrentTime !== "function") return
+      if (isUserInteractingRef.current) return
+
+      try {
+        const currentTime = ytPlayerRef.current.getCurrentTime()
+        if (typeof currentTime !== "number") return
+
+        const matchIdx = video.sentences.findIndex(
+          (s) => currentTime >= s.startTime - 0.2 && currentTime <= s.endTime + 0.3
+        )
+
+        if (matchIdx !== -1) {
+          setCurrentSentenceIndex((prev) => {
+            if (prev !== matchIdx) {
+              return matchIdx
+            }
+            return prev
+          })
+        }
+      } catch {
+        // ignore
+      }
+    }, 250)
+  }, [video.sentences])
+
+  const stopSyncTimer = useCallback(() => {
+    if (syncIntervalRef.current) {
+      clearInterval(syncIntervalRef.current)
+      syncIntervalRef.current = null
+    }
+  }, [])
 
   // Khởi tạo YouTube IFrame API và Player
   useEffect(() => {
@@ -119,7 +163,7 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
             onReady: () => {
               if (isMounted) setIsPlayerReady(true)
             },
-            onStateChange: (event: any) => {
+            onStateChange: (event: { data: number }) => {
               if (event.data === 1) {
                 startSyncTimer()
               } else {
@@ -146,44 +190,7 @@ export default function ShadowingStudio({ video, onBack }: ShadowingStudioProps)
         }
       }
     }
-  }, [video.youtubeId])
-
-  // Timer đồng bộ thời gian video với câu thoại trong kịch bản
-  const startSyncTimer = useCallback(() => {
-    if (syncIntervalRef.current) clearInterval(syncIntervalRef.current)
-
-    syncIntervalRef.current = setInterval(() => {
-      if (!ytPlayerRef.current || typeof ytPlayerRef.current.getCurrentTime !== "function") return
-      if (isUserInteractingRef.current) return
-
-      try {
-        const currentTime = ytPlayerRef.current.getCurrentTime()
-        if (typeof currentTime !== "number") return
-
-        const matchIdx = video.sentences.findIndex(
-          (s) => currentTime >= s.startTime - 0.2 && currentTime <= s.endTime + 0.3
-        )
-
-        if (matchIdx !== -1) {
-          setCurrentSentenceIndex((prev) => {
-            if (prev !== matchIdx) {
-              return matchIdx
-            }
-            return prev
-          })
-        }
-      } catch {
-        // ignore
-      }
-    }, 250)
-  }, [video.sentences])
-
-  const stopSyncTimer = useCallback(() => {
-    if (syncIntervalRef.current) {
-      clearInterval(syncIntervalRef.current)
-      syncIntervalRef.current = null
-    }
-  }, [])
+  }, [video.youtubeId, video.sentences, startSyncTimer, stopSyncTimer])
 
   // Tự động cuộn mượt mà câu đang phát vào vùng hiển thị
   useEffect(() => {
