@@ -8496,53 +8496,728 @@ export const SHADOWING_VIDEOS: ShadowingVideo[] = [
     "category": "Ẩm thực & Mua sắm",
     "description": "Chuyên đề luyện nói và phản xạ về chế độ dinh dưỡng, sức khỏe theo phương pháp Shadowing chuẩn cho kỳ thi HSK và HSKK.",
     "youtubeId": "lJ-47T2h1YM",
-    "sentencesCount": 5,
+    "sentencesCount": 80,
     "isFree": false,
     "sentences": [
       {
         "id": 1,
-        "startTime": 0,
-        "endTime": 8,
+        "startTime": 14.0,
+        "endTime": 38.0,
         "speaker": "Hasu",
-        "chinese": "拥有良好的饮食习惯对于现代人来说至关重要。",
-        "pinyin": "Yōngyǒu liánghǎo de yǐnshí xíguàn duìyú xiàndàirén láishuō zhìguān zhòngyào.",
-        "vietnamese": "Xây dựng thói quen ăn uống tốt đối với người hiện đại có ý nghĩa vô cùng quan trọng."
+        "chinese": "大家好！今天我想和大家聊一聊饮食和健康。",
+        "pinyin": "Dà jiā hǎo! Jīn tiān wǒ xiǎng hé dà jiā liáo yī liáo yǐn shí hé jiàn kāng.",
+        "vietnamese": "Xin chào mọi người, hôm nay tôi muốn trò chuyện với mọi người về ăn uống và sức khỏe."
       },
       {
         "id": 2,
-        "startTime": 8,
-        "endTime": 17,
+        "startTime": 38.0,
+        "endTime": 59.0,
         "speaker": "Hasu",
-        "chinese": "很多年轻人经常熬夜，而且不吃早餐，这非常损害身体健康。",
-        "pinyin": "Hěnduō niánqīngrén jīngcháng áoyè, érqiě bù chī zǎocān, zhè fēicháng sǔnhài shēntǐ jiànkāng.",
-        "vietnamese": "Rất nhiều bạn trẻ thường xuyên thức khuya, lại không chịu ăn sáng, điều này làm tổn hại nghiêm trọng đến sức khỏe."
+        "chinese": "吃饭是我们每天都要做的事情。",
+        "pinyin": "Chī fàn shì wǒ men měi tiān dōu yào zuò de shì qíng.",
+        "vietnamese": "Ăn cơm là việc chúng ta phải làm mỗi ngày."
       },
       {
         "id": 3,
-        "startTime": 17,
-        "endTime": 27,
+        "startTime": 59.0,
+        "endTime": 82.0,
         "speaker": "Hasu",
-        "chinese": "我们应该多吃新鲜蔬菜和水果，保证充足的维生素摄入。",
-        "pinyin": "Wǒmen yīnggāi duō chī xīnxiān shūcài hé shuǐguǒ, bǎozhèng chōngzú de wéishēngsù shèrù.",
-        "vietnamese": "Chúng ta nên ăn nhiều rau củ quả tươi sạch để đảm bảo nạp đủ lượng vitamin cần thiết."
+        "chinese": "好的饮食习惯对身体非常重要。",
+        "pinyin": "Hǎo de yǐn shí xí guàn duì shēn tǐ fēi cháng zhòng yào.",
+        "vietnamese": "Thói quen ăn uống tốt rất quan trọng đối với cơ thể."
       },
       {
         "id": 4,
-        "startTime": 27,
-        "endTime": 37,
+        "startTime": 82.0,
+        "endTime": 97.0,
         "speaker": "Hasu",
-        "chinese": "除了合理膳食之外，每天坚持适量运动同样必不可少。",
-        "pinyin": "Chúle hélǐ shànshí zhīwài, měitiān jiānchí shìliàng yùndòng tóngyàng bì bù kě shǎo.",
-        "vietnamese": "Bên cạnh chế độ ăn uống hợp lý, kiên trì tập luyện thể thao điều độ mỗi ngày cũng là điều không thể thiếu."
+        "chinese": "每个人喜欢的食物都不一样。",
+        "pinyin": "Měi gè rén xǐ huān de shí wù dōu bù yí yàng.",
+        "vietnamese": "Món ăn mỗi người thích đều không giống nhau."
       },
       {
         "id": 5,
-        "startTime": 37,
-        "endTime": 48,
+        "startTime": 97.0,
+        "endTime": 117.0,
         "speaker": "Hasu",
-        "chinese": "只要我们长期坚持科学的生活方式，精神状态就会充满活力。",
-        "pinyin": "Zhǐyào wǒmen chángqī jiānchí kēxué de shēnghuó fāngshì, jīngshén zhuàngtài jiù huì chōngmǎn huólì.",
-        "vietnamese": "Chỉ cần kiên trì lối sống khoa học lâu dài, tinh thần của chúng ta sẽ luôn tràn đầy năng lượng và sức sống."
+        "chinese": "我最喜欢吃的食物是面条。",
+        "pinyin": "Wǒ zuì xǐ huān chī de shí wù shì miàn tiáo.",
+        "vietnamese": "Món tôi thích ăn nhất là mì."
+      },
+      {
+        "id": 6,
+        "startTime": 117.0,
+        "endTime": 136.0,
+        "speaker": "Hasu",
+        "chinese": "我从小就很喜欢吃面条。",
+        "pinyin": "Wǒ cóng xiǎo jiù hěn xǐ huān chī miàn tiáo.",
+        "vietnamese": "Từ nhỏ tôi đã rất thích ăn mì."
+      },
+      {
+        "id": 7,
+        "startTime": 136.0,
+        "endTime": 153.0,
+        "speaker": "Hasu",
+        "chinese": "面条的做法有很多种。",
+        "pinyin": "Miàn tiáo de zuò fǎ yǒu hěn duō zhǒng.",
+        "vietnamese": "Có rất nhiều cách chế biến mì."
+      },
+      {
+        "id": 8,
+        "startTime": 153.0,
+        "endTime": 176.0,
+        "speaker": "Hasu",
+        "chinese": "可以做牛肉面，也可以做鸡蛋面。",
+        "pinyin": "Kě yǐ zuò niú ròu miàn, yě kě yǐ zuò jī dàn miàn.",
+        "vietnamese": "Có thể nấu mì thịt bò, cũng có thể nấu mì trứng."
+      },
+      {
+        "id": 9,
+        "startTime": 176.0,
+        "endTime": 194.0,
+        "speaker": "Hasu",
+        "chinese": "有时候，我也会吃一碗蔬菜面。",
+        "pinyin": "Yǒu shí hòu, wǒ yě huì chī yī wǎn shū cài miàn.",
+        "vietnamese": "Thỉnh thoảng, tôi cũng ăn một bát mì rau củ."
+      },
+      {
+        "id": 10,
+        "startTime": 194.0,
+        "endTime": 216.0,
+        "speaker": "Hasu",
+        "chinese": "我觉得面条又简单又好吃。",
+        "pinyin": "Wǒ jué de miàn tiáo yòu jiǎn dān yòu hǎo chī.",
+        "vietnamese": "Tôi thấy mì vừa đơn giản lại vừa ngon."
+      },
+      {
+        "id": 11,
+        "startTime": 216.0,
+        "endTime": 234.0,
+        "speaker": "Hasu",
+        "chinese": "工作忙的时候，我常常自己煮面。",
+        "pinyin": "Gōng zuò máng de shí hòu, wǒ cháng cháng zì jǐ zhǔ miàn.",
+        "vietnamese": "Những lúc bận rộn với công việc, tôi thường tự nấu mì."
+      },
+      {
+        "id": 12,
+        "startTime": 234.0,
+        "endTime": 252.0,
+        "speaker": "Hasu",
+        "chinese": "煮面不需要花太长时间。",
+        "pinyin": "Zhǔ miàn bù xū yào huā tài zhǎng shí jiān.",
+        "vietnamese": "Nấu mì không cần tốn quá nhiều thời gian."
+      },
+      {
+        "id": 13,
+        "startTime": 252.0,
+        "endTime": 271.0,
+        "speaker": "Hasu",
+        "chinese": "一般十分钟左右就可以做好。",
+        "pinyin": "Yì bān shí fēn zhōng zuǒ yòu jiù kě yǐ zuò hǎo.",
+        "vietnamese": "Thông thường khoảng mười phút là có thể nấu xong."
+      },
+      {
+        "id": 14,
+        "startTime": 271.0,
+        "endTime": 294.0,
+        "speaker": "Hasu",
+        "chinese": "我喜欢在面里放一些青菜和鸡蛋。",
+        "pinyin": "Wǒ xǐ huān zài miàn lǐ fàng yī xiē qīng cài hé jī dàn.",
+        "vietnamese": "Tôi thích cho một ít rau xanh và trứng vào trong mì."
+      },
+      {
+        "id": 15,
+        "startTime": 294.0,
+        "endTime": 311.0,
+        "speaker": "Hasu",
+        "chinese": "这样吃起来更有营养。",
+        "pinyin": "Zhè yàng chī qǐ lái gèng yǒu yíng yǎng.",
+        "vietnamese": "Ăn như vậy sẽ bổ dưỡng hơn."
+      },
+      {
+        "id": 16,
+        "startTime": 311.0,
+        "endTime": 330.0,
+        "speaker": "Hasu",
+        "chinese": "除了面条，我也喜欢吃米饭。",
+        "pinyin": "Chú le miàn tiáo, wǒ yě xǐ huān chī mǐ fàn.",
+        "vietnamese": "Ngoài mì ra, tôi cũng thích ăn cơm."
+      },
+      {
+        "id": 17,
+        "startTime": 330.0,
+        "endTime": 350.0,
+        "speaker": "Hasu",
+        "chinese": "吃米饭的时候，我会准备几个菜。",
+        "pinyin": "Chī mǐ fàn de shí hòu, wǒ huì zhǔn bèi jǐ gè cài.",
+        "vietnamese": "Khi ăn cơm, tôi sẽ chuẩn bị vài món ăn."
+      },
+      {
+        "id": 18,
+        "startTime": 350.0,
+        "endTime": 370.0,
+        "speaker": "Hasu",
+        "chinese": "我最喜欢的菜是西红柿炒鸡蛋。",
+        "pinyin": "Wǒ zuì xǐ huān de cài shì xī hóng shì chǎo jī dàn.",
+        "vietnamese": "Món tôi thích nhất là trứng xào cà chua."
+      },
+      {
+        "id": 19,
+        "startTime": 370.0,
+        "endTime": 394.0,
+        "speaker": "Hasu",
+        "chinese": "这道菜味道很好，而且做起来很方便。",
+        "pinyin": "Zhè dào cài wèi dào hěn hǎo, ér qiě zuò qǐ lái hěn fāng biàn.",
+        "vietnamese": "Món này vị rất ngon, mà nấu cũng rất tiện lợi."
+      },
+      {
+        "id": 20,
+        "startTime": 394.0,
+        "endTime": 418.0,
+        "speaker": "Hasu",
+        "chinese": "我觉得吃自己喜欢的食物也可以吃得很健康。",
+        "pinyin": "Wǒ jué de chī zì jǐ xǐ huān de shí wù yě kě yǐ chī dé hěn jiàn kāng.",
+        "vietnamese": "Tôi thấy ăn những món mình thích cũng có thể ăn rất lành mạnh."
+      },
+      {
+        "id": 21,
+        "startTime": 418.0,
+        "endTime": 441.0,
+        "speaker": "Hasu",
+        "chinese": "以前，我的饮食习惯不好。",
+        "pinyin": "Yǐ qián, wǒ de yǐn shí xí guàn bù hǎo.",
+        "vietnamese": "Trước đây, thói quen ăn uống của tôi không tốt."
+      },
+      {
+        "id": 22,
+        "startTime": 441.0,
+        "endTime": 460.0,
+        "speaker": "Hasu",
+        "chinese": "因为早上起得晚，我常常不吃早饭。",
+        "pinyin": "Yīn wèi zǎo shàng qǐ dé wǎn, wǒ cháng cháng bù chī zǎo fàn.",
+        "vietnamese": "Vì buổi sáng dậy muộn, tôi thường không ăn bữa sáng."
+      },
+      {
+        "id": 23,
+        "startTime": 460.0,
+        "endTime": 482.0,
+        "speaker": "Hasu",
+        "chinese": "到了中午我就会觉得特别饿。",
+        "pinyin": "Dào le zhōng wǔ wǒ jiù huì jué de tè bié è.",
+        "vietnamese": "Đến trưa là tôi cảm thấy cực kỳ đói."
+      },
+      {
+        "id": 24,
+        "startTime": 482.0,
+        "endTime": 499.0,
+        "speaker": "Hasu",
+        "chinese": "因此，我常常会吃得太多。",
+        "pinyin": "Yīn cǐ, wǒ cháng cháng huì chī dé tài duō.",
+        "vietnamese": "Vì thế, tôi thường ăn quá nhiều."
+      },
+      {
+        "id": 25,
+        "startTime": 499.0,
+        "endTime": 521.0,
+        "speaker": "Hasu",
+        "chinese": "吃完之后，我的胃会有一点不舒服。",
+        "pinyin": "Chī wán zhī hòu, wǒ de wèi huì yǒu yì diǎn bù shū fú.",
+        "vietnamese": "Sau khi ăn xong, dạ dày của tôi hơi khó chịu."
+      },
+      {
+        "id": 26,
+        "startTime": 521.0,
+        "endTime": 546.0,
+        "speaker": "Hasu",
+        "chinese": "后来，我决定改变自己的饮食习惯。",
+        "pinyin": "Hòu lái, wǒ jué dìng gǎi biàn zì jǐ de yǐn shí xí guàn.",
+        "vietnamese": "Sau đó, tôi quyết định thay đổi thói quen ăn uống của mình."
+      },
+      {
+        "id": 27,
+        "startTime": 546.0,
+        "endTime": 563.0,
+        "speaker": "Hasu",
+        "chinese": "现在，我每天都会按时吃早饭。",
+        "pinyin": "Xiàn zài, wǒ měi tiān dū huì àn shí chī zǎo fàn.",
+        "vietnamese": "Bây giờ, ngày nào tôi cũng ăn bữa sáng đúng giờ."
+      },
+      {
+        "id": 28,
+        "startTime": 563.0,
+        "endTime": 582.0,
+        "speaker": "Hasu",
+        "chinese": "我的早饭一般比较简单。",
+        "pinyin": "Wǒ de zǎo fàn yì bān bǐ jiào jiǎn dān.",
+        "vietnamese": "Bữa sáng của tôi nhìn chung khá đơn giản."
+      },
+      {
+        "id": 29,
+        "startTime": 582.0,
+        "endTime": 605.0,
+        "speaker": "Hasu",
+        "chinese": "我会吃鸡蛋、面包或者一碗粥。",
+        "pinyin": "Wǒ huì chī jī dàn, miàn bāo huò zhě yī wǎn zhōu.",
+        "vietnamese": "Tôi sẽ ăn trứng gà, bánh mì hoặc một bát cháo."
+      },
+      {
+        "id": 30,
+        "startTime": 605.0,
+        "endTime": 625.0,
+        "speaker": "Hasu",
+        "chinese": "有时候我也会喝一杯牛奶。",
+        "pinyin": "Yǒu shí hòu wǒ yě huì hē yī bēi niú nǎi.",
+        "vietnamese": "Đôi khi tôi cũng uống một ly sữa tươi."
+      },
+      {
+        "id": 31,
+        "startTime": 625.0,
+        "endTime": 648.0,
+        "speaker": "Hasu",
+        "chinese": "吃完早饭以后，我工作起来更有精神。",
+        "pinyin": "Chī wán zǎo fàn yǐ hòu, wǒ gōng zuò qǐ lái gèng yǒu jīng shén.",
+        "vietnamese": "Sau khi ăn sáng xong, tôi làm việc tràn đầy năng lượng hơn."
+      },
+      {
+        "id": 32,
+        "startTime": 648.0,
+        "endTime": 669.0,
+        "speaker": "Hasu",
+        "chinese": "中午，我一般会吃米饭和几个菜。",
+        "pinyin": "Zhōng wǔ, wǒ yì bān huì chī mǐ fàn hé jǐ gè cài.",
+        "vietnamese": "Buổi trưa, tôi thường ăn cơm và vài món ăn."
+      },
+      {
+        "id": 33,
+        "startTime": 669.0,
+        "endTime": 690.0,
+        "speaker": "Hasu",
+        "chinese": "我会注意多吃蔬菜，少吃肉。",
+        "pinyin": "Wǒ huì zhù yì duō chī shū cài, shǎo chī ròu.",
+        "vietnamese": "Tôi sẽ chú ý ăn nhiều rau xanh, ăn ít thịt."
+      },
+      {
+        "id": 34,
+        "startTime": 690.0,
+        "endTime": 718.0,
+        "speaker": "Hasu",
+        "chinese": "我觉得蔬菜对身体很有好处。",
+        "pinyin": "Wǒ jué de shū cài duì shēn tǐ hěn yǒu hǎo chù.",
+        "vietnamese": "Tôi thấy rau củ rất có lợi cho cơ thể."
+      },
+      {
+        "id": 35,
+        "startTime": 718.0,
+        "endTime": 728.0,
+        "speaker": "Hasu",
+        "chinese": "晚饭的时候，我不会吃得太多。",
+        "pinyin": "Wǎn fàn de shí hòu, wǒ bú huì chī dé tài duō.",
+        "vietnamese": "Vào bữa tối, tôi sẽ không ăn quá nhiều."
+      },
+      {
+        "id": 36,
+        "startTime": 728.0,
+        "endTime": 748.0,
+        "speaker": "Hasu",
+        "chinese": "因为吃得太多会影响睡眠。",
+        "pinyin": "Yīn wèi chī dé tài duō huì yǐng xiǎng shuì mián.",
+        "vietnamese": "Bởi vì ăn quá nhiều sẽ ảnh hưởng đến giấc ngủ."
+      },
+      {
+        "id": 37,
+        "startTime": 748.0,
+        "endTime": 767.0,
+        "speaker": "Hasu",
+        "chinese": "我也尽量不在睡觉以前吃东西。",
+        "pinyin": "Wǒ yě jǐn liàng bù zài shuì jiào yǐ qián chī dōng xī.",
+        "vietnamese": "Tôi cũng cố gắng không ăn gì trước khi đi ngủ."
+      },
+      {
+        "id": 38,
+        "startTime": 767.0,
+        "endTime": 788.0,
+        "speaker": "Hasu",
+        "chinese": "如果晚上饿了，我会吃一点水果。",
+        "pinyin": "Rú guǒ wǎn shàng è le, wǒ huì chī yì diǎn shuǐ guǒ.",
+        "vietnamese": "Nếu buổi tối bị đói, tôi sẽ ăn một chút hoa quả."
+      },
+      {
+        "id": 39,
+        "startTime": 788.0,
+        "endTime": 811.0,
+        "speaker": "Hasu",
+        "chinese": "我觉得按时吃饭比吃很多更重要。",
+        "pinyin": "Wǒ jué de àn shí chī fàn bǐ chī hěn duō gèng zhòng yào.",
+        "vietnamese": "Tôi thấy ăn uống đúng giờ quan trọng hơn là ăn thật nhiều."
+      },
+      {
+        "id": 40,
+        "startTime": 811.0,
+        "endTime": 834.0,
+        "speaker": "Hasu",
+        "chinese": "好的饮食习惯，让我感觉越来越舒服。",
+        "pinyin": "Hǎo de yǐn shí xí guàn, ràng wǒ gǎn jué yuè lái yuè shū fú.",
+        "vietnamese": "Thói quen ăn uống tốt giúp tôi cảm thấy ngày càng thoải mái."
+      },
+      {
+        "id": 41,
+        "startTime": 834.0,
+        "endTime": 858.0,
+        "speaker": "Hasu",
+        "chinese": "为了身体健康，我们应该选择合适的食物。",
+        "pinyin": "Wèi le shēn tǐ jiàn kāng, wǒ men yīng gāi xuǎn zé hé shì de shí wù.",
+        "vietnamese": "Vì sức khỏe cơ thể, chúng ta nên lựa chọn những thực phẩm phù hợp."
+      },
+      {
+        "id": 42,
+        "startTime": 858.0,
+        "endTime": 879.0,
+        "speaker": "Hasu",
+        "chinese": "每天都应该吃一些新鲜的蔬菜。",
+        "pinyin": "Měi tiān dōu yīng gāi chī yī xiē xīn xiān de shū cài.",
+        "vietnamese": "Mỗi ngày đều nên ăn một số loại rau xanh tươi ngon."
+      },
+      {
+        "id": 43,
+        "startTime": 879.0,
+        "endTime": 898.0,
+        "speaker": "Hasu",
+        "chinese": "水果也能给身体带来很多营养。",
+        "pinyin": "Shuǐ guǒ yě néng gěi shēn tǐ dài lái hěn duō yíng yǎng.",
+        "vietnamese": "Trái cây cũng mang lại nhiều dinh dưỡng cho cơ thể."
+      },
+      {
+        "id": 44,
+        "startTime": 898.0,
+        "endTime": 920.0,
+        "speaker": "Hasu",
+        "chinese": "不过水果也不能一次吃得太多。",
+        "pinyin": "Bù guò shuǐ guǒ yě bù néng yī cì chī dé tài duō.",
+        "vietnamese": "Tuy nhiên hoa quả cũng không thể ăn quá nhiều trong một lần."
+      },
+      {
+        "id": 45,
+        "startTime": 920.0,
+        "endTime": 939.0,
+        "speaker": "Hasu",
+        "chinese": "吃任何食物，都应该注意数量。",
+        "pinyin": "Chī rèn hé shí wù, dōu yīng gāi zhù yì shù liàng.",
+        "vietnamese": "Ăn bất kỳ món gì cũng nên chú ý đến lượng ăn."
+      },
+      {
+        "id": 46,
+        "startTime": 939.0,
+        "endTime": 959.0,
+        "speaker": "Hasu",
+        "chinese": "吃得太多或者太少都不好。",
+        "pinyin": "Chī dé tài duō huò zhě tài shǎo dōu bù hǎo.",
+        "vietnamese": "Ăn quá nhiều hoặc quá ít đều không tốt."
+      },
+      {
+        "id": 47,
+        "startTime": 959.0,
+        "endTime": 979.0,
+        "speaker": "Hasu",
+        "chinese": "我们还应该少吃太甜的食物。",
+        "pinyin": "Wǒ men hái yīng gāi shǎo chī tài tián de shí wù.",
+        "vietnamese": "Chúng ta còn nên ăn ít đồ ăn quá ngọt."
+      },
+      {
+        "id": 48,
+        "startTime": 979.0,
+        "endTime": 1000.0,
+        "speaker": "Hasu",
+        "chinese": "太甜的食物会让人容易变胖。",
+        "pinyin": "Tài tián de shí wù huì ràng rén róng yì biàn pàng.",
+        "vietnamese": "Đồ ăn quá ngọt sẽ khiến người ta dễ bị béo."
+      },
+      {
+        "id": 49,
+        "startTime": 1000.0,
+        "endTime": 1021.0,
+        "speaker": "Hasu",
+        "chinese": "太油的食物也不应该经常吃。",
+        "pinyin": "Tài yóu de shí wù yě bù yīng gāi jīng cháng chī.",
+        "vietnamese": "Thức ăn quá nhiều dầu mỡ cũng không nên ăn thường xuyên."
+      },
+      {
+        "id": 50,
+        "startTime": 1021.0,
+        "endTime": 1047.0,
+        "speaker": "Hasu",
+        "chinese": "虽然这些食物很好吃，但是对身体不太好。",
+        "pinyin": "Suī rán zhè xiē shí wù hěn hǎo chī, dàn shì duì shēn tǐ bù tài hǎo.",
+        "vietnamese": "Tuy những món này rất ngon, nhưng không tốt cho cơ thể lắm."
+      },
+      {
+        "id": 51,
+        "startTime": 1047.0,
+        "endTime": 1069.0,
+        "speaker": "Hasu",
+        "chinese": "我以前很喜欢喝甜饮料。",
+        "pinyin": "Wǒ yǐ qián hěn xǐ huān hē tián yǐn liào.",
+        "vietnamese": "Trước đây tôi rất thích uống nước ngọt."
+      },
+      {
+        "id": 52,
+        "startTime": 1069.0,
+        "endTime": 1089.0,
+        "speaker": "Hasu",
+        "chinese": "后来我慢慢改成了喝白开水。",
+        "pinyin": "Hòu lái wǒ màn màn gǎi chéng le hē bái kāi shuǐ.",
+        "vietnamese": "Sau này tôi dần dần đổi sang uống nước lọc đun sôi để nguội."
+      },
+      {
+        "id": 53,
+        "startTime": 1089.0,
+        "endTime": 1111.0,
+        "speaker": "Hasu",
+        "chinese": "每天喝足够的水对身体很重要。",
+        "pinyin": "Měi tiān hē zú gòu de shuǐ duì shēn tǐ hěn zhòng yào.",
+        "vietnamese": "Mỗi ngày uống đủ nước rất quan trọng đối với cơ thể."
+      },
+      {
+        "id": 54,
+        "startTime": 1111.0,
+        "endTime": 1135.0,
+        "speaker": "Hasu",
+        "chinese": "特别是天气热的时候，更应该多喝水。",
+        "pinyin": "Tè bié shì tiān qì rè de shí hòu, gèng yīng gāi duō hē shuǐ.",
+        "vietnamese": "Đặc biệt là khi trời nóng, càng nên uống nhiều nước hơn."
+      },
+      {
+        "id": 55,
+        "startTime": 1135.0,
+        "endTime": 1161.0,
+        "speaker": "Hasu",
+        "chinese": "我也尽量少吃外面做的饭。",
+        "pinyin": "Wǒ yě jǐn liàng shǎo chī wài miàn zuò de fàn.",
+        "vietnamese": "Tôi cũng hạn chế ăn cơm ở bên ngoài."
+      },
+      {
+        "id": 56,
+        "startTime": 1161.0,
+        "endTime": 1185.0,
+        "speaker": "Hasu",
+        "chinese": "因为自己做饭可以选择新鲜的食材。",
+        "pinyin": "Yīn wèi zì jǐ zuò fàn kě yǐ xuǎn zé xīn xiān de shí cái.",
+        "vietnamese": "Bởi vì tự nấu ăn có thể lựa chọn những nguyên liệu tươi ngon."
+      },
+      {
+        "id": 57,
+        "startTime": 1185.0,
+        "endTime": 1208.0,
+        "speaker": "Hasu",
+        "chinese": "自己做饭，还可以少放油和盐。",
+        "pinyin": "Zì jǐ zuò fàn, hái kě yǐ shǎo fàng yóu hé yán.",
+        "vietnamese": "Tự nấu ăn còn có thể cho ít dầu và muối."
+      },
+      {
+        "id": 58,
+        "startTime": 1208.0,
+        "endTime": 1229.0,
+        "speaker": "Hasu",
+        "chinese": "这样做出来的饭菜更加健康。",
+        "pinyin": "Zhè yàng zuò chū lái de fàn cài gèng jiā jiàn kāng.",
+        "vietnamese": "Cơm canh nấu ra theo cách này sẽ lành mạnh hơn nhiều."
+      },
+      {
+        "id": 59,
+        "startTime": 1229.0,
+        "endTime": 1249.0,
+        "speaker": "Hasu",
+        "chinese": "健康饮食并不是只吃自己不喜欢的东西。",
+        "pinyin": "Jiàn kāng yǐn shí bìng bú shì zhǐ chī zì jǐ bù xǐ huān de dōng xī.",
+        "vietnamese": "Ăn uống lành mạnh hoàn toàn không phải là chỉ ăn những thứ mình không thích."
+      },
+      {
+        "id": 60,
+        "startTime": 1249.0,
+        "endTime": 1278.0,
+        "speaker": "Hasu",
+        "chinese": "只要选择合适的做法，好吃的食物也可以很健康。",
+        "pinyin": "Zhǐ yào xuǎn zé hé shì de zuò fǎ, hǎo chī de shí wù yě kě yǐ hěn jiàn kāng.",
+        "vietnamese": "Chỉ cần lựa chọn cách làm phù hợp, món ăn ngon cũng có thể rất lành mạnh."
+      },
+      {
+        "id": 61,
+        "startTime": 1278.0,
+        "endTime": 1303.0,
+        "speaker": "Hasu",
+        "chinese": "除了健康饮食，我们还需要经常运动。",
+        "pinyin": "Chú le jiàn kāng yǐn shí, wǒ men hái xū yào jīng cháng yùn dòng.",
+        "vietnamese": "Bên cạnh chế độ ăn uống lành mạnh, chúng ta còn cần phải thường xuyên vận động."
+      },
+      {
+        "id": 62,
+        "startTime": 1303.0,
+        "endTime": 1329.0,
+        "speaker": "Hasu",
+        "chinese": "我每天都会花半个小时运动。",
+        "pinyin": "Wǒ měi tiān dū huì huā bàn gè xiǎo shí yùn dòng.",
+        "vietnamese": "Mỗi ngày tôi đều dành nửa tiếng để tập thể dục."
+      },
+      {
+        "id": 63,
+        "startTime": 1329.0,
+        "endTime": 1351.0,
+        "speaker": "Hasu",
+        "chinese": "有时候我跑步，有时候我在家做运动。",
+        "pinyin": "Yǒu shí hòu wǒ pǎo bù, yǒu shí hòu wǒ zài jiā zuò yùn dòng.",
+        "vietnamese": "Có lúc tôi chạy bộ, có lúc tôi tập thể dục tại nhà."
+      },
+      {
+        "id": 64,
+        "startTime": 1351.0,
+        "endTime": 1374.0,
+        "speaker": "Hasu",
+        "chinese": "周末有时间的时候，我喜欢去公园散步。",
+        "pinyin": "Zhōu mò yǒu shí jiān de shí hòu, wǒ xǐ huān qù gōng yuán sàn bù.",
+        "vietnamese": "Cuối tuần khi có thời gian, tôi thích đi dạo ở công viên."
+      },
+      {
+        "id": 65,
+        "startTime": 1374.0,
+        "endTime": 1402.0,
+        "speaker": "Hasu",
+        "chinese": "运动后，虽然身体有点累，但心情很好。",
+        "pinyin": "Yùn dòng hòu, suī rán shēn tǐ yǒu diǎn lèi, dàn xīn qíng hěn hǎo.",
+        "vietnamese": "Sau khi vận động, tuy cơ thể hơi mệt một chút nhưng tâm trạng rất tốt."
+      },
+      {
+        "id": 66,
+        "startTime": 1402.0,
+        "endTime": 1420.0,
+        "speaker": "Hasu",
+        "chinese": "运动可以让身体变得更强壮。",
+        "pinyin": "Yùn dòng kě yǐ ràng shēn tǐ biàn dé gèng qiáng zhuàng.",
+        "vietnamese": "Tập thể dục có thể giúp cơ thể trở nên khỏe mạnh dẻo dai hơn."
+      },
+      {
+        "id": 67,
+        "startTime": 1420.0,
+        "endTime": 1449.0,
+        "speaker": "Hasu",
+        "chinese": "它也可以帮助我们放松心情。",
+        "pinyin": "Tā yě kě yǐ bāng zhù wǒ men fàng sōng xīn qíng.",
+        "vietnamese": "Nó cũng có thể giúp chúng ta thư giãn tinh thần."
+      },
+      {
+        "id": 68,
+        "startTime": 1449.0,
+        "endTime": 1473.0,
+        "speaker": "Hasu",
+        "chinese": "除了运动，睡眠也非常重要。",
+        "pinyin": "Chú le yùn dòng, shuì mián yě fēi cháng zhòng yào.",
+        "vietnamese": "Bên cạnh vận động, giấc ngủ cũng vô cùng quan trọng."
+      },
+      {
+        "id": 69,
+        "startTime": 1473.0,
+        "endTime": 1484.0,
+        "speaker": "Hasu",
+        "chinese": "我每天晚上，尽量在十一点以前睡觉。",
+        "pinyin": "Wǒ měi tiān wǎn shàng, jǐn liàng zài shí yì diǎn yǐ qián shuì jiào.",
+        "vietnamese": "Mỗi tối, tôi cố gắng đi ngủ trước 11 giờ."
+      },
+      {
+        "id": 70,
+        "startTime": 1484.0,
+        "endTime": 1506.0,
+        "speaker": "Hasu",
+        "chinese": "如果睡得太晚，第二天就会没有精神。",
+        "pinyin": "Rú guǒ shuì dé tài wǎn, dì èr tiān jiù huì méi yǒu jīng shén.",
+        "vietnamese": "Nếu ngủ quá muộn, ngày hôm sau sẽ không có tinh thần làm việc."
+      },
+      {
+        "id": 71,
+        "startTime": 1506.0,
+        "endTime": 1523.0,
+        "speaker": "Hasu",
+        "chinese": "睡觉以前，我尽量不看手机。",
+        "pinyin": "Shuì jiào yǐ qián, wǒ jǐn liàng bù kàn shǒu jī.",
+        "vietnamese": "Trước khi đi ngủ, tôi hạn chế không xem điện thoại."
+      },
+      {
+        "id": 72,
+        "startTime": 1523.0,
+        "endTime": 1539.0,
+        "speaker": "Hasu",
+        "chinese": "我会听一会儿轻松的音乐。",
+        "pinyin": "Wǒ huì tīng yī huì er qīng sōng de yīn yuè.",
+        "vietnamese": "Tôi sẽ nghe một lúc âm nhạc nhẹ nhàng."
+      },
+      {
+        "id": 73,
+        "startTime": 1539.0,
+        "endTime": 1560.0,
+        "speaker": "Hasu",
+        "chinese": "这样可以让我更快地睡着。",
+        "pinyin": "Zhè yàng kě yǐ ràng wǒ gèng kuài dì shuì zháo.",
+        "vietnamese": "Làm như vậy có thể giúp tôi đi vào giấc ngủ nhanh hơn."
+      },
+      {
+        "id": 74,
+        "startTime": 1560.0,
+        "endTime": 1580.0,
+        "speaker": "Hasu",
+        "chinese": "保持好的心情也有助于身体健康。",
+        "pinyin": "Bǎo chí hǎo de xīn qíng yě yǒu zhù yú shēn tǐ jiàn kāng.",
+        "vietnamese": "Giữ gìn tâm trạng tốt cũng có ích cho sức khỏe cơ thể."
+      },
+      {
+        "id": 75,
+        "startTime": 1580.0,
+        "endTime": 1601.0,
+        "speaker": "Hasu",
+        "chinese": "当遇到压力的时候，我会和家人朋友聊天。",
+        "pinyin": "Dāng yù dào yā lì de shí hòu, wǒ huì hé jiā rén péng yǒu liáo tiān.",
+        "vietnamese": "Khi gặp áp lực, tôi sẽ trò chuyện cùng gia đình, bạn bè."
+      },
+      {
+        "id": 76,
+        "startTime": 1601.0,
+        "endTime": 1626.0,
+        "speaker": "Hasu",
+        "chinese": "我也会出去走走，让自己放松一下。",
+        "pinyin": "Wǒ yě huì chū qù zǒu zǒu, ràng zì jǐ fàng sōng yī xià.",
+        "vietnamese": "Tôi cũng sẽ ra ngoài đi dạo để bản thân được thư giãn một chút."
+      },
+      {
+        "id": 77,
+        "startTime": 1626.0,
+        "endTime": 1648.0,
+        "speaker": "Hasu",
+        "chinese": "我觉得健康，需要每天慢慢保持。",
+        "pinyin": "Wǒ jué de jiàn kāng, xū yào měi tiān màn màn bǎo chí.",
+        "vietnamese": "Tôi thấy sức khỏe cần phải được gìn giữ từ từ qua từng ngày."
+      },
+      {
+        "id": 78,
+        "startTime": 1648.0,
+        "endTime": 1668.0,
+        "speaker": "Hasu",
+        "chinese": "不能等到身体不舒服以后，才注意健康。",
+        "pinyin": "Bù néng děng dào shēn tǐ bù shū fú yǐ hòu, cái zhù yì jiàn kāng.",
+        "vietnamese": "Không thể đợi đến khi cơ thể không khỏe rồi mới chú ý đến sức khỏe."
+      },
+      {
+        "id": 79,
+        "startTime": 1668.0,
+        "endTime": 1693.0,
+        "speaker": "Hasu",
+        "chinese": "只要每天做出一点击变，身体就会越来越好。",
+        "pinyin": "Zhǐ yào měi tiān zuò chū yì diǎn jī biàn, shēn tǐ jiù huì yuè lái yuè hǎo.",
+        "vietnamese": "Chỉ cần mỗi ngày tạo ra một chút thay đổi, cơ thể sẽ ngày càng tốt hơn."
+      },
+      {
+        "id": 80,
+        "startTime": 1693.0,
+        "endTime": 1724.0,
+        "speaker": "Hasu",
+        "chinese": "我相信健康的饮食和生活习惯会让我们的生活更加幸福。",
+        "pinyin": "Wǒ xiāng xìn jiàn kāng de yǐn shí hé shēng huó xí guàn huì ràng wǒ men de shēng huó gèng jiā xìng fú.",
+        "vietnamese": "Tôi tin rằng chế độ ăn uống và thói quen sinh hoạt lành mạnh sẽ giúp cuộc sống của chúng ta thêm phần hạnh phúc."
       }
     ]
   },
