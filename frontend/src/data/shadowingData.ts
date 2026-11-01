@@ -6340,62 +6340,2150 @@ export const SHADOWING_VIDEOS: ShadowingVideo[] = [
     "category": "Ẩm thực & Mua sắm",
     "description": "Podcast thú vị khám phá thói quen ăn uống, sức khỏe và văn hóa, từ vựng và cấu trúc ngữ pháp HSK 3-4 tự nhiên bản xứ.",
     "youtubeId": "wZDej3Logc4",
-    "sentencesCount": 6,
+    "sentencesCount": 238,
     "isFree": false,
     "sentences": [
       {
         "id": 1,
-        "startTime": 0,
-        "endTime": 7.5,
-        "speaker": "Người dẫn",
-        "chinese": "很多人因为工作太忙，吃饭总是吃得特别快。",
-        "pinyin": "Hěnduō rén yīnwèi gōngzuò tài máng, chīfàn zǒngshì chī de tèbié kuài.",
-        "vietnamese": "Rất nhiều người vì công việc quá bận rộn nên ăn cơm lúc nào cũng ăn cực kỳ nhanh."
+        "startTime": 6.1,
+        "endTime": 9.7,
+        "speaker": "Lý Minh",
+        "chinese": "大家好，欢迎来到“每天中文”。我是李明。",
+        "pinyin": "Dà jiā hǎo, huān yíng lái dào “měi tiān zhōng wén”. Wǒ shì lǐ míng.",
+        "vietnamese": "Chào mọi người, chào mừng các bạn đã đến với \"Tiếng Trung Mỗi Ngày\". Tôi là Lý Minh."
       },
       {
         "id": 2,
-        "startTime": 7.5,
-        "endTime": 16,
-        "speaker": "Người dẫn",
-        "chinese": "其实医学专家告诉我们，吃得太快对胃并不好。",
-        "pinyin": "Qíshí yīxué zhuānjiā gàosu wǒmen, chī de tài kuài duì wèi bìng bù hǎo.",
-        "vietnamese": "Thực ra các chuyên gia y tế nhắc nhở chúng ta rằng, ăn quá nhanh không hề tốt cho dạ dày."
+        "startTime": 9.8,
+        "endTime": 11.7,
+        "speaker": "Vương Vũ",
+        "chinese": "大家好，我是王雨。",
+        "pinyin": "Dà jiā hǎo, wǒ shì wáng yǔ.",
+        "vietnamese": "Chào mọi người, tôi là Vương Vũ."
       },
       {
         "id": 3,
-        "startTime": 16,
-        "endTime": 25,
-        "speaker": "Người dẫn",
-        "chinese": "细嚼慢咽不仅有助于消化，还能让你更好地品尝食物的味道。",
-        "pinyin": "Xìjiáo mànyàn bùjǐn yǒuzhùyú xiāohuà, hái néng ràng nǐ gèng hǎo de pǐncháng shíwù de wèidao.",
-        "vietnamese": "Nhai kỹ nuốt chậm không chỉ giúp hỗ trợ tiêu hóa, mà còn giúp bạn thưởng thức trọn vẹn hương vị món ăn."
+        "startTime": 11.7,
+        "endTime": 13.1,
+        "speaker": "Vương Vũ",
+        "chinese": "李明，你好！",
+        "pinyin": "Lǐ míng, nǐ hǎo!",
+        "vietnamese": "Lý Minh, chào cậu!"
       },
       {
         "id": 4,
-        "startTime": 25,
-        "endTime": 35,
-        "speaker": "Người dẫn",
-        "chinese": "在中国传统文化里，“慢慢吃”也是一种对客人的礼貌用语。",
-        "pinyin": "Zài Zhōngguó chuántǒng wénhuà lǐ, “mànmàn chī” yě shì yì zhǒng duì kèrén de lǐmào yòngyǔ.",
-        "vietnamese": "Trong văn hóa truyền thống Trung Hoa, “ăn từ từ thôi” cũng là một câu nói lịch sự bày tỏ sự hiếu khách."
+        "startTime": 13.1,
+        "endTime": 14.4,
+        "speaker": "Lý Minh",
+        "chinese": "王雨，你好！",
+        "pinyin": "Wáng yǔ, nǐ hǎo!",
+        "vietnamese": "Vương Vũ, chào cậu!"
       },
       {
         "id": 5,
-        "startTime": 35,
-        "endTime": 45,
-        "speaker": "Người dẫn",
-        "chinese": "养成健康的饮食习惯，是保持身体健康的重要一步。",
-        "pinyin": "Yǎngchéng jiànkāng de yǐnshí xíguàn, shì bǎochí shēntǐ jiànkāng de zhòngyào yí bù.",
-        "vietnamese": "Rèn luyện thói quen ăn uống lành mạnh là bước quan trọng để duy trì một cơ thể khỏe mạnh."
+        "startTime": 14.4,
+        "endTime": 18.1,
+        "speaker": "Lý Minh",
+        "chinese": "今天你看起来很高兴，午饭吃什么好吃的了？",
+        "pinyin": "Jīn tiān nǐ kàn qǐ lái hěn gāo xìng, wǔ fàn chī shén me hǎo chī de le?",
+        "vietnamese": "Hôm nay trông cậu vui thế, bữa trưa đã ăn món gì ngon à?"
       },
       {
         "id": 6,
-        "startTime": 45,
-        "endTime": 56,
-        "speaker": "Người dẫn",
-        "chinese": "每天按时吃饭，少吃油腻的食物，身体才会越来越好。",
-        "pinyin": "Měitiān ànshí chīfàn, shǎo chī yóunì de shíwù, shēntǐ cái huì yuè lái yuè hǎo.",
-        "vietnamese": "Hàng ngày ăn cơm đúng giờ, hạn chế đồ dầu mỡ, cơ thể mới ngày càng khỏe khoắn hơn."
+        "startTime": 18.1,
+        "endTime": 19.8,
+        "speaker": "Lý Minh",
+        "chinese": "哈哈，被你发现了。",
+        "pinyin": "Hā hā, bèi nǐ fā xiàn le.",
+        "vietnamese": "Haha, bị cậu phát hiện rồi."
+      },
+      {
+        "id": 7,
+        "startTime": 19.9,
+        "endTime": 24.8,
+        "speaker": "Vương Vũ",
+        "chinese": "我今天中午吃了一家新开的上海菜，味道特别好。",
+        "pinyin": "Wǒ jīn tiān zhōng wǔ chī le yī jiā xīn kāi de shàng hǎi cài, wèi dào tè bié hǎo.",
+        "vietnamese": "Trưa nay tôi ăn ở một quán ăn Thượng Hải mới mở, vị ngon đặc biệt luôn."
+      },
+      {
+        "id": 8,
+        "startTime": 24.8,
+        "endTime": 26.0,
+        "speaker": "Vương Vũ",
+        "chinese": "哦？是吗？",
+        "pinyin": "Ó? Shì ma?",
+        "vietnamese": "Ồ? Thật sao?"
+      },
+      {
+        "id": 9,
+        "startTime": 26.0,
+        "endTime": 28.0,
+        "speaker": "Vương Vũ",
+        "chinese": "那你吃饭快不快？",
+        "pinyin": "Nà nǐ chī fàn kuài bù kuài?",
+        "vietnamese": "Vậy cậu ăn nhanh hay không?"
+      },
+      {
+        "id": 10,
+        "startTime": 27.9,
+        "endTime": 33.5,
+        "speaker": "Vương Vũ",
+        "chinese": "我是说，这么好吃的菜，你是很快就吃完了，还是慢慢吃的？",
+        "pinyin": "Wǒ shì shuō, zhè me hǎo chī de cài, nǐ shì hěn kuài jiù chī wán le, hái shì màn màn chī de?",
+        "vietnamese": "Ý tôi là, món ngon như vậy, cậu ăn rất nhanh cho xong, hay là ăn từ từ?"
+      },
+      {
+        "id": 11,
+        "startTime": 33.5,
+        "endTime": 36.5,
+        "speaker": "Vương Vũ",
+        "chinese": "嗯……这是一个好问题。",
+        "pinyin": "ń... Zhè shì yí gè hǎo wèn tí.",
+        "vietnamese": "Ừm… đây là một câu hỏi hay."
+      },
+      {
+        "id": 12,
+        "startTime": 36.5,
+        "endTime": 39.6,
+        "speaker": "Vương Vũ",
+        "chinese": "我好像……吃得非常快。",
+        "pinyin": "Wǒ hǎo xiàng... Chī dé fēi cháng kuài.",
+        "vietnamese": "Hình như là… tôi ăn rất nhanh."
+      },
+      {
+        "id": 13,
+        "startTime": 39.6,
+        "endTime": 44.9,
+        "speaker": "Vương Vũ",
+        "chinese": "因为太好吃了，我就不停地吃，很快，我的盘子就空了。",
+        "pinyin": "Yīn wèi tài hǎo chī le, wǒ jiù bù tíng dì chī, hěn kuài, wǒ de pán zi jiù kōng le.",
+        "vietnamese": "Bởi vì ngon quá nên tôi cứ ăn không ngừng, chẳng mấy chốc đĩa của tôi đã hết sạch."
+      },
+      {
+        "id": 14,
+        "startTime": 45.0,
+        "endTime": 47.0,
+        "speaker": "Vương Vũ",
+        "chinese": "哈哈，我明白了。",
+        "pinyin": "Hā hā, wǒ míng bái le.",
+        "vietnamese": "Haha, tôi hiểu rồi."
+      },
+      {
+        "id": 15,
+        "startTime": 47.0,
+        "endTime": 52.1,
+        "speaker": "Vương Vũ",
+        "chinese": "其实，我们今天就可以聊一聊这个话题:吃饭的速度。",
+        "pinyin": "Qí shí, wǒ men jīn tiān jiù kě yǐ liáo yī liáo zhè ge huà tí: chī fàn de sù dù.",
+        "vietnamese": "Thực ra, hôm nay chúng ta có thể trò chuyện về chủ đề này: tốc độ ăn uống."
+      },
+      {
+        "id": 16,
+        "startTime": 52.0,
+        "endTime": 53.5,
+        "speaker": "Vương Vũ",
+        "chinese": "吃饭的速度？",
+        "pinyin": "Chī fàn de sù dù?",
+        "vietnamese": "Tốc độ ăn uống?"
+      },
+      {
+        "id": 17,
+        "startTime": 53.5,
+        "endTime": 56.9,
+        "speaker": "Vương Vũ",
+        "chinese": "这个话题很有意思！我从来没想过。",
+        "pinyin": "Zhè ge huà tí hěn yǒu yì si! Wǒ cóng lái méi xiǎng guò.",
+        "vietnamese": "Chủ đề này thú vị thật! Tôi chưa bao giờ nghĩ đến."
+      },
+      {
+        "id": 18,
+        "startTime": 57.0,
+        "endTime": 61.9,
+        "speaker": "Vương Vũ",
+        "chinese": "好啊，我们今天就来聊聊吃饭是快一点好，还是慢一点好。",
+        "pinyin": "Hǎo a, wǒ men jīn tiān jiù lái liáo liáo chī fàn shì kuài yì diǎn hǎo, hái shì màn yì diǎn hǎo.",
+        "vietnamese": "Được thôi, hôm nay chúng ta hãy cùng bàn xem ăn nhanh một chút thì tốt, hay ăn chậm một chút thì tốt hơn."
+      },
+      {
+        "id": 19,
+        "startTime": 61.8,
+        "endTime": 67.2,
+        "speaker": "Vương Vũ",
+        "chinese": "没错。这也是一个和我们每天的生活都非常有关系的话题。",
+        "pinyin": "Méi cuò. Zhè yě shì yí gè hé wǒ men měi tiān de shēng huó dōu fēi cháng yǒu guān xì de huà tí.",
+        "vietnamese": "Đúng vậy. Đây cũng là một chủ đề rất liên quan đến cuộc sống hàng ngày của chúng ta."
+      },
+      {
+        "id": 20,
+        "startTime": 67.3,
+        "endTime": 70.3,
+        "speaker": "Vương Vũ",
+        "chinese": "对，我们每个人每天都要吃饭。",
+        "pinyin": "Duì, wǒ men měi gè rén měi tiān dōu yào chī fàn.",
+        "vietnamese": "Đúng thế, mỗi chúng ta ai cũng phải ăn mỗi ngày."
+      },
+      {
+        "id": 21,
+        "startTime": 70.2,
+        "endTime": 72.8,
+        "speaker": "Vương Vũ",
+        "chinese": "好，那我们马上开始吧！",
+        "pinyin": "Hǎo, nà wǒ men mǎ shàng kāi shǐ ba!",
+        "vietnamese": "Được, vậy chúng ta bắt đầu ngay thôi!"
+      },
+      {
+        "id": 22,
+        "startTime": 72.9,
+        "endTime": 79.5,
+        "speaker": "Lý Minh",
+        "chinese": "好，王雨。刚刚你说你今天中午吃饭吃得很快。",
+        "pinyin": "Hǎo, wáng yǔ. Gāng gāng nǐ shuō nǐ jīn tiān zhōng wǔ chī fàn chī dé hěn kuài.",
+        "vietnamese": "Được, Vương Vũ. Vừa rồi cậu nói trưa nay cậu ăn rất nhanh."
+      },
+      {
+        "id": 23,
+        "startTime": 79.5,
+        "endTime": 82.7,
+        "speaker": "Lý Minh",
+        "chinese": "那你平时吃饭也很快吗？",
+        "pinyin": "Nà nǐ píng shí chī fàn yě hěn kuài ma?",
+        "vietnamese": "Vậy bình thường cậu ăn cũng nhanh vậy sao?"
+      },
+      {
+        "id": 24,
+        "startTime": 82.7,
+        "endTime": 87.2,
+        "speaker": "Lý Minh",
+        "chinese": "所以，我的第一个问题是:你吃饭快吗？",
+        "pinyin": "Suǒ yǐ, wǒ de dì yí gè wèn tí shì: nǐ chī fàn kuài ma?",
+        "vietnamese": "Vì vậy, câu hỏi đầu tiên của tôi là: Cậu ăn có nhanh không?"
+      },
+      {
+        "id": 25,
+        "startTime": 87.2,
+        "endTime": 92.9,
+        "speaker": "Lý Minh",
+        "chinese": "嗯，我想一下。我觉得，我吃饭挺快的。",
+        "pinyin": "ń, wǒ xiǎng yī xià. Wǒ jué de, wǒ chī fàn tǐng kuài de.",
+        "vietnamese": "Ừm, để tôi nghĩ xem. Tôi nghĩ là, tôi ăn khá nhanh."
+      },
+      {
+        "id": 26,
+        "startTime": 92.9,
+        "endTime": 98.2,
+        "speaker": "Lý Minh",
+        "chinese": "特别是工作日的时候，中午只有一个小时的休息时间，",
+        "pinyin": "Tè bié shì gōng zuò rì de shí hòu, zhōng wǔ zhǐ yǒu yí gè xiǎo shí de xiū xī shí jiān,",
+        "vietnamese": "Đặc biệt là vào những ngày đi làm, buổi trưa chỉ có một tiếng để nghỉ ngơi,"
+      },
+      {
+        "id": 27,
+        "startTime": 98.1,
+        "endTime": 102.8,
+        "speaker": "Lý Minh",
+        "chinese": "我要去餐厅，要排队，要等饭菜做好。",
+        "pinyin": "Wǒ yào qù cān tīng, yào pái duì, yào děng fàn cài zuò hǎo.",
+        "vietnamese": "tôi phải đến nhà hàng, phải xếp hàng, phải đợi món ăn được làm xong."
+      },
+      {
+        "id": 28,
+        "startTime": 102.9,
+        "endTime": 108.3,
+        "speaker": "Lý Minh",
+        "chinese": "所以能坐下来吃饭的时间不多，我就会吃得很快。",
+        "pinyin": "Suǒ yǐ néng zuò xià lái chī fàn de shí jiān bù duō, wǒ jiù huì chī dé hěn kuài.",
+        "vietnamese": "Vì vậy thời gian có thể ngồi xuống ăn không nhiều, nên tôi sẽ ăn rất nhanh."
+      },
+      {
+        "id": 29,
+        "startTime": 108.3,
+        "endTime": 115.3,
+        "speaker": "Lý Minh",
+        "chinese": "我非常理解。很多上班的人可能都和你一样。时间太少了。",
+        "pinyin": "Wǒ fēi cháng lǐ jiě. Hěn duō shàng bān de rén kě néng dōu hé nǐ yī yàng. Shí jiān tài shǎo le.",
+        "vietnamese": "Tôi rất hiểu. Nhiều người đi làm có lẽ cũng giống như cậu. Thời gian quá ít."
+      },
+      {
+        "id": 30,
+        "startTime": 115.3,
+        "endTime": 120.7,
+        "speaker": "Vương Vũ",
+        "chinese": "是啊。那你呢，李明？你吃饭快吗？",
+        "pinyin": "Shì a. Nà nǐ ne, lǐ míng? Nǐ chī fàn kuài ma?",
+        "vietnamese": "Đúng vậy. Còn cậu thì sao, Lý Minh? Cậu ăn có nhanh không?"
+      },
+      {
+        "id": 31,
+        "startTime": 120.7,
+        "endTime": 129.3,
+        "speaker": "Lý Minh",
+        "chinese": "我？我现在吃饭很慢。但是，我以前也和你一样，吃饭非常快。",
+        "pinyin": "Wǒ? Wǒ xiàn zài chī fàn hěn màn. Dàn shì, wǒ yǐ qián yě hé nǐ yī yàng, chī fàn fēi cháng kuài.",
+        "vietnamese": "Tôi ư? Bây giờ tôi ăn rất chậm. Nhưng, trước đây tôi cũng giống cậu, ăn cực kỳ nhanh."
+      },
+      {
+        "id": 32,
+        "startTime": 129.3,
+        "endTime": 137.3,
+        "speaker": "Lý Minh",
+        "chinese": "上大学的时候，我常常买一个面包，一边走一边吃，可能五分钟就吃完了。",
+        "pinyin": "Shàng dà xué de shí hòu, wǒ cháng cháng mǎi yí gè miàn bāo, yī biān zǒu yī biān chī, kě néng wǔ fēn zhōng jiù chī wán le.",
+        "vietnamese": "Lúc học đại học, tôi thường mua một cái bánh mì, vừa đi vừa ăn, có lẽ năm phút là ăn xong rồi."
+      },
+      {
+        "id": 33,
+        "startTime": 137.3,
+        "endTime": 144.2,
+        "speaker": "Vương Vũ",
+        "chinese": "五分钟？天啊，那太快了！你为什么吃那么快？",
+        "pinyin": "Wǔ fēn zhōng? Tiān a, nà tài kuài le! Nǐ wèi shén me chī nà me kuài?",
+        "vietnamese": "Năm phút? Trời ơi, nhanh quá vậy! Sao cậu lại ăn nhanh thế?"
+      },
+      {
+        "id": 34,
+        "startTime": 144.2,
+        "endTime": 150.8,
+        "speaker": "Lý Minh",
+        "chinese": "因为那时候总是很忙，有很多课，还有很多活动。",
+        "pinyin": "Yīn wèi nà shí hòu zǒng shì hěn máng, yǒu hěn duō kè, hái yǒu hěn duō huó dòng.",
+        "vietnamese": "Bởi vì lúc đó lúc nào cũng bận, có rất nhiều tiết học, còn có rất nhiều hoạt động."
+      },
+      {
+        "id": 35,
+        "startTime": 150.8,
+        "endTime": 158.5,
+        "speaker": "Lý Minh",
+        "chinese": "我觉得吃饭这件事，不是那么重要，快点吃完，我就可以去做别的事情了，",
+        "pinyin": "Wǒ jué de chī fàn zhè jiàn shì, bú shì nà me zhòng yào, kuài diǎn chī wán, wǒ jiù kě yǐ qù zuò bié de shì qíng le,",
+        "vietnamese": "Tôi cảm thấy việc ăn uống không quan trọng đến vậy, ăn xong nhanh một chút là tôi có thể đi làm việc khác,"
+      },
+      {
+        "id": 36,
+        "startTime": 158.6,
+        "endTime": 162.8,
+        "speaker": "Lý Minh",
+        "chinese": "比如去图书馆看书，或者去打篮球。",
+        "pinyin": "Bǐ rú qù tú shū guǎn kàn shū, huò zhě qù dǎ lán qiú.",
+        "vietnamese": "ví dụ như đến thư viện đọc sách, hoặc là đi đánh bóng rổ."
+      },
+      {
+        "id": 37,
+        "startTime": 162.8,
+        "endTime": 170.1,
+        "speaker": "Vương Vũ",
+        "chinese": "对对对，我上学的时候也是这样。好像总有做不完的事情。",
+        "pinyin": "Duì duì duì, wǒ shàng xué de shí hòu yě shì zhè yàng. Hǎo xiàng zǒng yǒu zuò bù wán de shì qíng.",
+        "vietnamese": "Đúng đúng đúng, lúc tôi đi học cũng vậy. Dường như lúc nào cũng có việc làm không hết."
+      },
+      {
+        "id": 38,
+        "startTime": 170.1,
+        "endTime": 178.8,
+        "speaker": "Vương Vũ",
+        "chinese": "所以，你吃饭快吗？这个问题，在那个时候，我的回答肯定是“是，我非常快”。",
+        "pinyin": "Suǒ yǐ, nǐ chī fàn kuài ma? Zhè ge wèn tí, zài nà ge shí hòu, wǒ de huí dá kěn dìng shì “shì, wǒ fēi cháng kuài”.",
+        "vietnamese": "Vì vậy, câu hỏi \"Cậu ăn có nhanh không?\", vào lúc đó, câu trả lời của tôi chắc chắn là \"Có, tôi rất nhanh\"."
+      },
+      {
+        "id": 39,
+        "startTime": 178.8,
+        "endTime": 186.2,
+        "speaker": "Lý Minh",
+        "chinese": "那是什么时候开始，你觉得吃饭快可能不太好呢？",
+        "pinyin": "Nà shì shén me shí hòu kāi shǐ, nǐ jué de chī fàn kuài kě néng bù tài hǎo ne?",
+        "vietnamese": "Vậy từ khi nào thì cậu bắt đầu cảm thấy ăn nhanh có lẽ không tốt lắm?"
+      },
+      {
+        "id": 40,
+        "startTime": 186.2,
+        "endTime": 190.9,
+        "speaker": "Lý Minh",
+        "chinese": "或者说，你是什么时候开始注意到这个问题的？",
+        "pinyin": "Huò zhě shuō, nǐ shì shén me shí hòu kāi shǐ zhù yì dào zhè ge wèn tí de?",
+        "vietnamese": "Hay nói cách khác, cậu bắt đầu chú ý đến vấn đề này từ khi nào?"
+      },
+      {
+        "id": 41,
+        "startTime": 190.9,
+        "endTime": 198.5,
+        "speaker": "Vương Vũ",
+        "chinese": "我觉得是我工作以后。我妈妈，她总是对我说一句话。",
+        "pinyin": "Wǒ jué de shì wǒ gōng zuò yǐ hòu. Wǒ mā mā, tā zǒng shì duì wǒ shuō yī jù huà.",
+        "vietnamese": "Tôi nghĩ là sau khi tôi đi làm. Mẹ tôi, bà ấy luôn nói với tôi một câu."
+      },
+      {
+        "id": 42,
+        "startTime": 198.5,
+        "endTime": 201.2,
+        "speaker": "Vương Vũ",
+        "chinese": "哦？你妈妈说什么？",
+        "pinyin": "Ó? Nǐ mā mā shuō shén me?",
+        "vietnamese": "Ồ? Mẹ cậu nói gì?"
+      },
+      {
+        "id": 43,
+        "startTime": 201.1,
+        "endTime": 208.4,
+        "speaker": "Vương Vũ",
+        "chinese": "她每次看我吃饭那么快，她都说:“王雨，吃饭要慢一点。”",
+        "pinyin": "Tā měi cì kàn wǒ chī fàn nà me kuài, tā dōu shuō: “wáng yǔ, chī fàn yào màn yì diǎn. ”",
+        "vietnamese": "Mỗi lần thấy tôi ăn nhanh như vậy, bà đều nói: \"Vương Vũ, ăn phải chậm một chút.\""
+      },
+      {
+        "id": 44,
+        "startTime": 208.5,
+        "endTime": 216.9,
+        "speaker": "Vương Vũ",
+        "chinese": "开始我没觉得有什么，我觉得我习惯了。但是有一次，我吃得太快了，",
+        "pinyin": "Kāi shǐ wǒ méi jué de yǒu shén me, wǒ jué de wǒ xí guàn le. Dàn shì yǒu yī cì, wǒ chī dé tài kuài le,",
+        "vietnamese": "Lúc đầu tôi không cảm thấy có vấn đề gì, tôi nghĩ mình quen rồi. Nhưng có một lần, tôi ăn quá nhanh,"
+      },
+      {
+        "id": 45,
+        "startTime": 216.9,
+        "endTime": 220.8,
+        "speaker": "Vương Vũ",
+        "chinese": "下午我的胃就有一点不舒服。",
+        "pinyin": "Xià wǔ wǒ de wèi jiù yǒu yì diǎn bù shū fú.",
+        "vietnamese": "buổi chiều dạ dày của tôi hơi khó chịu."
+      },
+      {
+        "id": 46,
+        "startTime": 220.8,
+        "endTime": 223.1,
+        "speaker": "Vương Vũ",
+        "chinese": "啊，胃不舒服？",
+        "pinyin": "A, wèi bù shū fú?",
+        "vietnamese": "À, dạ dày khó chịu?"
+      },
+      {
+        "id": 47,
+        "startTime": 223.0,
+        "endTime": 233.6,
+        "speaker": "Vương Vũ",
+        "chinese": "对。那天以后，我才开始想，妈妈说“吃饭要慢一点”，这句话可能是对的。",
+        "pinyin": "Duì. Nà tiān yǐ hòu, wǒ cái kāi shǐ xiǎng, mā mā shuō “chī fàn yào màn yì diǎn”, zhè jù huà kě néng shì duì de.",
+        "vietnamese": "Đúng vậy. Sau ngày hôm đó, tôi mới bắt đầu nghĩ, câu nói \"ăn phải chậm một chút\" của mẹ có lẽ là đúng."
+      },
+      {
+        "id": 48,
+        "startTime": 233.5,
+        "endTime": 236.6,
+        "speaker": "Vương Vũ",
+        "chinese": "看来，妈妈的话总是很有道理的。",
+        "pinyin": "Kàn lái, mā mā de huà zǒng shì hěn yǒu dào lǐ de.",
+        "vietnamese": "Xem ra, lời của mẹ nói lúc nào cũng rất có lý."
+      },
+      {
+        "id": 49,
+        "startTime": 236.7,
+        "endTime": 241.1,
+        "speaker": "Lý Minh",
+        "chinese": "其实我改变习惯也是因为我爸爸。",
+        "pinyin": "Qí shí wǒ gǎi biàn xí guàn yě shì yīn wèi wǒ bà bà.",
+        "vietnamese": "Thực ra tôi thay đổi thói quen cũng là vì bố tôi."
+      },
+      {
+        "id": 50,
+        "startTime": 241.1,
+        "endTime": 244.3,
+        "speaker": "Lý Minh",
+        "chinese": "哦？你爸爸也这么说？",
+        "pinyin": "Ó? Nǐ bà bà yě zhè me shuō?",
+        "vietnamese": "Ồ? Bố cậu cũng nói vậy à?"
+      },
+      {
+        "id": 51,
+        "startTime": 244.3,
+        "endTime": 248.4,
+        "speaker": "Lý Minh",
+        "chinese": "对。他也是一个吃饭很慢的人。",
+        "pinyin": "Duì. Tā yě shì yí gè chī fàn hěn màn de rén.",
+        "vietnamese": "Đúng. Ông cũng là một người ăn rất chậm."
+      },
+      {
+        "id": 52,
+        "startTime": 248.4,
+        "endTime": 255.9,
+        "speaker": "Lý Minh",
+        "chinese": "他常常告诉我:“李明，吃饭要慢一点。吃饭不是一个任务，它是一种享受。”",
+        "pinyin": "Tā cháng cháng gào sù wǒ: “lǐ míng, chī fàn yào màn yì diǎn. Chī fàn bú shì yí gè rèn wù, tā shì yī zhǒng xiǎng shòu. ”",
+        "vietnamese": "Ông thường bảo tôi: \"Lý Minh, ăn phải chậm một chút. Ăn không phải là một nhiệm vụ, nó là một sự tận hưởng.\""
+      },
+      {
+        "id": 53,
+        "startTime": 255.9,
+        "endTime": 258.0,
+        "speaker": "Lý Minh",
+        "chinese": "一种享受。”",
+        "pinyin": "Yī zhǒng xiǎng shòu. ”",
+        "vietnamese": "...một sự tận hưởng.\""
+      },
+      {
+        "id": 54,
+        "startTime": 258.0,
+        "endTime": 265.5,
+        "speaker": "Lý Minh",
+        "chinese": "“吃饭不是一个任务，它是一种享受。” 这句话说得真好。",
+        "pinyin": "“chī fàn bú shì yí gè rèn wù, tā shì yī zhǒng xiǎng shòu. ” zhè jù huà shuō dé zhēn hǎo.",
+        "vietnamese": "\"Ăn không phải là một nhiệm vụ, nó là một sự tận hưởng.\" Câu này nói hay thật."
+      },
+      {
+        "id": 55,
+        "startTime": 265.5,
+        "endTime": 275.2,
+        "speaker": "Lý Minh",
+        "chinese": "是啊。所以，亲爱的听众朋友们，你们也可以问问自己或者问问你身边的人:你吃饭快吗？",
+        "pinyin": "Shì a. Suǒ yǐ, qīn ài de tīng zhòng péng yǒu men, nǐ men yě kě yǐ wèn wèn zì jǐ huò zhě wèn wèn nǐ shēn biān de rén: nǐ chī fàn kuài ma?",
+        "vietnamese": "Đúng vậy. Vì vậy, các bạn thính giả thân mến, các bạn cũng có thể tự hỏi mình hoặc hỏi người bên cạnh bạn: Bạn ăn có nhanh không?"
+      },
+      {
+        "id": 56,
+        "startTime": 275.2,
+        "endTime": 281.4,
+        "speaker": "Lý Minh",
+        "chinese": "如果答案是“是”，那么也许你们可以听听我们接下来的对话。",
+        "pinyin": "Rú guǒ dá àn shì “shì”, nà me yě xǔ nǐ men kě yǐ tīng tīng wǒ men jiē xià lái de duì huà.",
+        "vietnamese": "Nếu câu trả lời là \"có\", vậy thì có lẽ các bạn có thể nghe tiếp cuộc đối thoại của chúng tôi."
+      },
+      {
+        "id": 57,
+        "startTime": 281.4,
+        "endTime": 287.3,
+        "speaker": "Lý Minh",
+        "chinese": "我们常常听到家人朋友对我们说，“吃饭要慢一点”，这背后其实",
+        "pinyin": "Wǒ men cháng cháng tīng dào jiā rén péng yǒu duì wǒ men shuō, “chī fàn yào màn yì diǎn”, zhè bèi hòu qí shí",
+        "vietnamese": "Chúng ta thường nghe người nhà, bạn bè nói với mình \"ăn phải chậm một chút\", đằng sau câu nói này thực ra"
+      },
+      {
+        "id": 58,
+        "startTime": 287.2,
+        "endTime": 289.5,
+        "speaker": "Lý Minh",
+        "chinese": "是有很多原因的。",
+        "pinyin": "Shì yǒu hěn duō yuán yīn de.",
+        "vietnamese": "có rất nhiều nguyên nhân."
+      },
+      {
+        "id": 59,
+        "startTime": 289.6,
+        "endTime": 292.1,
+        "speaker": "Lý Minh",
+        "chinese": "嗯，我很想听听。",
+        "pinyin": "ń, wǒ hěn xiǎng tīng tīng.",
+        "vietnamese": "Ừm, tôi rất muốn nghe đây."
+      },
+      {
+        "id": 60,
+        "startTime": 292.1,
+        "endTime": 296.4,
+        "speaker": "Lý Minh",
+        "chinese": "好，我们刚才聊了我们以前吃饭快的习惯。",
+        "pinyin": "Hǎo, wǒ men gāng cái liáo le wǒ men yǐ qián chī fàn kuài de xí guàn.",
+        "vietnamese": "Được, chúng ta vừa nói về thói quen ăn nhanh trước đây của mình."
+      },
+      {
+        "id": 61,
+        "startTime": 296.4,
+        "endTime": 301.3,
+        "speaker": "Lý Minh",
+        "chinese": "王雨，你刚才说，你妈妈让你“吃饭要慢一点”。",
+        "pinyin": "Wáng yǔ, nǐ gāng cái shuō, nǐ mā mā ràng nǐ “chī fàn yào màn yì diǎn”.",
+        "vietnamese": "Vương Vũ, cậu vừa nói mẹ cậu bảo cậu \"ăn phải chậm một chút\"."
+      },
+      {
+        "id": 62,
+        "startTime": 301.3,
+        "endTime": 303.7,
+        "speaker": "Lý Minh",
+        "chinese": "那你知道为什么要慢一点吗？",
+        "pinyin": "Nà nǐ zhī dào wèi shén me yào màn yì diǎn ma?",
+        "vietnamese": "Vậy cậu có biết tại sao phải chậm một chút không?"
+      },
+      {
+        "id": 63,
+        "startTime": 303.7,
+        "endTime": 306.1,
+        "speaker": "Lý Minh",
+        "chinese": "嗯，我说不好。",
+        "pinyin": "ń, wǒ shuō bù hǎo.",
+        "vietnamese": "Ừm, tôi cũng không nói rõ được."
+      },
+      {
+        "id": 64,
+        "startTime": 306.1,
+        "endTime": 309.4,
+        "speaker": "Lý Minh",
+        "chinese": "我只知道，那次我吃得太快，胃不舒服。",
+        "pinyin": "Wǒ zhǐ zhī dào, nà cì wǒ chī dé tài kuài, wèi bù shū fú.",
+        "vietnamese": "Tôi chỉ biết là, lần đó tôi ăn quá nhanh, dạ dày không được khỏe."
+      },
+      {
+        "id": 65,
+        "startTime": 309.4,
+        "endTime": 313.5,
+        "speaker": "Lý Minh",
+        "chinese": "所以，我想，慢慢吃，可能对胃好？",
+        "pinyin": "Suǒ yǐ, wǒ xiǎng, màn màn chī, kě néng duì wèi hǎo?",
+        "vietnamese": "Nên, tôi nghĩ, ăn chậm, có lẽ tốt cho dạ dày?"
+      },
+      {
+        "id": 66,
+        "startTime": 313.5,
+        "endTime": 315.0,
+        "speaker": "Lý Minh",
+        "chinese": "你说的非常对！",
+        "pinyin": "Nǐ shuō de fēi cháng duì!",
+        "vietnamese": "Cậu nói rất đúng!"
+      },
+      {
+        "id": 67,
+        "startTime": 315.0,
+        "endTime": 317.8,
+        "speaker": "Lý Minh",
+        "chinese": "这可能是最重要的一点。",
+        "pinyin": "Zhè kě néng shì zuì zhòng yào de yì diǎn.",
+        "vietnamese": "Đây có lẽ là điểm quan trọng nhất."
+      },
+      {
+        "id": 68,
+        "startTime": 317.9,
+        "endTime": 320.5,
+        "speaker": "Lý Minh",
+        "chinese": "我们的那句老话就是这么说的:",
+        "pinyin": "Wǒ men de nà jù lǎo huà jiù shì zhè me shuō de:",
+        "vietnamese": "Câu nói xưa của chúng ta chính là nói như vậy:"
+      },
+      {
+        "id": 69,
+        "startTime": 320.5,
+        "endTime": 323.2,
+        "speaker": "Lý Minh",
+        "chinese": "慢慢吃，对身体好。",
+        "pinyin": "Màn màn chī, duì shēn tǐ hǎo.",
+        "vietnamese": "Ăn chậm, tốt cho sức khỏe."
+      },
+      {
+        "id": 70,
+        "startTime": 323.2,
+        "endTime": 325.4,
+        "speaker": "Lý Minh",
+        "chinese": "慢慢吃，对身体好。",
+        "pinyin": "Màn màn chī, duì shēn tǐ hǎo.",
+        "vietnamese": "Ăn chậm, tốt cho sức khỏe."
+      },
+      {
+        "id": 71,
+        "startTime": 325.4,
+        "endTime": 328.1,
+        "speaker": "Lý Minh",
+        "chinese": "嗯，这句话我好像也听过。",
+        "pinyin": "ń, zhè jù huà wǒ hǎo xiàng yě tīng guò.",
+        "vietnamese": "Ừm, câu này hình như tôi cũng có nghe qua."
+      },
+      {
+        "id": 72,
+        "startTime": 328.1,
+        "endTime": 332.6,
+        "speaker": "Lý Minh",
+        "chinese": "是的。你想，我们的胃需要时间去工作。",
+        "pinyin": "Shì de. Nǐ xiǎng, wǒ men de wèi xū yào shí jiān qù gōng zuò.",
+        "vietnamese": "Đúng vậy. Cậu nghĩ xem, dạ dày của chúng ta cần thời gian để làm việc."
+      },
+      {
+        "id": 73,
+        "startTime": 332.6,
+        "endTime": 334.7,
+        "speaker": "Lý Minh",
+        "chinese": "如果我们吃得太快，",
+        "pinyin": "Rú guǒ wǒ men chī dé tài kuài,",
+        "vietnamese": "Nếu chúng ta ăn quá nhanh,"
+      },
+      {
+        "id": 74,
+        "startTime": 334.7,
+        "endTime": 338.5,
+        "speaker": "Lý Minh",
+        "chinese": "很多食物没有好好地嚼，就到了胃里。",
+        "pinyin": "Hěn duō shí wù méi yǒu hǎo hǎo dì jué, jiù dào le wèi lǐ.",
+        "vietnamese": "nhiều thức ăn không được nhai kỹ đã vào đến dạ dày."
+      },
+      {
+        "id": 75,
+        "startTime": 338.5,
+        "endTime": 341.0,
+        "speaker": "Lý Minh",
+        "chinese": "这样，胃就会很累。",
+        "pinyin": "Zhè yàng, wèi jiù huì hěn lèi.",
+        "vietnamese": "Như vậy, dạ dày sẽ rất mệt."
+      },
+      {
+        "id": 76,
+        "startTime": 341.0,
+        "endTime": 343.3,
+        "speaker": "Lý Minh",
+        "chinese": "我明白了。就像一个工厂，",
+        "pinyin": "Wǒ míng bái le. Jiù xiàng yí gè gōng chǎng,",
+        "vietnamese": "Tôi hiểu rồi. Giống như một nhà máy,"
+      },
+      {
+        "id": 77,
+        "startTime": 343.3,
+        "endTime": 345.1,
+        "speaker": "Lý Minh",
+        "chinese": "一下来了太多的工作，",
+        "pinyin": "Yī xià lái le tài duō de gōng zuò,",
+        "vietnamese": "cùng lúc nhận quá nhiều việc,"
+      },
+      {
+        "id": 78,
+        "startTime": 345.0,
+        "endTime": 347.3,
+        "speaker": "Lý Minh",
+        "chinese": "工人们就会很累很累。",
+        "pinyin": "Gōng rén men jiù huì hěn lèi hěn lèi.",
+        "vietnamese": "công nhân sẽ rất mệt, rất mệt."
+      },
+      {
+        "id": 79,
+        "startTime": 347.3,
+        "endTime": 349.4,
+        "speaker": "Lý Minh",
+        "chinese": "我们的胃就是那个工厂。",
+        "pinyin": "Wǒ men de wèi jiù shì nà ge gōng chǎng.",
+        "vietnamese": "Dạ dày của chúng ta chính là nhà máy đó."
+      },
+      {
+        "id": 80,
+        "startTime": 349.4,
+        "endTime": 352.4,
+        "speaker": "Lý Minh",
+        "chinese": "这个比喻非常好！就是这个意思。",
+        "pinyin": "Zhè ge bǐ yù fēi cháng hǎo! Jiù shì zhè ge yì si.",
+        "vietnamese": "Phép so sánh này rất hay! Chính là ý đó."
+      },
+      {
+        "id": 81,
+        "startTime": 352.4,
+        "endTime": 355.5,
+        "speaker": "Lý Minh",
+        "chinese": "所以，慢慢吃，对身体好，",
+        "pinyin": "Suǒ yǐ, màn màn chī, duì shēn tǐ hǎo,",
+        "vietnamese": "Cho nên, ăn chậm, tốt cho sức khỏe,"
+      },
+      {
+        "id": 82,
+        "startTime": 355.4,
+        "endTime": 357.9,
+        "speaker": "Lý Minh",
+        "chinese": "尤其是对我们的胃好。",
+        "pinyin": "Yóu qí shì duì wǒ men de wèi hǎo.",
+        "vietnamese": "đặc biệt là tốt cho dạ dày của chúng ta."
+      },
+      {
+        "id": 83,
+        "startTime": 357.9,
+        "endTime": 359.8,
+        "speaker": "Lý Minh",
+        "chinese": "嗯，有道理。",
+        "pinyin": "ń, yǒu dào lǐ.",
+        "vietnamese": "Ừm, có lý."
+      },
+      {
+        "id": 84,
+        "startTime": 359.8,
+        "endTime": 362.7,
+        "speaker": "Lý Minh",
+        "chinese": "除了对胃好，还有别的好处吗？",
+        "pinyin": "Chú le duì wèi hǎo, hái yǒu bié de hǎo chù ma?",
+        "vietnamese": "Ngoài tốt cho dạ dày, còn có lợi ích nào khác không?"
+      },
+      {
+        "id": 85,
+        "startTime": 362.7,
+        "endTime": 364.7,
+        "speaker": "Lý Minh",
+        "chinese": "当然有。",
+        "pinyin": "Dāng rán yǒu.",
+        "vietnamese": "Tất nhiên là có."
+      },
+      {
+        "id": 86,
+        "startTime": 364.7,
+        "endTime": 367.8,
+        "speaker": "Lý Minh",
+        "chinese": "你想想，你今天中午吃的上海菜，",
+        "pinyin": "Nǐ xiǎng xiǎng, nǐ jīn tiān zhōng wǔ chī de shàng hǎi cài,",
+        "vietnamese": "Cậu nghĩ xem, món ăn Thượng Hải cậu ăn trưa nay,"
+      },
+      {
+        "id": 87,
+        "startTime": 367.8,
+        "endTime": 370.4,
+        "speaker": "Lý Minh",
+        "chinese": "你还记得它的味道吗？",
+        "pinyin": "Nǐ hái jì de tā de wèi dào ma?",
+        "vietnamese": "cậu còn nhớ vị của nó không?"
+      },
+      {
+        "id": 88,
+        "startTime": 370.4,
+        "endTime": 372.6,
+        "speaker": "Lý Minh",
+        "chinese": "我……我想想。",
+        "pinyin": "Wǒ... Wǒ xiǎng xiǎng.",
+        "vietnamese": "Tôi... để tôi nghĩ xem."
+      },
+      {
+        "id": 89,
+        "startTime": 372.6,
+        "endTime": 375.8,
+        "speaker": "Lý Minh",
+        "chinese": "有一个红烧肉，还有一个青菜。",
+        "pinyin": "Yǒu yí gè hóng shāo ròu, hái yǒu yí gè qīng cài.",
+        "vietnamese": "Có một món thịt kho tàu, và một món rau xanh."
+      },
+      {
+        "id": 90,
+        "startTime": 375.8,
+        "endTime": 377.7,
+        "speaker": "Lý Minh",
+        "chinese": "因为我吃得太快了，",
+        "pinyin": "Yīn wèi wǒ chī dé tài kuài le,",
+        "vietnamese": "Bởi vì tôi ăn quá nhanh,"
+      },
+      {
+        "id": 91,
+        "startTime": 377.7,
+        "endTime": 380.6,
+        "speaker": "Lý Minh",
+        "chinese": "我现在只记得它很好吃，",
+        "pinyin": "Wǒ xiàn zài zhǐ jì de tā hěn hǎo chī,",
+        "vietnamese": "bây giờ tôi chỉ nhớ là nó rất ngon,"
+      },
+      {
+        "id": 92,
+        "startTime": 380.6,
+        "endTime": 384.1,
+        "speaker": "Lý Minh",
+        "chinese": "但是具体是什么味道，好像有点忘了。",
+        "pinyin": "Dàn shì jù tǐ shì shén me wèi dào, hǎo xiàng yǒu diǎn wàng le.",
+        "vietnamese": "nhưng vị cụ thể là gì, hình như hơi quên rồi."
+      },
+      {
+        "id": 93,
+        "startTime": 384.1,
+        "endTime": 386.8,
+        "speaker": "Lý Minh",
+        "chinese": "哈哈，你看，这就是问题所在。",
+        "pinyin": "Hā hā, nǐ kàn, zhè jiù shì wèn tí suǒ zài.",
+        "vietnamese": "Haha, cậu thấy chưa, vấn đề nằm ở đó."
+      },
+      {
+        "id": 94,
+        "startTime": 386.8,
+        "endTime": 388.6,
+        "speaker": "Lý Minh",
+        "chinese": "如果你吃慢一点，",
+        "pinyin": "Rú guǒ nǐ chī màn yì diǎn,",
+        "vietnamese": "Nếu cậu ăn chậm một chút,"
+      },
+      {
+        "id": 95,
+        "startTime": 388.6,
+        "endTime": 392.0,
+        "speaker": "Lý Minh",
+        "chinese": "你就能更好地品尝食物的味道。",
+        "pinyin": "Nǐ jiù néng gèng hǎo dì pǐn cháng shí wù de wèi dào.",
+        "vietnamese": "cậu sẽ có thể nếm được hương vị của món ăn tốt hơn."
+      },
+      {
+        "id": 96,
+        "startTime": 392.0,
+        "endTime": 394.5,
+        "speaker": "Lý Minh",
+        "chinese": "每一口，你都能感觉到",
+        "pinyin": "Měi yī kǒu, nǐ dōu néng gǎn jué dào",
+        "vietnamese": "Mỗi một miếng, cậu đều có thể cảm nhận được"
+      },
+      {
+        "id": 97,
+        "startTime": 394.5,
+        "endTime": 399.4,
+        "speaker": "Lý Minh",
+        "chinese": "这个菜是甜的，还是咸的，是软的，还是脆的。",
+        "pinyin": "Zhè ge cài shì tián de, hái shì xián de, shì ruǎn de, hái shì cuì de.",
+        "vietnamese": "món ăn này là ngọt, hay là mặn, là mềm, hay là giòn."
+      },
+      {
+        "id": 98,
+        "startTime": 399.4,
+        "endTime": 401.0,
+        "speaker": "Lý Minh",
+        "chinese": "对！有的时候，",
+        "pinyin": "Duì! Yǒu de shí hòu,",
+        "vietnamese": "Đúng! Có những lúc,"
+      },
+      {
+        "id": 99,
+        "startTime": 400.9,
+        "endTime": 405.2,
+        "speaker": "Lý Minh",
+        "chinese": "我跟朋友一起去一家很好的餐厅，花了很多钱。",
+        "pinyin": "Wǒ gēn péng yǒu yì qǐ qù yī jiā hěn hǎo de cān tīng, huā le hěn duō qián.",
+        "vietnamese": "tôi cùng bạn bè đến một nhà hàng rất ngon, tốn rất nhiều tiền."
+      },
+      {
+        "id": 100,
+        "startTime": 405.2,
+        "endTime": 406.8,
+        "speaker": "Lý Minh",
+        "chinese": "如果我吃得太快，",
+        "pinyin": "Rú guǒ wǒ chī dé tài kuài,",
+        "vietnamese": "Nếu tôi ăn quá nhanh,"
+      },
+      {
+        "id": 101,
+        "startTime": 406.7,
+        "endTime": 408.5,
+        "speaker": "Lý Minh",
+        "chinese": "感觉有点浪费钱，",
+        "pinyin": "Gǎn jué yǒu diǎn làng fèi qián,",
+        "vietnamese": "cảm giác hơi lãng phí tiền,"
+      },
+      {
+        "id": 102,
+        "startTime": 408.5,
+        "endTime": 411.8,
+        "speaker": "Lý Minh",
+        "chinese": "因为我都没有好好地享受那个味道。",
+        "pinyin": "Yīn wèi wǒ dōu méi yǒu hǎo hǎo dì xiǎng shòu nà ge wèi dào.",
+        "vietnamese": "bởi vì tôi đâu có tận hưởng hương vị đó một cách trọn vẹn."
+      },
+      {
+        "id": 103,
+        "startTime": 411.8,
+        "endTime": 412.4,
+        "speaker": "Lý Minh",
+        "chinese": "没错。",
+        "pinyin": "Méi cuò.",
+        "vietnamese": "Đúng vậy."
+      },
+      {
+        "id": 104,
+        "startTime": 412.4,
+        "endTime": 416.5,
+        "speaker": "Lý Minh",
+        "chinese": "当一道你特别喜欢的菜放在你面前，",
+        "pinyin": "Dāng yī dào nǐ tè bié xǐ huān de cài fàng zài nǐ miàn qián,",
+        "vietnamese": "Khi một món ăn cậu đặc biệt thích được đặt trước mặt,"
+      },
+      {
+        "id": 105,
+        "startTime": 416.5,
+        "endTime": 418.1,
+        "speaker": "Lý Minh",
+        "chinese": "你心里一定会想:",
+        "pinyin": "Nǐ xīn lǐ yí dìng huì xiǎng:",
+        "vietnamese": "trong lòng cậu nhất định sẽ nghĩ:"
+      },
+      {
+        "id": 106,
+        "startTime": 418.1,
+        "endTime": 421.2,
+        "speaker": "Lý Minh",
+        "chinese": "哇，这个菜太好吃了！",
+        "pinyin": "Wa, zhè ge cài tài hǎo chī le!",
+        "vietnamese": "Wow, món này ngon quá!"
+      },
+      {
+        "id": 107,
+        "startTime": 421.2,
+        "endTime": 423.3,
+        "speaker": "Lý Minh",
+        "chinese": "对！一定会这么想！",
+        "pinyin": "Duì! Yí dìng huì zhè me xiǎng!",
+        "vietnamese": "Đúng! Chắc chắn sẽ nghĩ như vậy!"
+      },
+      {
+        "id": 108,
+        "startTime": 423.4,
+        "endTime": 425.2,
+        "speaker": "Lý Minh",
+        "chinese": "特别是那个红烧肉，",
+        "pinyin": "Tè bié shì nà ge hóng shāo ròu,",
+        "vietnamese": "Đặc biệt là món thịt kho tàu đó,"
+      },
+      {
+        "id": 109,
+        "startTime": 425.2,
+        "endTime": 427.4,
+        "speaker": "Lý Minh",
+        "chinese": "我第一口吃的时候，心里就说:",
+        "pinyin": "Wǒ dì yī kǒu chī de shí hòu, xīn lǐ jiù shuō:",
+        "vietnamese": "khi ăn miếng đầu tiên, trong lòng tôi đã thốt lên:"
+      },
+      {
+        "id": 110,
+        "startTime": 427.4,
+        "endTime": 430.6,
+        "speaker": "Lý Minh",
+        "chinese": "哇，这个菜太好吃了！",
+        "pinyin": "Wa, zhè ge cài tài hǎo chī le!",
+        "vietnamese": "Wow, món này ngon quá!"
+      },
+      {
+        "id": 111,
+        "startTime": 430.6,
+        "endTime": 432.1,
+        "speaker": "Lý Minh",
+        "chinese": "那么，当你说",
+        "pinyin": "Nà me, dāng nǐ shuō",
+        "vietnamese": "Vậy thì, khi cậu nói"
+      },
+      {
+        "id": 112,
+        "startTime": 432.2,
+        "endTime": 434.2,
+        "speaker": "Lý Minh",
+        "chinese": "“这个菜太好吃了！”的时候，",
+        "pinyin": "“zhè ge cài tài hǎo chī le! ” de shí hòu,",
+        "vietnamese": "\"Món này ngon quá!\" thì,"
+      },
+      {
+        "id": 113,
+        "startTime": 434.2,
+        "endTime": 436.8,
+        "speaker": "Lý Minh",
+        "chinese": "你是不是应该慢下来，",
+        "pinyin": "Nǐ shì bú shì yīng gāi màn xià lái,",
+        "vietnamese": "có phải cậu nên chậm lại,"
+      },
+      {
+        "id": 114,
+        "startTime": 436.7,
+        "endTime": 439.2,
+        "speaker": "Lý Minh",
+        "chinese": "多感受一下它的美味呢？",
+        "pinyin": "Duō gǎn shòu yī xià tā de měi wèi ne?",
+        "vietnamese": "cảm nhận thêm vị ngon của nó không?"
+      },
+      {
+        "id": 115,
+        "startTime": 439.2,
+        "endTime": 442.0,
+        "speaker": "Lý Minh",
+        "chinese": "一口一口，慢慢地吃。",
+        "pinyin": "Yī kǒu yī kǒu, màn màn dì chī.",
+        "vietnamese": "Từng miếng từng miếng, ăn từ từ thôi."
+      },
+      {
+        "id": 116,
+        "startTime": 442.0,
+        "endTime": 443.8,
+        "speaker": "Lý Minh",
+        "chinese": "你说得对！",
+        "pinyin": "Nǐ shuō dé duì!",
+        "vietnamese": "Cậu nói đúng!"
+      },
+      {
+        "id": 117,
+        "startTime": 443.8,
+        "endTime": 445.5,
+        "speaker": "Lý Minh",
+        "chinese": "如果一个东西那么好吃，",
+        "pinyin": "Rú guǒ yí gè dōng xī nà me hǎo chī,",
+        "vietnamese": "Nếu một thứ ngon đến vậy,"
+      },
+      {
+        "id": 118,
+        "startTime": 445.5,
+        "endTime": 448.0,
+        "speaker": "Lý Minh",
+        "chinese": "我应该给它多一点时间。",
+        "pinyin": "Wǒ yīng gāi gěi tā duō yì diǎn shí jiān.",
+        "vietnamese": "tôi nên dành cho nó nhiều thời gian hơn."
+      },
+      {
+        "id": 119,
+        "startTime": 448.0,
+        "endTime": 449.9,
+        "speaker": "Lý Minh",
+        "chinese": "我应该慢慢地享受它。",
+        "pinyin": "Wǒ yīng gāi màn màn dì xiǎng shòu tā.",
+        "vietnamese": "Tôi nên từ từ tận hưởng nó."
+      },
+      {
+        "id": 120,
+        "startTime": 449.9,
+        "endTime": 453.8,
+        "speaker": "Lý Minh",
+        "chinese": "这样，吃饭就真的变成了一种快乐。",
+        "pinyin": "Zhè yàng, chī fàn jiù zhēn de biàn chéng le yī zhǒng kuài lè.",
+        "vietnamese": "Như vậy, việc ăn uống mới thực sự trở thành một niềm vui."
+      },
+      {
+        "id": 121,
+        "startTime": 453.8,
+        "endTime": 454.7,
+        "speaker": "Lý Minh",
+        "chinese": "是啊。",
+        "pinyin": "Shì a.",
+        "vietnamese": "Đúng thế."
+      },
+      {
+        "id": 122,
+        "startTime": 454.6,
+        "endTime": 457.1,
+        "speaker": "Lý Minh",
+        "chinese": "所以，慢慢吃，对身体好，",
+        "pinyin": "Suǒ yǐ, màn màn chī, duì shēn tǐ hǎo,",
+        "vietnamese": "Vậy nên, ăn chậm, tốt cho sức khỏe,"
+      },
+      {
+        "id": 123,
+        "startTime": 457.1,
+        "endTime": 460.7,
+        "speaker": "Lý Minh",
+        "chinese": "也能让我们更好地享受美食。",
+        "pinyin": "Yě néng ràng wǒ men gèng hǎo dì xiǎng shòu měi shí.",
+        "vietnamese": "cũng có thể giúp chúng ta tận hưởng món ngon tốt hơn."
+      },
+      {
+        "id": 124,
+        "startTime": 460.7,
+        "endTime": 463.1,
+        "speaker": "Lý Minh",
+        "chinese": "下次你再吃到好吃的菜，",
+        "pinyin": "Xià cì nǐ zài chī dào hǎo chī de cài,",
+        "vietnamese": "Lần sau khi lại ăn được món ngon,"
+      },
+      {
+        "id": 125,
+        "startTime": 463.1,
+        "endTime": 465.2,
+        "speaker": "Lý Minh",
+        "chinese": "别忘了告诉自己，",
+        "pinyin": "Bié wàng le gào sù zì jǐ,",
+        "vietnamese": "đừng quên tự nhủ,"
+      },
+      {
+        "id": 126,
+        "startTime": 465.2,
+        "endTime": 467.5,
+        "speaker": "Lý Minh",
+        "chinese": "慢一点，再慢一点。",
+        "pinyin": "Màn yì diǎn, zài màn yì diǎn.",
+        "vietnamese": "chậm một chút, chậm thêm chút nữa."
+      },
+      {
+        "id": 127,
+        "startTime": 467.5,
+        "endTime": 468.9,
+        "speaker": "Lý Minh",
+        "chinese": "我记住了。",
+        "pinyin": "Wǒ jì zhù le.",
+        "vietnamese": "Tôi nhớ rồi."
+      },
+      {
+        "id": 128,
+        "startTime": 468.9,
+        "endTime": 471.2,
+        "speaker": "Lý Minh",
+        "chinese": "第一，慢慢吃，对身体好。",
+        "pinyin": "Dì yī, màn màn chī, duì shēn tǐ hǎo.",
+        "vietnamese": "Thứ nhất, ăn chậm, tốt cho sức khỏe."
+      },
+      {
+        "id": 129,
+        "startTime": 471.2,
+        "endTime": 475.1,
+        "speaker": "Lý Minh",
+        "chinese": "第二，可以更好地品尝食物的味道。",
+        "pinyin": "Dì èr, kě yǐ gèng hǎo dì pǐn cháng shí wù de wèi dào.",
+        "vietnamese": "Thứ hai, có thể nếm được hương vị món ăn tốt hơn."
+      },
+      {
+        "id": 130,
+        "startTime": 475.1,
+        "endTime": 475.7,
+        "speaker": "Lý Minh",
+        "chinese": "当我觉得",
+        "pinyin": "Dāng wǒ jué de",
+        "vietnamese": "Khi tôi cảm thấy"
+      },
+      {
+        "id": 131,
+        "startTime": 475.8,
+        "endTime": 478.1,
+        "speaker": "Lý Minh",
+        "chinese": "“这个菜太好吃了！”的时候，",
+        "pinyin": "“zhè ge cài tài hǎo chī le! ” de shí hòu,",
+        "vietnamese": "\"Món này ngon quá!\" thì,"
+      },
+      {
+        "id": 132,
+        "startTime": 478.0,
+        "endTime": 480.5,
+        "speaker": "Lý Minh",
+        "chinese": "就是提醒我要慢下来的信号。",
+        "pinyin": "Jiù shì tí xǐng wǒ yào màn xià lái de xìn hào.",
+        "vietnamese": "đó chính là tín hiệu nhắc tôi phải chậm lại."
+      },
+      {
+        "id": 133,
+        "startTime": 480.5,
+        "endTime": 483.1,
+        "speaker": "Lý Minh",
+        "chinese": "总结得非常好。",
+        "pinyin": "Zǒng jié dé fēi cháng hǎo.",
+        "vietnamese": "Tổng kết rất tốt."
+      },
+      {
+        "id": 134,
+        "startTime": 483.1,
+        "endTime": 486.6,
+        "speaker": "Lý Minh",
+        "chinese": "李明，我们刚才说的，好像都是一个人吃饭的时候。",
+        "pinyin": "Lǐ míng, wǒ men gāng cái shuō de, hǎo xiàng dōu shì yí gè rén chī fàn de shí hòu.",
+        "vietnamese": "Lý Minh, những gì chúng ta vừa nói, hình như đều là khi ăn một mình."
+      },
+      {
+        "id": 135,
+        "startTime": 486.6,
+        "endTime": 490.5,
+        "speaker": "Lý Minh",
+        "chinese": "但是很多时候，我们是和家人、朋友一起吃饭的。",
+        "pinyin": "Dàn shì hěn duō shí hòu, wǒ men shì hé jiā rén, péng yǒu yì qǐ chī fàn de.",
+        "vietnamese": "Nhưng rất nhiều lúc, chúng ta ăn cùng với người nhà, bạn bè."
+      },
+      {
+        "id": 136,
+        "startTime": 490.6,
+        "endTime": 492.6,
+        "speaker": "Lý Minh",
+        "chinese": "你说到了一个非常重要的地方。",
+        "pinyin": "Nǐ shuō dào le yí gè fēi cháng zhòng yào de dì fāng.",
+        "vietnamese": "Cậu đã nói đến một điểm rất quan trọng."
+      },
+      {
+        "id": 137,
+        "startTime": 492.6,
+        "endTime": 496.5,
+        "speaker": "Lý Minh",
+        "chinese": "在中国，吃饭很多时候不只是为了吃饱，",
+        "pinyin": "Zài zhōng guó, chī fàn hěn duō shí hòu bù zhǐ shì wèi le chī bǎo,",
+        "vietnamese": "Ở Trung Quốc, việc ăn uống nhiều khi không chỉ để ăn cho no,"
+      },
+      {
+        "id": 138,
+        "startTime": 496.4,
+        "endTime": 499.0,
+        "speaker": "Lý Minh",
+        "chinese": "它是一种很重要的社交活动。",
+        "pinyin": "Tā shì yī zhǒng hěn zhòng yào de shè jiāo huó dòng.",
+        "vietnamese": "nó là một hoạt động xã giao rất quan trọng."
+      },
+      {
+        "id": 139,
+        "startTime": 499.1,
+        "endTime": 503.3,
+        "speaker": "Lý Minh",
+        "chinese": "是的，跟家人每个星期一起吃一次饭，",
+        "pinyin": "Shì de, gēn jiā rén měi gè xīng qī yì qǐ chī yī cì fàn,",
+        "vietnamese": "Đúng vậy, mỗi tuần ăn một bữa cùng gia đình,"
+      },
+      {
+        "id": 140,
+        "startTime": 503.3,
+        "endTime": 506.0,
+        "speaker": "Lý Minh",
+        "chinese": "或者跟好久不见的朋友约个饭。",
+        "pinyin": "Huò zhě gēn hǎo jiǔ bú jiàn de péng yǒu yuē gè fàn.",
+        "vietnamese": "hoặc hẹn ăn một bữa với người bạn lâu ngày không gặp."
+      },
+      {
+        "id": 141,
+        "startTime": 506.0,
+        "endTime": 512.0,
+        "speaker": "Lý Minh",
+        "chinese": "对。在这些时候，你觉得大家吃饭是快还是慢？",
+        "pinyin": "Duì. Zài zhè xiē shí hòu, nǐ jué de dà jiā chī fàn shì kuài hái shì màn?",
+        "vietnamese": "Đúng. Vào những lúc này, cậu thấy mọi người ăn nhanh hay chậm?"
+      },
+      {
+        "id": 142,
+        "startTime": 512.0,
+        "endTime": 515.8,
+        "speaker": "Lý Minh",
+        "chinese": "我想，肯定是慢的。因为大家要聊天啊！",
+        "pinyin": "Wǒ xiǎng, kěn dìng shì màn de. Yīn wèi dà jiā yào liáo tiān a!",
+        "vietnamese": "Tôi nghĩ, chắc chắn là chậm. Vì mọi người phải nói chuyện mà!"
+      },
+      {
+        "id": 143,
+        "startTime": 515.7,
+        "endTime": 519.2,
+        "speaker": "Lý Minh",
+        "chinese": "一边吃，一边说话，时间过得很快，",
+        "pinyin": "Yī biān chī, yī biān shuō huà, shí jiān guò dé hěn kuài,",
+        "vietnamese": "Vừa ăn, vừa nói chuyện, thời gian trôi rất nhanh,"
+      },
+      {
+        "id": 144,
+        "startTime": 519.2,
+        "endTime": 520.6,
+        "speaker": "Lý Minh",
+        "chinese": "但是饭吃得很慢。",
+        "pinyin": "Dàn shì fàn chī dé hěn màn.",
+        "vietnamese": "nhưng bữa ăn thì diễn ra rất chậm."
+      },
+      {
+        "id": 145,
+        "startTime": 520.6,
+        "endTime": 524.5,
+        "speaker": "Lý Minh",
+        "chinese": "完全正确。比如在家里和爸爸妈妈一起吃饭，",
+        "pinyin": "Wán quán zhèng què. Bǐ rú zài jiā lǐ hé bà bà mā mā yì qǐ chī fàn,",
+        "vietnamese": "Hoàn toàn chính xác. Ví dụ như ở nhà ăn cơm cùng bố mẹ,"
+      },
+      {
+        "id": 146,
+        "startTime": 524.5,
+        "endTime": 528.1,
+        "speaker": "Lý Minh",
+        "chinese": "妈妈常常会把一个菜放到我的碗里，然后说……",
+        "pinyin": "Mā mā cháng cháng huì bǎ yí gè cài fàng dào wǒ de wǎn lǐ, rán hòu shuō...",
+        "vietnamese": "mẹ thường sẽ gắp một món ăn vào bát của tôi, rồi nói…"
+      },
+      {
+        "id": 147,
+        "startTime": 528.2,
+        "endTime": 530.3,
+        "speaker": "Lý Minh",
+        "chinese": "她会说:“多吃点”！",
+        "pinyin": "Tā huì shuō: “duō chī diǎn”!",
+        "vietnamese": "Bà sẽ nói: \"Ăn nhiều vào\"!"
+      },
+      {
+        "id": 148,
+        "startTime": 530.2,
+        "endTime": 534.7,
+        "speaker": "Lý Minh",
+        "chinese": "哈哈，对。她还会说:“李明，你尝尝这个鱼，今天很新鲜。”",
+        "pinyin": "Hā hā, duì. Tā hái huì shuō: “lǐ míng, nǐ cháng cháng zhè ge yú, jīn tiān hěn xīn xiān. ”",
+        "vietnamese": "Haha, đúng vậy. Bà còn nói: \"Lý Minh, con thử món cá này xem, hôm nay tươi lắm.\""
+      },
+      {
+        "id": 149,
+        "startTime": 534.7,
+        "endTime": 537.4,
+        "speaker": "Lý Minh",
+        "chinese": "对对对！我妈妈也一模一样！",
+        "pinyin": "Duì duì duì! Wǒ mā mā yě yī mú yī yàng!",
+        "vietnamese": "Đúng đúng đúng! Mẹ tôi cũng y hệt!"
+      },
+      {
+        "id": 150,
+        "startTime": 537.4,
+        "endTime": 542.0,
+        "speaker": "Lý Minh",
+        "chinese": "她会说:“王雨，你尝尝这个汤，我做了很久。”",
+        "pinyin": "Tā huì shuō: “wáng yǔ, nǐ cháng cháng zhè ge tāng, wǒ zuò le hěn jiǔ. ”",
+        "vietnamese": "Bà sẽ nói: \"Vương Vũ, con thử món canh này xem, mẹ hầm lâu lắm đấy.\""
+      },
+      {
+        "id": 151,
+        "startTime": 542.0,
+        "endTime": 543.6,
+        "speaker": "Lý Minh",
+        "chinese": "家人之间总是这样。",
+        "pinyin": "Jiā rén zhī jiān zǒng shì zhè yàng.",
+        "vietnamese": "Giữa người nhà với nhau luôn là như vậy."
+      },
+      {
+        "id": 152,
+        "startTime": 543.6,
+        "endTime": 545.8,
+        "speaker": "Lý Minh",
+        "chinese": "是啊。朋友之间也是。",
+        "pinyin": "Shì a. Péng yǒu zhī jiān yě shì.",
+        "vietnamese": "Đúng thế. Giữa bạn bè cũng vậy."
+      },
+      {
+        "id": 153,
+        "startTime": 545.7,
+        "endTime": 547.8,
+        "speaker": "Lý Minh",
+        "chinese": "我们一起去吃火锅的时候，",
+        "pinyin": "Wǒ men yì qǐ qù chī huǒ guō de shí hòu,",
+        "vietnamese": "Khi chúng ta cùng nhau đi ăn lẩu,"
+      },
+      {
+        "id": 154,
+        "startTime": 547.8,
+        "endTime": 552.3,
+        "speaker": "Lý Minh",
+        "chinese": "我常常会对朋友说:“哎，你尝尝这个牛肉，非常好吃！”",
+        "pinyin": "Wǒ cháng cháng huì duì péng yǒu shuō: “āi, nǐ cháng cháng zhè ge niú ròu, fēi cháng hǎo chī! ”",
+        "vietnamese": "tôi thường sẽ nói với bạn: \"Này, cậu thử món thịt bò này xem, ngon lắm!\""
+      },
+      {
+        "id": 155,
+        "startTime": 552.4,
+        "endTime": 555.8,
+        "speaker": "Lý Minh",
+        "chinese": "没错！然后我的朋友可能会说:",
+        "pinyin": "Méi cuò! Rán hòu wǒ de péng yǒu kě néng huì shuō:",
+        "vietnamese": "Đúng vậy! Rồi bạn tôi có thể sẽ nói:"
+      },
+      {
+        "id": 156,
+        "startTime": 555.8,
+        "endTime": 560.2,
+        "speaker": "Lý Minh",
+        "chinese": "“好啊！那你也你尝尝这个，这个也好吃！”",
+        "pinyin": "“hǎo a! Nà nǐ yě nǐ cháng cháng zhè ge, zhè ge yě hǎo chī! ”",
+        "vietnamese": "\"Được thôi! Vậy cậu cũng thử món này đi, món này cũng ngon này!\""
+      },
+      {
+        "id": 157,
+        "startTime": 560.1,
+        "endTime": 564.6,
+        "speaker": "Lý Minh",
+        "chinese": "这样一来一去，大家分享食物，也分享快乐。",
+        "pinyin": "Zhè yàng yī lái yī qù, dà jiā fēn xiǎng shí wù, yě fēn xiǎng kuài lè.",
+        "vietnamese": "Cứ như vậy qua lại, mọi người chia sẻ đồ ăn, cũng là chia sẻ niềm vui."
+      },
+      {
+        "id": 158,
+        "startTime": 564.7,
+        "endTime": 569.1,
+        "speaker": "Lý Minh",
+        "chinese": "你看，在这样的环境里，吃饭的速度自然就慢下来了。",
+        "pinyin": "Nǐ kàn, zài zhè yàng de huán jìng lǐ, chī fàn de sù dù zì rán jiù màn xià lái le.",
+        "vietnamese": "Cậu thấy đó, trong một môi trường như vậy, tốc độ ăn uống tự nhiên sẽ chậm lại."
+      },
+      {
+        "id": 159,
+        "startTime": 569.1,
+        "endTime": 572.8,
+        "speaker": "Lý Minh",
+        "chinese": "没有人会只低着头，很快地把饭吃完。",
+        "pinyin": "Méi yǒu rén huì zhǐ dī zhe tóu, hěn kuài dì bǎ fàn chī wán.",
+        "vietnamese": "Không ai sẽ chỉ cúi đầu, ăn cho thật nhanh xong bữa."
+      },
+      {
+        "id": 160,
+        "startTime": 572.8,
+        "endTime": 574.4,
+        "speaker": "Lý Minh",
+        "chinese": "大家都在交流。",
+        "pinyin": "Dà jiā dōu zài jiāo liú.",
+        "vietnamese": "Mọi người đều đang giao lưu."
+      },
+      {
+        "id": 161,
+        "startTime": 574.4,
+        "endTime": 575.8,
+        "speaker": "Lý Minh",
+        "chinese": "我明白了。",
+        "pinyin": "Wǒ míng bái le.",
+        "vietnamese": "Tôi hiểu rồi."
+      },
+      {
+        "id": 162,
+        "startTime": 575.8,
+        "endTime": 578.5,
+        "speaker": "Lý Minh",
+        "chinese": "所以，和别人一起吃饭的时候，",
+        "pinyin": "Suǒ yǐ, hé bié rén yì qǐ chī fàn de shí hòu,",
+        "vietnamese": "Cho nên, khi ăn cùng người khác,"
+      },
+      {
+        "id": 163,
+        "startTime": 578.5,
+        "endTime": 583.6,
+        "speaker": "Lý Minh",
+        "chinese": "重要的不只是食物，还有和我们一起吃饭的人。",
+        "pinyin": "Zhòng yào de bù zhǐ shì shí wù, hái yǒu hé wǒ men yì qǐ chī fàn de rén.",
+        "vietnamese": "điều quan trọng không chỉ là món ăn, mà còn là những người ăn cùng chúng ta."
+      },
+      {
+        "id": 164,
+        "startTime": 583.5,
+        "endTime": 587.3,
+        "speaker": "Lý Minh",
+        "chinese": "慢慢吃，我们才有时间去关心对方，去聊天。",
+        "pinyin": "Màn màn chī, wǒ men cái yǒu shí jiān qù guān xīn duì fāng, qù liáo tiān.",
+        "vietnamese": "Ăn chậm, chúng ta mới có thời gian để quan tâm đối phương, để trò chuyện."
+      },
+      {
+        "id": 165,
+        "startTime": 587.4,
+        "endTime": 591.8,
+        "speaker": "Lý Minh",
+        "chinese": "是的。如果一个朋友跟你说，“我最近工作不开心”，",
+        "pinyin": "Shì de. Rú guǒ yí gè péng yǒu gēn nǐ shuō, “wǒ zuì jìn gōng zuò bù kāi xīn”,",
+        "vietnamese": "Đúng vậy. Nếu một người bạn nói với cậu, \"Dạo này công việc của tớ không vui\","
+      },
+      {
+        "id": 166,
+        "startTime": 591.8,
+        "endTime": 594.3,
+        "speaker": "Lý Minh",
+        "chinese": "你总不能一边飞快地吃饭，一边说",
+        "pinyin": "Nǐ zǒng bù néng yī biān fēi kuài dì chī fàn, yī biān shuō",
+        "vietnamese": "cậu không thể nào vừa ăn lia lịa, vừa nói"
+      },
+      {
+        "id": 167,
+        "startTime": 594.2,
+        "endTime": 598.8,
+        "speaker": "Lý Minh",
+        "chinese": "“嗯嗯嗯”。你要停下来，看着他，听他说。",
+        "pinyin": "“ń ń ń”. Nǐ yào tíng xià lái, kàn zhe tā, tīng tā shuō.",
+        "vietnamese": "\"Ừm ừm ừm\". Cậu phải dừng lại, nhìn người đó, lắng nghe họ nói."
+      },
+      {
+        "id": 168,
+        "startTime": 598.9,
+        "endTime": 604.1,
+        "speaker": "Lý Minh",
+        "chinese": "有道理。吃饭的速度，也表示了你对这次聚会的态度。",
+        "pinyin": "Yǒu dào lǐ. Chī fàn de sù dù, yě biǎo shì le nǐ duì zhè cì jù huì de tài dù.",
+        "vietnamese": "Có lý. Tốc độ ăn uống, cũng thể hiện thái độ của bạn đối với buổi gặp mặt này."
+      },
+      {
+        "id": 169,
+        "startTime": 604.1,
+        "endTime": 607.9,
+        "speaker": "Lý Minh",
+        "chinese": "慢下来，表示我很重视和你们在一起的时间。",
+        "pinyin": "Màn xià lái, biǎo shì wǒ hěn zhòng shì hé nǐ men zài yì qǐ de shí jiān.",
+        "vietnamese": "Chậm lại, thể hiện rằng tôi rất coi trọng khoảng thời gian ở bên các bạn."
+      },
+      {
+        "id": 170,
+        "startTime": 607.8,
+        "endTime": 608.9,
+        "speaker": "Lý Minh",
+        "chinese": "正是如此。",
+        "pinyin": "Zhèng shì rú cǐ.",
+        "vietnamese": "Chính là như vậy."
+      },
+      {
+        "id": 171,
+        "startTime": 608.9,
+        "endTime": 614.2,
+        "speaker": "Lý Minh",
+        "chinese": "所以，你看，无论是出于健康，还是为了更好地享受美食，",
+        "pinyin": "Suǒ yǐ, nǐ kàn, wú lùn shì chū yú jiàn kāng, hái shì wèi le gèng hǎo dì xiǎng shòu měi shí,",
+        "vietnamese": "Vậy cậu thấy đó, dù là vì sức khỏe, hay để tận hưởng món ngon tốt hơn,"
+      },
+      {
+        "id": 172,
+        "startTime": 614.2,
+        "endTime": 619.7,
+        "speaker": "Lý Minh",
+        "chinese": "或者是在社交的时候，慢一点吃饭都是更好的选择。",
+        "pinyin": "Huò zhě shì zài shè jiāo de shí hòu, màn yì diǎn chī fàn dōu shì gèng hǎo de xuǎn zé.",
+        "vietnamese": "hoặc là trong lúc xã giao, ăn chậm một chút đều là lựa chọn tốt hơn."
+      },
+      {
+        "id": 173,
+        "startTime": 619.8,
+        "endTime": 622.9,
+        "speaker": "Lý Minh",
+        "chinese": "下次和朋友吃饭，当一道菜上来，",
+        "pinyin": "Xià cì hé péng yǒu chī fàn, dāng yī dào cài shàng lái,",
+        "vietnamese": "Lần sau ăn cơm với bạn, khi một món ăn được dọn lên,"
+      },
+      {
+        "id": 174,
+        "startTime": 622.8,
+        "endTime": 626.1,
+        "speaker": "Lý Minh",
+        "chinese": "你可以先说:“哇，这个菜太好吃了！”",
+        "pinyin": "Nǐ kě yǐ xiān shuō: “wa, zhè ge cài tài hǎo chī le! ”",
+        "vietnamese": "cậu có thể nói trước: \"Wow, món này ngon quá!\""
+      },
+      {
+        "id": 175,
+        "startTime": 626.1,
+        "endTime": 630.0,
+        "speaker": "Lý Minh",
+        "chinese": "然后把它分给你的朋友，说:“你尝尝这个。”",
+        "pinyin": "Rán hòu bǎ tā fēn gěi nǐ de péng yǒu, shuō: “nǐ cháng cháng zhè ge. ”",
+        "vietnamese": "Sau đó chia nó cho bạn của cậu, nói: \"Cậu thử món này đi.\""
+      },
+      {
+        "id": 176,
+        "startTime": 630.0,
+        "endTime": 631.6,
+        "speaker": "Lý Minh",
+        "chinese": "哈哈，我学会了。",
+        "pinyin": "Hā hā, wǒ xué huì le.",
+        "vietnamese": "Haha, tôi học được rồi."
+      },
+      {
+        "id": 177,
+        "startTime": 631.6,
+        "endTime": 634.1,
+        "speaker": "Lý Minh",
+        "chinese": "这样一来，气氛会很好，",
+        "pinyin": "Zhè yàng yī lái, qì fēn huì hěn hǎo,",
+        "vietnamese": "Cứ như vậy, không khí sẽ rất tốt,"
+      },
+      {
+        "id": 178,
+        "startTime": 634.1,
+        "endTime": 637.0,
+        "speaker": "Lý Minh",
+        "chinese": "大家吃饭的速度也自然慢下来了。",
+        "pinyin": "Dà jiā chī fàn de sù dù yě zì rán màn xià lái le.",
+        "vietnamese": "tốc độ ăn uống của mọi người cũng tự nhiên chậm lại."
+      },
+      {
+        "id": 179,
+        "startTime": 637.1,
+        "endTime": 638.3,
+        "speaker": "Lý Minh",
+        "chinese": "没错。",
+        "pinyin": "Méi cuò.",
+        "vietnamese": "Đúng vậy."
+      },
+      {
+        "id": 180,
+        "startTime": 638.3,
+        "endTime": 643.1,
+        "speaker": "Lý Minh",
+        "chinese": "好了，王雨，今天我们从“你吃饭快吗”",
+        "pinyin": "Hǎo le, wáng yǔ, jīn tiān wǒ men cóng “nǐ chī fàn kuài ma”",
+        "vietnamese": "Được rồi, Vương Vũ, hôm nay chúng ta từ câu hỏi \"Cậu ăn có nhanh không\""
+      },
+      {
+        "id": 181,
+        "startTime": 643.1,
+        "endTime": 648.1,
+        "speaker": "Lý Minh",
+        "chinese": "这个问题开始，聊了很多关于吃饭速度的话题。",
+        "pinyin": "Zhè ge wèn tí kāi shǐ, liáo le hěn duō guān yú chī fàn sù dù de huà tí.",
+        "vietnamese": "đã bắt đầu và trò chuyện rất nhiều chủ đề về tốc độ ăn uống."
+      },
+      {
+        "id": 182,
+        "startTime": 648.1,
+        "endTime": 652.2,
+        "speaker": "Lý Minh",
+        "chinese": "是啊，时间过得真快。我学到了很多。",
+        "pinyin": "Shì a, shí jiān guò dé zhēn kuài. Wǒ xué dào le hěn duō.",
+        "vietnamese": "Đúng vậy, thời gian trôi nhanh thật. Tôi đã học được rất nhiều."
+      },
+      {
+        "id": 183,
+        "startTime": 652.2,
+        "endTime": 655.3,
+        "speaker": "Lý Minh",
+        "chinese": "我以前真的没觉得这是个问题。",
+        "pinyin": "Wǒ yǐ qián zhēn de méi jué de zhè shì gè wèn tí.",
+        "vietnamese": "Trước đây tôi thật sự không cảm thấy đây là một vấn đề."
+      },
+      {
+        "id": 184,
+        "startTime": 655.4,
+        "endTime": 662.0,
+        "speaker": "Lý Minh",
+        "chinese": "我们今天在聊天的时候，其实反复用到了几句非常有用的中文。",
+        "pinyin": "Wǒ men jīn tiān zài liáo tiān de shí hòu, qí shí fǎn fù yòng dào le jǐ jù fēi cháng yǒu yòng de zhōng wén.",
+        "vietnamese": "Trong lúc chúng ta trò chuyện hôm nay, thực ra đã lặp đi lặp lại một vài câu tiếng Trung rất hữu ích."
+      },
+      {
+        "id": 185,
+        "startTime": 662.0,
+        "endTime": 666.8,
+        "speaker": "Lý Minh",
+        "chinese": "我觉得，这些句子在大家每天吃饭的时候，都可能用到。",
+        "pinyin": "Wǒ jué de, zhè xiē jù zi zài dà jiā měi tiān chī fàn de shí hòu, dōu kě néng yòng dào.",
+        "vietnamese": "Tôi nghĩ, những câu này mọi người đều có thể dùng đến khi ăn uống hàng ngày."
+      },
+      {
+        "id": 186,
+        "startTime": 666.8,
+        "endTime": 670.8,
+        "speaker": "Lý Minh",
+        "chinese": "嗯，是的！我们来总结一下吧？",
+        "pinyin": "ń, shì de! Wǒ men lái zǒng jié yī xià ba?",
+        "vietnamese": "Ừm, đúng vậy! Chúng ta cùng tổng kết lại nhé?"
+      },
+      {
+        "id": 187,
+        "startTime": 670.8,
+        "endTime": 674.7,
+        "speaker": "Lý Minh",
+        "chinese": "这样听众朋友们也可以再学习一遍。",
+        "pinyin": "Zhè yàng tīng zhòng péng yǒu men yě kě yǐ zài xué xí yī biàn.",
+        "vietnamese": "Như vậy các bạn thính giả cũng có thể học lại một lần nữa."
+      },
+      {
+        "id": 188,
+        "startTime": 674.7,
+        "endTime": 679.9,
+        "speaker": "Lý Minh",
+        "chinese": "好主意。今天我们学习的第一个句子，也是我们的开始，",
+        "pinyin": "Hǎo zhǔ yì. Jīn tiān wǒ men xué xí de dì yí gè jù zi, yě shì wǒ men de kāi shǐ,",
+        "vietnamese": "Ý kiến hay. Câu đầu tiên chúng ta học hôm nay, cũng là khởi đầu của chúng ta,"
+      },
+      {
+        "id": 189,
+        "startTime": 679.9,
+        "endTime": 682.6,
+        "speaker": "Lý Minh",
+        "chinese": "就是问别人吃饭的习惯。",
+        "pinyin": "Jiù shì wèn bié rén chī fàn de xí guàn.",
+        "vietnamese": "chính là hỏi người khác về thói quen ăn uống."
+      },
+      {
+        "id": 190,
+        "startTime": 682.6,
+        "endTime": 683.9,
+        "speaker": "Lý Minh",
+        "chinese": "那句话是？",
+        "pinyin": "Nà jù huà shì?",
+        "vietnamese": "Câu đó là?"
+      },
+      {
+        "id": 191,
+        "startTime": 683.9,
+        "endTime": 686.3,
+        "speaker": "Lý Minh",
+        "chinese": "是:你吃饭快吗？",
+        "pinyin": "Shì: nǐ chī fàn kuài ma?",
+        "vietnamese": "Là: Bạn ăn có nhanh không?"
+      },
+      {
+        "id": 192,
+        "startTime": 686.3,
+        "endTime": 688.9,
+        "speaker": "Lý Minh",
+        "chinese": "对。你吃饭快吗？",
+        "pinyin": "Duì. Nǐ chī fàn kuài ma?",
+        "vietnamese": "Đúng. Bạn ăn có nhanh không?"
+      },
+      {
+        "id": 193,
+        "startTime": 688.8,
+        "endTime": 691.9,
+        "speaker": "Lý Minh",
+        "chinese": "你可以问你的朋友，你的家人。",
+        "pinyin": "Nǐ kě yǐ wèn nǐ de péng yǒu, nǐ de jiā rén.",
+        "vietnamese": "Bạn có thể hỏi bạn bè, người nhà của bạn."
+      },
+      {
+        "id": 194,
+        "startTime": 692.0,
+        "endTime": 694.9,
+        "speaker": "Lý Minh",
+        "chinese": "好。那第二个句子呢？",
+        "pinyin": "Hǎo. Nà dì èr gè jù zi ne?",
+        "vietnamese": "Tốt. Vậy câu thứ hai là gì?"
+      },
+      {
+        "id": 195,
+        "startTime": 694.9,
+        "endTime": 698.6,
+        "speaker": "Lý Minh",
+        "chinese": "通常是家人朋友给我们的一个建议。",
+        "pinyin": "Tōng cháng shì jiā rén péng yǒu gěi wǒ men de yí gè jiàn yì.",
+        "vietnamese": "Thường là một lời khuyên mà người nhà, bạn bè dành cho chúng ta."
+      },
+      {
+        "id": 196,
+        "startTime": 698.6,
+        "endTime": 702.5,
+        "speaker": "Lý Minh",
+        "chinese": "这个建议就是:吃饭要慢一点。",
+        "pinyin": "Zhè ge jiàn yì jiù shì: chī fàn yào màn yì diǎn.",
+        "vietnamese": "Lời khuyên này chính là: Ăn phải chậm một chút."
+      },
+      {
+        "id": 197,
+        "startTime": 702.5,
+        "endTime": 706.6,
+        "speaker": "Lý Minh",
+        "chinese": "嗯。吃饭要慢一点。 我妈妈常说。",
+        "pinyin": "ń. Chī fàn yào màn yì diǎn. Wǒ mā mā cháng shuō.",
+        "vietnamese": "Ừm. Ăn phải chậm một chút. Mẹ tôi thường nói."
+      },
+      {
+        "id": 198,
+        "startTime": 706.6,
+        "endTime": 711.5,
+        "speaker": "Lý Minh",
+        "chinese": "第三个句子，是告诉我们为什么要慢一点。",
+        "pinyin": "Dì sān gè jù zi, shì gào sù wǒ men wèi shén me yào màn yì diǎn.",
+        "vietnamese": "Câu thứ ba, là cho chúng ta biết tại sao phải ăn chậm."
+      },
+      {
+        "id": 199,
+        "startTime": 711.5,
+        "endTime": 717.0,
+        "speaker": "Lý Minh",
+        "chinese": "我想起来了，那句话是:慢慢吃，对身体好。",
+        "pinyin": "Wǒ xiǎng qǐ lái le, nà jù huà shì: màn màn chī, duì shēn tǐ hǎo.",
+        "vietnamese": "Tôi nhớ ra rồi, câu đó là: Ăn chậm, tốt cho sức khỏe."
+      },
+      {
+        "id": 200,
+        "startTime": 717.0,
+        "endTime": 721.1,
+        "speaker": "Lý Minh",
+        "chinese": "完全正确。慢慢吃，对身体好。",
+        "pinyin": "Wán quán zhèng què. Màn màn chī, duì shēn tǐ hǎo.",
+        "vietnamese": "Hoàn toàn chính xác. Ăn chậm, tốt cho sức khỏe."
+      },
+      {
+        "id": 201,
+        "startTime": 721.1,
+        "endTime": 723.7,
+        "speaker": "Lý Minh",
+        "chinese": "这是最重要的一个原因。",
+        "pinyin": "Zhè shì zuì zhòng yào de yí gè yuán yīn.",
+        "vietnamese": "Đây là một lý do quan trọng nhất."
+      },
+      {
+        "id": 202,
+        "startTime": 723.7,
+        "endTime": 725.6,
+        "speaker": "Lý Minh",
+        "chinese": "那第四个呢？",
+        "pinyin": "Nà dì sì gè ne?",
+        "vietnamese": "Vậy câu thứ tư thì sao?"
+      },
+      {
+        "id": 203,
+        "startTime": 725.6,
+        "endTime": 730.3,
+        "speaker": "Lý Minh",
+        "chinese": "是当我们吃到美食的时候，心里的感叹。",
+        "pinyin": "Shì dāng wǒ men chī dào měi shí de shí hòu, xīn lǐ de gǎn tàn.",
+        "vietnamese": "Là lời cảm thán trong lòng khi chúng ta ăn được món ngon."
+      },
+      {
+        "id": 204,
+        "startTime": 730.3,
+        "endTime": 735.6,
+        "speaker": "Lý Minh",
+        "chinese": "对，那句感叹就是:这个菜太好吃了！",
+        "pinyin": "Duì, nà jù gǎn tàn jiù shì: zhè ge cài tài hǎo chī le!",
+        "vietnamese": "Đúng, câu cảm thán đó là: Món này ngon quá!"
+      },
+      {
+        "id": 205,
+        "startTime": 735.6,
+        "endTime": 740.8,
+        "speaker": "Lý Minh",
+        "chinese": "这个菜太好吃了！ 我希望我每天都有机会说这句话！",
+        "pinyin": "Zhè ge cài tài hǎo chī le! Wǒ xī wàng wǒ měi tiān dōu yǒu jī huì shuō zhè jù huà!",
+        "vietnamese": "Món này ngon quá! Tôi hy vọng ngày nào tôi cũng có cơ hội nói câu này!"
+      },
+      {
+        "id": 206,
+        "startTime": 740.8,
+        "endTime": 742.6,
+        "speaker": "Lý Minh",
+        "chinese": "哈哈，我也是。",
+        "pinyin": "Hā hā, wǒ yě shì.",
+        "vietnamese": "Haha, tôi cũng vậy."
+      },
+      {
+        "id": 207,
+        "startTime": 742.6,
+        "endTime": 744.4,
+        "speaker": "Lý Minh",
+        "chinese": "那最后一个句子呢？",
+        "pinyin": "Nà zuì hòu yí gè jù zi ne?",
+        "vietnamese": "Vậy câu cuối cùng là gì?"
+      },
+      {
+        "id": 208,
+        "startTime": 744.5,
+        "endTime": 748.2,
+        "speaker": "Lý Minh",
+        "chinese": "通常是在和别人分享美食的时候说。",
+        "pinyin": "Tōng cháng shì zài hé bié rén fēn xiǎng měi shí de shí hòu shuō.",
+        "vietnamese": "Thường được nói khi chia sẻ món ngon với người khác."
+      },
+      {
+        "id": 209,
+        "startTime": 748.1,
+        "endTime": 751.3,
+        "speaker": "Lý Minh",
+        "chinese": "我知道！是:你尝尝这个。",
+        "pinyin": "Wǒ zhī dào! Shì: nǐ cháng cháng zhè ge.",
+        "vietnamese": "Tôi biết! Là: Bạn thử món này đi."
+      },
+      {
+        "id": 210,
+        "startTime": 751.4,
+        "endTime": 757.4,
+        "speaker": "Lý Minh",
+        "chinese": "没错。你尝尝这个。 一句非常友好，非常热情的邀请。",
+        "pinyin": "Méi cuò. Nǐ cháng cháng zhè ge. Yī jù fēi cháng yǒu hǎo, fēi cháng rè qíng de yāo qǐng.",
+        "vietnamese": "Đúng vậy. Bạn thử món này đi. Một lời mời rất thân thiện, rất nhiệt tình."
+      },
+      {
+        "id": 211,
+        "startTime": 757.3,
+        "endTime": 761.9,
+        "speaker": "Lý Minh",
+        "chinese": "太好了。我们再一起快速地读一遍这五个句子吧。",
+        "pinyin": "Tài hǎo le. Wǒ men zài yì qǐ kuài sù dì dú yī biàn zhè wǔ gè jù zi ba.",
+        "vietnamese": "Tuyệt quá. Chúng ta hãy cùng nhau đọc nhanh lại năm câu này một lần nhé."
+      },
+      {
+        "id": 212,
+        "startTime": 762.0,
+        "endTime": 766.8,
+        "speaker": "Lý Minh",
+        "chinese": "好。 第一句:你吃饭快吗？",
+        "pinyin": "Hǎo. Dì yī jù: nǐ chī fàn kuài ma?",
+        "vietnamese": "Được. Câu thứ nhất: Bạn ăn có nhanh không?"
+      },
+      {
+        "id": 213,
+        "startTime": 766.7,
+        "endTime": 770.7,
+        "speaker": "Lý Minh",
+        "chinese": "第二句:吃饭要慢一点。",
+        "pinyin": "Dì èr jù: chī fàn yào màn yì diǎn.",
+        "vietnamese": "Câu thứ hai: Ăn phải chậm một chút."
+      },
+      {
+        "id": 214,
+        "startTime": 770.8,
+        "endTime": 775.0,
+        "speaker": "Lý Minh",
+        "chinese": "第三句:慢慢吃，对身体好。",
+        "pinyin": "Dì sān jù: màn màn chī, duì shēn tǐ hǎo.",
+        "vietnamese": "Câu thứ ba: Ăn chậm, tốt cho sức khỏe."
+      },
+      {
+        "id": 215,
+        "startTime": 775.0,
+        "endTime": 779.7,
+        "speaker": "Lý Minh",
+        "chinese": "第四句:这个菜太好吃了！",
+        "pinyin": "Dì sì jù: zhè ge cài tài hǎo chī le!",
+        "vietnamese": "Câu thứ tư: Món này ngon quá!"
+      },
+      {
+        "id": 216,
+        "startTime": 779.7,
+        "endTime": 782.7,
+        "speaker": "Lý Minh",
+        "chinese": "第五句:你尝尝这个。",
+        "pinyin": "Dì wǔ jù: nǐ cháng cháng zhè ge.",
+        "vietnamese": "Câu thứ năm: Bạn thử món này đi."
+      },
+      {
+        "id": 217,
+        "startTime": 782.7,
+        "endTime": 785.5,
+        "speaker": "Lý Minh",
+        "chinese": "我觉得这五句话都非常实用！",
+        "pinyin": "Wǒ jué de zhè wǔ jù huà dōu fēi cháng shí yòng!",
+        "vietnamese": "Tôi thấy cả năm câu này đều rất thực tế!"
+      },
+      {
+        "id": 218,
+        "startTime": 785.5,
+        "endTime": 790.6,
+        "speaker": "Lý Minh",
+        "chinese": "我今天晚上回家吃饭，就要用起来。我要慢慢吃，",
+        "pinyin": "Wǒ jīn tiān wǎn shàng huí jiā chī fàn, jiù yào yòng qǐ lái. Wǒ yào màn màn chī,",
+        "vietnamese": "Tối nay về nhà ăn cơm, tôi phải áp dụng ngay. Tôi sẽ ăn thật chậm,"
+      },
+      {
+        "id": 219,
+        "startTime": 790.6,
+        "endTime": 794.4,
+        "speaker": "Lý Minh",
+        "chinese": "如果我妈妈做了好吃的菜，我就要大声说:",
+        "pinyin": "Rú guǒ wǒ mā mā zuò le hǎo chī de cài, wǒ jiù yào dà shēng shuō:",
+        "vietnamese": "nếu mẹ tôi làm món ngon, tôi sẽ nói thật to:"
+      },
+      {
+        "id": 220,
+        "startTime": 794.4,
+        "endTime": 797.5,
+        "speaker": "Lý Minh",
+        "chinese": "“妈妈，这个菜太好吃了！”",
+        "pinyin": "“mā mā, zhè ge cài tài hǎo chī le! ”",
+        "vietnamese": "\"Mẹ ơi, món này ngon quá!\""
+      },
+      {
+        "id": 221,
+        "startTime": 797.5,
+        "endTime": 801.3,
+        "speaker": "Lý Minh",
+        "chinese": "哈哈，你妈妈听了肯定会很高兴。",
+        "pinyin": "Hā hā, nǐ mā mā tīng le kěn dìng huì hěn gāo xìng.",
+        "vietnamese": "Haha, mẹ cậu nghe xong chắc chắn sẽ rất vui."
+      },
+      {
+        "id": 222,
+        "startTime": 801.3,
+        "endTime": 805.1,
+        "speaker": "Lý Minh",
+        "chinese": "好了，今天的“每天中文”也差不多要结束了。",
+        "pinyin": "Hǎo le, jīn tiān de “měi tiān zhōng wén” yě chà bu duō yào jié shù le.",
+        "vietnamese": "Được rồi, chương trình \"Mỗi Ngày Tiếng Trung\" hôm nay cũng sắp kết thúc rồi."
+      },
+      {
+        "id": 223,
+        "startTime": 805.0,
+        "endTime": 807.3,
+        "speaker": "Lý Minh",
+        "chinese": "希望大家通过今天的节目，",
+        "pinyin": "Xī wàng dà jiā tōng guò jīn tiān de jié mù,",
+        "vietnamese": "Hy vọng các bạn qua chương trình hôm nay,"
+      },
+      {
+        "id": 224,
+        "startTime": 807.3,
+        "endTime": 809.7,
+        "speaker": "Lý Minh",
+        "chinese": "能更关注自己吃饭的习惯。",
+        "pinyin": "Néng gèng guān zhù zì jǐ chī fàn de xí guàn.",
+        "vietnamese": "có thể quan tâm hơn đến thói quen ăn uống của mình."
+      },
+      {
+        "id": 225,
+        "startTime": 809.7,
+        "endTime": 813.2,
+        "speaker": "Lý Minh",
+        "chinese": "是啊。吃饭是一件每天都做的小事，",
+        "pinyin": "Shì a. Chī fàn shì yī jiàn měi tiān dōu zuò de xiǎo shì,",
+        "vietnamese": "Đúng vậy. Ăn uống là một việc nhỏ làm mỗi ngày,"
+      },
+      {
+        "id": 226,
+        "startTime": 813.2,
+        "endTime": 816.4,
+        "speaker": "Lý Minh",
+        "chinese": "但小事里也有大学问。",
+        "pinyin": "Dàn xiǎo shì lǐ yě yǒu dà xué wèn.",
+        "vietnamese": "nhưng trong việc nhỏ lại có học vấn lớn."
+      },
+      {
+        "id": 227,
+        "startTime": 816.4,
+        "endTime": 819.9,
+        "speaker": "Lý Minh",
+        "chinese": "希望大家都能吃得健康，吃得开心。",
+        "pinyin": "Xī wàng dà jiā dōu néng chī dé jiàn kāng, chī de kāi xīn.",
+        "vietnamese": "Hy vọng mọi người đều có thể ăn uống lành mạnh, ăn uống vui vẻ."
+      },
+      {
+        "id": 228,
+        "startTime": 819.9,
+        "endTime": 824.6,
+        "speaker": "Lý Minh",
+        "chinese": "那么，最后也想问问正在听我们播客的你:",
+        "pinyin": "Nà me, zuì hòu yě xiǎng wèn wèn zhèng zài tīng wǒ men bō kè de nǐ:",
+        "vietnamese": "Vậy thì, cuối cùng cũng muốn hỏi bạn đang nghe podcast của chúng tôi:"
+      },
+      {
+        "id": 229,
+        "startTime": 824.5,
+        "endTime": 826.2,
+        "speaker": "Lý Minh",
+        "chinese": "你吃饭快吗？",
+        "pinyin": "Nǐ chī fàn kuài ma?",
+        "vietnamese": "Bạn ăn có nhanh không?"
+      },
+      {
+        "id": 230,
+        "startTime": 826.3,
+        "endTime": 831.2,
+        "speaker": "Lý Minh",
+        "chinese": "你身边有没有人总是提醒你“吃饭要慢一点”呢？",
+        "pinyin": "Nǐ shēn biān yǒu méi yǒu rén zǒng shì tí xǐng nǐ “chī fàn yào màn yì diǎn” ne?",
+        "vietnamese": "Bên cạnh bạn có ai luôn nhắc bạn \"ăn phải chậm một chút\" không?"
+      },
+      {
+        "id": 231,
+        "startTime": 831.2,
+        "endTime": 833.3,
+        "speaker": "Lý Minh",
+        "chinese": "欢迎在我们的频道下面留言，",
+        "pinyin": "Huān yíng zài wǒ men de pín dào xià miàn liú yán,",
+        "vietnamese": "Chào mừng các bạn để lại bình luận bên dưới kênh của chúng tôi,"
+      },
+      {
+        "id": 232,
+        "startTime": 833.3,
+        "endTime": 835.4,
+        "speaker": "Lý Minh",
+        "chinese": "跟我们分享你的故事。",
+        "pinyin": "Gēn wǒ men fēn xiǎng nǐ de gù shì.",
+        "vietnamese": "chia sẻ câu chuyện của bạn với chúng tôi."
+      },
+      {
+        "id": 233,
+        "startTime": 835.4,
+        "endTime": 838.2,
+        "speaker": "Lý Minh",
+        "chinese": "我们很期待看到大家的分享。",
+        "pinyin": "Wǒ men hěn qī dài kàn dào dà jiā de fēn xiǎng.",
+        "vietnamese": "Chúng tôi rất mong chờ được xem những chia sẻ của mọi người."
+      },
+      {
+        "id": 234,
+        "startTime": 838.2,
+        "endTime": 840.6,
+        "speaker": "Lý Minh",
+        "chinese": "好了，今天的节目就到这里。",
+        "pinyin": "Hǎo le, jīn tiān de jié mù jiù dào zhè lǐ.",
+        "vietnamese": "Được rồi, chương trình hôm nay đến đây là kết thúc."
+      },
+      {
+        "id": 235,
+        "startTime": 840.6,
+        "endTime": 842.7,
+        "speaker": "Lý Minh",
+        "chinese": "感谢大家的收听！",
+        "pinyin": "Gǎn xiè dà jiā de shōu tīng!",
+        "vietnamese": "Cảm ơn sự lắng nghe của mọi người!"
+      },
+      {
+        "id": 236,
+        "startTime": 842.6,
+        "endTime": 843.4,
+        "speaker": "Lý Minh",
+        "chinese": "我是李明。",
+        "pinyin": "Wǒ shì lǐ míng.",
+        "vietnamese": "Tôi là Lý Minh."
+      },
+      {
+        "id": 237,
+        "startTime": 843.4,
+        "endTime": 844.3,
+        "speaker": "Vương Vũ",
+        "chinese": "我是王雨。",
+        "pinyin": "Wǒ shì wáng yǔ.",
+        "vietnamese": "Tôi là Vương Vũ."
+      },
+      {
+        "id": 238,
+        "startTime": 844.4,
+        "endTime": 846.2,
+        "speaker": "Vương Vũ",
+        "chinese": "我们下期再见！",
+        "pinyin": "Wǒ men xià qī zài jiàn!",
+        "vietnamese": "Hẹn gặp lại các bạn trong kỳ sau!"
       }
     ]
   },
