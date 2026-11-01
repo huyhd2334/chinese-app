@@ -11490,53 +11490,557 @@ export const SHADOWING_VIDEOS: ShadowingVideo[] = [
     "category": "Công sở & Phỏng vấn",
     "description": "Hội thoại và độc thoại tốc độ tự nhiên, cấu trúc câu phức, thành ngữ và từ vựng nâng cao HSK 5 giúp bứt phá khẩu ngữ thành thạo.",
     "youtubeId": "aF98y_frqZg",
-    "sentencesCount": 5,
+    "sentencesCount": 61,
     "isFree": false,
     "sentences": [
       {
         "id": 1,
-        "startTime": 0,
-        "endTime": 9,
+        "startTime": 0.0,
+        "endTime": 16.5,
         "speaker": "Hasu Giảng viên",
-        "chinese": "在当今日新月异的职场竞争中，持续学习是一项不可或缺的核心能力。",
-        "pinyin": "Zài dāngjīn rìxīnyuèyì de zhíchǎng jìngzhēng zhōng, chíxù xuéxí shì yì xiàng bùkě huòquē de héxīn nénglì.",
-        "vietnamese": "Trong cuộc cạnh tranh nơi công sở thay đổi từng ngày như hiện nay, không ngừng học hỏi là một năng lực cốt lõi không thể thiếu."
+        "chinese": "今天我们会一起练反思，练习中级程度HSK5。",
+        "pinyin": "Jīn tiān wǒ men huì yì qǐ liàn fǎn sī， liàn xí zhōng jí chéng dù HSK5。",
+        "vietnamese": "Hôm nay chúng ta sẽ cùng luyện phản xạ tiếng Trung trình độ HSK5."
       },
       {
         "id": 2,
-        "startTime": 9,
-        "endTime": 19.5,
+        "startTime": 16.5,
+        "endTime": 38.0,
         "speaker": "Hasu Giảng viên",
-        "chinese": "面对突如其来的危机与挑战，团队领导者需要保持清晰冷静的判断力。",
-        "pinyin": "Miànduì tūrúqílái de wēijī yǔ tiǎozhàn, tuánduì lǐngdǎozhě xūyào bǎochí qīngxī lěngjìng de pànduànlì.",
-        "vietnamese": "Đứng trước những khủng hoảng và thách thức ập đến bất ngờ, người lãnh đạo đội ngũ cần duy trì năng lực phán đoán tỉnh táo và sáng suốt."
+        "chinese": "长期以来，他一直在默默地支持我们。",
+        "pinyin": "Cháng qī yǐ lái， tā yì zhí zài mò mò dì zhī chí wǒ men。",
+        "vietnamese": "Lâu nay, anh ấy luôn âm thầm ủng hộ chúng tôi."
       },
       {
         "id": 3,
-        "startTime": 19.5,
-        "endTime": 30.5,
+        "startTime": 38.0,
+        "endTime": 64.0,
         "speaker": "Hasu Giảng viên",
-        "chinese": "只有深入了解客户的真实需求，我们才能在商业谈判中争取到最大的共赢空间。",
-        "pinyin": "Zhǐyǒu shēnrù liǎojiě kèhù de zhēnshí xūqiú, wǒmen cái néng zài shāngyè tánpàn zhōng zhēngqǔ dào zuì dà de gòngyíng kōngjiān.",
-        "vietnamese": "Chỉ khi thấu hiểu sâu sắc nhu cầu thực tế của khách hàng, chúng ta mới có thể giành được dư địa hợp tác đôi bên cùng có lợi lớn nhất trong đàm phán thương mại."
+        "chinese": "他用事实回应质疑，态度沉着而有力。",
+        "pinyin": "Tā yòng shì shí huí yìng zhì yí， tài dù chén zhuó ér yǒu lì。",
+        "vietnamese": "Anh ấy dùng sự thật để đáp lại nghi vấn, thái độ điềm tĩnh mà mạnh mẽ."
       },
       {
         "id": 4,
-        "startTime": 30.5,
-        "endTime": 42,
+        "startTime": 64.0,
+        "endTime": 94.0,
         "speaker": "Hasu Giảng viên",
-        "chinese": "克服焦虑最有效的方法并非盲目担忧，而是脚踏实地将注意力集中在当下可控的事情上。",
-        "pinyin": "Kèfú jiāolǜ zuì yǒuxiào de fāngfǎ bìng fēi mángmù dānyōu, ér shì jiǎotàshídì jiāng zhùyìlì jízhōng zài dāngxià kěkòng de shìqing shàng.",
-        "vietnamese": "Cách hiệu quả nhất để khắc phục âu lo không phải là lo lắng mù quáng, mà là vững vàng tập trung sự chú ý vào những việc có thể kiểm soát được trong hiện tại."
+        "chinese": "经验可以帮助我们少走弯路，但学习永远不能停止。",
+        "pinyin": "Jīng yàn kě yǐ bāng zhù wǒ men shǎo zǒu wān lù， dàn xué xí yǒng yuǎn bù néng tíng zhǐ。",
+        "vietnamese": "Kinh nghiệm giúp ta bớt đi đường vòng, nhưng việc học không bao giờ được dừng lại."
       },
       {
         "id": 5,
-        "startTime": 42,
-        "endTime": 54,
+        "startTime": 94.0,
+        "endTime": 118.0,
         "speaker": "Hasu Giảng viên",
-        "chinese": "无论从事何种行业，严谨负责的态度与卓越的执行力都是取得长远发展的基石。",
-        "pinyin": "Wúlùn cóngshì hé zhǒng hángyè, yánjǐn fùzé de tàidu yǔ zhuóyuè de zhíxínglì dōu shì qǔdé chángyuǎn fāzhǎn de jīshí.",
-        "vietnamese": "Bất kể làm việc trong ngành nghề nào, thái độ cẩn trọng trách nhiệm và năng lực thực thi xuất sắc đều là nền tảng để đạt được sự phát triển bền vững lâu dài."
+        "chinese": "为了节省时间，他把复杂的问题分成若干小步骤。",
+        "pinyin": "Wèi le jié shěng shí jiān， tā bǎ fù zá de wèn tí fēn chéng ruò gān xiǎo bù zhòu。",
+        "vietnamese": "Để tiết kiệm thời gian, anh ấy chia vấn đề phức tạp thành nhiều bước nhỏ."
+      },
+      {
+        "id": 6,
+        "startTime": 118.0,
+        "endTime": 155.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "只要方法得当，困难就会变成可控的挑战。",
+        "pinyin": "Zhǐ yào fāng fǎ dé dàng， kùn nán jiù huì biàn chéng kě kòng de tiǎo zhàn。",
+        "vietnamese": "Chỉ cần phương pháp đúng đắn, khó khăn sẽ trở thành thách thức có thể kiểm soát."
+      },
+      {
+        "id": 7,
+        "startTime": 155.0,
+        "endTime": 182.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "他把失败的原因记录下来，以便下次改进。",
+        "pinyin": "Tā bǎ shī bài de yuán yīn jì lù xià lái， yǐ biàn xià cì gǎi jìn。",
+        "vietnamese": "Anh ấy ghi lại nguyên nhân thất bại để lần sau cải thiện."
+      },
+      {
+        "id": 8,
+        "startTime": 182.0,
+        "endTime": 215.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "如果缺乏耐心，再聪明的人也很难成功。",
+        "pinyin": "Rú guǒ quē fá nài xīn， zài cōng míng de rén yě hěn nán chéng gōng。",
+        "vietnamese": "Nếu thiếu kiên nhẫn, dù thông minh đến đâu cũng khó thành công."
+      },
+      {
+        "id": 9,
+        "startTime": 215.0,
+        "endTime": 235.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "这件事未必像你想的那样简单。",
+        "pinyin": "Zhè jiàn shì wèi bì xiàng nǐ xiǎng de nà yàng jiǎn dān。",
+        "vietnamese": "Việc này chưa chắc đơn giản như bạn nghĩ."
+      },
+      {
+        "id": 10,
+        "startTime": 235.0,
+        "endTime": 265.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "在资源有限的情况下，我们需要更有效地分配时间。",
+        "pinyin": "Zài zī yuán yǒu xiàn de qíng kuàng xià， wǒ men xū yào gèng yǒu xiào dì fēn pèi shí jiān。",
+        "vietnamese": "Trong điều kiện nguồn lực hạn chế, chúng ta cần phân bổ thời gian hiệu quả hơn."
+      },
+      {
+        "id": 11,
+        "startTime": 265.0,
+        "endTime": 288.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "他把复杂的问题解释得浅显易懂。",
+        "pinyin": "Tā bǎ fù zá de wèn tí jiě shì dé qiǎn xiǎn yì dǒng。",
+        "vietnamese": "Anh ấy giải thích vấn đề phức tạp một cách dễ hiểu, sáng tỏ."
+      },
+      {
+        "id": 12,
+        "startTime": 288.0,
+        "endTime": 317.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "如果没有长期规划，短期的成功也难以维持。",
+        "pinyin": "Rú guǒ méi yǒu cháng qī guī huà， duǎn qī de chéng gōng yě nán yǐ wéi chí。",
+        "vietnamese": "Nếu không có quy hoạch dài hạn, thành công ngắn hạn cũng khó duy trì."
+      },
+      {
+        "id": 13,
+        "startTime": 317.0,
+        "endTime": 343.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "他愿意承担责任，这正是领导者的素质。",
+        "pinyin": "Tā yuàn yì chéng dān zé rèn， zhè zhèng shì lǐng dǎo zhě de sù zhì。",
+        "vietnamese": "Anh ấy sẵn sàng gánh vác trách nhiệm, đó chính là phẩm chất của người lãnh đạo."
+      },
+      {
+        "id": 14,
+        "startTime": 343.0,
+        "endTime": 371.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "数据显示，用户的需求正在逐步发生变化。",
+        "pinyin": "Shù jù xiǎn shì， yòng hù de xū qiú zhèng zài zhú bù fā shēng biàn huà。",
+        "vietnamese": "Dữ liệu cho thấy nhu cầu của người dùng đang dần thay đổi."
+      },
+      {
+        "id": 15,
+        "startTime": 371.0,
+        "endTime": 403.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "他把复杂的流程进行了标准化，从而提高了效率。",
+        "pinyin": "Tā bǎ fù zá de liú chéng jìn xíng le biāo zhǔn huà， cóng ér tí gāo le xiào lǜ。",
+        "vietnamese": "Anh ấy chuẩn hóa quy trình phức tạp, từ đó nâng cao hiệu suất."
+      },
+      {
+        "id": 16,
+        "startTime": 403.0,
+        "endTime": 430.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "适当的休息能让我们在关键时刻保持清醒。",
+        "pinyin": "Shì dàng de xiū xī néng ràng wǒ men zài guān jiàn shí kè bǎo chí qīng xǐng。",
+        "vietnamese": "Nghỉ ngơi hợp lý giúp chúng ta tỉnh táo vào thời khắc quan trọng."
+      },
+      {
+        "id": 17,
+        "startTime": 430.0,
+        "endTime": 456.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "如果缺少证据，结论就不能轻易下定。",
+        "pinyin": "Rú guǒ quē shǎo zhèng jù， jié lùn jiù bù néng qīng yì xià dìng。",
+        "vietnamese": "Nếu thiếu bằng chứng, kết luận không thể dễ dàng đưa ra."
+      },
+      {
+        "id": 18,
+        "startTime": 456.0,
+        "endTime": 485.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "经验告诉我们，及时复盘能避免重复犯错。",
+        "pinyin": "Jīng yàn gào sù wǒ men， jí shí fù pán néng bì miǎn chóng fù fàn cuò。",
+        "vietnamese": "Kinh nghiệm cho thấy, tổng kết kịp thời giúp tránh lặp lại sai lầm."
+      },
+      {
+        "id": 19,
+        "startTime": 485.0,
+        "endTime": 513.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "在跨文化交流中，尊重与理解同样重要。",
+        "pinyin": "Zài kuà wén huà jiāo liú zhōng， zūn zhòng yǔ lǐ jiě tóng yàng zhòng yào。",
+        "vietnamese": "Trong giao tiếp liên văn hóa, tôn trọng và thấu hiểu quan trọng như nhau."
+      },
+      {
+        "id": 20,
+        "startTime": 513.0,
+        "endTime": 544.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "面对变化迅速的世界，保持学习是最可靠的选择。",
+        "pinyin": "Miàn duì biàn huà xùn sù de shì jiè， bǎo chí xué xí shì zuì kě kào de xuǎn zé。",
+        "vietnamese": "Trước thế giới thay đổi nhanh chóng, duy trì việc học là lựa chọn đáng tin cậy nhất."
+      },
+      {
+        "id": 21,
+        "startTime": 544.0,
+        "endTime": 574.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "在有限的预算下，我们必须把钱花在刀刃上。",
+        "pinyin": "Zài yǒu xiàn de yù suàn xià， wǒ men bì xū bǎ qián huā zài dāo rèn shàng。",
+        "vietnamese": "Trong ngân sách hạn chế, chúng ta phải tiêu tiền đúng chỗ quan trọng nhất."
+      },
+      {
+        "id": 22,
+        "startTime": 574.0,
+        "endTime": 600.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "他逐步调整策略，以适应市场的变化。",
+        "pinyin": "Tā zhú bù diào zhěng cè lüè， yǐ shì yìng shì chǎng de biàn huà。",
+        "vietnamese": "Anh ấy điều chỉnh chiến lược từng bước để thích ứng với biến động thị trường."
+      },
+      {
+        "id": 23,
+        "startTime": 600.0,
+        "endTime": 626.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "与其盲目跟风，不如坚持独立思考。",
+        "pinyin": "Yǔ qí máng mù gēn fēng， bù rú jiān chí dú lì sī kǎo。",
+        "vietnamese": "Thay vì chạy theo trào lưu một cách mù quáng, hãy kiên trì tư duy độc lập."
+      },
+      {
+        "id": 24,
+        "startTime": 626.0,
+        "endTime": 650.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "这一现象反映了消费者需求的升级。",
+        "pinyin": "Zhè yī xiàn xiàng fǎn yìng le xiāo fèi zhě xū qiú de shēng jí。",
+        "vietnamese": "Hiện tượng này phản ánh sự nâng cấp trong nhu cầu của người tiêu dùng."
+      },
+      {
+        "id": 25,
+        "startTime": 650.0,
+        "endTime": 673.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "他善于把复杂的问题简单化。",
+        "pinyin": "Tā shàn yú bǎ fù zá de wèn tí jiǎn dān huà。",
+        "vietnamese": "Anh ấy giỏi đơn giản hóa những vấn đề phức tạp."
+      },
+      {
+        "id": 26,
+        "startTime": 673.0,
+        "endTime": 698.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "由于沟通不到位，项目进度被迫推迟。",
+        "pinyin": "Yóu yú gōu tōng bú dào wèi， xiàng mù jìn dù bèi pò tuī chí。",
+        "vietnamese": "Do giao tiếp chưa đầy đủ, tiến độ dự án buộc phải trì hoãn."
+      },
+      {
+        "id": 27,
+        "startTime": 698.0,
+        "endTime": 732.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "无论遇到什么困难，她都保持着冷静。",
+        "pinyin": "Wú lùn yù dào shén me kùn nán， tā dōu bǎo chí zhe lěng jìng。",
+        "vietnamese": "Bất kể gặp khó khăn gì, cô ấy vẫn giữ bình tĩnh."
+      },
+      {
+        "id": 28,
+        "startTime": 732.0,
+        "endTime": 755.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "只要方向正确，速度慢一点也没有关系。",
+        "pinyin": "Zhǐ yào fāng xiàng zhèng què， sù dù màn yì diǎn yě méi yǒu guān xì。",
+        "vietnamese": "Chỉ cần hướng đi đúng, chậm một chút cũng không sao."
+      },
+      {
+        "id": 29,
+        "startTime": 755.0,
+        "endTime": 776.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "他对细节的把控几乎达到了苛刻的程度。",
+        "pinyin": "Tā duì xì jié de bǎ kòng jī hū dá dào le kē kè de chéng dù。",
+        "vietnamese": "Anh ấy kiểm soát chi tiết gần như đến mức khắt khe."
+      },
+      {
+        "id": 30,
+        "startTime": 776.0,
+        "endTime": 801.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "新政策的实施需要各部门之间的配合。",
+        "pinyin": "Xīn zhèng cè de shí shī xū yào gè bù mén zhī jiān de pèi hé。",
+        "vietnamese": "Việc thực thi chính sách mới cần sự phối hợp giữa các bộ phận."
+      },
+      {
+        "id": 31,
+        "startTime": 801.0,
+        "endTime": 827.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "我们要要在效率与质量之间做出合理的取舍。",
+        "pinyin": "Wǒ men yào yào zài xiào lǜ yǔ zhì liàng zhī jiān zuò chū hé lǐ de qǔ shě。",
+        "vietnamese": "Chúng ta phải đưa ra sự đánh đổi hợp lý giữa hiệu suất và chất lượng."
+      },
+      {
+        "id": 32,
+        "startTime": 827.0,
+        "endTime": 853.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "如果缺少反馈，团队很难持续改进。",
+        "pinyin": "Rú guǒ quē shǎo fǎn kuì， tuán duì hěn nán chí xù gǎi jìn。",
+        "vietnamese": "Nếu thiếu phản hồi, đội nhóm rất khó cải thiện liên tục."
+      },
+      {
+        "id": 33,
+        "startTime": 853.0,
+        "endTime": 880.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "他把失败当成成长的机会，而不是终点。",
+        "pinyin": "Tā bǎ shī bài dàng chéng chéng zhǎng de jī huì， ér bú shì zhōng diǎn。",
+        "vietnamese": "Anh ấy xem thất bại là cơ hội trưởng thành chứ không phải điểm kết thúc."
+      },
+      {
+        "id": 34,
+        "startTime": 880.0,
+        "endTime": 907.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "随着经验的增加，他的判断变得更加成熟。",
+        "pinyin": "Suí zhe jīng yàn de zēng jiā， tā de pàn duàn biàn dé gèng jiā chéng shú。",
+        "vietnamese": "Cùng với việc tăng kinh nghiệm, phán đoán của anh ấy trở nên chín chắn hơn."
+      },
+      {
+        "id": 35,
+        "startTime": 907.0,
+        "endTime": 933.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "面对不确定性，我们要保持开放的心态。",
+        "pinyin": "Miàn duì bù què dìng xìng， wǒ men yào bǎo chí kāi fàng de xīn tài。",
+        "vietnamese": "Đối mặt với sự bất định, chúng ta cần giữ tâm thế cởi mở."
+      },
+      {
+        "id": 36,
+        "startTime": 933.0,
+        "endTime": 960.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "他按优先级安排任务，效率明显提高了。",
+        "pinyin": "Tā àn yōu xiān jí ān pái rèn wù， xiào lǜ míng xiǎn tí gāo le。",
+        "vietnamese": "Anh ấy sắp xếp nhiệm vụ theo mức độ ưu tiên, hiệu suất tăng rõ rệt."
+      },
+      {
+        "id": 37,
+        "startTime": 960.0,
+        "endTime": 983.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "这次交流让我意识到倾听的重要性。",
+        "pinyin": "Zhè cì jiāo liú ràng wǒ yì shí dào qīng tīng de zhòng yào xìng。",
+        "vietnamese": "Lần giao lưu này giúp tôi nhận thức được tầm quan trọng của việc lắng nghe."
+      },
+      {
+        "id": 38,
+        "startTime": 983.0,
+        "endTime": 1010.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "如果目标过于模糊，行动就会缺乏方向。",
+        "pinyin": "Rú guǒ mù biāo guò yú mó hú， xíng dòng jiù huì quē fá fāng xiàng。",
+        "vietnamese": "Nếu mục tiêu quá mơ hồ, hành động sẽ thiếu phương hướng."
+      },
+      {
+        "id": 39,
+        "startTime": 1010.0,
+        "endTime": 1039.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "在关键时刻，他做出了冷静而果断的决定。",
+        "pinyin": "Zài guān jiàn shí kè， tā zuò chū le lěng jìng ér guǒ duàn de jué dìng。",
+        "vietnamese": "Vào thời khắc quan trọng, anh ấy đưa ra quyết định bình tĩnh và dứt khoát."
+      },
+      {
+        "id": 40,
+        "startTime": 1039.0,
+        "endTime": 1069.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "这项创新不仅降低了成本，还提升了用户体验。",
+        "pinyin": "Zhè xiàng chuàng xīn bù jǐn jiàng dī le chéng běn， hái tí shēng le yòng hù tǐ yàn。",
+        "vietnamese": "Sự đổi mới này không chỉ giảm chi phí mà còn nâng cao trải nghiệm người dùng."
+      },
+      {
+        "id": 41,
+        "startTime": 1069.0,
+        "endTime": 1096.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "他对细节的关注，往往决定了项目的成败。",
+        "pinyin": "Tā duì xì jié de guān zhù， wǎng wǎng jué dìng le xiàng mù dì chéng bài。",
+        "vietnamese": "Sự chú ý đến chi tiết của anh ấy thường quyết định thành bại của dự án."
+      },
+      {
+        "id": 42,
+        "startTime": 1096.0,
+        "endTime": 1125.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "这份报告的数据来源可靠，因此说服力很强。",
+        "pinyin": "Zhè fèn bào gào de shù jù lái yuán kě kào， yīn cǐ shuō fú lì hěn qiáng。",
+        "vietnamese": "Nguồn dữ liệu của báo cáo này đáng tin cậy, vì vậy tính thuyết phục rất cao."
+      },
+      {
+        "id": 43,
+        "startTime": 1125.0,
+        "endTime": 1154.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "尽管条件有限，他们还是完成了出乎意料的成绩。",
+        "pinyin": "Jǐn guǎn tiáo jiàn yǒu xiàn， tā men hái shì wán chéng le chū hū yì liào de chéng jì。",
+        "vietnamese": "Dù điều kiện hạn chế, họ vẫn đạt thành tích ngoài mong đợi."
+      },
+      {
+        "id": 44,
+        "startTime": 1154.0,
+        "endTime": 1184.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "这项决定并非一时冲动，而是深思熟虑的结果。",
+        "pinyin": "Zhè xiàng jué dìng bìng fēi yī shí chōng dòng， ér shì shēn sī shú lǜ de jié guǒ。",
+        "vietnamese": "Quyết định này không phải bốc đồng nhất thời mà là kết quả của sự suy xét kỹ lưỡng."
+      },
+      {
+        "id": 45,
+        "startTime": 1184.0,
+        "endTime": 1210.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "为了避免误会，我们需要把规则写得更清楚。",
+        "pinyin": "Wèi le bì miǎn wù huì， wǒ men xū yào bǎ guī zé xiě dé gèng qīng chǔ。",
+        "vietnamese": "Để tránh hiểu lầm, chúng ta cần viết quy tắc rõ ràng hơn."
+      },
+      {
+        "id": 46,
+        "startTime": 1210.0,
+        "endTime": 1234.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "他在压力之下反而发挥得更好。",
+        "pinyin": "Tā zài yā lì zhī xià fǎn ér fā huī dé gèng hǎo。",
+        "vietnamese": "Dưới áp lực, anh ấy lại phát huy tốt hơn."
+      },
+      {
+        "id": 47,
+        "startTime": 1234.0,
+        "endTime": 1262.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "比起追求完美，我更看重持续稳定的进步。",
+        "pinyin": "Bǐ qǐ zhuī qiú wán měi， wǒ gèng kàn zhòng chí xù wěn dìng de jìn bù。",
+        "vietnamese": "So với việc theo đuổi hoàn hảo, tôi coi trọng tiến bộ ổn định và bền bỉ hơn."
+      },
+      {
+        "id": 48,
+        "startTime": 1262.0,
+        "endTime": 1292.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "他既有远见，又能脚踏实地地执行计划。",
+        "pinyin": "Tā jì yǒu yuǎn jiàn， yòu néng jiǎo tà shí dì dì zhí xíng jì huà。",
+        "vietnamese": "Anh ấy vừa có tầm nhìn xa, vừa biết thực thi kế hoạch một cách vững chắc."
+      },
+      {
+        "id": 49,
+        "startTime": 1292.0,
+        "endTime": 1319.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "由于信息不对称，市场上难免会出现误判。",
+        "pinyin": "Yóu yú xìn xī bú duì chēng， shì chǎng shàng nán miǎn huì chū xiàn wù pàn。",
+        "vietnamese": "Do thông tin bất cân xứng, trên thị trường khó tránh khỏi xuất hiện những đánh giá sai."
+      },
+      {
+        "id": 50,
+        "startTime": 1319.0,
+        "endTime": 1346.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "他强调数据证据，而不是主观猜测。",
+        "pinyin": "Tā qiáng diào shù jù zhèng jù， ér bú shì zhǔ guān cāi cè。",
+        "vietnamese": "Anh ấy nhấn mạnh bằng chứng dữ liệu chứ không phải suy đoán chủ quan."
+      },
+      {
+        "id": 51,
+        "startTime": 1346.0,
+        "endTime": 1372.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "即使遇到挫折，我们也要保持乐观的态度。",
+        "pinyin": "Jí shǐ yù dào cuò zhé， wǒ men yě yào bǎo chí lè guān de tài dù。",
+        "vietnamese": "Dù gặp thất bại, chúng ta cũng phải giữ thái độ lạc quan."
+      },
+      {
+        "id": 52,
+        "startTime": 1372.0,
+        "endTime": 1400.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "只要坚持下去，微小的改变也能带来巨大的进步。",
+        "pinyin": "Zhǐ yào jiān chí xià qù， wēi xiǎo de gǎi biàn yě néng dài lái jù dà de jìn bù。",
+        "vietnamese": "Chỉ cần kiên trì, thay đổi nhỏ cũng có thể mang lại tiến bộ lớn."
+      },
+      {
+        "id": 53,
+        "startTime": 1400.0,
+        "endTime": 1422.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "与其抱怨环境，不如提升自己。",
+        "pinyin": "Yǔ qí bào yuàn huán jìng， bù rú tí shēng zì jǐ。",
+        "vietnamese": "Thay vì than phiền môi trường, hãy nâng cấp bản thân."
+      },
+      {
+        "id": 54,
+        "startTime": 1422.0,
+        "endTime": 1446.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "他似乎已经习惯了独自面对压力。",
+        "pinyin": "Tā sì hū yǐ jīng xí guàn le dú zì miàn duì yā lì。",
+        "vietnamese": "Anh ấy dường như đã quen với việc tự mình đối mặt áp lực."
+      },
+      {
+        "id": 55,
+        "startTime": 1446.0,
+        "endTime": 1471.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "无论结果如何，我们都要为自己的选择负责。",
+        "pinyin": "Wú lùn jié guǒ rú hé， wǒ men dōu yào wèi zì jǐ de xuǎn zé fù zé。",
+        "vietnamese": "Dù kết quả ra sao, chúng ta phải chịu trách nhiệm cho lựa chọn của mình."
+      },
+      {
+        "id": 56,
+        "startTime": 1471.0,
+        "endTime": 1498.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "通过长期的积累，他逐渐找到了适合自己的道路。",
+        "pinyin": "Tōng guò cháng qī de jī lěi， tā zhú jiàn zhǎo dào le shì hé zì jǐ de dào lù。",
+        "vietnamese": "Thông qua tích lũy dài hạn, anh ấy dần tìm ra con đường phù hợp với mình."
+      },
+      {
+        "id": 57,
+        "startTime": 1498.0,
+        "endTime": 1522.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "由于准备充分，这次面试进行得相当顺利。",
+        "pinyin": "Yóu yú zhǔn bèi chōng fèn， zhè cì miàn shì jìn xíng dé xiāng dāng shùn lì。",
+        "vietnamese": "Do chuẩn bị đầy đủ, buổi phỏng vấn lần này diễn ra rất suôn sẻ."
+      },
+      {
+        "id": 58,
+        "startTime": 1522.0,
+        "endTime": 1546.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "他不仅有才华，而且非常踏实可靠。",
+        "pinyin": "Tā bù jǐn yǒu cái huá， ér qiě fēi cháng tà shí kě kào。",
+        "vietnamese": "Anh ấy không chỉ có tài mà còn rất vững vàng, đáng tin cậy."
+      },
+      {
+        "id": 59,
+        "startTime": 1546.0,
+        "endTime": 1573.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "面对复杂的选择，我们需要明确自己的价值观。",
+        "pinyin": "Miàn duì fù zá de xuǎn zé， wǒ men xū yào míng què zì jǐ de jià zhí guān。",
+        "vietnamese": "Trước những lựa chọn phức tạp, chúng ta cần làm rõ hệ giá trị của mình."
+      },
+      {
+        "id": 60,
+        "startTime": 1573.0,
+        "endTime": 1601.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "如果缺乏沟通，再好的合作也难以长期维持。",
+        "pinyin": "Rú guǒ quē fá gōu tōng， zài hǎo de hé zuò yě nán yǐ cháng qī wéi chí。",
+        "vietnamese": "Nếu thiếu giao tiếp, dù hợp tác tốt đến đâu cũng khó duy trì lâu dài."
+      },
+      {
+        "id": 61,
+        "startTime": 1601.0,
+        "endTime": 1611.0,
+        "speaker": "Hasu Giảng viên",
+        "chinese": "多谢您的观看，如果您有兴趣的话，别忘记按赞、分享和订阅我的频道，并且记得订阅我的频道，谢谢！",
+        "pinyin": "Duō xiè nín de guān kàn， rú guǒ nín yǒu xìng qù de huà， bié wàng jì àn zàn、 fēn xiǎng hé dìng yuè wǒ de pín dào， bìng qiě jì de dìng yuè wǒ de pín dào， xiè xiè！",
+        "vietnamese": "Cảm ơn các bạn đã theo dõi, nếu bạn thấy hữu ích thì đừng quên like, share và đăng ký kênh nhé. Cảm ơn các bạn!"
       }
     ]
   }
