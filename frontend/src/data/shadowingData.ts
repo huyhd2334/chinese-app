@@ -10954,98 +10954,530 @@ export const SHADOWING_VIDEOS: ShadowingVideo[] = [
     "category": "Phim hoạt hình ngắn",
     "description": "Câu chuyện ngụ ngôn chú bé chăn cừu kinh điển với giọng kể giàu cảm xúc, chuyển đổi linh hoạt giữa lời thoại và lời dẫn chuyện, rất tốt cho nhại giọng HSK 4-5.",
     "youtubeId": "eJWg13Ujtrk",
-    "sentencesCount": 10,
+    "sentencesCount": 58,
     "isFree": false,
     "sentences": [
       {
         "id": 1,
-        "startTime": 0,
-        "endTime": 7.5,
-        "speaker": "Người kể chuyện",
-        "chinese": "从前，在一个小山村里，住着一个放羊的小男孩。",
-        "pinyin": "Cóngqián, zài yí gè xiǎo shāncūn lǐ, zhùzhe yí gè fàngyáng de xiǎo nánhái.",
-        "vietnamese": "Ngày xưa, ở một ngôi làng miền núi nọ, có một cậu bé làm nghề chăn cừu sinh sống."
+        "startTime": 14.0,
+        "endTime": 19.0,
+        "speaker": "Cô giáo",
+        "chinese": "大家好，欢迎来到今天的练习说中文，我们一起开口说中文吧。",
+        "pinyin": "Dàjiā hǎo, huānyíng lái dào jīntiān de liànxí shuō zhōngwén, wǒmen yìqǐ kāikǒu shuō zhōngwén ba.",
+        "vietnamese": "Chào mọi người, chào mừng đến với buổi luyện nói tiếng Trung hôm nay, chúng ta hãy cùng mở lời nói tiếng Trung nhé."
       },
       {
         "id": 2,
-        "startTime": 7.5,
-        "endTime": 16,
-        "speaker": "Người kể chuyện",
-        "chinese": "每天赶着羊群上山吃草，小男孩觉得日子过得非常无聊。",
-        "pinyin": "Měitiān gǎnzhe yángqún shàngshān chī cǎo, xiǎo nánhái juéde rìzi guò de fēicháng wúliáo.",
-        "vietnamese": "Mỗi ngày đều lùa đàn cừu lên núi gặm cỏ, cậu bé cảm thấy chuỗi ngày trôi qua thật buồn chán và tẻ nhạt."
+        "startTime": 19.0,
+        "endTime": 21.5,
+        "speaker": "Cô giáo",
+        "chinese": "本次训练分为三个部分。",
+        "pinyin": "Běncì xùnliàn fēn wéi sān gè bùfen.",
+        "vietnamese": "Buổi luyện tập này gồm có ba phần."
       },
       {
         "id": 3,
-        "startTime": 16,
-        "endTime": 25.5,
-        "speaker": "Người kể chuyện",
-        "chinese": "有一天，他灵机一动，突然冲着山下的村民大声呼救。",
-        "pinyin": "Yǒu yì tiān, tā língjī yí dòng, tūrán chòngzhe shān xià de cūnmín dàshēng hūjiù.",
-        "vietnamese": "Một ngày nọ, cậu nảy ra một ý định tinh quái, bèn hướng về phía dân làng dưới chân núi hô to cầu cứu."
+        "startTime": 21.5,
+        "endTime": 27.8,
+        "speaker": "Cô giáo",
+        "chinese": "第一部分，请你先听一遍完整的中文故事，认真聆听，理解故事内容。",
+        "pinyin": "Dì-yī bùfen, qǐng nǐ xiān tīng yí biàn wánzhěng de zhōngwén gùshi, rènzhēn língtīng, lǐjiě gùshi nèiróng.",
+        "vietnamese": "Phần thứ nhất, các bạn hãy nghe một lần toàn bộ câu chuyện tiếng Trung, lắng nghe chăm chú để hiểu nội dung câu chuyện."
       },
       {
         "id": 4,
-        "startTime": 25.5,
-        "endTime": 35,
-        "speaker": "Cậu bé chăn cừu",
-        "chinese": "“狼来了！狼来了！救命啊，狼要吃羊了！”",
-        "pinyin": "“Láng lái le! Láng lái le! Jiùmìng a, láng yào chī yáng le!”",
-        "vietnamese": "“Sói đến rồi! Sói đến rồi! Cứu với, chó sói sắp ăn thịt cừu rồi!”"
+        "startTime": 27.8,
+        "endTime": 35.8,
+        "speaker": "Cô giáo",
+        "chinese": "第二部分，画面上会出现翻译字幕，我将一句一句地朗读，每句之后都会留出时间，请你跟读。",
+        "pinyin": "Dì-èr bùfen, huàmiàn shang huì chūxiàn fānyì zìmù, wǒ jiāng yí jù yí jù de lǎngdú, měi jù zhīhòu dōu huì liú chū shíjiān, qǐng nǐ gēndú.",
+        "vietnamese": "Phần thứ hai, trên màn hình sẽ xuất hiện phụ đề dịch nghĩa, mình sẽ đọc từng câu một, sau mỗi câu sẽ có thời gian ngắt nghỉ để bạn đọc theo."
       },
       {
         "id": 5,
-        "startTime": 35,
-        "endTime": 45,
-        "speaker": "Người kể chuyện",
-        "chinese": "正在地里劳作的村民们听到喊声，连忙拿起锄头赶上了山。",
-        "pinyin": "Zhèngzài dì lǐ láozuò de cūnmínmen tīngdào hǎnshēng, liánmáng náqǐ chútóu gǎn shàng le shān.",
-        "vietnamese": "Dân làng đang làm lụng ngoài đồng nghe thấy tiếng hét liền vội vàng vác cuốc vội vã chạy lên núi."
+        "startTime": 35.8,
+        "endTime": 44.0,
+        "speaker": "Cô giáo",
+        "chinese": "第三部分，我会再朗读一遍完整的故事，请你和我一起朗读，练习自然、流畅地说中文。",
+        "pinyin": "Dì-sān bùfen, wǒ huì zài lǎngdú yí biàn wánzhěng de gùshi, qǐng nǐ hé wǒ yìqǐ lǎngdú, liànxí zìrán, liúchàng de shuō zhōngwén.",
+        "vietnamese": "Phần thứ ba, mình sẽ đọc lại toàn bộ câu chuyện một lần nữa, bạn hãy cùng đọc với mình để luyện nói tiếng Trung tự nhiên và trôi chảy nhé."
       },
       {
         "id": 6,
-        "startTime": 45,
-        "endTime": 55,
+        "startTime": 44.0,
+        "endTime": 48.8,
         "speaker": "Người kể chuyện",
-        "chinese": "可是到了山上，他们只见到了羊群，根本没有看到狼的踪影。",
-        "pinyin": "Kěshì dào le shānshàng, tāmen zhǐ jiàndào le yángqún, gēnběn méiyǒu kàndào láng de zōngyǐng.",
-        "vietnamese": "Thế nhưng khi lên tới đỉnh núi, họ chỉ thấy đàn cừu đang gặm cỏ, tuyệt nhiên chẳng thấy bóng dáng con sói nào cả."
+        "chinese": "村里有个牧羊男孩，每天他都独自带着羊群在山坡上。",
+        "pinyin": "Cūn lǐ yǒu gè mùyáng nánhái, měitiān tā dōu dúzì dài zhe yángqún zài shānpō shàng.",
+        "vietnamese": "Trong làng có một cậu bé chăn cừu, ngày nào cậu cũng một mình dắt đàn cừu lên sườn đồi."
       },
       {
         "id": 7,
-        "startTime": 55,
-        "endTime": 66,
+        "startTime": 48.8,
+        "endTime": 51.5,
         "speaker": "Người kể chuyện",
-        "chinese": "男孩见大家被骗得团团转，忍不住捧腹大笑。",
-        "pinyin": "Nánhái jiàn dàjiā bèi piàn de tuántuán zhuàn, rěnbúzhù pěngfù dàxiào.",
-        "vietnamese": "Cậu bé thấy mọi người bị lừa một vố tơi bời liền ôm bụng cười ngặt nghẽo khoái chí."
+        "chinese": "山坡上草很绿，开满了小花。",
+        "pinyin": "Shānpō shàng cǎo hěn lǜ, kāi mǎn le xiǎohuā.",
+        "vietnamese": "Trên sườn đồi cỏ xanh mướt, nở đầy những bông hoa nhỏ."
       },
       {
         "id": 8,
-        "startTime": 66,
-        "endTime": 77,
+        "startTime": 51.5,
+        "endTime": 55.4,
         "speaker": "Người kể chuyện",
-        "chinese": "过了几天，真正的恶狼终于从茂密的树林里窜了出来。",
-        "pinyin": "Guò le jǐ tiān, zhēnzhèng de èláng zhōngyú cóng màomì de shùlín lǐ cuàn le chūlái.",
-        "vietnamese": "Mấy ngày sau, một con sói hung dữ thực sự rốt cuộc đã lao ra từ cánh rừng rậm rạp."
+        "chinese": "男孩感到非常无聊，就想着开个玩笑。",
+        "pinyin": "Nánhái gǎndào fēicháng wúliáo, jiù xiǎng zhe kāi gè wánxiào.",
+        "vietnamese": "Cậu bé cảm thấy vô cùng buồn chán, liền nghĩ đến việc trêu đùa một phen."
       },
       {
         "id": 9,
-        "startTime": 77,
-        "endTime": 88,
-        "speaker": "Cậu bé chăn cừu",
-        "chinese": "男孩吓得浑身发抖，声嘶力竭地再次呼救，却再也没有人相信他了。",
-        "pinyin": "Nánhái xià de húnshēn fādǒu, shēngsī lìjié de zàicì hūjiù, què zài yě méiyǒu rén xiāngxìn tā le.",
-        "vietnamese": "Cậu bé sợ hãi run rẩy khắp người, gào thét khản cả giọng để cầu cứu, nhưng chẳng còn ai tin lời cậu nữa."
+        "startTime": 55.4,
+        "endTime": 57.9,
+        "speaker": "Người kể chuyện",
+        "chinese": "于是他想出了一个坏主意。",
+        "pinyin": "Yúshì tā xiǎng chū le yí gè huài zhǔyi.",
+        "vietnamese": "Thế là cậu nghĩ ra một chủ ý tai quái."
       },
       {
         "id": 10,
-        "startTime": 88,
-        "endTime": 99,
+        "startTime": 57.9,
+        "endTime": 62.7,
+        "speaker": "Cậu bé chăn cừu",
+        "chinese": "有一天，男孩第一次大声喊：“狼来了！狼来了！”",
+        "pinyin": "Yǒu yì tiān, nánhái dì-yī cì dàshēng hǎn: \"Láng lái le! Láng lái le!\"",
+        "vietnamese": "Một ngày nọ, cậu bé lần đầu tiên hét to: 'Sói đến rồi! Sói đến rồi!'"
+      },
+      {
+        "id": 11,
+        "startTime": 62.7,
+        "endTime": 67.2,
         "speaker": "Người kể chuyện",
-        "chinese": "这个故事告诫我们，诚实是立身之本，说谎者终将自食其果。",
-        "pinyin": "Zhège gùshi gàojiè wǒmen, chéngshí shì lìshēn zhī běn, shuōhuǎng zhě zhōng jiāng zì shí qí guǒ.",
-        "vietnamese": "Câu chuyện này răn dạy chúng ta rằng: Trung thực là gốc rễ làm người, kẻ dối trá cuối cùng sẽ tự gánh lấy hậu quả."
+        "chinese": "村民们听到喊声，急忙拿着棍子向山坡跑去。",
+        "pinyin": "Cūnmínmen tīng dào hǎnshēng, jímáng ná zhe gùnzi xiàng shānpō pǎo qù.",
+        "vietnamese": "Dân làng nghe thấy tiếng kêu, vội vã cầm gậy gộc chạy lên sườn đồi."
+      },
+      {
+        "id": 12,
+        "startTime": 67.2,
+        "endTime": 70.3,
+        "speaker": "Người kể chuyện",
+        "chinese": "男孩看到大家跑过来，非常高兴，",
+        "pinyin": "Nánhái kàn dào dàjiā pǎo guòlái, fēicháng gāoxìng,",
+        "vietnamese": "Cậu bé nhìn thấy mọi người chạy đến thì vô cùng đắc ý,"
+      },
+      {
+        "id": 13,
+        "startTime": 70.3,
+        "endTime": 75.1,
+        "speaker": "Cậu bé chăn cừu",
+        "chinese": "大声笑着说：“哈哈，我只是开个玩笑，你们不用担心。”",
+        "pinyin": "Dàshēng xiào zhe shuō: \"Hāhā, wǒ zhǐshì kāi gè wánxiào, nǐmen bú yòng dānxīn.\"",
+        "vietnamese": "Cười lớn nói: 'Haha, tôi chỉ đùa chút thôi, mọi người không cần lo lắng đâu.'"
+      },
+      {
+        "id": 14,
+        "startTime": 75.1,
+        "endTime": 77.6,
+        "speaker": "Người kể chuyện",
+        "chinese": "村民们有点生气地回家了。",
+        "pinyin": "Cūnmínmen yǒudiǎn shēngqì de huí jiā le.",
+        "vietnamese": "Dân làng có chút tức giận ra về."
+      },
+      {
+        "id": 15,
+        "startTime": 77.6,
+        "endTime": 80.6,
+        "speaker": "Người kể chuyện",
+        "chinese": "又过了几天，男孩又觉得无聊。",
+        "pinyin": "Yòu guò le jǐ tiān, nánhái yòu juéde wúliáo.",
+        "vietnamese": "Lại qua mấy ngày, cậu bé lại cảm thấy buồn chán."
+      },
+      {
+        "id": 16,
+        "startTime": 80.6,
+        "endTime": 85.9,
+        "speaker": "Cậu bé chăn cừu",
+        "chinese": "他第二次大声喊：“狼来了！狼来了！快来救命！”",
+        "pinyin": "Tā dì-èr cì dàshēng hǎn: \"Láng lái le! Láng lái le! Kuài lái jiùmìng!\"",
+        "vietnamese": "Cậu ta lần thứ hai hét lớn: 'Sói đến rồi! Sói đến rồi! Mau cứu mạng với!'"
+      },
+      {
+        "id": 17,
+        "startTime": 85.9,
+        "endTime": 92.8,
+        "speaker": "Người kể chuyện",
+        "chinese": "村民们再次拿起棍子赶来，却发现男孩哈哈大笑着，说：“别怕，我骗你们的。”",
+        "pinyin": "Cūnmínmen zàicì ná qǐ gùnzi gǎn lái, què fāxiàn nánhái hāhā dà xiào zhe, shuō: \"Bié pà, wǒ piàn nǐmen de.\"",
+        "vietnamese": "Dân làng lại cầm gậy chạy tới, nhưng lại thấy cậu bé cười ha ha nói: 'Đừng sợ, tôi lừa mọi người đấy.'"
+      },
+      {
+        "id": 18,
+        "startTime": 92.8,
+        "endTime": 96.2,
+        "speaker": "Người kể chuyện",
+        "chinese": "村民们又一次上当，很生气地离开了。",
+        "pinyin": "Cūnmínmen yòu yí cì shàngdàng, hěn shēngqì de líkāi le.",
+        "vietnamese": "Dân làng lại mắc lừa một lần nữa, tức giận bỏ đi."
+      },
+      {
+        "id": 19,
+        "startTime": 96.2,
+        "endTime": 101.8,
+        "speaker": "Người kể chuyện",
+        "chinese": "不久之后，真的有一只狼出现了，狼悄悄地从远处走近羊群。",
+        "pinyin": "Bùjiǔ zhīhòu, zhēnde yǒu yì zhī láng chūxiàn le, láng qiāoqiāo de cóng yuǎnchù zǒujìn yángqún.",
+        "vietnamese": "Không lâu sau đó, thực sự có một con sói xuất hiện, con sói lén lút từ đằng xa tiến lại gần đàn cừu."
+      },
+      {
+        "id": 20,
+        "startTime": 101.8,
+        "endTime": 106.6,
+        "speaker": "Cậu bé chăn cừu",
+        "chinese": "男孩大叫：“狼来了！真的有狼！救命啊！”",
+        "pinyin": "Nánhái dà jiào: \"Láng lái le! Zhēnde yǒu láng! Jiùmìng a!\"",
+        "vietnamese": "Cậu bé hét lớn: 'Sói đến rồi! Có sói thật đấy! Cứu mạng với!'"
+      },
+      {
+        "id": 21,
+        "startTime": 106.6,
+        "endTime": 111.4,
+        "speaker": "Người kể chuyện",
+        "chinese": "这次没有村民上山来帮助他，因为大家都不相信男孩了。",
+        "pinyin": "Zhè cì méiyǒu cūnmín shàngshān lái bāngzhù tā, yīnwèi dàjiā dōu bù xiāngxìn nánhái le.",
+        "vietnamese": "Lần này chẳng có người dân nào lên núi giúp cậu cả, vì không ai còn tin cậu bé nữa."
+      },
+      {
+        "id": 22,
+        "startTime": 111.4,
+        "endTime": 115.1,
+        "speaker": "Người kể chuyện",
+        "chinese": "结果，狼冲下来把羊群咬伤了许多，",
+        "pinyin": "Jiéguǒ, láng chōng xiàlai bǎ yángqún yǎoshāng le xǔduō,",
+        "vietnamese": "Kết quả, con sói lao xuống cắn bị thương rất nhiều cừu,"
+      },
+      {
+        "id": 23,
+        "startTime": 115.1,
+        "endTime": 118.8,
+        "speaker": "Người kể chuyện",
+        "chinese": "男孩眼睁睁看着羊被吃掉，他悔得不得了。",
+        "pinyin": "Nánhái yǎnzhēngzhēng kàn zhe yáng bèi chī diào, tā huǐ de bùdéliǎo.",
+        "vietnamese": "Cậu bé trơ mắt nhìn đàn cừu bị ăn thịt, trong lòng vô cùng hối hận."
+      },
+      {
+        "id": 24,
+        "startTime": 118.8,
+        "endTime": 127.0,
+        "speaker": "Người kể chuyện",
+        "chinese": "故事告诉我们，如果一个人总是撒谎，就会失去别人的信任，最终受到惩罚，没有人再相信他了。",
+        "pinyin": "Gùshi gàosu wǒmen, rúguǒ yí gè rén zǒngshì sāhuǎng, jiù huì shīqù biérén de xìnrèn, zuìzhōng shòudào chéngfá, méiyǒu rén zài xiāngxìn tā le.",
+        "vietnamese": "Câu chuyện cho chúng ta thấy: Nếu một người luôn nói dối, sẽ đánh mất lòng tin của người khác, cuối cùng phải chịu trừng phạt và không còn ai tin tưởng mình nữa."
+      },
+      {
+        "id": 25,
+        "startTime": 127.0,
+        "endTime": 135.5,
+        "speaker": "Cô giáo",
+        "chinese": "第二部分，画面上会出现翻译字幕，我将一句一句地朗读，每句之后都会留出时间，请你跟读。",
+        "pinyin": "Dì-èr bùfen, huàmiàn shang huì chūxiàn fānyì zìmù, wǒ jiāng yí jù yí jù de lǎngdú, měi jù zhīhòu dōu huì liú chū shíjiān, qǐng nǐ gēndú.",
+        "vietnamese": "Phần thứ hai: Trên màn hình sẽ xuất hiện phụ đề song ngữ. Mình sẽ đọc từng câu, sau mỗi câu sẽ có khoảng dừng để bạn đọc theo."
+      },
+      {
+        "id": 26,
+        "startTime": 135.5,
+        "endTime": 154.0,
+        "speaker": "Luyện đọc (Đoạn 1)",
+        "chinese": "村里有个牧羊男孩，每天他都独自带着羊群在山坡上。山坡上草很绿，开满了小花。",
+        "pinyin": "Cūn lǐ yǒu gè mùyáng nánhái, měitiān tā dōu dúzì dài zhe yángqún zài shānpō shàng. Shānpō shàng cǎo hěn lǜ, kāi mǎn le xiǎohuā.",
+        "vietnamese": "Trong làng có một cậu bé chăn cừu. Mỗi ngày, cậu đều một mình dẫn đàn cừu lên sườn núi. Trên sườn núi, cỏ xanh mướt và nở đầy hoa nhỏ."
+      },
+      {
+        "id": 27,
+        "startTime": 154.0,
+        "endTime": 171.5,
+        "speaker": "Luyện đọc (Đoạn 2)",
+        "chinese": "男孩感到非常无聊，就想着开个玩笑。于是他想出了一个坏主意。有一天，男孩第一次大声喊：",
+        "pinyin": "Nánhái gǎndào fēicháng wúliáo, jiù xiǎng zhe kāi gè wánxiào. Yúshì tā xiǎng chū le yí gè huài zhǔyi. Yǒu yì tiān, nánhái dì-yī cì dàshēng hǎn:",
+        "vietnamese": "Cậu bé cảm thấy vô cùng buồn chán, liền nghĩ đến việc trêu đùa một phen. Thế là cậu nghĩ ra một chủ ý xấu. Có một ngày nọ, cậu bé lần đầu tiên hét to:"
+      },
+      {
+        "id": 28,
+        "startTime": 171.5,
+        "endTime": 200.0,
+        "speaker": "Luyện đọc (Đoạn 3)",
+        "chinese": "“狼来了！狼来了！”村民们听到喊声，急忙拿着棍子向山坡跑去。男孩看到大家跑过来，非常高兴，大声笑着说：“哈哈，我只是开个玩笑，”",
+        "pinyin": "\"Láng lái le! Láng lái le!\" Cūnmínmen tīng dào hǎnshēng, jímáng ná zhe gùnzi xiàng shānpō pǎo qù. Nánhái kàn dào dàjiā pǎo guòlái, fēicháng gāoxìng, dàshēng xiào zhe shuō: \"Hāhā, wǒ zhǐshì kāi gè wánxiào,\"",
+        "vietnamese": "'Sói đến rồi! Sói đến rồi!' Người dân trong làng nghe thấy tiếng hét thì vội vàng cầm gậy chạy lên núi. Cậu bé nhìn thấy mọi người chạy tới thì vô cùng vui sướng, vừa cười to vừa nói: 'Haha, tôi chỉ đùa thôi...'"
+      },
+      {
+        "id": 29,
+        "startTime": 200.0,
+        "endTime": 228.0,
+        "speaker": "Luyện đọc (Đoạn 4)",
+        "chinese": "“你们不用担心。”村民们有点生气地回家了。又过了几天，男孩又觉得无聊。他第二次大声喊：“狼来了！狼来了！快来救命！”",
+        "pinyin": "\"Nǐmen bú yòng dānxīn.\" Cūnmínmen yǒudiǎn shēngqì de huí jiā le. Yòu guò le jǐ tiān, nánhái yòu juéde wúliáo. Tā dì-èr cì dàshēng hǎn: \"Láng lái le! Láng lái le! Kuài lái jiùmìng!\"",
+        "vietnamese": "'Mọi người không cần lo lắng.' Dân làng có chút bực mình đi về nhà. Lại qua mấy ngày, cậu bé lại thấy chán. Cậu ta lần thứ hai hét lớn: 'Sói đến rồi! Sói đến rồi! Mau tới cứu mạng!'"
+      },
+      {
+        "id": 30,
+        "startTime": 228.0,
+        "endTime": 251.5,
+        "speaker": "Luyện đọc (Đoạn 5)",
+        "chinese": "村民们再次拿起棍子赶来，却发现男孩哈哈大笑着，说：“别怕，我骗你们的。”村民们又一次上当，很生气地离开了。",
+        "pinyin": "Cūnmínmen zàicì ná qǐ gùnzi gǎn lái, què fāxiàn nánhái hāhā dà xiào zhe, shuō: \"Bié pà, wǒ piàn nǐmen de.\" Cūnmínmen yòu yí cì shàngdàng, hěn shēngqì de líkāi le.",
+        "vietnamese": "Dân làng lại cầm gậy chạy tới, nhưng khi đến nơi thì thấy cậu bé cười ha ha: 'Đừng sợ, tôi lừa các bác thôi.' Mọi người lại bị lừa lần nữa, giận dữ bỏ đi."
+      },
+      {
+        "id": 31,
+        "startTime": 251.5,
+        "endTime": 280.0,
+        "speaker": "Luyện đọc (Đoạn 6)",
+        "chinese": "不久之后，真的有一只狼出现了，狼悄悄地从远处走近羊群。男孩大叫：“狼来了！真的有狼！救命啊！”这次没有村民上山来帮助他，",
+        "pinyin": "Bùjiǔ zhīhòu, zhēnde yǒu yì zhī láng chūxiàn le, láng qiāoqiāo de cóng yuǎnchù zǒujìn yángqún. Nánhái dà jiào: \"Láng lái le! Zhēnde yǒu láng! Jiùmìng a!\" Zhè cì méiyǒu cūnmín shàngshān lái bāngzhù tā,",
+        "vietnamese": "Không lâu sau đó, thật sự có một con sói xuất hiện, con sói lén lút từ đằng xa tiến lại gần đàn cừu. Cậu bé la hét: 'Sói đến rồi! Có sói thật! Cứu mạng với!' Lần này chẳng có ai lên núi giúp cậu cả,"
+      },
+      {
+        "id": 32,
+        "startTime": 280.0,
+        "endTime": 301.0,
+        "speaker": "Luyện đọc (Đoạn 7)",
+        "chinese": "因为大家都不相信男孩了。结果，狼冲下来把羊群咬伤了许多。男孩眼睁睁看着羊被吃掉，他悔得不得了。",
+        "pinyin": "Yīnwèi dàjiā dōu bù xiāngxìn nánhái le. Jiéguǒ, láng chōng xiàlai bǎ yángqún yǎoshāng le xǔduō. Nánhái yǎnzhēngzhēng kàn zhe yáng bèi chī diào, tā huǐ de bùdéliǎo.",
+        "vietnamese": "Vì mọi người đều không tin cậu nữa. Kết quả, con sói lao xuống cắn bị thương nhiều con cừu. Cậu bé trơ mắt nhìn đàn cừu bị ăn, vô cùng hối hận."
+      },
+      {
+        "id": 33,
+        "startTime": 301.0,
+        "endTime": 323.0,
+        "speaker": "Luyện đọc (Đoạn 8)",
+        "chinese": "故事告诉我们，如果一个人总是撒谎，就会失去别人的信任，最终受到惩罚，没有人再相信他了。",
+        "pinyin": "Gùshi gàosu wǒmen, rúguǒ yí gè rén zǒngshì sāhuǎng, jiù huì shīqù biérén de xìnrèn, zuìzhōng shòudào chéngfá, méiyǒu rén zài xiāngxìn tā le.",
+        "vietnamese": "Câu chuyện cho chúng ta thấy: Nếu một người luôn luôn nói dối, sẽ đánh mất đi lòng tin của người khác, cuối cùng phải chịu trừng phạt và không ai tin mình nữa."
+      },
+      {
+        "id": 34,
+        "startTime": 323.5,
+        "endTime": 326.9,
+        "speaker": "Cô giáo",
+        "chinese": "第三部分，我会再朗读一遍完整的故事。",
+        "pinyin": "Dì-sān bùfen, wǒ huì zài lǎngdú yí biàn wánzhěng de gùshi.",
+        "vietnamese": "Phần thứ ba, mình sẽ đọc lại toàn bộ câu chuyện một lần nữa."
+      },
+      {
+        "id": 35,
+        "startTime": 326.9,
+        "endTime": 331.5,
+        "speaker": "Cô giáo",
+        "chinese": "请你和我一起朗读，练习自然、流畅地说中文。",
+        "pinyin": "Qǐng nǐ hé wǒ yìqǐ lǎngdú, liànxí zìrán, liúchàng de shuō zhōngwén.",
+        "vietnamese": "Bạn hãy cùng đọc với mình nhé, để luyện nói tiếng Trung thật tự nhiên và trôi chảy."
+      },
+      {
+        "id": 36,
+        "startTime": 332.5,
+        "endTime": 337.5,
+        "speaker": "Đọc cùng (Part 3)",
+        "chinese": "村里有个牧羊男孩，每天他都独自带着羊群在山坡上。",
+        "pinyin": "Cūn lǐ yǒu gè mùyáng nánhái, měitiān tā dōu dúzì dài zhe yángqún zài shānpō shàng.",
+        "vietnamese": "Trong làng có một cậu bé chăn cừu, ngày nào cậu cũng một mình dắt đàn cừu lên sườn đồi."
+      },
+      {
+        "id": 37,
+        "startTime": 337.5,
+        "endTime": 341.0,
+        "speaker": "Đọc cùng (Part 3)",
+        "chinese": "山坡上草很绿，开满了小花。",
+        "pinyin": "Shānpō shàng cǎo hěn lǜ, kāi mǎn le xiǎohuā.",
+        "vietnamese": "Trên sườn đồi cỏ xanh mướt, nở đầy những bông hoa nhỏ."
+      },
+      {
+        "id": 38,
+        "startTime": 341.0,
+        "endTime": 344.1,
+        "speaker": "Đọc cùng (Part 3)",
+        "chinese": "男孩感到非常无聊，就想着开个玩笑。",
+        "pinyin": "Nánhái gǎndào fēicháng wúliáo, jiù xiǎng zhe kāi gè wánxiào.",
+        "vietnamese": "Cậu bé cảm thấy rất buồn chán, liền muốn bày trò đùa."
+      },
+      {
+        "id": 39,
+        "startTime": 344.1,
+        "endTime": 346.6,
+        "speaker": "Đọc cùng (Part 3)",
+        "chinese": "于是他想出了一个坏主意。",
+        "pinyin": "Yúshì tā xiǎng chū le yí gè huài zhǔyi.",
+        "vietnamese": "Thế là cậu nghĩ ra một chủ ý tai quái."
+      },
+      {
+        "id": 40,
+        "startTime": 346.6,
+        "endTime": 351.4,
+        "speaker": "Đọc cùng (Part 3)",
+        "chinese": "有一天，男孩第一次大声喊：“狼来了！狼来了！”",
+        "pinyin": "Yǒu yì tiān, nánhái dì-yī cì dàshēng hǎn: \"Láng lái le! Láng lái le!\"",
+        "vietnamese": "Một ngày nọ, cậu bé lần đầu tiên hét lớn: 'Sói đến rồi! Sói đến rồi!'"
+      },
+      {
+        "id": 41,
+        "startTime": 351.4,
+        "endTime": 355.9,
+        "speaker": "Đọc cùng (Part 3)",
+        "chinese": "村民们听到喊声，急忙拿着棍子向山坡跑去。",
+        "pinyin": "Cūnmínmen tīng dào hǎnshēng, jímáng ná zhe gùnzi xiàng shānpō pǎo qù.",
+        "vietnamese": "Dân làng nghe thấy tiếng hô hoán, vội vã cầm gậy gộc chạy lên sườn núi."
+      },
+      {
+        "id": 42,
+        "startTime": 355.9,
+        "endTime": 358.9,
+        "speaker": "Đọc cùng (Part 3)",
+        "chinese": "男孩看到大家跑过来，非常高兴，",
+        "pinyin": "Nánhái kàn dào dàjiā pǎo guòlái, fēicháng gāoxìng,",
+        "vietnamese": "Cậu bé nhìn thấy mọi người chạy đến thì vô cùng thích thú,"
+      },
+      {
+        "id": 43,
+        "startTime": 358.9,
+        "endTime": 363.8,
+        "speaker": "Đọc cùng (Part 3)",
+        "chinese": "大声笑着说：“哈哈，我只是开个玩笑，你们不用担心。”",
+        "pinyin": "Dàshēng xiào zhe shuō: \"Hāhā, wǒ zhǐshì kāi gè wánxiào, nǐmen bú yòng dānxīn.\"",
+        "vietnamese": "Cười lớn nói: 'Haha, tôi chỉ đùa chút thôi, mọi người không cần lo lắng.'"
+      },
+      {
+        "id": 44,
+        "startTime": 363.8,
+        "endTime": 366.1,
+        "speaker": "Đọc cùng (Part 3)",
+        "chinese": "村民们有点生气地回家了。",
+        "pinyin": "Cūnmínmen yǒudiǎn shēngqì de huí jiā le.",
+        "vietnamese": "Dân làng có chút bực mình đi về nhà."
+      },
+      {
+        "id": 45,
+        "startTime": 366.1,
+        "endTime": 369.2,
+        "speaker": "Đọc cùng (Part 3)",
+        "chinese": "又过了几天，男孩又觉得无聊。",
+        "pinyin": "Yòu guò le jǐ tiān, nánhái yòu juéde wúliáo.",
+        "vietnamese": "Lại qua mấy hôm, cậu bé lại cảm thấy buồn chán."
+      },
+      {
+        "id": 46,
+        "startTime": 369.2,
+        "endTime": 374.5,
+        "speaker": "Đọc cùng (Part 3)",
+        "chinese": "他第二次大声喊：“狼来了！狼来了！快来救命！”",
+        "pinyin": "Tā dì-èr cì dàshēng hǎn: \"Láng lái le! Láng lái le! Kuài lái jiùmìng!\"",
+        "vietnamese": "Cậu ta lần thứ hai hét lớn: 'Sói đến rồi! Sói đến rồi! Mau tới cứu mạng!'"
+      },
+      {
+        "id": 47,
+        "startTime": 374.5,
+        "endTime": 381.2,
+        "speaker": "Đọc cùng (Part 3)",
+        "chinese": "村民们再次拿起棍子赶来，却发现男孩哈哈大笑着，说：“别怕，我骗你们的。”",
+        "pinyin": "Cūnmínmen zàicì ná qǐ gùnzi gǎn lái, què fāxiàn nánhái hāhā dà xiào zhe, shuō: \"Bié pà, wǒ piàn nǐmen de.\"",
+        "vietnamese": "Dân làng lại cầm gậy chạy tới, nhưng lại thấy cậu bé cười ha ha nói: 'Đừng sợ, tôi lừa mọi người đấy.'"
+      },
+      {
+        "id": 48,
+        "startTime": 381.2,
+        "endTime": 384.6,
+        "speaker": "Đọc cùng (Part 3)",
+        "chinese": "村民们又一次上当，很生气地离开了。",
+        "pinyin": "Cūnmínmen yòu yí cì shàngdàng, hěn shēngqì de líkāi le.",
+        "vietnamese": "Dân làng lại mắc lừa một lần nữa, tức giận bỏ đi."
+      },
+      {
+        "id": 49,
+        "startTime": 384.6,
+        "endTime": 390.2,
+        "speaker": "Đọc cùng (Part 3)",
+        "chinese": "不久之后，真的有一只狼出现了，狼悄悄地从远处走近羊群。",
+        "pinyin": "Bùjiǔ zhīhòu, zhēnde yǒu yì zhī láng chūxiàn le, láng qiāoqiāo de cóng yuǎnchù zǒujìn yángqún.",
+        "vietnamese": "Không lâu sau đó, thực sự có một con sói xuất hiện, con sói lén lút từ đằng xa tiến lại gần đàn cừu."
+      },
+      {
+        "id": 50,
+        "startTime": 390.2,
+        "endTime": 395.2,
+        "speaker": "Đọc cùng (Part 3)",
+        "chinese": "男孩大叫：“狼来了！真的有狼！救命啊！”",
+        "pinyin": "Nánhái dà jiào: \"Láng lái le! Zhēnde yǒu láng! Jiùmìng a!\"",
+        "vietnamese": "Cậu bé hét lớn: 'Sói đến rồi! Có sói thật! Cứu mạng với!'"
+      },
+      {
+        "id": 51,
+        "startTime": 395.2,
+        "endTime": 400.0,
+        "speaker": "Đọc cùng (Part 3)",
+        "chinese": "这次没有村民上山来帮助他，因为大家都不相信男孩了。",
+        "pinyin": "Zhè cì méiyǒu cūnmín shàngshān lái bāngzhù tā, yīnwèi dàjiā dōu bù xiāngxìn nánhái le.",
+        "vietnamese": "Lần này chẳng có người dân nào lên núi giúp cậu nữa, vì không ai còn tin cậu bé."
+      },
+      {
+        "id": 52,
+        "startTime": 400.0,
+        "endTime": 403.6,
+        "speaker": "Đọc cùng (Part 3)",
+        "chinese": "结果，狼冲下来把羊群咬伤了许多，",
+        "pinyin": "Jiéguǒ, láng chōng xiàlai bǎ yángqún yǎoshāng le xǔduō,",
+        "vietnamese": "Kết quả, con sói lao xuống cắn bị thương rất nhiều cừu,"
+      },
+      {
+        "id": 53,
+        "startTime": 403.6,
+        "endTime": 407.4,
+        "speaker": "Đọc cùng (Part 3)",
+        "chinese": "男孩眼睁睁看着羊被吃掉，他悔得不得了。",
+        "pinyin": "Nánhái yǎnzhēngzhēng kàn zhe yáng bèi chī diào, tā huǐ de bùdéliǎo.",
+        "vietnamese": "Cậu bé trơ mắt nhìn đàn cừu bị ăn thịt, trong lòng vô cùng hối hận."
+      },
+      {
+        "id": 54,
+        "startTime": 407.4,
+        "endTime": 415.5,
+        "speaker": "Đọc cùng (Part 3)",
+        "chinese": "故事告诉我们，如果一个人总是撒谎，就会失去别人的信任，最终受到惩罚，没有人再相信他了。",
+        "pinyin": "Gùshi gàosu wǒmen, rúguǒ yí gè rén zǒngshì sāhuǎng, jiù huì shīqù biérén de xìnrèn, zuìzhōng shòudào chéngfá, méiyǒu rén zài xiāngxìn tā le.",
+        "vietnamese": "Câu chuyện cho chúng ta thấy: Nếu một người luôn nói dối, sẽ đánh mất lòng tin của người khác, cuối cùng phải chịu trừng phạt và không còn ai tin tưởng mình nữa."
+      },
+      {
+        "id": 55,
+        "startTime": 417.0,
+        "endTime": 420.8,
+        "speaker": "Cô giáo",
+        "chinese": "你做得非常好，谢谢你坚持到最后。",
+        "pinyin": "Nǐ zuò de fēicháng hǎo, xièxie nǐ jiānchí dào zuìhòu.",
+        "vietnamese": "Bạn đã làm rất xuất sắc, cảm ơn bạn đã kiên trì đến cùng."
+      },
+      {
+        "id": 56,
+        "startTime": 420.8,
+        "endTime": 424.2,
+        "speaker": "Cô giáo",
+        "chinese": "每一次开口说中文，都是一种进步。",
+        "pinyin": "Měi yí cì kāikǒu shuō zhōngwén, dōu shì yì zhǒng jìnbù.",
+        "vietnamese": "Mỗi một lần mở lời nói tiếng Trung đều là một bước tiến bộ."
+      },
+      {
+        "id": 57,
+        "startTime": 424.2,
+        "endTime": 428.8,
+        "speaker": "Cô giáo",
+        "chinese": "如果你能每天练习一点点，你会发现自己越来越自信。",
+        "pinyin": "Rúguǒ nǐ néng měitiān liànxí yì diǎndiǎn, nǐ huì fāxiàn zìjǐ yuè lái yuè zìxìn.",
+        "vietnamese": "Nếu mỗi ngày bạn đều kiên trì luyện tập một chút, bạn sẽ thấy bản thân ngày càng tự tin hơn."
+      },
+      {
+        "id": 58,
+        "startTime": 428.8,
+        "endTime": 432.5,
+        "speaker": "Cô giáo",
+        "chinese": "下次见，我们一起继续练习中文吧！",
+        "pinyin": "Xià cì jiàn, wǒmen yìqǐ jìxù liànxí zhōngwén ba!",
+        "vietnamese": "Hẹn gặp lại lần sau, chúng ta hãy tiếp tục cùng nhau luyện tiếng Trung nhé!"
       }
     ]
   },
