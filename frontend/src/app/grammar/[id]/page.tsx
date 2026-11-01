@@ -20,19 +20,9 @@ import {
   Share2,
   Eye,
   EyeOff,
-  Layers,
 } from "lucide-react"
 import { playChineseAudio } from "@/utils/audioTts"
 import { GrammarPoint } from "@/types/grammar"
-
-const LEVEL_COLORS: Record<number, { badge: string; text: string; bg: string; border: string }> = {
-  1: { badge: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/25", text: "text-emerald-600 dark:text-emerald-400", bg: "bg-emerald-500/5", border: "border-emerald-500/20" },
-  2: { badge: "bg-teal-500/10 text-teal-600 dark:text-teal-400 border-teal-500/25", text: "text-teal-600 dark:text-teal-400", bg: "bg-teal-500/5", border: "border-teal-500/20" },
-  3: { badge: "bg-sky-500/10 text-sky-600 dark:text-sky-400 border-sky-500/25", text: "text-sky-600 dark:text-sky-400", bg: "bg-sky-500/5", border: "border-sky-500/20" },
-  4: { badge: "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/25", text: "text-indigo-600 dark:text-indigo-400", bg: "bg-indigo-500/5", border: "border-indigo-500/20" },
-  5: { badge: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/25", text: "text-amber-600 dark:text-amber-400", bg: "bg-amber-500/5", border: "border-amber-500/20" },
-  6: { badge: "bg-china-red/10 text-china-red border-china-red/25", text: "text-china-red", bg: "bg-china-red/5", border: "border-china-red/20" },
-}
 
 export default function GrammarDetailPage() {
   const params = useParams()
@@ -187,12 +177,12 @@ export default function GrammarDetailPage() {
 
   if (loading) {
     return (
-      <div className="mx-auto w-full max-w-4xl px-4 md:px-6 py-10">
-        <div className="animate-pulse space-y-6">
-          <div className="h-6 w-32 bg-border/60 rounded-xl" />
-          <div className="h-10 w-3/4 bg-border/60 rounded-2xl" />
-          <div className="h-24 w-full bg-border/40 rounded-3xl" />
-          <div className="h-48 w-full bg-border/40 rounded-3xl" />
+      <div className="mx-auto w-full max-w-3xl px-4 md:px-6 py-10">
+        <div className="animate-pulse space-y-4">
+          <div className="h-4 w-28 bg-neutral-200 dark:bg-neutral-800 rounded" />
+          <div className="h-8 w-2/3 bg-neutral-200 dark:bg-neutral-800 rounded" />
+          <div className="h-20 w-full bg-neutral-100 dark:bg-neutral-800/50 rounded-lg" />
+          <div className="h-40 w-full bg-neutral-100 dark:bg-neutral-800/50 rounded-lg" />
         </div>
       </div>
     )
@@ -200,25 +190,24 @@ export default function GrammarDetailPage() {
 
   if (!currentItem) {
     return (
-      <div className="mx-auto w-full max-w-4xl px-4 md:px-6 py-16 text-center space-y-4">
-        <HelpCircle className="w-16 h-16 text-muted mx-auto" />
-        <h2 className="text-2xl font-bold font-serif text-china-ink">
+      <div className="mx-auto w-full max-w-3xl px-4 md:px-6 py-16 text-center space-y-3">
+        <HelpCircle className="w-12 h-12 text-muted mx-auto opacity-50" />
+        <h2 className="text-xl font-bold font-serif text-china-ink">
           Không tìm thấy điểm ngữ pháp này
         </h2>
-        <p className="text-sm text-muted">
+        <p className="text-xs text-muted">
           Điểm ngữ pháp bạn tìm kiếm có thể đã được cập nhật hoặc không tồn tại.
         </p>
         <Link
           href="/grammar"
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-china-red text-white text-sm font-bold hover:bg-china-red/90 transition-all shadow-sm"
+          className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-china-red text-white text-xs font-semibold hover:bg-china-red/90 transition-colors"
         >
-          <ArrowLeft className="w-4 h-4" /> Quay lại Thư viện Ngữ pháp
+          <ArrowLeft className="w-3.5 h-3.5" /> Quay lại danh sách ngữ pháp
         </Link>
       </div>
     )
   }
 
-  const levelStyle = LEVEL_COLORS[currentItem.level] || LEVEL_COLORS[1]
   const titleText = currentItem.titleVi || currentItem.title
   const usedForParts = (currentItem.usedFor || "")
     .split(",")
@@ -226,108 +215,103 @@ export default function GrammarDetailPage() {
     .filter(Boolean)
 
   return (
-    <div className="mx-auto w-full max-w-4xl px-4 md:px-6 py-8 md:py-10 text-china-ink">
-      {/* 1. Breadcrumbs & Top Navigation */}
-      <div className="flex items-center justify-between gap-4 mb-6">
+    <div className="mx-auto w-full max-w-3xl px-4 md:px-6 py-8 text-china-ink pb-24">
+      {/* 1. Breadcrumbs & Top Meta */}
+      <div className="flex items-center justify-between gap-4 mb-6 text-xs">
         <Link
           href="/grammar"
-          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border border-border bg-card hover:bg-border/30 text-xs font-semibold text-muted hover:text-china-ink transition-colors shadow-2xs"
+          className="inline-flex items-center gap-1.5 text-muted hover:text-china-ink font-medium transition-colors"
         >
-          <ArrowLeft className="w-3.5 h-3.5" /> Danh sách ngữ pháp HSK
+          <ArrowLeft className="w-3.5 h-3.5" /> Thư viện Ngữ pháp HSK
         </Link>
 
-        {/* Level Badge */}
-        <span
-          className={`px-3 py-1 text-xs font-bold rounded-full border uppercase tracking-wider ${levelStyle.badge}`}
-        >
+        <span className="font-mono font-bold text-china-red uppercase tracking-wider">
           HSK {currentItem.level}
         </span>
       </div>
 
-      {/* 2. Main Title Card */}
-      <div className="bg-card border border-border rounded-3xl p-6 md:p-8 shadow-xs mb-6">
-        <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-4">
-          <div className="space-y-2 flex-1">
-            <div className="flex items-center gap-2 flex-wrap">
-              <span className={`px-2.5 py-0.5 text-xs font-bold rounded-lg border ${levelStyle.badge}`}>
-                HSK {currentItem.level}
-              </span>
-              {currentItem.quiz && currentItem.quiz.length > 0 && (
-                <span className="px-2.5 py-0.5 bg-china-red/10 text-china-red text-xs font-bold rounded-lg border border-china-red/20 flex items-center gap-1">
-                  <HelpCircle className="w-3.5 h-3.5" /> {currentItem.quiz.length} bài tập
-                </span>
-              )}
-              {isMastered && (
-                <span className="px-2.5 py-0.5 bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-xs font-bold rounded-lg border border-emerald-500/30 flex items-center gap-1">
-                  <Check className="w-3.5 h-3.5" /> Đã nắm vững
-                </span>
-              )}
-            </div>
-
-            {/* Vietnamese Title */}
-            <h1 className="text-2xl md:text-3xl font-serif font-bold text-china-ink leading-tight">
-              {titleText}
-            </h1>
+      {/* 2. Main Article Section */}
+      <article className="bg-card border border-border/80 rounded-xl p-6 md:p-8 space-y-6 mb-6">
+        {/* Title Header */}
+        <div className="border-b border-border/60 pb-5">
+          <div className="flex items-center gap-2 text-xs text-muted mb-2">
+            <span className="font-mono font-bold text-china-red">CẤP ĐỘ {currentItem.level}</span>
+            <span className="text-muted/40">•</span>
+            <span>{currentItem.examples?.length || 0} câu ví dụ</span>
+            {currentItem.quiz && currentItem.quiz.length > 0 && (
+              <>
+                <span className="text-muted/40">•</span>
+                <span className="text-china-red font-medium">{currentItem.quiz.length} bài tập</span>
+              </>
+            )}
           </div>
 
-          {/* Action Buttons: Bookmark & Mastered */}
-          <div className="flex items-center gap-2 shrink-0 self-end md:self-auto">
-            <button
-              type="button"
-              onClick={toggleSave}
-              className={`p-2.5 rounded-xl border transition-all ${
-                isSaved
-                  ? "bg-amber-500/15 border-amber-500/40 text-amber-500"
-                  : "bg-card border-border text-muted hover:text-amber-500 hover:border-amber-500/30"
-              }`}
-              title={isSaved ? "Bỏ lưu điểm này" : "Lưu điểm ngữ pháp này"}
-            >
-              <Star className={`w-4 h-4 ${isSaved ? "fill-amber-500 text-amber-500" : ""}`} />
-            </button>
+          <div className="flex items-start justify-between gap-4">
+            <h1 className="text-2xl md:text-3xl font-serif font-bold text-china-ink leading-tight tracking-tight">
+              {titleText}
+            </h1>
 
-            <button
-              type="button"
-              onClick={toggleMastered}
-              className={`flex items-center gap-1.5 px-3 py-2 rounded-xl border transition-all text-xs font-semibold ${
-                isMastered
-                  ? "bg-emerald-500/15 border-emerald-500/40 text-emerald-600 dark:text-emerald-400 font-bold"
-                  : "bg-card border-border text-muted hover:text-emerald-600 hover:border-emerald-500/30"
-              }`}
-              title={isMastered ? "Đánh dấu chưa thuộc" : "Đánh dấu đã nắm vững"}
-            >
-              <CheckCircle2 className="w-4 h-4" />
-              <span>{isMastered ? "Đã thuộc" : "Đánh dấu đã thuộc"}</span>
-            </button>
+            {/* Quick Actions */}
+            <div className="flex items-center gap-1 shrink-0 pt-1">
+              <button
+                type="button"
+                onClick={toggleSave}
+                className={`p-2 rounded-md transition-colors ${
+                  isSaved
+                    ? "text-amber-500 bg-amber-500/10"
+                    : "text-muted hover:text-amber-500 hover:bg-neutral-100 dark:hover:bg-neutral-800"
+                }`}
+                title={isSaved ? "Bỏ lưu điểm này" : "Lưu điểm ngữ pháp này"}
+              >
+                <Star className={`w-4 h-4 ${isSaved ? "fill-amber-500 text-amber-500" : ""}`} />
+              </button>
 
-            <button
-              type="button"
-              onClick={() => handleCopy(window.location.href, "page_url")}
-              className="p-2.5 rounded-xl border border-border bg-card text-muted hover:text-china-ink hover:border-china-red/30 transition-all"
-              title="Sao chép liên kết bài học"
-            >
-              {copiedKey === "page_url" ? (
-                <Check className="w-4 h-4 text-emerald-500" />
-              ) : (
-                <Share2 className="w-4 h-4" />
-              )}
-            </button>
+              <button
+                type="button"
+                onClick={toggleMastered}
+                className={`flex items-center gap-1 px-2.5 py-1.5 rounded-md text-xs font-semibold transition-colors ${
+                  isMastered
+                    ? "text-emerald-600 dark:text-emerald-400 bg-emerald-500/10"
+                    : "text-muted hover:text-emerald-600 hover:bg-neutral-100 dark:hover:bg-neutral-800"
+                }`}
+                title={isMastered ? "Đánh dấu chưa thuộc" : "Đánh dấu đã nắm vững"}
+              >
+                <CheckCircle2 className="w-4 h-4" />
+                <span>{isMastered ? "Đã thuộc" : "Đánh dấu đã thuộc"}</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => handleCopy(window.location.href, "page_url")}
+                className="p-2 rounded-md text-muted hover:text-china-ink hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+                title="Sao chép liên kết bài học"
+              >
+                {copiedKey === "page_url" ? (
+                  <Check className="w-4 h-4 text-emerald-500" />
+                ) : (
+                  <Share2 className="w-4 h-4" />
+                )}
+              </button>
+            </div>
           </div>
         </div>
 
-        {/* Formula Box */}
+        {/* Structure Formula */}
         {currentItem.structure && (
-          <div className="mb-4 p-4 rounded-2xl bg-amber-500/10 border border-amber-500/25 flex items-center justify-between gap-3">
-            <div className="flex items-center gap-2.5 overflow-x-auto text-xs md:text-sm font-mono text-china-ink font-semibold">
-              <span className="text-amber-600 dark:text-amber-400 font-bold shrink-0 font-sans text-xs uppercase tracking-wider">
-                Công thức:
+          <div className="p-4 bg-neutral-50 dark:bg-neutral-900/60 rounded-lg border-l-4 border-china-red flex items-center justify-between gap-4 font-mono">
+            <div className="space-y-1 min-w-0">
+              <span className="text-[10px] uppercase font-bold text-muted font-sans tracking-wider block">
+                Công thức chuẩn:
               </span>
-              <span className="text-china-red font-bold tracking-wide">{currentItem.structure}</span>
+              <p className="text-base md:text-lg font-bold text-china-ink break-words">
+                {currentItem.structure}
+              </p>
             </div>
 
             <button
               type="button"
               onClick={() => handleCopy(currentItem.structure, `struct_${currentItem.id}`)}
-              className="p-2 rounded-lg border border-border bg-card/80 hover:bg-card text-muted hover:text-china-ink shrink-0 transition-colors"
+              className="p-1.5 text-muted hover:text-china-ink hover:bg-neutral-200/60 dark:hover:bg-neutral-800 rounded transition-colors shrink-0"
               title="Sao chép công thức"
             >
               {copiedKey === `struct_${currentItem.id}` ? (
@@ -339,88 +323,82 @@ export default function GrammarDetailPage() {
           </div>
         )}
 
-        {/* Used For Tags */}
+        {/* Purpose */}
         {usedForParts.length > 0 && (
-          <div className="flex items-center gap-2 flex-wrap mb-4">
-            <span className="text-xs font-bold text-muted uppercase tracking-wider">Mục đích:</span>
-            {usedForParts.map((uf, ufIdx) => (
-              <span
-                key={ufIdx}
-                className="px-3 py-1 rounded-full bg-border/40 border border-border/80 text-xs font-medium text-china-ink"
-              >
-                {uf}
-              </span>
-            ))}
+          <div className="text-xs text-muted flex items-center gap-1.5 flex-wrap">
+            <span className="font-semibold text-muted/80">Mục đích:</span>
+            <span className="text-china-ink font-medium">{usedForParts.join(" • ")}</span>
           </div>
         )}
 
         {/* Explanation */}
         {currentItem.explanation && (
-          <div className="pt-3 border-t border-border/60">
-            <h3 className="text-xs font-bold text-muted uppercase tracking-wider mb-2">
-              Giải thích ngữ pháp & Cách dùng
+          <div className="space-y-2 pt-2">
+            <h3 className="text-xs font-bold text-muted uppercase tracking-wider">
+              Giải thích & Cách dùng
             </h3>
-            <p className="text-sm md:text-base text-china-ink/90 leading-relaxed">
+            <p className="text-sm md:text-base leading-relaxed text-china-ink/90">
               {currentItem.explanation}
             </p>
           </div>
         )}
 
-        {/* Exam Tip */}
+        {/* Exam Tips Callout */}
         {currentItem.tip && (
-          <div className="mt-4 p-4 rounded-2xl bg-china-jade/10 border border-china-jade/25 text-xs md:text-sm text-china-ink flex items-start gap-3">
-            <Lightbulb className="w-5 h-5 text-china-jade shrink-0 mt-0.5" />
+          <div className="p-4 bg-neutral-50 dark:bg-neutral-900/40 border-l-2 border-china-gold rounded-r-lg text-xs md:text-sm text-china-ink flex items-start gap-2.5">
+            <Lightbulb className="w-4 h-4 text-china-gold shrink-0 mt-0.5" />
             <div className="leading-relaxed">
-              <strong className="text-china-jade font-bold">Mẹo làm bài & lưu ý phòng bẫy: </strong>
+              <strong className="text-china-gold font-bold">Lưu ý khi làm bài: </strong>
               <span>{currentItem.tip}</span>
             </div>
           </div>
         )}
-      </div>
+      </article>
 
       {/* 3. Examples Section */}
       {currentItem.examples && currentItem.examples.length > 0 && (
-        <div className="bg-card border border-border rounded-3xl p-6 md:p-8 shadow-xs mb-6">
-          <div className="flex items-center justify-between flex-wrap gap-3 mb-5 pb-3 border-b border-border/60">
+        <section className="bg-card border border-border/80 rounded-xl p-6 md:p-8 space-y-4 mb-6">
+          <div className="flex items-center justify-between border-b border-border/60 pb-3">
             <div>
-              <h2 className="text-lg md:text-xl font-bold font-serif text-china-ink flex items-center gap-2">
-                <BookOpen className="w-5 h-5 text-china-red" />
+              <h2 className="text-base md:text-lg font-serif font-bold text-china-ink flex items-center gap-1.5">
+                <BookOpen className="w-4 h-4 text-china-red" />
                 <span>Ví dụ minh họa ({currentItem.examples.length})</span>
               </h2>
-              <p className="text-xs text-muted mt-0.5">Nhấn biểu tượng loa để nghe giọng đọc bản xứ chuẩn</p>
+              <p className="text-[11px] text-muted">Nhấn loa để nghe phát âm chuẩn giọng bản xứ</p>
             </div>
 
             {/* Study Mode Toggles */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5">
               <button
                 type="button"
                 onClick={() => setShowPinyin((v) => !v)}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-semibold transition-all ${
+                className={`px-2 py-1 rounded-md text-[11px] font-medium flex items-center gap-1 transition-colors ${
                   showPinyin
-                    ? "bg-china-red/10 border-china-red/30 text-china-red"
-                    : "bg-card border-border text-muted hover:text-china-ink"
+                    ? "bg-neutral-100 dark:bg-neutral-800 text-china-ink"
+                    : "text-muted hover:text-china-ink"
                 }`}
               >
-                {showPinyin ? <Eye className="w-3.5 h-3.5" /> : <EyeOff className="w-3.5 h-3.5" />}
+                {showPinyin ? <Eye className="w-3 h-3 text-muted" /> : <EyeOff className="w-3 h-3 text-china-red" />}
                 <span>Pinyin</span>
               </button>
 
               <button
                 type="button"
                 onClick={() => setShowTranslation((v) => !v)}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-semibold transition-all ${
+                className={`px-2 py-1 rounded-md text-[11px] font-medium flex items-center gap-1 transition-colors ${
                   showTranslation
-                    ? "bg-china-red/10 border-china-red/30 text-china-red"
-                    : "bg-card border-border text-muted hover:text-china-ink"
+                    ? "bg-neutral-100 dark:bg-neutral-800 text-china-ink"
+                    : "text-muted hover:text-china-ink"
                 }`}
               >
-                {showTranslation ? <Eye className="w-3.5 h-3.5" /> : <EyeOff className="w-3.5 h-3.5" />}
+                {showTranslation ? <Eye className="w-3 h-3 text-muted" /> : <EyeOff className="w-3 h-3 text-china-red" />}
                 <span>Dịch nghĩa</span>
               </button>
             </div>
           </div>
 
-          <div className="space-y-3">
+          {/* Clean list with subtle dividers */}
+          <div className="divide-y divide-border/50">
             {currentItem.examples.map((ex, exIdx) => {
               const isAudioActive = playingAudio === ex.chinese
               const copyKey = `ex_${currentItem.id}_${exIdx}`
@@ -429,15 +407,11 @@ export default function GrammarDetailPage() {
               return (
                 <div
                   key={exIdx}
-                  className={`p-4 md:p-5 rounded-2xl border transition-all flex items-start justify-between gap-4 ${
-                    isAudioActive
-                      ? "bg-china-red/5 border-china-red/30 shadow-2xs"
-                      : "bg-border/20 border-transparent hover:border-border/60"
-                  }`}
+                  className="py-4 first:pt-2 last:pb-2 flex items-start justify-between gap-4"
                 >
-                  <div className="space-y-1.5 flex-1">
+                  <div className="space-y-1 flex-1">
                     {/* Chinese Hanzi */}
-                    <p className="text-lg md:text-xl font-bold text-china-ink font-serif leading-snug tracking-wide" lang="zh">
+                    <p className="text-lg md:text-xl font-bold font-serif text-china-ink leading-snug tracking-wide" lang="zh">
                       {ex.chinese}
                     </p>
 
@@ -450,21 +424,21 @@ export default function GrammarDetailPage() {
 
                     {/* Translation */}
                     {showTranslation && (
-                      <p className="text-xs md:text-sm text-china-ink/85 leading-relaxed font-sans">
+                      <p className="text-xs md:text-sm text-china-ink/80 leading-relaxed font-sans">
                         {ex.translation}
                       </p>
                     )}
                   </div>
 
                   {/* Audio & Copy Buttons */}
-                  <div className="flex items-center gap-2 shrink-0 pt-0.5">
+                  <div className="flex items-center gap-1 shrink-0 pt-0.5">
                     <button
                       type="button"
                       onClick={() => handleSpeak(ex.chinese)}
-                      className={`p-2.5 rounded-xl border transition-all cursor-pointer shadow-2xs ${
+                      className={`p-2 rounded-md transition-colors cursor-pointer ${
                         isAudioActive
-                          ? "bg-china-red text-white border-china-red scale-105"
-                          : "border-border bg-card hover:bg-china-red hover:text-white hover:border-china-red text-muted"
+                          ? "bg-china-red text-white"
+                          : "text-muted hover:text-china-ink hover:bg-neutral-100 dark:hover:bg-neutral-800"
                       }`}
                       title="Nghe phát âm chuẩn HD"
                     >
@@ -474,7 +448,7 @@ export default function GrammarDetailPage() {
                     <button
                       type="button"
                       onClick={() => handleCopy(ex.chinese, copyKey)}
-                      className="p-2.5 rounded-xl border border-border bg-card hover:bg-border/40 text-muted hover:text-china-ink transition-all cursor-pointer shadow-2xs"
+                      className="p-2 rounded-md text-muted hover:text-china-ink hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer"
                       title="Sao chép câu chữ Hán"
                     >
                       {isCopied ? (
@@ -488,23 +462,23 @@ export default function GrammarDetailPage() {
               )
             })}
           </div>
-        </div>
+        </section>
       )}
 
       {/* 4. Quiz Section */}
       {currentItem.quiz && currentItem.quiz.length > 0 && (
-        <div className="bg-card border border-border rounded-3xl p-6 md:p-8 shadow-xs mb-6">
-          <div className="flex items-center justify-between gap-3 mb-5 pb-3 border-b border-border/60">
-            <div className="flex items-center gap-2">
-              <HelpCircle className="w-5 h-5 text-china-red" />
-              <h2 className="text-lg md:text-xl font-bold font-serif text-china-ink">
-                Luyện tập củng cố ({currentItem.quiz.length} câu)
+        <section className="bg-card border border-border/80 rounded-xl p-6 md:p-8 space-y-5 mb-6">
+          <div className="flex items-center justify-between border-b border-border/60 pb-3">
+            <div>
+              <h2 className="text-base md:text-lg font-serif font-bold text-china-ink flex items-center gap-1.5">
+                <HelpCircle className="w-4 h-4 text-china-red" />
+                <span>Luyện tập củng cố ({currentItem.quiz.length} câu)</span>
               </h2>
+              <p className="text-[11px] text-muted">Chọn đáp án đúng nhất để kiểm tra khả năng ghi nhớ</p>
             </div>
-            <span className="text-xs text-muted font-medium">Chọn đáp án đúng nhất</span>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-6">
             {currentItem.quiz.map((q, qIdx) => {
               const quizKey = `${currentItem.id}_q${qIdx}`
               const userChoice = quizAnswers[quizKey]
@@ -512,20 +486,17 @@ export default function GrammarDetailPage() {
               const isRight = isDone && userChoice === q.answerIndex
 
               return (
-                <div
-                  key={qIdx}
-                  className="bg-border/15 border border-border rounded-2xl p-4 md:p-5 shadow-2xs"
-                >
-                  <div className="flex items-start justify-between gap-3 mb-3">
-                    <p className="text-sm md:text-base font-semibold text-china-ink leading-relaxed">
-                      <span className="font-bold text-china-red mr-1.5">Câu {qIdx + 1}:</span>
+                <div key={qIdx} className="space-y-3 pt-2 first:pt-0">
+                  <div className="flex items-start justify-between gap-3">
+                    <p className="text-sm font-semibold text-china-ink leading-relaxed">
+                      <span className="font-bold text-china-red mr-1.5 font-mono">Câu {qIdx + 1}:</span>
                       {q.question}
                     </p>
                     {isDone && (
                       <button
                         type="button"
                         onClick={() => handleResetQuiz(quizKey)}
-                        className="text-xs text-muted hover:text-china-ink flex items-center gap-1 px-2.5 py-1 rounded-lg border border-border bg-card hover:bg-border/40 transition-colors shrink-0"
+                        className="text-xs text-muted hover:text-china-ink flex items-center gap-1 transition-colors shrink-0"
                         title="Làm lại câu này"
                       >
                         <RotateCcw className="w-3 h-3" /> Làm lại
@@ -533,7 +504,7 @@ export default function GrammarDetailPage() {
                     )}
                   </div>
 
-                  <div className="grid grid-cols-1 gap-2 mb-2">
+                  <div className="grid grid-cols-1 gap-2">
                     {q.options.map((opt, optIdx) => {
                       const isSelected = userChoice === optIdx
                       const isActualRight = isDone && optIdx === q.answerIndex
@@ -543,15 +514,21 @@ export default function GrammarDetailPage() {
                           key={optIdx}
                           disabled={isDone}
                           onClick={() => handleSelectQuiz(quizKey, optIdx)}
-                          className={`text-left p-3.5 rounded-xl border text-xs md:text-sm font-medium transition-all flex items-center justify-between gap-3 ${
+                          className={`text-left p-3 rounded-lg border text-xs md:text-sm font-medium transition-colors flex items-center justify-between gap-3 ${
                             isActualRight
-                              ? "bg-emerald-500/10 border-emerald-500 text-emerald-700 dark:text-emerald-300 font-bold"
+                              ? "bg-emerald-500/10 border-emerald-500 text-emerald-700 dark:text-emerald-300 font-semibold"
                               : isSelected && !isRight
-                              ? "bg-china-red/10 border-china-red text-china-red font-bold"
-                              : "bg-card border-border hover:border-china-red/40 text-china-ink"
+                              ? "bg-china-red/10 border-china-red text-china-red font-semibold"
+                              : "border-border/80 hover:bg-neutral-50 dark:hover:bg-neutral-900 text-china-ink"
                           }`}
                         >
-                          <span>{opt}</span>
+                          <span className="flex items-center gap-2">
+                            <span className="w-5 h-5 rounded border border-border flex items-center justify-center text-[10px] font-mono text-muted shrink-0">
+                              {String.fromCharCode(65 + optIdx)}
+                            </span>
+                            <span>{opt}</span>
+                          </span>
+
                           {isActualRight && (
                             <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
                           )}
@@ -565,10 +542,8 @@ export default function GrammarDetailPage() {
 
                   {/* Explanation note */}
                   {isDone && q.explanation && (
-                    <div className="mt-3 p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs md:text-sm text-china-ink">
-                      <span className="font-bold text-amber-600 dark:text-amber-400">
-                        Giải thích chi tiết:{" "}
-                      </span>
+                    <div className="p-3 rounded-lg bg-neutral-50 dark:bg-neutral-900/50 border-l-2 border-china-gold text-xs text-china-ink">
+                      <span className="font-bold text-china-gold">Giải thích: </span>
                       <span>{q.explanation}</span>
                     </div>
                   )}
@@ -576,20 +551,20 @@ export default function GrammarDetailPage() {
               )
             })}
           </div>
-        </div>
+        </section>
       )}
 
       {/* 5. Previous / Next Navigation Footer */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-8">
         {prevItem ? (
           <Link
             href={`/grammar/${prevItem.id}`}
-            className="group flex flex-col p-4 rounded-2xl border border-border bg-card hover:border-china-red/40 transition-all text-left shadow-2xs"
+            className="group p-3.5 rounded-lg border border-border/80 bg-card hover:border-china-red/40 transition-colors text-left"
           >
-            <div className="flex items-center gap-1.5 text-xs text-muted group-hover:text-china-red transition-colors mb-1 font-semibold">
-              <ArrowLeft className="w-3.5 h-3.5" /> Điểm trước
+            <div className="flex items-center gap-1 text-[11px] text-muted group-hover:text-china-red transition-colors mb-0.5">
+              <ArrowLeft className="w-3 h-3" /> Điểm trước
             </div>
-            <span className="text-sm font-bold text-china-ink group-hover:text-china-red transition-colors line-clamp-1">
+            <span className="text-xs md:text-sm font-bold text-china-ink group-hover:text-china-red transition-colors line-clamp-1">
               {prevItem.titleVi || prevItem.title}
             </span>
           </Link>
@@ -600,12 +575,12 @@ export default function GrammarDetailPage() {
         {nextItem && (
           <Link
             href={`/grammar/${nextItem.id}`}
-            className="group flex flex-col p-4 rounded-2xl border border-border bg-card hover:border-china-red/40 transition-all text-right shadow-2xs"
+            className="group p-3.5 rounded-lg border border-border/80 bg-card hover:border-china-red/40 transition-colors text-right"
           >
-            <div className="flex items-center justify-end gap-1.5 text-xs text-muted group-hover:text-china-red transition-colors mb-1 font-semibold">
-              Điểm tiếp theo <ArrowRight className="w-3.5 h-3.5" />
+            <div className="flex items-center justify-end gap-1 text-[11px] text-muted group-hover:text-china-red transition-colors mb-0.5">
+              Điểm tiếp theo <ArrowRight className="w-3 h-3" />
             </div>
-            <span className="text-sm font-bold text-china-ink group-hover:text-china-red transition-colors line-clamp-1">
+            <span className="text-xs md:text-sm font-bold text-china-ink group-hover:text-china-red transition-colors line-clamp-1">
               {nextItem.titleVi || nextItem.title}
             </span>
           </Link>
