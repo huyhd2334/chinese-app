@@ -202,3 +202,36 @@ export function normalizeGrammarList(list: GrammarPoint[]): GrammarPoint[] {
   if (!Array.isArray(list)) return []
   return list.map(normalizeGrammarPoint)
 }
+
+// 6. In-Memory Singleton Cache (0ms navigation lag)
+const GRAMMAR_VERSION = "20261101_v2"
+let cachedGrammarList: GrammarPoint[] | null = null
+let pendingPromise: Promise<GrammarPoint[]> | null = null
+
+export async function fetchGrammarList(): Promise<GrammarPoint[]> {
+  // If already loaded in RAM memory, return instantly (0ms)
+  if (cachedGrammarList && cachedGrammarList.length > 0) {
+    return cachedGrammarList
+  }
+
+  // If a fetch is already running, wait for it (deduplicate simultaneous requests)
+  if (pendingPromise) {
+    return pendingPromise
+  }
+
+  pendingPromise = (async () => {
+    try {
+      const res = await fetch(`/content/grammar/hsk_grammar_full.json?v=${GRAMMAR_VERSION}`)
+      const data: GrammarPoint[] = await res.json()
+      cachedGrammarList = normalizeGrammarList(data)
+      return cachedGrammarList
+    } catch (err) {
+      console.error("Failed to load grammar data:", err)
+      return []
+    } finally {
+      pendingPromise = null
+    }
+  })()
+
+  return pendingPromise
+}
