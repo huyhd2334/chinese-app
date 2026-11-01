@@ -5543,98 +5543,791 @@ export const SHADOWING_VIDEOS: ShadowingVideo[] = [
     "category": "Giao tiếp đời sống",
     "description": "Chuỗi đối thoại giao tiếp HSK 3 thực tế thường gặp hàng ngày, giúp tăng tốc độ phản xạ miệng, phát âm chuẩn ngữ điệu và tự tin nói tiếng Trung.",
     "youtubeId": "s-YvdaMeaFU",
-    "sentencesCount": 10,
+    "sentencesCount": 87,
     "isFree": false,
     "sentences": [
       {
         "id": 1,
-        "startTime": 0,
-        "endTime": 7.5,
-        "speaker": "Hasu A",
-        "chinese": "你好，请问附近有地铁站吗？",
-        "pinyin": "Nǐ hǎo, qǐngwèn fùjìn yǒu dìtiě zhàn ma?",
-        "vietnamese": "Xin chào, cho hỏi gần đây có ga tàu điện ngầm nào không?"
+        "startTime": 15.0,
+        "endTime": 23.5,
+        "speaker": "Hasu",
+        "chinese": "我们认识一下吧！",
+        "pinyin": "Wǒ men rèn shí yī xià ba!",
+        "vietnamese": "Chúng ta làm quen nhé."
       },
       {
         "id": 2,
-        "startTime": 7.5,
-        "endTime": 15,
-        "speaker": "Hasu B",
-        "chinese": "往前走大概两百米，过马路就是了。",
-        "pinyin": "Wǎng qián zǒu dàgài liǎng bǎi mǐ, guò mǎlù jiù shì le.",
-        "vietnamese": "Đi thẳng về phía trước khoảng 200 mét, qua đường là đến rồi."
+        "startTime": 23.5,
+        "endTime": 31.0,
+        "speaker": "Hasu",
+        "chinese": "你是哪里人？",
+        "pinyin": "Nǐ shì nǎ lǐ rén?",
+        "vietnamese": "Bạn là người ở đâu?"
       },
       {
         "id": 3,
-        "startTime": 15,
-        "endTime": 24,
-        "speaker": "Hasu A",
-        "chinese": "今天的会议几点开始？在哪个会议室？",
-        "pinyin": "Jīntiān de huìyì jǐ diǎn kāishǐ? Zài nǎge huìyìshì?",
-        "vietnamese": "Cuộc họp hôm nay mấy giờ bắt đầu? Ở phòng họp nào vậy?"
+        "startTime": 31.0,
+        "endTime": 41.5,
+        "speaker": "Hasu",
+        "chinese": "你来中国多久了？",
+        "pinyin": "Nǐ lái zhōng guó duō jiǔ le?",
+        "vietnamese": "Bạn đến Trung Quốc bao lâu rồi?"
       },
       {
         "id": 4,
-        "startTime": 24,
-        "endTime": 33,
-        "speaker": "Hasu B",
-        "chinese": "下午两点半开始，在三楼的三零二会议室。",
-        "pinyin": "Xiàwǔ liǎng diǎn bàn kāishǐ, zài sān lóu de sān líng èr huìyìshì.",
-        "vietnamese": "Hai giờ rưỡi chiều bắt đầu, ở phòng họp 302 trên tầng 3."
+        "startTime": 41.5,
+        "endTime": 54.0,
+        "speaker": "Hasu",
+        "chinese": "你在中国学习还是工作？",
+        "pinyin": "Nǐ zài zhōng guó xué xí hái shì gōng zuò?",
+        "vietnamese": "Bạn ở Trung Quốc học tập hay làm việc?"
       },
       {
         "id": 5,
-        "startTime": 33,
-        "endTime": 43,
-        "speaker": "Hasu A",
-        "chinese": "你感冒好点儿了吗？有没有去看医生？",
-        "pinyin": "Nǐ gǎnmào hǎo diǎnr le ma? Yǒu méiyǒu qù kàn yīshēng?",
-        "vietnamese": "Bệnh cảm cúm của bạn đã đỡ hơn chút nào chưa? Đã đi khám bác sĩ chưa?"
+        "startTime": 54.0,
+        "endTime": 64.0,
+        "speaker": "Hasu",
+        "chinese": "你平时喜欢做什么？",
+        "pinyin": "Nǐ píng shí xǐ huān zuò shén me?",
+        "vietnamese": "Bình thường bạn thích làm gì?"
       },
       {
         "id": 6,
-        "startTime": 43,
-        "endTime": 53,
-        "speaker": "Hasu B",
-        "chinese": "吃了药已经好多了，谢谢你的关心。",
-        "pinyin": "Chī le yào yǐjīng hǎoduō le, xièxie nǐ de guānxīn.",
-        "vietnamese": "Uống thuốc xong đã đỡ nhiều rồi, cảm ơn sự quan tâm của bạn nhé."
+        "startTime": 64.0,
+        "endTime": 75.5,
+        "speaker": "Hasu",
+        "chinese": "我们可以交个朋友吗？",
+        "pinyin": "Wǒ men kě yǐ jiāo gè péng yǒu ma?",
+        "vietnamese": "Chúng mình có thể kết bạn không?"
       },
       {
         "id": 7,
-        "startTime": 53,
-        "endTime": 64,
-        "speaker": "Hasu A",
-        "chinese": "你打算什么时候去中国旅游？",
-        "pinyin": "Nǐ dǎsuàn shénme shíhou qù Zhōngguó lǚyóu?",
-        "vietnamese": "Bạn dự định khi nào sẽ đi du lịch Trung Quốc?"
+        "startTime": 75.5,
+        "endTime": 85.5,
+        "speaker": "Hasu",
+        "chinese": "你的中文说得很好。",
+        "pinyin": "Nǐ de zhōng wén shuō dé hěn hǎo.",
+        "vietnamese": "Tiếng Trung của bạn nói rất tốt."
       },
       {
         "id": 8,
-        "startTime": 64,
-        "endTime": 74,
-        "speaker": "Hasu B",
-        "chinese": "我计划明年春天去，那时候天气最舒服。",
-        "pinyin": "Wǒ jìhuà míngnián chūntiān qù, nà shíhou tiānqì zuì shūfu.",
-        "vietnamese": "Tôi lên kế hoạch đi vào mùa xuân năm sau, lúc đó thời tiết dễ chịu nhất."
+        "startTime": 85.5,
+        "endTime": 95.0,
+        "speaker": "Hasu",
+        "chinese": "你学中文多久了？",
+        "pinyin": "Nǐ xué zhōng wén duō jiǔ le?",
+        "vietnamese": "Bạn học tiếng Trung bao lâu rồi?"
       },
       {
         "id": 9,
-        "startTime": 74,
-        "endTime": 85,
-        "speaker": "Hasu A",
-        "chinese": "这道题你明白了吗？需要我再讲一遍吗？",
-        "pinyin": "Zhè dào tí nǐ míngbai le ma? Xūyào wǒ zài jiǎng yí biàn ma?",
-        "vietnamese": "Câu hỏi này bạn đã hiểu chưa? Có cần tôi giảng lại một lần nữa không?"
+        "startTime": 95.0,
+        "endTime": 107.5,
+        "speaker": "Hasu",
+        "chinese": "我刚开始学习中文。",
+        "pinyin": "Wǒ gāng kāi shǐ xué xí zhōng wén.",
+        "vietnamese": "Tôi vừa mới bắt đầu học tiếng Trung."
       },
       {
         "id": 10,
-        "startTime": 85,
-        "endTime": 96,
-        "speaker": "Hasu B",
-        "chinese": "我已经完全听懂了，非常感谢你的耐心解答。",
-        "pinyin": "Wǒ yǐjīng wánquán tīng dǒng le, fēicháng gǎnxiè nǐ de nàixīn jiědá.",
-        "vietnamese": "Tôi đã hoàn toàn nghe hiểu rồi, vô cùng cảm ơn sự giải đáp kiên nhẫn của bạn."
+        "startTime": 107.5,
+        "endTime": 116.0,
+        "speaker": "Hasu",
+        "chinese": "你住在哪里？",
+        "pinyin": "Nǐ zhù zài nǎ lǐ?",
+        "vietnamese": "Bạn sống ở đâu?"
+      },
+      {
+        "id": 11,
+        "startTime": 116.0,
+        "endTime": 123.5,
+        "speaker": "Hasu",
+        "chinese": "你多大了？",
+        "pinyin": "Nǐ duō dà le?",
+        "vietnamese": "Bạn bao nhiêu tuổi?"
+      },
+      {
+        "id": 12,
+        "startTime": 123.5,
+        "endTime": 133.5,
+        "speaker": "Hasu",
+        "chinese": "我比你小两岁。",
+        "pinyin": "Wǒ bǐ nǐ xiǎo liǎng suì.",
+        "vietnamese": "Tôi nhỏ hơn bạn hai tuổi."
+      },
+      {
+        "id": 13,
+        "startTime": 133.5,
+        "endTime": 143.0,
+        "speaker": "Hasu",
+        "chinese": "你的家人都好吗？",
+        "pinyin": "Nǐ de jiā rén dōu hǎo ma?",
+        "vietnamese": "Gia đình bạn đều khỏe chứ?"
+      },
+      {
+        "id": 14,
+        "startTime": 143.0,
+        "endTime": 153.5,
+        "speaker": "Hasu",
+        "chinese": "有时间一起出去吧！",
+        "pinyin": "Yǒu shí jiān yì qǐ chū qù ba!",
+        "vietnamese": "Có thời gian cùng nhau ra ngoài chơi nhé!"
+      },
+      {
+        "id": 15,
+        "startTime": 153.5,
+        "endTime": 162.0,
+        "speaker": "Hasu",
+        "chinese": "你常去哪里玩？",
+        "pinyin": "Nǐ cháng qù nǎ lǐ wán?",
+        "vietnamese": "Bạn thường đi đâu chơi?"
+      },
+      {
+        "id": 16,
+        "startTime": 162.0,
+        "endTime": 172.0,
+        "speaker": "Hasu",
+        "chinese": "这是我第一次来这里。",
+        "pinyin": "Zhè shì wǒ dì yī cì lái zhè lǐ.",
+        "vietnamese": "Đây là lần đầu tiên tôi đến đây."
+      },
+      {
+        "id": 17,
+        "startTime": 172.0,
+        "endTime": 181.0,
+        "speaker": "Hasu",
+        "chinese": "你来过越南吗？",
+        "pinyin": "Nǐ lái guò yuè nán ma?",
+        "vietnamese": "Bạn từng đến Việt Nam chưa?"
+      },
+      {
+        "id": 18,
+        "startTime": 181.0,
+        "endTime": 193.0,
+        "speaker": "Hasu",
+        "chinese": "我觉得这里的菜很新鲜。",
+        "pinyin": "Wǒ jué de zhè lǐ de cài hěn xīn xiān.",
+        "vietnamese": "Tôi thấy món ăn ở đây rất tươi ngon."
+      },
+      {
+        "id": 19,
+        "startTime": 193.0,
+        "endTime": 203.0,
+        "speaker": "Hasu",
+        "chinese": "我想点两个菜。",
+        "pinyin": "Wǒ xiǎng diǎn liǎng gè cài.",
+        "vietnamese": "Tôi muốn gọi hai món."
+      },
+      {
+        "id": 20,
+        "startTime": 203.0,
+        "endTime": 214.0,
+        "speaker": "Hasu",
+        "chinese": "我喜欢喝果汁。",
+        "pinyin": "Wǒ xǐ huān hē guǒ zhī.",
+        "vietnamese": "Tôi thích uống nước ép hoa quả."
+      },
+      {
+        "id": 21,
+        "startTime": 214.0,
+        "endTime": 223.0,
+        "speaker": "Hasu",
+        "chinese": "这里的饺子特别好吃。",
+        "pinyin": "Zhè lǐ de jiǎo zi tè bié hǎo chī.",
+        "vietnamese": "Sủi cảo ở đây đặc biệt ngon."
+      },
+      {
+        "id": 22,
+        "startTime": 223.0,
+        "endTime": 232.0,
+        "speaker": "Hasu",
+        "chinese": "我已经吃饱了。",
+        "pinyin": "Wǒ yǐ jīng chī bǎo le.",
+        "vietnamese": "Tôi đã ăn no rồi."
+      },
+      {
+        "id": 23,
+        "startTime": 232.0,
+        "endTime": 242.0,
+        "speaker": "Hasu",
+        "chinese": "你想喝点酒吗？",
+        "pinyin": "Nǐ xiǎng hē diǎn jiǔ ma?",
+        "vietnamese": "Bạn muốn uống chút rượu không?"
+      },
+      {
+        "id": 24,
+        "startTime": 242.0,
+        "endTime": 253.0,
+        "speaker": "Hasu",
+        "chinese": "我觉得这里的服务很好。",
+        "pinyin": "Wǒ jué de zhè lǐ de fú wù hěn hǎo.",
+        "vietnamese": "Tôi thấy phục vụ ở đây rất tốt."
+      },
+      {
+        "id": 25,
+        "startTime": 253.0,
+        "endTime": 264.0,
+        "speaker": "Hasu",
+        "chinese": "请给我一个勺子。",
+        "pinyin": "Qǐng gěi wǒ yí gè sháo zi.",
+        "vietnamese": "Làm ơn cho tôi một chiếc thìa."
+      },
+      {
+        "id": 26,
+        "startTime": 264.0,
+        "endTime": 275.0,
+        "speaker": "Hasu",
+        "chinese": "我只看看，不买。",
+        "pinyin": "Wǒ zhǐ kàn kàn, bù mǎi.",
+        "vietnamese": "Tôi chỉ xem thôi, không mua."
+      },
+      {
+        "id": 27,
+        "startTime": 275.0,
+        "endTime": 283.5,
+        "speaker": "Hasu",
+        "chinese": "你想买什么颜色的？",
+        "pinyin": "Nǐ xiǎng mǎi shén me yán sè de?",
+        "vietnamese": "Bạn muốn mua màu gì?"
+      },
+      {
+        "id": 28,
+        "startTime": 283.5,
+        "endTime": 292.0,
+        "speaker": "Hasu",
+        "chinese": "可以试穿吗？",
+        "pinyin": "Kě yǐ shì chuān ma?",
+        "vietnamese": "Có thể mặc thử không?"
+      },
+      {
+        "id": 29,
+        "startTime": 292.0,
+        "endTime": 301.0,
+        "speaker": "Hasu",
+        "chinese": "我穿中号。",
+        "pinyin": "Wǒ chuān zhōng hào.",
+        "vietnamese": "Tôi mặc cỡ vừa (size M)."
+      },
+      {
+        "id": 30,
+        "startTime": 301.0,
+        "endTime": 311.0,
+        "speaker": "Hasu",
+        "chinese": "这双鞋有点儿小。",
+        "pinyin": "Zhè shuāng xié yǒu diǎnrxiǎo.",
+        "vietnamese": "Đôi giày này hơi chật một chút."
+      },
+      {
+        "id": 31,
+        "startTime": 311.0,
+        "endTime": 321.5,
+        "speaker": "Hasu",
+        "chinese": "我想买一个便宜点的。",
+        "pinyin": "Wǒ xiǎng mǎi yí gè pián yi diǎn de.",
+        "vietnamese": "Tôi muốn mua một cái rẻ hơn một chút."
+      },
+      {
+        "id": 32,
+        "startTime": 321.5,
+        "endTime": 330.0,
+        "speaker": "Hasu",
+        "chinese": "我付现金。",
+        "pinyin": "Wǒ fù xiàn jīn.",
+        "vietnamese": "Tôi thanh toán bằng tiền mặt."
+      },
+      {
+        "id": 33,
+        "startTime": 330.0,
+        "endTime": 339.0,
+        "speaker": "Hasu",
+        "chinese": "可以刷卡吗？",
+        "pinyin": "Kě yǐ shuā kǎ ma?",
+        "vietnamese": "Có thể quẹt thẻ được không?"
+      },
+      {
+        "id": 34,
+        "startTime": 339.0,
+        "endTime": 349.5,
+        "speaker": "Hasu",
+        "chinese": "这件衣服不太合适。",
+        "pinyin": "Zhè jiàn yī fú bù tài hé shì.",
+        "vietnamese": "Bộ quần áo này không vừa vặn lắm."
+      },
+      {
+        "id": 35,
+        "startTime": 349.5,
+        "endTime": 362.0,
+        "speaker": "Hasu",
+        "chinese": "这个手机是新的还是旧的？",
+        "pinyin": "Zhè ge shǒu jī shì xīn de hái shì jiù de?",
+        "vietnamese": "Chiếc điện thoại này là mới hay cũ?"
+      },
+      {
+        "id": 36,
+        "startTime": 362.0,
+        "endTime": 371.0,
+        "speaker": "Hasu",
+        "chinese": "我买不起。",
+        "pinyin": "Wǒ mǎi bù qǐ.",
+        "vietnamese": "Tôi không đủ tiền mua."
+      },
+      {
+        "id": 37,
+        "startTime": 371.0,
+        "endTime": 381.5,
+        "speaker": "Hasu",
+        "chinese": "这家商店打折吗？",
+        "pinyin": "Zhè jiā shāng diàn dǎ zhé ma?",
+        "vietnamese": "Cửa hàng này có giảm giá không?"
+      },
+      {
+        "id": 38,
+        "startTime": 381.5,
+        "endTime": 392.5,
+        "speaker": "Hasu",
+        "chinese": "这东西质量很好。",
+        "pinyin": "Zhè dōng xī zhì liàng hěn hǎo.",
+        "vietnamese": "Đồ này chất lượng rất tốt."
+      },
+      {
+        "id": 39,
+        "startTime": 392.5,
+        "endTime": 403.0,
+        "speaker": "Hasu",
+        "chinese": "每天几点下班？",
+        "pinyin": "Měi tiān jǐ diǎn xià bān?",
+        "vietnamese": "Mỗi ngày mấy giờ tan làm?"
+      },
+      {
+        "id": 40,
+        "startTime": 403.0,
+        "endTime": 413.0,
+        "speaker": "Hasu",
+        "chinese": "这个工作很有意思。",
+        "pinyin": "Zhè ge gōng zuò hěn yǒu yì si.",
+        "vietnamese": "Công việc này rất thú vị."
+      },
+      {
+        "id": 41,
+        "startTime": 413.0,
+        "endTime": 425.5,
+        "speaker": "Hasu",
+        "chinese": "我觉得工作压力很大。",
+        "pinyin": "Wǒ jué de gōng zuò yā lì hěn dà.",
+        "vietnamese": "Tôi thấy áp lực công việc rất lớn."
+      },
+      {
+        "id": 42,
+        "startTime": 425.5,
+        "endTime": 435.5,
+        "speaker": "Hasu",
+        "chinese": "你打算换工作吗？",
+        "pinyin": "Nǐ dǎ suàn huàn gōng zuò ma?",
+        "vietnamese": "Bạn có dự định đổi công việc không?"
+      },
+      {
+        "id": 43,
+        "startTime": 435.5,
+        "endTime": 448.5,
+        "speaker": "Hasu",
+        "chinese": "我想找一个新的机会。",
+        "pinyin": "Wǒ xiǎng zhǎo yí gè xīn de jī huì.",
+        "vietnamese": "Tôi muốn tìm một cơ hội mới."
+      },
+      {
+        "id": 44,
+        "startTime": 448.5,
+        "endTime": 458.0,
+        "speaker": "Hasu",
+        "chinese": "我很喜欢去新的地方。",
+        "pinyin": "Wǒ hěn xǐ huān qù xīn de dì fāng.",
+        "vietnamese": "Tôi rất thích đi đến những nơi mới."
+      },
+      {
+        "id": 45,
+        "startTime": 458.0,
+        "endTime": 471.0,
+        "speaker": "Hasu",
+        "chinese": "我想去北京看看长城。",
+        "pinyin": "Wǒ xiǎng qù běi jīng kàn kàn cháng chéng.",
+        "vietnamese": "Tôi muốn đi Bắc Kinh ngắm Vạn Lý Trường Thành."
+      },
+      {
+        "id": 46,
+        "startTime": 471.0,
+        "endTime": 480.0,
+        "speaker": "Hasu",
+        "chinese": "你买机票了吗？",
+        "pinyin": "Nǐ mǎi jī piào le ma?",
+        "vietnamese": "Bạn đã mua vé máy bay chưa?"
+      },
+      {
+        "id": 47,
+        "startTime": 480.0,
+        "endTime": 490.0,
+        "speaker": "Hasu",
+        "chinese": "我已经订好了酒店。",
+        "pinyin": "Wǒ yǐ jīng dìng hǎo le jiǔ diàn.",
+        "vietnamese": "Tôi đã đặt xong phòng khách sạn rồi."
+      },
+      {
+        "id": 48,
+        "startTime": 490.0,
+        "endTime": 500.5,
+        "speaker": "Hasu",
+        "chinese": "火车几点出发？",
+        "pinyin": "Huǒ chē jǐ diǎn chū fā?",
+        "vietnamese": "Tàu hỏa mấy giờ khởi hành?"
+      },
+      {
+        "id": 49,
+        "startTime": 500.5,
+        "endTime": 512.5,
+        "speaker": "Hasu",
+        "chinese": "我们明天早上出发。",
+        "pinyin": "Wǒ men míng tiān zǎo shàng chū fā.",
+        "vietnamese": "Chúng ta sáng mai sẽ xuất phát."
+      },
+      {
+        "id": 50,
+        "startTime": 512.5,
+        "endTime": 524.0,
+        "speaker": "Hasu",
+        "chinese": "你喜欢海边还是山上？",
+        "pinyin": "Nǐ xǐ huān hǎi biān hái shì shān shàng?",
+        "vietnamese": "Bạn thích đi biển hay đi leo núi?"
+      },
+      {
+        "id": 51,
+        "startTime": 524.0,
+        "endTime": 534.0,
+        "speaker": "Hasu",
+        "chinese": "我更喜欢去海边。",
+        "pinyin": "Wǒ gèng xǐ huān qù hǎi biān.",
+        "vietnamese": "Tôi thích đi biển hơn."
+      },
+      {
+        "id": 52,
+        "startTime": 534.0,
+        "endTime": 546.5,
+        "speaker": "Hasu",
+        "chinese": "旅行的时候你喜欢做什么？",
+        "pinyin": "Lǚ xíng de shí hòu nǐ xǐ huān zuò shén me?",
+        "vietnamese": "Khi đi du lịch bạn thích làm gì?"
+      },
+      {
+        "id": 53,
+        "startTime": 546.5,
+        "endTime": 558.0,
+        "speaker": "Hasu",
+        "chinese": "今天天气很适合出门。",
+        "pinyin": "Jīn tiān tiān qì hěn shì hé chū mén.",
+        "vietnamese": "Thời tiết hôm nay rất thích hợp ra ngoài."
+      },
+      {
+        "id": 54,
+        "startTime": 558.0,
+        "endTime": 570.0,
+        "speaker": "Hasu",
+        "chinese": "周末你有什么计划？",
+        "pinyin": "Zhōu mò nǐ yǒu shén me jì huà?",
+        "vietnamese": "Cuối tuần bạn có kế hoạch gì?"
+      },
+      {
+        "id": 55,
+        "startTime": 570.0,
+        "endTime": 580.0,
+        "speaker": "Hasu",
+        "chinese": "你每天几点起床？",
+        "pinyin": "Nǐ měi tiān jǐ diǎn qǐ chuáng?",
+        "vietnamese": "Mỗi ngày bạn thức dậy lúc mấy giờ?"
+      },
+      {
+        "id": 56,
+        "startTime": 580.0,
+        "endTime": 591.5,
+        "speaker": "Hasu",
+        "chinese": "我每天早上七点起床。",
+        "pinyin": "Wǒ měi tiān zǎo shàng qī diǎn qǐ chuáng.",
+        "vietnamese": "Mỗi ngày tôi thức dậy lúc 7 giờ sáng."
+      },
+      {
+        "id": 57,
+        "startTime": 591.5,
+        "endTime": 601.0,
+        "speaker": "Hasu",
+        "chinese": "你现在在哪儿工作？",
+        "pinyin": "Nǐ xiàn zài zài nǎrgōng zuò?",
+        "vietnamese": "Bây giờ bạn đang làm việc ở đâu?"
+      },
+      {
+        "id": 58,
+        "startTime": 601.0,
+        "endTime": 613.0,
+        "speaker": "Hasu",
+        "chinese": "我在一家外贸公司工作。",
+        "pinyin": "Wǒ zài yī jiā wài mào gōng sī gōng zuò.",
+        "vietnamese": "Tôi làm việc ở một công ty ngoại thương."
+      },
+      {
+        "id": 59,
+        "startTime": 613.0,
+        "endTime": 621.0,
+        "speaker": "Hasu",
+        "chinese": "工作忙吗？",
+        "pinyin": "Gōng zuò máng ma?",
+        "vietnamese": "Công việc có bận không?"
+      },
+      {
+        "id": 60,
+        "startTime": 621.0,
+        "endTime": 633.0,
+        "speaker": "Hasu",
+        "chinese": "挺忙的，但是很有意思。",
+        "pinyin": "Tǐng máng de, dàn shì hěn yǒu yì si.",
+        "vietnamese": "Khá bận, nhưng rất thú vị."
+      },
+      {
+        "id": 61,
+        "startTime": 633.0,
+        "endTime": 642.5,
+        "speaker": "Hasu",
+        "chinese": "你最近身体怎么样？",
+        "pinyin": "Nǐ zuì jìn shēn tǐ zěn me yàng?",
+        "vietnamese": "Dạo này sức khỏe bạn thế nào?"
+      },
+      {
+        "id": 62,
+        "startTime": 642.5,
+        "endTime": 654.5,
+        "speaker": "Hasu",
+        "chinese": "还可以，就是有点儿累。",
+        "pinyin": "Hái kě yǐ, jiù shì yǒu diǎnrlèi.",
+        "vietnamese": "Cũng tạm, chỉ là hơi mệt một chút."
+      },
+      {
+        "id": 63,
+        "startTime": 654.5,
+        "endTime": 666.0,
+        "speaker": "Hasu",
+        "chinese": "要多休息，少熬夜。",
+        "pinyin": "Yào duō xiū xī, shǎo áo yè.",
+        "vietnamese": "Cần nghỉ ngơi nhiều hơn, bớt thức khuya lại."
+      },
+      {
+        "id": 64,
+        "startTime": 666.0,
+        "endTime": 678.5,
+        "speaker": "Hasu",
+        "chinese": "我知道了，谢谢你关心。",
+        "pinyin": "Wǒ zhī dào le, xiè xiè nǐ guān xīn.",
+        "vietnamese": "Tôi biết rồi, cảm ơn bạn đã quan tâm."
+      },
+      {
+        "id": 65,
+        "startTime": 678.5,
+        "endTime": 688.5,
+        "speaker": "Hasu",
+        "chinese": "你打算去哪儿旅游？",
+        "pinyin": "Nǐ dǎ suàn qù nǎrlǚ yóu?",
+        "vietnamese": "Bạn dự định đi du lịch ở đâu?"
+      },
+      {
+        "id": 66,
+        "startTime": 688.5,
+        "endTime": 698.5,
+        "speaker": "Hasu",
+        "chinese": "我想去云南看看。",
+        "pinyin": "Wǒ xiǎng qù yún nán kàn kàn.",
+        "vietnamese": "Tôi muốn đi Vân Nam ngắm cảnh."
+      },
+      {
+        "id": 67,
+        "startTime": 698.5,
+        "endTime": 709.0,
+        "speaker": "Hasu",
+        "chinese": "那里的风景很漂亮。",
+        "pinyin": "Nà lǐ de fēng jǐng hěn piào liàng.",
+        "vietnamese": "Phong cảnh ở đó rất đẹp."
+      },
+      {
+        "id": 68,
+        "startTime": 709.0,
+        "endTime": 721.0,
+        "speaker": "Hasu",
+        "chinese": "是啊，我已经买好机票了。",
+        "pinyin": "Shì a, wǒ yǐ jīng mǎi hǎo jī piào le.",
+        "vietnamese": "Đúng vậy, tôi đã mua xong vé máy bay rồi."
+      },
+      {
+        "id": 69,
+        "startTime": 721.0,
+        "endTime": 735.0,
+        "speaker": "Hasu",
+        "chinese": "您好，请问这件衣服多少钱？",
+        "pinyin": "Nín hǎo, qǐng wèn zhè jiàn yī fú duō shǎo qián?",
+        "vietnamese": "Xin chào, cho hỏi bộ quần áo này bao nhiêu tiền?"
+      },
+      {
+        "id": 70,
+        "startTime": 735.0,
+        "endTime": 745.5,
+        "speaker": "Hasu",
+        "chinese": "这件衣服三百块。",
+        "pinyin": "Zhè jiàn yī fú sān bǎi kuài.",
+        "vietnamese": "Bộ quần áo này 300 tệ."
+      },
+      {
+        "id": 71,
+        "startTime": 745.5,
+        "endTime": 754.5,
+        "speaker": "Hasu",
+        "chinese": "可以便宜一点吗？",
+        "pinyin": "Kě yǐ pián yi yì diǎn ma?",
+        "vietnamese": "Có thể bớt một chút được không?"
+      },
+      {
+        "id": 72,
+        "startTime": 754.5,
+        "endTime": 766.0,
+        "speaker": "Hasu",
+        "chinese": "好吧，给你280块。",
+        "pinyin": "Hǎo ba, gěi nǐ280kuài.",
+        "vietnamese": "Được rồi, lấy bạn 280 tệ."
+      },
+      {
+        "id": 73,
+        "startTime": 766.0,
+        "endTime": 777.0,
+        "speaker": "Hasu",
+        "chinese": "今天天气怎么样？",
+        "pinyin": "Jīn tiān tiān qì zěn me yàng?",
+        "vietnamese": "Thời tiết hôm nay thế nào?"
+      },
+      {
+        "id": 74,
+        "startTime": 777.0,
+        "endTime": 797.0,
+        "speaker": "Hasu",
+        "chinese": "今天很热，有35度。",
+        "pinyin": "Jīn tiān hěn rè, yǒu35dù.",
+        "vietnamese": "Hôm nay rất nóng, 35 độ."
+      },
+      {
+        "id": 75,
+        "startTime": 797.0,
+        "endTime": 810.0,
+        "speaker": "Hasu",
+        "chinese": "是啊，我出门都不想穿外套。",
+        "pinyin": "Shì a, wǒ chū mén dōu bù xiǎng chuān wài tào.",
+        "vietnamese": "Đúng thế, ra ngoài tôi chẳng muốn mặc áo khoác chút nào."
+      },
+      {
+        "id": 76,
+        "startTime": 810.0,
+        "endTime": 820.0,
+        "speaker": "Hasu",
+        "chinese": "听说明天会下雨。",
+        "pinyin": "Tīng shuō míng tiān huì xià yǔ.",
+        "vietnamese": "Nghe nói ngày mai sẽ mưa."
+      },
+      {
+        "id": 77,
+        "startTime": 820.0,
+        "endTime": 829.5,
+        "speaker": "Hasu",
+        "chinese": "那我们带把伞吧。",
+        "pinyin": "Nà wǒ men dài bǎ sǎn ba.",
+        "vietnamese": "Thế chúng mình mang theo một chiếc ô đi."
+      },
+      {
+        "id": 78,
+        "startTime": 829.5,
+        "endTime": 838.5,
+        "speaker": "Hasu",
+        "chinese": "你每天怎么去上班？",
+        "pinyin": "Nǐ měi tiān zěn me qù shàng bān?",
+        "vietnamese": "Mỗi ngày bạn đi làm bằng phương tiện gì?"
+      },
+      {
+        "id": 79,
+        "startTime": 838.5,
+        "endTime": 850.5,
+        "speaker": "Hasu",
+        "chinese": "我坐地铁，二十分钟就到。",
+        "pinyin": "Wǒ zuò dì tiě, èr shí fēn zhōng jiù dào.",
+        "vietnamese": "Tôi đi tàu điện ngầm, 20 phút là đến nơi."
+      },
+      {
+        "id": 80,
+        "startTime": 850.5,
+        "endTime": 860.0,
+        "speaker": "Hasu",
+        "chinese": "你不喜欢开车吗？",
+        "pinyin": "Nǐ bù xǐ huān kāi chē ma?",
+        "vietnamese": "Bạn không thích lái xe à?"
+      },
+      {
+        "id": 81,
+        "startTime": 860.0,
+        "endTime": 874.5,
+        "speaker": "Hasu",
+        "chinese": "喜欢，可是早上路上太堵了。",
+        "pinyin": "Xǐ huān, kě shì zǎo shàng lù shàng tài dǔ le.",
+        "vietnamese": "Thích chứ, nhưng buổi sáng đường tắc quá."
+      },
+      {
+        "id": 82,
+        "startTime": 874.5,
+        "endTime": 885.0,
+        "speaker": "Hasu",
+        "chinese": "对，坐地铁更方便。",
+        "pinyin": "Duì, zuò dì tiě gèng fāng biàn.",
+        "vietnamese": "Đúng vậy, đi tàu điện ngầm tiện lợi hơn."
+      },
+      {
+        "id": 83,
+        "startTime": 885.0,
+        "endTime": 891.5,
+        "speaker": "Hasu",
+        "chinese": "你平时有什么爱好？",
+        "pinyin": "Nǐ píng shí yǒu shén me ài hào?",
+        "vietnamese": "Bình thường bạn có sở thích gì?"
+      },
+      {
+        "id": 84,
+        "startTime": 891.5,
+        "endTime": 902.0,
+        "speaker": "Hasu",
+        "chinese": "我喜欢看书和旅行。",
+        "pinyin": "Wǒ xǐ huān kàn shū hé lǚ xíng.",
+        "vietnamese": "Tôi thích đọc sách và đi du lịch."
+      },
+      {
+        "id": 85,
+        "startTime": 902.0,
+        "endTime": 906.0,
+        "speaker": "Hasu",
+        "chinese": "你最近看了什么书？",
+        "pinyin": "Nǐ zuì jìn kàn le shén me shū?",
+        "vietnamese": "Gần đây bạn đọc cuốn sách nào thế?"
+      },
+      {
+        "id": 86,
+        "startTime": 906.0,
+        "endTime": 928.5,
+        "speaker": "Hasu",
+        "chinese": "我在看一本关于历史的书。",
+        "pinyin": "Wǒ zài kàn yī běn guān yú lì shǐ de shū.",
+        "vietnamese": "Tôi đang đọc một cuốn sách về lịch sử."
+      },
+      {
+        "id": 87,
+        "startTime": 928.5,
+        "endTime": 938.0,
+        "speaker": "Hasu",
+        "chinese": "听起来很有意思。",
+        "pinyin": "Tīng qǐ lái hěn yǒu yì si.",
+        "vietnamese": "Nghe có vẻ rất thú vị."
       }
     ]
   },
