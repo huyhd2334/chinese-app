@@ -511,6 +511,15 @@ export default function Dashboard() {
                 <Flame className={`w-3.5 h-3.5 ${streak > 0 ? "fill-current" : ""}`} />
                 <span>{streak} Ngày {isDailyGoalAchieved ? "🔥" : "(Chờ đạt)"}</span>
               </div>
+
+              <Link
+                href="/leaderboard"
+                className="flex items-center gap-1.5 px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs sm:text-sm font-bold shadow-2xs hover:bg-amber-500/20 hover:scale-105 transition-all"
+                title="Xem Bảng xếp hạng học viên HSK"
+              >
+                <Trophy className="w-3.5 h-3.5 text-amber-500" />
+                <span>Bảng Xếp Hạng</span>
+              </Link>
             </div>
             
             <div className="space-y-0.5">

@@ -3,7 +3,7 @@ import { usePathname } from "next/navigation";
 import Link from 'next/link'
 import Image from 'next/image'
 import styles from './sideBar.module.css'
-import { BookOpen, Eye, LayoutDashboard, ReceiptText, BookMarked, Headphones, Library, GraduationCap } from "lucide-react";
+import { BookOpen, Eye, LayoutDashboard, ReceiptText, BookMarked, Headphones, Library, GraduationCap, Trophy } from "lucide-react";
 import UserMenu from "@/components/auth/UserMenu";
 import ThemeToggle from "@/components/common/ThemeToggle";
 import { WitchHatSvg, triggerSpookyConfetti } from "@/components/common/HalloweenDecorations";
@@ -15,6 +15,7 @@ const navItems = [
   { href: "/vocabulary", label: "Từ vựng HSK", shortLabel: "Từ vựng", icon: ReceiptText },
   { href: "/shadowing", label: "Luyện Shadowing", shortLabel: "Shadowing", icon: Headphones },
   { href: "/exams", label: "Thi thử HSK", shortLabel: "Thi thử", icon: GraduationCap },
+  { href: "/leaderboard", label: "Bảng xếp hạng", shortLabel: "Xếp hạng", icon: Trophy },
   { href: "/stories", label: "Tủ truyện", shortLabel: "Tủ truyện", icon: BookMarked },
   { href: "/review", label: "Ôn tập SRS", shortLabel: "Ôn tập", icon: Eye },
   { href: "/bonus", label: "Từ mở rộng", shortLabel: "Mở rộng", icon: Library },
