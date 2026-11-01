@@ -3161,98 +3161,584 @@ export const SHADOWING_VIDEOS: ShadowingVideo[] = [
     "category": "Giao tiếp đời sống",
     "description": "Podcast tiếng Trung giao tiếp chủ đề ngày nghỉ cuối tuần từ Sunny Ruan, câu ngắn rõ ràng, tốc độ vừa phải giúp rèn phản xạ nói trôi chảy.",
     "youtubeId": "pAr6bcn71Nc",
-    "sentencesCount": 10,
+    "sentencesCount": 64,
     "isFree": true,
     "sentences": [
       {
         "id": 1,
-        "startTime": 0,
-        "endTime": 7,
-        "speaker": "Sunny",
-        "chinese": "周末你经常做什么？",
-        "pinyin": "Zhōumò nǐ jīngcháng zuò shénme?",
-        "vietnamese": "Cuối tuần bạn thường làm những gì?"
+        "startTime": 0.1,
+        "endTime": 6.3,
+        "speaker": "Cô Vương",
+        "chinese": "大家好！欢迎收听我们的节目。我是王老师。",
+        "pinyin": "Dà jiā hǎo! Huān yíng shōu tīng wǒ men de jié mù. Wǒ shì wáng lǎo shī.",
+        "vietnamese": "Chào mọi người! Chào mừng đến với chương trình của chúng tôi. Tôi là cô Vương."
       },
       {
         "id": 2,
-        "startTime": 7,
-        "endTime": 15,
-        "speaker": "Khách mời",
-        "chinese": "周末我经常在家里睡觉或者看电影。",
-        "pinyin": "Zhōumò wǒ jīngcháng zài jiālǐ shuìjiào huòzhě kàn diànyǐng.",
-        "vietnamese": "Cuối tuần tôi thường ở nhà ngủ nướng hoặc xem phim."
+        "startTime": 6.3,
+        "endTime": 14.8,
+        "speaker": "Thầy Lý",
+        "chinese": "大家好！我是李老师。今天我们来聊聊周末生活，好不好？",
+        "pinyin": "Dà jiā hǎo! Wǒ shì lǐ lǎo shī. Jīn tiān wǒ men lái liáo liáo zhōu mò shēng huó, hǎo bù hǎo?",
+        "vietnamese": "Chào mọi người! Tôi là thầy Lý. Hôm nay chúng ta cùng trò chuyện về cuối tuần nhé?"
       },
       {
         "id": 3,
-        "startTime": 15,
-        "endTime": 23,
-        "speaker": "Sunny",
-        "chinese": "你喜欢去运动或者去公园跑步吗？",
-        "pinyin": "Nǐ xǐhuan qù yùndòng huòzhě qù gōngyuán pǎobù ma?",
-        "vietnamese": "Bạn có thích đi tập thể thao hoặc ra công viên chạy bộ không?"
+        "startTime": 14.8,
+        "endTime": 25.5,
+        "speaker": "Cô Vương",
+        "chinese": "当然好。对了，李老师，你的周末和我的周末应该完全不一样。你还没结婚，是吧？",
+        "pinyin": "Dāng rán hǎo. Duì le, lǐ lǎo shī, nǐ de zhōu mò hé wǒ de zhōu mò yīng gāi wán quán bù yí yàng. Nǐ hái méi jié hūn, shì ba?",
+        "vietnamese": "Dĩ nhiên rồi. À này thầy Lý, cuối tuần của thầy với của tôi chắc hoàn toàn khác nhau. Thầy chưa kết hôn đúng không?"
       },
       {
         "id": 4,
-        "startTime": 23,
-        "endTime": 32,
-        "speaker": "Khách mời",
-        "chinese": "有时候会去，但如果下雨我就留在家里看书。",
-        "pinyin": "Yǒushíhou huì qù, dàn rúguǒ xiàyǔ wǒ jiù liú zài jiālǐ kàn shū.",
-        "vietnamese": "Đôi khi cũng có đi, nhưng nếu trời mưa thì tôi ở lại trong nhà đọc sách."
+        "startTime": 25.5,
+        "endTime": 32.1,
+        "speaker": "Thầy Lý",
+        "chinese": "对，我还是单身，所以我的周末自由自在的。",
+        "pinyin": "Duì, wǒ hái shì dān shēn, suǒ yǐ wǒ de zhōu mò zì yóu zì zài de.",
+        "vietnamese": "Đúng, tôi vẫn độc thân nên cuối tuần của tôi rất tự do thoải mái."
       },
       {
         "id": 5,
-        "startTime": 32,
-        "endTime": 40,
-        "speaker": "Sunny",
-        "chinese": "这个周末你有什么特别的打算吗？",
-        "pinyin": "Zhège zhōumò nǐ yǒu shénme tèbié de dǎsuàn ma?",
-        "vietnamese": "Cuối tuần này bạn có dự định đặc biệt gì không?"
+        "startTime": 32.1,
+        "endTime": 39.2,
+        "speaker": "Cô Vương",
+        "chinese": "那我们就从早上说起吧。李老师，你周末早上几点起床？",
+        "pinyin": "Nà wǒ men jiù cóng zǎo shàng shuō qǐ ba. Lǐ lǎo shī, nǐ zhōu mò zǎo shàng jǐ diǎn qǐ chuáng?",
+        "vietnamese": "Vậy mình bắt đầu từ buổi sáng nhé. Thầy Lý, cuối tuần thầy mấy giờ dậy?"
       },
       {
         "id": 6,
-        "startTime": 40,
-        "endTime": 49,
-        "speaker": "Khách mời",
-        "chinese": "我打算和几个老朋友一起去吃火锅。",
-        "pinyin": "Wǒ dǎsuàn hé jǐ gè lǎo péngyou yìqǐ qù chī huǒguō.",
-        "vietnamese": "Tôi dự định cùng mấy người bạn cũ đi ăn lẩu."
+        "startTime": 39.2,
+        "endTime": 49.2,
+        "speaker": "Thầy Lý",
+        "chinese": "通常睡懒觉，一直睡到早上九点。平时上班太累了，所以周末就好好休息一下。",
+        "pinyin": "Tōng cháng shuì lǎn jiào, yì zhí shuì dào zǎo shàng jiǔ diǎn. Píng shí shàng bān tài lèi le, suǒ yǐ zhōu mò jiù hǎo hǎo xiū xī yī xià.",
+        "vietnamese": "Thường là ngủ nướng, ngủ đến tận chín giờ sáng. Ngày thường đi làm mệt quá nên cuối tuần tôi nghỉ ngơi cho thật tốt."
       },
       {
         "id": 7,
-        "startTime": 49,
-        "endTime": 58,
-        "speaker": "Sunny",
-        "chinese": "听起来真不错，那家火锅店好吃吗？",
-        "pinyin": "Tīng qǐlái zhēn búcuò, nà jiā huǒguō diàn hǎochī ma?",
-        "vietnamese": "Nghe tuyệt thật đấy, quán lẩu đó có ngon không?"
+        "startTime": 49.2,
+        "endTime": 55.7,
+        "speaker": "Cô Vương",
+        "chinese": "九点？真好，我周末完全没有这种享受。",
+        "pinyin": "Jiǔ diǎn? Zhēn hǎo, wǒ zhōu mò wán quán méi yǒu zhè zhǒng xiǎng shòu.",
+        "vietnamese": "Chín giờ á? Sướng thật, cuối tuần tôi hoàn toàn không có được sự hưởng thụ đó."
       },
       {
         "id": 8,
-        "startTime": 58,
-        "endTime": 68,
-        "speaker": "Khách mời",
-        "chinese": "非常好吃，而且服务态度也特别热情。",
-        "pinyin": "Fēicháng hǎochī, érqiě fúwù tàidu yě tèbié rèqíng.",
-        "vietnamese": "Rất ngon, hơn nữa thái độ phục vụ cũng cực kỳ nhiệt tình."
+        "startTime": 55.7,
+        "endTime": 60.2,
+        "speaker": "Thầy Lý",
+        "chinese": "哦，那王老师，你几点起床？",
+        "pinyin": "Ó, nà wáng lǎo shī, nǐ jǐ diǎn qǐ chuáng?",
+        "vietnamese": "Ồ, thế cô Vương mấy giờ dậy?"
       },
       {
         "id": 9,
-        "startTime": 68,
-        "endTime": 78,
-        "speaker": "Sunny",
-        "chinese": "祝你周末过得开心愉快！",
-        "pinyin": "Zhù nǐ zhōumò guò de kāixīn yúkuài!",
-        "vietnamese": "Chúc bạn có một kỳ nghỉ cuối tuần vui vẻ thoải mái!"
+        "startTime": 60.2,
+        "endTime": 69.7,
+        "speaker": "Cô Vương",
+        "chinese": "我每天都要早起，周末也一样，大概七点就要起来了，要给家人准备早餐。",
+        "pinyin": "Wǒ měi tiān dōu yào zǎo qǐ, zhōu mò yě yī yàng, dà gài qī diǎn jiù yào qǐ lái le, yào gěi jiā rén zhǔn bèi zǎo cān.",
+        "vietnamese": "Ngày nào tôi cũng phải dậy sớm, cuối tuần cũng vậy, khoảng bảy giờ là phải dậy rồi để chuẩn bị bữa sáng cho gia đình."
       },
       {
         "id": 10,
-        "startTime": 78,
-        "endTime": 88,
-        "speaker": "Khách mời",
-        "chinese": "谢谢你，也祝你周末愉快！",
-        "pinyin": "Xièxie nǐ, yě zhù nǐ zhōumò yúkuài!",
-        "vietnamese": "Cảm ơn bạn, cũng chúc bạn cuối tuần vui vẻ nhé!"
+        "startTime": 69.7,
+        "endTime": 74.2,
+        "speaker": "Thầy Lý",
+        "chinese": "哇，辛苦了，那早餐之后呢？",
+        "pinyin": "Wa, xīn kǔ le, nà zǎo cān zhī hòu ne?",
+        "vietnamese": "Chà, vất vả quá. Sau bữa sáng thì sao?"
+      },
+      {
+        "id": 11,
+        "startTime": 74.2,
+        "endTime": 82.7,
+        "speaker": "Cô Vương",
+        "chinese": "吃完早饭，我要送孩子去补习班。他有数学课，所以我们八点半就要出发。",
+        "pinyin": "Chī wán zǎo fàn, wǒ yào sòng hái zi qù bǔ xí bān. Tā yǒu shù xué kè, suǒ yǐ wǒ men bā diǎn bàn jiù yào chū fā.",
+        "vietnamese": "Ăn sáng xong, tôi phải đưa con đi học thêm. Cháu có tiết toán nên tám rưỡi là chúng tôi phải xuất phát."
+      },
+      {
+        "id": 12,
+        "startTime": 82.7,
+        "endTime": 86.8,
+        "speaker": "Thầy Lý",
+        "chinese": "那你在孩子上课的时候做什么呢？",
+        "pinyin": "Nà nǐ zài hái zi shàng kè de shí hòu zuò shén me ne?",
+        "vietnamese": "Vậy lúc con học thì cô làm gì?"
+      },
+      {
+        "id": 13,
+        "startTime": 86.8,
+        "endTime": 97.8,
+        "speaker": "Cô Vương",
+        "chinese": "我趁这个时间去超市买东西，要买蔬菜、肉、水果，还有日常用品。",
+        "pinyin": "Wǒ chèn zhè ge shí jiān qù chāo shì mǎi dōng xī, yào mǎi shū cài、ròu、shuǐ guǒ, hái yǒu rì cháng yòng pǐn.",
+        "vietnamese": "Tôi tranh thủ lúc đó đi siêu thị mua đồ, mua rau, thịt, hoa quả và đồ dùng hằng ngày."
+      },
+      {
+        "id": 14,
+        "startTime": 97.8,
+        "endTime": 109.3,
+        "speaker": "Thầy Lý",
+        "chinese": "哇，你真的非常充实，我起床以后就慢慢洗漱，然后约朋友去喝咖啡。",
+        "pinyin": "Wa, nǐ zhēn de fēi cháng chōng shí, wǒ qǐ chuáng yǐ hòu jiù màn màn xǐ shù, rán hòu yuē péng yǒu qù hē kā fēi.",
+        "vietnamese": "Chà, cô thật sự rất bận rộn đầy đủ. Còn tôi thức dậy xong thì từ từ rửa mặt rồi hẹn bạn đi uống cà phê."
+      },
+      {
+        "id": 15,
+        "startTime": 109.3,
+        "endTime": 116.3,
+        "speaker": "Cô Vương",
+        "chinese": "喝咖啡多悠闲啊，你们在哪里喝咖啡？聊什么？",
+        "pinyin": "Hē kā fēi duō yōu xián a, nǐ men zài nǎ lǐ hē kā fēi? Liáo shén me?",
+        "vietnamese": "Uống cà phê thư thả quá, các bạn uống cà phê ở đâu? Nói chuyện gì vậy?"
+      },
+      {
+        "id": 16,
+        "startTime": 116.3,
+        "endTime": 127.3,
+        "speaker": "Thầy Lý",
+        "chinese": "我们喜欢去街边的小咖啡店，点一杯拿铁，然后聊工作啊、生活啊、最近发生的事情。",
+        "pinyin": "Wǒ men xǐ huān qù jiē biān de xiǎo kā fēi diàn, diǎn yī bēi ná tiě, rán hòu liáo gōng zuò a、shēng huó a、zuì jìn fā shēng de shì qíng.",
+        "vietnamese": "Chúng tôi thích đến những quán cà phê nhỏ ven đường, gọi một ly latte rồi nói chuyện công việc, cuộc sống, những chuyện xảy ra gần đây."
+      },
+      {
+        "id": 17,
+        "startTime": 127.3,
+        "endTime": 131.3,
+        "speaker": "Thầy Lý",
+        "chinese": "有时候聊了两三个小时都不知道。",
+        "pinyin": "Yǒu shí hòu liáo le liǎng sān gè xiǎo shí dōu bù zhī dào.",
+        "vietnamese": "Có khi nói chuyện hai ba tiếng mà không hay biết."
+      },
+      {
+        "id": 18,
+        "startTime": 131.3,
+        "endTime": 137.9,
+        "speaker": "Cô Vương",
+        "chinese": "好，我们来说说中午，李老师，你中午怎么安排？",
+        "pinyin": "Hǎo, wǒ men lái shuō shuō zhōng wǔ, lǐ lǎo shī, nǐ zhōng wǔ zěn me ān pái?",
+        "vietnamese": "Được rồi, chúng ta nói về buổi trưa. Thầy Lý, buổi trưa thầy sắp xếp thế nào?"
+      },
+      {
+        "id": 19,
+        "startTime": 137.9,
+        "endTime": 146.0,
+        "speaker": "Thầy Lý",
+        "chinese": "喝完咖啡以后，我们就一起去吃午饭，我们喜欢尝试不同的餐厅。",
+        "pinyin": "Hē wán kā fēi yǐ hòu, wǒ men jiù yì qǐ qù chī wǔ fàn, wǒ men xǐ huān cháng shì bù tóng de cān tīng.",
+        "vietnamese": "Uống cà phê xong, chúng tôi cùng đi ăn trưa, chúng tôi thích thử các nhà hàng khác nhau."
+      },
+      {
+        "id": 20,
+        "startTime": 146.0,
+        "endTime": 150.5,
+        "speaker": "Thầy Lý",
+        "chinese": "上周我们吃了日本料理，很好吃。",
+        "pinyin": "Shàng zhōu wǒ men chī le rì běn liào lǐ, hěn hǎo chī.",
+        "vietnamese": "Tuần trước chúng tôi ăn món Nhật, rất ngon."
+      },
+      {
+        "id": 21,
+        "startTime": 150.5,
+        "endTime": 159.8,
+        "speaker": "Cô Vương",
+        "chinese": "听起来很不错，我呢，接完孩子之后就要回家做午饭了。",
+        "pinyin": "Tīng qǐ lái hěn bú cuò, wǒ ne, jiē wán hái zi zhī hòu jiù yào huí jiā zuò wǔ fàn le.",
+        "vietnamese": "Nghe hay đấy. Còn tôi thì đón con xong là phải về nhà nấu cơm trưa."
+      },
+      {
+        "id": 22,
+        "startTime": 159.8,
+        "endTime": 163.3,
+        "speaker": "Thầy Lý",
+        "chinese": "你，你会做什么菜？",
+        "pinyin": "Nǐ, nǐ huì zuò shén me cài?",
+        "vietnamese": "Cô biết nấu những món gì?"
+      },
+      {
+        "id": 23,
+        "startTime": 163.3,
+        "endTime": 170.6,
+        "speaker": "Cô Vương",
+        "chinese": "周末我喜欢做一些特别的菜，不像平时那么简单。",
+        "pinyin": "Zhōu mò wǒ xǐ huān zuò yī xiē tè bié de cài, bù xiàng píng shí nà me jiǎn dān.",
+        "vietnamese": "Cuối tuần tôi thích nấu vài món đặc biệt, không đơn giản như ngày thường."
+      },
+      {
+        "id": 24,
+        "startTime": 170.6,
+        "endTime": 179.6,
+        "speaker": "Cô Vương",
+        "chinese": "上周我做了红烧肉和清蒸鱼，还有三个蔬菜，全家人都很喜欢。",
+        "pinyin": "Shàng zhōu wǒ zuò le hóng shāo ròu hé qīng zhēng yú, hái yǒu sān gè shū cài, quán jiā rén dōu hěn xǐ huān.",
+        "vietnamese": "Tuần trước tôi nấu thịt kho tàu và cá hấp, còn có ba món rau, cả nhà đều rất thích."
+      },
+      {
+        "id": 25,
+        "startTime": 179.6,
+        "endTime": 188.4,
+        "speaker": "Thầy Lý",
+        "chinese": "哇，你真的很厉害，我自己一个人，所以吃得很简单。",
+        "pinyin": "Wa, nǐ zhēn de hěn lì hài, wǒ zì jǐ yí gè rén, suǒ yǐ chī dé hěn jiǎn dān.",
+        "vietnamese": "Chà, cô giỏi thật. Tôi sống một mình nên ăn rất đơn giản."
+      },
+      {
+        "id": 26,
+        "startTime": 188.4,
+        "endTime": 195.5,
+        "speaker": "Cô Vương",
+        "chinese": "但是你出去吃不也很好吗？和朋友一起吃饭多热闹。",
+        "pinyin": "Dàn shì nǐ chū qù chī bù yě hěn hǎo ma? Hé péng yǒu yì qǐ chī fàn duō rè nào.",
+        "vietnamese": "Nhưng ra ngoài ăn chẳng phải cũng rất tốt sao? Ăn cơm cùng bạn bè vui nhộn biết bao."
+      },
+      {
+        "id": 27,
+        "startTime": 195.5,
+        "endTime": 200.1,
+        "speaker": "Thầy Lý",
+        "chinese": "是啊，有朋友一起真的很开心。",
+        "pinyin": "Shì a, yǒu péng yǒu yì qǐ zhēn de hěn kāi xīn.",
+        "vietnamese": "Đúng vậy, có bạn bè đi cùng thật sự rất vui."
+      },
+      {
+        "id": 28,
+        "startTime": 200.1,
+        "endTime": 208.0,
+        "speaker": "Cô Vương",
+        "chinese": "好，那下午呢？李老师，吃完午饭以后你去哪里了？",
+        "pinyin": "Hǎo, nà xià wǔ ne? Lǐ lǎo shī, chī wán wǔ fàn yǐ hòu nǐ qù nǎ lǐ le?",
+        "vietnamese": "Được rồi, thế buổi chiều thì sao? Thầy Lý, ăn trưa xong thầy đi đâu?"
+      },
+      {
+        "id": 29,
+        "startTime": 208.0,
+        "endTime": 220.3,
+        "speaker": "Thầy Lý",
+        "chinese": "下午我们去逛街了，我喜欢和朋友一起逛街，看看新衣服，有时买，有时只是看看。",
+        "pinyin": "Xià wǔ wǒ men qù guàng jiē le, wǒ xǐ huān hé péng yǒu yì qǐ guàng jiē, kàn kàn xīn yī fú, yǒu shí mǎi, yǒu shí zhǐ shì kàn kàn.",
+        "vietnamese": "Chiều chúng tôi đi dạo phố, tôi thích đi dạo phố cùng bạn bè, ngắm quần áo mới, có khi mua, có khi chỉ ngắm."
+      },
+      {
+        "id": 30,
+        "startTime": 220.3,
+        "endTime": 224.3,
+        "speaker": "Thầy Lý",
+        "chinese": "逛街对我来说是一种放松方式。",
+        "pinyin": "Guàng jiē duì wǒ lái shuō shì yī zhǒng fàng sōng fāng shì.",
+        "vietnamese": "Đi dạo phố đối với tôi là một cách thư giãn."
+      },
+      {
+        "id": 31,
+        "startTime": 224.3,
+        "endTime": 232.3,
+        "speaker": "Cô Vương",
+        "chinese": "我完全理解，但是我下午的活动不一样，我们全家去游泳。",
+        "pinyin": "Wǒ wán quán lǐ jiě, dàn shì wǒ xià wǔ de huó dòng bù yí yàng, wǒ men quán jiā qù yóu yǒng.",
+        "vietnamese": "Tôi hoàn toàn hiểu, nhưng hoạt động buổi chiều của tôi lại khác, cả nhà tôi đi bơi."
+      },
+      {
+        "id": 32,
+        "startTime": 232.9,
+        "endTime": 242.9,
+        "speaker": "Thầy Lý",
+        "chinese": "哦，游泳，那真的很好，既锻炼身体又可以和家人在一起，你的孩子喜欢游泳吗？",
+        "pinyin": "Ó, yóu yǒng, nà zhēn de hěn hǎo, jì duàn liàn shēn tǐ yòu kě yǐ hé jiā rén zài yì qǐ, nǐ de hái zi xǐ huān yóu yǒng ma?",
+        "vietnamese": "Ồ, đi bơi thì tốt thật, vừa rèn luyện sức khỏe vừa được ở bên gia đình. Con cô có thích bơi không?"
+      },
+      {
+        "id": 33,
+        "startTime": 242.9,
+        "endTime": 254.3,
+        "speaker": "Cô Vương",
+        "chinese": "特别喜欢，孩子一到游泳池就不想出来了，我和先生在旁边看着他，聊聊天，也挺放松的。",
+        "pinyin": "Tè bié xǐ huān, hái zi yī dào yóu yǒng chí jiù bù xiǎng chū lái le, wǒ hé xiān shēng zài páng biān kàn zhe tā, liáo liáo tiān, yě tǐng fàng sōng de.",
+        "vietnamese": "Rất thích, cháu vừa đến hồ bơi là không muốn lên nữa. Tôi và chồng ngồi bên cạnh trông cháu, trò chuyện, cũng khá thư giãn."
+      },
+      {
+        "id": 34,
+        "startTime": 254.3,
+        "endTime": 263.0,
+        "speaker": "Thầy Lý",
+        "chinese": "听起来很温馨，那逛完街之后我去健身房锻炼了大概一个小时。",
+        "pinyin": "Tīng qǐ lái hěn wēn xīn, nà guàng wán jiē zhī hòu wǒ qù jiàn shēn fáng duàn liàn le dà gài yí gè xiǎo shí.",
+        "vietnamese": "Nghe ấm áp quá. Còn tôi, sau khi đi dạo phố thì đến phòng gym tập khoảng một tiếng."
+      },
+      {
+        "id": 35,
+        "startTime": 263.0,
+        "endTime": 269.5,
+        "speaker": "Cô Vương",
+        "chinese": "健身房？你真的很注意健康，你做什么运动？",
+        "pinyin": "Jiàn shēn fáng? Nǐ zhēn de hěn zhù yì jiàn kāng, nǐ zuò shén me yùn dòng?",
+        "vietnamese": "Phòng gym á? Thầy thật chú ý đến sức khỏe. Thầy tập môn gì?"
+      },
+      {
+        "id": 36,
+        "startTime": 269.5,
+        "endTime": 276.5,
+        "speaker": "Thầy Lý",
+        "chinese": "我通常先跑步三十分钟，然后再做一些力量训练。",
+        "pinyin": "Wǒ tōng cháng xiān pǎo bù sān shí fēn zhōng, rán hòu zài zuò yī xiē lì liàng xùn liàn.",
+        "vietnamese": "Tôi thường chạy bộ ba mươi phút trước, rồi tập thêm một ít bài sức mạnh."
+      },
+      {
+        "id": 37,
+        "startTime": 276.5,
+        "endTime": 280.6,
+        "speaker": "Thầy Lý",
+        "chinese": "周末有时间，所以可以认真锻炼一下。",
+        "pinyin": "Zhōu mò yǒu shí jiān, suǒ yǐ kě yǐ rèn zhēn duàn liàn yī xià.",
+        "vietnamese": "Cuối tuần có thời gian nên có thể tập luyện nghiêm túc một chút."
+      },
+      {
+        "id": 38,
+        "startTime": 280.6,
+        "endTime": 286.6,
+        "speaker": "Cô Vương",
+        "chinese": "说说晚上吧，我觉得晚上是最不一样的时候。",
+        "pinyin": "Shuō shuō wǎn shàng ba, wǒ jué de wǎn shàng shì zuì bù yí yàng de shí hòu.",
+        "vietnamese": "Nói về buổi tối nhé, tôi thấy buổi tối là lúc khác biệt nhất."
+      },
+      {
+        "id": 39,
+        "startTime": 287.1,
+        "endTime": 292.1,
+        "speaker": "Thầy Lý",
+        "chinese": "对，说说吧，李老师先说，还是王老师先说。",
+        "pinyin": "Duì, shuō shuō ba, lǐ lǎo shī xiān shuō, hái shì wáng lǎo shī xiān shuō.",
+        "vietnamese": "Đúng, nói đi nào, thầy Lý nói trước hay cô Vương nói trước?"
+      },
+      {
+        "id": 40,
+        "startTime": 292.1,
+        "endTime": 302.1,
+        "speaker": "Cô Vương",
+        "chinese": "我先说吧，晚上我们吃完晚饭以后，我要检查孩子的功课，然后陪他复习功课。",
+        "pinyin": "Wǒ xiān shuō ba, wǎn shàng wǒ men chī wán wǎn fàn yǐ hòu, wǒ yào jiǎn chá hái zi de gōng kè, rán hòu péi tā fù xí gōng kè.",
+        "vietnamese": "Để tôi nói trước. Buổi tối sau khi ăn tối xong, tôi phải kiểm tra bài tập của con, rồi cùng cháu ôn bài."
+      },
+      {
+        "id": 41,
+        "startTime": 302.1,
+        "endTime": 305.1,
+        "speaker": "Thầy Lý",
+        "chinese": "这需要花很多时间吧？",
+        "pinyin": "Zhè xū yào huā hěn duō shí jiān ba?",
+        "vietnamese": "Chắc tốn nhiều thời gian lắm nhỉ?"
+      },
+      {
+        "id": 42,
+        "startTime": 305.1,
+        "endTime": 316.2,
+        "speaker": "Cô Vương",
+        "chinese": "是啊，大概要一个半小时，不过孩子开始自己学习以后，我就可以休息了。",
+        "pinyin": "Shì a, dà gài yào yí gè bàn xiǎo shí, bù guò hái zi kāi shǐ zì jǐ xué xí yǐ hòu, wǒ jiù kě yǐ xiū xī le.",
+        "vietnamese": "Đúng vậy, khoảng một tiếng rưỡi, nhưng khi con bắt đầu tự học thì tôi có thể nghỉ ngơi."
+      },
+      {
+        "id": 43,
+        "startTime": 316.7,
+        "endTime": 328.0,
+        "speaker": "Cô Vương",
+        "chinese": "那时候我和先生一起泡茶，边喝茶，边看电视，聊聊今天发生的事情，讨论一下新闻。",
+        "pinyin": "Nà shí hòu wǒ hé xiān shēng yì qǐ pào chá, biān hē chá, biān kàn diàn shì, liáo liáo jīn tiān fā shēng de shì qíng, tǎo lùn yī xià xīn wén.",
+        "vietnamese": "Lúc đó tôi và chồng cùng pha trà, vừa uống trà vừa xem tivi, trò chuyện chuyện xảy ra hôm nay, bàn về tin tức."
+      },
+      {
+        "id": 44,
+        "startTime": 328.0,
+        "endTime": 336.5,
+        "speaker": "Thầy Lý",
+        "chinese": "哇，听起来很温馨，两个人一起分享生活的点点滴滴。",
+        "pinyin": "Wa, tīng qǐ lái hěn wēn xīn, liǎng gè rén yì qǐ fēn xiǎng shēng huó de diǎn diǎn dī dī.",
+        "vietnamese": "Chà, nghe ấm áp quá, hai người cùng chia sẻ từng chút một của cuộc sống."
+      },
+      {
+        "id": 45,
+        "startTime": 336.5,
+        "endTime": 339.5,
+        "speaker": "Cô Vương",
+        "chinese": "是啊，那你晚上怎么过？",
+        "pinyin": "Shì a, nà nǐ wǎn shàng zěn me guò?",
+        "vietnamese": "Đúng vậy, còn buổi tối của thầy thì sao?"
+      },
+      {
+        "id": 46,
+        "startTime": 340.0,
+        "endTime": 347.0,
+        "speaker": "Thầy Lý",
+        "chinese": "我从健身房回来以后，先洗澡，然后自己做一个沙拉。",
+        "pinyin": "Wǒ cóng jiàn shēn fáng huí lái yǐ hòu, xiān xǐ zǎo, rán hòu zì jǐ zuò yí gè shā lā.",
+        "vietnamese": "Tôi từ phòng gym về thì tắm trước, rồi tự làm một món salad."
+      },
+      {
+        "id": 47,
+        "startTime": 347.0,
+        "endTime": 353.0,
+        "speaker": "Thầy Lý",
+        "chinese": "我最近很注意饮食健康，所以晚上吃的比较清淡。",
+        "pinyin": "Wǒ zuì jìn hěn zhù yì yǐn shí jiàn kāng, suǒ yǐ wǎn shàng chī de bǐ jiào qīng dàn.",
+        "vietnamese": "Gần đây tôi rất chú ý ăn uống lành mạnh nên buổi tối ăn khá thanh đạm."
+      },
+      {
+        "id": 48,
+        "startTime": 353.0,
+        "endTime": 358.2,
+        "speaker": "Cô Vương",
+        "chinese": "沙拉？你自己做？放什么材料？",
+        "pinyin": "Shā lā? Nǐ zì jǐ zuò? Fàng shén me cái liào?",
+        "vietnamese": "Salad á? Thầy tự làm sao? Cho nguyên liệu gì vậy?"
+      },
+      {
+        "id": 49,
+        "startTime": 358.5,
+        "endTime": 366.0,
+        "speaker": "Thầy Lý",
+        "chinese": "放很多蔬菜，比如生菜、番茄、黄瓜，还有鸡胸肉。",
+        "pinyin": "Fàng hěn duō shū cài, bǐ rú shēng cài、fān qié、huáng guā, hái yǒu jī xiōng ròu.",
+        "vietnamese": "Cho nhiều rau củ, ví dụ như xà lách, cà chua, dưa chuột, và cả ức gà."
+      },
+      {
+        "id": 50,
+        "startTime": 366.0,
+        "endTime": 371.0,
+        "speaker": "Thầy Lý",
+        "chinese": "最后淋上橄榄油和柠檬汁，非常健康。",
+        "pinyin": "Zuì hòu lín shàng gǎn lǎn yóu hé níng méng zhī, fēi cháng jiàn kāng.",
+        "vietnamese": "Cuối cùng rưới dầu ô liu và nước chanh, vô cùng lành mạnh."
+      },
+      {
+        "id": 51,
+        "startTime": 371.0,
+        "endTime": 375.2,
+        "speaker": "Cô Vương",
+        "chinese": "好厉害，吃完以后呢？",
+        "pinyin": "Hǎo lì hài, chī wán yǐ hòu ne?",
+        "vietnamese": "Giỏi quá, ăn xong thì sao?"
+      },
+      {
+        "id": 52,
+        "startTime": 375.2,
+        "endTime": 379.8,
+        "speaker": "Thầy Lý",
+        "chinese": "吃完以后，就是我一个人的时间了。",
+        "pinyin": "Chī wán yǐ hòu, jiù shì wǒ yí gè rén de shí jiān le.",
+        "vietnamese": "Ăn xong là thời gian của riêng tôi."
+      },
+      {
+        "id": 53,
+        "startTime": 379.8,
+        "endTime": 388.4,
+        "speaker": "Thầy Lý",
+        "chinese": "我有时候看书，有时候看电影，有时候就刷刷手机，看看视频。",
+        "pinyin": "Wǒ yǒu shí hòu kàn shū, yǒu shí hòu kàn diàn yǐng, yǒu shí hòu jiù shuā shuā shǒu jī, kàn kàn shì pín.",
+        "vietnamese": "Có lúc tôi đọc sách, có lúc xem phim, có lúc chỉ lướt điện thoại, xem video."
+      },
+      {
+        "id": 54,
+        "startTime": 389.1,
+        "endTime": 395.1,
+        "speaker": "Thầy Lý",
+        "chinese": "这段时间是我最放松的时候，一点压力都没有。",
+        "pinyin": "Zhè duàn shí jiān shì wǒ zuì fàng sōng de shí hòu, yì diǎn yā lì dōu méi yǒu.",
+        "vietnamese": "Khoảng thời gian này là lúc tôi thư giãn nhất, một chút áp lực cũng không có."
+      },
+      {
+        "id": 55,
+        "startTime": 395.1,
+        "endTime": 400.7,
+        "speaker": "Thầy Lý",
+        "chinese": "我觉得我们两个的周末真的完全不一样。",
+        "pinyin": "Wǒ jué de wǒ men liǎng gè de zhōu mò zhēn de wán quán bù yí yàng.",
+        "vietnamese": "Tôi thấy cuối tuần của hai chúng ta thật sự hoàn toàn khác nhau."
+      },
+      {
+        "id": 56,
+        "startTime": 400.7,
+        "endTime": 407.2,
+        "speaker": "Cô Vương",
+        "chinese": "你的周末自由轻松，我的周末忙碌充实。",
+        "pinyin": "Nǐ de zhōu mò zì yóu qīng sōng, wǒ de zhōu mò máng lù chōng shí.",
+        "vietnamese": "Cuối tuần của thầy tự do thoải mái, cuối tuần của tôi bận rộn đầy đủ."
+      },
+      {
+        "id": 57,
+        "startTime": 407.2,
+        "endTime": 413.6,
+        "speaker": "Cô Vương",
+        "chinese": "是的，但是两种生活方式都有各自的美好。",
+        "pinyin": "Shì de, dàn shì liǎng zhǒng shēng huó fāng shì dōu yǒu gè zì de měi hǎo.",
+        "vietnamese": "Đúng, nhưng cả hai cách sống đều có nét hay riêng."
+      },
+      {
+        "id": 58,
+        "startTime": 413.6,
+        "endTime": 421.2,
+        "speaker": "Thầy Lý",
+        "chinese": "我羡慕你有家人陪伴，而你呢，可能也会羡慕我的自由时间吧。",
+        "pinyin": "Wǒ xiàn mù nǐ yǒu jiā rén péi bàn, ér nǐ ne, kě néng yě huì xiàn mù wǒ de zì yóu shí jiān ba.",
+        "vietnamese": "Tôi ngưỡng mộ cô có gia đình bên cạnh, còn cô có lẽ cũng ngưỡng mộ thời gian tự do của tôi nhỉ."
+      },
+      {
+        "id": 59,
+        "startTime": 421.2,
+        "endTime": 428.2,
+        "speaker": "Cô Vương",
+        "chinese": "哈哈，你说得对，有时候的确觉得你可以睡懒觉。",
+        "pinyin": "Hā hā, nǐ shuō dé duì, yǒu shí hòu dí què jué de nǐ kě yǐ shuì lǎn jiào.",
+        "vietnamese": "Haha, thầy nói đúng, có lúc tôi quả thật thấy thầy có thể ngủ nướng thật là sướng."
+      },
+      {
+        "id": 60,
+        "startTime": 428.2,
+        "endTime": 437.3,
+        "speaker": "Cô Vương",
+        "chinese": "但是看着孩子开心，和先生喝茶聊天，这种感觉也很幸福。",
+        "pinyin": "Dàn shì kàn zhe hái zi kāi xīn, hé xiān shēng hē chá liáo tiān, zhè zhǒng gǎn jué yě hěn xìng fú.",
+        "vietnamese": "Nhưng nhìn con vui vẻ, cùng chồng uống trà trò chuyện, cảm giác đó cũng rất hạnh phúc."
+      },
+      {
+        "id": 61,
+        "startTime": 437.3,
+        "endTime": 442.6,
+        "speaker": "Thầy Lý",
+        "chinese": "对极了，每个人的生活都有自己的美好。",
+        "pinyin": "Duì jí le, měi gè rén de shēng huó dōu yǒu zì jǐ de měi hǎo.",
+        "vietnamese": "Đúng thế, cuộc sống của mỗi người đều có nét đẹp riêng."
+      },
+      {
+        "id": 62,
+        "startTime": 442.6,
+        "endTime": 447.6,
+        "speaker": "Cô Vương",
+        "chinese": "好了，我们今天的节目就到这里，感谢大家收听。",
+        "pinyin": "Hǎo le, wǒ men jīn tiān de jié mù jiù dào zhè lǐ, gǎn xiè dà jiā shōu tīng.",
+        "vietnamese": "Được rồi, chương trình hôm nay đến đây là hết, cảm ơn mọi người đã lắng nghe."
+      },
+      {
+        "id": 63,
+        "startTime": 447.6,
+        "endTime": 455.4,
+        "speaker": "Thầy Lý",
+        "chinese": "下次再见，祝大家有一个美好的周末。",
+        "pinyin": "Xià cì zài jiàn, zhù dà jiā yǒu yí gè měi hǎo de zhōu mò.",
+        "vietnamese": "Hẹn gặp lại lần sau, chúc mọi người có một cuối tuần tốt đẹp."
+      },
+      {
+        "id": 64,
+        "startTime": 455.4,
+        "endTime": 458.4,
+        "speaker": "Thầy Lý",
+        "chinese": "再见，再见。",
+        "pinyin": "Zài jiàn, zài jiàn.",
+        "vietnamese": "Tạm biệt, tạm biệt."
       }
     ]
   },
