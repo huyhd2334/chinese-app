@@ -12,9 +12,13 @@ import {
   XCircle,
   HelpCircle,
   Volume2,
-  RotateCcw
+  VolumeX,
+  RotateCcw,
+  Play,
+  Square
 } from "lucide-react"
 import { ALL_EXAMS } from "@/data/examsManifest"
+import { playChineseAudio, stopAllAudio } from "@/utils/audioTts"
 
 interface UnifiedQuestion {
   id: number
@@ -42,6 +46,59 @@ export default function ExamPage({ params }: { params: Promise<{ id: string }> }
   const [answers, setAnswers] = useState<Record<number, number>>({})
   const [timeLeft, setTimeLeft] = useState(examMeta.timeMinutes * 60)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [playingQId, setPlayingQId] = useState<number | null>(null)
+
+  const handlePlayAudio = (q: UnifiedQuestion) => {
+    if (playingQId === q.id) {
+      stopAllAudio()
+      setPlayingQId(null)
+      return
+    }
+
+    stopAllAudio()
+    setPlayingQId(q.id)
+
+    // Chuẩn bị nội dung để đọc
+    let textToSpeak = q.context || q.prompt || q.stem || ""
+    textToSpeak = textToSpeak.replace(/^录音\s*[:：]?\s*/g, "").trim()
+
+    // 1. Thử phát từ audioUrl (qua proxy nếu là URL ngoài để vượt tường lửa CORS)
+    if (q.audioUrl && (q.audioUrl.startsWith("http://") || q.audioUrl.startsWith("https://"))) {
+      const proxiedUrl = `/api/audio-proxy?url=${encodeURIComponent(q.audioUrl)}`
+      const audio = new Audio(proxiedUrl)
+      audio.onended = () => setPlayingQId(null)
+      audio.onerror = () => {
+        // Fallback sang TTS nếu URL hỏng
+        if (textToSpeak) {
+          playChineseAudio(textToSpeak, { rate: 0.9, lang: "zh" })
+          setTimeout(() => setPlayingQId(null), 4000)
+        } else {
+          setPlayingQId(null)
+        }
+      }
+      audio.play().catch(() => {
+        if (textToSpeak) {
+          playChineseAudio(textToSpeak, { rate: 0.9, lang: "zh" })
+          setTimeout(() => setPlayingQId(null), 4000)
+        } else {
+          setPlayingQId(null)
+        }
+      })
+      return
+    }
+
+    // 2. Sử dụng Speech Engine / TTS tích hợp
+    if (textToSpeak) {
+      playChineseAudio(textToSpeak, { rate: 0.88, lang: "zh" })
+      // Tự động reset icon sau thời gian ước lượng
+      const estimatedDurationMs = Math.max(3000, textToSpeak.length * 280)
+      setTimeout(() => {
+        setPlayingQId((curr) => (curr === q.id ? null : curr))
+      }, estimatedDurationMs)
+    } else {
+      setPlayingQId(null)
+    }
+  }
 
   // Load and adapt exam data
   useEffect(() => {
@@ -343,20 +400,56 @@ export default function ExamPage({ params }: { params: Promise<{ id: string }> }
                   )}
                 </div>
 
-                {/* Audio if available */}
-                {q.audioUrl && (
-                  <div className="mb-4 p-3 bg-border/20 rounded-2xl flex items-center gap-3">
-                    <Volume2 className="w-5 h-5 text-china-red shrink-0" />
-                    <audio controls className="h-8 w-full max-w-md">
-                      <source src={q.audioUrl} type="audio/mpeg" />
-                      Trình duyệt không hỗ trợ phát âm thanh.
-                    </audio>
+                {/* Audio Player for Listening or question prompt */}
+                {q.section === "listening" ? (
+                  <div className="mb-4 flex flex-wrap items-center gap-3 p-3 bg-border/20 rounded-2xl">
+                    <button
+                      type="button"
+                      onClick={() => handlePlayAudio(q)}
+                      className={`flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all shadow-sm ${
+                        playingQId === q.id
+                          ? "bg-china-red text-white shadow-china-red/20 animate-pulse"
+                          : "bg-card border border-border text-china-ink hover:border-china-red hover:text-china-red"
+                      }`}
+                    >
+                      {playingQId === q.id ? (
+                        <Square className="w-4 h-4 fill-current text-white" />
+                      ) : (
+                        <Volume2 className="w-4 h-4 text-china-red" />
+                      )}
+                      <span>
+                        {playingQId === q.id ? "Đang phát âm thanh... (Bấm để dừng)" : "Phát bài nghe Audio"}
+                      </span>
+                    </button>
+
+                    <span className="text-xs text-muted">
+                      (Bấm để nghe đoạn hội thoại và câu hỏi)
+                    </span>
                   </div>
+                ) : (
+                  // If reading/writing has prompt, provide small audio button
+                  q.prompt && (
+                    <div className="mb-2 flex items-center gap-2">
+                      <button
+                        type="button"
+                        onClick={() => handlePlayAudio(q)}
+                        className="p-1.5 rounded-lg border border-border bg-card hover:bg-border/30 text-muted hover:text-china-ink transition-colors"
+                        title="Nghe phát âm"
+                      >
+                        <Volume2 className="w-4 h-4" />
+                      </button>
+                    </div>
+                  )
                 )}
 
-                {/* Context (Transcript hoặc đoạn văn) */}
-                {q.context && (
+                {/* Context (Transcript bài nghe: Ẩn khi đang làm bài nghe, hiện khi nộp bài; Bài đọc: Hiện bình thường) */}
+                {q.context && (q.section !== "listening" || isSubmitted) && (
                   <div className="p-3.5 rounded-2xl bg-border/20 text-sm leading-relaxed text-china-ink mb-4 font-serif">
+                    {q.section === "listening" && (
+                      <span className="block text-xs font-bold text-china-red mb-1 font-sans">
+                        [Transcript bài nghe]:
+                      </span>
+                    )}
                     {q.context}
                   </div>
                 )}
