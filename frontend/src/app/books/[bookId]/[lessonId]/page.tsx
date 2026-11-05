@@ -544,7 +544,7 @@ export default function LessonDetailPage() {
                 <span className="w-5 h-5 rounded-full bg-neutral-200 dark:bg-white/10 text-slate-700 dark:text-slate-200 font-bold text-[11px] flex items-center justify-center shrink-0 mt-0.5">
                   {idx + 1}
                 </span>
-                <span className="font-normal">{note}</span>
+                <span className="font-normal">{note.replace(/^\d+[\.\:\s]+/, '')}</span>
               </div>
             ))}
           </div>

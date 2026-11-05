@@ -506,7 +506,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "人",
         "pinyin": "rén",
         "hanViet": "",
-        "meaning": "person; people",
+        "meaning": "người",
         "partOfSpeech": "n"
       },
       {
@@ -585,145 +585,80 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
     "dialogues": [
       {
         "id": "nh1_3_d_1",
-        "role": "A",
-        "chinese": "在校园里，李文和白家月第一次相遇，两人继续聊天儿。LyVanvaBachGiaNguyet",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "李文 (Lý Văn)",
+        "chinese": "你好！我是中国人，你是哪国人？",
+        "pinyin": "Nǐ hǎo! Wǒ shì Zhōngguó rén, nǐ shì nǎ guó rén?",
+        "vietnamese": "Chào bạn! Mình là người Trung Quốc, bạn là người nước nào?"
       },
       {
         "id": "nh1_3_d_2",
-        "role": "A",
-        "chinese": "我是中国人。",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "白家月 (Bạch Gia Nguyệt)",
+        "chinese": "你好！我是法国人。",
+        "pinyin": "Nǐ hǎo! Wǒ shì Fǎguó rén.",
+        "vietnamese": "Chào bạn! Mình là người Pháp."
       },
       {
         "id": "nh1_3_d_3",
-        "role": "李文",
-        "chinese": "李文",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "李文 (Lý Văn)",
+        "chinese": "你的中文真好！",
+        "pinyin": "Nǐ de Zhōngwén zhēn hǎo!",
+        "vietnamese": "Tiếng Trung của bạn giỏi thật đấy!"
       },
       {
         "id": "nh1_3_d_4",
-        "role": "李文",
-        "chinese": "我是法国人。我",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "白家月 (Bạch Gia Nguyệt)",
+        "chinese": "谢谢你！",
+        "pinyin": "Xièxie nǐ!",
+        "vietnamese": "Cảm ơn bạn nhé!"
       },
       {
         "id": "nh1_3_d_5",
-        "role": "白家月",
-        "chinese": "白家月",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "安妮 (Annie)",
+        "chinese": "陈天中，这是谁？",
+        "pinyin": "Chén Tiānzhōng, zhè shì shéi?",
+        "vietnamese": "Trần Thiên Trung ơi, đây là ai vậy?"
       },
       {
         "id": "nh1_3_d_6",
-        "role": "老师",
-        "chinese": "的中文也是",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "陈天中 (Trần Thiên Trung)",
+        "chinese": "这是我女朋友。",
+        "pinyin": "Zhè shì wǒ nǚpéngyou.",
+        "vietnamese": "Đây là bạn gái của mình."
       },
       {
         "id": "nh1_3_d_7",
-        "role": "老师",
-        "chinese": "中国人。",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "安妮 (Annie)",
+        "chinese": "你女朋友也是中国人吗？",
+        "pinyin": "Nǐ nǚpéngyou yě shì Zhōngguó rén ma?",
+        "vietnamese": "Bạn gái của cậu cũng là người Trung Quốc à?"
       },
       {
         "id": "nh1_3_d_8",
-        "role": "王一飞",
-        "chinese": "在教室里，下课后，安妮在看陈天中手机里的照片。Saugiohoc，Anniedangxemanh",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "陈天中 (Trần Thiên Trung)",
+        "chinese": "不是，她是泰国人。",
+        "pinyin": "Bú shì, tā shì Tàiguó rén.",
+        "vietnamese": "Không phải, cô ấy là người Thái Lan."
       },
       {
         "id": "nh1_3_d_9",
-        "role": "小语",
-        "chinese": "助力",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "安妮 (Annie)",
+        "chinese": "她真漂亮！",
+        "pinyin": "Tā zhēn piàoliang!",
+        "vietnamese": "Cô ấy đẹp thật đấy!"
       },
       {
         "id": "nh1_3_d_10",
-        "role": "小语",
-        "chinese": "这是谁？",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_3_d_11",
-        "role": "安妮",
-        "chinese": "安妮",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_3_d_12",
-        "role": "安妮",
-        "chinese": "这是我女朋友。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_3_d_13",
-        "role": "陈天中",
-        "chinese": "陈天中",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_3_d_14",
-        "role": "陈天中",
-        "chinese": "你女朋友是哪国人？",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_3_d_15",
-        "role": "安妮",
-        "chinese": "安妮",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_3_d_16",
-        "role": "安妮",
-        "chinese": "她也是泰国人。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_3_d_17",
-        "role": "陈天中",
-        "chinese": "陈天中",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_3_d_18",
-        "role": "陈天中",
-        "chinese": "在家里，王一雪给王一飞打视频电话。Vurong Nhat Tuyet dang goi video cho Vurong Nhat Phi",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "陈天中 (Trần Thiên Trung)",
+        "chinese": "谢谢！",
+        "pinyin": "Xièxie!",
+        "vietnamese": "Cảm ơn cậu nhé!"
       }
     ],
     "grammarNotes": [
-      "“是”字句Cau chu“是”",
-      "表示人或事物等同什么或类属什么，否定形式是“不是”",
-      "Cau chi “是” duoc dung de dinh danh nguoi hoac sur vat, hinh thurc phu dinh la “不是”",
-      "结构助词“的”Troturkétcau“的”",
-      "结构助词“的”在定语和中心语之间，表达领属关系。",
-      "Trg tu ket cau“\"的\" duroc dat gitua dinh ngir va trung tam ngi de dien dat moi quan he",
-      "如果“的”前边是人称代词，后边是亲属称谓或指人的名词，“的”可省略。",
-      "Trong trurong hop truroc“的”la dai tur nhan xung, sau“的”la tur chi quan he than thuoc",
-      "hoac danh tir chi nguroi,“的\"co theduroc lurgc bo.",
-      "3用“吗”的是非问句Cauhoi“co...(hay)khong?”surdungtu“吗”",
-      "“吗”是语气助词，通常在句子末尾，表示疑问。基本结构：……吗？",
-      "“\" la tro tur ngur khi, thurong duroc dat o cuoi cau de tao thanh cau hoi \"co...(hay) khong?\"",
-      "Cau truc co ban:.....?"
+      "1. Câu chữ '是' (Câu phán đoán): Cấu trúc 'Chủ ngữ + 是 + Danh từ/Tân ngữ' dùng để xác định danh tính hoặc thuộc tính người/vật (Ví dụ: 我是中国人 - Tôi là người Trung Quốc). Dạng phủ định dùng '不是' (Ví dụ: 我不是法国人 - Tôi không phải người Pháp).",
+      "2. Trợ từ kết cấu '的': Đặt giữa định ngữ và trung tâm ngữ biểu thị quan hệ sở hữu (Ví dụ: 我的书 - Sách của tôi; 王老师的学校 - Trường của cô Vương). Khi sau '的' là người thân hoặc quan hệ thân thiết thì có thể lược bỏ '的' (Ví dụ: 我爸爸 - Bố tôi).",
+      "3. Câu hỏi nghi vấn với '吗': Đặt ở cuối câu trần thuật để biến câu thành câu hỏi Có/Không (Ví dụ: 你是中国人吗？ - Bạn là người Trung Quốc phải không?). Trả lời khẳng định dùng '是' / '对', phủ định dùng '不是'.",
+      "4. Cấu trúc câu hỏi chính phản '是不是': Dùng để kiểm tra hoặc xác nhận lại thông tin (Ví dụ: 他是不是王老师？ - Thầy ấy có phải là thầy Vương không?)."
     ],
     "readingPassage": {
       "title": "我们是同学 (Chúng mình là bạn học)",
@@ -789,7 +724,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "学生",
         "pinyin": "xué sheng",
         "hanViet": "",
-        "meaning": "student; schoolchild",
+        "meaning": "học sinh, sinh viên",
         "partOfSpeech": "n"
       },
       {
@@ -805,7 +740,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "妈妈",
         "pinyin": "mā ma",
         "hanViet": "",
-        "meaning": "mama; mommy",
+        "meaning": "mẹ, má",
         "partOfSpeech": "n"
       },
       {
@@ -829,7 +764,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "多少",
         "pinyin": "duō shǎo",
         "hanViet": "",
-        "meaning": "number; amount",
+        "meaning": "bao nhiêu",
         "partOfSpeech": "r"
       },
       {
@@ -845,7 +780,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "妹妹",
         "pinyin": "mèi mei",
         "hanViet": "",
-        "meaning": "younger sister; young woman",
+        "meaning": "em gái",
         "partOfSpeech": "n"
       },
       {
@@ -853,7 +788,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "没有",
         "pinyin": "méi yǒu",
         "hanViet": "",
-        "meaning": "haven't; hasn't",
+        "meaning": "không có, chưa",
         "partOfSpeech": "v, d"
       },
       {
@@ -868,129 +803,59 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
     "dialogues": [
       {
         "id": "nh1_4_d_1",
-        "role": "老师",
-        "chinese": "在家里，刘明和王一雪在聊天儿。Luru Minh va Vurong Nhat Tuyet dang tro chuyen の trong nha",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "刘明 (Lưu Minh)",
+        "chinese": "王一雪，一飞忙吗？",
+        "pinyin": "Wáng Yīxuě, Yīfēi máng ma?",
+        "vietnamese": "Vương Nhất Tuyết ơi, Nhất Phi dạo này bận không?"
       },
       {
         "id": "nh1_4_d_2",
-        "role": "老师",
-        "chinese": "一飞忙吗？",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "王一雪 (Vương Nhất Tuyết)",
+        "chinese": "她最近很忙，每天都要备课。",
+        "pinyin": "Tā zuìjìn hěn máng, měitiān dōu yào bèikè.",
+        "vietnamese": "Chị ấy bận lắm, ngày nào cũng phải soạn giáo án."
       },
       {
         "id": "nh1_4_d_3",
-        "role": "刘明",
-        "chinese": "刘明",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "刘明 (Lưu Minh)",
+        "chinese": "她有多少个学生？",
+        "pinyin": "Tā yǒu duōshao gè xuésheng?",
+        "vietnamese": "Chị ấy có bao nhiêu học sinh vậy?"
       },
       {
         "id": "nh1_4_d_4",
-        "role": "刘明",
-        "chinese": "她很忙。",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "王一雪 (Vương Nhất Tuyết)",
+        "chinese": "她有三十多个学生呢。",
+        "pinyin": "Tā yǒu sānshí duō gè xuésheng ne.",
+        "vietnamese": "Chị ấy có hơn 30 học sinh cơ."
       },
       {
         "id": "nh1_4_d_5",
-        "role": "王一雪",
-        "chinese": "王一雪",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "杨同乐 (Dương Đồng Lạc)",
+        "chinese": "一雪，你家有几口人？",
+        "pinyin": "Yīxuě, nǐ jiā yǒu jǐ kǒu rén?",
+        "vietnamese": "Nhất Tuyết, nhà bạn có mấy người?"
       },
       {
         "id": "nh1_4_d_6",
-        "role": "王一雪",
-        "chinese": "她有多少个学生？",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "王一雪 (Vương Nhất Tuyết)",
+        "chinese": "我家有四口人：爸爸、妈妈、哥哥和我。你呢？",
+        "pinyin": "Wǒ jiā yǒu sì kǒu rén: bàba, māma, gēge hé wǒ. Nǐ ne?",
+        "vietnamese": "Nhà mình có 4 người: bố, mẹ, anh trai và mình. Còn bạn?"
       },
       {
         "id": "nh1_4_d_7",
-        "role": "王一雪",
-        "chinese": "在公司里，和杨同乐休息时聊天儿。Vuong Nhat Tuyét va DuongDongLac",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_4_d_8",
-        "role": "王一雪",
-        "chinese": "听两遍对话，选择正确答案。Nghehoithoaihai lurotva chondapanding.)4-3",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_4_d_9",
-        "role": "王一雪",
-        "chinese": "我有两个哥哥，",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_4_d_10",
-        "role": "王一雪",
-        "chinese": "王一雪",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_4_d_11",
-        "role": "王一雪",
-        "chinese": "你呢？",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_4_d_12",
-        "role": "王一雪",
-        "chinese": "我没有哥哥。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_4_d_13",
-        "role": "王一雪",
-        "chinese": "你家有几口人？",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_4_d_14",
-        "role": "王一雪",
-        "chinese": "王一雪",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_4_d_15",
-        "role": "王一雪",
-        "chinese": "我家有四口人，",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_4_d_16",
-        "role": "王一雪",
-        "chinese": "妹妹和我。",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "杨同乐 (Dương Đồng Lạc)",
+        "chinese": "我有两个哥哥，没有妹妹。",
+        "pinyin": "Wǒ yǒu liǎng gè gēge, méiyǒu mèimei.",
+        "vietnamese": "Mình có hai người anh trai, không có em gái."
       }
     ],
     "grammarNotes": [
-      "“有”字句（1）Cauchi“有”(1)",
-      "本课“有”表示领有，否定形式为“没/没有”",
-      "Tu“有”trong bai nay bieu thi su so htru.Phiudinh cia“有”la“没/没有”",
-      "汉语中，数字有阿拉伯数字和汉字两种写法，例如“1”和“二”",
-      "Trong tiéng Trung Quoc, cac con so co the duroc viét duroi hai dang: so A Rap (vi du: “\"1\")",
-      "（2）“百”以上（含）、“万”以内数字的写法与读法Cach viétvacachdoccac so",
-      "（3）“2”的写法和读法Cachviétva cachdoc s\"2”",
-      "数字“2”写作、读作“二（er）”或“两（ling）”。一般情况下，在序数词里",
-      "用“二（ér）”，如“第二”；在量词前用“两（liang）”",
-      "So \"2\" co thé durgc viét va doc la“二 (er)\" hoac “两 (liang)\". Thong thurong,\"二(er)\"",
-      "dugc dung chi so thur tu, chang han nhu“第二\", con“两 (liang)\"duoc ding truroc lurong tir."
+      "1. Câu chữ '有' biểu thị sở hữu: Cấu trúc 'Chủ ngữ + 有 + Tân ngữ' (Ví dụ: 我有两个孩子 - Tôi có hai đứa con; 我有一个哥哥 - Tôi có một người anh trai). Dạng phủ định bắt buộc dùng '没有' hoặc '没', tuyệt đối KHÔNG dùng '不有' (Ví dụ: 我没有哥哥 - Tôi không có anh trai).",
+      "2. Cách dùng số '2': Trong tiếng Trung, số 2 có hai cách đọc: '二' (èr) dùng khi đếm số thứ tự hoặc số nhà, số điện thoại (Ví dụ: 第二 - Thứ hai); còn '两' (liǎng) bắt buộc dùng trước lượng từ để chỉ số lượng (Ví dụ: 两个人 - Hai người; 两个孩子 - Hai đứa con).",
+      "3. Câu hỏi số lượng với '几' và '多少': '几' thường dùng hỏi số lượng ít (dưới 10) và nhất thiết phải có lượng từ đi kèm (Ví dụ: 你家有几口人？ - Nhà bạn có mấy người?). '多少' dùng hỏi số lượng lớn hơn 10 hoặc bất kỳ, lượng từ có thể có hoặc không (Ví dụ: 你们学校有多少学生？ - Trường các bạn có bao nhiêu học sinh?).",
+      "4. Trợ từ ngữ khí '呢': Đặt ở cuối câu hỏi tỉnh lược để hỏi lại đối phương về chủ đề vừa nhắc (Ví dụ: 我有两个哥哥，你呢？ - Tôi có hai người anh, còn bạn thì sao?)."
     ],
     "readingPassage": {
       "title": "幸福的一家人 (Gia đình hạnh phúc)",
@@ -1183,154 +1048,66 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
     "dialogues": [
       {
         "id": "nh1_5_d_1",
-        "role": "A",
-        "chinese": "在家里，刘明和王一雪在聊天儿。LuruMinhvaVurongNhatTuyétdangtrochuyentrongnha.",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "刘明 (Lưu Minh)",
+        "chinese": "今天几月几号？星期几？",
+        "pinyin": "Jīntiān jǐ yuè jǐ hào? Xīngqī jǐ?",
+        "vietnamese": "Hôm nay ngày mấy tháng mấy? Thứ mấy vậy?"
       },
       {
         "id": "nh1_5_d_2",
-        "role": "小语",
-        "chinese": "助力",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "王一雪 (Vương Nhất Tuyết)",
+        "chinese": "今天五月十六号，星期六。",
+        "pinyin": "Jīntiān wǔ yuè shíliù hào, xīngqīliù.",
+        "vietnamese": "Hôm nay là ngày 16 tháng 5, thứ Bảy."
       },
       {
         "id": "nh1_5_d_3",
-        "role": "小语",
-        "chinese": "也说“9月8日”。Ngay8thang9",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "刘明 (Lưu Minh)",
+        "chinese": "今天你去公司上班吗？",
+        "pinyin": "Jīntiān nǐ qù gōngsī shàngbān ma?",
+        "vietnamese": "Hôm nay em có đến công ty đi làm không?"
       },
       {
         "id": "nh1_5_d_4",
-        "role": "小语",
-        "chinese": "今天几号？",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "王一雪 (Vương Nhất Tuyết)",
+        "chinese": "今天我不上班，今天我休息。",
+        "pinyin": "Jīntiān wǒ bú shàngbān, jīntiān wǒ xiūxi.",
+        "vietnamese": "Hôm nay em không đi làm, hôm nay em được nghỉ."
       },
       {
         "id": "nh1_5_d_5",
-        "role": "王一雪",
-        "chinese": "王一雪",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "杨同乐 (Dương Đồng Lạc)",
+        "chinese": "一雪，你会做饭吗？",
+        "pinyin": "Yīxuě, nǐ huì zuòfàn ma?",
+        "vietnamese": "Nhất Tuyết, bạn biết nấu cơm không?"
       },
       {
         "id": "nh1_5_d_6",
-        "role": "刘明",
-        "chinese": "刘明",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "王一雪 (Vương Nhất Tuyết)",
+        "chinese": "我会做，我会包中国饺子。你呢？",
+        "pinyin": "Wǒ huì zuò, wǒ huì bāo Zhōngguó jiǎozi. Nǐ ne?",
+        "vietnamese": "Mình biết làm, mình biết gói bánh sủi cảo Trung Quốc. Còn bạn?"
       },
       {
         "id": "nh1_5_d_7",
-        "role": "小语",
-        "chinese": "在公司里，王一雪和杨同乐休息时聊天儿。Vurong Nhat Tuyetva Durong Dong Lac dang",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "杨同乐 (Dương Đồng Lạc)",
+        "chinese": "我不会包饺子，但我会做几个家常菜。",
+        "pinyin": "Wǒ bú huì bāo jiǎozi, dàn wǒ huì zuò jǐ gè jiāchángcài.",
+        "vietnamese": "Mình không biết gói sủi cảo, nhưng mình biết nấu mấy món cơm gia đình."
       },
       {
         "id": "nh1_5_d_8",
-        "role": "小语",
-        "chinese": "听两遍对话，选择正确答案。Nghehoithoaihailurotvachondapandung.）5-3",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_5_d_9",
-        "role": "小语",
-        "chinese": "）做饭。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_5_d_10",
-        "role": "小语",
-        "chinese": "）也做饭。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_5_d_11",
-        "role": "小语",
-        "chinese": "你会做饭吗？",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_5_d_12",
-        "role": "王一雪",
-        "chinese": "王一雪",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_5_d_13",
-        "role": "王一雪",
-        "chinese": "我会做。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_5_d_14",
-        "role": "王一雪",
-        "chinese": "你会做什么？",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_5_d_15",
-        "role": "王一雪",
-        "chinese": "王一雪",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_5_d_16",
-        "role": "王一雪",
-        "chinese": "饺子，也会做",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_5_d_17",
-        "role": "王一雪",
-        "chinese": "一些菜。星期天",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_5_d_18",
-        "role": "王一雪",
-        "chinese": "我也做饭。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_5_d_19",
-        "role": "王一雪",
-        "chinese": "在公司里，和杨同乐下班时聊天儿。VuongNhat Tuyét vaDuong DongLac dang",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_5_d_20",
-        "role": "王一雪",
-        "chinese": "听两遍对话，选择正确答案。Nghe hoi thoai hai lurot va chon dap an dung.)5-5",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "王一雪 (Vương Nhất Tuyết)",
+        "chinese": "太好了，这个周末我们一起做饭吧！",
+        "pinyin": "Tài hǎo le, zhège zhōumò wǒmen yìqǐ zuòfàn ba!",
+        "vietnamese": "Tuyệt quá, cuối tuần này tụi mình cùng nhau nấu ăn nhé!"
       }
     ],
     "grammarNotes": [
-      "Trong bai nay hoc cach dien dat ngay thang va cac thur trong tuan. Trat tur dien dat ngay thang",
-      "名词谓语句Caucovingirdanhtir",
-      "名词谓语句谓语部分只有名词或名词性成分，这部分词语一般是表达时间、日期、",
-      "年龄等的词语。",
-      "Trong cau vi ngiur danh tir, thanh phan vi ngur chi co danh tur hoac thanh phan co tinh chat",
-      "3能愿动词“会”Dongturnang nguyen“会”",
-      "“会”用在动词前，表示通过学习后，懂得怎样做或有能力做。",
-      "“会\" dat truroc dong tur, biéu thi viec biét hoac co kha nang thurc hien mot hanh dong"
+      "1. Cách diễn đạt thời gian ngày tháng và thứ: Thứ tự từ lớn đến bé: 'Năm + Tháng + Ngày + Thứ' (Ví dụ: 2026年5月16日，星期六). Khẩu ngữ thường dùng '号' thay cho '日' (Ví dụ: 今天几号？ - Hôm nay ngày mấy?).",
+      "2. Động từ năng nguyện '会': Đặt trước động từ biểu thị việc biết hoặc có kỹ năng làm một việc gì đó thông qua học tập, rèn luyện (Ví dụ: 我会做中国菜 - Tôi biết nấu món Trung Quốc; 你会说汉语吗？ - Bạn biết nói tiếng Trung không?). Phủ định dùng '不会'.",
+      "3. Câu vị ngữ danh từ: Câu có vị ngữ trực tiếp là từ hoặc cụm từ chỉ thời gian, ngày tháng, tuổi tác hoặc giá cả mà không cần dùng động từ '是' (Ví dụ: 今天星期六 - Hôm nay là thứ Bảy; 我今年二十岁 - Tôi năm nay 20 tuổi).",
+      "4. Phó từ '也': Đặt trước động từ hoặc tính từ biểu thị sự tương đồng (cũng) (Ví dụ: 星期天我也休息 - Chủ nhật tôi cũng được nghỉ)."
     ],
     "readingPassage": {
       "title": "今天我休息 (Hôm nay tôi được nghỉ)",
@@ -1396,7 +1173,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "出租车",
         "pinyin": "chū zū chē",
         "hanViet": "",
-        "meaning": "taxi; (Tw) rental car",
+        "meaning": "xe taxi",
         "partOfSpeech": "n"
       },
       {
@@ -1404,7 +1181,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "牛奶",
         "pinyin": "niú nǎi",
         "hanViet": "",
-        "meaning": "cow's milk",
+        "meaning": "sữa bò, sữa tươi",
         "partOfSpeech": "n"
       },
       {
@@ -1428,7 +1205,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "手机",
         "pinyin": "shǒu jī",
         "hanViet": "",
-        "meaning": "cell phone; mobile phone",
+        "meaning": "điện thoại di động",
         "partOfSpeech": "n"
       },
       {
@@ -1452,7 +1229,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "多少",
         "pinyin": "duō shǎo",
         "hanViet": "",
-        "meaning": "number; amount",
+        "meaning": "bao nhiêu",
         "partOfSpeech": "r"
       },
       {
@@ -1547,309 +1324,73 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
     "dialogues": [
       {
         "id": "nh1_6_d_1",
-        "role": "A",
-        "chinese": "在校园里，李文向白家月要手机号。LyVandanghoixinsädienthoaididongcia",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "李文 (Lý Văn)",
+        "chinese": "家月，你的手机号是多少？",
+        "pinyin": "Jiāyuè, nǐ de shǒujī hào shì duōshao?",
+        "vietnamese": "Gia Nguyệt, số điện thoại của cậu là bao nhiêu?"
       },
       {
         "id": "nh1_6_d_2",
-        "role": "小语",
-        "chinese": "助力",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "白家月 (Bạch Gia Nguyệt)",
+        "chinese": "我的手机号是一三八、幺零六八、五七二四。",
+        "pinyin": "Wǒ de shǒujī hào shì yīsānbā, yāolíngliùbā, wǔqī'èrsì.",
+        "vietnamese": "Số của mình là 138-1068-5724."
       },
       {
         "id": "nh1_6_d_3",
-        "role": "小语",
-        "chinese": "代“手机”。Hiennay,doikhi",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "李文 (Lý Văn)",
+        "chinese": "好的，我记下来了，一会儿给你发短信。",
+        "pinyin": "Hǎo de, wǒ jì xiàlai le, yíhuìr gěi nǐ fā duǎnxìn.",
+        "vietnamese": "Được rồi, mình lưu lại rồi, lát nữa sẽ nhắn tin cho cậu."
       },
       {
         "id": "nh1_6_d_4",
-        "role": "小语",
-        "chinese": "家月，你的手机号是",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "白家月 (Bạch Gia Nguyệt)",
+        "chinese": "没问题，收到我马上回你！",
+        "pinyin": "Méi wèntí, shōudào wǒ mǎshàng huí nǐ!",
+        "vietnamese": "Không thành vấn đề, nhận được mình trả lời ngay!"
       },
       {
         "id": "nh1_6_d_5",
-        "role": "李文",
-        "chinese": "李文",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "陈天中 (Trần Thiên Trung)",
+        "chinese": "家月，明天下午你想去哪儿？",
+        "pinyin": "Jiāyuè, míngtiān xiàwǔ nǐ xiǎng qù nǎr?",
+        "vietnamese": "Gia Nguyệt, chiều mai cậu muốn đi đâu?"
       },
       {
         "id": "nh1_6_d_6",
-        "role": "李文",
-        "chinese": "多少?",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "白家月 (Bạch Gia Nguyệt)",
+        "chinese": "我想去学校对面的大超市买东西。",
+        "pinyin": "Wǒ xiǎng qù xuéxiào duìmiàn de dà chāoshì mǎi dōngxi.",
+        "vietnamese": "Mình muốn sang siêu thị lớn đối diện trường mua ít đồ."
       },
       {
         "id": "nh1_6_d_7",
-        "role": "李文",
-        "chinese": "手机号要一位一位地读，而且数字",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "陈天中 (Trần Thiên Trung)",
+        "chinese": "你想买些什么呢？",
+        "pinyin": "Nǐ xiǎng mǎi xiē shénme ne?",
+        "vietnamese": "Cậu muốn mua những gì thế?"
       },
       {
         "id": "nh1_6_d_8",
-        "role": "李文",
-        "chinese": "“1”要读成“yao”。sodien thoai",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "白家月 (Bạch Gia Nguyệt)",
+        "chinese": "我想买点儿牛奶、水果和面包。",
+        "pinyin": "Wǒ xiǎng mǎi diǎnr niúnǎi, shuǐguǒ hé miànbāo.",
+        "vietnamese": "Mình muốn mua chút sữa tươi, hoa quả và bánh mì."
       },
       {
         "id": "nh1_6_d_9",
-        "role": "白家月",
-        "chinese": "白家月",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_6_d_10",
-        "role": "小语",
-        "chinese": "助力",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_6_d_11",
-        "role": "白家月",
-        "chinese": "在教室里，下课后，和陈天中在聊天儿。Bach Gia Nguyet va Tran Thien Trung",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_6_d_12",
-        "role": "白家月",
-        "chinese": "听两遍对话，选择正确答案。Nghehoithoaihailurotvachondapanduing.)6-3",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_6_d_13",
-        "role": "白家月",
-        "chinese": "（1）（",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_6_d_14",
-        "role": "白家月",
-        "chinese": "）想去超市。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_6_d_15",
-        "role": "白家月",
-        "chinese": "（2）想买（",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_6_d_16",
-        "role": "白家月",
-        "chinese": "家月，明天你去哪儿？",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_6_d_17",
-        "role": "陈天中",
-        "chinese": "陈天中",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_6_d_18",
-        "role": "陈天中",
-        "chinese": "我想去超市买东西。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_6_d_19",
-        "role": "白家月",
-        "chinese": "白家月",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_6_d_20",
-        "role": "白家月",
-        "chinese": "你去超市买什么？",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_6_d_21",
-        "role": "陈天中",
-        "chinese": "陈天中",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_6_d_22",
-        "role": "陈天中",
-        "chinese": "我想买些牛奶。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_6_d_23",
-        "role": "白家月",
-        "chinese": "白家月",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_6_d_24",
-        "role": "白家月",
-        "chinese": "在家里，王一雪全家在讨论周末晚餐安排。GiadinhVuongNhat Tuyétdang banve",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_6_d_25",
-        "role": "白家月",
-        "chinese": "听两遍对话，选择正确答案。Nghehoithoaihai lurotvachondapandung.)6-5",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_6_d_26",
-        "role": "白家月",
-        "chinese": "（1）王一雪一家人想去西安饭店（",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_6_d_27",
-        "role": "王一雪",
-        "chinese": "王一雪",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_6_d_28",
-        "role": "王一雪",
-        "chinese": "晚饭？",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_6_d_29",
-        "role": "王一雪",
-        "chinese": "我还想去西安饭店。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_6_d_30",
-        "role": "刘明",
-        "chinese": "刘明",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_6_d_31",
-        "role": "刘明",
-        "chinese": "那边的包子非常好吃，",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_6_d_32",
-        "role": "刘明",
-        "chinese": "★★★4.63994条>￥85/人",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_6_d_33",
-        "role": "刘明",
-        "chinese": "口味：4.5环境：4.7服务：4.5",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_6_d_34",
-        "role": "刘明",
-        "chinese": "我想吃包子。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_6_d_35",
-        "role": "刘明",
-        "chinese": "妈妈，我想吃米饭，不",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_6_d_36",
-        "role": "刘明",
-        "chinese": "想吃包子。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_6_d_37",
-        "role": "刘明",
-        "chinese": "好的。我们怎么去？",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_6_d_38",
-        "role": "王一雪",
-        "chinese": "王一雪",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_6_d_39",
-        "role": "王一雪",
-        "chinese": "坐出租车去。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_6_d_40",
-        "role": "王一雪",
-        "chinese": "这家饭店开了很多年了，菜做得地道有特色，好吃！",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_6_d_41",
-        "role": "刘明",
-        "chinese": "刘明",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_6_d_42",
-        "role": "刘明",
-        "chinese": "（1）西安饭店的包子好吃吗？BanhbaocuanhahangTayAncongonkhong？",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_6_d_43",
-        "role": "刘明",
-        "chinese": "（2）他们怎么去西安饭店？Ho se den nha hang Tay An bang cach nao?",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "陈天中 (Trần Thiên Trung)",
+        "chinese": "我正好也要去超市，我们一起去吧！",
+        "pinyin": "Wǒ zhènghǎo yě yào qù chāoshì, wǒmen yìqǐ qù ba!",
+        "vietnamese": "Tớ cũng đang định đi siêu thị đây, tụi mình cùng đi nhé!"
       }
     ],
     "grammarNotes": [
-      "能愿动词“想”用在动词前，表示希望、打算。",
-      "Dong tir nang nguyen \"想\" dat truroc dong tur, dung de bieu thi mong muon hoac du dinh."
+      "1. Động từ năng nguyện '想': Đặt trước động từ biểu thị mong muốn, dự định hoặc nguyện vọng (Ví dụ: 我想去超市买东西 - Tôi muốn đi siêu thị mua đồ). Phủ định dùng '不想'.",
+      "2. Cách đọc số điện thoại và số '1' (yāo): Khi đọc số điện thoại, số phòng hoặc biển số xe, các chữ số được đọc riêng lẻ từng số một. Đặc biệt, chữ số '1' thường được đọc là 'yāo' thay vì 'yī' để tránh nhầm lẫn với số '7' (qī).",
+      "3. Đại từ nghi vấn '哪儿' (ở đâu): Dùng để hỏi nơi chốn, phương hướng (Ví dụ: 你去哪儿？ - Bạn đi đâu thế?).",
+      "4. Phương vị từ '对面': Biểu thị vị trí đối diện (Ví dụ: 超市在学校对面 - Siêu thị ở đối diện trường học)."
     ],
     "readingPassage": {
       "title": "去超市买东西 (Đi siêu thị mua sắm)",
@@ -1939,7 +1480,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "上午",
         "pinyin": "shàng wǔ",
         "hanViet": "",
-        "meaning": "morning",
+        "meaning": "buổi sáng",
         "partOfSpeech": "t"
       },
       {
@@ -2026,120 +1567,73 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
     "dialogues": [
       {
         "id": "nh1_7_d_1",
-        "role": "A",
-        "chinese": "白家月和安妮在打电话。BachGiaNguyetvanniedangnoichuyendienthoai.",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "李文 (Lý Văn)",
+        "chinese": "家月，下午我想去电影院看电影，你去吗？",
+        "pinyin": "Jiāyuè, xiàwǔ wǒ xiǎng qù diànyǐngyuàn kàn diànyǐng, nǐ qù ma?",
+        "vietnamese": "Gia Nguyệt, chiều nay mình muốn ra rạp xem phim, bạn đi không?"
       },
       {
         "id": "nh1_7_d_2",
-        "role": "安妮",
-        "chinese": "在校园里，李文遇到白家月。LyVangapBachGiaNguyettrongkhuonvientrurong.",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "白家月 (Bạch Gia Nguyệt)",
+        "chinese": "我不想去，下午我还有别的事情呢。",
+        "pinyin": "Wǒ bù xiǎng qù, xiàwǔ wǒ hái yǒu bié de shìqing ne.",
+        "vietnamese": "Mình không đi được rồi, chiều nay mình còn có việc bận cơ."
       },
       {
         "id": "nh1_7_d_3",
-        "role": "安妮",
-        "chinese": "听两遍对话，选择正确答案。Nghehoithoaihailurotvachondapandung.》7-3",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "李文 (Lý Văn)",
+        "chinese": "好的，那明天下午你有空吗？",
+        "pinyin": "Hǎo de, nà míngtiān xiàwǔ nǐ yǒu kòng ma?",
+        "vietnamese": "Được rồi, thế chiều mai bạn rảnh không?"
       },
       {
         "id": "nh1_7_d_4",
-        "role": "李文",
-        "chinese": "（1）下午想去（",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "白家月 (Bạch Gia Nguyệt)",
+        "chinese": "我明天下午两点还要上课呢，四点半才下课。",
+        "pinyin": "Wǒ míngtiān xiàwǔ liǎng diǎn hái yào shàngkè ne, sì diǎn bàn cái xiàkè.",
+        "vietnamese": "Chiều mai 2 giờ mình vẫn phải lên lớp học, 4 rưỡi mới tan học."
       },
       {
         "id": "nh1_7_d_5",
-        "role": "李文",
-        "chinese": "（2）白家月明天下午还（",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "李文 (Lý Văn)",
+        "chinese": "那我们明天晚上六点见吧！",
+        "pinyin": "Nà wǒmen míngtiān wǎnshang liù diǎn jiàn ba!",
+        "vietnamese": "Thế thì tối mai 6 giờ tụi mình gặp nhau nhé!"
       },
       {
         "id": "nh1_7_d_6",
-        "role": "李文",
-        "chinese": "下午我想去电影院看电影，",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "安妮 (Annie)",
+        "chinese": "一雪，你每天几点下班？",
+        "pinyin": "Ānnī: Yīxuě, nǐ měitiān jǐ diǎn xiàbān?",
+        "vietnamese": "Nhất Tuyết ơi, mỗi ngày cậu mấy giờ tan làm?"
       },
       {
         "id": "nh1_7_d_7",
-        "role": "李文",
-        "chinese": "李文",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "王一雪 (Vương Nhất Tuyết)",
+        "chinese": "我每天早上八点上班，晚上六点半下班。",
+        "pinyin": "Wǒ měitiān zǎoshang bā diǎn shàngbān, wǎnshang liù diǎn bàn xiàbān.",
+        "vietnamese": "Tớ mỗi sáng 8 giờ vào ca, tối 6 rưỡi mới tan làm."
       },
       {
         "id": "nh1_7_d_8",
-        "role": "李文",
-        "chinese": "你去吗？",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "安妮 (Annie)",
+        "chinese": "路上开车需要多长时间？",
+        "pinyin": "Lùshang kāichē xūyào duō cháng shíjiān?",
+        "vietnamese": "Đi xe trên đường mất bao lâu?"
       },
       {
         "id": "nh1_7_d_9",
-        "role": "李文",
-        "chinese": "我不想去，下午还有事。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_7_d_10",
-        "role": "白家月",
-        "chinese": "白家月",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_7_d_11",
-        "role": "白家月",
-        "chinese": "好的。明天呢？",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_7_d_12",
-        "role": "李文",
-        "chinese": "李文",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_7_d_13",
-        "role": "李文",
-        "chinese": "我明天下午两点还上课呢，四点半下课。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_7_d_14",
-        "role": "白家月",
-        "chinese": "白家月",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "王一雪 (Vương Nhất Tuyết)",
+        "chinese": "大概需要半个小时。",
+        "pinyin": "Dàgài xūyào bàn gè xiǎoshí.",
+        "vietnamese": "Khoảng tầm nửa tiếng đồng hồ."
       }
     ],
     "grammarNotes": [
-      "（1）使用“点、分”表达时间点Strdung“点”va“分”dediéndatthoidiém",
-      "“点、分”表示具体时间点，整点使用“点”，不是整点使用“分”，“分”可",
-      "以省略。但是，当时间为“十分”时，不能省略“分”；当时间为十分以下时，要读",
-      "“点\" va “分” durgc dung de biéu thi thoi diém cu the, gio chan thi ding “点\"; gio khong",
-      "chan co le la don vi phut thi dung “分\". Trong mot so trurong hop, “分\" co the dugc luroc bo.",
-      "Tuy nhien, khi thoi gian la “十分\" thi khong duoc luroc bo “分\"; khi so phut duroi muoi, can",
-      "doc them“零\"truoc so phut.",
-      "（2）使用“上午、中午、下午、晚上”等时间名词表达时间段 Sir dung cac danh tur chi",
-      "thoi gian nhu“上午”“中午”,“下午”va“晚上”de dién dat khoang thoi gian",
-      "“上午、中午、下午、晚上”等时间名词可以表达时间段。这些时间名词后还可以",
-      "Cac danh tir chi thoi gian nhur“上午”“中午”,“下午”va“晚上” co the dién dat khoang",
-      "2语气助词“吧”（1）Troturngurkhi吧”（1)",
-      "本课语气助词“吧”读轻声（ba），在句子末尾，表示建议、商量、劝告、请求。",
-      "Tro tir ngir khi “吧\"' trong bai dugc doc thanh nhe (ba), dirng cuoi cau, bieu thi de nghi,",
-      "3副词、时间词语作状语的位置Vitri cuaphotur,trngirchi thoigiankhi lam trangngiur",
-      "在汉语中，副词、时间词语作状语时，一般都要在动词或形容词前。"
+      "1. Cách diễn đạt giờ giấc '点' và '分': Giờ chẵn dùng 'Số + 点' (Ví dụ: 八点 - 8 giờ); Giờ kèm phút dùng 'Số + 点 + Số + 分' (Ví dụ: 八点十分 - 8 giờ 10 phút); 30 phút dùng '半' (Ví dụ: 六点半 - 6 rưỡi). Trật tự thời gian luôn đi từ buổi đến giờ cụ thể (Ví dụ: 晚上六点半 - 6 rưỡi tối).",
+      "2. Trợ từ ngữ khí '吧' (Đề nghị / Rủ rê): Đặt ở cuối câu để biểu thị lời đề nghị, thỉnh cầu hoặc bàn bạc với thái độ nhẹ nhàng (Ví dụ: 我们去看电影吧！ - Chúng mình đi xem phim đi!).",
+      "3. Vị trí của trạng ngữ chỉ thời gian: Đặt trước hoặc ngay sau chủ ngữ, nhưng luôn đứng TRƯỚC động từ chính (Ví dụ: 我晚上六点下班 / 晚上六点我下班).",
+      "4. Trợ từ ngữ khí '呢' biểu thị trạng thái tiếp diễn: Đặt ở cuối câu để biểu thị hành động đang diễn ra hoặc tình huống còn đang tiếp tục (Ví dụ: 我还上课呢 - Mình vẫn đang còn học tiết cơ mà)."
     ],
     "readingPassage": {
       "title": "忙碌的一天 (Một ngày bận rộn)",
@@ -2213,7 +1707,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "医生",
         "pinyin": "yī shēng",
         "hanViet": "",
-        "meaning": "doctor",
+        "meaning": "bác sĩ",
         "partOfSpeech": "n"
       },
       {
@@ -2245,7 +1739,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "漂亮",
         "pinyin": "piào liang",
         "hanViet": "",
-        "meaning": "pretty; beautiful",
+        "meaning": "xinh đẹp, đẹp",
         "partOfSpeech": "a"
       },
       {
@@ -2261,7 +1755,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "家里",
         "pinyin": "jiā lǐ",
         "hanViet": "",
-        "meaning": "home",
+        "meaning": "trong nhà, ở nhà",
         "partOfSpeech": "s, n"
       },
       {
@@ -2300,132 +1794,66 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
     "dialogues": [
       {
         "id": "nh1_8_d_1",
-        "role": "医生",
-        "chinese": "在王一飞家，白家月和陈天中来做客。Bach Gia Nguyet va Tran Thien Trung den tham nha",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "白家月 (Bạch Gia Nguyệt)",
+        "chinese": "陈天中，你看，房间外边有一只小猫！",
+        "pinyin": "Chén Tiānzhōng, nǐ kàn, fángjiān wàibian yǒu yì zhī xiǎomāo!",
+        "vietnamese": "Trần Thiên Trung, cậu nhìn kìa, bên ngoài phòng có một chú mèo con!"
       },
       {
         "id": "nh1_8_d_2",
-        "role": "医生",
-        "chinese": "房间外有一只小猫。",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "陈天中 (Trần Thiên Trung)",
+        "chinese": "我没看见，它在哪儿呢？",
+        "pinyin": "Wǒ méi kànjiàn, tā zài nǎr ne?",
+        "vietnamese": "Mình không nhìn thấy, nó ở đâu thế?"
       },
       {
         "id": "nh1_8_d_3",
-        "role": "白家月",
-        "chinese": "白家月",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "白家月 (Bạch Gia Nguyệt)",
+        "chinese": "它在桌子下边呢，白白的真漂亮！",
+        "pinyin": "Tā zài zhuōzi xiàbian ne, báibái de zhēn piàoliang!",
+        "vietnamese": "Nó ở ngay dưới gầm bàn kìa, trắng muốt trông đẹp quá!"
       },
       {
         "id": "nh1_8_d_4",
-        "role": "白家月",
-        "chinese": "我没看见，它在",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "陈天中 (Trần Thiên Trung)",
+        "chinese": "哈哈，看到了，它在安静地睡觉呢。",
+        "pinyin": "Hāhā, kàndào le, tā zài ānjìng de shuìjiào ne.",
+        "vietnamese": "Haha, thấy rồi, nó đang ngủ say sưa kìa."
       },
       {
         "id": "nh1_8_d_5",
-        "role": "陈天中",
-        "chinese": "陈天中",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "胡医生 (Bác sĩ Hồ)",
+        "chinese": "刘明，听说你爸爸也是医生？",
+        "pinyin": "Hú yīshēng: Liú Míng, tīngshuō nǐ bàba yě shì yīshēng?",
+        "vietnamese": "Lưu Minh, nghe nói bố em cũng là bác sĩ à?"
       },
       {
         "id": "nh1_8_d_6",
-        "role": "陈天中",
-        "chinese": "哪儿呢？",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "刘明 (Lưu Minh)",
+        "chinese": "对，我爸爸也在医院工作。",
+        "pinyin": "Duì, wǒ bàba yě zài yīyuàn gōngzuò.",
+        "vietnamese": "Vâng đúng ạ, bố em cũng làm việc trong bệnh viện."
       },
       {
         "id": "nh1_8_d_7",
-        "role": "陈天中",
-        "chinese": "它在桌子下呢。",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "胡医生 (Bác sĩ Hồ)",
+        "chinese": "他在哪家医院工作？",
+        "pinyin": "Tā zài nǎ jiā yīyuàn gōngzuò?",
+        "vietnamese": "Bác ấy làm việc ở bệnh viện nào thế?"
       },
       {
         "id": "nh1_8_d_8",
-        "role": "小语",
-        "chinese": "在教室里，下课后，白家月给李文打电话。BachGiaNguyetgoidienthoaichoLyVan",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_8_d_9",
-        "role": "小语",
-        "chinese": "听两遍对话，选择正确答案。Nghehoithoaihailurotvachondapandung.）8-3",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_8_d_10",
-        "role": "小语",
-        "chinese": "（1）白家月和李文在（",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_8_d_11",
-        "role": "李文",
-        "chinese": "（2）下午（",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_8_d_12",
-        "role": "李文",
-        "chinese": "）能到。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_8_d_13",
-        "role": "李文",
-        "chinese": "在医院里，刘明和同事胡医生在聊天儿。LuuMinhdangtrochuyenvoidongnghiepcia",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_8_d_14",
-        "role": "李文",
-        "chinese": "听两遍对话，选择正确答案。Nghehoithoaihailurotvachondapandung.》8-5",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_8_d_15",
-        "role": "医生",
-        "chinese": "C不忙",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_8_d_16",
-        "role": "医生",
-        "chinese": "（2）胡家有（",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_8_d_17",
-        "role": "医生",
-        "chinese": "）。",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "刘明 (Lưu Minh)",
+        "chinese": "他在北京第一医院工作，离这里不远。",
+        "pinyin": "Tā zài Běijīng Dì-yī Yīyuàn gōngzuò, lí zhèlǐ bù yuǎn.",
+        "vietnamese": "Bác ấy công tác ở Bệnh viện Số 1 Bắc Kinh, cách đây không xa ạ."
       }
     ],
     "grammarNotes": [
-      "方位词Phurongvitr",
-      "本册学习的表达方向、位置的方位词有：上、下、里、外、前、后、外边。",
-      "2 介词“在”Gioi tr“在”",
-      "介词“在”和表示位置、处所的词语组合，在动词前，表示在什么位置、处所做",
-      "Cau truc duroc ket hop boi gidi tir “在\" va tu ngu chi vi tri, noi chon thurong dtng truroc",
-      "能愿动词“能”位于动词前，表示有能力、有条件或可能做某事。",
-      "Dong tiur nang nguyen “能\" durng truroc dong tir, biéu thi co nang lurc, dieu kien hoac"
+      "1. Giới từ '在' chỉ nơi chốn hành động: Cấu trúc 'Chủ ngữ + 在 + Địa điểm + Động từ' biểu thị nơi chốn diễn ra hành động (Ví dụ: 我爸爸在医院工作 - Bố tôi làm việc ở bệnh viện; 我在学校学习 - Tôi học ở trường).",
+      "2. Động từ '在' chỉ sự tồn tại: Cấu trúc 'Chủ ngữ + 在 + Nơi chốn' (Ví dụ: 猫在桌子下面 - Con mèo ở dưới bàn).",
+      "3. Động từ năng nguyện '能': Biểu thị năng lực bản thân hoặc điều kiện khách quan cho phép làm gì (Ví dụ: 今天下午你能来吗？ - Chiều nay bạn đến được không?). Phủ định dùng '不能'.",
+      "4. Phương vị từ '前边', '后边', '上边', '下边': Dùng chỉ phương hướng, vị trí không gian (Ví dụ: 房间外边 - Bên ngoài phòng; 桌子下边 - Dưới gầm bàn)."
     ],
     "readingPassage": {
       "title": "爸爸的工作 (Công việc của bố)",
@@ -2483,7 +1911,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "外边",
         "pinyin": "wài bian",
         "hanViet": "",
-        "meaning": "outside; outer surface",
+        "meaning": "bên ngoài, phía ngoài",
         "partOfSpeech": "f"
       },
       {
@@ -2578,269 +2006,66 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
     "dialogues": [
       {
         "id": "nh1_9_d_1",
-        "role": "A",
-        "chinese": "在校园里，李文和白家月在聊天儿。LyVanvaBachGiaNguyetdangtrochuyentrong",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "李文 (Lý Văn)",
+        "chinese": "家月，学校前边有一家新电影院，你知道吗？",
+        "pinyin": "Jiāyuè, xuéxiào qiánbian yǒu yì jiā xīn diànyǐngyuàn, nǐ zhīdào ma?",
+        "vietnamese": "Gia Nguyệt, phía trước trường học có một rạp chiếu phim mới mở, cậu biết chưa?"
       },
       {
         "id": "nh1_9_d_2",
-        "role": "A",
-        "chinese": "“前边”可儿化，说成“前边儿”。“边”是后缓，读轻声。“边”做名词时，读成“bian”",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "白家月 (Bạch Gia Nguyệt)",
+        "chinese": "我知道，听说里面的椅子特别舒服！",
+        "pinyin": "Wǒ zhīdào, tīngshuō lǐmiàn de yǐzi tèbié shūfu!",
+        "vietnamese": "Mình biết rồi, nghe nói ghế ngồi bên trong êm ái lắm!"
       },
       {
         "id": "nh1_9_d_3",
-        "role": "小语",
-        "chinese": "助力",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "李文 (Lý Văn)",
+        "chinese": "我们今天晚上去那儿看电影，好吗？",
+        "pinyin": "Wǒmen jīntiān wǎnshang qù nàr kàn diànyǐng, hǎo ma?",
+        "vietnamese": "Tối nay tụi mình đến đó xem phim nhé, được không?"
       },
       {
         "id": "nh1_9_d_4",
-        "role": "小语",
-        "chinese": "“前边”co the them am uon luroi,doc thanh“前边儿”“边”la hau to,doc thanh nhe.Khi“边”la",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "白家月 (Bạch Gia Nguyệt)",
+        "chinese": "好啊！我们晚上七点在电影院门前见吧。",
+        "pinyin": "Hǎo a! Wǒmen wǎnshang qī diǎn zài diànyǐngyuàn mén qián jiàn ba.",
+        "vietnamese": "Được chứ! Tối nay 7 giờ tụi mình gặp nhau trước cửa rạp nhé."
       },
       {
         "id": "nh1_9_d_5",
-        "role": "小语",
-        "chinese": "学校前边有一家电影院。",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "陈天中 (Trần Thiên Trung)",
+        "chinese": "白家月，明天上午你做什么？",
+        "pinyin": "Jiāyuè, míngtiān shàngwǔ nǐ zuò shénme?",
+        "vietnamese": "Gia Nguyệt, sáng mai cậu làm gì thế?"
       },
       {
         "id": "nh1_9_d_6",
-        "role": "李文",
-        "chinese": "李文",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "白家月 (Bạch Gia Nguyệt)",
+        "chinese": "我明天上午在学校图书馆学习。你呢？",
+        "pinyin": "Wǒ míngtiān shàngwǔ zài xuéxiào túshūguǎn xuéxí. Nǐ ne?",
+        "vietnamese": "Sáng mai mình học bài ở thư viện trường. Còn cậu?"
       },
       {
         "id": "nh1_9_d_7",
-        "role": "李文",
-        "chinese": "对。我们晚上去那个",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "陈天中 (Trần Thiên Trung)",
+        "chinese": "我也要去图书馆复习生词。",
+        "pinyin": "Wǒ yě yào qù túshūguǎn fùxí shēngcí.",
+        "vietnamese": "Mình cũng phải đến thư viện ôn tập từ mới."
       },
       {
         "id": "nh1_9_d_8",
-        "role": "白家月",
-        "chinese": "白家月",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_9_d_9",
-        "role": "白家月",
-        "chinese": "电影院看电影吧。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_9_d_10",
-        "role": "白家月",
-        "chinese": "好！我们七点在电影院",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_9_d_11",
-        "role": "李文",
-        "chinese": "李文",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_9_d_12",
-        "role": "李文",
-        "chinese": "外边见，好吗？",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_9_d_13",
-        "role": "小语",
-        "chinese": "助力",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_9_d_14",
-        "role": "小语",
-        "chinese": "好的，晚上七点见！",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_9_d_15",
-        "role": "白家月",
-        "chinese": "白家月",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_9_d_16",
-        "role": "白家月",
-        "chinese": "在教室里，下课后，和陈天中在对话。Bach Gia Nguyet dang tro chuyen voi",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_9_d_17",
-        "role": "白家月",
-        "chinese": "听两遍对话，选择正确答案。Nghe hoi thoai hai lurot va chon dap an dung.》9-3",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_9_d_18",
-        "role": "陈天中",
-        "chinese": "（2）这是的（",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_9_d_19",
-        "role": "陈天中",
-        "chinese": "）中文书。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_9_d_20",
-        "role": "小语",
-        "chinese": "助力",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_9_d_21",
-        "role": "小语",
-        "chinese": "作方位词时，“上”在名词后，比如“椅子上”“书上”，读轻声；表示位置在高处，或",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_9_d_22",
-        "role": "小语",
-        "chinese": "次序、时间在前时，比如“上方”“上半年”，“上”读四声。Phurongvit“上”dirng sau",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_9_d_23",
-        "role": "小语",
-        "chinese": "danh tir, vi du“椅子上”,“书上”doc thanh nhe.Khi ding de bieu thi vi tri cao hoac chi thur tu,",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_9_d_24",
-        "role": "白家月",
-        "chinese": "白家月",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_9_d_25",
-        "role": "白家月",
-        "chinese": "书，那是谁的书？",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_9_d_26",
-        "role": "白家月",
-        "chinese": "是我的书，谢谢。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_9_d_27",
-        "role": "陈天中",
-        "chinese": "陈天中",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_9_d_28",
-        "role": "陈天中",
-        "chinese": "（1）椅子上的书是谁的？Quyénsachのtrenghélacuaai?",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_9_d_29",
-        "role": "陈天中",
-        "chinese": "（2）明天上午在哪儿学习？Sangmai,TranThienTrunghocのdau？",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_9_d_30",
-        "role": "陈天中",
-        "chinese": "听两遍对话，选择正确答案。Nghe hoi thoai hai luot va chon dap an ding.)9-5",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_9_d_31",
-        "role": "陈天中",
-        "chinese": "（2）王一雪家有一只（",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_9_d_32",
-        "role": "陈天中",
-        "chinese": "明天星期六，你做什么？",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_9_d_33",
-        "role": "王一雪",
-        "chinese": "王一雪",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_9_d_34",
-        "role": "王一雪",
-        "chinese": "我白天在家里读书，晚上",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_9_d_35",
-        "role": "小语",
-        "chinese": "（1）杨同乐星期六做什么？",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_9_d_36",
-        "role": "小语",
-        "chinese": "（2）王一雪星期六做什么？",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "白家月 (Bạch Gia Nguyệt)",
+        "chinese": "那明天上午我们在第一阅览室见吧！",
+        "pinyin": "Nà míngtiān shàngwǔ wǒmen zài dì-yī yuèlǎnshì jiàn ba!",
+        "vietnamese": "Thế sáng mai tụi mình hẹn nhau ở phòng đọc số một nhé!"
       }
     ],
     "grammarNotes": [
-      "存现句（1）Cau ton hien(1)",
-      "存现句是表示某个地方或位置存在某人或某物的句子，一般以“有”或“是”为标",
-      "记。否定时，宾语前不能使用数量词语。",
-      "Cau ton hien la cau bieu thi sur ton tai cuia nguroi hoac sur vat o mot noi hoac vi tri nao do.",
-      "Cau ton hien thurong duoc nhan biét khi co tr “有\" hoac “是\". Khi phu dinh, khong them",
-      "2 时间词语和处所词语同时作状语的顺序 Trat tur cia tr ngur chi thoi gian va tr ngur chi noi chon",
-      "时间词语和处所词语同时作状语时，时间词语要在处所词语前。",
-      "B表示序数的“第”“第”dingde biéu thi so thtrtur",
-      "“第”位于整数的数词前，表示序数。基本结构：（1）第+数词；（2）第+数词+",
-      "量词+（名词）。",
-      "“第\" dat truroc so tir (so nguyen) de bieu thj so thtr tur. Cau truc co ban: (1) 第 + so tr;"
+      "1. Trật tự trạng ngữ thời gian và nơi chốn trong câu: Khi cả từ chỉ thời gian và nơi chốn cùng làm trạng ngữ, trật tự chuẩn là: 'Thời gian + Nơi chốn + Động từ' (Ví dụ: 我明天上午 [Thời gian] 在学校 [Nơi chốn] 学习 [Động từ]).",
+      "2. Câu tồn hiện với '有': Dùng biểu thị sự tồn tại của người hoặc vật ở một địa điểm nào đó. Cấu trúc: 'Nơi chốn / Vị trí + 有 + Danh từ' (Ví dụ: 学校前边有一家电影院 - Phía trước trường có một rạp chiếu phim).",
+      "3. Tiền tố chỉ số thứ tự '第': Đặt trước số từ để biểu thị thứ tự (Ví dụ: 第一 - Thứ nhất / Đầu tiên; 第二天 - Ngày thứ hai). Cấu trúc: '第 + Số từ + (Lượng từ) + Danh từ'.",
+      "4. Khẩu ngữ '好吗？': Đặt ở cuối câu để thăm dò ý kiến, hỏi xem đối phương có đồng ý không (Ví dụ: 我们七点见，好吗？ - Chúng mình gặp nhau lúc 7 giờ nhé, được không?)."
     ],
     "readingPassage": {
       "title": "周日计划 (Kế hoạch ngày chủ nhật)",
@@ -2914,7 +2139,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "便宜",
         "pinyin": "biàn yí",
         "hanViet": "",
-        "meaning": "convenient",
+        "meaning": "rẻ, giá rẻ",
         "partOfSpeech": "a, v, an"
       },
       {
@@ -2930,7 +2155,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "杯子",
         "pinyin": "bēi zi",
         "hanViet": "",
-        "meaning": "cup; glass",
+        "meaning": "cái cốc, cái ly",
         "partOfSpeech": "n"
       },
       {
@@ -2938,7 +2163,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "商店",
         "pinyin": "shāng diàn",
         "hanViet": "",
-        "meaning": "store; shop",
+        "meaning": "cửa hàng, tiệm",
         "partOfSpeech": "n"
       },
       {
@@ -2954,7 +2179,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "这边",
         "pinyin": "zhè biān",
         "hanViet": "",
-        "meaning": "this side; here",
+        "meaning": "bên này, phía này",
         "partOfSpeech": "r"
       },
       {
@@ -2962,7 +2187,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "这些",
         "pinyin": "zhè xiē",
         "hanViet": "",
-        "meaning": "these",
+        "meaning": "những cái này, các thứ này",
         "partOfSpeech": "r"
       },
       {
@@ -2986,7 +2211,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "这儿",
         "pinyin": "zhè r",
         "hanViet": "",
-        "meaning": "here",
+        "meaning": "ở đây, chỗ này",
         "partOfSpeech": "r"
       },
       {
@@ -3001,230 +2226,66 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
     "dialogues": [
       {
         "id": "nh1_10_d_1",
-        "role": "A",
-        "chinese": "在一家小店，王一雪在买杯子。Vurong Nhat Tuyét mua coc omotcira hang nho.",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "王一雪 (Vương Nhất Tuyết)",
+        "chinese": "请问，有杯子吗？多少钱一个？",
+        "pinyin": "Qǐngwèn, yǒu bēizi ma? Duōshao qián yí gè?",
+        "vietnamese": "Xin hỏi, ở đây có bán cốc không ạ? Bao nhiêu tiền một chiếc?"
       },
       {
         "id": "nh1_10_d_2",
-        "role": "A",
-        "chinese": "请问，有杯子吗？",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "售货员 (Người bán hàng)",
+        "chinese": "有的！这些五块钱一个，那些十块钱一个。",
+        "pinyin": "Yǒu de! Zhèxiē wǔ kuài qián yí gè, nàxiē shí kuài qián yí gè.",
+        "vietnamese": "Có chứ ạ! Loại này 5 tệ một chiếc, loại đằng kia 10 tệ một chiếc ạ."
       },
       {
         "id": "nh1_10_d_3",
-        "role": "王一雪",
-        "chinese": "王一雪",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "王一雪 (Vương Nhất Tuyết)",
+        "chinese": "这个白色的杯子真漂亮，我买这个吧！",
+        "pinyin": "Zhège báisè de bēizi zhēn piàoliang, wǒ mǎi zhège ba!",
+        "vietnamese": "Chiếc cốc màu trắng này đẹp quá, tôi mua chiếc này nhé!"
       },
       {
         "id": "nh1_10_d_4",
-        "role": "王一雪",
-        "chinese": "有，杯子在这边",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "售货员 (Người bán hàng)",
+        "chinese": "好的，收您五块钱，欢迎下次再来！",
+        "pinyin": "Hǎo de, shōu nǐn wǔ kuài qián, huānyíng xià cì zài lái!",
+        "vietnamese": "Vâng, nhận của chị 5 tệ, cảm ơn và hẹn gặp lại chị lần sau!"
       },
       {
         "id": "nh1_10_d_5",
-        "role": "售货员",
-        "chinese": "售货员",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "王一雪 (Vương Nhất Tuyết)",
+        "chinese": "这里的苹果真新鲜！多少钱一斤？",
+        "pinyin": "Zhèlǐ de píngguǒ zhēn xīnxiān! Duōshao qián yì jīn?",
+        "vietnamese": "Táo ở đây tươi ngon thật đấy! Bao nhiêu tiền một cân (500g) thế ạ?"
       },
       {
         "id": "nh1_10_d_6",
-        "role": "售货员",
-        "chinese": "多少钱一个？",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "售货员 (Người bán hàng)",
+        "chinese": "苹果三块五一斤，真便宜！",
+        "pinyin": "Píngguǒ sān kuài wǔ yì jīn, zhēn piányi!",
+        "vietnamese": "Táo 3 tệ 5 một cân, rẻ lắm chị ơi!"
       },
       {
         "id": "nh1_10_d_7",
-        "role": "王一雪",
-        "chinese": "王一雪",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "王一雪 (Vương Nhất Tuyết)",
+        "chinese": "好的，给我称两斤吧。",
+        "pinyin": "Hǎo de, gěi wǒ chēng liǎng jīn ba.",
+        "vietnamese": "Vâng, cân cho tôi hai cân nhé."
       },
       {
         "id": "nh1_10_d_8",
-        "role": "王一雪",
-        "chinese": "这些五块钱一个，",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_10_d_9",
-        "role": "售货员",
-        "chinese": "售货员",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_10_d_10",
-        "role": "售货员",
-        "chinese": "那些十块钱一个。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_10_d_11",
-        "role": "售货员",
-        "chinese": "我买这个吧。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_10_d_12",
-        "role": "王一雪",
-        "chinese": "王一雪",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_10_d_13",
-        "role": "售货员",
-        "chinese": "在菜市场，王一雪在买水果。Vuong Nhat Tuyétdang mua hoa qua o cho.",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_10_d_14",
-        "role": "售货员",
-        "chinese": "听两遍对话，选择正确答案。Nghehoithoaihailurotvachondapandung.）10-3",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_10_d_15",
-        "role": "售货员",
-        "chinese": ")一斤。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_10_d_16",
-        "role": "售货员",
-        "chinese": "C.七块二",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_10_d_17",
-        "role": "售货员",
-        "chinese": "这儿的水果真不少！",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_10_d_18",
-        "role": "王一雪",
-        "chinese": "王一雪",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_10_d_19",
-        "role": "王一雪",
-        "chinese": "您想买什么？",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_10_d_20",
-        "role": "售货员",
-        "chinese": "售货员",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_10_d_21",
-        "role": "售货员",
-        "chinese": "我想买两斤苹果。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_10_d_22",
-        "role": "王一雪",
-        "chinese": "王一雪",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_10_d_23",
-        "role": "王一雪",
-        "chinese": "苹果三块五一斤。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_10_d_24",
-        "role": "售货员",
-        "chinese": "售货员",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_10_d_25",
-        "role": "售货员",
-        "chinese": "这些七块二，七块",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_10_d_26",
-        "role": "售货员",
-        "chinese": "钱吧。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_10_d_27",
-        "role": "售货员",
-        "chinese": "好的，这儿的苹果",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_10_d_28",
-        "role": "王一雪",
-        "chinese": "王一雪",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_10_d_29",
-        "role": "王一雪",
-        "chinese": "真便宜！",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_10_d_30",
-        "role": "王一雪",
-        "chinese": "在商场里，刘明和在给孩子买衣服。LuruMinhvaVurongNhatTuyétdangmua",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_10_d_31",
-        "role": "王一雪",
-        "chinese": "听两遍对话，选择正确答案。Nghehoithoaihailurotvachondapandung.）10-5",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "售货员 (Người bán hàng)",
+        "chinese": "两斤一共七块钱，谢谢您！",
+        "pinyin": "Liǎng jīn yígòng qī kuài qián, xièxie nín!",
+        "vietnamese": "Hai cân tất cả là 7 tệ, cảm ơn chị nhiều ạ!"
       }
     ],
     "grammarNotes": [
-      "中国的货币叫人民币。人民币的单位由大到小是“元、角、分”，口语中也分别说",
-      "“块、毛、分”。表达顺序是：元/块→角/毛一→分。",
-      "xéptirlondénnhola“元”“角”va“分”，trongvannoilanlurotdurgcgoila“块”“毛”",
-      "va“分”Tratturdiéndatla:元/块→角/毛→分.",
-      "202.2元",
-      "形容词谓语句Cauvingutinhtr",
-      "形容词可以直接作谓语，前面可用程度副词或否定副词。"
+      "1. Đơn vị tiền tệ Trung Quốc: Đơn vị chính thức là 元 (Nguyên), 角 (Giác), 分 (Phân). Trong khẩu ngữ hàng ngày dùng lần lượt là 块 (kuài), 毛 (máo), 分 (fēn). Thứ tự: '...块...毛...分' (Ví dụ: 三块五 [3.5 tệ = 3 tệ 5 hào]; 十块钱 [10 tệ]).",
+      "2. Câu vị ngữ tính từ: Tính từ làm vị ngữ trực tiếp mà không cần dùng động từ '是'. Thường có phó từ chỉ mức độ đi kèm như 很 (rất), 真 (thật là), 非常 (vô cùng) (Ví dụ: 这儿的苹果真便宜！ - Táo ở đây rẻ thật!; 衣服很漂亮 - Quần áo rất đẹp).",
+      "3. Cấu trúc câu hỏi giá cả '多少钱': Cấu trúc: 'Danh từ + 多少钱？' hoặc '多少钱 + Lượng từ？' (Ví dụ: 苹果多少钱一斤？ - Táo bao nhiêu tiền một cân?; 杯子多少钱一个？ - Cốc bao nhiêu tiền một cái?).",
+      "4. Đại từ chỉ định '这 / 这儿' (đây, ở đây) và '那 / 那儿' (kia, ở kia): '这儿' chỉ nơi gần người nói, '那儿' chỉ nơi xa người nói."
     ],
     "readingPassage": {
       "title": "水果店买苹果 (Mua táo ở tiệm hoa quả)",
@@ -3322,7 +2383,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "没",
         "pinyin": "méi",
         "hanViet": "",
-        "meaning": "(negative prefix for verbs) have not; not",
+        "meaning": "không có, chưa (phủ định)",
         "partOfSpeech": "d, v"
       },
       {
@@ -3449,242 +2510,66 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
     "dialogues": [
       {
         "id": "nh1_11_d_1",
-        "role": "A",
-        "chinese": "在路上，李文在找饭店，王一飞给他打电话。Ly Van dang tim nha hang tren durong di,",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "王一飞 (Vương Nhất Phi)",
+        "chinese": "喂，李文，你什么时候能到饭店？",
+        "pinyin": "Wéi, Lǐ Wén, nǐ shénme shíhou néng dào fàndiàn?",
+        "vietnamese": "Alô, Lý Văn, khi nào em mới đến được nhà hàng thế?"
       },
       {
         "id": "nh1_11_d_2",
-        "role": "A",
-        "chinese": "喂，李文，你什么时候能到饭店？",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "李文 (Lý Văn)",
+        "chinese": "老师，我正在路上找呢，这家饭店是不是在超市后边？",
+        "pinyin": "Lǎoshī, wǒ zhèngzài lùshang zhǎo ne, zhè jiā fàndiàn shì bú shì zài chāoshì hòubian?",
+        "vietnamese": "Thầy ơi, em đang trên đường tìm đây ạ, quán ăn này có phải nằm phía sau siêu thị không thầy?"
       },
       {
         "id": "nh1_11_d_3",
-        "role": "王一飞",
-        "chinese": "王一飞",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "王一飞 (Vương Nhất Phi)",
+        "chinese": "是的，就在超市正后边。你开车来还是坐公共汽车？",
+        "pinyin": "Shì de, jiù zài chāoshì zhèng hòubian. Nǐ kāichē lái háishi zuò gōnggòng qìchē?",
+        "vietnamese": "Đúng rồi, ngay phía sau siêu thị. Em tự lái xe đến hay đi xe buýt?"
       },
       {
         "id": "nh1_11_d_4",
-        "role": "王一飞",
-        "chinese": "还不知道，正在找呢。它是不是在超市后边？",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "李文 (Lý Văn)",
+        "chinese": "我没开车，坐公共汽车呢，马上就到！",
+        "pinyin": "Wǒ méi kāichē, zuò gōnggòng qìchē ne, mǎshàng jiù dào!",
+        "vietnamese": "Em không lái xe, em đang ngồi xe buýt đây ạ, đến nơi ngay rồi thầy!"
       },
       {
         "id": "nh1_11_d_5",
-        "role": "李文",
-        "chinese": "李文",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "王一飞 (Vương Nhất Phi)",
+        "chinese": "李文，你现在还在读大学吗？",
+        "pinyin": "Lǐ Wén, nǐ xiànzài hái zài dú dàxué ma?",
+        "vietnamese": "Lý Văn, hiện tại em vẫn đang học đại học đúng không?"
       },
       {
         "id": "nh1_11_d_6",
-        "role": "李文",
-        "chinese": "是的。你开车没开车？",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "李文 (Lý Văn)",
+        "chinese": "对，我读大学二年级呢。",
+        "pinyin": "Duì, wǒ dú dàxué èr niánjí ne.",
+        "vietnamese": "Vâng, em đang học năm thứ hai đại học ạ."
       },
       {
         "id": "nh1_11_d_7",
-        "role": "王一飞",
-        "chinese": "王一飞",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "王一飞 (Vương Nhất Phi)",
+        "chinese": "你们平时学习忙不忙？",
+        "pinyin": "Nǐmen píngshí xuéxí máng bu máng?",
+        "vietnamese": "Việc học thường ngày của các em có bận lắm không?"
       },
       {
         "id": "nh1_11_d_8",
-        "role": "王一飞",
-        "chinese": "我没开车，坐车呢。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_11_d_9",
-        "role": "李文",
-        "chinese": "李文",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_11_d_10",
-        "role": "李文",
-        "chinese": "在饭店里，王一飞和见面后聊天儿。VurongNhatPhivaLyVantrochuyensaukhi",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_11_d_11",
-        "role": "李文",
-        "chinese": "听两遍对话，选择正确答案。Nghehoi thoaihai luotvachondapandung.)11-3",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_11_d_12",
-        "role": "李文",
-        "chinese": "（1）（",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_11_d_13",
-        "role": "李文",
-        "chinese": "）读大学。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_11_d_14",
-        "role": "李文",
-        "chinese": "（2）很忙，有很多（",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_11_d_15",
-        "role": "李文",
-        "chinese": "你还在读大学吗？",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_11_d_16",
-        "role": "王一飞",
-        "chinese": "王一飞",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_11_d_17",
-        "role": "王一飞",
-        "chinese": "对，我读大学呢，还是大学生。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_11_d_18",
-        "role": "李文",
-        "chinese": "李文",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_11_d_19",
-        "role": "李文",
-        "chinese": "你们学习忙不忙？",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_11_d_20",
-        "role": "王一飞",
-        "chinese": "王一飞",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_11_d_21",
-        "role": "王一飞",
-        "chinese": "非常忙，我学医，我们",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_11_d_22",
-        "role": "李文",
-        "chinese": "李文",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_11_d_23",
-        "role": "李文",
-        "chinese": "的课很多。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_11_d_24",
-        "role": "李文",
-        "chinese": "星期六早上，刘明要去医院加班，出门前和女儿对话。Sang thu Bay，Luru Minh phai dén",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_11_d_25",
-        "role": "李文",
-        "chinese": "听两遍对话，选择正确答案。Nghehoithoaihailurotvachondapandung.)11-5",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_11_d_26",
-        "role": "李文",
-        "chinese": "（2）爸爸问姐姐，弟弟（",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_11_d_27",
-        "role": "李文",
-        "chinese": "）超市。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_11_d_28",
-        "role": "李文",
-        "chinese": "弟弟起床没起床呢？",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_11_d_29",
-        "role": "刘明",
-        "chinese": "刘明",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_11_d_30",
-        "role": "刘明",
-        "chinese": "没起床呢，还在睡觉。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_11_d_31",
-        "role": "刘明",
-        "chinese": "（1）弟弟起床没起床？Em trai da thurc day chua?",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_11_d_32",
-        "role": "刘明",
-        "chinese": "（2）弟弟今天要做什么？Hom nay em trai dinh lam gi?",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "李文 (Lý Văn)",
+        "chinese": "课程挺多的，大家都非常努力。",
+        "pinyin": "Kèchéng tǐng duō de, dàjiā dōu fēicháng nǔlì.",
+        "vietnamese": "Lịch học khá dày ạ, mọi người đều rất nỗ lực chăm chỉ."
       }
     ],
     "grammarNotes": [
-      "正反问Cauhoichinhphan",
-      "正反问格式是“×+不/没+×”",
-      "“×”是动词或形容词。动词正反问使用“不/",
-      "没”，形容词正反问使用“不”",
-      "Cau triuc cia cau hoi chinh phan la “x+不/没+x\", \"x\" la dong tir hoac tinh tr. Sir dung",
-      "“不/没”cho cau hoi chinh phan dong tir va“不”cho cau hoi chinh phan tinh tur.",
-      "时间副词“在/正在”位于动词前，表示动作正在进行或情况在继续。本课有两种",
-      "形式：（1）在/正在+动词；（2）在/正在+动词+呢。此外，表达正在做的事情还有第",
-      "三种形式：（3）动词+呢。否定回答时，使用副词“没（有）”",
-      "Pho tur chi thoi gian“在/正在dung truroc dong turdébiéu thi hanh dong dang dien ra",
-      "hoac tinh huong dang tiep dien. Trong bai hoc nay gioi thieu hai hinh thurc: (1)在/正在+ dong tir;",
-      "thur ba:(3)dong tur+呢.Khi traloiphudinh,sur dung pho tir“没（有)\""
+      "1. Cấu trúc diễn đạt hành động đang tiến hành (在 / 正在 ... 呢): Cấu trúc: 'Chủ ngữ + 在 / 正在 + Động từ + (Tân ngữ) + (呢)' biểu thị hành động đang diễn ra tại thời điểm nói (Ví dụ: 我正在找饭店呢 - Em đang tìm nhà hàng đây ạ; 我读大学呢 - Em đang học đại học). Phủ định bắt buộc dùng '没 / 没有 + Động từ', không dùng '在' và '呢' nữa (Ví dụ: 我没开车 - Tôi không lái xe).",
+      "2. Câu hỏi chính phản (正反疑问句): Đặt dạng khẳng định và phủ định của động từ hoặc tính từ cạnh nhau để tạo câu hỏi. Cấu trúc động từ: 'Động từ + 不/没 + Động từ' (Ví dụ: 你们学习忙不忙？ - Các bạn học có bận không?; 你开车没开车？ - Bạn có lái xe đi không?).",
+      "3. Cấu trúc thời gian '……的时候': Biểu thị thời điểm diễn ra sự việc (Ví dụ: 吃饭的时候 - Lúc đang ăn cơm; 下课的时候 - Lúc tan học).",
+      "4. Đại từ nghi vấn '什么时候': Dùng để hỏi thời gian, thời điểm (Ví dụ: 你什么时候能到？ - Khi nào bạn mới đến nơi được?)."
     ],
     "readingPassage": {
       "title": "大学生活 (Cuộc sống đại học)",
@@ -3734,7 +2619,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "天气",
         "pinyin": "tiān qì",
         "hanViet": "",
-        "meaning": "weather",
+        "meaning": "thời tiết",
         "partOfSpeech": "n"
       },
       {
@@ -3782,7 +2667,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "没关系",
         "pinyin": "méi guān xi",
         "hanViet": "",
-        "meaning": "it doesn't matter",
+        "meaning": "không sao, không có gì",
         "partOfSpeech": "v"
       },
       {
@@ -3869,325 +2754,59 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
     "dialogues": [
       {
         "id": "nh1_12_d_1",
-        "role": "A",
-        "chinese": "王一雪给王一飞打电话，询问王一飞那边的情况。VuongNhatTuyetgoidien choVuong",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "王一雪 (Vương Nhất Tuyết)",
+        "chinese": "哥，你那边今天天气怎么样？",
+        "pinyin": "Gē, nǐ nàbian jīntiān tiānqì zěnmeyàng?",
+        "vietnamese": "Anh ơi, bên chỗ anh hôm nay thời tiết thế nào rồi?"
       },
       {
         "id": "nh1_12_d_2",
-        "role": "A",
-        "chinese": "听两遍对话，选择正确答案。Nghehoithoai hai lurotva chondapandung.）12-1",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "王一飞 (Vương Nhất Phi)",
+        "chinese": "昨天下雪了，今天天气也不太好，又下小雨了。",
+        "pinyin": "Zuótiān xiàxuě le, jīntiān tiānqì yě bú tài hǎo, yòu xià xiǎoyǔ le.",
+        "vietnamese": "Hôm qua tuyết rơi rồi, hôm nay trời cũng không đẹp lắm, lại đang có mưa nhỏ."
       },
       {
         "id": "nh1_12_d_3",
-        "role": "A",
-        "chinese": "（1）王一飞那儿的天气（",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "王一雪 (Vương Nhất Tuyết)",
+        "chinese": "外面冷不冷？",
+        "pinyin": "Wàibian lěng bu lěng?",
+        "vietnamese": "Bên ngoài trời có lạnh lắm không anh?"
       },
       {
         "id": "nh1_12_d_4",
-        "role": "王一飞",
-        "chinese": "（2）觉得（",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "王一飞 (Vương Nhất Phi)",
+        "chinese": "有点儿冷，我觉得比昨天冷多了，你出门要多穿点儿衣服！",
+        "pinyin": "Yǒudiǎnr lěng, wǒ juéde bǐ zuótiān lěng duō le, nǐ chūmén yào duō chuān diǎnr yīfu!",
+        "vietnamese": "Hơi lạnh đấy, anh thấy lạnh hơn hôm qua nhiều, em ra ngoài nhớ mặc ấm nhé!"
       },
       {
         "id": "nh1_12_d_5",
-        "role": "王一飞",
-        "chinese": "今天天气怎么样？",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "杨同乐 (Dương Đồng Lạc)",
+        "chinese": "一雪，昨天下雪你拍照了吗？",
+        "pinyin": "Yīxuě, zuótiān xiàxuě nǐ pāizhào le ma?",
+        "vietnamese": "Nhất Tuyết, hôm qua tuyết rơi cậu có chụp ảnh không?"
       },
       {
         "id": "nh1_12_d_6",
-        "role": "王一雪",
-        "chinese": "王一雪",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "王一雪 (Vương Nhất Tuyết)",
+        "chinese": "拍了很多照片！北京的雪景太漂亮了！",
+        "pinyin": "Pāi le hěn duō zhàopiàn! Běijīng de xuějǐng tài piàoliang le!",
+        "vietnamese": "Tớ chụp nhiều ảnh lắm! Cảnh tuyết ở Bắc Kinh đẹp mê hồn luôn!"
       },
       {
         "id": "nh1_12_d_7",
-        "role": "王一雪",
-        "chinese": "这里的天不太好，",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_12_d_8",
-        "role": "王一飞",
-        "chinese": "王一飞",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_12_d_9",
-        "role": "王一飞",
-        "chinese": "下雨了。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_12_d_10",
-        "role": "王一飞",
-        "chinese": "雨大吗？",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_12_d_11",
-        "role": "王一雪",
-        "chinese": "王一雪",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_12_d_12",
-        "role": "王一雪",
-        "chinese": "有点儿大，我觉得",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_12_d_13",
-        "role": "王一飞",
-        "chinese": "王一飞",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_12_d_14",
-        "role": "王一飞",
-        "chinese": "很冷。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_12_d_15",
-        "role": "王一飞",
-        "chinese": "在公司电梯里，王一雪和杨同乐在聊天儿。Vuong Nhat Tuyet va Duong Dong Lac dang",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_12_d_16",
-        "role": "王一飞",
-        "chinese": "听两遍对话，选择正确答案。Nghehoi thoai hai lurot vachondap andung.）12-3",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_12_d_17",
-        "role": "王一飞",
-        "chinese": "昨天下雪了。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_12_d_18",
-        "role": "王一雪",
-        "chinese": "王一雪",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_12_d_19",
-        "role": "王一雪",
-        "chinese": "是的，太冷了。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_12_d_20",
-        "role": "王一雪",
-        "chinese": "你昨天没来公司，",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_12_d_21",
-        "role": "王一雪",
-        "chinese": "王一雪",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_12_d_22",
-        "role": "王一雪",
-        "chinese": "生病了?",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_12_d_23",
-        "role": "王一雪",
-        "chinese": "对，我昨天去医院",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_12_d_24",
-        "role": "王一雪",
-        "chinese": "看病了。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_12_d_25",
-        "role": "王一雪",
-        "chinese": "（1）昨天天气怎么样？Thoitiéthomquathénao？",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_12_d_26",
-        "role": "王一雪",
-        "chinese": "（2）杨同乐昨天做什么了？DuongDongLacngayhomquada lamgi?",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_12_d_27",
-        "role": "王一雪",
-        "chinese": "昨天在医院，医生给杨同乐看病。Homqua，bacsikhambenhchoDuongDongLactai",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_12_d_28",
-        "role": "王一雪",
-        "chinese": "听两遍对话，选择正确答案。Nghehoithoaihailurotvachondapandung.）12-5",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_12_d_29",
-        "role": "王一雪",
-        "chinese": "（2）医生对杨同乐说：",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_12_d_30",
-        "role": "医生",
-        "chinese": "，我病了。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_12_d_31",
-        "role": "小语",
-        "chinese": "助力",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_12_d_32",
-        "role": "小语",
-        "chinese": "“看看”是“看”的重叠式，表示动作",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_12_d_33",
-        "role": "小语",
-        "chinese": "时间短。“看看”la hinh thuc lap cua",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_12_d_34",
-        "role": "小语",
-        "chinese": "我看看。你觉得怎么样？",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_12_d_35",
-        "role": "医生",
-        "chinese": "胡",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_12_d_36",
-        "role": "医生",
-        "chinese": "我很冷。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_12_d_37",
-        "role": "医生",
-        "chinese": "好的，吃一点儿药，",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_12_d_38",
-        "role": "医生",
-        "chinese": "胡",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_12_d_39",
-        "role": "医生",
-        "chinese": "今天休息半天吧。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_12_d_40",
-        "role": "小语",
-        "chinese": "助力",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_12_d_41",
-        "role": "小语",
-        "chinese": "中国人喜欢喝热水，认为喝热水更健",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_12_d_42",
-        "role": "小语",
-        "chinese": "好的。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_12_d_43",
-        "role": "医生",
-        "chinese": "（1）杨同乐生病了吗？DurongDongLacomroiphaikhong?",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_12_d_44",
-        "role": "医生",
-        "chinese": "（2）看病后，杨同乐回家要做什么？Saukhikhambenhxong，DuongDong",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "杨同乐 (Dương Đồng Lạc)",
+        "chinese": "是啊，这是今年第一场雪，大家都很高兴。",
+        "pinyin": "Shì a, zhè shì jīnnián dì-yī chǎng xuě, dàjiā dōu hěn gāoxìng.",
+        "vietnamese": "Đúng vậy đấy, đây là trận tuyết đầu mùa năm nay, ai nấy đều phấn khởi."
       }
     ],
     "grammarNotes": [
-      "非主谓句Cauphichivi",
-      "非主谓句是由词或短语构成、不分主语和谓语的句子，口语中常用。",
-      "Cau phi chi vi la cau duoc cau tao boi tur hoac cum tur, khong phan biet ro chu ngiur va",
-      "语气助词“了（1）”Trgtrngukhi“了(1)”",
-      "语气助词“了（1）”位于句子末尾或句中停顿的地方，表示有变化或出现新情",
-      "况。否定回答时，用副词“没”，句子末尾不用“了”",
-      "Trg tur ngiur khi “了 (1)\" dat o cuoi cau hoac cho ngat quang trong cau de bieu thi su thay doi",
-      "hoac xuat hien tinh huong moi. Khi tra loi phu dinh, su dung pho tir “没\" va lugc bo “了\"",
-      "“太....了”格式Cautruc“太....了",
-      "“太…了”用于感叹程度很高或很深。",
-      "Cau tric “太....了!\" dung de dién dat cam than ve mtrc do rat cao hoac rat sau sac."
+      "1. Trợ từ ngữ khí '了' (1) biểu thị sự thay đổi hoặc tình huống mới xuất hiện: Đặt ở cuối câu biểu thị một trạng thái mới bắt đầu hoặc có sự biến chuyển (Ví dụ: 昨天下雪了 - Hôm qua có tuyết rơi rồi; 天气冷了 - Trời trở lạnh rồi). Phủ định dùng '没' và không dùng '了' ở cuối câu.",
+      "2. Cấu trúc cảm thán '太……了！': Dùng để bộc lộ cảm thán về mức độ rất cao (Ví dụ: 太冷了！ - Lạnh quá!; 太好了！ - Tốt quá rồi!).",
+      "3. Cụm từ '有点儿' (Hơi, một chút): Đặt trước tính từ hoặc động từ mang sắc thái tiêu cực hoặc không vừa ý (Ví dụ: 今天有点儿冷 - Hôm nay hơi lạnh; 雨有点儿大 - Mưa hơi to).",
+      "4. Động từ '觉得': Dùng để đưa ra nhận định, cảm nhận chủ quan (Ví dụ: 我觉得这本书很有意思 - Tôi thấy quyển sách này rất hay)."
     ],
     "readingPassage": {
       "title": "北京冬天的第一场雪 (Cơn tuyết đầu mùa ở Bắc Kinh)",
@@ -4293,7 +2912,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "牛奶",
         "pinyin": "niú nǎi",
         "hanViet": "",
-        "meaning": "cow's milk",
+        "meaning": "sữa bò, sữa tươi",
         "partOfSpeech": "n"
       },
       {
@@ -4381,7 +3000,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "先生",
         "pinyin": "xiān sheng",
         "hanViet": "",
-        "meaning": "teacher; gentleman; sir; mister (Mr.)",
+        "meaning": "tiên sinh, ông, ngài",
         "partOfSpeech": "n"
       },
       {
@@ -4404,315 +3023,66 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
     "dialogues": [
       {
         "id": "nh1_13_d_1",
-        "role": "A",
-        "chinese": "在教室里，下课后，白家月问王老师问题。BachGiaNguyethoibaicoVurongのtronglop",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "白家月 (Bạch Gia Nguyệt)",
+        "chinese": "王老师，我可以问您一个问题吗？",
+        "pinyin": "Wáng lǎoshī, wǒ kěyǐ wèn nín yí gè wèntí ma?",
+        "vietnamese": "Thưa thầy Vương, em có thể hỏi thầy một câu hỏi được không ạ?"
       },
       {
         "id": "nh1_13_d_2",
-        "role": "A",
-        "chinese": "听两遍对话，选择正确答案。Nghehoithoaihailurotvachondapandung.）13-1",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "王一飞 (Vương Nhất Phi)",
+        "chinese": "当然可以，你有什么问题？",
+        "pinyin": "Dāngrán kěyǐ, nǐ yǒu shénme wèntí?",
+        "vietnamese": "Đương nhiên là được chứ, em có thắc mắc gì nào?"
       },
       {
         "id": "nh1_13_d_3",
-        "role": "A",
-        "chinese": "（1）白家月想再问王老师（",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "白家月 (Bạch Gia Nguyệt)",
+        "chinese": "学校附近那家小店卖不卖手机？",
+        "pinyin": "Xuéxiào fùjìn nà jiā xiǎodiàn mài bu mài shǒujī?",
+        "vietnamese": "Cửa hàng tạp hóa nhỏ gần trường có bán điện thoại di động không thầy?"
       },
       {
         "id": "nh1_13_d_4",
-        "role": "老师",
-        "chinese": "（2）王（",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "王一飞 (Vương Nhất Phi)",
+        "chinese": "这个我还真不太清楚，你可以打电话问一下他们。",
+        "pinyin": "Zhège wǒ hái zhēn bú tài qīngchu, nǐ kěyǐ dǎ diànhuà wèn yíxià tāmen.",
+        "vietnamese": "Điều này thầy cũng không rõ lắm, em có thể gọi điện thoại hỏi họ xem sao."
       },
       {
         "id": "nh1_13_d_5",
-        "role": "老师",
-        "chinese": "）那里卖不卖手机。",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "服务员 (Nhân viên phục vụ)",
+        "chinese": "您好，欢迎光临！请问几位想喝点儿什么？",
+        "pinyin": "Nín hǎo, huānyíng guānglín! Qǐngwèn jǐ wèi xiǎng hē diǎnr shénme?",
+        "vietnamese": "Xin chào quý khách, chào mừng quý khách! Xin hỏi mọi người muốn dùng đồ uống gì ạ?"
       },
       {
         "id": "nh1_13_d_6",
-        "role": "老师",
-        "chinese": "王，我可以再问",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "王一飞 (Vương Nhất Phi)",
+        "chinese": "请给我们来两杯热茶，一杯热牛奶。",
+        "pinyin": "Qǐng gěi wǒmen lái liǎng bēi rèchá, yì bēi rè niúnǎi.",
+        "vietnamese": "Làm ơn cho chúng tôi hai tách trà nóng và một cốc sữa nóng."
       },
       {
         "id": "nh1_13_d_7",
-        "role": "白家月",
-        "chinese": "白家月",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "服务员 (Nhân viên phục vụ)",
+        "chinese": "好的，请稍等一下，马上就送来！",
+        "pinyin": "Hǎo de, qǐng shāo děng yíxià, mǎshàng jiù sòng lái!",
+        "vietnamese": "Vâng ạ, xin vui lòng đợi một chút, đồ uống sẽ mang lên ngay!"
       },
       {
         "id": "nh1_13_d_8",
-        "role": "白家月",
-        "chinese": "您一个问题吗？",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_13_d_9",
-        "role": "白家月",
-        "chinese": "可以。你有什么问题？",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_13_d_10",
-        "role": "王一飞",
-        "chinese": "王一飞",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_13_d_11",
-        "role": "王一飞",
-        "chinese": "那个小店卖不卖手机？",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_13_d_12",
-        "role": "白家月",
-        "chinese": "白家月",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_13_d_13",
-        "role": "白家月",
-        "chinese": "我不知道。你可以打",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_13_d_14",
-        "role": "王一飞",
-        "chinese": "王一飞",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_13_d_15",
-        "role": "王一飞",
-        "chinese": "电话问一下。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_13_d_16",
-        "role": "王一飞",
-        "chinese": "（1）白家月还有什么问题？BachGia Nguyet con co cau hoi gi vay？",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_13_d_17",
-        "role": "王一飞",
-        "chinese": "（2）王老师对白家月说什么了？CoVurongdanoigivoiBachGiaNguyet?",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_13_d_18",
-        "role": "王一飞",
-        "chinese": "在咖啡馆里，王一雪想吃早餐。VuongNhatTuyeétmuonansangtrongquancaphe.",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_13_d_19",
-        "role": "王一飞",
-        "chinese": "听两遍对话，选择正确答案。Nghehoithoaihailurotvachondapandung.）13-3",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_13_d_20",
-        "role": "王一雪",
-        "chinese": "（1）要喝（",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_13_d_21",
-        "role": "王一雪",
-        "chinese": "（2）还想吃（",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_13_d_22",
-        "role": "王一雪",
-        "chinese": "女士，请坐！您喝什么？",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_13_d_23",
-        "role": "服务员",
-        "chinese": "服务员",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_13_d_24",
-        "role": "服务员",
-        "chinese": "我看一下。请给我一杯",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_13_d_25",
-        "role": "王一雪",
-        "chinese": "王一雪",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_13_d_26",
-        "role": "王一雪",
-        "chinese": "牛奶。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_13_d_27",
-        "role": "王一雪",
-        "chinese": "好的。您还要什么？",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_13_d_28",
-        "role": "服务员",
-        "chinese": "服务员",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_13_d_29",
-        "role": "服务员",
-        "chinese": "我还没吃早饭，再要这个面包和鸡蛋吧。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_13_d_30",
-        "role": "王一雪",
-        "chinese": "王一雪",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_13_d_31",
-        "role": "王一雪",
-        "chinese": "（1）服务员问什么问题了？Nhan vien phuc vuhoiVuongNhatTuyét",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_13_d_32",
-        "role": "王一雪",
-        "chinese": "（2）吃早饭了吗？VurongNhatTuyétdaan sangchura？",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_13_d_33",
-        "role": "服务员",
-        "chinese": "在餐馆里，刘明在点餐。Luru Minhdang goi mon annha hang.",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_13_d_34",
-        "role": "服务员",
-        "chinese": "听两遍对话，选择正确答案。Nghe hoi thoai hai lurot va chon dap an dung.》13-5",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_13_d_35",
-        "role": "刘明",
-        "chinese": "(1)想吃（",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_13_d_36",
-        "role": "刘明",
-        "chinese": "（2）想喝（",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_13_d_37",
-        "role": "先生",
-        "chinese": "，请坐！您要",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_13_d_38",
-        "role": "服务员",
-        "chinese": "服务员",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_13_d_39",
-        "role": "服务员",
-        "chinese": "什么？",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_13_d_40",
-        "role": "服务员",
-        "chinese": "我要一斤饺子。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_13_d_41",
-        "role": "刘明",
-        "chinese": "刘明",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_13_d_42",
-        "role": "刘明",
-        "chinese": "（1）想要多少饺子？Luru Minhmuon goi baonhieu sui cao?",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_13_d_43",
-        "role": "刘明",
-        "chinese": "（2）要米饭了吗？Luu Minh cogoi com trangkhong?",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "王一飞 (Vương Nhất Phi)",
+        "chinese": "谢谢！",
+        "pinyin": "Xièxie!",
+        "vietnamese": "Cảm ơn cô nhé!"
       }
     ],
     "grammarNotes": [
-      "能愿动词“可以”位于动词前，表示可能、能够或许可。",
-      "Dong tur nang nguyen \"可以\" duroc dat truroc dong tir de bieu thi kha nang, nang lurc hoac",
-      "“动词+一下”结构Cautruc“dongtr+一下”",
-      "本课“动词+一下”结构表示做一次或试着做，动作时间短。",
-      "Cau truc \"dong tur + -下\" trong bai nay dung de bieu thi viec thuc hien hanh dong",
-      "双宾语句（1）Cau co hai tan ngir(1)",
-      "双宾语句是一个动词带两个宾语的句子。本册学习“给、问”构成的双宾语句。",
-      "chung ta hoc cau co hai tan ngir duroc tao boi dong tr “给\" va “\"问\"."
+      "1. Động từ năng nguyện '可以': Đặt trước động từ biểu thị sự cho phép, đồng ý hoặc khả năng (Ví dụ: 我可以问您一个问题吗？ - Em có thể hỏi thầy một câu hỏi được không ạ?). Phủ định dùng '不可以' hoặc '不能'.",
+      "2. Cấu trúc 'Động từ + 一下': Biểu thị hành động diễn ra trong thời gian ngắn, mang tính thử nghiệm hoặc khiến ngữ khí cầu khiến trở nên nhẹ nhàng, lịch sự (Ví dụ: 请看一下 - Xin hãy xem qua một chút; 我问一下 - Tôi hỏi thăm một chút nhé).",
+      "3. Câu mang hai tân ngữ (双宾语句): Một số động từ như '给' (cho), '问' (hỏi), '教' (dạy) có thể mang hai tân ngữ: Tân ngữ gián tiếp chỉ người đứng trước, Tân ngữ trực tiếp chỉ vật đứng sau. Cấu trúc: 'Chủ ngữ + 给/问/教 + Tân ngữ người + Tân ngữ vật' (Ví dụ: 请给我 [Người] 一杯茶 [Vật] - Cho tôi xin một tách trà).",
+      "4. Lượng từ '杯' (cốc, chén): Dùng cho đồ uống dạng lỏng (Ví dụ: 一杯水 - Một cốc nước; 一杯茶 - Một tách trà)."
     ],
     "readingPassage": {
       "title": "在茶馆品茶 (Thưởng trà tại quán trà)",
@@ -4874,7 +3244,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "听见",
         "pinyin": "tīng jiàn",
         "hanViet": "",
-        "meaning": "nghe",
+        "meaning": "nghe thấy",
         "partOfSpeech": "v"
       },
       {
@@ -4898,7 +3268,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "汉语",
         "pinyin": "Hàn yǔ",
         "hanViet": "",
-        "meaning": "Chinese language",
+        "meaning": "tiếng Trung, tiếng Hán",
         "partOfSpeech": "nz"
       },
       {
@@ -4993,222 +3363,66 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
     "dialogues": [
       {
         "id": "nh1_14_d_1",
-        "role": "A",
-        "chinese": "在课堂上，王一飞询问学生们的学习情况。CoVurongNhat Phi hoi tham tinh hinh hoc tap",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "王一飞 (Vương Nhất Phi)",
+        "chinese": "同学们，昨天的中文电影你们看了吗？",
+        "pinyin": "Tóngxuémen, zuótiān de Zhōngwén diànyǐng nǐmen kàn le ma?",
+        "vietnamese": "Các em ơi, bộ phim điện ảnh tiếng Trung hôm qua các em đã xem chưa?"
       },
       {
         "id": "nh1_14_d_2",
-        "role": "A",
-        "chinese": "听两遍对话，选择正确答案。Nghehoithoaihailurotvachondapandung.）14-3",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "白家月 (Bạch Gia Nguyệt)",
+        "chinese": "老师，我看了！我和陈天中一起看的。",
+        "pinyin": "Lǎoshī, wǒ kàn le! Wǒ hé Chén Tiānzhōng yìqǐ kàn de.",
+        "vietnamese": "Thưa thầy, em xem rồi ạ! Em đi xem cùng với bạn Trần Thiên Trung."
       },
       {
         "id": "nh1_14_d_3",
-        "role": "A",
-        "chinese": "）汉语了。",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "王一飞 (Vương Nhất Phi)",
+        "chinese": "你们听懂里面的对话了吗？",
+        "pinyin": "Nǐmen tīng dǒng lǐmiàn de duìhuà le ma?",
+        "vietnamese": "Các em có nghe hiểu các lời thoại trong phim không?"
       },
       {
         "id": "nh1_14_d_4",
-        "role": "陈天中",
-        "chinese": "（2）（",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "白家月 (Bạch Gia Nguyệt)",
+        "chinese": "有的句子听懂了，有些生词还没学过呢。",
+        "pinyin": "Yǒude jùzi tīng dǒng le, yǒuxiē shēngcí hái méi xué guò ne.",
+        "vietnamese": "Có những câu tụi em hiểu được, nhưng cũng có một số từ mới tụi em chưa học qua ạ."
       },
       {
         "id": "nh1_14_d_5",
-        "role": "老师",
-        "chinese": "）王在说什么。",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "刘明 (Lưu Minh)",
+        "chinese": "一雪，今天工作忙不忙？中午吃午饭了吗？",
+        "pinyin": "Yīxuě, jīntiān gōngzuò máng bu máng? Zhōngwǔ chī wǔfàn le ma?",
+        "vietnamese": "Nhất Tuyết, hôm nay công việc có bận không? Trưa nay em ăn cơm trưa chưa?"
       },
       {
         "id": "nh1_14_d_6",
-        "role": "陈天中",
-        "chinese": "（1）白家月会写汉字了吗？Bach Gia Nguyet da biét viét chur Han chura?",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "王一雪 (Vương Nhất Tuyết)",
+        "chinese": "今天开了三个会，中午在公司食堂吃的。",
+        "pinyin": "Jīntiān kāi le sān gè huì, zhōngwǔ zài gōngsī shítáng chī de.",
+        "vietnamese": "Hôm nay em dự tận ba cuộc họp, buổi trưa ăn vội ở căng tin công ty."
       },
       {
         "id": "nh1_14_d_7",
-        "role": "陈天中",
-        "chinese": "（2）会写汉字了吗？ Tran Thien Trung da biét viét chu Han chura?",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "刘明 (Lưu Minh)",
+        "chinese": "那你晚上早点儿休息，睡个好觉吧！",
+        "pinyin": "Nà nǐ wǎnshang zǎodiǎnr xiūxi, shuì gè hǎo jiào ba!",
+        "vietnamese": "Thế thì tối nay em nghỉ ngơi sớm đi, ngủ một giấc thật ngon nhé!"
       },
       {
         "id": "nh1_14_d_8",
-        "role": "陈天中",
-        "chinese": "在家里，刘明和王一雪在谈论孩子的升学情况。Luru Minh va Vuong Nhat Tuyét dang",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_14_d_9",
-        "role": "陈天中",
-        "chinese": "听两遍对话，选择正确答案。Nghehoithoaihailurotvachondapandung.）14-5",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_14_d_10",
-        "role": "陈天中",
-        "chinese": "（1）明年刘明和王一雪的女儿（",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_14_d_11",
-        "role": "陈天中",
-        "chinese": "）孩子们都忙了。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_14_d_12",
-        "role": "陈天中",
-        "chinese": "明年女儿上中学。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_14_d_13",
-        "role": "刘明",
-        "chinese": "刘明",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_14_d_14",
-        "role": "刘明",
-        "chinese": "对。儿子也上小学了。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_14_d_15",
-        "role": "王一雪",
-        "chinese": "王一雪",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_14_d_16",
-        "role": "王一雪",
-        "chinese": "我们家有了一个中学生。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_14_d_17",
-        "role": "刘明",
-        "chinese": "刘明",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_14_d_18",
-        "role": "刘明",
-        "chinese": "还有了一个小学生。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_14_d_19",
-        "role": "刘明",
-        "chinese": "还有两个近似的代词，一个是",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_14_d_20",
-        "role": "王一雪",
-        "chinese": "王一雪",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_14_d_21",
-        "role": "小语",
-        "chinese": "助力",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_14_d_22",
-        "role": "小语",
-        "chinese": "“她们”，指称自己和对方以",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_14_d_23",
-        "role": "小语",
-        "chinese": "们”，指称不止一个的事物",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_14_d_24",
-        "role": "小语",
-        "chinese": "上学后，他们都忙了。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_14_d_25",
-        "role": "小语",
-        "chinese": "等。三个词读音一样，但所指",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_14_d_26",
-        "role": "小语",
-        "chinese": "意义不同。Con co hai dai tur",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_14_d_27",
-        "role": "刘明",
-        "chinese": "刘明",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_14_d_28",
-        "role": "刘明",
-        "chinese": "是的。太晚了，睡觉吧。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_14_d_29",
-        "role": "王一雪",
-        "chinese": "王一雪",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "王一雪 (Vương Nhất Tuyết)",
+        "chinese": "好的，你也早点儿休息！",
+        "pinyin": "Hǎo de, nǐ yě zǎodiǎnr xiūxi!",
+        "vietnamese": "Vâng ạ, anh cũng nghỉ ngơi sớm nhé!"
       }
     ],
     "grammarNotes": [
-      "动态助词“了（2）”Trgtrdongthai“了(2)”",
-      "动态助词“了（2）”在动词后，表示动作行为已经发生或完成。否定时用",
-      "“没”，不加“了”。",
-      "Tro tir dong thai \"了 (2)\" dtrng sau dong tir de biéu thi hanh dong da xay ra hoac da",
-      "hoan thanh. Khi phu dinh dung “没\", bo \"了\"",
-      "离合词（1）Tu li hop(1)",
-      "本册中的“上课、下课、上班、下班、说话、读书、睡觉、看病、生病”等是一类",
-      "特殊的动词结构，可分可合，合在一起时是词，中间加其他成分则变成短语，所以被称",
-      "为离合词。离合词分离时，可插入的成分有限。",
-      "Cactrnhur“上课”“下课”，“上班”“下班”，“说话”，“读书”“睡觉”，“看病”，“生病”..",
-      "范围副词“都”Photirchiphamvi“都”",
-      "范围副词“都”表示全部、总括，总括的对象在“都”前。否定时，否定词在“都”后。",
-      "Pho tir chi pham vi “都\" dung de bieu thi toan bo, tat ca. Di turong durgc bao quat dung"
+      "1. Trợ từ động thái '了' (2) biểu thị sự hoàn thành của hành động: Đặt ngay sau động từ để biểu thị hành động đã diễn ra và hoàn thành (Ví dụ: 我看了一个电影 - Tôi đã xem một bộ phim; 我买了一件衣服 - Tôi đã mua một chiếc áo). Chú ý: Phủ định bắt buộc dùng '没 / 没有 + Động từ' và bỏ '了' (Ví dụ: 我没看电影 - Tôi đã không xem phim).",
+      "2. Từ ly hợp (离合词): Các cụm động-tân kết hợp chặt chẽ như '上课', '下课', '上班', '下班', '睡觉', '唱歌', '跳舞'. Khi có trạng ngữ thời lượng hoặc bổ ngữ, phải chèn vào giữa hai chữ hoặc lặp lại động từ (Ví dụ: 睡了一个好觉 - Ngủ một giấc ngon lành).",
+      "3. Phó từ phạm vi '都': Biểu thị toàn bộ, tất cả. Đối tượng được bao quát phải đứng TRƯỚC '都' (Ví dụ: 我们都是学生 - Chúng tôi đều là học sinh).",
+      "4. Đại từ phiếm chỉ '有的 / 有些': Biểu thị một bộ phận trong tập thể (Ví dụ: 有些人喜欢喝茶，有些人喜欢喝咖啡 - Có người thích uống trà, có người lại thích cà phê)."
     ],
     "readingPassage": {
       "title": "精彩的电影之夜 (Đêm xem phim đặc sắc)",
@@ -5274,7 +3488,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "去年",
         "pinyin": "qù nián",
         "hanViet": "",
-        "meaning": "last year",
+        "meaning": "năm ngoái",
         "partOfSpeech": "t"
       },
       {
@@ -5314,7 +3528,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "出租车",
         "pinyin": "chū zū chē",
         "hanViet": "",
-        "meaning": "taxi; (Tw) rental car",
+        "meaning": "xe taxi",
         "partOfSpeech": "n"
       },
       {
@@ -5330,7 +3544,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "家人",
         "pinyin": "jiā rén",
         "hanViet": "",
-        "meaning": "family member; (old) servant",
+        "meaning": "người nhà, gia đình",
         "partOfSpeech": "n, nr"
       },
       {
@@ -5338,7 +3552,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "学生",
         "pinyin": "xué sheng",
         "hanViet": "",
-        "meaning": "student; schoolchild",
+        "meaning": "học sinh, sinh viên",
         "partOfSpeech": "n"
       },
       {
@@ -5362,7 +3576,7 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
         "hanzi": "机场",
         "pinyin": "jī chǎng",
         "hanViet": "",
-        "meaning": "airport; airfield; (slang) service provider for Shadowsocks or similar software for circumventing Internet censorship",
+        "meaning": "sân bay, phi trường",
         "partOfSpeech": "n"
       },
       {
@@ -5385,304 +3599,66 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
     "dialogues": [
       {
         "id": "nh1_15_d_1",
-        "role": "A",
-        "chinese": "在李文家，大家边吃饭边谈论假期计划。Moinguroiviraanvirathaoluanvekéhoach",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "李文 (Lý Văn)",
+        "chinese": "假期就要到了，你们都想去哪儿玩儿？",
+        "pinyin": "Jiàqī jiù yào dào le, nǐmen dōu xiǎng qù nǎr wánr?",
+        "vietnamese": "Kỳ nghỉ sắp đến rồi, mọi người đều muốn đi đâu chơi thế?"
       },
       {
         "id": "nh1_15_d_2",
-        "role": "A",
-        "chinese": "听两遍对话，选择正确答案。Nghe hoi thoai hai lurotva chondapandiung.）15-3",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "安妮 (Annie)",
+        "chinese": "去年我和朋友去了西安，非常好玩儿！今年我想去北京。",
+        "pinyin": "Qùnián wǒ hé péngyou qù le Xī'ān, fēicháng hǎowánr! Jīnnián wǒ xiǎng qù Běijīng.",
+        "vietnamese": "Năm ngoái mình cùng bạn đã đi Tây An, chơi thích lắm luôn! Năm nay mình muốn đến Bắc Kinh."
       },
       {
         "id": "nh1_15_d_3",
-        "role": "A",
-        "chinese": "（1）安妮和她男朋友去年去了（",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "白家月 (Bạch Gia Nguyệt)",
+        "chinese": "我和李文都是北京人，北京的名胜古迹特别多！",
+        "pinyin": "Wǒ hé Lǐ Wén dōu shì Běijīng rén, Běijīng de míngshèng gǔjì tèbié duō!",
+        "vietnamese": "Mình với Lý Văn đều là người Bắc Kinh đây, danh lam thắng cảnh ở Bắc Kinh nhiều vô kể!"
       },
       {
         "id": "nh1_15_d_4",
-        "role": "A",
-        "chinese": "（2）王老师和李文都是（",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "安妮 (Annie)",
+        "chinese": "太棒了，那今年我们一起去北京玩儿吧！",
+        "pinyin": "Tài bàng le, nà jīnnián wǒmen yìqǐ qù Běijīng wánr ba!",
+        "vietnamese": "Tuyệt quá, thế thì năm nay tụi mình cùng nhau đi Bắc Kinh chơi nhé!"
       },
       {
         "id": "nh1_15_d_5",
-        "role": "A",
-        "chinese": "大兴机场见！IBal15",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "陈天中 (Trần Thiên Trung)",
+        "chinese": "安妮，明天你几点的飞机回国探亲？",
+        "pinyin": "Ānnī, míngtiān nǐ jǐ diǎn de fēijī huíguó tànqīn?",
+        "vietnamese": "Annie, ngày mai chuyến bay về nước thăm gia đình của bạn cất cánh lúc mấy giờ?"
       },
       {
         "id": "nh1_15_d_6",
-        "role": "A",
-        "chinese": "你们都想去哪儿？",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "安妮 (Annie)",
+        "chinese": "明天上午十点半的飞机。",
+        "pinyin": "Míngtiān shàngwǔ shí diǎn bàn de fēijī.",
+        "vietnamese": "Chuyến bay 10 rưỡi sáng mai bạn ạ."
       },
       {
         "id": "nh1_15_d_7",
-        "role": "李文",
-        "chinese": "李文",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "陈天中 (Trần Thiên Trung)",
+        "chinese": "我们大家都去机场送你，明天早上九点，大兴机场见！",
+        "pinyin": "Wǒmen dàjiā dōu qù jīchǎng sòng nǐ, míngtiān zǎoshang jiǔ diǎn, Dàxīng Jīchǎng jiàn!",
+        "vietnamese": "Bọn mình đều sẽ ra sân bay tiễn bạn, 9 giờ sáng mai hẹn gặp ở sân bay Đại Hưng nhé!"
       },
       {
         "id": "nh1_15_d_8",
-        "role": "李文",
-        "chinese": "去年我和男朋友去了西安，",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_15_d_9",
-        "role": "安妮",
-        "chinese": "安妮",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_15_d_10",
-        "role": "安妮",
-        "chinese": "今年我想去北京。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_15_d_11",
-        "role": "安妮",
-        "chinese": "前几年我去了西安，非常",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_15_d_12",
-        "role": "白家月",
-        "chinese": "白家月",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_15_d_13",
-        "role": "白家月",
-        "chinese": "好玩儿。今年我也想去北京。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_15_d_14",
-        "role": "白家月",
-        "chinese": "我和王老师都是北京人，北京",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_15_d_15",
-        "role": "李文",
-        "chinese": "李文",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_15_d_16",
-        "role": "李文",
-        "chinese": "非常漂亮。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_15_d_17",
-        "role": "李文",
-        "chinese": "（1）安妮今年想去哪儿？Annie nam nay muon di dau?",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_15_d_18",
-        "role": "李文",
-        "chinese": "（2）前几年白家月去了哪儿？May nam truroc,Bach Gia Nguyet da di dau?",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_15_d_19",
-        "role": "李文",
-        "chinese": "在教室外，白家月、安妮和王老师在谈论去北京旅游的事。BachGiaNguyet，Annieva",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_15_d_20",
-        "role": "李文",
-        "chinese": "听两遍对话，选择正确答案。Nghehoithoaihailurotvachondapandung.）15-5",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_15_d_21",
-        "role": "李文",
-        "chinese": "（1）白家月和安妮坐（",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_15_d_22",
-        "role": "李文",
-        "chinese": "）去北京。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_15_d_23",
-        "role": "老师",
-        "chinese": "（2）王的（",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_15_d_24",
-        "role": "老师",
-        "chinese": "）都在北京。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_15_d_25",
-        "role": "老师",
-        "chinese": "大兴机场见！IBai15",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_15_d_26",
-        "role": "白家月",
-        "chinese": "（1）大兴机场在哪儿？San bay Dai Hungdau?",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_15_d_27",
-        "role": "白家月",
-        "chinese": "（2）王老师的姐姐可以去接和安妮吗？Chi gai ciua co Vurong co thé",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_15_d_28",
-        "role": "白家月",
-        "chinese": "选词填空。Chon tir thich hop dien vao cho trong.",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_15_d_29",
-        "role": "白家月",
-        "chinese": "（1）这本书有15课，我们",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_15_d_30",
-        "role": "白家月",
-        "chinese": "学了。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_15_d_31",
-        "role": "白家月",
-        "chinese": "喝茶。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_15_d_32",
-        "role": "白家月",
-        "chinese": "（3）陈天中：我们明天晚上六点到，你觉得",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_15_d_33",
-        "role": "李文",
-        "chinese": "：不早。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_15_d_34",
-        "role": "李文",
-        "chinese": "（4）王一飞：她们想坐",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_15_d_35",
-        "role": "李文",
-        "chinese": "去北京，你们呢？",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_15_d_36",
-        "role": "陈天中",
-        "chinese": "：我们没有",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_15_d_37",
-        "role": "陈天中",
-        "chinese": "，不能出去玩。",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_15_d_38",
-        "role": "陈天中",
-        "chinese": "用本课新学的词语和语言点描述图片。Sirdungtirnguvadiemngonngiudahoctrongbai",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_15_d_39",
-        "role": "陈天中",
-        "chinese": "我爱吃面包，",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_15_d_40",
-        "role": "老师",
-        "chinese": "王是",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_15_d_41",
-        "role": "王一飞",
-        "chinese": "的姐姐",
-        "pinyin": "",
-        "vietnamese": ""
-      },
-      {
-        "id": "nh1_15_d_42",
-        "role": "王一飞",
-        "chinese": "人，她",
-        "pinyin": "",
-        "vietnamese": ""
+        "role": "安妮 (Annie)",
+        "chinese": "谢谢大家，明天大兴机场见！",
+        "pinyin": "Xièxie dàjiā, míngtiān Dàxīng Jīchǎng jiàn!",
+        "vietnamese": "Cảm ơn tất cả mọi người, hẹn gặp nhau ở sân bay Đại Hưng nhé!"
       }
     ],
     "grammarNotes": [
-      "并列复句“，还也.Cau gh dang ap.，还也",
-      "并列复句由两个或两个以上逻辑关联、结构对称的小句构成。本册学习并列复句",
-      "Cau ghep dang lap la cau duroc tao boi hai hay nhieu ve cau co lien quan ve mat logic va",
-      "doi xurng voi nhau ve mat cau truc. Trong quyen sach nay gioi thieu cau ghep dang lap \"...."
+      "1. Câu ghép đẳng lập với '也' / '还': Biểu thị hai vế câu có mối quan hệ ngang hàng, bổ sung cho nhau (Ví dụ: 我去了西安，也去了北京 - Tôi đã đi Tây An, cũng đã đến Bắc Kinh; 我会说英语，还会说汉语 - Tôi biết nói tiếng Anh, còn biết cả tiếng Trung).",
+      "2. Cấu trúc hẹn gặp 'Địa điểm + 见': Dùng trong khẩu ngữ thân mật để hẹn gặp ai tại một địa điểm cụ thể (Ví dụ: 大兴机场见！ - Hẹn gặp ở sân bay Đại Hưng!; 明天学校见！ - Ngày mai gặp nhau ở trường nhé!).",
+      "3. Tính từ trùng điệp và đuôi '儿化': Trong khẩu ngữ Bắc Kinh, từ '好玩' thường thêm âm uốn lưỡi thành '好玩儿' (vui, thú vị) (Ví dụ: 西安非常好玩儿 - Tây An chơi rất thích).",
+      "4. Phó từ thời gian '去年', '今年', '明年': Dùng làm trạng ngữ chỉ thời gian để kể về các chuyến đi hoặc dự định (Ví dụ: 去年我去过西安 - Năm ngoái tôi từng đi Tây An)."
     ],
     "readingPassage": {
       "title": "大兴机场依依惜别 (Lưu luyến chia tay tại sân bay Đại Hưng)",
@@ -5719,4 +3695,4 @@ export const NEW_HSK1_ALL_LESSONS: CurriculumLesson[] = [
       }
     ]
   }
-]
+];

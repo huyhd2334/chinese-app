@@ -208,12 +208,12 @@ export default function InteractiveReader({
                   <span>Bấm vào từng chữ Hán để tra cứu từ điển và nghe phát âm chuẩn:</span>
                 </p>
 
-                <div className="text-2xl sm:text-3xl font-serif text-china-ink leading-[2.3] sm:leading-[2.4] tracking-wide">
+                <div className="text-2xl sm:text-3xl font-chinese font-bold text-china-ink leading-[2.3] sm:leading-[2.4] tracking-wide" lang="zh">
                   {Array.from(readingPassage.content).map((char, cIdx) => {
-                    const isPunctuation = /[，。？！、“”‘’\s:：]/.test(char)
+                    const isPunctuation = /[，。？！、“”‘’\s:：；（）《》·—…]/.test(char)
                     if (isPunctuation) {
                       return (
-                        <span key={cIdx} className="text-muted/80 font-serif select-none">
+                        <span key={cIdx} className="text-muted/80 font-chinese select-none">
                           {char}
                         </span>
                       )
@@ -223,7 +223,7 @@ export default function InteractiveReader({
                         key={cIdx}
                         type="button"
                         onClick={() => handleWordClick(char)}
-                        className="touch-manipulation select-none hover:text-china-red hover:bg-china-red/5 active:bg-china-red/15 active:scale-95 hover:underline decoration-china-red decoration-2 underline-offset-4 cursor-pointer transition rounded px-0.5 inline-block"
+                        className="touch-manipulation select-none hover:text-china-red hover:bg-china-red/5 active:bg-china-red/15 active:scale-95 hover:underline decoration-china-red decoration-2 underline-offset-4 cursor-pointer transition rounded px-0.5 inline-block font-chinese"
                         title="Bấm tra từ điển và nghe phát âm"
                       >
                         {char}
@@ -277,7 +277,7 @@ export default function InteractiveReader({
                 className="flex items-start gap-3.5 p-4 rounded-2xl bg-china-paper/60 dark:bg-[#15121e] border border-border/70 dark:border-[#382c47] hover:bg-china-paper dark:hover:bg-[#1c1828] transition"
               >
                 {d.role && (
-                  <div className="px-2.5 py-1.5 rounded-xl bg-china-red/10 text-china-red border border-china-red/20 font-serif font-bold text-xs shrink-0 whitespace-nowrap">
+                  <div className="px-2.5 py-1.5 rounded-xl bg-china-red/10 text-china-red border border-china-red/20 font-chinese font-bold text-xs shrink-0 whitespace-nowrap" lang="zh">
                     {d.role}
                   </div>
                 )}
@@ -285,12 +285,12 @@ export default function InteractiveReader({
                 <div className="flex-1 space-y-1.5">
                   <div className="flex items-center justify-between gap-2">
                     {/* Clickable Hanzi characters */}
-                    <div className="flex flex-wrap items-center gap-1 font-serif text-xl sm:text-2xl font-bold text-china-ink">
+                    <div className="flex flex-wrap items-center gap-0 font-chinese text-xl sm:text-2xl font-bold text-china-ink" lang="zh">
                       {Array.from(d.chinese).map((char, cIdx) => {
-                        const isPunctuation = /[，。？！、\s]/.test(char)
+                        const isPunctuation = /[，。？！、\s:：；（）“”‘’《》·—…]/.test(char)
                         if (isPunctuation) {
                           return (
-                            <span key={cIdx} className="text-muted">
+                            <span key={cIdx} className="text-muted font-chinese">
                               {char}
                             </span>
                           )
@@ -300,7 +300,7 @@ export default function InteractiveReader({
                             key={cIdx}
                             type="button"
                             onClick={() => handleWordClick(char)}
-                            className="touch-manipulation select-none hover:text-china-red active:bg-china-red/15 active:scale-95 hover:underline decoration-china-red decoration-2 underline-offset-4 cursor-pointer transition rounded px-0.5 inline-block"
+                            className="touch-manipulation select-none hover:text-china-red active:bg-china-red/15 active:scale-95 hover:underline decoration-china-red decoration-2 underline-offset-4 cursor-pointer transition rounded px-0.5 inline-block font-chinese"
                             title="Bấm để xem từ điển"
                           >
                             {char}
@@ -347,7 +347,7 @@ export default function InteractiveReader({
         <div className="p-4 bg-white dark:bg-card border border-china-red/30 rounded-2xl shadow-lg flex items-start justify-between gap-4 animate-in fade-in slide-in-from-bottom-2">
           <div className="space-y-1">
             <div className="flex items-baseline gap-2.5">
-              <span className="font-serif text-3xl font-bold text-china-ink">
+              <span className="font-chinese text-3xl font-bold text-china-ink" lang="zh">
                 {activeWordInfo.hanzi}
               </span>
               {activeWordInfo.pinyin && (
