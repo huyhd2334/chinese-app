@@ -53,10 +53,10 @@ export default function ExamsDashboard() {
             <button
               key={lvl.value}
               onClick={() => setSelectedLevel(lvl.value)}
-              className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all whitespace-nowrap ${
+              className={`px-4 py-2 rounded-xl text-sm font-semibold transition-colors whitespace-nowrap ${
                 isActive
-                  ? "bg-china-red text-white shadow-md shadow-china-red/20"
-                  : "bg-card border border-border text-muted hover:text-china-ink hover:border-china-red/30"
+                  ? "bg-china-red text-white"
+                  : "bg-card border border-border text-muted hover:text-china-ink hover:border-slate-300 dark:hover:border-stone-600"
               }`}
             >
               {lvl.label}
@@ -66,18 +66,15 @@ export default function ExamsDashboard() {
       </div>
 
       {/* Exam Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {filteredExams.map((exam) => (
           <div
             key={exam.id}
-            className="group relative rounded-3xl border border-border bg-card p-6 shadow-sm hover:shadow-lg transition-all flex flex-col justify-between overflow-hidden"
+            className="group relative rounded-2xl border border-border bg-card p-5 sm:p-6 shadow-xs hover:border-slate-400 dark:hover:border-stone-500 transition-colors flex flex-col justify-between overflow-hidden"
           >
-            {/* Background design */}
-            <div className="absolute top-0 right-0 w-24 h-24 bg-china-red/5 rounded-bl-full -mr-6 -mt-6 transition-transform group-hover:scale-110 pointer-events-none" />
-
             <div>
               <div className="flex items-center justify-between gap-2 mb-4">
-                <span className="px-3 py-1 bg-china-red/10 text-china-red text-xs font-bold rounded-lg border border-china-red/20">
+                <span className="px-2.5 py-1 bg-stone-100 dark:bg-stone-800 text-slate-700 dark:text-stone-300 text-xs font-bold rounded-lg border border-border/80">
                   HSK {exam.level}
                 </span>
                 <span className="text-xs text-muted font-mono font-medium">Mã: {exam.code}</span>

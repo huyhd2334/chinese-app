@@ -502,24 +502,24 @@ export default function Dashboard() {
               <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-china-red tracking-wide">
                 {greeting}
               </h1>
-              <div className={`flex items-center gap-1.5 px-3 py-1 rounded-full border text-xs sm:text-sm font-bold shadow-2xs transition-all ${
+              <div className={`flex items-center gap-1.5 px-3 py-1 rounded-full border text-xs sm:text-sm font-semibold transition-colors ${
                 streak > 0 
                   ? (isDailyGoalAchieved 
-                      ? "bg-china-gold/15 text-china-gold border-china-gold/40" 
-                      : "bg-amber-500/10 text-amber-600 border-amber-500/30")
+                      ? "bg-amber-500/10 text-amber-700 dark:text-amber-400 border-amber-500/30" 
+                      : "bg-amber-500/5 text-amber-600 dark:text-amber-400 border-amber-500/20")
                   : "bg-muted/10 text-muted border-border"
               }`}>
-                <Flame className={`w-3.5 h-3.5 ${streak > 0 ? "fill-current" : ""}`} />
-                <span>{streak} Ngày {isDailyGoalAchieved ? "🔥" : "(Chờ đạt)"}</span>
+                <Flame className={`w-3.5 h-3.5 ${streak > 0 ? "fill-amber-500 text-amber-500" : ""}`} />
+                <span>{streak} ngày {isDailyGoalAchieved ? "liên tiếp" : "(chờ học)"}</span>
               </div>
 
               <Link
                 href="/leaderboard"
-                className="flex items-center gap-1.5 px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs sm:text-sm font-bold shadow-2xs hover:bg-amber-500/20 hover:scale-105 transition-all"
+                className="flex items-center gap-1.5 px-3 py-1 rounded-full border border-border bg-stone-100 dark:bg-stone-800 text-slate-700 dark:text-stone-300 text-xs sm:text-sm font-semibold hover:bg-stone-200 dark:hover:bg-stone-700 transition-colors"
                 title="Xem Bảng xếp hạng học viên HSK"
               >
-                <Trophy className="w-3.5 h-3.5 text-amber-500" />
-                <span>Bảng Xếp Hạng</span>
+                <Trophy className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
+                <span>Bảng xếp hạng</span>
               </Link>
             </div>
             
@@ -755,142 +755,140 @@ export default function Dashboard() {
         </div>
       </section>
 
-      {/* 2. Bàn Học Tiểu Lu - 4 Không Gian Luyện Tập (Tứ Bảo Thư Phòng) */}
+      {/* 2. Khu vực học tập chính */}
       <section className="space-y-3">
         <div className="flex items-center justify-between px-1">
           <div className="flex items-center gap-2">
             <span className="w-1.5 h-4 rounded-full bg-china-red" />
             <h2 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-china-ink">
-              Không Gian Luyện Tập Của Tiểu Lu
+              Khu vực học tập
             </h2>
           </div>
-          <span className="text-[11px] text-muted font-medium">Bấm vào để bắt đầu</span>
+          <span className="text-[11px] text-muted font-medium">Chọn phương pháp học</span>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4">
-          {/* Card 1: Ôn tập SRS (Phục Tập - 溫故知新) */}
+          {/* Card 1: Ôn tập SRS */}
           <Link 
             href="/review" 
-            className="group relative overflow-hidden rounded-3xl bg-card dark:bg-[#1a1624] border border-border/80 dark:border-[#382c47] hover:border-china-red/50 hover:shadow-lg p-5 text-china-ink transition-all duration-300 flex flex-col justify-between min-h-[195px]"
+            className="group relative overflow-hidden rounded-2xl bg-card border border-border hover:border-slate-400 dark:hover:border-stone-500 p-5 text-china-ink transition-colors flex flex-col justify-between min-h-[190px]"
           >
             {/* Calligraphy Watermark chìm nghệ thuật */}
-            <div className="absolute right-2 -bottom-4 text-stone-200/50 dark:text-stone-700/25 font-chinese text-8xl font-black select-none pointer-events-none group-hover:text-china-red/5 transition-colors" lang="zh">
+            <div className="absolute right-2 -bottom-4 text-stone-200/40 dark:text-stone-700/20 font-chinese text-8xl font-black select-none pointer-events-none" lang="zh">
               省
             </div>
 
-            {/* Top row: Dấu triện Hán cổ & Huy hiệu số lượng */}
+            {/* Top row */}
             <div className="relative z-10 flex items-center justify-between gap-2">
-              <span className="font-chinese text-xs font-bold px-2 py-0.5 rounded-md bg-china-red/10 text-china-red border border-china-red/20 shadow-2xs tracking-widest" lang="zh">
-                印 • 復習
+              <span className="text-[11px] font-medium px-2 py-0.5 rounded bg-stone-100 dark:bg-stone-800 text-slate-700 dark:text-stone-300 border border-border/60">
+                Ôn tập định kỳ
               </span>
 
               <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-stone-100 dark:bg-stone-800/90 border border-border dark:border-stone-700 text-china-ink inline-flex items-center gap-1.5">
                 {wordReview > 0 ? (
                   <>
-                    <span className="w-1.5 h-1.5 rounded-full bg-china-red animate-pulse" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-china-red" />
                     <span className="text-china-red font-bold">{wordReview} từ cần ôn</span>
                   </>
                 ) : (
-                  <span>Đã ôn sạch ✓</span>
+                  <span className="text-muted">Đã hoàn thành</span>
                 )}
               </span>
             </div>
 
-            {/* Middle: Tiêu đề & Tiểu Lu Mascot */}
+            {/* Middle: Tiêu đề & Icon */}
             <div className="relative z-10 my-3 flex items-center justify-between gap-3">
               <div className="space-y-1 min-w-0">
-                <h3 className="text-lg font-bold text-china-ink group-hover:text-china-red transition-colors">
+                <h3 className="text-base sm:text-lg font-bold text-china-ink group-hover:text-china-red transition-colors">
                   Ôn tập SRS
                 </h3>
-                <p className="text-xs text-stone-500 dark:text-stone-300 leading-relaxed line-clamp-2">
-                  Lặp lại ngắt quãng theo đường cong trí nhớ
+                <p className="text-xs text-slate-600 dark:text-stone-300 leading-relaxed line-clamp-2">
+                  Lặp lại ngắt quãng củng cố trí nhớ dài hạn
                 </p>
               </div>
 
-              {/* Mascot Art Frame */}
-              <div className="relative w-16 h-16 sm:w-18 sm:h-18 shrink-0 rounded-2xl bg-stone-100 dark:bg-[#120f1a] border border-border/60 dark:border-[#382c47] p-1 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-2 shadow-2xs">
+              <div className="relative w-14 h-14 shrink-0 rounded-xl bg-stone-100 dark:bg-stone-800/60 border border-border/60 p-1 flex items-center justify-center">
                 <Image
                   src="/chibi-loading.svg"
                   alt="Tiểu Lu Ôn Tập"
-                  width={60}
-                  height={60}
+                  width={48}
+                  height={48}
                   className="object-contain"
                 />
               </div>
             </div>
 
             {/* Bottom: Action Link */}
-            <div className="relative z-10 pt-2 border-t border-border/50 dark:border-[#382c47] flex items-center justify-between text-xs font-semibold text-china-ink group-hover:text-china-red transition-colors">
-              <span>Vào thư phòng ôn tập</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
+            <div className="relative z-10 pt-2 border-t border-border/60 flex items-center justify-between text-xs font-semibold text-china-ink group-hover:text-china-red transition-colors">
+              <span>Bắt đầu ôn tập</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
           </Link>
 
-          {/* Card 2: Kho Từ Vựng HSK (Tự Hải - 字海尋珠) */}
+          {/* Card 2: Kho Từ Vựng HSK */}
           <Link 
             href="/vocabulary" 
-            className="group relative overflow-hidden rounded-3xl bg-card dark:bg-[#1a1624] border border-border/80 dark:border-[#382c47] hover:border-china-red/50 hover:shadow-lg p-5 text-china-ink transition-all duration-300 flex flex-col justify-between min-h-[195px]"
+            className="group relative overflow-hidden rounded-2xl bg-card border border-border hover:border-slate-400 dark:hover:border-stone-500 p-5 text-china-ink transition-colors flex flex-col justify-between min-h-[190px]"
           >
             {/* Calligraphy Watermark chìm */}
-            <div className="absolute right-2 -bottom-4 text-stone-200/50 dark:text-stone-700/25 font-chinese text-8xl font-black select-none pointer-events-none group-hover:text-china-red/5 transition-colors" lang="zh">
+            <div className="absolute right-2 -bottom-4 text-stone-200/40 dark:text-stone-700/20 font-chinese text-8xl font-black select-none pointer-events-none" lang="zh">
               詞
             </div>
 
             {/* Top row */}
             <div className="relative z-10 flex items-center justify-between gap-2">
-              <span className="font-chinese text-xs font-bold px-2 py-0.5 rounded-md bg-china-red/10 text-china-red border border-china-red/20 shadow-2xs tracking-widest" lang="zh">
-                印 • 詞海
+              <span className="text-[11px] font-medium px-2 py-0.5 rounded bg-stone-100 dark:bg-stone-800 text-slate-700 dark:text-stone-300 border border-border/60">
+                Từ điển HSK
               </span>
 
               <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-stone-100 dark:bg-stone-800/90 border border-border dark:border-stone-700 text-china-ink">
-                {wordCount} từ HSK
+                {wordCount} từ
               </span>
             </div>
 
             {/* Middle */}
             <div className="relative z-10 my-3 flex items-center justify-between gap-3">
               <div className="space-y-1 min-w-0">
-                <h3 className="text-lg font-bold text-china-ink group-hover:text-china-red transition-colors">
+                <h3 className="text-base sm:text-lg font-bold text-china-ink group-hover:text-china-red transition-colors">
                   Từ vựng HSK
                 </h3>
-                <p className="text-xs text-stone-500 dark:text-stone-300 leading-relaxed line-clamp-2">
-                  Tra cứu và học từ vựng toàn bộ cấp độ HSK 1–6
+                <p className="text-xs text-slate-600 dark:text-stone-300 leading-relaxed line-clamp-2">
+                  Tra cứu, ví dụ câu và thứ tự nét viết HSK 1–6
                 </p>
               </div>
 
-              {/* Mascot Art Frame */}
-              <div className="relative w-16 h-16 sm:w-18 sm:h-18 shrink-0 rounded-2xl bg-stone-100 dark:bg-[#120f1a] border border-border/60 dark:border-[#382c47] p-1 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-2 shadow-2xs">
+              <div className="relative w-14 h-14 shrink-0 rounded-xl bg-stone-100 dark:bg-stone-800/60 border border-border/60 p-1 flex items-center justify-center">
                 <Image
                   src="/chibi-peek.svg"
                   alt="Tiểu Lu Kho Từ"
-                  width={60}
-                  height={44}
+                  width={48}
+                  height={36}
                   className="object-contain"
                 />
               </div>
             </div>
 
             {/* Bottom */}
-            <div className="relative z-10 pt-2 border-t border-border/50 dark:border-[#382c47] flex items-center justify-between text-xs font-semibold text-china-ink group-hover:text-china-red transition-colors">
-              <span>Mở kho từ vựng</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
+            <div className="relative z-10 pt-2 border-t border-border/60 flex items-center justify-between text-xs font-semibold text-china-ink group-hover:text-china-red transition-colors">
+              <span>Xem danh sách từ</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
           </Link>
 
-          {/* Card 3: Giáo Trình Chuẩn HSK (Kinh Thư - 經書正課) */}
+          {/* Card 3: Giáo Trình Chuẩn HSK 3.0 */}
           <Link 
             href="/books" 
-            className="group relative overflow-hidden rounded-3xl bg-card dark:bg-[#1a1624] border border-border/80 dark:border-[#382c47] hover:border-china-red/50 hover:shadow-lg p-5 text-china-ink transition-all duration-300 flex flex-col justify-between min-h-[195px]"
+            className="group relative overflow-hidden rounded-2xl bg-card border border-border hover:border-slate-400 dark:hover:border-stone-500 p-5 text-china-ink transition-colors flex flex-col justify-between min-h-[190px]"
           >
             {/* Calligraphy Watermark chìm */}
-            <div className="absolute right-2 -bottom-4 text-stone-200/50 dark:text-stone-700/25 font-chinese text-8xl font-black select-none pointer-events-none group-hover:text-china-red/5 transition-colors" lang="zh">
+            <div className="absolute right-2 -bottom-4 text-stone-200/40 dark:text-stone-700/20 font-chinese text-8xl font-black select-none pointer-events-none" lang="zh">
               書
             </div>
 
             {/* Top row */}
             <div className="relative z-10 flex items-center justify-between gap-2">
-              <span className="font-chinese text-xs font-bold px-2 py-0.5 rounded-md bg-china-red/10 text-china-red border border-china-red/20 shadow-2xs tracking-widest" lang="zh">
-                印 • 教程
+              <span className="text-[11px] font-medium px-2 py-0.5 rounded bg-stone-100 dark:bg-stone-800 text-slate-700 dark:text-stone-300 border border-border/60">
+                Chương trình học
               </span>
 
               <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-stone-100 dark:bg-stone-800/90 border border-border dark:border-stone-700 text-china-ink">
@@ -901,81 +899,79 @@ export default function Dashboard() {
             {/* Middle */}
             <div className="relative z-10 my-3 flex items-center justify-between gap-3">
               <div className="space-y-1 min-w-0">
-                <h3 className="text-lg font-bold text-china-ink group-hover:text-china-red transition-colors">
+                <h3 className="text-base sm:text-lg font-bold text-china-ink group-hover:text-china-red transition-colors">
                   Giáo trình HSK 3.0
                 </h3>
-                <p className="text-xs text-stone-500 dark:text-stone-300 leading-relaxed line-clamp-2">
-                  Đoạn văn đọc hiểu, bài khóa tương tác &amp; bài tập luyện nghe
+                <p className="text-xs text-slate-600 dark:text-stone-300 leading-relaxed line-clamp-2">
+                  Bài khóa hội thoại, đọc hiểu và bài tập thực hành
                 </p>
               </div>
 
-              {/* Mascot Art Frame */}
-              <div className="relative w-16 h-16 sm:w-18 sm:h-18 shrink-0 rounded-2xl bg-stone-100 dark:bg-[#120f1a] border border-border/60 dark:border-[#382c47] p-1 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-2 shadow-2xs">
+              <div className="relative w-14 h-14 shrink-0 rounded-xl bg-stone-100 dark:bg-stone-800/60 border border-border/60 p-1 flex items-center justify-center">
                 <Image
                   src="/chibi-brush.svg"
                   alt="Tiểu Lu Thư Sinh"
-                  width={60}
-                  height={60}
+                  width={48}
+                  height={48}
                   className="object-contain"
                 />
               </div>
             </div>
 
             {/* Bottom */}
-            <div className="relative z-10 pt-2 border-t border-border/50 dark:border-[#382c47] flex items-center justify-between text-xs font-semibold text-china-ink group-hover:text-china-red transition-colors">
-              <span>Vào kệ sách chính khóa</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
+            <div className="relative z-10 pt-2 border-t border-border/60 flex items-center justify-between text-xs font-semibold text-china-ink group-hover:text-china-red transition-colors">
+              <span>Xem bài học</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
           </Link>
 
-          {/* Card 4: Từ Mở Rộng & Bổ Trợ (Thác Triển - 博採眾長) */}
+          {/* Card 4: Từ Mở Rộng & Bổ Trợ */}
           <Link 
             href="/bonus" 
-            className="group relative overflow-hidden rounded-3xl bg-card dark:bg-[#1a1624] border border-border/80 dark:border-[#382c47] hover:border-china-red/50 hover:shadow-lg p-5 text-china-ink transition-all duration-300 flex flex-col justify-between min-h-[195px]"
+            className="group relative overflow-hidden rounded-2xl bg-card border border-border hover:border-slate-400 dark:hover:border-stone-500 p-5 text-china-ink transition-colors flex flex-col justify-between min-h-[190px]"
           >
             {/* Calligraphy Watermark chìm */}
-            <div className="absolute right-2 -bottom-4 text-stone-200/50 dark:text-stone-700/25 font-chinese text-8xl font-black select-none pointer-events-none group-hover:text-china-red/5 transition-colors" lang="zh">
+            <div className="absolute right-2 -bottom-4 text-stone-200/40 dark:text-stone-700/20 font-chinese text-8xl font-black select-none pointer-events-none" lang="zh">
               博
             </div>
 
             {/* Top row */}
             <div className="relative z-10 flex items-center justify-between gap-2">
-              <span className="font-chinese text-xs font-bold px-2 py-0.5 rounded-md bg-china-red/10 text-china-red border border-china-red/20 shadow-2xs tracking-widest" lang="zh">
-                印 • 拓展
+              <span className="text-[11px] font-medium px-2 py-0.5 rounded bg-stone-100 dark:bg-stone-800 text-slate-700 dark:text-stone-300 border border-border/60">
+                Bổ trợ
               </span>
 
               <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-stone-100 dark:bg-stone-800/90 border border-border dark:border-stone-700 text-china-ink">
-                2,056 từ bổ trợ
+                2,056 từ
               </span>
             </div>
 
             {/* Middle */}
             <div className="relative z-10 my-3 flex items-center justify-between gap-3">
               <div className="space-y-1 min-w-0">
-                <h3 className="text-lg font-bold text-china-ink group-hover:text-china-red transition-colors">
+                <h3 className="text-base sm:text-lg font-bold text-china-ink group-hover:text-china-red transition-colors">
                   Từ mở rộng
                 </h3>
-                <p className="text-xs text-stone-500 dark:text-stone-300 leading-relaxed line-clamp-2">
-                  Bộ từ nâng cao HSK 5+ và chuyên đề giao tiếp đời sống
+                <p className="text-xs text-slate-600 dark:text-stone-300 leading-relaxed line-clamp-2">
+                  Từ vựng giao tiếp thực tế và chuyên đề nâng cao
                 </p>
               </div>
 
-              {/* Mascot Art Frame */}
-              <div className="relative w-16 h-16 sm:w-18 sm:h-18 shrink-0 rounded-2xl bg-stone-100 dark:bg-[#120f1a] border border-border/60 dark:border-[#382c47] p-1 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-2 shadow-2xs">
+              <div className="relative w-14 h-14 shrink-0 rounded-xl bg-stone-100 dark:bg-stone-800/60 border border-border/60 p-1 flex items-center justify-center">
                 <Image
                   src="/chibi-cheer.svg"
                   alt="Tiểu Lu Cổ Vũ"
-                  width={60}
-                  height={60}
+                  width={48}
+                  height={48}
                   className="object-contain"
                 />
               </div>
             </div>
 
             {/* Bottom */}
-            <div className="relative z-10 pt-2 border-t border-border/50 dark:border-[#382c47] flex items-center justify-between text-xs font-semibold text-china-ink group-hover:text-china-red transition-colors">
-              <span>Khám phá kho tàng thư</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
+            <div className="relative z-10 pt-2 border-t border-border/60 flex items-center justify-between text-xs font-semibold text-china-ink group-hover:text-china-red transition-colors">
+              <span>Xem từ mở rộng</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
           </Link>
         </div>

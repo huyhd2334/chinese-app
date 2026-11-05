@@ -98,50 +98,47 @@ export default function StoriesPage() {
         <LeafVineCornerSvg position="bottom-right" className="bottom-0 right-0 w-8 h-8 sm:w-10 sm:h-10 opacity-60" />
 
         <div className="relative z-10 space-y-3 max-w-xl">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200/80 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300">
-            <BookMarked className="w-3.5 h-3.5" />
-            <span>TỦ TRUYỆN SONG NGỮ • ĐỌC &amp; NẠP TỪ VỰNG</span>
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-stone-100 dark:bg-stone-800 border border-border text-slate-700 dark:text-stone-300">
+            <BookMarked className="w-3.5 h-3.5 text-china-red" />
+            <span>TỦ TRUYỆN SONG NGỮ</span>
           </div>
 
-          <h1 className="text-xl sm:text-2xl lg:text-3xl font-serif font-black tracking-tight leading-snug text-stone-900 dark:text-stone-100">
-            Tủ Truyện Song Ngữ • Đọc Đến Đâu Nạp Từ Đến Đó
+          <h1 className="text-xl sm:text-2xl lg:text-3xl font-serif font-bold tracking-tight leading-snug text-stone-900 dark:text-stone-100">
+            Tủ Truyện Song Ngữ Trung - Việt
           </h1>
 
           <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 leading-relaxed">
-            Tuyển chọn các tác phẩm ngôn tình &amp; hiện thực ăn khách nhất (Vụng Trộm Không Thể Giấu, Khó Dỗ Dành, Cuồng Phong...).{" "}
-            <span className="font-semibold text-stone-900 dark:text-stone-100">
-              Bôi đen hoặc chạm vào từ bất kỳ để đối chiếu với kho 11,470 từ vựng và nạp thẳng vào hàng chờ ôn tập SRS!
-            </span>
+            Tuyển chọn các tác phẩm văn học và truyện hiện đại. Chạm vào bất kỳ từ vựng nào để tra cứu nghĩa, xem phiên âm pinyin và thêm vào danh sách ôn tập định kỳ.
           </p>
 
           <div className="flex items-center gap-3 pt-1 text-xs text-stone-500 dark:text-stone-400 flex-wrap">
             <span className="flex items-center gap-1 font-medium">
               <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-              Có bản dịch câu đọc nhanh
+              Bản dịch song ngữ đối chiếu
             </span>
             <span>•</span>
             <span className="flex items-center gap-1 font-medium">
-              <Sparkles className="w-4 h-4 text-emerald-600" />
-              Tra từ tức thời &amp; Thêm vào SRS
+              <Sparkles className="w-4 h-4 text-amber-600" />
+              Tra từ tức thì &amp; Lưu vào ôn tập
             </span>
           </div>
         </div>
 
         {/* Mascot decoration */}
-        <div className="relative z-10 hidden sm:flex items-center gap-3 p-4 rounded-3xl bg-stone-50 dark:bg-stone-900/60 border border-stone-200/80 dark:border-stone-800 shrink-0">
-          <div className="w-20 h-20 relative flex items-center justify-center">
+        <div className="relative z-10 hidden sm:flex items-center gap-3 p-4 rounded-2xl bg-stone-50 dark:bg-stone-900/60 border border-border shrink-0">
+          <div className="w-16 h-16 relative flex items-center justify-center">
             <Image
               src="/chibi-loading.svg"
               alt="Tiểu Lu Đọc Truyện"
-              width={80}
-              height={80}
+              width={64}
+              height={64}
               priority
               className="object-contain"
             />
           </div>
           <div className="text-xs max-w-[130px] leading-tight text-stone-500 dark:text-stone-400">
-            <p className="font-bold text-stone-900 dark:text-stone-100 mb-0.5">Tiểu Lu đọc sách</p>
-            <p className="text-[11px]">Vừa đọc truyện hay vừa nạp từ vựng cực kỳ cuốn hút!</p>
+            <p className="font-bold text-stone-900 dark:text-stone-100 mb-0.5">Đọc hiểu ngữ cảnh</p>
+            <p className="text-[11px]">Củng cố vốn từ và ngữ pháp qua từng câu truyện.</p>
           </div>
         </div>
       </div>
@@ -152,7 +149,7 @@ export default function StoriesPage() {
         <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
           {[
             { id: "all", label: "Tất cả" },
-            { id: "Trending", label: "Đang Hot 🔥" },
+            { id: "Trending", label: "Phổ biến" },
             { id: "Ngôn tình", label: "Ngôn tình" },
             { id: "Đô thị", label: "Đô thị" },
             { id: "Trinh thám", label: "Trinh thám" },
@@ -164,7 +161,7 @@ export default function StoriesPage() {
                 onClick={() => setSelectedTag(tab.id)}
                 className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
                   isActive
-                    ? "bg-emerald-600 text-white shadow-2xs"
+                    ? "bg-stone-900 dark:bg-stone-100 text-white dark:text-stone-900"
                     : "bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300 hover:bg-stone-200 dark:hover:bg-stone-700"
                 }`}
               >

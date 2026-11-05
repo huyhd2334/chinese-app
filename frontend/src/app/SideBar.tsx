@@ -6,8 +6,6 @@ import styles from './sideBar.module.css'
 import { BookOpen, Eye, LayoutDashboard, ReceiptText, BookMarked, Headphones, Library, GraduationCap, Trophy, BookmarkCheck } from "lucide-react";
 import UserMenu from "@/components/auth/UserMenu";
 import ThemeToggle from "@/components/common/ThemeToggle";
-import { WitchHatSvg, triggerSpookyConfetti } from "@/components/common/HalloweenDecorations";
-import { useAuth } from "@/contexts/AuthContext";
 
 const navItems = [
   { href: "/", label: "Dashboard", shortLabel: "Home", icon: LayoutDashboard },
@@ -24,63 +22,38 @@ const navItems = [
 
 const SideBar = () => {
   const pathname = usePathname();
-  const { isHalloweenTheme } = useAuth();
 
   return (
     <>
       {/* Desktop & Tablet Sidebar */}
       <aside className='hidden md:flex flex-col w-16 lg:w-56 shrink-0 border-r border-border/80 px-2 lg:px-3 pt-5 pb-3 transition-all duration-300 bg-china-paper/60 select-none relative'>
         
-        {/* Dải dây cờ / mạng nhện mini trang trí góc sidebar khi có Halloween */}
-        {isHalloweenTheme && (
-          <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-amber-600 via-orange-500 to-amber-700 pointer-events-none" />
-        )}
-
         {/* Brand Header */}
         <div className="flex items-center gap-3 px-1 lg:px-2 py-1 mb-5 lg:mb-6 relative">
-          <button
-            type="button"
-            onClick={isHalloweenTheme ? triggerSpookyConfetti : undefined}
-            className="w-10 h-10 rounded-2xl bg-card border border-border shadow-xs p-1 shrink-0 flex items-center justify-center transition-transform hover:scale-105 relative cursor-pointer group"
-            title={isHalloweenTheme ? "Bấm vào Tiểu Lu để nhận kẹo & pháo hoa Halloween! 🍬" : "Tiểu Lu"}
-          >
+          <div className="w-10 h-10 rounded-xl bg-card border border-border p-1 shrink-0 flex items-center justify-center">
             <Image
               src="/chibi-loading.svg"
               alt="Tiểu Lu"
-              width={34}
-              height={34}
+              width={32}
+              height={32}
               priority
               className="object-contain"
             />
-            {isHalloweenTheme && (
-              <div className="absolute -top-3.5 -right-2.5 pointer-events-none transition-transform group-hover:rotate-12 duration-200">
-                <WitchHatSvg className="w-6.5 h-6.5 drop-shadow-xs" />
-              </div>
-            )}
-          </button>
+          </div>
 
           <div className="hidden lg:flex flex-col leading-tight min-w-0">
             <div className="flex items-center gap-1">
               <span className="font-extrabold tracking-wide text-china-red text-base">HSK</span>
               <span className="font-bold text-china-ink text-base">Learning</span>
             </div>
-            <span className="text-[11px] text-muted font-semibold truncate flex items-center gap-1">
-              <span>Bàn học Tiểu Lu</span>
-              {isHalloweenTheme && (
-                <span 
-                  onClick={triggerSpookyConfetti}
-                  className="text-xs cursor-pointer hover:scale-125 transition-transform" 
-                  title="Bấm để tung kẹo Halloween! 🍬"
-                >
-                  🎃
-                </span>
-              )}
+            <span className="text-[11px] text-muted font-medium truncate">
+              Học tiếng Trung HSK
             </span>
           </div>
         </div>      
 
         {/* Navigation Items */}
-        <nav className="flex-1 space-y-2 overflow-y-auto custom-scrollbar">
+        <nav className="flex-1 space-y-1.5 overflow-y-auto custom-scrollbar">
           {navItems.map((item) => {
             const isActive = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href)
             const Icon = item.icon
@@ -97,11 +70,7 @@ const SideBar = () => {
                 </div>
                 {isActive && (
                   <span className="hidden lg:flex items-center">
-                    {isHalloweenTheme ? (
-                      <span className="text-[10px] animate-pulse">🎃</span>
-                    ) : (
-                      <span className="w-1.5 h-1.5 rounded-full bg-china-red shrink-0" />
-                    )}
+                    <span className="w-1.5 h-1.5 rounded-full bg-china-red shrink-0" />
                   </span>
                 )}
               </Link>
@@ -127,7 +96,7 @@ const SideBar = () => {
       {/* Mobile Top Brand Bar */}
       <header className="md:hidden sticky top-0 z-30 flex items-center justify-between px-4 py-2.5 bg-china-paper/95 backdrop-blur-md border-b border-border shadow-xs">
         <Link href="/" className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-xl bg-card border border-border shadow-2xs p-1 flex items-center justify-center relative">
+          <div className="w-8 h-8 rounded-xl bg-card border border-border p-1 flex items-center justify-center relative">
             <Image
               src="/chibi-loading.svg"
               alt="Tiểu Lu"
@@ -136,16 +105,10 @@ const SideBar = () => {
               priority
               className="object-contain"
             />
-            {isHalloweenTheme && (
-              <span className="absolute -top-2 -right-1.5 pointer-events-none">
-                <WitchHatSvg className="w-4 h-4" />
-              </span>
-            )}
           </div>
           <div className="flex items-center gap-1 font-bold text-base leading-none">
             <span className="text-china-red">HSK</span>
             <span className="text-china-ink">Learning</span>
-            {isHalloweenTheme && <span className="text-xs">🎃</span>}
           </div>
         </Link>
 

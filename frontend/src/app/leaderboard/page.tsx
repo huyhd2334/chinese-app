@@ -102,10 +102,10 @@ export default function LeaderboardPage() {
           {top2 && (
             <div className="flex flex-col items-center">
               <div className="relative mb-3">
-                <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-card border-2 border-slate-300 dark:border-slate-600 p-1.5 shadow-md flex items-center justify-center">
+                <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-card border border-border p-1.5 shadow-xs flex items-center justify-center">
                   <Image src={top2.avatar} alt={top2.name} width={60} height={60} className="object-contain" />
                 </div>
-                <div className="absolute -top-3 -right-2 w-7 h-7 rounded-full bg-slate-200 dark:bg-slate-700 border-2 border-white dark:border-card flex items-center justify-center font-bold text-xs text-slate-700 dark:text-slate-200 shadow-sm">
+                <div className="absolute -top-2.5 -right-2 w-6 h-6 rounded-full bg-slate-200 dark:bg-slate-700 border border-border flex items-center justify-center font-bold text-xs text-slate-700 dark:text-slate-200 shadow-xs">
                   2
                 </div>
               </div>
@@ -113,32 +113,32 @@ export default function LeaderboardPage() {
               <span className="text-[10px] md:text-xs text-muted mb-2 font-mono">
                 {sortBy === "words" ? `${top2.wordsCount} từ` : sortBy === "streak" ? `${top2.streakDays} ngày` : sortBy === "lessons" ? `${top2.lessonsCompleted} bài` : `${top2.xp.toLocaleString()} XP`}
               </span>
-              <div className="w-full h-24 md:h-32 bg-gradient-to-t from-slate-200/80 to-slate-100/50 dark:from-slate-800/80 dark:to-slate-800/30 rounded-t-2xl border-t-2 border-slate-300 dark:border-slate-600 flex items-center justify-center">
-                <Medal className="w-8 h-8 text-slate-400" />
+              <div className="w-full h-24 md:h-32 bg-stone-100 dark:bg-stone-800/60 rounded-t-2xl border-t border-border flex items-center justify-center">
+                <Medal className="w-7 h-7 text-slate-400" />
               </div>
             </div>
           )}
 
-          {/* Top 1 (Cao nhất & Nổi bật nhất) */}
+          {/* Top 1 */}
           <div className="flex flex-col items-center -mt-6">
             <div className="relative mb-3">
-              <Crown className="w-7 h-7 text-amber-500 absolute -top-7 left-1/2 -translate-x-1/2 animate-bounce" />
-              <div className="w-20 h-20 md:w-24 md:h-24 rounded-3xl bg-amber-50 dark:bg-amber-950/40 border-3 border-amber-400 p-2 shadow-xl shadow-amber-500/10 flex items-center justify-center">
+              <Crown className="w-6 h-6 text-amber-500 absolute -top-6 left-1/2 -translate-x-1/2" />
+              <div className="w-20 h-20 md:w-24 md:h-24 rounded-2xl bg-card border-2 border-amber-500/50 p-2 shadow-xs flex items-center justify-center">
                 <Image src={top1.avatar} alt={top1.name} width={75} height={75} className="object-contain" />
               </div>
-              <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-amber-400 text-amber-950 border-2 border-white dark:border-card flex items-center justify-center font-extrabold text-sm shadow-md">
+              <div className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-amber-500 text-white flex items-center justify-center font-extrabold text-xs shadow-xs">
                 1
               </div>
             </div>
-            <p className="font-extrabold text-sm md:text-base truncate max-w-[120px] text-center text-amber-600 dark:text-amber-400">
+            <p className="font-extrabold text-sm md:text-base truncate max-w-[120px] text-center text-amber-700 dark:text-amber-400">
               {top1.name}
             </p>
-            <span className="text-xs font-bold text-amber-500 mb-2 font-mono">
+            <span className="text-xs font-bold text-amber-600 dark:text-amber-400 mb-2 font-mono">
               {sortBy === "words" ? `${top1.wordsCount} từ` : sortBy === "streak" ? `${top1.streakDays} ngày` : sortBy === "lessons" ? `${top1.lessonsCompleted} bài` : `${top1.xp.toLocaleString()} XP`}
             </span>
-            <div className="w-full h-32 md:h-44 bg-gradient-to-t from-amber-200/80 to-amber-100/40 dark:from-amber-900/60 dark:to-amber-900/20 rounded-t-3xl border-t-3 border-amber-400 flex flex-col items-center justify-center gap-1">
-              <Trophy className="w-10 h-10 text-amber-500" />
-              <span className="text-[11px] font-bold text-amber-700 dark:text-amber-300 uppercase tracking-wider">Trạng Nguyên</span>
+            <div className="w-full h-32 md:h-44 bg-amber-500/10 dark:bg-amber-500/15 rounded-t-2xl border-t-2 border-amber-500/40 flex flex-col items-center justify-center gap-1">
+              <Trophy className="w-8 h-8 text-amber-600 dark:text-amber-400" />
+              <span className="text-[11px] font-bold text-amber-700 dark:text-amber-300 uppercase tracking-wider">Hạng 1</span>
             </div>
           </div>
 
@@ -146,10 +146,10 @@ export default function LeaderboardPage() {
           {top3 && (
             <div className="flex flex-col items-center">
               <div className="relative mb-3">
-                <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-card border-2 border-amber-700/40 dark:border-amber-700/60 p-1.5 shadow-md flex items-center justify-center">
+                <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-card border border-border p-1.5 shadow-xs flex items-center justify-center">
                   <Image src={top3.avatar} alt={top3.name} width={60} height={60} className="object-contain" />
                 </div>
-                <div className="absolute -top-3 -right-2 w-7 h-7 rounded-full bg-amber-700 text-white border-2 border-white dark:border-card flex items-center justify-center font-bold text-xs shadow-sm">
+                <div className="absolute -top-2.5 -right-2 w-6 h-6 rounded-full bg-stone-300 dark:bg-stone-700 text-stone-800 dark:text-stone-200 border border-border flex items-center justify-center font-bold text-xs shadow-xs">
                   3
                 </div>
               </div>
@@ -157,8 +157,8 @@ export default function LeaderboardPage() {
               <span className="text-[10px] md:text-xs text-muted mb-2 font-mono">
                 {sortBy === "words" ? `${top3.wordsCount} từ` : sortBy === "streak" ? `${top3.streakDays} ngày` : sortBy === "lessons" ? `${top3.lessonsCompleted} bài` : `${top3.xp.toLocaleString()} XP`}
               </span>
-              <div className="w-full h-20 md:h-28 bg-gradient-to-t from-amber-900/20 to-amber-900/5 dark:from-amber-950/60 dark:to-amber-950/20 rounded-t-2xl border-t-2 border-amber-700/40 flex items-center justify-center">
-                <Medal className="w-7 h-7 text-amber-700/80" />
+              <div className="w-full h-20 md:h-28 bg-stone-100 dark:bg-stone-800/60 rounded-t-2xl border-t border-border flex items-center justify-center">
+                <Medal className="w-6 h-6 text-stone-400" />
               </div>
             </div>
           )}
@@ -246,10 +246,10 @@ export default function LeaderboardPage() {
         })}
       </div>
 
-      {/* Sticky User Position Bar (Thanh cố định vị trí của bạn ở đáy màn hình) */}
+      {/* Sticky User Position Bar */}
       {currentUser && (
         <div className="fixed bottom-0 md:bottom-4 left-0 right-0 md:left-auto md:right-auto md:max-w-5xl md:w-full z-40 px-4 pointer-events-none">
-          <div className="bg-card/95 backdrop-blur-md border-2 border-china-red/40 rounded-t-3xl md:rounded-3xl p-4 shadow-2xl flex items-center justify-between gap-4 pointer-events-auto">
+          <div className="bg-card/95 backdrop-blur-md border border-border rounded-t-2xl md:rounded-2xl p-4 shadow-lg flex items-center justify-between gap-4 pointer-events-auto">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-2xl bg-china-red/10 border border-china-red/20 flex items-center justify-center font-extrabold text-china-red text-base font-mono">
                 #{userRank}

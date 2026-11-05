@@ -92,9 +92,9 @@ const Page = () => {
             <span>Tiến độ HSK {level}</span>
             <span className="text-china-jade font-serif font-bold">{progressPercentage.toFixed(1)}%</span>
           </div>
-          <div className="h-2 w-full bg-border rounded-full overflow-hidden shadow-inner">
+          <div className="h-1.5 w-full bg-border rounded-full overflow-hidden">
             <div 
-              className="h-full bg-gradient-to-r from-china-gold to-china-jade transition-all duration-700 ease-out rounded-full"
+              className="h-full bg-china-jade transition-all duration-500 ease-out rounded-full"
               style={{ width: `${progressPercentage}%` }}
             />
           </div>

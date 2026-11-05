@@ -94,17 +94,17 @@ export default function ShadowingPage() {
           <div className="pt-2 flex flex-wrap items-center gap-3">
             {!isPro ? (
               <>
-                <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-2xl bg-stone-100 dark:bg-stone-800/80 border border-stone-200 dark:border-stone-700 text-xs font-medium text-stone-700 dark:text-stone-300">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                  <span>Gói Miễn phí: Đang mở khóa <strong>5 video</strong> luyện nói</span>
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-stone-100 dark:bg-stone-800 border border-border text-xs font-medium text-slate-700 dark:text-stone-300">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                  <span>Miễn phí: 5 video bài học</span>
                 </div>
                 <button
                   type="button"
                   onClick={() => triggerUpgradeModal("manual")}
-                  className="px-4 py-2 rounded-2xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold text-xs shadow-xs transition-all active:scale-95 cursor-pointer flex items-center gap-1.5"
+                  className="px-3.5 py-1.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-semibold text-xs transition-colors cursor-pointer flex items-center gap-1.5"
                 >
                   <Crown className="w-3.5 h-3.5" />
-                  <span>Mở Khóa Toàn Bộ Với PRO</span>
+                  <span>Nâng cấp Pro</span>
                 </button>
               </>
             ) : (

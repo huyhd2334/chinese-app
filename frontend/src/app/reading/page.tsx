@@ -37,7 +37,7 @@ export default function ReadingPage() {
     return (
       <main className="p-6">
         <h1 className="text-2xl font-bold">Reading</h1>
-        <p className="mt-4">Bạn đã hoàn thành tất cả bài đọc 🎉</p>
+        <p className="mt-4 text-muted">Bạn đã hoàn thành tất cả bài đọc.</p>
       </main>
     )
   }

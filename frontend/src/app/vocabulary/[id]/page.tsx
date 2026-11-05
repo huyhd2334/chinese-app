@@ -185,8 +185,7 @@ export default function WordDetailPage({ params }: PageProps) {
       <div className="p-3 sm:p-6 md:p-8 max-w-5xl mx-auto w-full flex-1 space-y-6">
         
         {/* Hero Card */}
-        <div className="bg-card border border-border rounded-3xl p-6 sm:p-8 shadow-xs relative overflow-hidden flex flex-col md:flex-row items-center gap-6 group">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-china-red/5 to-transparent rounded-bl-full pointer-events-none transition-transform duration-700 group-hover:scale-110" />
+        <div className="bg-card border border-border rounded-2xl p-6 sm:p-8 shadow-xs relative overflow-hidden flex flex-col md:flex-row items-center gap-6">
           
           <div className="text-center md:text-left flex-1 z-10">
             <div className="flex gap-2 justify-center md:justify-start mb-4">

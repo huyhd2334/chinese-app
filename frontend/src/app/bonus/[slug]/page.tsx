@@ -510,9 +510,9 @@ export default function BonusStudyPage({ params }: PageProps) {
             </div>
 
             {/* Progress line */}
-            <div className="h-2 w-full bg-border/60 rounded-full overflow-hidden">
+            <div className="h-1.5 w-full bg-border/60 rounded-full overflow-hidden">
               <div 
-                className="h-full bg-gradient-to-r from-china-red to-china-gold transition-all duration-300 rounded-full"
+                className="h-full bg-china-red transition-all duration-300 rounded-full"
                 style={{ width: `${deck.length > 0 ? ((currentIndex + 1) / deck.length) * 100 : 0}%` }}
               />
             </div>
@@ -523,13 +523,13 @@ export default function BonusStudyPage({ params }: PageProps) {
             <div className="flex flex-col items-center">
               <div
                 onClick={() => setIsFlipped(prev => !prev)}
-                className="w-full max-w-2xl min-h-[360px] sm:min-h-[420px] rounded-3xl cursor-pointer perspective-1000 select-none transition-transform active:scale-[0.99]"
+                className="w-full max-w-2xl min-h-[360px] sm:min-h-[420px] rounded-2xl cursor-pointer perspective-1000 select-none transition-transform active:scale-[0.99]"
               >
                 <div
-                  className={`relative w-full h-full min-h-[360px] sm:min-h-[420px] rounded-3xl border transition-all duration-500 shadow-md ${
+                  className={`relative w-full h-full min-h-[360px] sm:min-h-[420px] rounded-2xl border transition-all duration-500 shadow-xs ${
                     isFlipped 
-                      ? "rotate-y-180 border-china-gold/40 bg-china-paper" 
-                      : "border-china-red/30 bg-card hover:border-china-red/50 hover:shadow-lg"
+                      ? "rotate-y-180 border-border bg-china-paper" 
+                      : "border-border bg-card hover:border-slate-400 dark:hover:border-stone-500"
                   }`}
                   style={{
                     transformStyle: "preserve-3d",
