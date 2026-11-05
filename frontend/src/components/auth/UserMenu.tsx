@@ -1,7 +1,8 @@
 "use client"
 
 import React, { useState, useEffect } from "react"
-import { LogIn, LogOut, Crown, RotateCw, Cloud, Bell } from "lucide-react"
+import Link from "next/link"
+import { LogIn, LogOut, Crown, RotateCw, Cloud, Bell, ShieldCheck } from "lucide-react"
 import { useAuth } from "@/contexts/AuthContext"
 import { getLocalSubscription, triggerUpgradeModal } from "@/utils/subscription"
 import ThemeToggle from "@/components/common/ThemeToggle"
@@ -135,6 +136,17 @@ export default function UserMenu({ compact = false }: UserMenuProps) {
               <div className="px-2.5 py-1 text-[11px] text-muted truncate border-b border-border">
                 {user.email}
               </div>
+
+              {user.email?.toLowerCase() === "huyqame1356@gmail.com" && (
+                <Link
+                  href="/admin"
+                  onClick={() => setShowDropdown(false)}
+                  className="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-xs text-china-red bg-china-red/5 hover:bg-china-red/10 transition-colors font-bold text-left cursor-pointer"
+                >
+                  <ShieldCheck className="w-3.5 h-3.5 text-china-red shrink-0" />
+                  <span>Trang quản trị (Admin)</span>
+                </Link>
+              )}
 
               {/* Pro plan action */}
               <button
@@ -280,6 +292,17 @@ export default function UserMenu({ compact = false }: UserMenuProps) {
                 <div className="px-2.5 py-1.5 border-b border-border text-[11px] text-muted truncate">
                   {user.email}
                 </div>
+
+                {user.email?.toLowerCase() === "huyqame1356@gmail.com" && (
+                  <Link
+                    href="/admin"
+                    onClick={() => setShowDropdown(false)}
+                    className="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-xs text-china-red bg-china-red/5 hover:bg-china-red/10 transition-colors font-bold text-left cursor-pointer"
+                  >
+                    <ShieldCheck className="w-3.5 h-3.5 text-china-red shrink-0" />
+                    <span>Trang quản trị (Admin)</span>
+                  </Link>
+                )}
 
                 <button
                   onClick={() => {
