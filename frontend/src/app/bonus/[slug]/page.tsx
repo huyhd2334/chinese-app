@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useMemo, useCallback, use } from "react"
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
-import { ArrowLeft, Volume2, Bookmark, Search, ChevronLeft, ChevronRight } from "lucide-react"
+import { ArrowLeft, Volume2, Bookmark, Search, ChevronLeft, ChevronRight, RotateCw, CheckCircle2, Sparkles } from "lucide-react"
 import type { BonusWord, BonusCollection } from "@/types/bonus"
 import { getHanViet } from "@/utils/hanviet"
 import { playChineseAudio } from "@/utils/audioTts"
@@ -220,6 +220,7 @@ export default function BonusStudyPage({ params }: PageProps) {
   const [deck, setDeck] = useState<BonusWord[]>(allWords)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isFlipped, setIsFlipped] = useState(false)
+  const [isFinished, setIsFinished] = useState(false)
   const [rememberedIds, setRememberedIds] = useState<Set<string>>(new Set())
   const [forgottenIds, setForgottenIds] = useState<Set<string>>(new Set())
   const [isAutoPlay, setIsAutoPlay] = useState(false)
@@ -229,6 +230,7 @@ export default function BonusStudyPage({ params }: PageProps) {
     setDeck(allWords)
     setCurrentIndex(0)
     setIsFlipped(false)
+    setIsFinished(false)
     setRememberedIds(new Set())
     setForgottenIds(new Set())
   }, [allWords])
@@ -267,6 +269,8 @@ export default function BonusStudyPage({ params }: PageProps) {
     setIsFlipped(false)
     if (currentIndex + 1 < deck.length) {
       setCurrentIndex(prev => prev + 1)
+    } else {
+      setIsFinished(true)
     }
   }, [currentCard, currentIndex, deck.length])
 
@@ -276,6 +280,7 @@ export default function BonusStudyPage({ params }: PageProps) {
     setDeck(shuffled)
     setCurrentIndex(0)
     setIsFlipped(false)
+    setIsFinished(false)
   }
 
   // Keyboard navigation for Flashcard
@@ -287,23 +292,33 @@ export default function BonusStudyPage({ params }: PageProps) {
 
       if (e.code === "Space") {
         e.preventDefault()
-        setIsFlipped(prev => !prev)
+        if (isFinished) {
+          setDeck(allWords)
+          setCurrentIndex(0)
+          setIsFlipped(false)
+          setRememberedIds(new Set())
+          setForgottenIds(new Set())
+          setIsFinished(false)
+        } else {
+          setIsFlipped(prev => !prev)
+        }
       } else if (e.code === "ArrowRight") {
         e.preventDefault()
-        handleCardResult(true)
+        if (!isFinished) handleCardResult(true)
       } else if (e.code === "ArrowLeft") {
         e.preventDefault()
-        handleCardResult(false)
+        if (!isFinished) handleCardResult(false)
       } else if (e.key === "r" || e.key === "R") {
         e.preventDefault()
         setIsFlipped(false)
         setCurrentIndex(0)
+        setIsFinished(false)
       }
     }
 
     window.addEventListener("keydown", handleKeyDown)
     return () => window.removeEventListener("keydown", handleKeyDown)
-  }, [mode, isAddModalOpen, handleCardResult])
+  }, [mode, isAddModalOpen, handleCardResult, isFinished, allWords])
 
   // Auto-play feature
   useEffect(() => {
@@ -321,6 +336,7 @@ export default function BonusStudyPage({ params }: PageProps) {
         setCurrentIndex(prev => prev + 1)
       } else {
         setIsAutoPlay(false)
+        setIsFinished(true)
       }
     }, 4500)
 
@@ -470,7 +486,7 @@ export default function BonusStudyPage({ params }: PageProps) {
               <div className="flex items-center gap-2 font-medium">
                 <span className="text-muted">Tiến độ:</span>
                 <span className="font-bold text-china-ink font-mono text-sm sm:text-base">
-                  {deck.length > 0 ? currentIndex + 1 : 0} / {deck.length}
+                  {deck.length > 0 ? (isFinished ? deck.length : currentIndex + 1) : 0} / {deck.length}
                 </span>
                 <span className="text-xs px-2 py-0.5 rounded-md bg-china-jade/10 text-china-jade font-semibold">
                   {rememberedIds.size} đã nhớ
@@ -513,13 +529,86 @@ export default function BonusStudyPage({ params }: PageProps) {
             <div className="h-1.5 w-full bg-border/60 rounded-full overflow-hidden">
               <div 
                 className="h-full bg-china-red transition-all duration-300 rounded-full"
-                style={{ width: `${deck.length > 0 ? ((currentIndex + 1) / deck.length) * 100 : 0}%` }}
+                style={{ width: `${deck.length > 0 ? ((isFinished ? deck.length : currentIndex + 1) / deck.length) * 100 : 0}%` }}
               />
             </div>
           </div>
 
-          {/* 3D Flashcard Presentation */}
-          {currentCard ? (
+          {/* 3D Flashcard Presentation OR Finished State */}
+          {isFinished ? (
+            <div className="text-center py-12 px-6 max-w-xl mx-auto bg-card rounded-3xl border border-border p-8 space-y-6 shadow-xs animate-in fade-in zoom-in-95">
+              <div className="w-16 h-16 rounded-full bg-china-jade/10 text-china-jade flex items-center justify-center mx-auto">
+                <CheckCircle2 className="w-9 h-9" />
+              </div>
+              <div className="space-y-1.5">
+                <h3 className="text-2xl font-serif font-bold text-china-ink">Hoàn thành buổi học!</h3>
+                <p className="text-xs sm:text-sm text-muted">
+                  Bạn vừa hoàn thành toàn bộ <strong className="text-china-ink">{deck.length}</strong> thẻ từ vựng trong bộ này.
+                </p>
+              </div>
+
+              {/* Result breakdown */}
+              <div className="grid grid-cols-2 gap-3.5 max-w-xs mx-auto">
+                <div className="p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800 text-center">
+                  <span className="text-3xl font-serif font-bold text-emerald-600 dark:text-emerald-400">
+                    {rememberedIds.size}
+                  </span>
+                  <p className="text-[11px] font-bold text-emerald-700 dark:text-emerald-300 uppercase tracking-wider mt-1">ĐÃ NHỚ</p>
+                </div>
+                <div className="p-4 rounded-2xl bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-800 text-center">
+                  <span className="text-3xl font-serif font-bold text-red-600 dark:text-red-400">
+                    {forgottenIds.size}
+                  </span>
+                  <p className="text-[11px] font-bold text-red-700 dark:text-red-300 uppercase tracking-wider mt-1">CẦN ÔN LẠI</p>
+                </div>
+              </div>
+
+              {/* Action buttons */}
+              <div className="flex flex-col sm:flex-row gap-2.5 max-w-md mx-auto pt-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setDeck(allWords)
+                    setCurrentIndex(0)
+                    setIsFlipped(false)
+                    setRememberedIds(new Set())
+                    setForgottenIds(new Set())
+                    setIsFinished(false)
+                  }}
+                  className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-china-red hover:bg-china-red-hover text-white font-semibold text-xs sm:text-sm transition-colors shadow-xs cursor-pointer"
+                >
+                  <RotateCw className="w-4 h-4" />
+                  <span>Học lại từ đầu</span>
+                </button>
+
+                {forgottenIds.size > 0 && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const needReview = allWords.filter(c => forgottenIds.has(c.id))
+                      setDeck(needReview)
+                      setCurrentIndex(0)
+                      setIsFlipped(false)
+                      setRememberedIds(new Set())
+                      setForgottenIds(new Set())
+                      setIsFinished(false)
+                    }}
+                    className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-red-300 dark:border-red-800 bg-red-50 dark:bg-red-950/40 hover:bg-red-100 text-red-700 dark:text-red-300 font-semibold text-xs sm:text-sm transition-colors cursor-pointer"
+                  >
+                    <span>Ôn từ chưa nhớ ({forgottenIds.size})</span>
+                  </button>
+                )}
+
+                <button
+                  type="button"
+                  onClick={() => setMode("gallery")}
+                  className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-border bg-stone-100 dark:bg-[#201a2e] hover:bg-stone-200 dark:hover:bg-[#2a223c] text-china-ink font-semibold text-xs sm:text-sm transition-colors cursor-pointer"
+                >
+                  <span>Thư viện thẻ</span>
+                </button>
+              </div>
+            </div>
+          ) : currentCard ? (
             <div className="flex flex-col items-center">
               <div
                 onClick={() => setIsFlipped(prev => !prev)}
@@ -677,16 +766,18 @@ export default function BonusStudyPage({ params }: PageProps) {
               {/* Action Buttons: Again vs Remembered */}
               <div className="w-full max-w-2xl mt-6 grid grid-cols-2 gap-4">
                 <button
+                  type="button"
                   onClick={() => handleCardResult(false)}
-                  className="flex items-center justify-center gap-1.5 py-3.5 px-4 rounded-2xl border border-red-200 dark:border-red-900/60 bg-red-50 dark:bg-red-950/40 hover:bg-red-100 dark:hover:bg-red-900/40 text-red-600 dark:text-red-300 font-bold text-sm sm:text-base transition-all shadow-xs active:scale-95"
+                  className="flex items-center justify-center gap-1.5 py-3.5 px-4 rounded-2xl border border-red-200 dark:border-red-900/60 bg-red-50 dark:bg-red-950/40 hover:bg-red-100 dark:hover:bg-red-900/40 text-red-600 dark:text-red-300 font-bold text-sm sm:text-base transition-all shadow-xs active:scale-95 cursor-pointer"
                 >
                   <ChevronLeft className="w-5 h-5" />
                   <span>Chưa nhớ (←)</span>
                 </button>
 
                 <button
+                  type="button"
                   onClick={() => handleCardResult(true)}
-                  className="flex items-center justify-center gap-1.5 py-3.5 px-4 rounded-2xl border border-china-jade/30 bg-china-jade hover:bg-china-jade/90 text-white font-bold text-sm sm:text-base transition-all shadow-xs active:scale-95"
+                  className="flex items-center justify-center gap-1.5 py-3.5 px-4 rounded-2xl border border-china-jade/30 bg-china-jade hover:bg-china-jade/90 text-white font-bold text-sm sm:text-base transition-all shadow-xs active:scale-95 cursor-pointer"
                 >
                   <span>Đã nhớ (→)</span>
                   <ChevronRight className="w-5 h-5" />
