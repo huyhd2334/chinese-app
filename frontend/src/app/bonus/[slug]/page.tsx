@@ -514,23 +514,14 @@ export default function BonusStudyPage({ params }: PageProps) {
 
               <div className="flex items-center gap-2">
                 <button
-                  onClick={() => {
-                    setEditingCard(null)
-                    setIsAddModalOpen(true)
-                  }}
-                  className="px-3 py-1.5 rounded-xl border border-border dark:border-[#382c47] bg-stone-100 dark:bg-[#201a2e] hover:bg-stone-200 dark:hover:bg-[#2a223c] text-xs font-semibold text-stone-800 dark:text-stone-200 transition-colors"
-                >
-                  + Thêm thẻ
-                </button>
-                <button
                   onClick={handleShuffle}
-                  className="px-3 py-1.5 rounded-xl border border-border dark:border-[#382c47] bg-stone-100 dark:bg-[#201a2e] hover:bg-stone-200 dark:hover:bg-[#2a223c] text-xs font-medium text-stone-800 dark:text-stone-200 transition-colors shadow-2xs"
+                  className="px-3 py-1.5 rounded-xl border border-border dark:border-[#382c47] bg-stone-100 dark:bg-[#201a2e] hover:bg-stone-200 dark:hover:bg-[#2a223c] text-xs font-medium text-stone-800 dark:text-stone-200 transition-colors shadow-2xs cursor-pointer"
                 >
                   Xáo trộn
                 </button>
                 <button
                   onClick={() => setIsAutoPlay(prev => !prev)}
-                  className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all shadow-2xs ${
+                  className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all shadow-2xs cursor-pointer ${
                     isAutoPlay 
                       ? "bg-china-jade text-white" 
                       : "bg-stone-100 dark:bg-[#201a2e] border border-border dark:border-[#382c47] text-stone-800 dark:text-stone-200 hover:bg-stone-200 dark:hover:bg-[#2a223c]"
@@ -861,28 +852,6 @@ export default function BonusStudyPage({ params }: PageProps) {
               {/* Toggles */}
               <div className="flex items-center gap-2 flex-wrap">
                 <button
-                  onClick={() => {
-                    setEditingCard(null)
-                    setAddModalTab("single")
-                    setIsAddModalOpen(true)
-                  }}
-                  className="px-3 py-2 rounded-xl bg-china-red hover:bg-china-red-hover text-white text-xs font-semibold transition-all active:scale-95 shadow-xs cursor-pointer"
-                >
-                  + Thêm thẻ
-                </button>
-
-                <button
-                  onClick={() => {
-                    setEditingCard(null)
-                    setAddModalTab("bulk")
-                    setIsAddModalOpen(true)
-                  }}
-                  className="px-3 py-2 rounded-xl border border-border dark:border-[#382c47] bg-stone-100 dark:bg-[#201a2e] hover:bg-stone-200 dark:hover:bg-[#2a223c] text-stone-800 dark:text-stone-200 text-xs font-semibold transition-all active:scale-95 shadow-2xs cursor-pointer"
-                >
-                  + Thêm nhiều từ
-                </button>
-
-                <button
                   onClick={() => setHidePhonetic(p => !p)}
                   className={`px-3 py-2 rounded-xl border text-xs font-semibold transition-colors cursor-pointer ${
                     hidePhonetic
@@ -1081,16 +1050,36 @@ export default function BonusStudyPage({ params }: PageProps) {
           {/* Empty state */}
           {filteredWords.length === 0 && (
             <div className="py-20 flex flex-col items-center justify-center text-muted font-medium bg-card rounded-2xl border border-border space-y-3">
-              <p>Không tìm thấy từ vựng nào khớp với bộ lọc.</p>
-              <button
-                onClick={() => {
-                  setEditingCard(null)
-                  setIsAddModalOpen(true)
-                }}
-                className="px-4 py-2 rounded-xl bg-china-red text-white text-xs font-semibold hover:bg-china-red-hover transition-colors"
-              >
-                + Thêm từ này vào bộ thẻ
-              </button>
+              {allWords.length === 0 ? (
+                <>
+                  <p>Bộ từ vựng này hiện chưa có thẻ nào.</p>
+                  <button
+                    onClick={() => {
+                      setEditingCard(null)
+                      setIsAddModalOpen(true)
+                    }}
+                    className="px-4 py-2 rounded-xl bg-china-red text-white text-xs font-semibold hover:bg-china-red-hover transition-colors shadow-xs cursor-pointer"
+                  >
+                    + Thêm thẻ đầu tiên
+                  </button>
+                </>
+              ) : (
+                <>
+                  <p>Không tìm thấy từ vựng nào khớp với bộ lọc hoặc từ khóa tìm kiếm.</p>
+                  <button
+                    onClick={() => {
+                      setSearchQuery("")
+                      setSelectedTopic("all")
+                      setSelectedPos("all")
+                      setOnlyFavorites(false)
+                      setGalleryPage(0)
+                    }}
+                    className="px-4 py-2 rounded-xl border border-border bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 text-china-ink text-xs font-semibold transition-colors shadow-2xs cursor-pointer"
+                  >
+                    Đặt lại bộ lọc tìm kiếm
+                  </button>
+                </>
+              )}
             </div>
           )}
 
