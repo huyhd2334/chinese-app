@@ -33,10 +33,10 @@ export function RoadmapCard({ onOpenWizard }: RoadmapCardProps) {
     )
   }
 
-  // 1. TRẠNG THÁI CHƯA CÓ LỘ TRÌNH: Giao diện sạch sẽ, có viền dây leo thanh mảnh
+  // 1. TRẠNG THÁI CHƯA CÓ LỘ TRÌNH
   if (!stats || !stats.hasRoadmap) {
     return (
-      <div className="relative overflow-hidden w-full rounded-2xl bg-card border border-emerald-600/30 dark:border-emerald-500/30 p-5 sm:p-6 shadow-xs">
+      <div className="relative overflow-hidden w-full rounded-2xl bg-card border border-border p-5 sm:p-6 shadow-xs">
         {/* Dây leo lá cây thanh mảnh uốn lượn theo viền */}
         <LeafVineCornerSvg position="top-left" className="top-0 left-0 w-9 h-9 sm:w-10 sm:h-10" />
         <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-9 h-9 sm:w-10 sm:h-10" />
@@ -86,7 +86,7 @@ export function RoadmapCard({ onOpenWizard }: RoadmapCardProps) {
   }[stats.paceStatus]
 
   return (
-    <div className="relative overflow-hidden w-full rounded-2xl bg-card border border-emerald-600/30 dark:border-emerald-500/30 p-5 sm:p-6 shadow-xs">
+    <div className="relative overflow-hidden w-full rounded-2xl bg-card border border-border p-5 sm:p-6 shadow-xs">
       {/* Sợi dây leo thanh mảnh uốn lượn theo viền card tự nhiên */}
       <LeafVineCornerSvg position="top-left" className="top-0 left-0 w-9 h-9 sm:w-10 sm:h-10" />
       <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-9 h-9 sm:w-10 sm:h-10" />

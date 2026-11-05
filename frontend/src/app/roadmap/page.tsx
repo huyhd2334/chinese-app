@@ -89,8 +89,8 @@ export default function RoadmapDetailPage() {
         </div>
       </div>
 
-      {/* HEADER SECTION: SẠCH SẼ, HIỆN ĐẠI, DÂY LEO THANH MẢNH */}
-      <div className="relative overflow-hidden rounded-2xl bg-card border border-emerald-600/30 dark:border-emerald-500/30 p-5 sm:p-6 shadow-xs space-y-3">
+      {/* HEADER SECTION */}
+      <div className="relative overflow-hidden rounded-2xl bg-card border border-border p-5 sm:p-6 shadow-xs space-y-3">
         <LeafVineCornerSvg position="top-left" className="top-0 left-0 w-9 h-9 sm:w-10 sm:h-10" />
         <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-9 h-9 sm:w-10 sm:h-10" />
         <FoliageEdgeBorder position="top" className="h-2 opacity-60" />

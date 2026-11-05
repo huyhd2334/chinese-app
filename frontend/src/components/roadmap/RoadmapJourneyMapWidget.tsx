@@ -16,7 +16,7 @@ export function RoadmapJourneyMapWidget({ stats }: RoadmapJourneyMapProps) {
   const levels: HskLevelNumber[] = [1, 2, 3, 4, 5, 6].filter((lvl) => lvl <= Math.max(targetLevel, 3)) as HskLevelNumber[]
 
   return (
-    <div className="relative overflow-hidden rounded-2xl bg-card border border-emerald-600/30 dark:border-emerald-500/30 p-4 sm:p-6 shadow-xs space-y-4 sm:space-y-5">
+    <div className="relative overflow-hidden rounded-2xl bg-card border border-border p-4 sm:p-6 shadow-xs space-y-4 sm:space-y-5">
       <LeafVineCornerSvg position="top-left" className="top-0 left-0 w-8 h-8 sm:w-9 sm:h-9" />
       <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-8 h-8 sm:w-9 sm:h-9" />
 
