@@ -127,10 +127,10 @@ export default function BonusCreateCollectionModal({
               <button
                 type="button"
                 onClick={() => setLanguage("zh")}
-                className={`py-2 px-3 rounded-xl border text-xs sm:text-sm font-semibold transition-all text-center ${
+                className={`py-2 px-3 rounded-xl border text-xs sm:text-sm font-semibold transition-all text-center cursor-pointer ${
                   language === "zh"
                     ? "bg-china-red text-white border-china-red shadow-xs"
-                    : "bg-white border-border text-china-ink hover:bg-china-paper"
+                    : "bg-card border-border text-china-ink hover:bg-china-paper"
                 }`}
               >
                 Tiếng Trung (HSK)
@@ -138,10 +138,10 @@ export default function BonusCreateCollectionModal({
               <button
                 type="button"
                 onClick={() => setLanguage("en")}
-                className={`py-2 px-3 rounded-xl border text-xs sm:text-sm font-semibold transition-all text-center ${
+                className={`py-2 px-3 rounded-xl border text-xs sm:text-sm font-semibold transition-all text-center cursor-pointer ${
                   language === "en"
                     ? "bg-blue-600 text-white border-blue-600 shadow-xs"
-                    : "bg-white border-border text-china-ink hover:bg-china-paper"
+                    : "bg-card border-border text-china-ink hover:bg-china-paper"
                 }`}
               >
                 Tiếng Anh (TOEIC)
@@ -167,7 +167,7 @@ export default function BonusCreateCollectionModal({
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 rounded-xl border border-border bg-white hover:bg-china-paper text-xs sm:text-sm font-medium text-china-ink transition-colors"
+              className="px-4 py-2 rounded-xl border border-border bg-stone-100 hover:bg-stone-200 dark:bg-stone-800 dark:hover:bg-stone-700 text-xs sm:text-sm font-semibold text-stone-700 dark:text-stone-200 transition-colors cursor-pointer"
             >
               Hủy
             </button>

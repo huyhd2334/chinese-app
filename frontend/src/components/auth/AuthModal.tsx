@@ -451,7 +451,7 @@ export default function AuthModal() {
               type="button"
               onClick={handleGoogleSignIn}
               disabled={isSubmitting}
-              className="w-full py-2.5 px-3 rounded-xl border border-border bg-white hover:bg-china-paper text-china-ink text-xs font-semibold transition-all flex items-center justify-center gap-2 active:scale-95 shadow-2xs cursor-pointer"
+              className="w-full py-2.5 px-3 rounded-xl border border-border bg-card hover:bg-china-paper text-china-ink text-xs font-semibold transition-all flex items-center justify-center gap-2 active:scale-95 shadow-2xs cursor-pointer"
             >
               <svg className="w-4 h-4" viewBox="0 0 24 24">
                 <path

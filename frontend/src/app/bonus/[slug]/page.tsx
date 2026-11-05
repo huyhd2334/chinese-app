@@ -250,6 +250,20 @@ export default function BonusStudyPage({ params }: PageProps) {
   // Next / Prev card
   const handleCardResult = useCallback((remembered: boolean) => {
     if (!currentCard) return
+
+    // Nếu người dùng bấm "Chưa nhớ" khi chưa lật thẻ, tự động lật thẻ để họ xem đáp án trước
+    if (!remembered && !isFlipped) {
+      setIsFlipped(true)
+      playAudio(currentCard.word)
+      setForgottenIds(prev => new Set(prev).add(currentCard.id))
+      setRememberedIds(prev => {
+        const next = new Set(prev)
+        next.delete(currentCard.id)
+        return next
+      })
+      return
+    }
+
     if (remembered) {
       setRememberedIds(prev => new Set(prev).add(currentCard.id))
       setForgottenIds(prev => {
@@ -272,7 +286,7 @@ export default function BonusStudyPage({ params }: PageProps) {
     } else {
       setIsFinished(true)
     }
-  }, [currentCard, currentIndex, deck.length])
+  }, [currentCard, currentIndex, deck.length, isFlipped, playAudio])
 
   // Shuffle deck
   const handleShuffle = () => {
@@ -281,6 +295,8 @@ export default function BonusStudyPage({ params }: PageProps) {
     setCurrentIndex(0)
     setIsFlipped(false)
     setIsFinished(false)
+    setRememberedIds(new Set())
+    setForgottenIds(new Set())
   }
 
   // Keyboard navigation for Flashcard
@@ -310,15 +326,15 @@ export default function BonusStudyPage({ params }: PageProps) {
         if (!isFinished) handleCardResult(false)
       } else if (e.key === "r" || e.key === "R") {
         e.preventDefault()
-        setIsFlipped(false)
-        setCurrentIndex(0)
-        setIsFinished(false)
+        if (currentCard?.word) {
+          playAudio(currentCard.word)
+        }
       }
     }
 
     window.addEventListener("keydown", handleKeyDown)
     return () => window.removeEventListener("keydown", handleKeyDown)
-  }, [mode, isAddModalOpen, handleCardResult, isFinished, allWords])
+  }, [mode, isAddModalOpen, handleCardResult, isFinished, allWords, currentCard, playAudio])
 
   // Auto-play feature
   useEffect(() => {
@@ -763,25 +779,44 @@ export default function BonusStudyPage({ params }: PageProps) {
                 </div>
               </div>
 
-              {/* Action Buttons: Again vs Remembered */}
-              <div className="w-full max-w-2xl mt-6 grid grid-cols-2 gap-4">
-                <button
-                  type="button"
-                  onClick={() => handleCardResult(false)}
-                  className="flex items-center justify-center gap-1.5 py-3.5 px-4 rounded-2xl border border-red-200 dark:border-red-900/60 bg-red-50 dark:bg-red-950/40 hover:bg-red-100 dark:hover:bg-red-900/40 text-red-600 dark:text-red-300 font-bold text-sm sm:text-base transition-all shadow-xs active:scale-95 cursor-pointer"
-                >
-                  <ChevronLeft className="w-5 h-5" />
-                  <span>Chưa nhớ (←)</span>
-                </button>
+              {/* Action Buttons: Again vs Remembered & Flip Controls */}
+              <div className="w-full max-w-2xl mt-6 space-y-3 relative z-20">
+                {/* Trung tâm: Nút lật xem đáp án nổi bật nếu chưa lật */}
+                {!isFlipped && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsFlipped(true)
+                      if (currentCard?.word) playAudio(currentCard.word)
+                    }}
+                    className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-2xl border border-border bg-stone-100 hover:bg-stone-200 dark:bg-stone-800 dark:hover:bg-stone-700 text-stone-800 dark:text-stone-100 font-bold text-sm transition-all shadow-2xs active:scale-[0.99] cursor-pointer"
+                  >
+                    <RotateCw className="w-4 h-4 text-china-red" />
+                    <span>Lật thẻ xem đáp án (Phím Space)</span>
+                  </button>
+                )}
 
-                <button
-                  type="button"
-                  onClick={() => handleCardResult(true)}
-                  className="flex items-center justify-center gap-1.5 py-3.5 px-4 rounded-2xl border border-china-jade/30 bg-china-jade hover:bg-china-jade/90 text-white font-bold text-sm sm:text-base transition-all shadow-xs active:scale-95 cursor-pointer"
-                >
-                  <span>Đã nhớ (→)</span>
-                  <ChevronRight className="w-5 h-5" />
-                </button>
+                <div className="grid grid-cols-2 gap-4">
+                  <button
+                    type="button"
+                    onClick={() => handleCardResult(false)}
+                    className="flex items-center justify-center gap-1.5 py-3.5 px-4 rounded-2xl border border-red-200 dark:border-red-900/60 bg-red-50 dark:bg-red-950/40 hover:bg-red-100 dark:hover:bg-red-900/40 text-red-600 dark:text-red-300 font-bold text-sm sm:text-base transition-all shadow-xs active:scale-95 cursor-pointer select-none pointer-events-auto"
+                    title={!isFlipped ? "Lật xem đáp án và đánh dấu cần ôn" : "Cần ôn lại thẻ này"}
+                  >
+                    <ChevronLeft className="w-5 h-5" />
+                    <span>Chưa nhớ (←)</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => handleCardResult(true)}
+                    className="flex items-center justify-center gap-1.5 py-3.5 px-4 rounded-2xl border border-china-jade/30 bg-china-jade hover:bg-china-jade/90 text-white font-bold text-sm sm:text-base transition-all shadow-xs active:scale-95 cursor-pointer select-none pointer-events-auto"
+                    title="Đã ghi nhớ thẻ này"
+                  >
+                    <span>Đã nhớ (→)</span>
+                    <ChevronRight className="w-5 h-5" />
+                  </button>
+                </div>
               </div>
             </div>
           ) : (

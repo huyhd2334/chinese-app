@@ -93,7 +93,7 @@ export default function UserMenu({ compact = false }: UserMenuProps) {
           </button>
           <button
             onClick={openAuthModal}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white border border-border text-xs font-semibold text-china-ink hover:bg-china-paper transition-colors shadow-2xs active:scale-95"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-card border border-border text-xs font-semibold text-china-ink hover:bg-china-paper transition-colors shadow-2xs active:scale-95 cursor-pointer"
           >
             <LogIn className="w-3.5 h-3.5" />
             <span>Đăng nhập</span>
@@ -109,14 +109,14 @@ export default function UserMenu({ compact = false }: UserMenuProps) {
         {!isPro && (
           <button
             onClick={() => triggerUpgradeModal("manual")}
-            className="px-2 py-1 rounded-lg bg-china-red/10 text-china-red text-[10px] font-bold"
+            className="px-2 py-1 rounded-lg bg-china-red/10 text-china-red text-[10px] font-bold cursor-pointer"
           >
             Nâng cấp Pro
           </button>
         )}
         <button
           onClick={() => setShowDropdown((prev) => !prev)}
-          className="flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-white border border-border text-xs font-semibold text-china-ink shadow-2xs"
+          className="flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-card border border-border text-xs font-semibold text-china-ink shadow-2xs cursor-pointer hover:bg-china-paper transition-colors"
         >
           <span className="w-5 h-5 rounded-full bg-china-red/10 text-china-red font-bold text-[10px] flex items-center justify-center uppercase shrink-0">
             {displayName[0]}

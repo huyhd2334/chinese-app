@@ -247,11 +247,11 @@ export default function BonusAddCardModal({
 
         {/* Tab switcher (only when creating new cards) */}
         {!editCard && (
-          <div className="flex border-b border-border bg-white px-6 pt-3 gap-4">
+          <div className="flex border-b border-border bg-stone-50 dark:bg-[#1a1624] px-6 pt-3 gap-4">
             <button
               type="button"
               onClick={() => setActiveTab("single")}
-              className={`pb-2.5 text-xs sm:text-sm font-semibold transition-colors border-b-2 ${
+              className={`pb-2.5 text-xs sm:text-sm font-semibold transition-colors border-b-2 cursor-pointer ${
                 activeTab === "single"
                   ? "border-china-red text-china-red"
                   : "border-transparent text-muted hover:text-china-ink"
@@ -262,7 +262,7 @@ export default function BonusAddCardModal({
             <button
               type="button"
               onClick={() => setActiveTab("bulk")}
-              className={`pb-2.5 text-xs sm:text-sm font-semibold transition-colors border-b-2 ${
+              className={`pb-2.5 text-xs sm:text-sm font-semibold transition-colors border-b-2 cursor-pointer ${
                 activeTab === "bulk"
                   ? "border-china-red text-china-red"
                   : "border-transparent text-muted hover:text-china-ink"
@@ -299,7 +299,7 @@ export default function BonusAddCardModal({
                   type="button"
                   onClick={handleAutoAssist}
                   disabled={isTranslating || !word.trim()}
-                  className="px-4 py-2.5 rounded-xl bg-china-ink hover:bg-china-ink/80 text-white text-xs font-semibold disabled:opacity-40 transition-colors whitespace-nowrap active:scale-95"
+                  className="px-4 py-2.5 rounded-xl bg-stone-900 hover:bg-stone-800 dark:bg-stone-100 dark:hover:bg-white text-white dark:text-stone-900 text-xs font-semibold disabled:opacity-40 transition-colors whitespace-nowrap active:scale-95 cursor-pointer disabled:cursor-not-allowed shadow-xs"
                 >
                   {isTranslating ? "Đang dịch..." : "Dịch & Điền tự động"}
                 </button>
@@ -436,13 +436,13 @@ export default function BonusAddCardModal({
               <button
                 type="button"
                 onClick={onClose}
-                className="px-4 py-2 rounded-xl border border-border bg-white hover:bg-china-paper text-xs sm:text-sm font-medium text-china-ink transition-colors"
+                className="px-4 py-2 rounded-xl border border-border bg-stone-100 hover:bg-stone-200 dark:bg-stone-800 dark:hover:bg-stone-700 text-xs sm:text-sm font-semibold text-stone-700 dark:text-stone-200 transition-colors cursor-pointer"
               >
                 Hủy
               </button>
               <button
                 type="submit"
-                className="px-5 py-2 rounded-xl bg-china-red hover:bg-china-red-hover text-white text-xs sm:text-sm font-bold transition-colors active:scale-95"
+                className="px-5 py-2 rounded-xl bg-china-red hover:bg-china-red-hover text-white text-xs sm:text-sm font-bold transition-colors active:scale-95 cursor-pointer shadow-xs"
               >
                 {editCard ? "Cập nhật thẻ" : "Lưu thẻ vào bộ"}
               </button>
@@ -503,7 +503,7 @@ export default function BonusAddCardModal({
                   <button
                     type="button"
                     onClick={onClose}
-                    className="px-4 py-2 rounded-xl border border-border bg-white hover:bg-china-paper text-xs sm:text-sm font-medium text-china-ink transition-colors"
+                    className="px-4 py-2 rounded-xl border border-border bg-stone-100 hover:bg-stone-200 dark:bg-stone-800 dark:hover:bg-stone-700 text-xs sm:text-sm font-semibold text-stone-700 dark:text-stone-200 transition-colors cursor-pointer"
                   >
                     Hủy
                   </button>
@@ -511,7 +511,7 @@ export default function BonusAddCardModal({
                     type="button"
                     disabled={isBatchProcessing || !bulkInput.trim()}
                     onClick={handleStartBatchProcess}
-                    className="px-5 py-2 rounded-xl bg-china-red hover:bg-china-red-hover text-white text-xs sm:text-sm font-bold transition-colors disabled:opacity-40 active:scale-95"
+                    className="px-5 py-2 rounded-xl bg-china-red hover:bg-china-red-hover text-white text-xs sm:text-sm font-bold transition-colors disabled:opacity-40 active:scale-95 cursor-pointer shadow-xs"
                   >
                     {isBatchProcessing ? "Đang xử lý..." : "Phân tích & Dịch hàng loạt"}
                   </button>
@@ -532,7 +532,7 @@ export default function BonusAddCardModal({
                   <button
                     type="button"
                     onClick={() => setBulkPreviewCards([])}
-                    className="text-xs text-muted hover:text-china-red font-medium transition-colors"
+                    className="text-xs text-muted hover:text-china-red font-medium transition-colors cursor-pointer"
                   >
                     Làm lại danh sách
                   </button>
@@ -540,7 +540,7 @@ export default function BonusAddCardModal({
 
                 <div className="max-h-72 overflow-y-auto border border-border rounded-2xl divide-y divide-border bg-china-paper/30">
                   {bulkPreviewCards.map((card, idx) => (
-                    <div key={card.id || idx} className="p-3 flex items-start justify-between gap-3 bg-white hover:bg-china-paper/50 transition-colors">
+                    <div key={card.id || idx} className="p-3 flex items-start justify-between gap-3 bg-card hover:bg-china-paper/60 transition-colors">
                       <div className="flex-1 min-w-0 space-y-1">
                         <div className="flex items-baseline gap-2">
                           <span className="font-serif font-bold text-china-ink text-sm sm:text-base">
@@ -570,7 +570,7 @@ export default function BonusAddCardModal({
                         type="button"
                         onClick={() => handleRemovePreviewCard(idx)}
                         title="Xóa từ này"
-                        className="p-1 text-muted hover:text-china-red rounded-md transition-colors mt-1"
+                        className="p-1 text-muted hover:text-china-red rounded-md transition-colors mt-1 cursor-pointer"
                       >
                         <X className="w-4 h-4" />
                       </button>
@@ -582,14 +582,14 @@ export default function BonusAddCardModal({
                   <button
                     type="button"
                     onClick={() => setBulkPreviewCards([])}
-                    className="px-4 py-2 rounded-xl border border-border bg-white hover:bg-china-paper text-xs sm:text-sm font-medium text-china-ink transition-colors"
+                    className="px-4 py-2 rounded-xl border border-border bg-stone-100 hover:bg-stone-200 dark:bg-stone-800 dark:hover:bg-stone-700 text-xs sm:text-sm font-semibold text-stone-700 dark:text-stone-200 transition-colors cursor-pointer"
                   >
                     Quay lại
                   </button>
                   <button
                     type="button"
                     onClick={handleSaveAllBulk}
-                    className="px-5 py-2 rounded-xl bg-china-red hover:bg-china-red-hover text-white text-xs sm:text-sm font-bold transition-colors active:scale-95"
+                    className="px-5 py-2 rounded-xl bg-china-red hover:bg-china-red-hover text-white text-xs sm:text-sm font-bold transition-colors active:scale-95 cursor-pointer shadow-xs"
                   >
                     Lưu tất cả ({bulkPreviewCards.length} từ)
                   </button>

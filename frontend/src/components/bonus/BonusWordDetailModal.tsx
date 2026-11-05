@@ -109,7 +109,7 @@ export default function BonusWordDetailModal({
             {/* Part of Speech & Topic Tags */}
             <div className="flex items-center justify-center gap-2 flex-wrap mt-2">
               {word.partOfSpeech && (
-                <span className="px-2.5 py-0.5 rounded-lg text-xs font-semibold bg-white border border-border text-china-ink shadow-2xs">
+                <span className="px-2.5 py-0.5 rounded-lg text-xs font-semibold bg-stone-100 dark:bg-stone-800 border border-border text-china-ink shadow-2xs">
                   {word.partOfSpeech}
                 </span>
               )}
@@ -122,7 +122,7 @@ export default function BonusWordDetailModal({
           </div>
 
           {/* Meaning Section */}
-          <div className="bg-white p-5 rounded-2xl border border-border shadow-2xs">
+          <div className="bg-stone-50 dark:bg-[#1a1624] p-5 rounded-2xl border border-border shadow-2xs">
             <p className="text-xs uppercase tracking-wider text-muted font-bold mb-2">
               Nghĩa tiếng Việt
             </p>
@@ -169,7 +169,7 @@ export default function BonusWordDetailModal({
               </p>
               <div className="flex flex-wrap gap-1.5">
                 {word.synonyms.map((syn, i) => (
-                  <span key={i} className="px-2 py-0.5 bg-white border border-blue-200 rounded-md text-xs font-medium text-blue-800">
+                  <span key={i} className="px-2 py-0.5 bg-card border border-blue-200 dark:border-blue-900 rounded-md text-xs font-medium text-blue-800 dark:text-blue-300">
                     {syn}
                   </span>
                 ))}
@@ -182,7 +182,7 @@ export default function BonusWordDetailModal({
         <div className="px-6 py-3.5 border-t border-border bg-china-paper/40 flex justify-end">
           <button
             onClick={onClose}
-            className="px-5 py-2 rounded-xl bg-china-ink text-white text-xs sm:text-sm font-semibold hover:bg-china-ink/80 transition-colors shadow-xs active:scale-95"
+            className="px-5 py-2 rounded-xl bg-stone-900 hover:bg-stone-800 dark:bg-stone-100 dark:hover:bg-white text-white dark:text-stone-900 text-xs sm:text-sm font-semibold transition-colors shadow-xs active:scale-95 cursor-pointer"
           >
             Đóng
           </button>

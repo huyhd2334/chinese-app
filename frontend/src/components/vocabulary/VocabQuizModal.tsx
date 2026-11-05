@@ -157,7 +157,7 @@ export default function VocabQuizModal({ isOpen, onClose, words, onWordMastered 
               className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-medium transition-colors ${
                 isListeningMode 
                   ? "bg-china-jade text-white" 
-                  : "bg-white border border-border text-muted hover:text-china-ink"
+                  : "bg-card border border-border text-muted hover:text-china-ink"
               }`}
               title="Bật chế độ luyện nghe: Ẩn mặt chữ Hán, chỉ nghe phát âm để chọn nghĩa!"
             >
@@ -235,7 +235,7 @@ export default function VocabQuizModal({ isOpen, onClose, words, onWordMastered 
                 const isSelected = selectedOption === idx
                 const isCorrect = idx === currentQ.correctIndex
 
-                let btnStyle = "bg-white border-border text-china-ink hover:border-china-red/40 hover:bg-china-paper"
+                let btnStyle = "bg-card border-border text-china-ink hover:border-china-red/40 hover:bg-china-paper"
                 let icon = null
 
                 if (isAnswered) {
