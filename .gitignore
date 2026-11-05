@@ -7,3 +7,7 @@ __pycache__/
 *.png
 /data/raw/CVDICT.u8
 
+# Do not ignore public assets for frontend
+!frontend/public/**
+
+
