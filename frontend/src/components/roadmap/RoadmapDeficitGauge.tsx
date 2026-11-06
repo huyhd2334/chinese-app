@@ -40,9 +40,9 @@ export function RoadmapDeficitGauge({ stats }: RoadmapDeficitGaugeProps) {
             )}
           </div>
 
-          <div className="w-full bg-muted/50 rounded-full h-2 overflow-hidden">
+          <div className="w-full bg-emerald-100/80 dark:bg-emerald-950/50 rounded-full h-2.5 overflow-hidden border border-emerald-200/50 dark:border-emerald-800/30">
             <div
-              className="bg-emerald-600 dark:bg-emerald-500 h-full rounded-full transition-all duration-500"
+              className="bg-emerald-600 dark:bg-emerald-500 h-full rounded-full transition-all duration-500 shadow-xs"
               style={{ width: `${stats.lessonProgressPercent}%` }}
             />
           </div>
@@ -84,9 +84,9 @@ export function RoadmapDeficitGauge({ stats }: RoadmapDeficitGaugeProps) {
             )}
           </div>
 
-          <div className="w-full bg-muted/50 rounded-full h-2 overflow-hidden">
+          <div className="w-full bg-amber-100/80 dark:bg-amber-950/50 rounded-full h-2.5 overflow-hidden border border-amber-200/50 dark:border-amber-800/30">
             <div
-              className="bg-amber-600 dark:bg-amber-500 h-full rounded-full transition-all duration-500"
+              className="bg-amber-600 dark:bg-amber-500 h-full rounded-full transition-all duration-500 shadow-xs"
               style={{ width: `${stats.wordProgressPercent}%` }}
             />
           </div>

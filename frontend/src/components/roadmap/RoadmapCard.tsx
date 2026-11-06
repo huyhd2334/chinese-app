@@ -112,104 +112,104 @@ export function RoadmapCard({ onOpenWizard }: RoadmapCardProps) {
         </div>
 
         <div className="flex items-center gap-2 self-start sm:self-auto">
-          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-muted/40 border border-border/60 text-xs font-medium text-muted-foreground">
-            <Calendar className="w-3.5 h-3.5" />
-            <span>Còn <strong className="text-foreground">{stats.daysRemaining} ngày</strong> ({stats.targetDate})</span>
+          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-card border border-border shadow-2xs text-xs font-medium text-slate-700 dark:text-stone-200">
+            <Calendar className="w-3.5 h-3.5 text-china-red" />
+            <span>Còn <strong className="text-china-red dark:text-amber-400 font-bold">{stats.daysRemaining} ngày</strong> ({stats.targetDate})</span>
           </div>
 
           <button
             onClick={onOpenWizard}
             title="Điều chỉnh mục tiêu"
-            className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors border border-border/60"
+            className="p-2 rounded-xl text-slate-600 dark:text-stone-300 hover:text-foreground hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors border border-border shadow-2xs cursor-pointer"
           >
             <Settings2 className="w-4 h-4" />
           </button>
         </div>
       </div>
 
-      {/* 2 Khung đo lường: BÀI HỌC & TỪ VỰNG (Số liệu ăn khớp chính xác 100%) */}
+      {/* 2 Khung đo lường: BÀI HỌC & TỪ VỰNG (Tone màu sáng, tươi, tương phản cao, không xám đục) */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-5">
         {/* Khung 1: BÀI HỌC GIÁO TRÌNH */}
-        <div className="rounded-xl bg-muted/20 border border-border/60 p-4 space-y-3">
+        <div className="rounded-2xl bg-emerald-500/[0.04] dark:bg-emerald-950/25 border border-emerald-500/25 dark:border-emerald-700/40 p-4 sm:p-5 space-y-3.5 shadow-xs">
           <div className="flex items-center justify-between text-xs font-medium">
-            <span className="flex items-center gap-1.5 text-muted-foreground font-semibold">
+            <span className="flex items-center gap-1.5 text-emerald-800 dark:text-emerald-300 font-bold tracking-wide">
               <BookOpen className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
               BÀI HỌC GIÁO TRÌNH
             </span>
-            <span className="font-bold text-foreground text-sm">{stats.lessonProgressPercent}%</span>
+            <span className="font-extrabold text-emerald-700 dark:text-emerald-400 text-sm sm:text-base">{stats.lessonProgressPercent}%</span>
           </div>
 
           {/* Progress bar */}
-          <div className="w-full bg-muted/50 rounded-full h-2.5 overflow-hidden">
+          <div className="w-full bg-emerald-100/80 dark:bg-emerald-950/50 rounded-full h-2.5 overflow-hidden border border-emerald-200/50 dark:border-emerald-800/30">
             <div
-              className="bg-emerald-600 dark:bg-emerald-500 h-full rounded-full transition-all duration-500"
+              className="bg-emerald-600 dark:bg-emerald-500 h-full rounded-full transition-all duration-500 shadow-xs"
               style={{ width: `${stats.lessonProgressPercent}%` }}
             />
           </div>
 
-          <div className="flex items-end justify-between pt-0.5 text-xs">
-            <div className="space-y-0.5">
-              <div className="font-semibold text-foreground text-sm">
+          <div className="flex items-end justify-between pt-0.5 text-xs gap-2">
+            <div className="space-y-1">
+              <div className="font-bold text-slate-900 dark:text-stone-100 text-sm sm:text-base">
                 Đã tích lũy {stats.effectiveCompletedLessons}/{stats.totalTargetLessons} bài
               </div>
               {stats.alreadyKnownLessons > 0 && (
-                <div className="text-[11px] text-muted-foreground">
+                <div className="text-[11px] text-slate-600 dark:text-stone-300 font-medium">
                   (Gồm {stats.completedLessons} bài đã học + {stats.alreadyKnownLessons} bài nền tảng HSK {stats.startLevel})
                 </div>
               )}
-              <div className="text-emerald-700 dark:text-emerald-400 font-medium text-xs">
+              <div className="text-emerald-700 dark:text-emerald-400 font-semibold text-xs pt-0.5">
                 {stats.remainingLessons > 0 ? (
-                  <>Còn thiếu <span className="font-bold text-foreground">{stats.remainingLessons} bài</span></>
+                  <>Còn thiếu <span className="font-bold text-slate-900 dark:text-white underline decoration-emerald-500/40">{stats.remainingLessons} bài</span></>
                 ) : (
                   <>Đã hoàn tất toàn bộ bài học mục tiêu</>
                 )}
               </div>
             </div>
 
-            <div className="text-muted-foreground text-xs font-medium bg-muted/40 px-2 py-1 rounded-md shrink-0">
+            <div className="text-emerald-800 dark:text-emerald-300 text-xs font-bold bg-white dark:bg-emerald-900/40 border border-emerald-300/80 dark:border-emerald-700/60 px-2.5 py-1 rounded-lg shrink-0 shadow-2xs">
               ~{stats.weeklyLessonsRequired} bài/tuần
             </div>
           </div>
         </div>
 
         {/* Khung 2: TỪ VỰNG CỐT LÕI */}
-        <div className="rounded-xl bg-muted/20 border border-border/60 p-4 space-y-3">
+        <div className="rounded-2xl bg-amber-500/[0.04] dark:bg-amber-950/25 border border-amber-500/25 dark:border-amber-700/40 p-4 sm:p-5 space-y-3.5 shadow-xs">
           <div className="flex items-center justify-between text-xs font-medium">
-            <span className="flex items-center gap-1.5 text-muted-foreground font-semibold">
+            <span className="flex items-center gap-1.5 text-amber-900 dark:text-amber-300 font-bold tracking-wide">
               <Target className="w-4 h-4 text-amber-600 dark:text-amber-400" />
               TỪ VỰNG CỐT LÕI
             </span>
-            <span className="font-bold text-foreground text-sm">{stats.wordProgressPercent}%</span>
+            <span className="font-extrabold text-amber-700 dark:text-amber-400 text-sm sm:text-base">{stats.wordProgressPercent}%</span>
           </div>
 
           {/* Progress bar */}
-          <div className="w-full bg-muted/50 rounded-full h-2.5 overflow-hidden">
+          <div className="w-full bg-amber-100/80 dark:bg-amber-950/50 rounded-full h-2.5 overflow-hidden border border-amber-200/50 dark:border-amber-800/30">
             <div
-              className="bg-amber-600 dark:bg-amber-500 h-full rounded-full transition-all duration-500"
+              className="bg-amber-600 dark:bg-amber-500 h-full rounded-full transition-all duration-500 shadow-xs"
               style={{ width: `${stats.wordProgressPercent}%` }}
             />
           </div>
 
-          <div className="flex items-end justify-between pt-0.5 text-xs">
-            <div className="space-y-0.5">
-              <div className="font-semibold text-foreground text-sm">
+          <div className="flex items-end justify-between pt-0.5 text-xs gap-2">
+            <div className="space-y-1">
+              <div className="font-bold text-slate-900 dark:text-stone-100 text-sm sm:text-base">
                 Đã tích lũy {stats.effectiveLearnedWords.toLocaleString("vi-VN")}/{stats.totalTargetWords.toLocaleString("vi-VN")} từ
               </div>
               {stats.alreadyKnownWords > 0 && (
-                <div className="text-[11px] text-muted-foreground">
+                <div className="text-[11px] text-slate-600 dark:text-stone-300 font-medium">
                   (Gồm {stats.learnedWords.toLocaleString("vi-VN")} từ đã học + {stats.alreadyKnownWords.toLocaleString("vi-VN")} từ nền tảng HSK {stats.startLevel})
                 </div>
               )}
-              <div className="text-amber-800 dark:text-amber-400 font-medium text-xs">
+              <div className="text-amber-800 dark:text-amber-400 font-semibold text-xs pt-0.5">
                 {stats.remainingWords > 0 ? (
-                  <>Còn thiếu <span className="font-bold text-foreground">{stats.remainingWords.toLocaleString("vi-VN")} từ</span></>
+                  <>Còn thiếu <span className="font-bold text-slate-900 dark:text-white underline decoration-amber-500/40">{stats.remainingWords.toLocaleString("vi-VN")} từ</span></>
                 ) : (
                   <>Đã nắm trọn vốn từ mục tiêu</>
                 )}
               </div>
             </div>
 
-            <div className="text-muted-foreground text-xs font-medium bg-muted/40 px-2 py-1 rounded-md shrink-0">
+            <div className="text-amber-900 dark:text-amber-300 text-xs font-bold bg-white dark:bg-amber-900/40 border border-amber-300/80 dark:border-amber-700/60 px-2.5 py-1 rounded-lg shrink-0 shadow-2xs">
               ~{stats.dailyPaceRequired} từ/ngày
             </div>
           </div>
@@ -218,15 +218,15 @@ export function RoadmapCard({ onOpenWizard }: RoadmapCardProps) {
 
       {/* Footer Hành động */}
       <div className="pt-3.5 border-t border-border/60 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
-        <div className="text-muted-foreground">
-          Hôm nay cần: <strong className="text-foreground">{stats.dailyPlan.newWordsTargetCount} từ mới</strong> & <strong className="text-foreground">{stats.dailyPlan.wordsToReviewCount} thẻ ôn</strong>
+        <div className="text-slate-600 dark:text-stone-300 font-medium">
+          Hôm nay cần: <strong className="text-china-red font-bold">{stats.dailyPlan.newWordsTargetCount} từ mới</strong> & <strong className="text-slate-900 dark:text-white font-bold">{stats.dailyPlan.wordsToReviewCount} thẻ ôn</strong>
         </div>
 
         <div className="flex items-center gap-2.5 flex-wrap">
           {stats.dailyPlan.recommendedLesson && (
             <Link
               href={`/books/${stats.dailyPlan.recommendedLesson.bookId}/${stats.dailyPlan.recommendedLesson.lessonId}`}
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-foreground text-background hover:bg-foreground/90 font-medium transition-colors max-w-[260px] truncate"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-slate-900 dark:bg-stone-100 text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-white font-semibold transition-colors max-w-[260px] truncate shadow-xs"
               title={`Vào học: ${stats.dailyPlan.recommendedLesson.title}`}
             >
               <span className="truncate">Vào học: {stats.dailyPlan.recommendedLesson.title}</span>
@@ -237,7 +237,7 @@ export function RoadmapCard({ onOpenWizard }: RoadmapCardProps) {
           {stats.dailyPlan.wordsToReviewCount > 0 && (
             <Link
               href="/review"
-              className="inline-flex items-center gap-1 px-3 py-2 rounded-lg bg-muted/40 hover:bg-muted/70 text-foreground font-medium border border-border/60 transition-colors"
+              className="inline-flex items-center gap-1 px-3.5 py-2 rounded-xl bg-card hover:bg-stone-100 dark:hover:bg-stone-800 text-foreground font-semibold border border-border shadow-2xs transition-colors"
             >
               <span>Ôn tập ({stats.dailyPlan.wordsToReviewCount})</span>
             </Link>
@@ -245,9 +245,9 @@ export function RoadmapCard({ onOpenWizard }: RoadmapCardProps) {
 
           <Link
             href="/roadmap"
-            className="inline-flex items-center gap-1 px-3 py-2 rounded-lg text-foreground hover:bg-muted/40 font-medium transition-colors"
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-slate-700 dark:text-stone-300 hover:text-foreground hover:bg-stone-100 dark:hover:bg-stone-800 font-semibold transition-colors"
           >
-            <MapPin className="w-3.5 h-3.5 text-muted-foreground" />
+            <MapPin className="w-3.5 h-3.5 text-china-red" />
             <span>Chi tiết lộ trình</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
