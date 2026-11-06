@@ -28,11 +28,16 @@ export function RoadmapDeficitGauge({ stats }: RoadmapDeficitGaugeProps) {
 
           <div>
             <div className="text-2xl sm:text-3xl font-extrabold text-foreground">
-              {stats.completedLessons}{" "}
+              {stats.effectiveCompletedLessons}{" "}
               <span className="text-sm font-normal text-muted-foreground">
                 / {stats.totalTargetLessons} bài
               </span>
             </div>
+            {stats.alreadyKnownLessons > 0 && (
+              <div className="text-[11px] text-muted-foreground mt-0.5">
+                (Đã gồm {stats.alreadyKnownLessons} bài nền tảng HSK {stats.startLevel})
+              </div>
+            )}
           </div>
 
           <div className="w-full bg-muted/50 rounded-full h-2 overflow-hidden">
@@ -67,11 +72,16 @@ export function RoadmapDeficitGauge({ stats }: RoadmapDeficitGaugeProps) {
 
           <div>
             <div className="text-2xl sm:text-3xl font-extrabold text-foreground">
-              {stats.learnedWords}{" "}
+              {stats.effectiveLearnedWords.toLocaleString("vi-VN")}{" "}
               <span className="text-sm font-normal text-muted-foreground">
-                / {stats.totalTargetWords} từ
+                / {stats.totalTargetWords.toLocaleString("vi-VN")} từ
               </span>
             </div>
+            {stats.alreadyKnownWords > 0 && (
+              <div className="text-[11px] text-muted-foreground mt-0.5">
+                (Đã gồm {stats.alreadyKnownWords.toLocaleString("vi-VN")} từ nền tảng HSK {stats.startLevel})
+              </div>
+            )}
           </div>
 
           <div className="w-full bg-muted/50 rounded-full h-2 overflow-hidden">

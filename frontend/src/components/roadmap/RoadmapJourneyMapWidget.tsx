@@ -12,8 +12,8 @@ interface RoadmapJourneyMapProps {
 }
 
 export function RoadmapJourneyMapWidget({ stats }: RoadmapJourneyMapProps) {
-  const targetLevel = stats.targetLevel
-  const levels: HskLevelNumber[] = [1, 2, 3, 4, 5, 6].filter((lvl) => lvl <= Math.max(targetLevel, 3)) as HskLevelNumber[]
+  const targetLevel = Math.min(3, stats.targetLevel) as HskLevelNumber
+  const levels: HskLevelNumber[] = ([1, 2, 3] as HskLevelNumber[]).filter((lvl) => lvl <= targetLevel)
 
   return (
     <div className="relative overflow-hidden rounded-2xl bg-card border border-border p-4 sm:p-6 shadow-xs space-y-4 sm:space-y-5">
@@ -31,7 +31,7 @@ export function RoadmapJourneyMapWidget({ stats }: RoadmapJourneyMapProps) {
         </div>
 
         <div className="text-xs text-muted-foreground">
-          Đã hoàn thành <strong className="text-foreground">{stats.completedLessons}/{stats.totalTargetLessons}</strong> bài
+          Đã tích lũy <strong className="text-foreground">{stats.effectiveCompletedLessons}/{stats.totalTargetLessons}</strong> bài
         </div>
       </div>
 

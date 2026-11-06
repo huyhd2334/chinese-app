@@ -12,23 +12,23 @@ import type {
 
 const ROADMAP_STORAGE_KEY = "hsk_user_roadmap_v1"
 
-// Chuẩn số lượng từ và bài học theo từng cấp HSK
+// Chuẩn số lượng từ và bài học theo từng cấp HSK Chuẩn 3.0
 export const HSK_CUMULATIVE_STANDARDS: Record<HskLevelNumber, { words: number; lessons: number; bookId: string; name: string }> = {
-  1: { words: 150, lessons: 15, bookId: "new_hsk1_standard", name: "HSK 1" },
-  2: { words: 300, lessons: 30, bookId: "new_hsk2_standard", name: "HSK 2" },
-  3: { words: 600, lessons: 48, bookId: "new_hsk3_standard", name: "HSK 3" },
-  4: { words: 1200, lessons: 68, bookId: "hsk4_standard", name: "HSK 4" },
-  5: { words: 2500, lessons: 104, bookId: "hsk5_standard", name: "HSK 5" },
-  6: { words: 5000, lessons: 144, bookId: "hsk6_standard", name: "HSK 6" },
+  1: { words: 300, lessons: 15, bookId: "new_hsk1_standard", name: "HSK 1 (3.0)" },
+  2: { words: 600, lessons: 30, bookId: "new_hsk2_standard", name: "HSK 2 (3.0)" },
+  3: { words: 1000, lessons: 48, bookId: "new_hsk3_standard", name: "HSK 3 (3.0)" },
+  4: { words: 1600, lessons: 68, bookId: "new_hsk3_standard", name: "HSK 4" },
+  5: { words: 2500, lessons: 88, bookId: "new_hsk3_standard", name: "HSK 5" },
+  6: { words: 4000, lessons: 108, bookId: "new_hsk3_standard", name: "HSK 6" },
 }
 
 export const HSK_LEVEL_INCREMENTS: Record<HskLevelNumber, { words: number; lessons: number; bookId: string }> = {
-  1: { words: 150, lessons: 15, bookId: "new_hsk1_standard" },
-  2: { words: 150, lessons: 15, bookId: "new_hsk2_standard" },
-  3: { words: 300, lessons: 18, bookId: "new_hsk3_standard" },
-  4: { words: 600, lessons: 20, bookId: "hsk4_standard" },
-  5: { words: 1300, lessons: 36, bookId: "hsk5_standard" },
-  6: { words: 2500, lessons: 40, bookId: "hsk6_standard" },
+  1: { words: 300, lessons: 15, bookId: "new_hsk1_standard" },
+  2: { words: 300, lessons: 15, bookId: "new_hsk2_standard" },
+  3: { words: 400, lessons: 18, bookId: "new_hsk3_standard" },
+  4: { words: 600, lessons: 20, bookId: "new_hsk3_standard" },
+  5: { words: 900, lessons: 20, bookId: "new_hsk3_standard" },
+  6: { words: 1500, lessons: 20, bookId: "new_hsk3_standard" },
 }
 
 function isBrowser(): boolean {
@@ -117,13 +117,27 @@ export function generateRoadmapMilestones(input: RoadmapSetupInput): RoadmapMile
 export async function computeRoadmapStats(customRoadmap?: UserRoadmap | null): Promise<RoadmapStats> {
   const roadmap = customRoadmap !== undefined ? customRoadmap : getStoredRoadmap()
 
-  // Mặc định mục tiêu và trình độ khởi điểm
-  const startLevel = Math.max(0, roadmap?.startLevel ?? 0)
-  const targetLevel: HskLevelNumber = roadmap?.targetLevel || (startLevel > 0 ? (Math.min(6, startLevel + 1) as HskLevelNumber) : 1)
-  const targetDateStr = roadmap?.targetDate || new Date(Date.now() + 60 * 24 * 3600 * 1000).toISOString().split("T")[0]
+  // Mặc định mục tiêu và trình độ khởi điểm (giới hạn mục tiêu trong phạm vi giáo trình có sẵn HSK 1-3)
+  const rawTarget = roadmap?.targetLevel || 2
+  const targetLevel: HskLevelNumber = (Math.min(3, Math.max(1, rawTarget)) as HskLevelNumber)
+  const startLevel = Math.min(targetLevel - 1, Math.max(0, roadmap?.startLevel ?? 0))
   
-  // 1. Tính toán ngày còn lại
+  // 1. Tính toán ngày còn lại, giới hạn hợp lý tối đa 365 ngày (tránh tình trạng ngày bị đặt quá xa đến 2032)
   const now = new Date()
+  let targetDateStr = roadmap?.targetDate
+  if (targetDateStr) {
+    const targetTime = new Date(targetDateStr).getTime()
+    const diffDays = Math.ceil((targetTime - now.getTime()) / (1000 * 60 * 60 * 24))
+    if (diffDays <= 0 || diffDays > 365) {
+      // Hạn không hợp lý -> Đặt lại mặc định 90 ngày
+      const fallback = new Date(Date.now() + 90 * 24 * 3600 * 1000)
+      targetDateStr = fallback.toISOString().split("T")[0]
+    }
+  } else {
+    const fallback = new Date(Date.now() + 60 * 24 * 3600 * 1000)
+    targetDateStr = fallback.toISOString().split("T")[0]
+  }
+
   const targetDate = new Date(targetDateStr)
   const diffTime = targetDate.getTime() - now.getTime()
   const daysRemaining = Math.max(1, Math.ceil(diffTime / (1000 * 60 * 60 * 24)))
@@ -307,7 +321,8 @@ export async function computeRoadmapStats(customRoadmap?: UserRoadmap | null): P
     if (!bookId) continue
 
     const bookCourse = PRESET_BOOKS.find((b) => b.id === bookId)
-    const maxLessons = bookCourse ? bookCourse.totalLessons : 15
+    if (!bookCourse) continue
+    const maxLessons = bookCourse.totalLessons || 15
 
     for (let lid = 1; lid <= maxLessons; lid++) {
       const key = makeLessonKey(bookId, lid)
@@ -316,7 +331,7 @@ export async function computeRoadmapStats(customRoadmap?: UserRoadmap | null): P
         recommendedLesson = {
           bookId,
           lessonId: lid,
-          title: `Bài ${lid}: ${bookCourse?.title || "HSK"}`,
+          title: `Bài ${lid} (${bookCourse.badge || `HSK ${lvlNum}`})`,
         }
         break
       }
@@ -335,17 +350,22 @@ export async function computeRoadmapStats(customRoadmap?: UserRoadmap | null): P
     hasRoadmap: !!roadmap,
     goalTitle: roadmap ? (goalTitles[roadmap.goalType] || `Mục tiêu HSK ${targetLevel}`) : `Mục tiêu khởi động HSK 1`,
     targetLevel,
+    startLevel,
     targetDate: targetDateStr,
     daysRemaining,
 
     totalTargetLessons,
     completedLessons: completedLessonsCount,
+    effectiveCompletedLessons,
+    alreadyKnownLessons,
     inProgressLessons: inProgressLessonsCount,
     remainingLessons,
     lessonProgressPercent,
 
     totalTargetWords,
     learnedWords: learnedWordsCount,
+    effectiveLearnedWords,
+    alreadyKnownWords,
     masteredWords: masteredWordsCount,
     remainingWords,
     wordProgressPercent,

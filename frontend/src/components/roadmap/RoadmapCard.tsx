@@ -127,20 +127,20 @@ export function RoadmapCard({ onOpenWizard }: RoadmapCardProps) {
         </div>
       </div>
 
-      {/* 2 Khung đo lường: BÀI HỌC & TỪ VỰNG (Tone màu sạch, phẳng, thanh lịch) */}
+      {/* 2 Khung đo lường: BÀI HỌC & TỪ VỰNG (Số liệu ăn khớp chính xác 100%) */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-5">
         {/* Khung 1: BÀI HỌC GIÁO TRÌNH */}
         <div className="rounded-xl bg-muted/20 border border-border/60 p-4 space-y-3">
           <div className="flex items-center justify-between text-xs font-medium">
-            <span className="flex items-center gap-1.5 text-muted-foreground">
+            <span className="flex items-center gap-1.5 text-muted-foreground font-semibold">
               <BookOpen className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
               BÀI HỌC GIÁO TRÌNH
             </span>
-            <span className="font-semibold text-foreground">{stats.lessonProgressPercent}%</span>
+            <span className="font-bold text-foreground text-sm">{stats.lessonProgressPercent}%</span>
           </div>
 
-          {/* Progress bar phẳng, màu solid mộc */}
-          <div className="w-full bg-muted/50 rounded-full h-2 overflow-hidden">
+          {/* Progress bar */}
+          <div className="w-full bg-muted/50 rounded-full h-2.5 overflow-hidden">
             <div
               className="bg-emerald-600 dark:bg-emerald-500 h-full rounded-full transition-all duration-500"
               style={{ width: `${stats.lessonProgressPercent}%` }}
@@ -148,20 +148,25 @@ export function RoadmapCard({ onOpenWizard }: RoadmapCardProps) {
           </div>
 
           <div className="flex items-end justify-between pt-0.5 text-xs">
-            <div>
-              <div className="font-medium text-foreground">
-                Đã học {stats.completedLessons}/{stats.totalTargetLessons} bài
+            <div className="space-y-0.5">
+              <div className="font-semibold text-foreground text-sm">
+                Đã tích lũy {stats.effectiveCompletedLessons}/{stats.totalTargetLessons} bài
               </div>
-              <div className="text-emerald-700 dark:text-emerald-400 font-semibold mt-0.5">
+              {stats.alreadyKnownLessons > 0 && (
+                <div className="text-[11px] text-muted-foreground">
+                  (Gồm {stats.completedLessons} bài đã học + {stats.alreadyKnownLessons} bài nền tảng HSK {stats.startLevel})
+                </div>
+              )}
+              <div className="text-emerald-700 dark:text-emerald-400 font-medium text-xs">
                 {stats.remainingLessons > 0 ? (
                   <>Còn thiếu <span className="font-bold text-foreground">{stats.remainingLessons} bài</span></>
                 ) : (
-                  <>Đã hoàn tất toàn bộ bài học</>
+                  <>Đã hoàn tất toàn bộ bài học mục tiêu</>
                 )}
               </div>
             </div>
 
-            <div className="text-muted-foreground text-[11px]">
+            <div className="text-muted-foreground text-xs font-medium bg-muted/40 px-2 py-1 rounded-md shrink-0">
               ~{stats.weeklyLessonsRequired} bài/tuần
             </div>
           </div>
@@ -170,15 +175,15 @@ export function RoadmapCard({ onOpenWizard }: RoadmapCardProps) {
         {/* Khung 2: TỪ VỰNG CỐT LÕI */}
         <div className="rounded-xl bg-muted/20 border border-border/60 p-4 space-y-3">
           <div className="flex items-center justify-between text-xs font-medium">
-            <span className="flex items-center gap-1.5 text-muted-foreground">
+            <span className="flex items-center gap-1.5 text-muted-foreground font-semibold">
               <Target className="w-4 h-4 text-amber-600 dark:text-amber-400" />
               TỪ VỰNG CỐT LÕI
             </span>
-            <span className="font-semibold text-foreground">{stats.wordProgressPercent}%</span>
+            <span className="font-bold text-foreground text-sm">{stats.wordProgressPercent}%</span>
           </div>
 
-          {/* Progress bar phẳng */}
-          <div className="w-full bg-muted/50 rounded-full h-2 overflow-hidden">
+          {/* Progress bar */}
+          <div className="w-full bg-muted/50 rounded-full h-2.5 overflow-hidden">
             <div
               className="bg-amber-600 dark:bg-amber-500 h-full rounded-full transition-all duration-500"
               style={{ width: `${stats.wordProgressPercent}%` }}
@@ -186,27 +191,32 @@ export function RoadmapCard({ onOpenWizard }: RoadmapCardProps) {
           </div>
 
           <div className="flex items-end justify-between pt-0.5 text-xs">
-            <div>
-              <div className="font-medium text-foreground">
-                Đã nạp {stats.learnedWords}/{stats.totalTargetWords} từ
+            <div className="space-y-0.5">
+              <div className="font-semibold text-foreground text-sm">
+                Đã tích lũy {stats.effectiveLearnedWords.toLocaleString("vi-VN")}/{stats.totalTargetWords.toLocaleString("vi-VN")} từ
               </div>
-              <div className="text-amber-800 dark:text-amber-400 font-semibold mt-0.5">
+              {stats.alreadyKnownWords > 0 && (
+                <div className="text-[11px] text-muted-foreground">
+                  (Gồm {stats.learnedWords.toLocaleString("vi-VN")} từ đã học + {stats.alreadyKnownWords.toLocaleString("vi-VN")} từ nền tảng HSK {stats.startLevel})
+                </div>
+              )}
+              <div className="text-amber-800 dark:text-amber-400 font-medium text-xs">
                 {stats.remainingWords > 0 ? (
-                  <>Còn thiếu <span className="font-bold text-foreground">{stats.remainingWords} từ</span></>
+                  <>Còn thiếu <span className="font-bold text-foreground">{stats.remainingWords.toLocaleString("vi-VN")} từ</span></>
                 ) : (
-                  <>Đã nắm trọn vốn từ</>
+                  <>Đã nắm trọn vốn từ mục tiêu</>
                 )}
               </div>
             </div>
 
-            <div className="text-muted-foreground text-[11px]">
+            <div className="text-muted-foreground text-xs font-medium bg-muted/40 px-2 py-1 rounded-md shrink-0">
               ~{stats.dailyPaceRequired} từ/ngày
             </div>
           </div>
         </div>
       </div>
 
-      {/* Footer Hành động: Nút phẳng thanh lịch, không màu mè gradient */}
+      {/* Footer Hành động */}
       <div className="pt-3.5 border-t border-border/60 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
         <div className="text-muted-foreground">
           Hôm nay cần: <strong className="text-foreground">{stats.dailyPlan.newWordsTargetCount} từ mới</strong> & <strong className="text-foreground">{stats.dailyPlan.wordsToReviewCount} thẻ ôn</strong>
@@ -216,10 +226,11 @@ export function RoadmapCard({ onOpenWizard }: RoadmapCardProps) {
           {stats.dailyPlan.recommendedLesson && (
             <Link
               href={`/books/${stats.dailyPlan.recommendedLesson.bookId}/${stats.dailyPlan.recommendedLesson.lessonId}`}
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-foreground text-background hover:bg-foreground/90 font-medium transition-colors"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-foreground text-background hover:bg-foreground/90 font-medium transition-colors max-w-[260px] truncate"
+              title={`Vào học: ${stats.dailyPlan.recommendedLesson.title}`}
             >
-              <span>Vào học: {stats.dailyPlan.recommendedLesson.title}</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              <span className="truncate">Vào học: {stats.dailyPlan.recommendedLesson.title}</span>
+              <ArrowRight className="w-3.5 h-3.5 shrink-0" />
             </Link>
           )}
 

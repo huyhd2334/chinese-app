@@ -77,7 +77,7 @@ const GOAL_OPTIONS: GoalConfig[] = [
     title: "Công việc & Thương mại",
     subtitle: "Đàm phán, email & giao dịch đối tác",
     icon: Target,
-    recommendedTarget: 4,
+    recommendedTarget: 3,
     defaultSkills: ["vocabulary", "grammar", "listening"],
     description: "Nâng cao vốn từ kinh doanh, hợp đồng thương mại và giao tiếp văn phòng với đối tác Trung Quốc.",
   },
@@ -101,12 +101,13 @@ export function RoadmapWizardModal({ isOpen, onClose }: RoadmapWizardModalProps)
   // 4: Xem trước kế hoạch & Phê duyệt
   const [step, setStep] = useState<number>(1)
 
-  // State Form
+  // State Form (giới hạn mục tiêu trong khoảng giáo trình sẵn có HSK 1 - 3)
   const [goalType, setGoalType] = useState<RoadmapGoalType>(roadmap?.goalType || "hsk_exam")
-  const [startLevel, setStartLevel] = useState<number>(roadmap?.startLevel ?? 0)
-  const [targetLevel, setTargetLevel] = useState<HskLevelNumber>(
-    roadmap?.targetLevel || (roadmap?.startLevel ? (Math.min(6, roadmap.startLevel + 1) as HskLevelNumber) : 2)
-  )
+  const [startLevel, setStartLevel] = useState<number>(() => Math.min(2, Math.max(0, roadmap?.startLevel ?? 0)))
+  const [targetLevel, setTargetLevel] = useState<HskLevelNumber>(() => {
+    const raw = roadmap?.targetLevel || (roadmap?.startLevel ? roadmap.startLevel + 1 : 2)
+    return (Math.min(3, Math.max(1, raw)) as HskLevelNumber)
+  })
 
   const [minutesPerDay, setMinutesPerDay] = useState<number>(roadmap?.minutesPerDay || 30)
   const [daysPerWeek, setDaysPerWeek] = useState<number>(roadmap?.daysPerWeek || 6)
@@ -224,9 +225,9 @@ export function RoadmapWizardModal({ isOpen, onClose }: RoadmapWizardModalProps)
     setGoalType(g.id)
     setFocusSkills(g.defaultSkills)
     if (g.recommendedTarget > startLevel) {
-      setTargetLevel(g.recommendedTarget)
+      setTargetLevel(Math.min(3, g.recommendedTarget) as HskLevelNumber)
     } else {
-      setTargetLevel(Math.min(6, startLevel + 1) as HskLevelNumber)
+      setTargetLevel(Math.min(3, startLevel + 1) as HskLevelNumber)
     }
   }
 
@@ -234,7 +235,7 @@ export function RoadmapWizardModal({ isOpen, onClose }: RoadmapWizardModalProps)
   const handleSelectStartLevel = (lvl: number) => {
     setStartLevel(lvl)
     if (targetLevel <= lvl) {
-      setTargetLevel(Math.min(6, lvl + 1) as HskLevelNumber)
+      setTargetLevel(Math.min(3, lvl + 1) as HskLevelNumber)
     }
   }
 
@@ -361,14 +362,11 @@ export function RoadmapWizardModal({ isOpen, onClose }: RoadmapWizardModalProps)
                 <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-stone-400">
                   Trình độ hiện tại của bạn:
                 </label>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                   {[
                     { lvl: 0, label: "Mới bắt đầu", sub: "Chưa biết gì" },
-                    { lvl: 1, label: "Đã có HSK 1", sub: "~150 từ" },
-                    { lvl: 2, label: "Đã có HSK 2", sub: "~300 từ" },
-                    { lvl: 3, label: "Đã có HSK 3", sub: "~600 từ" },
-                    { lvl: 4, label: "Đã có HSK 4", sub: "~1200 từ" },
-                    { lvl: 5, label: "Đã có HSK 5", sub: "~2500 từ" },
+                    { lvl: 1, label: "Đã có HSK 1", sub: "~300 từ chuẩn 3.0" },
+                    { lvl: 2, label: "Đã có HSK 2", sub: "~600 từ chuẩn 3.0" },
                   ].map((item) => {
                     const isSelected = startLevel === item.lvl
                     return (
@@ -403,8 +401,8 @@ export function RoadmapWizardModal({ isOpen, onClose }: RoadmapWizardModalProps)
                   )}
                 </div>
 
-                <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
-                  {([1, 2, 3, 4, 5, 6] as HskLevelNumber[]).map((lvl) => {
+                <div className="grid grid-cols-3 sm:grid-cols-3 gap-2.5">
+                  {([1, 2, 3] as HskLevelNumber[]).map((lvl) => {
                     const isBelowStart = lvl <= startLevel
                     const isSelected = targetLevel === lvl
 
@@ -414,7 +412,7 @@ export function RoadmapWizardModal({ isOpen, onClose }: RoadmapWizardModalProps)
                         type="button"
                         disabled={isBelowStart}
                         onClick={() => setTargetLevel(lvl)}
-                        className={`py-2.5 px-2 rounded-xl text-center border transition-all ${
+                        className={`py-3 px-2 rounded-xl text-center border transition-all ${
                           isBelowStart
                             ? "bg-stone-100 dark:bg-stone-800/40 border-border/50 text-muted/50 cursor-not-allowed"
                             : isSelected
@@ -422,14 +420,18 @@ export function RoadmapWizardModal({ isOpen, onClose }: RoadmapWizardModalProps)
                             : "bg-card border-border text-china-ink hover:border-slate-300 dark:hover:border-stone-600 cursor-pointer"
                         }`}
                       >
-                        <div className="text-xs font-bold">HSK {lvl}</div>
-                        <div className="text-[10px] opacity-80 mt-0.5">
-                          {isBelowStart ? "Đã qua" : `${HSK_CUMULATIVE_STANDARDS[lvl].words} từ`}
+                        <div className="text-sm font-bold">HSK {lvl} (Chuẩn 3.0)</div>
+                        <div className="text-[11px] opacity-85 mt-0.5">
+                          {isBelowStart ? "Đã qua" : `${HSK_CUMULATIVE_STANDARDS[lvl].words} từ · ${HSK_CUMULATIVE_STANDARDS[lvl].lessons} bài`}
                         </div>
                       </button>
                     )
                   })}
                 </div>
+
+                <p className="text-[11px] text-muted-foreground italic pt-1">
+                  * Giáo trình bài bản hiện tại tập trung tối ưu cho khung Chuẩn 3.0 từ HSK 1 đến HSK 3.
+                </p>
               </div>
             </div>
           )}
@@ -505,9 +507,11 @@ export function RoadmapWizardModal({ isOpen, onClose }: RoadmapWizardModalProps)
                 <input
                   type="date"
                   min={new Date(Date.now() + 14 * 24 * 3600 * 1000).toISOString().split("T")[0]}
+                  max={new Date(Date.now() + 365 * 24 * 3600 * 1000).toISOString().split("T")[0]}
                   value={targetDate}
                   onChange={(e) => {
-                    setTargetDate(e.target.value)
+                    const val = e.target.value
+                    setTargetDate(val)
                     setIsCustomDate(true)
                   }}
                   className="w-full bg-card border border-border rounded-lg px-3 py-2 text-china-ink font-medium text-xs sm:text-sm focus:outline-none focus:border-china-red"

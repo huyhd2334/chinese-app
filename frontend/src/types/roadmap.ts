@@ -48,12 +48,15 @@ export interface RoadmapStats {
   hasRoadmap: boolean
   goalTitle: string
   targetLevel: HskLevelNumber
+  startLevel: number
   targetDate: string
   daysRemaining: number
 
   // Tổng quan Bài học
   totalTargetLessons: number
   completedLessons: number
+  effectiveCompletedLessons: number
+  alreadyKnownLessons: number
   inProgressLessons: number
   remainingLessons: number
   lessonProgressPercent: number
@@ -61,6 +64,8 @@ export interface RoadmapStats {
   // Tổng quan Từ vựng
   totalTargetWords: number
   learnedWords: number   // status != "new"
+  effectiveLearnedWords: number
+  alreadyKnownWords: number
   masteredWords: number  // status == "mastered" or interval >= 21
   remainingWords: number
   wordProgressPercent: number
