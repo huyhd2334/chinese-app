@@ -55,16 +55,34 @@ const WordContainer = ({
     })
     const itemsPerPage = 50
 
-    // Load favorites from localStorage
-    useEffect(() => {
+    // Load favorites from localStorage theo tài khoản người dùng
+    const getFavStorageKey = () => {
+      if (typeof window === "undefined") return "vocab_favorites"
+      const uid = localStorage.getItem("hsk_current_user_id") || "guest"
+      return uid === "guest" ? "vocab_favorites" : `vocab_favorites_${uid}`
+    }
+
+    const loadFavorites = () => {
       try {
-        const stored = localStorage.getItem("vocab_favorites")
+        const key = getFavStorageKey()
+        let stored = localStorage.getItem(key)
+        if (!stored && key !== "vocab_favorites") {
+          stored = localStorage.getItem("vocab_favorites")
+        }
         if (stored) {
           setFavorites(new Set(JSON.parse(stored)))
+        } else {
+          setFavorites(new Set())
         }
       } catch (e) {
         console.error(e)
       }
+    }
+
+    useEffect(() => {
+      loadFavorites()
+      window.addEventListener("hsk-auth-changed", loadFavorites)
+      return () => window.removeEventListener("hsk-auth-changed", loadFavorites)
     }, [])
 
     const toggleFavorite = (id: string, e: React.MouseEvent) => {
@@ -75,7 +93,8 @@ const WordContainer = ({
         if (next.has(id)) next.delete(id)
         else next.add(id)
         try {
-          localStorage.setItem("vocab_favorites", JSON.stringify(Array.from(next)))
+          const key = getFavStorageKey()
+          localStorage.setItem(key, JSON.stringify(Array.from(next)))
         } catch (err) {
           console.error(err)
         }

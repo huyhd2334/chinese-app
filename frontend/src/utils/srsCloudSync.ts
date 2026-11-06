@@ -76,11 +76,20 @@ async function getSessionUserId(): Promise<string | null> {
 }
 
 async function runSync(uid: string, maxWords: number): Promise<SyncResult> {
-  // Lần đầu một tài khoản dùng trình duyệt này: nếu máy đang giữ dữ liệu của tài khoản KHÁC,
-  // không đẩy dữ liệu cũ đó lên tài khoản hiện tại (tránh lẫn dữ liệu giữa 2 người dùng).
+  // Kiểm tra đổi tài khoản: nếu trình duyệt đang giữ dữ liệu của tài khoản KHÁC,
+  // lập tức xóa sạch reviewItems cục bộ để tránh lẫn từ vựng giữa 2 người dùng.
   const owner = localStorage.getItem(OWNER_KEY)
-  if (owner && owner !== uid && !localStorage.getItem(pushKey(uid))) {
-    localStorage.setItem(pushKey(uid), String(Date.now()))
+  const isDifferentUser = Boolean(owner && owner !== uid)
+
+  if (isDifferentUser) {
+    isApplyingRemote = true
+    try {
+      await db.reviewItems.clear()
+    } finally {
+      isApplyingRemote = false
+    }
+    localStorage.removeItem(pullKey(uid))
+    localStorage.removeItem(pushKey(uid))
   }
   localStorage.setItem(OWNER_KEY, uid)
 
@@ -187,7 +196,35 @@ async function runSync(uid: string, maxWords: number): Promise<SyncResult> {
 
   if (maxPushed > lastPush) localStorage.setItem(pushKey(uid), String(maxPushed))
 
+  if (pulled > 0 || isDifferentUser) {
+    window.dispatchEvent(new CustomEvent("hsk-words-updated"))
+    window.dispatchEvent(new CustomEvent("hsk-srs-synced"))
+    window.dispatchEvent(new CustomEvent("roadmap-updated"))
+  }
+
   return { ok: true, pulled, pushed }
+}
+
+/**
+ * Xóa sạch dữ liệu ôn tập cục bộ khi đăng xuất để bảo mật và tránh lẫn dữ liệu
+ */
+export async function clearLocalSrsData(): Promise<void> {
+  isApplyingRemote = true
+  try {
+    if (db && db.reviewItems) {
+      await db.reviewItems.clear()
+    }
+    if (typeof window !== "undefined") {
+      localStorage.setItem(OWNER_KEY, "guest")
+      window.dispatchEvent(new CustomEvent("hsk-words-updated"))
+      window.dispatchEvent(new CustomEvent("hsk-srs-synced"))
+      window.dispatchEvent(new CustomEvent("roadmap-updated"))
+    }
+  } catch (err) {
+    console.error("Lỗi khi xóa dữ liệu SRS cục bộ:", err)
+  } finally {
+    isApplyingRemote = false
+  }
 }
 
 /**

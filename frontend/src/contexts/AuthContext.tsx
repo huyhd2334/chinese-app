@@ -4,6 +4,7 @@ import React, { createContext, useContext, useEffect, useState } from "react"
 import type { User, Session } from "@supabase/supabase-js"
 import { supabase } from "@/lib/supabase"
 import { saveLocalSubscription, PlanType } from "@/utils/subscription"
+import { clearLocalSrsData } from "@/utils/srsCloudSync"
 
 export interface SignUpResult {
   error: string | null
@@ -158,6 +159,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           window.dispatchEvent(new CustomEvent("roadmap-updated", { detail: null }))
           window.dispatchEvent(new CustomEvent("hsk-auth-changed", { detail: { user: null } }))
         }
+        clearLocalSrsData().catch(() => {})
       } else if (session?.user) {
         if (typeof window !== "undefined") {
           localStorage.setItem("hsk_current_user_id", session.user.id)
@@ -311,6 +313,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       window.dispatchEvent(new CustomEvent("roadmap-updated", { detail: null }))
       window.dispatchEvent(new CustomEvent("hsk-auth-changed", { detail: { user: null } }))
     }
+    await clearLocalSrsData()
     setUser(null)
     setSession(null)
   }

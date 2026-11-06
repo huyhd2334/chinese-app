@@ -61,7 +61,7 @@ export async function syncCollectionsWithCloud(userId: string): Promise<BonusCol
       }))
 
     // 2. Kiểm tra nếu có bộ sưu tập local chưa upload lên cloud thì đẩy lên
-    const localCols = getLocalCollections()
+    const localCols = getLocalCollections(userId)
     const cloudSlugSet = new Set(cloudCols.map(c => c.slug))
     const unsynced = localCols.filter(c => !cloudSlugSet.has(c.slug))
 
@@ -72,12 +72,13 @@ export async function syncCollectionsWithCloud(userId: string): Promise<BonusCol
       cloudCols.unshift(...unsynced)
     }
 
-    // 3. Cập nhật lại localStorage để ứng dụng dùng mượt mà
-    localStorage.setItem("bonus_custom_collections", JSON.stringify(cloudCols))
+    // 3. Cập nhật lại localStorage theo userId để ứng dụng dùng mượt mà
+    const key = getLocalCollectionsKey(userId)
+    localStorage.setItem(key, JSON.stringify(cloudCols))
     return cloudCols
   } catch (err) {
     console.error("syncCollectionsWithCloud error:", err)
-    return getLocalCollections()
+    return getLocalCollections(userId)
   }
 }
 
@@ -251,18 +252,26 @@ export async function deleteCardFromCloud(userId: string, cardId: string): Promi
   }
 }
 
-function getLocalCollections(): BonusCollection[] {
+function getLocalCollectionsKey(userId?: string): string {
+  const uid = userId || (typeof window !== "undefined" ? localStorage.getItem("hsk_current_user_id") || "guest" : "guest")
+  return uid === "guest" ? "bonus_custom_collections" : `bonus_custom_collections_${uid}`
+}
+
+function getLocalCollections(userId?: string): BonusCollection[] {
   try {
-    const stored = localStorage.getItem("bonus_custom_collections")
+    const key = getLocalCollectionsKey(userId)
+    const stored = localStorage.getItem(key)
     return stored ? JSON.parse(stored) : []
   } catch {
     return []
   }
 }
 
-function getLocalCards(collectionSlug: string): BonusWord[] {
+function getLocalCards(collectionSlug: string, userId?: string): BonusWord[] {
   try {
-    const stored = localStorage.getItem(`bonus_custom_cards_${collectionSlug}`)
+    const uid = userId || (typeof window !== "undefined" ? localStorage.getItem("hsk_current_user_id") || "guest" : "guest")
+    const key = uid === "guest" ? `bonus_custom_cards_${collectionSlug}` : `bonus_custom_cards_${uid}_${collectionSlug}`
+    const stored = localStorage.getItem(key)
     return stored ? JSON.parse(stored) : []
   } catch {
     return []

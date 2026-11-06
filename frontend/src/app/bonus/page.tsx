@@ -64,6 +64,8 @@ export default function BonusHubPage() {
           if (stored) {
             collectionsToUse = JSON.parse(stored)
             setCustomCollections(collectionsToUse)
+          } else {
+            setCustomCollections([])
           }
         } catch (e) {
           console.error(e)
@@ -72,12 +74,13 @@ export default function BonusHubPage() {
 
       // Count custom cards in each collection
       const counts: Record<string, number> = {}
+      const uidPrefix = user ? `${user.id}_` : ""
       DEFAULT_COLLECTIONS.forEach(col => {
-        const customCards = localStorage.getItem(`bonus_custom_cards_${col.slug}`)
+        const customCards = localStorage.getItem(`bonus_custom_cards_${uidPrefix}${col.slug}`) || localStorage.getItem(`bonus_custom_cards_${col.slug}`)
         counts[col.slug] = customCards ? JSON.parse(customCards).length : 0
       })
       collectionsToUse.forEach(c => {
-        const customCards = localStorage.getItem(`bonus_custom_cards_${c.slug}`)
+        const customCards = localStorage.getItem(`bonus_custom_cards_${uidPrefix}${c.slug}`) || localStorage.getItem(`bonus_custom_cards_${c.slug}`)
         counts[c.slug] = customCards ? JSON.parse(customCards).length : 0
       })
       setCustomCounts(counts)
@@ -90,7 +93,8 @@ export default function BonusHubPage() {
     const updated = [newCol, ...customCollections]
     setCustomCollections(updated)
     try {
-      localStorage.setItem("bonus_custom_collections", JSON.stringify(updated))
+      const key = user ? `bonus_custom_collections_${user.id}` : "bonus_custom_collections"
+      localStorage.setItem(key, JSON.stringify(updated))
     } catch (e) {
       console.error(e)
     }

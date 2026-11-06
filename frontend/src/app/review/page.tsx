@@ -110,9 +110,13 @@ export default function ReviewPage() {
     }
     window.addEventListener("hsk-cloud-synced", handleSync)
     window.addEventListener("hsk-srs-synced", handleSync)
+    window.addEventListener("hsk-words-updated", handleSync)
+    window.addEventListener("hsk-auth-changed", handleSync)
     return () => {
       window.removeEventListener("hsk-cloud-synced", handleSync)
       window.removeEventListener("hsk-srs-synced", handleSync)
+      window.removeEventListener("hsk-words-updated", handleSync)
+      window.removeEventListener("hsk-auth-changed", handleSync)
     }
   }, [filter, loadReview, refreshGlobalStats])
 
