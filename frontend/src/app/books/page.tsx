@@ -124,30 +124,30 @@ export default function BooksDirectoryPage() {
 
         {/* Books Grid */}
         <div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
-            {books.slice(0, 6).map((book) => {
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+            {books.map((book) => {
               const isSelected = selectedBook?.id === book.id
               return (
                 <button
                   key={book.id}
                   onClick={() => handleSelectBook(book)}
-                  className={`group flex flex-col items-center text-center p-3 rounded-xl border transition-all cursor-pointer ${
+                  className={`group flex flex-col items-center text-center p-4 rounded-2xl border transition-all cursor-pointer ${
                     isSelected
                       ? 'bg-stone-100 dark:bg-[#201a2e] border-china-red ring-1 ring-china-red shadow-xs'
                       : 'bg-card border-border dark:border-[#382c47] hover:border-slate-300 dark:hover:border-stone-600 hover:bg-neutral-50/60 dark:hover:bg-stone-800/60'
                   }`}
                 >
                   {/* Book Cover Image */}
-                  <div className="relative w-full aspect-[1/1.38] rounded-lg overflow-hidden bg-neutral-100 border border-border/60">
+                  <div className="relative w-full aspect-[1/1.38] rounded-xl overflow-hidden bg-neutral-100 border border-border/60 shadow-2xs">
                     {book.coverImage ? (
                       <Image
                         src={book.coverImage}
                         alt={book.title}
                         fill
                         unoptimized={book.coverImage.endsWith('.svg')}
-                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw"
-                        className="object-cover"
-                        priority={book.level <= 2}
+                        sizes="(max-width: 640px) 90vw, 33vw"
+                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                        priority
                       />
                     ) : (
                       <div className="w-full h-full bg-neutral-200 flex items-center justify-center text-china-ink font-bold text-lg">
@@ -157,14 +157,14 @@ export default function BooksDirectoryPage() {
                   </div>
 
                   {/* Book Info */}
-                  <div className="mt-2.5 space-y-0.5 w-full">
-                    <h3 className={`text-xs font-bold truncate ${isSelected ? 'text-china-red' : 'text-china-ink group-hover:text-china-red'}`}>
-                      HSK {book.level}
+                  <div className="mt-3 space-y-1 w-full">
+                    <h3 className={`text-sm font-bold truncate ${isSelected ? 'text-china-red' : 'text-china-ink group-hover:text-china-red'}`}>
+                      {book.title}
                     </h3>
-                    <p className="text-[11px] text-muted truncate">
-                      {book.totalLessons} bài học
+                    <p className="text-xs text-muted truncate">
+                      {book.totalLessons} bài học chuẩn 3.0
                     </p>
-                    <span className="inline-block text-[10px] font-medium text-slate-600 dark:text-stone-400">
+                    <span className="inline-block px-2.5 py-0.5 rounded-md text-[10px] font-bold bg-china-red/10 text-china-red">
                       {book.badge}
                     </span>
                   </div>
