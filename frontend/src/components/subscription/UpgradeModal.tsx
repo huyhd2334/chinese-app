@@ -10,7 +10,6 @@ import {
   verifyBankTransferPayment,
   createPaymentOrder,
   redeemActivationCodeOnServer,
-  resetToFreeSubscription,
   type PaymentOrder,
   type SubscriptionInfo,
 } from "@/utils/subscription"
@@ -226,21 +225,6 @@ export default function UpgradeModal() {
     }
   }
 
-  // Hủy gói Pro để quay về gói Miễn phí
-  const handleResetToFree = async () => {
-    setIsProcessing(true)
-    try {
-      const resetInfo = await resetToFreeSubscription(user?.id)
-      setSubInfo(resetInfo)
-      setFeedback({
-        type: "warning",
-        text: "Đã chuyển tài khoản về lại Gói Miễn Phí (giới hạn 500 từ ôn tập).",
-      })
-    } finally {
-      setIsProcessing(false)
-    }
-  }
-
   const formatExpiry = (ts: number | null) => {
     if (!ts) return "Đang hoạt động"
     return new Date(ts).toLocaleDateString("vi-VN", {
@@ -333,16 +317,8 @@ export default function UpgradeModal() {
               <div className="flex items-center gap-2 self-start sm:self-auto">
                 <button
                   type="button"
-                  disabled={isProcessing}
-                  onClick={handleResetToFree}
-                  className="px-3 py-2 rounded-xl border border-border dark:border-stone-700 bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:text-red-600 dark:hover:text-red-400 text-xs font-medium transition-colors"
-                >
-                  Chuyển về Gói Miễn phí
-                </button>
-                <button
-                  type="button"
                   onClick={() => setIsOpen(false)}
-                  className="px-4 py-2 rounded-xl bg-stone-900 dark:bg-stone-700 hover:bg-stone-800 dark:hover:bg-stone-600 text-white text-xs font-semibold transition-colors"
+                  className="px-4 py-2 rounded-xl bg-stone-900 dark:bg-stone-700 hover:bg-stone-800 dark:hover:bg-stone-600 text-white text-xs font-semibold transition-colors cursor-pointer"
                 >
                   Đóng
                 </button>
