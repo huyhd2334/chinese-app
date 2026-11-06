@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import {
   Volume2,
   RotateCw,
@@ -9,28 +9,51 @@ import {
   Shuffle,
   CheckCircle2,
   XCircle,
-  BookOpen
+  BookOpen,
+  BookmarkPlus,
+  Check
 } from 'lucide-react'
 import { CurriculumWord } from '@/types/curriculum'
 import { playChineseAudio } from '@/utils/audioTts'
+import { db } from '../../../db/database'
+import { reviewRepository } from '../../../repositories/reviewRepository'
 
 interface LessonFlashcardsProps {
   words: CurriculumWord[]
   lessonTitle?: string
+  level?: number
 }
 
-export default function LessonFlashcards({ words, lessonTitle }: LessonFlashcardsProps) {
+export default function LessonFlashcards({ words, lessonTitle, level = 1 }: LessonFlashcardsProps) {
   const [deck, setDeck] = useState<CurriculumWord[]>([])
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isFlipped, setIsFlipped] = useState(false)
   const [masteredIds, setMasteredIds] = useState<Set<string>>(new Set())
   const [reviewLaterIds, setReviewLaterIds] = useState<Set<string>>(new Set())
 
+  // Trạng thái từ đã nằm trong kho Ôn tập SRS
+  const [inReviewHanziSet, setInReviewHanziSet] = useState<Set<string>>(new Set())
+  const [toastMessage, setToastMessage] = useState<string | null>(null)
+  const [isAddingAll, setIsAddingAll] = useState(false)
+
+  const refreshInReviewStatus = useCallback(async () => {
+    try {
+      const allReviews = await db.reviewItems.toArray()
+      const reviewWordIds = new Set(allReviews.map((r) => r.wordId))
+      const wordsInDb = await db.words.where('id').anyOf(Array.from(reviewWordIds)).toArray()
+      const hanziSet = new Set(wordsInDb.map((w) => w.hanzi))
+      setInReviewHanziSet(hanziSet)
+    } catch (err) {
+      console.warn('Lỗi kiểm tra từ trong ôn tập:', err)
+    }
+  }, [])
+
   useEffect(() => {
     setDeck(words)
     setCurrentIndex(0)
     setIsFlipped(false)
-  }, [words])
+    refreshInReviewStatus()
+  }, [words, refreshInReviewStatus])
 
   if (!deck || deck.length === 0) {
     return (
@@ -41,6 +64,85 @@ export default function LessonFlashcards({ words, lessonTitle }: LessonFlashcard
   }
 
   const currentWord = deck[currentIndex] || deck[0]
+
+  const ensureWordRecord = async (w: CurriculumWord): Promise<string> => {
+    const wordRecord = await db.words.where('hanzi').equals(w.hanzi).first()
+    if (!wordRecord) {
+      const newId = `vocab_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`
+      await db.words.put({
+        id: newId,
+        hanzi: w.hanzi,
+        pinyin: w.pinyin,
+        meanings_vi: w.meaning ? [w.meaning] : [],
+        meanings: [w.meaning || ''],
+        hskLevel: [level],
+        hskLevels: [level],
+        sourceLevels: [`HSK${level}`],
+        partOfSpeech: w.partOfSpeech ? [w.partOfSpeech] : [],
+      })
+      return newId
+    }
+    return wordRecord.id
+  }
+
+  const handleAddWordToReview = async (w: CurriculumWord, e?: React.MouseEvent) => {
+    e?.stopPropagation()
+    try {
+      const wordId = await ensureWordRecord(w)
+      const existing = await db.reviewItems.where('wordId').equals(wordId).first()
+      if (existing) {
+        setToastMessage(`Từ "${w.hanzi}" đã có sẵn trong danh sách Ôn tập rồi!`)
+        setTimeout(() => setToastMessage(null), 3000)
+        return
+      }
+
+      await reviewRepository.add(wordId)
+      setInReviewHanziSet((prev) => new Set(prev).add(w.hanzi))
+      window.dispatchEvent(new CustomEvent('hsk-words-updated'))
+      setToastMessage(`✓ Đã thêm từ "${w.hanzi}" (${w.pinyin}) vào Ôn tập!`)
+      setTimeout(() => setToastMessage(null), 3000)
+    } catch (err) {
+      console.warn(err)
+      setToastMessage('Không thể thêm vào Ôn tập (Có thể đã chạm hạn mức)')
+      setTimeout(() => setToastMessage(null), 3500)
+    }
+  }
+
+  const handleAddAllToReview = async () => {
+    if (deck.length === 0 || isAddingAll) return
+    setIsAddingAll(true)
+    try {
+      let addedCount = 0
+      const newSet = new Set(inReviewHanziSet)
+
+      for (const w of deck) {
+        if (!newSet.has(w.hanzi)) {
+          const wordId = await ensureWordRecord(w)
+          const existing = await db.reviewItems.where('wordId').equals(wordId).first()
+          if (!existing) {
+            await reviewRepository.add(wordId)
+            newSet.add(w.hanzi)
+            addedCount++
+          }
+        }
+      }
+
+      setInReviewHanziSet(newSet)
+      window.dispatchEvent(new CustomEvent('hsk-words-updated'))
+      if (addedCount > 0) {
+        setToastMessage(`✓ Đã nạp thành công ${addedCount} từ vào lộ trình Ôn tập!`)
+      } else {
+        setToastMessage(`Tất cả ${deck.length} từ trong bài học đã có trong Ôn tập rồi!`)
+      }
+      setTimeout(() => setToastMessage(null), 3500)
+    } catch (err) {
+      console.warn(err)
+      setToastMessage('Đã thêm từ đến giới hạn của tài khoản!')
+      setTimeout(() => setToastMessage(null), 3500)
+    } finally {
+      setIsAddingAll(false)
+    }
+  }
 
   const playAudio = (text: string, e?: React.MouseEvent) => {
     e?.stopPropagation()
@@ -64,7 +166,7 @@ export default function LessonFlashcards({ words, lessonTitle }: LessonFlashcard
     setCurrentIndex((prev) => (prev - 1 + deck.length) % deck.length)
   }
 
-  const handleMarkMastered = (e: React.MouseEvent) => {
+  const handleMarkMastered = async (e: React.MouseEvent) => {
     e.stopPropagation()
     const newMastered = new Set(masteredIds)
     newMastered.add(currentWord.id)
@@ -74,10 +176,21 @@ export default function LessonFlashcards({ words, lessonTitle }: LessonFlashcard
     newReview.delete(currentWord.id)
     setReviewLaterIds(newReview)
 
+    // Tự động đảm bảo từ này có trong kho Ôn tập
+    try {
+      const wordId = await ensureWordRecord(currentWord)
+      const existing = await db.reviewItems.where('wordId').equals(wordId).first()
+      if (!existing) {
+        await reviewRepository.add(wordId)
+        setInReviewHanziSet((prev) => new Set(prev).add(currentWord.hanzi))
+        window.dispatchEvent(new CustomEvent('hsk-words-updated'))
+      }
+    } catch {}
+
     handleNext()
   }
 
-  const handleMarkReview = (e: React.MouseEvent) => {
+  const handleMarkReview = async (e: React.MouseEvent) => {
     e.stopPropagation()
     const newReview = new Set(reviewLaterIds)
     newReview.add(currentWord.id)
@@ -86,6 +199,17 @@ export default function LessonFlashcards({ words, lessonTitle }: LessonFlashcard
     const newMastered = new Set(masteredIds)
     newMastered.delete(currentWord.id)
     setMasteredIds(newMastered)
+
+    // Tự động đảm bảo từ này có trong kho Ôn tập
+    try {
+      const wordId = await ensureWordRecord(currentWord)
+      const existing = await db.reviewItems.where('wordId').equals(wordId).first()
+      if (!existing) {
+        await reviewRepository.add(wordId)
+        setInReviewHanziSet((prev) => new Set(prev).add(currentWord.hanzi))
+        window.dispatchEvent(new CustomEvent('hsk-words-updated'))
+      }
+    } catch {}
 
     handleNext()
   }
@@ -121,8 +245,37 @@ export default function LessonFlashcards({ words, lessonTitle }: LessonFlashcard
 
         <div className="flex items-center gap-2">
           <button
+            onClick={handleAddAllToReview}
+            disabled={isAddingAll || deck.every((w) => inReviewHanziSet.has(w.hanzi))}
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg transition cursor-pointer border disabled:opacity-60 disabled:cursor-not-allowed bg-china-red/10 text-china-red border-china-red/20 hover:bg-china-red hover:text-white"
+            title="Nạp toàn bộ từ của bài học vào lộ trình Ôn tập lặp lại ngắt quãng"
+          >
+            {isAddingAll ? (
+              <RotateCw className="w-3.5 h-3.5 animate-spin" />
+            ) : deck.every((w) => inReviewHanziSet.has(w.hanzi)) ? (
+              <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+            ) : (
+              <BookmarkPlus className="w-3.5 h-3.5" />
+            )}
+            <span className="hidden sm:inline">
+              {isAddingAll
+                ? 'Đang thêm...'
+                : deck.every((w) => inReviewHanziSet.has(w.hanzi))
+                ? 'Đã trong Ôn tập'
+                : `Thêm cả ${deck.length} từ vào Ôn tập`}
+            </span>
+            <span className="sm:hidden">
+              {isAddingAll
+                ? 'Đang thêm'
+                : deck.every((w) => inReviewHanziSet.has(w.hanzi))
+                ? 'Đã thêm'
+                : `+ ${deck.length} từ`}
+            </span>
+          </button>
+
+          <button
             onClick={handleShuffle}
-            className="flex items-center gap-1 px-2.5 py-1 text-xs font-semibold text-muted hover:text-china-ink dark:hover:text-white bg-china-paper dark:bg-white/5 hover:bg-neutral-100 dark:hover:bg-white/10 rounded-lg transition cursor-pointer"
+            className="flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold text-muted hover:text-china-ink dark:hover:text-white bg-china-paper dark:bg-white/5 hover:bg-neutral-100 dark:hover:bg-white/10 rounded-lg transition cursor-pointer border border-border"
             title="Xáo trộn thứ tự từ"
           >
             <Shuffle className="w-3.5 h-3.5" />
@@ -173,6 +326,38 @@ export default function LessonFlashcards({ words, lessonTitle }: LessonFlashcard
                   Cần ôn lại
                 </span>
               )}
+
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation()
+                  handleAddWordToReview(currentWord)
+                }}
+                disabled={inReviewHanziSet.has(currentWord.hanzi)}
+                className={`flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold transition cursor-pointer border ${
+                  inReviewHanziSet.has(currentWord.hanzi)
+                    ? 'bg-emerald-50 dark:bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-500/30 cursor-default'
+                    : 'bg-china-paper dark:bg-white/10 text-china-ink dark:text-slate-200 border-border hover:border-china-red/40 hover:text-china-red active:scale-95'
+                }`}
+                title={
+                  inReviewHanziSet.has(currentWord.hanzi)
+                    ? 'Từ này đã có trong lộ trình Ôn tập'
+                    : 'Thêm từ này vào lộ trình Ôn tập lặp lại ngắt quãng'
+                }
+              >
+                {inReviewHanziSet.has(currentWord.hanzi) ? (
+                  <>
+                    <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+                    <span>Đã trong Ôn tập</span>
+                  </>
+                ) : (
+                  <>
+                    <BookmarkPlus className="w-3.5 h-3.5 text-china-red" />
+                    <span>+ Ôn tập</span>
+                  </>
+                )}
+              </button>
+
               <button
                 type="button"
                 onClick={(e) => playAudio(currentWord.hanzi, e)}
@@ -289,6 +474,13 @@ export default function LessonFlashcards({ words, lessonTitle }: LessonFlashcard
           <ChevronRight className="w-4 h-4" />
         </button>
       </div>
+
+      {/* Toast Notification */}
+      {toastMessage && (
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-slate-900/95 dark:bg-neutral-800/95 text-white text-xs sm:text-sm font-medium px-4 py-2.5 rounded-full shadow-xl border border-white/10 backdrop-blur-md animate-in fade-in slide-in-from-bottom-2 duration-200 pointer-events-none">
+          {toastMessage}
+        </div>
+      )}
     </div>
   )
 }

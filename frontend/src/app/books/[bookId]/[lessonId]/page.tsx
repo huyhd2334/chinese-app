@@ -570,7 +570,11 @@ export default function LessonDetailPage() {
         </div>
 
         <div className="p-4 sm:p-5 bg-neutral-50/70 dark:bg-white/[0.03] border border-border rounded-2xl">
-          <LessonFlashcards words={lesson.vocabulary} lessonTitle={lesson.title} />
+          <LessonFlashcards
+            words={lesson.vocabulary}
+            lessonTitle={lesson.title}
+            level={book?.level || 1}
+          />
         </div>
       </section>
 
