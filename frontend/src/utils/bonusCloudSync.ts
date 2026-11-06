@@ -133,7 +133,7 @@ export async function syncCardsWithCloud(userId: string, collectionSlug: string)
 
     if (error) {
       console.warn("Lỗi khi tải thẻ từ Supabase:", error.message)
-      return getLocalCards(collectionSlug)
+      return getLocalCards(collectionSlug, userId)
     }
 
     const cloudCards: BonusWord[] = (data || []).map((row: CloudRow) => ({
@@ -155,7 +155,7 @@ export async function syncCardsWithCloud(userId: string, collectionSlug: string)
     }))
 
     // Đồng bộ thẻ chưa upload từ local lên cloud
-    const localCards = getLocalCards(collectionSlug)
+    const localCards = getLocalCards(collectionSlug, userId)
     const cloudIdSet = new Set(cloudCards.map(c => c.id))
     const unsyncedCards = localCards.filter(c => !cloudIdSet.has(c.id))
 
@@ -164,11 +164,12 @@ export async function syncCardsWithCloud(userId: string, collectionSlug: string)
       cloudCards.unshift(...unsyncedCards)
     }
 
-    localStorage.setItem(`bonus_custom_cards_${collectionSlug}`, JSON.stringify(cloudCards))
+    const cardKey = getLocalCardsKey(collectionSlug, userId)
+    localStorage.setItem(cardKey, JSON.stringify(cloudCards))
     return cloudCards
   } catch (err) {
     console.error("syncCardsWithCloud error:", err)
-    return getLocalCards(collectionSlug)
+    return getLocalCards(collectionSlug, userId)
   }
 }
 
@@ -252,12 +253,22 @@ export async function deleteCardFromCloud(userId: string, cardId: string): Promi
   }
 }
 
-function getLocalCollectionsKey(userId?: string): string {
+export function getLocalCollectionsKey(userId?: string): string {
   const uid = userId || (typeof window !== "undefined" ? localStorage.getItem("hsk_current_user_id") || "guest" : "guest")
-  return uid === "guest" ? "bonus_custom_collections" : `bonus_custom_collections_${uid}`
+  return `bonus_custom_collections_${uid}`
 }
 
-function getLocalCollections(userId?: string): BonusCollection[] {
+export function getLocalCardsKey(collectionSlug: string, userId?: string): string {
+  const uid = userId || (typeof window !== "undefined" ? localStorage.getItem("hsk_current_user_id") || "guest" : "guest")
+  return `bonus_custom_cards_${uid}_${collectionSlug}`
+}
+
+export function getLocalFavKey(collectionSlug: string, userId?: string): string {
+  const uid = userId || (typeof window !== "undefined" ? localStorage.getItem("hsk_current_user_id") || "guest" : "guest")
+  return `bonus_fav_${uid}_${collectionSlug}`
+}
+
+export function getLocalCollections(userId?: string): BonusCollection[] {
   try {
     const key = getLocalCollectionsKey(userId)
     const stored = localStorage.getItem(key)
@@ -267,10 +278,9 @@ function getLocalCollections(userId?: string): BonusCollection[] {
   }
 }
 
-function getLocalCards(collectionSlug: string, userId?: string): BonusWord[] {
+export function getLocalCards(collectionSlug: string, userId?: string): BonusWord[] {
   try {
-    const uid = userId || (typeof window !== "undefined" ? localStorage.getItem("hsk_current_user_id") || "guest" : "guest")
-    const key = uid === "guest" ? `bonus_custom_cards_${collectionSlug}` : `bonus_custom_cards_${uid}_${collectionSlug}`
+    const key = getLocalCardsKey(collectionSlug, userId)
     const stored = localStorage.getItem(key)
     return stored ? JSON.parse(stored) : []
   } catch {

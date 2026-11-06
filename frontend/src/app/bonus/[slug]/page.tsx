@@ -15,6 +15,9 @@ import {
   saveCardToCloud,
   saveCardsBatchToCloud,
   deleteCardFromCloud,
+  getLocalCollections,
+  getLocalCardsKey,
+  getLocalFavKey,
 } from "@/utils/bonusCloudSync"
 
 // Direct static import for instant rendering and offline support
@@ -54,21 +57,21 @@ export default function BonusStudyPage({ params }: PageProps) {
     async function loadCardsData() {
       try {
         if (!isDefaultHsk && !isDefaultToeic) {
-          const storedCols = localStorage.getItem("bonus_custom_collections")
-          if (storedCols) {
-            const cols: BonusCollection[] = JSON.parse(storedCols)
-            const found = cols.find(c => c.slug === slug)
-            if (found) setCustomCollection(found)
-          }
+          const cols = getLocalCollections(user?.id)
+          const found = cols.find(c => c.slug === slug)
+          if (found) setCustomCollection(found)
         }
 
         if (user) {
           const cloudCards = await syncCardsWithCloud(user.id, slug)
           setCustomCards(cloudCards)
         } else {
-          const storedCards = localStorage.getItem(`bonus_custom_cards_${slug}`)
+          const key = getLocalCardsKey(slug, "guest")
+          const storedCards = localStorage.getItem(key)
           if (storedCards) {
             setCustomCards(JSON.parse(storedCards))
+          } else {
+            setCustomCards([])
           }
         }
       } catch (e) {
@@ -121,7 +124,8 @@ export default function BonusStudyPage({ params }: PageProps) {
 
     setCustomCards(updated)
     try {
-      localStorage.setItem(`bonus_custom_cards_${slug}`, JSON.stringify(updated))
+      const cardKey = getLocalCardsKey(slug, user?.id)
+      localStorage.setItem(cardKey, JSON.stringify(updated))
     } catch (e) {
       console.error(e)
     }
@@ -148,7 +152,8 @@ export default function BonusStudyPage({ params }: PageProps) {
     const updated = [...newCards, ...customCards]
     setCustomCards(updated)
     try {
-      localStorage.setItem(`bonus_custom_cards_${slug}`, JSON.stringify(updated))
+      const cardKey = getLocalCardsKey(slug, user?.id)
+      localStorage.setItem(cardKey, JSON.stringify(updated))
     } catch (e) {
       console.error(e)
     }
@@ -171,7 +176,8 @@ export default function BonusStudyPage({ params }: PageProps) {
     const updated = customCards.filter(c => c.id !== cardId)
     setCustomCards(updated)
     try {
-      localStorage.setItem(`bonus_custom_cards_${slug}`, JSON.stringify(updated))
+      const cardKey = getLocalCardsKey(slug, user?.id)
+      localStorage.setItem(cardKey, JSON.stringify(updated))
     } catch (e) {
       console.error(e)
     }
@@ -185,7 +191,7 @@ export default function BonusStudyPage({ params }: PageProps) {
 
   // Favorites
   const [favorites, setFavorites] = useState<Set<string>>(new Set())
-  const favStorageKey = `bonus_fav_${slug}`
+  const favStorageKey = getLocalFavKey(slug, user?.id)
 
   useEffect(() => {
     try {

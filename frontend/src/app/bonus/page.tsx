@@ -5,7 +5,14 @@ import Link from "next/link"
 import type { BonusCollection } from "@/types/bonus"
 import BonusCreateCollectionModal from "@/components/bonus/BonusCreateCollectionModal"
 import { useAuth } from "@/contexts/AuthContext"
-import { syncCollectionsWithCloud, saveCollectionToCloud, deleteCollectionFromCloud } from "@/utils/bonusCloudSync"
+import { 
+  syncCollectionsWithCloud, 
+  saveCollectionToCloud, 
+  deleteCollectionFromCloud,
+  getLocalCollections,
+  getLocalCollectionsKey,
+  getLocalCardsKey
+} from "@/utils/bonusCloudSync"
 
 const DEFAULT_COLLECTIONS = [
   {
@@ -55,32 +62,29 @@ export default function BonusHubPage() {
     async function loadData() {
       let collectionsToUse: BonusCollection[] = []
 
+      // Dọn dẹp key toàn cục cũ để không gây lẫn bộ sưu tập giữa các tài khoản
+      if (typeof window !== "undefined") {
+        try {
+          localStorage.removeItem("bonus_custom_collections")
+        } catch {}
+      }
+
       if (user) {
         collectionsToUse = await syncCollectionsWithCloud(user.id)
         setCustomCollections(collectionsToUse)
       } else {
-        try {
-          const stored = localStorage.getItem("bonus_custom_collections")
-          if (stored) {
-            collectionsToUse = JSON.parse(stored)
-            setCustomCollections(collectionsToUse)
-          } else {
-            setCustomCollections([])
-          }
-        } catch (e) {
-          console.error(e)
-        }
+        collectionsToUse = getLocalCollections("guest")
+        setCustomCollections(collectionsToUse)
       }
 
       // Count custom cards in each collection
       const counts: Record<string, number> = {}
-      const uidPrefix = user ? `${user.id}_` : ""
       DEFAULT_COLLECTIONS.forEach(col => {
-        const customCards = localStorage.getItem(`bonus_custom_cards_${uidPrefix}${col.slug}`) || localStorage.getItem(`bonus_custom_cards_${col.slug}`)
+        const customCards = localStorage.getItem(getLocalCardsKey(col.slug, user?.id))
         counts[col.slug] = customCards ? JSON.parse(customCards).length : 0
       })
       collectionsToUse.forEach(c => {
-        const customCards = localStorage.getItem(`bonus_custom_cards_${uidPrefix}${c.slug}`) || localStorage.getItem(`bonus_custom_cards_${c.slug}`)
+        const customCards = localStorage.getItem(getLocalCardsKey(c.slug, user?.id))
         counts[c.slug] = customCards ? JSON.parse(customCards).length : 0
       })
       setCustomCounts(counts)
@@ -93,7 +97,7 @@ export default function BonusHubPage() {
     const updated = [newCol, ...customCollections]
     setCustomCollections(updated)
     try {
-      const key = user ? `bonus_custom_collections_${user.id}` : "bonus_custom_collections"
+      const key = getLocalCollectionsKey(user?.id)
       localStorage.setItem(key, JSON.stringify(updated))
     } catch (e) {
       console.error(e)
@@ -112,8 +116,9 @@ export default function BonusHubPage() {
     const updated = customCollections.filter(c => c.slug !== slug)
     setCustomCollections(updated)
     try {
-      localStorage.setItem("bonus_custom_collections", JSON.stringify(updated))
-      localStorage.removeItem(`bonus_custom_cards_${slug}`)
+      const key = getLocalCollectionsKey(user?.id)
+      localStorage.setItem(key, JSON.stringify(updated))
+      localStorage.removeItem(getLocalCardsKey(slug, user?.id))
     } catch (e) {
       console.error(e)
     }
