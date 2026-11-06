@@ -14,6 +14,7 @@ import {
   triggerUpgradeModal,
 } from "@/utils/subscription"
 import ChibiLoading from "@/components/common/ChibiLoading"
+import { ReviewMasteryChart } from "@/components/review/ReviewMasteryChart"
 
 type FilterType = "due" | "new" | "learning" | "review" | "mastered" | "all"
 
@@ -28,6 +29,7 @@ export default function ReviewPage() {
 
   // Thống kê toàn bộ từ trong Review & trạng thái gói cước
   const [totalReviewWords, setTotalReviewWords] = useState(0)
+  const [accuracyRate, setAccuracyRate] = useState(100)
   const [statusCounts, setStatusCounts] = useState({
     due: 0,
     new: 0,
@@ -52,6 +54,16 @@ export default function ReviewPage() {
       const allItems = await db.reviewItems.toArray()
       const now = Date.now()
       setTotalReviewWords(allItems.length)
+
+      let totalCorrect = 0
+      let totalWrong = 0
+      for (const item of allItems) {
+        totalCorrect += item.correctCount || 0
+        totalWrong += item.wrongCount || 0
+      }
+      const totalAnswers = totalCorrect + totalWrong
+      setAccuracyRate(totalAnswers > 0 ? Math.round((totalCorrect / totalAnswers) * 100) : 100)
+
       setStatusCounts({
         due: allItems.filter((i) => i.dueAt <= now).length,
         new: allItems.filter((i) => i.status === "new").length,
@@ -64,6 +76,16 @@ export default function ReviewPage() {
       console.error(e)
     }
   }, [])
+
+  const masteryDistribution = useMemo(() => ({
+    total: statusCounts.all,
+    newCount: statusCounts.new,
+    learningCount: statusCounts.learning,
+    reviewCount: statusCounts.review,
+    masteredCount: statusCounts.mastered,
+    dueCount: statusCounts.due,
+    accuracyRate,
+  }), [statusCounts, accuracyRate])
 
   useEffect(() => {
     const checkSub = () => {
@@ -352,7 +374,16 @@ export default function ReviewPage() {
         </div>
       </div>
 
-      {/* 2. Khung Thẻ Flashcard Bề Thế, To Rõ & Có Tiểu Lu Lấp Ló */}
+      {/* 2. Biểu đồ Thống kê Mức độ Ghi nhớ Từ vựng (SRS Spaced Repetition) */}
+      {statusCounts.all > 0 && (
+        <ReviewMasteryChart
+          distribution={masteryDistribution}
+          currentFilter={filter}
+          onSelectFilter={(newFilter) => setFilter(newFilter)}
+        />
+      )}
+
+      {/* 3. Khung Thẻ Flashcard Bề Thế, To Rõ & Có Tiểu Lu Lấp Ló */}
       {loading && cards.length === 0 ? (
         <div className="flex min-h-[420px] items-center justify-center bg-card rounded-3xl border border-border shadow-xs">
           <ChibiLoading
