@@ -30,6 +30,7 @@ export interface RoadmapMilestone {
 
 export interface UserRoadmap extends RoadmapSetupInput {
   id: string
+  userId?: string
   createdAt: number
   updatedAt: number
   milestones: RoadmapMilestone[]

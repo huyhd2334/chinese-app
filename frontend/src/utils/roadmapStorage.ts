@@ -10,7 +10,7 @@ import type {
   RoadmapMilestone,
 } from "@/types/roadmap"
 
-const ROADMAP_STORAGE_KEY = "hsk_user_roadmap_v1"
+const ROADMAP_LEGACY_KEY = "hsk_user_roadmap_v1"
 
 // Chuẩn số lượng từ và bài học theo từng cấp HSK Chuẩn 3.0
 export const HSK_CUMULATIVE_STANDARDS: Record<HskLevelNumber, { words: number; lessons: number; bookId: string; name: string }> = {
@@ -36,14 +36,52 @@ function isBrowser(): boolean {
 }
 
 /**
- * Lấy lộ trình cá nhân đã lưu trong LocalStorage
+ * Lấy ID người dùng hiện tại một cách đồng bộ từ LocalStorage
  */
-export function getStoredRoadmap(): UserRoadmap | null {
+export function getCurrentUserIdSync(): string {
+  if (!isBrowser()) return "guest"
+  return localStorage.getItem("hsk_current_user_id") || "guest"
+}
+
+/**
+ * Trả về key lưu trữ theo tài khoản người dùng
+ */
+export function getRoadmapStorageKey(userId?: string): string {
+  const uid = userId || getCurrentUserIdSync()
+  return `hsk_user_roadmap_v1_${uid}`
+}
+
+/**
+ * Lấy lộ trình cá nhân đã lưu theo tài khoản
+ */
+export function getStoredRoadmap(userId?: string): UserRoadmap | null {
   if (!isBrowser()) return null
   try {
-    const raw = localStorage.getItem(ROADMAP_STORAGE_KEY)
-    if (!raw) return null
-    return JSON.parse(raw) as UserRoadmap
+    const key = getRoadmapStorageKey(userId)
+    const raw = localStorage.getItem(key)
+    if (raw) {
+      return JSON.parse(raw) as UserRoadmap
+    }
+
+    // Cơ chế migrate cho dữ liệu cũ từ key không định danh
+    const legacyRaw = localStorage.getItem(ROADMAP_LEGACY_KEY)
+    if (legacyRaw) {
+      try {
+        const legacy = JSON.parse(legacyRaw) as UserRoadmap
+        const activeUid = userId || getCurrentUserIdSync()
+        // Chỉ migrate nếu lộ trình chưa gán hoặc trùng với tài khoản hiện tại
+        if (legacy && (!legacy.userId || legacy.userId === activeUid)) {
+          legacy.userId = activeUid
+          localStorage.setItem(key, JSON.stringify(legacy))
+          localStorage.removeItem(ROADMAP_LEGACY_KEY)
+          return legacy
+        }
+      } catch {
+        localStorage.removeItem(ROADMAP_LEGACY_KEY)
+      }
+    }
+
+    return null
   } catch (err) {
     console.error("Failed to parse stored roadmap:", err)
     return null
@@ -51,26 +89,70 @@ export function getStoredRoadmap(): UserRoadmap | null {
 }
 
 /**
- * Lưu lộ trình cá nhân và phát tín hiệu reactive
+ * Chỉ lưu vào LocalStorage (dùng cho luồng kéo từ Cloud về)
  */
-export function saveRoadmap(roadmap: UserRoadmap): void {
+export function saveRoadmapLocalOnly(roadmap: UserRoadmap, userId?: string): void {
   if (!isBrowser()) return
   try {
-    localStorage.setItem(ROADMAP_STORAGE_KEY, JSON.stringify(roadmap))
-    window.dispatchEvent(new CustomEvent("roadmap-updated", { detail: roadmap }))
+    const uid = userId || roadmap.userId || getCurrentUserIdSync()
+    const withUser: UserRoadmap = { ...roadmap, userId: uid }
+    localStorage.setItem(getRoadmapStorageKey(uid), JSON.stringify(withUser))
+  } catch (err) {
+    console.error("Failed to save roadmap locally:", err)
+  }
+}
+
+/**
+ * Lưu lộ trình cá nhân, phát tín hiệu reactive và đẩy lên Supabase Cloud
+ */
+export function saveRoadmap(roadmap: UserRoadmap, userId?: string): void {
+  if (!isBrowser()) return
+  try {
+    const uid = userId || roadmap.userId || getCurrentUserIdSync()
+    const withUser: UserRoadmap = { ...roadmap, userId: uid }
+    localStorage.setItem(getRoadmapStorageKey(uid), JSON.stringify(withUser))
+    window.dispatchEvent(new CustomEvent("roadmap-updated", { detail: withUser }))
+
+    // Đẩy bất đồng bộ lên Cloud nếu đã đăng nhập
+    if (uid && uid !== "guest") {
+      import("./roadmapSync").then(({ pushRoadmapToCloud }) => {
+        pushRoadmapToCloud(uid, withUser).catch(() => {})
+      })
+    }
   } catch (err) {
     console.error("Failed to save roadmap:", err)
   }
 }
 
 /**
- * Xóa lộ trình để thiết lập lại
+ * Chỉ xóa khỏi LocalStorage
  */
-export function clearRoadmap(): void {
+export function clearRoadmapLocalOnly(userId?: string): void {
   if (!isBrowser()) return
   try {
-    localStorage.removeItem(ROADMAP_STORAGE_KEY)
+    const uid = userId || getCurrentUserIdSync()
+    localStorage.removeItem(getRoadmapStorageKey(uid))
+  } catch (err) {
+    console.error("Failed to clear roadmap locally:", err)
+  }
+}
+
+/**
+ * Xóa lộ trình để thiết lập lại
+ */
+export function clearRoadmap(userId?: string): void {
+  if (!isBrowser()) return
+  try {
+    const uid = userId || getCurrentUserIdSync()
+    localStorage.removeItem(getRoadmapStorageKey(uid))
     window.dispatchEvent(new CustomEvent("roadmap-updated", { detail: null }))
+
+    // Xóa trên Cloud
+    if (uid && uid !== "guest") {
+      import("./roadmapSync").then(({ deleteRoadmapFromCloud }) => {
+        deleteRoadmapFromCloud(uid).catch(() => {})
+      })
+    }
   } catch (err) {
     console.error("Failed to clear roadmap:", err)
   }
@@ -114,8 +196,11 @@ export function generateRoadmapMilestones(input: RoadmapSetupInput): RoadmapMile
 /**
  * Tính toán toàn diện tiến độ học tập thực tế và đo đạc "Còn thiếu gì"
  */
-export async function computeRoadmapStats(customRoadmap?: UserRoadmap | null): Promise<RoadmapStats> {
-  const roadmap = customRoadmap !== undefined ? customRoadmap : getStoredRoadmap()
+export async function computeRoadmapStats(
+  customRoadmap?: UserRoadmap | null,
+  userId?: string
+): Promise<RoadmapStats> {
+  const roadmap = customRoadmap !== undefined ? customRoadmap : getStoredRoadmap(userId)
 
   // Mặc định mục tiêu và trình độ khởi điểm (giới hạn mục tiêu trong phạm vi giáo trình có sẵn HSK 1-3)
   const rawTarget = roadmap?.targetLevel || 2
@@ -152,7 +237,7 @@ export async function computeRoadmapStats(customRoadmap?: UserRoadmap | null): P
   const alreadyKnownLessons = startLevel > 0 ? (HSK_CUMULATIVE_STANDARDS[startLevel as HskLevelNumber]?.lessons || 0) : 0
 
   // 3. Đọc tiến độ bài học từ LocalStorage (lessonProgress.ts)
-  const lessonRecords = getAllProgressRecords()
+  const lessonRecords = getAllProgressRecords(userId)
   let completedLessonsCount = 0
   let inProgressLessonsCount = 0
   let totalTimeSpentSeconds = 0

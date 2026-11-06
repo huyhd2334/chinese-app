@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useMemo } from "react"
+import React, { useState, useMemo, useEffect } from "react"
 import { 
   X, 
   ArrowRight, 
@@ -183,6 +183,27 @@ export function RoadmapWizardModal({ isOpen, onClose }: RoadmapWizardModalProps)
     return roadmap?.targetDate || pacePresets[1].targetDate
   })
   const [isCustomDate, setIsCustomDate] = useState(false)
+
+  useEffect(() => {
+    if (isOpen) {
+      setStep(1)
+      setGoalType(roadmap?.goalType || "hsk_exam")
+      setStartLevel(Math.min(2, Math.max(0, roadmap?.startLevel ?? 0)))
+      const raw = roadmap?.targetLevel || (roadmap?.startLevel ? roadmap.startLevel + 1 : 2)
+      setTargetLevel(Math.min(3, Math.max(1, raw)) as HskLevelNumber)
+      setMinutesPerDay(roadmap?.minutesPerDay || 30)
+      setDaysPerWeek(roadmap?.daysPerWeek || 6)
+      setFocusSkills(roadmap?.focusSkills || ["vocabulary", "listening", "speaking"])
+      if (roadmap?.targetDate) {
+        setTargetDate(roadmap.targetDate)
+        setIsCustomDate(true)
+      } else {
+        setTargetDate(pacePresets[1].targetDate)
+        setSelectedPaceId("standard")
+        setIsCustomDate(false)
+      }
+    }
+  }, [isOpen, roadmap, pacePresets])
 
   // Tính số ngày còn lại theo targetDate hiện tại
   const daysDiff = useMemo(() => {

@@ -6,6 +6,7 @@ import { installSrsSyncHooks, syncSrsNow } from "@/utils/srsCloudSync"
 import { syncSubscriptionWithCloud } from "@/utils/subscription"
 import { syncCollectionsWithCloud } from "@/utils/bonusCloudSync"
 import { installLessonProgressSyncHooks, syncLessonProgressWithCloud } from "@/utils/lessonProgressSync"
+import { syncRoadmapWithCloud } from "@/utils/roadmapSync"
 import { autoSeedWordsForUser } from "@/utils/autoSeedWords"
 
 /**
@@ -62,7 +63,12 @@ export default function SyncManager() {
           await syncCollectionsWithCloud(uid)
         }
 
-        // 5. Tự động lấy từ vựng nếu tài khoản chưa có từ (chưa có tiến độ / người dùng mới hoặc hằng ngày)
+        // 5. Đồng bộ lộ trình cá nhân (Roadmap)
+        if (!cancelled) {
+          await syncRoadmapWithCloud(uid)
+        }
+
+        // 6. Tự động lấy từ vựng nếu tài khoản chưa có từ (chưa có tiến độ / người dùng mới hoặc hằng ngày)
         if (!cancelled) {
           const seedResult = await autoSeedWordsForUser(uid)
           if (seedResult.addedCount > 0 && seedResult.message) {

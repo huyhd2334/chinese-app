@@ -60,7 +60,7 @@ export async function syncLessonProgressWithCloud(userId: string): Promise<Lesso
 
   try {
     const isPro = isProUser()
-    const localRecords = getAllProgressRecords()
+    const localRecords = getAllProgressRecords(userId)
 
     // 1. PULL: Lấy dữ liệu tiến độ từ Supabase Cloud
     const { data: cloudRows, error: pullError } = await supabase
@@ -117,7 +117,7 @@ export async function syncLessonProgressWithCloud(userId: string): Promise<Lesso
     if (hasLocalUpdates) {
       isApplyingRemote = true
       try {
-        saveAllProgressRecords(localRecords)
+        saveAllProgressRecords(localRecords, userId)
       } finally {
         isApplyingRemote = false
       }

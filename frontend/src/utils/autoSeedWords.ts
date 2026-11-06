@@ -38,7 +38,7 @@ export async function autoSeedWordsForUser(userId?: string): Promise<AutoSeedRes
     }
 
     // Đọc lộ trình học để biết nên lấy từ ở cấp độ nào (nếu đã có HSK 2 thì lấy từ HSK 3)
-    const roadmap = getStoredRoadmap()
+    const roadmap = getStoredRoadmap(userId)
     const startLevel = roadmap?.startLevel || 0
     const targetHskLevel = startLevel > 0 ? Math.min(6, startLevel + 1) : 1
 

@@ -133,8 +133,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setUser(session?.user ?? null)
       setIsLoading(false)
       if (session?.user) {
+        if (typeof window !== "undefined") {
+          localStorage.setItem("hsk_current_user_id", session.user.id)
+        }
         syncUserSubscriptionFromMeta(session.user)
         triggerWelcomeIfFresh(session.user.id)
+      } else if (typeof window !== "undefined") {
+        localStorage.setItem("hsk_current_user_id", "guest")
       }
     })
 
@@ -146,9 +151,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setUser(session?.user ?? null)
       setIsLoading(false)
 
-      if (event === "SIGNED_OUT") {
+      if (event === "SIGNED_OUT" || !session?.user) {
         saveLocalSubscription("free", null, "guest")
+        if (typeof window !== "undefined") {
+          localStorage.setItem("hsk_current_user_id", "guest")
+          window.dispatchEvent(new CustomEvent("roadmap-updated", { detail: null }))
+          window.dispatchEvent(new CustomEvent("hsk-auth-changed", { detail: { user: null } }))
+        }
       } else if (session?.user) {
+        if (typeof window !== "undefined") {
+          localStorage.setItem("hsk_current_user_id", session.user.id)
+          window.dispatchEvent(new CustomEvent("hsk-auth-changed", { detail: { user: session.user } }))
+        }
         syncUserSubscriptionFromMeta(session.user)
         if (event === "SIGNED_IN") {
           triggerWelcomeIfFresh(session.user.id)
@@ -292,6 +306,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const signOut = async () => {
     await supabase.auth.signOut()
     saveLocalSubscription("free", null, "guest")
+    if (typeof window !== "undefined") {
+      localStorage.setItem("hsk_current_user_id", "guest")
+      window.dispatchEvent(new CustomEvent("roadmap-updated", { detail: null }))
+      window.dispatchEvent(new CustomEvent("hsk-auth-changed", { detail: { user: null } }))
+    }
     setUser(null)
     setSession(null)
   }

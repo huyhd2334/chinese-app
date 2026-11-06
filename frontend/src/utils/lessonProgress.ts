@@ -11,21 +11,42 @@ function isBrowser(): boolean {
   return typeof window !== 'undefined'
 }
 
-export function getAllProgressRecords(): Record<string, LessonProgressData> {
+function getProgressStorageKey(userId?: string): string {
+  if (!isBrowser()) return STORAGE_KEY
+  const uid = userId || localStorage.getItem('hsk_current_user_id') || 'guest'
+  return uid === 'guest' ? STORAGE_KEY : `${STORAGE_KEY}_${uid}`
+}
+
+export function getAllProgressRecords(userId?: string): Record<string, LessonProgressData> {
   if (!isBrowser()) return {}
   try {
-    const raw = localStorage.getItem(STORAGE_KEY)
-    return raw ? JSON.parse(raw) : {}
+    const key = getProgressStorageKey(userId)
+    const raw = localStorage.getItem(key)
+    if (raw) return JSON.parse(raw)
+
+    // Migration fallback for legacy un-scoped progress
+    if (key !== STORAGE_KEY) {
+      const legacyRaw = localStorage.getItem(STORAGE_KEY)
+      if (legacyRaw) {
+        try {
+          const parsed = JSON.parse(legacyRaw)
+          localStorage.setItem(key, legacyRaw)
+          return parsed
+        } catch {}
+      }
+    }
+    return {}
   } catch (e) {
     console.error('Failed to parse lesson progress:', e)
     return {}
   }
 }
 
-export function saveAllProgressRecords(data: Record<string, LessonProgressData>): void {
+export function saveAllProgressRecords(data: Record<string, LessonProgressData>, userId?: string): void {
   if (!isBrowser()) return
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data))
+    const key = getProgressStorageKey(userId)
+    localStorage.setItem(key, JSON.stringify(data))
     // Dispatch a custom event so tabs or same-page components can react
     window.dispatchEvent(new CustomEvent('lesson-progress-updated'))
   } catch (e) {
