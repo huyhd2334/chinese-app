@@ -295,7 +295,7 @@ export async function redeemActivationCodeOnServer(
   }
 
   // 2. Fallback trực tiếp qua Supabase Client nếu API server gặp sự cố kết nối
-  if (cleanCode === "TIEULU2026" || cleanCode === "HSKPRO2026") {
+  if (cleanCode === "TIEULU2026" || cleanCode === "HSKPRO2026" || cleanCode === "PROHSK2026") {
     try {
       const redemptionRecordId = `redemption_${cleanCode}_${userId}`
       await supabase.from("bonus_collections").upsert({

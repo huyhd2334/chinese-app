@@ -23,6 +23,12 @@ const PRO_CODES_CONFIG: Record<
     durationDays: 365,
     label: "Gói Pro 1 Năm (Mã HSKPRO2026)",
   },
+  PROHSK2026: {
+    plan: "pro_yearly",
+    maxUses: 10,
+    durationDays: 365,
+    label: "Gói Pro 1 Năm (Mã PROHSK2026)",
+  },
 }
 
 export async function POST(req: NextRequest) {
