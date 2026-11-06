@@ -103,6 +103,17 @@ export default function ReviewPage() {
   useEffect(() => {
     loadReview(filter)
     refreshGlobalStats()
+
+    const handleSync = () => {
+      loadReview(filter)
+      refreshGlobalStats()
+    }
+    window.addEventListener("hsk-cloud-synced", handleSync)
+    window.addEventListener("hsk-srs-synced", handleSync)
+    return () => {
+      window.removeEventListener("hsk-cloud-synced", handleSync)
+      window.removeEventListener("hsk-srs-synced", handleSync)
+    }
   }, [filter, loadReview, refreshGlobalStats])
 
   useEffect(() => {

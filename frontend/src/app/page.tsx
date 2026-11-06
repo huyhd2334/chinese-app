@@ -74,6 +74,8 @@ export default function Dashboard() {
   const [isDailyWordAdded, setIsDailyWordAdded] = useState(false)
   const [isRoadmapWizardOpen, setIsRoadmapWizardOpen] = useState(false)
 
+  const [isSyncing, setIsSyncing] = useState(false)
+
   const playAudio = (text: string, e?: React.MouseEvent) => {
     if (e) {
       e.preventDefault()
@@ -88,6 +90,11 @@ export default function Dashboard() {
       const count = await importHsk()
       setWordCount(count)
       await loadData()
+
+      // Tự động kích hoạt đồng bộ đám mây Supabase nếu có mạng
+      if (typeof window !== "undefined") {
+        window.dispatchEvent(new CustomEvent("hsk-request-sync"))
+      }
     } catch (err) {
       console.error("Dashboard initial load error:", err)
     } finally {
@@ -100,6 +107,18 @@ export default function Dashboard() {
         importReading().catch(console.error)
         importListening().catch(console.error)
       }, 1200)
+    }
+  }
+
+  const handleManualSync = async () => {
+    setIsSyncing(true)
+    try {
+      window.dispatchEvent(new CustomEvent("hsk-request-sync"))
+      await getData()
+      setStreakToast("Đã đồng bộ dữ liệu mới nhất thành công!")
+      setTimeout(() => setStreakToast(null), 3000)
+    } finally {
+      setTimeout(() => setIsSyncing(false), 500)
     }
   }
 
@@ -370,7 +389,8 @@ export default function Dashboard() {
   }
 
   useEffect(() => {
-    loadData()
+    // 1. Tự động kiểm tra và import từ vựng hệ thống & nạp dữ liệu người dùng
+    getData()
     
     // Set time-based greeting
     const hour = new Date().getHours()
@@ -396,6 +416,11 @@ export default function Dashboard() {
   }, [])
 
   useEffect(() => {
+    // 2. Tự động cập nhật giao diện Dashboard mỗi khi SyncManager kéo dữ liệu đám mây về
+    const handleSyncComplete = () => {
+      loadData()
+    }
+
     const handleAutoSeeded = (e: Event) => {
       const customEvent = e as CustomEvent
       if (customEvent.detail && customEvent.detail.message) {
@@ -405,16 +430,25 @@ export default function Dashboard() {
       loadData()
     }
 
-    const handleWordsUpdated = () => {
-      loadData()
+    const handleSyncStatus = (e: Event) => {
+      const customEvent = e as CustomEvent<{ syncing?: boolean }>
+      if (typeof customEvent.detail?.syncing === "boolean") {
+        setIsSyncing(customEvent.detail.syncing)
+      }
     }
 
+    window.addEventListener("hsk-cloud-synced", handleSyncComplete)
+    window.addEventListener("hsk-srs-synced", handleSyncComplete)
     window.addEventListener("hsk-auto-seeded", handleAutoSeeded)
-    window.addEventListener("hsk-words-updated", handleWordsUpdated)
+    window.addEventListener("hsk-words-updated", handleSyncComplete)
+    window.addEventListener("hsk-sync-status", handleSyncStatus)
 
     return () => {
+      window.removeEventListener("hsk-cloud-synced", handleSyncComplete)
+      window.removeEventListener("hsk-srs-synced", handleSyncComplete)
       window.removeEventListener("hsk-auto-seeded", handleAutoSeeded)
-      window.removeEventListener("hsk-words-updated", handleWordsUpdated)
+      window.removeEventListener("hsk-words-updated", handleSyncComplete)
+      window.removeEventListener("hsk-sync-status", handleSyncStatus)
     }
   }, [user?.id])
 
@@ -533,11 +567,14 @@ export default function Dashboard() {
         <div className="flex sm:flex-col items-center sm:items-end justify-between sm:justify-start pt-2 sm:pt-0 border-t sm:border-t-0 border-border/30">
           <p className="font-chinese text-base sm:text-xl text-china-jade font-semibold" lang="zh">{chineseDate}</p>
           <button
-            onClick={getData}
-            className="mt-1 text-xs sm:text-sm text-muted hover:text-china-red transition-colors flex items-center gap-1 font-semibold cursor-pointer"
+            type="button"
+            onClick={handleManualSync}
+            disabled={isSyncing}
+            title="Đồng bộ dữ liệu học tập với máy chủ"
+            className="mt-1 text-xs sm:text-sm text-muted hover:text-china-red transition-colors flex items-center gap-1 font-semibold cursor-pointer disabled:opacity-60"
           >
-            <History className="w-3.5 h-3.5" />
-            Đồng bộ dữ liệu
+            <History className={`w-3.5 h-3.5 ${isSyncing ? "animate-spin text-china-red" : ""}`} />
+            <span>{isSyncing ? "Đang đồng bộ..." : "Đồng bộ dữ liệu"}</span>
           </button>
         </div>
       </header>

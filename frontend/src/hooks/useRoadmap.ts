@@ -44,12 +44,22 @@ export function useRoadmap() {
       refreshStats()
     }
 
+    const handleCloudSyncChange = () => {
+      refreshStats()
+    }
+
     window.addEventListener("roadmap-updated", handleRoadmapChange)
     window.addEventListener("lesson-progress-updated", handleLessonProgressChange)
+    window.addEventListener("hsk-cloud-synced", handleCloudSyncChange)
+    window.addEventListener("hsk-srs-synced", handleCloudSyncChange)
+    window.addEventListener("hsk-auto-seeded", handleCloudSyncChange)
 
     return () => {
       window.removeEventListener("roadmap-updated", handleRoadmapChange)
       window.removeEventListener("lesson-progress-updated", handleLessonProgressChange)
+      window.removeEventListener("hsk-cloud-synced", handleCloudSyncChange)
+      window.removeEventListener("hsk-srs-synced", handleCloudSyncChange)
+      window.removeEventListener("hsk-auto-seeded", handleCloudSyncChange)
     }
   }, [refreshStats])
 
