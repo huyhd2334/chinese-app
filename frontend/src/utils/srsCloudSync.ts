@@ -7,7 +7,7 @@ import { isProUser, FREE_REVIEW_LIMIT } from "./subscription"
  *  - IndexedDB (Dexie) vẫn là nơi đọc/ghi chính -> học offline, độ trễ 0ms.
  *  - Nền: kéo thay đổi mới từ Supabase (pull) rồi đẩy thay đổi cục bộ lên (push).
  *  - Giải quyết xung đột: Last-Write-Wins theo `updatedAt` của từng thẻ.
- *  - Người dùng Thường (Free): Đồng bộ tối đa 500 từ vựng cốt lõi.
+ *  - Người dùng Thường (Free): Đồng bộ tối đa 1.000 từ vựng cốt lõi.
  *  - Người dùng Pro: Đồng bộ không giới hạn toàn bộ kho từ vựng.
  */
 
@@ -192,7 +192,7 @@ async function runSync(uid: string, maxWords: number): Promise<SyncResult> {
 
 /**
  * Đồng bộ ngay:
- * - Người dùng Free: Đồng bộ tối đa 500 từ vựng.
+ * - Người dùng Free: Đồng bộ tối đa 1.000 từ vựng.
  * - Người dùng Pro: Đồng bộ không giới hạn toàn bộ từ vựng.
  */
 export function syncSrsNow(): Promise<SyncResult> {

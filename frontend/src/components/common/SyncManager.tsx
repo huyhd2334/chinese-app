@@ -47,7 +47,7 @@ export default function SyncManager() {
         // 1. Làm mới trạng thái gói cước Pro từ server
         await syncSubscriptionWithCloud(uid)
 
-        // 2. Đồng bộ tiến độ từ vựng SRS với Supabase (Free: 500 từ, Pro: Không giới hạn)
+        // 2. Đồng bộ tiến độ từ vựng SRS với Supabase (Free: 1.000 từ, Pro: Không giới hạn)
         if (!cancelled) {
           await syncSrsNow()
         }

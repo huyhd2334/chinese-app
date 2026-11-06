@@ -356,7 +356,7 @@ export default function UpgradeModal() {
                   <li className="flex items-center gap-2">
                     <Check className="w-3.5 h-3.5 text-china-red shrink-0" />
                     <span>
-                      Ôn tập Review <b>không giới hạn</b> (vượt mốc 500 từ)
+                      Ôn tập Review <b>không giới hạn</b> (vượt mốc {FREE_REVIEW_LIMIT} từ)
                     </span>
                   </li>
                   <li className="flex items-center gap-2">

@@ -1,7 +1,7 @@
 import { supabase } from "@/lib/supabase"
 import { computeSubChecksum } from "./security"
 
-export const FREE_REVIEW_LIMIT = 500
+export const FREE_REVIEW_LIMIT = 1000
 
 export type PlanType = "free" | "pro_monthly" | "pro_yearly"
 
@@ -16,7 +16,7 @@ const SUB_STORAGE_KEY = "hsk_sub_state_v2"
 const LEGACY_STORAGE_KEY = "hsk_sub_state_v1"
 
 export class ReviewLimitError extends Error {
-  constructor(message = "Đã đạt giới hạn 500 từ ôn tập của gói Miễn phí.") {
+  constructor(message = "Đã đạt giới hạn 1.000 từ ôn tập của gói Miễn phí.") {
     super(message)
     this.name = "ReviewLimitError"
   }
