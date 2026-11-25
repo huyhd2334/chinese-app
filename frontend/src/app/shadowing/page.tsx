@@ -67,78 +67,45 @@ export default function ShadowingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#faf8f5] dark:bg-[#111116] p-4 sm:p-6 lg:p-8 space-y-6 max-w-6xl mx-auto pb-24 font-sans text-stone-900 dark:text-stone-100 transition-colors animate-fade-in">
-      
-      {/* Hero Banner Header - Viền dây leo SVG mộc mạc thanh nhã */}
-      <div className="relative overflow-hidden rounded-3xl bg-white dark:bg-[#1a1a24] border border-stone-200/90 dark:border-[#2c2d3d] shadow-xs p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
-        <LeafVineCornerSvg position="top-left" className="top-0 left-0 w-9 h-9 sm:w-11 sm:h-11 opacity-80" />
-        <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-9 h-9 sm:w-11 sm:h-11 opacity-80" />
-        <LeafVineCornerSvg position="bottom-left" className="bottom-0 left-0 w-8 h-8 sm:w-10 sm:h-10 opacity-60" />
-        <LeafVineCornerSvg position="bottom-right" className="bottom-0 right-0 w-8 h-8 sm:w-10 sm:h-10 opacity-60" />
-
-        <div className="relative z-10 space-y-3 max-w-xl">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200/80 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300">
-            <Headphones className="w-3.5 h-3.5" />
-            <span>PHÒNG LUYỆN NÓI SHADOWING TIỂU LU</span>
-          </div>
-
-          <h1 className="text-xl sm:text-2xl lg:text-3xl font-serif font-black text-stone-900 dark:text-stone-100 tracking-tight leading-snug">
-            Nhại Giọng Bản Xứ • Bứt Phá Khẩu Ngữ HSK
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6 pb-24 text-foreground">
+      {/* Header */}
+      <header className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-border">
+        <div className="space-y-1 max-w-2xl">
+          <h1 className="text-xl sm:text-2xl font-bold text-foreground tracking-tight">
+            Luyện nói Shadowing
           </h1>
-
-          <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 leading-relaxed">
-            Phương pháp Shadowing giúp bạn bắt chước ngữ điệu, thanh điệu và nối âm tự nhiên của người bản xứ:{" "}
-            <span className="font-semibold text-stone-900 dark:text-stone-100">Nghe mẫu trên YouTube → Bấm câu nhảy video → Thu âm đối chiếu</span> tiện lợi!
+          <p className="text-xs sm:text-sm text-muted leading-relaxed">
+            Luyện phản xạ phát âm và ngữ điệu theo người bản xứ: nghe từng câu hội thoại, bấm nhảy vị trí video và thu âm đối chiếu trực tiếp.
           </p>
+        </div>
 
-          <div className="pt-2 flex flex-wrap items-center gap-3">
-            {!isPro ? (
-              <>
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-stone-100 dark:bg-stone-800 border border-border text-xs font-medium text-slate-700 dark:text-stone-300">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500" />
-                  <span>Miễn phí: 5 video bài học</span>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => triggerUpgradeModal("manual")}
-                  className="px-3.5 py-1.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-semibold text-xs transition-colors cursor-pointer flex items-center gap-1.5"
-                >
-                  <Crown className="w-3.5 h-3.5" />
-                  <span>Nâng cấp Pro</span>
-                </button>
-              </>
-            ) : (
-              <span className="px-3.5 py-1.5 rounded-full bg-amber-400/20 border border-amber-400/40 text-amber-800 dark:text-amber-300 text-xs font-bold flex items-center gap-1.5">
-                <Crown className="w-4 h-4 text-amber-500" />
-                <span>Tài khoản PRO: Đã mở khóa toàn bộ kho luyện nói</span>
+        <div className="flex items-center gap-2 self-start md:self-auto">
+          {!isPro ? (
+            <>
+              <span className="px-3 py-1.5 rounded-lg bg-card border border-border text-xs font-medium text-muted">
+                Miễn phí 5 video
               </span>
-            )}
-          </div>
+              <button
+                type="button"
+                onClick={() => triggerUpgradeModal("manual")}
+                className="px-3.5 py-1.5 rounded-lg bg-china-red hover:bg-china-red-hover text-white font-semibold text-xs transition-colors cursor-pointer flex items-center gap-1.5"
+              >
+                <Crown className="w-3.5 h-3.5" />
+                <span>Mở khóa Pro</span>
+              </button>
+            </>
+          ) : (
+            <span className="px-3 py-1.5 rounded-lg bg-china-paper border border-border text-foreground text-xs font-semibold flex items-center gap-1.5">
+              <Crown className="w-3.5 h-3.5 text-china-gold" />
+              <span>Đã mở khóa toàn bộ video</span>
+            </span>
+          )}
         </div>
-
-        {/* Mascot decoration - Clean side container */}
-        <div className="relative z-10 hidden sm:flex items-center gap-3 p-4 rounded-3xl bg-stone-50 dark:bg-stone-900/60 border border-stone-200/80 dark:border-stone-800 shrink-0">
-          <div className="w-20 h-20 relative flex items-center justify-center">
-            <Image
-              src="/chibi-loading.svg"
-              alt="Tiểu Lu Shadowing"
-              width={80}
-              height={80}
-              priority
-              className="object-contain"
-            />
-          </div>
-          <div className="text-xs max-w-[130px] leading-tight text-stone-500 dark:text-stone-400">
-            <p className="font-bold text-stone-900 dark:text-stone-100 mb-0.5">Tiểu Lu đồng hành</p>
-            <p className="text-[11px]">Cùng bạn luyện nói mỗi ngày không lo ngại ngùng!</p>
-          </div>
-        </div>
-      </div>
+      </header>
 
       {/* Filter and Search Bar */}
-      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-white dark:bg-[#1a1a24] p-3.5 sm:p-4 rounded-2xl border border-stone-200/90 dark:border-[#2c2d3d] shadow-xs">
-        {/* Level Filter Tabs */}
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 custom-scrollbar">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-card p-3.5 rounded-2xl border border-border">
+        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 scrollbar-hide">
           {[
             { id: "all", label: "Tất cả" },
             { id: "hsk1", label: "HSK 1-2" },
@@ -149,10 +116,10 @@ export default function ShadowingPage() {
             <button
               key={tab.id}
               onClick={() => setLevelFilter(tab.id)}
-              className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer ${
                 levelFilter === tab.id
-                  ? "bg-stone-900 text-white dark:bg-emerald-600 dark:text-white shadow-2xs"
-                  : "bg-stone-100 text-stone-700 hover:text-stone-900 hover:bg-stone-200 dark:bg-stone-800 dark:text-stone-300 dark:hover:bg-stone-700"
+                  ? "bg-foreground text-background"
+                  : "bg-china-paper text-muted hover:text-foreground"
               }`}
             >
               {tab.label}
@@ -160,21 +127,20 @@ export default function ShadowingPage() {
           ))}
         </div>
 
-        {/* Search Input */}
         <div className="relative min-w-[220px]">
-          <Search className="w-4 h-4 text-stone-400 absolute left-3 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-muted absolute left-3 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Tìm chủ đề, từ khóa..."
-            className="w-full pl-9 pr-3.5 py-2 rounded-xl border border-stone-200 dark:border-[#2c2d3d] text-xs focus:outline-none focus:ring-1 focus:ring-emerald-600 bg-white dark:bg-[#16161f] text-stone-900 dark:text-stone-100 placeholder:text-stone-400 dark:placeholder:text-stone-500"
+            className="w-full pl-9 pr-3.5 py-1.5 rounded-lg border border-border text-xs focus:outline-none focus:border-china-red bg-china-paper/60 dark:bg-card text-foreground placeholder:text-muted"
           />
         </div>
       </div>
 
       {/* Video Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {filteredVideos.map((video) => {
           const isLocked = !video.isFree && !isPro
 
@@ -182,10 +148,8 @@ export default function ShadowingPage() {
             <div
               key={video.id}
               onClick={() => handleSelectVideo(video)}
-              className="group relative bg-white dark:bg-[#1a1a24] rounded-3xl border border-stone-200/90 dark:border-[#2c2d3d] shadow-xs hover:shadow-md transition-all duration-300 flex flex-col overflow-hidden cursor-pointer"
+              className="group relative bg-card rounded-2xl border border-border hover:border-foreground/30 transition-colors flex flex-col overflow-hidden cursor-pointer"
             >
-              {/* Nhánh dây leo góc card */}
-              <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-8 h-8 opacity-60 group-hover:opacity-100 transition-opacity" />
 
               {/* Thumbnail Preview with Play Overlay */}
               <div className="relative aspect-video w-full bg-stone-900 overflow-hidden">

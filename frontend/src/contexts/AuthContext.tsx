@@ -25,11 +25,6 @@ interface AuthContextType {
   isAuthModalOpen: boolean
   openAuthModal: () => void
   closeAuthModal: () => void
-  isHalloweenModalOpen: boolean
-  openHalloweenModal: () => void
-  closeHalloweenModal: () => void
-  isHalloweenTheme: boolean
-  toggleHalloweenTheme: () => void
   isDarkMode: boolean
   toggleDarkMode: () => void
   signInWithEmail: (email: string, password: string) => Promise<SignInResult>
@@ -46,34 +41,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [session, setSession] = useState<Session | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false)
-  const [isHalloweenModalOpen, setIsHalloweenModalOpen] = useState(false)
-  const [isHalloweenTheme, setIsHalloweenTheme] = useState(() => {
-    if (typeof window === "undefined") return false
-    return localStorage.getItem("hsk_halloween_event_theme") === "on"
-  })
   const [isDarkMode, setIsDarkMode] = useState(() => {
     if (typeof window === "undefined") return false
     const saved = localStorage.getItem("hsk_color_theme")
     return saved === "dark"
   })
-
-  const openHalloweenModal = () => {
-    if (isHalloweenTheme) setIsHalloweenModalOpen(true)
-  }
-  const closeHalloweenModal = () => setIsHalloweenModalOpen(false)
-
-  const toggleHalloweenTheme = () => {
-    setIsHalloweenTheme((prev) => {
-      const next = !prev
-      if (typeof window !== "undefined") {
-        localStorage.setItem("hsk_halloween_event_theme", next ? "on" : "off")
-      }
-      if (!next) {
-        setIsHalloweenModalOpen(false)
-      }
-      return next
-    })
-  }
 
   const toggleDarkMode = () => {
     setIsDarkMode((prev) => {
@@ -87,34 +59,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (typeof document === "undefined") return
+    document.documentElement.classList.remove("halloween-event-theme")
     if (isDarkMode) {
       document.documentElement.classList.add("dark")
     } else {
       document.documentElement.classList.remove("dark")
     }
   }, [isDarkMode])
-
-  useEffect(() => {
-    if (typeof document === "undefined") return
-    if (isHalloweenTheme) {
-      document.documentElement.classList.add("halloween-event-theme")
-    } else {
-      document.documentElement.classList.remove("halloween-event-theme")
-    }
-  }, [isHalloweenTheme])
-
-  const triggerWelcomeIfFresh = (userId: string) => {
-    if (typeof sessionStorage === "undefined") return
-    if (!isHalloweenTheme) return
-    const key = `halloween_welcome_shown_${userId}`
-    if (!sessionStorage.getItem(key)) {
-      sessionStorage.setItem(key, "1")
-      // Short delay so transitions feel natural
-      setTimeout(() => {
-        setIsHalloweenModalOpen(true)
-      }, 350)
-    }
-  }
 
   const syncUserSubscriptionFromMeta = (usr: User | null) => {
     if (!usr) return
@@ -138,7 +89,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           localStorage.setItem("hsk_current_user_id", session.user.id)
         }
         syncUserSubscriptionFromMeta(session.user)
-        triggerWelcomeIfFresh(session.user.id)
       } else if (typeof window !== "undefined") {
         localStorage.setItem("hsk_current_user_id", "guest")
       }
@@ -166,9 +116,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           window.dispatchEvent(new CustomEvent("hsk-auth-changed", { detail: { user: session.user } }))
         }
         syncUserSubscriptionFromMeta(session.user)
-        if (event === "SIGNED_IN") {
-          triggerWelcomeIfFresh(session.user.id)
-        }
       }
     })
 
@@ -215,9 +162,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }
 
       closeAuthModal()
-      setTimeout(() => {
-        setIsHalloweenModalOpen(true)
-      }, 350)
       return { error: null }
     } catch (err: unknown) {
       return { error: (err as Error).message || "Đã xảy ra lỗi đăng nhập" }
@@ -327,11 +271,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         isAuthModalOpen,
         openAuthModal,
         closeAuthModal,
-        isHalloweenModalOpen,
-        openHalloweenModal,
-        closeHalloweenModal,
-        isHalloweenTheme,
-        toggleHalloweenTheme,
         isDarkMode,
         toggleDarkMode,
         signInWithEmail,

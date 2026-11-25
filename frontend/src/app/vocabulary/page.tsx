@@ -78,19 +78,19 @@ const Page = () => {
   const progressPercentage = count > 0 ? ((learningCount + masteredCount) / count) * 100 : 0
 
   return (
-    <div className="flex flex-col min-h-full bg-china-paper/20 px-3 sm:px-6 md:px-8 py-4 sm:py-6 space-y-5">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-5">
       {/* Header */}
       <header className="shrink-0">
         <HeaderVocab totalWords={count} studyingWords={learningCount} />
       </header>
       
       {/* Top Controls Strip */}
-      <div className="flex flex-col lg:flex-row gap-4 lg:items-center justify-between bg-card/60 p-3 sm:p-4 rounded-2xl border border-border/70 shadow-xs">
+      <div className="flex flex-col lg:flex-row gap-4 lg:items-center justify-between bg-card p-4 rounded-2xl border border-border">
         {/* Level Progress */}
         <div className="w-full lg:w-1/3 space-y-1.5">
-          <div className="flex justify-between text-xs sm:text-sm font-medium text-china-ink">
+          <div className="flex justify-between text-xs font-medium text-foreground">
             <span>Tiến độ HSK {level}</span>
-            <span className="text-china-jade font-serif font-bold">{progressPercentage.toFixed(1)}%</span>
+            <span className="text-china-jade font-bold">{progressPercentage.toFixed(1)}%</span>
           </div>
           <div className="h-1.5 w-full bg-border rounded-full overflow-hidden">
             <div 
@@ -98,10 +98,10 @@ const Page = () => {
               style={{ width: `${progressPercentage}%` }}
             />
           </div>
-          <div className="flex justify-between text-[11px] font-medium text-muted">
-            <span className="flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-border"></span> Mới: {newCount}</span>
-            <span className="flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-china-gold"></span> Đang học: {learningCount}</span>
-            <span className="flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-china-jade"></span> Thuần thục: {masteredCount}</span>
+          <div className="flex justify-between text-[11px] text-muted">
+            <span>Mới: {newCount}</span>
+            <span>Đang học: {learningCount}</span>
+            <span>Thuần thục: {masteredCount}</span>
           </div>
         </div>
 
@@ -115,16 +115,16 @@ const Page = () => {
               placeholder="Tìm chữ Hán, pinyin..." 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-3 py-1.5 text-xs sm:text-sm bg-white dark:bg-[#1a1624] text-china-ink border border-border dark:border-[#382c47] rounded-xl focus:outline-none focus:ring-2 focus:ring-china-red/20 focus:border-china-red transition-all shadow-xs"
+              className="w-full pl-9 pr-3 py-1.5 text-xs sm:text-sm bg-china-paper/60 dark:bg-card text-foreground border border-border rounded-lg focus:outline-none focus:border-china-red transition-colors"
             />
           </div>
 
           {/* Active Recall Toggles */}
-          <div className="flex items-center bg-stone-100 dark:bg-[#1a1624] border border-border dark:border-[#382c47] p-0.5 rounded-xl shadow-xs text-xs font-medium">
+          <div className="flex items-center bg-china-paper border border-border p-0.5 rounded-lg text-xs font-medium">
             <button
               onClick={() => setHidePinyin(!hidePinyin)}
-              className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg transition-colors ${
-                hidePinyin ? "bg-china-red text-white" : "text-muted hover:text-china-ink hover:bg-stone-200 dark:hover:bg-stone-800"
+              className={`flex items-center gap-1 px-2.5 py-1.5 rounded-md transition-colors cursor-pointer ${
+                hidePinyin ? "bg-foreground text-background" : "text-muted hover:text-foreground"
               }`}
               title="Ẩn Pinyin để tự kiểm tra mặt chữ"
             >
@@ -133,8 +133,8 @@ const Page = () => {
             </button>
             <button
               onClick={() => setHideMeaning(!hideMeaning)}
-              className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg transition-colors ${
-                hideMeaning ? "bg-china-red text-white" : "text-muted hover:text-china-ink hover:bg-stone-200 dark:hover:bg-stone-800"
+              className={`flex items-center gap-1 px-2.5 py-1.5 rounded-md transition-colors cursor-pointer ${
+                hideMeaning ? "bg-foreground text-background" : "text-muted hover:text-foreground"
               }`}
               title="Ẩn Nghĩa để tự suy nghĩ"
             >
@@ -148,13 +148,13 @@ const Page = () => {
       {/* Filter Tabs & HSK Levels */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         {/* Status Filters */}
-        <div className="flex bg-stone-100 dark:bg-[#1a1624] border border-border dark:border-[#382c47] p-1 rounded-xl shadow-xs overflow-x-auto scrollbar-hide gap-1">
+        <div className="flex bg-china-paper border border-border p-1 rounded-xl overflow-x-auto scrollbar-hide gap-1">
           {[
             { id: 'all', label: 'Tất cả' },
             { id: 'studying', label: 'Đang học' },
             { id: 'new', label: 'Từ mới' },
             { id: 'mastered', label: 'Thuần thục' },
-            { id: 'favorites', label: 'Yêu thích ⭐' },
+            { id: 'favorites', label: 'Đã lưu' },
           ].map(f => (
             <button
               key={f.id}
@@ -163,10 +163,10 @@ const Page = () => {
                 sessionStorage.setItem("vocab-filter", f.id)
                 sessionStorage.setItem("vocab-page", "0")
               }}
-              className={`px-3 py-1 text-xs font-medium rounded-lg whitespace-nowrap transition-all ${
+              className={`px-3 py-1 text-xs font-medium rounded-lg whitespace-nowrap transition-colors cursor-pointer ${
                 filter === f.id 
-                  ? 'bg-china-red text-white shadow-xs font-bold' 
-                  : 'text-muted hover:text-china-ink hover:bg-stone-200 dark:hover:bg-stone-800'
+                  ? 'bg-card text-foreground font-semibold shadow-2xs' 
+                  : 'text-muted hover:text-foreground'
               }`}
             >
               {f.label}
@@ -175,7 +175,7 @@ const Page = () => {
         </div>
 
         {/* HSK Level Tabs with horizontal swipe */}
-        <div className="flex gap-1 overflow-x-auto scrollbar-hide border-b border-border/60 pb-0.5">
+        <div className="flex gap-1 overflow-x-auto scrollbar-hide border-b border-border pb-0.5">
           {[...Array(levels)].map((_, index) => {
             const lv = index + 1
             return (
@@ -186,14 +186,14 @@ const Page = () => {
                   sessionStorage.setItem("vocab-level", String(lv))
                   sessionStorage.setItem("vocab-page", "0")
                 }}              
-                className={`flex items-center gap-1 px-2.5 py-1.5 font-medium transition-all text-xs rounded-t-xl border-b-2 whitespace-nowrap ${
+                className={`flex items-center gap-1 px-2.5 py-1.5 font-medium transition-colors text-xs border-b-2 whitespace-nowrap cursor-pointer ${
                   level === lv 
-                    ? "border-china-red text-china-red bg-white dark:bg-[#1a1624] font-bold shadow-xs" 
-                    : "border-transparent text-muted hover:text-china-ink hover:bg-stone-100 dark:hover:bg-stone-800/60"
+                    ? "border-china-red text-china-red font-semibold" 
+                    : "border-transparent text-muted hover:text-foreground"
                 }`}
               >
                 HSK {lv}
-                <span className={`text-[10px] px-1 py-0.2 rounded ${level === lv ? 'bg-china-red/10 text-china-red font-semibold' : 'bg-border/60 text-muted'}`}>
+                <span className={`text-[10px] px-1.5 py-0.2 rounded ${level === lv ? 'bg-china-red/10 text-china-red font-semibold' : 'bg-china-paper text-muted'}`}>
                   {hskCounts[lv] || 0}
                 </span>
               </button>

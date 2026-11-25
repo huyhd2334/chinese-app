@@ -334,7 +334,7 @@ export default function UpgradeModal() {
               className={`cursor-pointer rounded-2xl p-4 sm:p-5 border transition-all flex flex-col justify-between ${
                 selectedPlan === "pro_monthly"
                   ? "border-china-red bg-china-red/[0.03] ring-1 ring-china-red"
-                  : "border-border dark:border-[#382c47] bg-white dark:bg-[#1a1624] hover:border-china-red/30"
+                  : "border-border bg-white dark:bg-card hover:border-china-red/30"
               }`}
             >
               <div>
@@ -377,7 +377,7 @@ export default function UpgradeModal() {
               className={`cursor-pointer rounded-2xl p-4 sm:p-5 border transition-all flex flex-col justify-between ${
                 selectedPlan === "pro_yearly"
                   ? "border-china-red bg-china-red/[0.03] ring-1 ring-china-red"
-                  : "border-border dark:border-[#382c47] bg-white dark:bg-[#1a1624] hover:border-china-red/30"
+                  : "border-border bg-white dark:bg-card hover:border-china-red/30"
               }`}
             >
               <div>

@@ -87,66 +87,28 @@ export default function StoriesPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#faf8f5] dark:bg-[#111116] p-4 sm:p-6 lg:p-8 space-y-6 max-w-6xl mx-auto pb-24 font-sans text-stone-900 dark:text-stone-100 transition-colors animate-fade-in">
-      
-      {/* Hero Banner Header - Viền dây leo SVG mộc mạc thanh nhã */}
-      <div className="relative overflow-hidden rounded-3xl bg-white dark:bg-[#1a1a24] border border-stone-200/90 dark:border-[#2c2d3d] shadow-xs p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
-        {/* Nhánh dây leo lá cây SVG mảnh ở các góc */}
-        <LeafVineCornerSvg position="top-left" className="top-0 left-0 w-9 h-9 sm:w-11 sm:h-11 opacity-80" />
-        <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-9 h-9 sm:w-11 sm:h-11 opacity-80" />
-        <LeafVineCornerSvg position="bottom-left" className="bottom-0 left-0 w-8 h-8 sm:w-10 sm:h-10 opacity-60" />
-        <LeafVineCornerSvg position="bottom-right" className="bottom-0 right-0 w-8 h-8 sm:w-10 sm:h-10 opacity-60" />
-
-        <div className="relative z-10 space-y-3 max-w-xl">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-stone-100 dark:bg-stone-800 border border-border text-slate-700 dark:text-stone-300">
-            <BookMarked className="w-3.5 h-3.5 text-china-red" />
-            <span>TỦ TRUYỆN SONG NGỮ</span>
-          </div>
-
-          <h1 className="text-xl sm:text-2xl lg:text-3xl font-serif font-bold tracking-tight leading-snug text-stone-900 dark:text-stone-100">
-            Tủ Truyện Song Ngữ Trung - Việt
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6 pb-24 text-foreground">
+      {/* Header */}
+      <header className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-border">
+        <div className="space-y-1 max-w-2xl">
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">
+            Đọc truyện song ngữ Trung – Việt
           </h1>
-
-          <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 leading-relaxed">
-            Tuyển chọn các tác phẩm văn học và truyện hiện đại. Chạm vào bất kỳ từ vựng nào để tra cứu nghĩa, xem phiên âm pinyin và thêm vào danh sách ôn tập định kỳ.
+          <p className="text-xs sm:text-sm text-muted leading-relaxed">
+            Đọc tác phẩm chọn lọc theo chương. Chạm trực tiếp vào bất kỳ từ tiếng Trung nào để xem phiên âm, nghĩa Hán-Việt và lưu vào kho ôn tập SRS.
           </p>
-
-          <div className="flex items-center gap-3 pt-1 text-xs text-stone-500 dark:text-stone-400 flex-wrap">
-            <span className="flex items-center gap-1 font-medium">
-              <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-              Bản dịch song ngữ đối chiếu
-            </span>
-            <span>•</span>
-            <span className="flex items-center gap-1 font-medium">
-              <Sparkles className="w-4 h-4 text-amber-600" />
-              Tra từ tức thì &amp; Lưu vào ôn tập
-            </span>
-          </div>
         </div>
 
-        {/* Mascot decoration */}
-        <div className="relative z-10 hidden sm:flex items-center gap-3 p-4 rounded-2xl bg-stone-50 dark:bg-stone-900/60 border border-border shrink-0">
-          <div className="w-16 h-16 relative flex items-center justify-center">
-            <Image
-              src="/chibi-loading.svg"
-              alt="Tiểu Lu Đọc Truyện"
-              width={64}
-              height={64}
-              priority
-              className="object-contain"
-            />
-          </div>
-          <div className="text-xs max-w-[130px] leading-tight text-stone-500 dark:text-stone-400">
-            <p className="font-bold text-stone-900 dark:text-stone-100 mb-0.5">Đọc hiểu ngữ cảnh</p>
-            <p className="text-[11px]">Củng cố vốn từ và ngữ pháp qua từng câu truyện.</p>
-          </div>
+        <div className="text-xs self-start md:self-auto">
+          <span className="px-3 py-1.5 rounded-lg bg-card border border-border font-medium text-foreground">
+            {NOVELS.length} tác phẩm
+          </span>
         </div>
-      </div>
+      </header>
 
       {/* Filter Tabs & Search Bar */}
-      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-white dark:bg-[#1a1a24] p-3.5 sm:p-4 rounded-2xl border border-stone-200/90 dark:border-[#2c2d3d] shadow-xs">
-        {/* Category Filter Pills */}
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-card p-3.5 rounded-2xl border border-border">
+        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 scrollbar-hide">
           {[
             { id: "all", label: "Tất cả" },
             { id: "Trending", label: "Phổ biến" },
@@ -159,10 +121,10 @@ export default function StoriesPage() {
               <button
                 key={tab.id}
                 onClick={() => setSelectedTag(tab.id)}
-                className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer ${
                   isActive
-                    ? "bg-stone-900 dark:bg-stone-100 text-white dark:text-stone-900"
-                    : "bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300 hover:bg-stone-200 dark:hover:bg-stone-700"
+                    ? "bg-foreground text-background"
+                    : "bg-china-paper text-muted hover:text-foreground"
                 }`}
               >
                 {tab.label}
@@ -171,21 +133,20 @@ export default function StoriesPage() {
           })}
         </div>
 
-        {/* Search Bar */}
         <div className="relative flex-1 max-w-xs">
-          <Search className="w-4 h-4 text-stone-400 absolute left-3 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-muted absolute left-3 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Tìm tên truyện, tác giả..."
-            className="w-full pl-9 pr-3.5 py-1.5 rounded-xl border border-stone-200 dark:border-[#2c2d3d] text-xs focus:outline-none focus:ring-1 focus:ring-emerald-600 bg-white dark:bg-[#16161f] text-stone-900 dark:text-stone-100"
+            className="w-full pl-9 pr-3.5 py-1.5 rounded-lg border border-border text-xs focus:outline-none focus:border-china-red bg-china-paper/60 dark:bg-card text-foreground"
           />
         </div>
       </div>
 
       {/* Novels List Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {filteredNovels.map((novel) => {
           const progressChapter = savedProgress[novel.id] || 0
           const progressPercent = Math.round((progressChapter / novel.totalChapters) * 100)
@@ -194,10 +155,8 @@ export default function StoriesPage() {
             <div
               key={novel.id}
               onClick={() => setSelectedNovel(novel)}
-              className="group relative bg-white dark:bg-[#1a1a24] rounded-3xl border border-stone-200/90 dark:border-[#2c2d3d] shadow-xs hover:shadow-md transition-all duration-300 p-5 sm:p-6 flex flex-col justify-between space-y-4 cursor-pointer overflow-hidden"
+              className="group relative bg-card rounded-2xl border border-border hover:border-foreground/30 transition-colors p-5 flex flex-col justify-between space-y-4 cursor-pointer overflow-hidden"
             >
-              {/* Nhánh dây leo góc nhẹ nhàng */}
-              <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-8 h-8 opacity-60 group-hover:opacity-100 transition-opacity" />
 
               <div className="flex items-start gap-4 relative z-10">
                 {/* Book Cover */}

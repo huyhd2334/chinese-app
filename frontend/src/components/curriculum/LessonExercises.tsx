@@ -379,7 +379,7 @@ export default function LessonExercises({
                           ? 'bg-china-red text-white border-china-red scale-[1.02] shadow-md'
                           : matchError && isSelected
                           ? 'bg-red-100 border-red-400 text-red-700 animate-shake'
-                          : 'bg-china-paper/60 border-border hover:bg-stone-100 dark:hover:bg-[#201a2e] hover:border-china-red/50 text-china-ink'
+                          : 'bg-china-paper/60 border-border hover:bg-stone-100 dark:hover:bg-white/[0.06] hover:border-china-red/50 text-china-ink'
                       }`}
                     >
                       {w.hanzi}
@@ -409,7 +409,7 @@ export default function LessonExercises({
                           ? 'bg-china-red text-white border-china-red scale-[1.02] shadow-md'
                           : matchError && isSelected
                           ? 'bg-red-100 border-red-400 text-red-700 animate-shake'
-                          : 'bg-china-paper/60 border-border hover:bg-stone-100 dark:hover:bg-[#201a2e] hover:border-china-red/50 text-china-ink'
+                          : 'bg-china-paper/60 border-border hover:bg-stone-100 dark:hover:bg-white/[0.06] hover:border-china-red/50 text-china-ink'
                       }`}
                     >
                       <div className="flex items-center justify-between">

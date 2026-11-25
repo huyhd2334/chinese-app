@@ -247,7 +247,7 @@ export default function BonusAddCardModal({
 
         {/* Tab switcher (only when creating new cards) */}
         {!editCard && (
-          <div className="flex border-b border-border bg-stone-50 dark:bg-[#1a1624] px-6 pt-3 gap-4">
+          <div className="flex border-b border-border bg-china-paper dark:bg-card px-6 pt-3 gap-4">
             <button
               type="button"
               onClick={() => setActiveTab("single")}

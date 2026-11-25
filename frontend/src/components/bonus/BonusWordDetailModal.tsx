@@ -122,7 +122,7 @@ export default function BonusWordDetailModal({
           </div>
 
           {/* Meaning Section */}
-          <div className="bg-stone-50 dark:bg-[#1a1624] p-5 rounded-2xl border border-border shadow-2xs">
+          <div className="bg-china-paper dark:bg-white/[0.03] p-5 rounded-2xl border border-border">
             <p className="text-xs uppercase tracking-wider text-muted font-bold mb-2">
               Nghĩa tiếng Việt
             </p>

@@ -467,7 +467,7 @@ export default function BonusStudyPage({ params }: PageProps) {
                 setAddModalTab("bulk")
                 setIsAddModalOpen(true)
               }}
-              className="px-3.5 py-1.5 rounded-xl border border-border dark:border-[#382c47] bg-stone-100 dark:bg-[#201a2e] hover:bg-stone-200 dark:hover:bg-[#2a223c] text-stone-800 dark:text-stone-200 text-xs sm:text-sm font-semibold transition-all active:scale-95 whitespace-nowrap shadow-2xs"
+              className="px-3.5 py-1.5 rounded-xl border border-border bg-china-paper hover:bg-border/60 text-foreground text-xs sm:text-sm font-semibold transition-colors whitespace-nowrap"
             >
               + Thêm nhiều từ
             </button>
@@ -521,16 +521,16 @@ export default function BonusStudyPage({ params }: PageProps) {
               <div className="flex items-center gap-2">
                 <button
                   onClick={handleShuffle}
-                  className="px-3 py-1.5 rounded-xl border border-border dark:border-[#382c47] bg-stone-100 dark:bg-[#201a2e] hover:bg-stone-200 dark:hover:bg-[#2a223c] text-xs font-medium text-stone-800 dark:text-stone-200 transition-colors shadow-2xs cursor-pointer"
+                  className="px-3 py-1.5 rounded-xl border border-border bg-china-paper hover:bg-border/60 text-xs font-medium text-foreground transition-colors cursor-pointer"
                 >
                   Xáo trộn
                 </button>
                 <button
                   onClick={() => setIsAutoPlay(prev => !prev)}
-                  className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all shadow-2xs cursor-pointer ${
+                  className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-colors cursor-pointer ${
                     isAutoPlay 
                       ? "bg-china-jade text-white" 
-                      : "bg-stone-100 dark:bg-[#201a2e] border border-border dark:border-[#382c47] text-stone-800 dark:text-stone-200 hover:bg-stone-200 dark:hover:bg-[#2a223c]"
+                      : "bg-china-paper border border-border text-foreground hover:bg-border/60"
                   }`}
                 >
                   {isAutoPlay ? "Dừng tự động" : "Tự động đọc"}
@@ -615,7 +615,7 @@ export default function BonusStudyPage({ params }: PageProps) {
                 <button
                   type="button"
                   onClick={() => setMode("gallery")}
-                  className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-border bg-stone-100 dark:bg-[#201a2e] hover:bg-stone-200 dark:hover:bg-[#2a223c] text-china-ink font-semibold text-xs sm:text-sm transition-colors cursor-pointer"
+                  className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-border bg-china-paper hover:bg-border/60 text-foreground font-semibold text-xs sm:text-sm transition-colors cursor-pointer"
                 >
                   <span>Thư viện thẻ</span>
                 </button>
@@ -862,7 +862,7 @@ export default function BonusStudyPage({ params }: PageProps) {
                   className={`px-3 py-2 rounded-xl border text-xs font-semibold transition-colors cursor-pointer ${
                     hidePhonetic
                       ? "bg-china-red text-white border-china-red"
-                      : "bg-stone-100 dark:bg-[#201a2e] border-border dark:border-[#382c47] text-stone-800 dark:text-stone-200 hover:bg-stone-200 dark:hover:bg-[#2a223c]"
+                      : "bg-china-paper border-border text-foreground hover:bg-border/60"
                   }`}
                 >
                   {hidePhonetic ? "Hiện phiên âm" : "Ẩn phiên âm"}
@@ -873,7 +873,7 @@ export default function BonusStudyPage({ params }: PageProps) {
                   className={`px-3 py-2 rounded-xl border text-xs font-semibold transition-colors cursor-pointer ${
                     hideMeaning
                       ? "bg-china-red text-white border-china-red"
-                      : "bg-stone-100 dark:bg-[#201a2e] border-border dark:border-[#382c47] text-stone-800 dark:text-stone-200 hover:bg-stone-200 dark:hover:bg-[#2a223c]"
+                      : "bg-china-paper border-border text-foreground hover:bg-border/60"
                   }`}
                 >
                   {hideMeaning ? "Hiện nghĩa" : "Ẩn nghĩa"}
@@ -887,7 +887,7 @@ export default function BonusStudyPage({ params }: PageProps) {
                   className={`flex items-center gap-1.5 px-3 py-2 rounded-xl border text-xs font-semibold transition-colors cursor-pointer ${
                     onlyFavorites
                       ? "bg-amber-500 text-white border-amber-500 shadow-2xs"
-                      : "bg-stone-100 dark:bg-[#201a2e] border-border dark:border-[#382c47] text-stone-800 dark:text-stone-200 hover:bg-stone-200 dark:hover:bg-[#2a223c]"
+                      : "bg-china-paper border-border text-foreground hover:bg-border/60"
                   }`}
                 >
                   <Bookmark className={`w-3.5 h-3.5 ${onlyFavorites ? "fill-white" : ""}`} />

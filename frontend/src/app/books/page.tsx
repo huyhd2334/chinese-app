@@ -79,45 +79,39 @@ export default function BooksDirectoryPage() {
     : { totalLessons: 0, completedLessons: 0, avgPercent: 0, totalStudyTimeSeconds: 0 }
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 pb-24 space-y-6">
-      {/* Top Header: Giáo trình HSK Chuẩn */}
-      <div className="bg-card border border-border rounded-2xl p-6 sm:p-7 shadow-xs">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div className="space-y-1.5 max-w-2xl">
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-stone-100 dark:bg-stone-800 text-slate-700 dark:text-stone-300">
-              <BookOpen className="w-3.5 h-3.5 text-china-red" />
-              <span>Giáo trình HSK 3.0</span>
-            </div>
-            <h1 className="text-xl sm:text-2xl font-bold text-china-ink">
-              Giáo trình Chuẩn HSK 3.0
-            </h1>
-            <p className="text-sm text-slate-600 dark:text-stone-300 leading-relaxed">
-              Lộ trình học theo giáo trình chuẩn: từ vựng trọng tâm, bài khóa hội thoại tương tác, giải thích ngữ pháp và bài tập thực hành.
-            </p>
-          </div>
-
-          <div className="flex items-center gap-2 self-start md:self-auto text-xs text-muted">
-            <span className="px-3 py-1.5 rounded-xl bg-stone-100 dark:bg-stone-800 border border-border/80 font-medium text-slate-700 dark:text-stone-300">
-              {books.length} cấp độ
-            </span>
-          </div>
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 pb-24 space-y-6">
+      {/* Top Header */}
+      <header className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-border">
+        <div className="space-y-1 max-w-2xl">
+          <h1 className="text-xl sm:text-2xl font-bold text-foreground tracking-tight">
+            Giáo trình chuẩn HSK 3.0
+          </h1>
+          <p className="text-xs sm:text-sm text-muted leading-relaxed">
+            Học bài bản theo từng bài khóa: hội thoại phân vai có âm thanh, từ vựng trọng tâm, ngữ pháp và bài tập thực hành.
+          </p>
         </div>
-      </div>
+
+        <div className="flex items-center gap-2 self-start md:self-auto text-xs">
+          <span className="px-3 py-1.5 rounded-lg bg-card border border-border font-medium text-foreground">
+            {books.length} cấp độ giáo trình
+          </span>
+        </div>
+      </header>
 
       {/* Danh sách giáo trình theo cấp độ */}
-      <section className="bg-card border border-border rounded-2xl p-5 sm:p-6 shadow-xs space-y-5">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-border/70">
+      <section className="bg-card border border-border rounded-2xl p-5 sm:p-6 space-y-5">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-border">
           <div>
-            <h2 className="text-base font-bold text-china-ink">
-              Chọn cấp độ giáo trình
+            <h2 className="text-sm sm:text-base font-bold text-foreground">
+              Chọn cấp độ sách
             </h2>
             <p className="text-xs text-muted">
-              Chọn sách để xem bài khóa, từ vựng và bài tập của từng bài
+              Bấm vào bìa sách để mở danh sách bài học tương ứng
             </p>
           </div>
           {selectedBook && (
-            <span className="text-xs font-semibold px-2.5 py-1 rounded-lg bg-china-red/10 text-china-red self-start sm:self-auto">
-              Đang chọn: {selectedBook.title}
+            <span className="text-xs font-semibold px-2.5 py-1 rounded-lg bg-china-paper border border-border text-foreground self-start sm:self-auto">
+              Đang xem: {selectedBook.title}
             </span>
           )}
         </div>
@@ -131,10 +125,10 @@ export default function BooksDirectoryPage() {
                 <button
                   key={book.id}
                   onClick={() => handleSelectBook(book)}
-                  className={`group flex flex-col items-center text-center p-4 rounded-2xl border transition-all cursor-pointer ${
+                  className={`group flex flex-col items-center text-center p-4 rounded-2xl border transition-colors cursor-pointer ${
                     isSelected
-                      ? 'bg-stone-100 dark:bg-[#201a2e] border-china-red ring-1 ring-china-red shadow-xs'
-                      : 'bg-card border-border dark:border-[#382c47] hover:border-slate-300 dark:hover:border-stone-600 hover:bg-neutral-50/60 dark:hover:bg-stone-800/60'
+                      ? 'bg-china-paper/70 dark:bg-white/[0.04] border-china-red ring-1 ring-china-red'
+                      : 'bg-card border-border hover:border-foreground/30 hover:bg-china-paper/40'
                   }`}
                 >
                   {/* Book Cover Image */}

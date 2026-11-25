@@ -3,114 +3,48 @@
 @custom-variant dark (&:is(.dark, .dark *));
 
 :root {
-  --background: #f8fafc; /* Nền xám mát dịu mắt, chống chói lóa */
-  --foreground: #0f172a; /* Mực than đen đậm sắc nét */
+  --background: #fafafa;
+  --foreground: #171717;
   --card: #ffffff;
-  --border: #e2e8f0; /* Viền xám mảnh trang nhã */
-  --muted: #64748b;
-  --primary: #c8102e; /* Đỏ Trung Hoa */
-  
-  --china-red: #c8102e;
-  --china-red-hover: #a30d25;
+  --border: #e5e5e5;
+  --muted: #737373;
+  --primary: #b91c1c;
+
+  --china-red: #b91c1c;
+  --china-red-hover: #991b1b;
   --china-gold: #b45309;
-  --china-paper: #f8fafc;
-  --china-ink: #0f172a;
-  --china-jade: #2d6a4f;
+  --china-paper: #f4f4f5;
+  --china-ink: #171717;
+  --china-jade: #047857;
 
   /* Fonts */
-  --font-main: var(--font-nunito), "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-main: var(--font-sans-ui), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-chinese: var(--font-noto-serif-sc), "Noto Serif SC", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", serif;
   --font-chinese-sans: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 
-/* =====================================================================
-   GIAO DIỆN SÁNG + SỰ KIỆN HALLOWEEN
-   ===================================================================== */
-html.halloween-event-theme:not(.dark) {
-  --background: #fdf9f4;
-  --china-paper: #fdf9f4;
-  --border: #eedec8;
-  --primary: #e65100; /* Cam bí ngô ấm áp */
-  --china-red: #e65100;
-  --china-red-hover: #c43c00;
-  --china-gold: #f59e0b; /* Vàng hổ phách */
-  --china-jade: #2d6a4f;
-  --china-ink: #29211c;
-  --muted: #8c7b6c;
-}
-
-/* =====================================================================
-   GIAO DIỆN TỐI (DARK MODE - Nghiên Mực & Đêm Trăng)
-   Thiết kế chuẩn mực, nền sâu ấm cúng, tương phản hài hòa không gây mỏi mắt
-   ===================================================================== */
 html.dark,
 .dark {
-  --background: #121216; /* Mực đen than ấm */
-  --foreground: #edeae4; /* Chữ trắng ngà mềm dịu */
-  --card: #1c1c24; /* Khối thẻ nổi bật */
-  --border: #2d2d3a; /* Đường viền thanh thoát */
-  --muted: #a39e93; /* Chữ phụ sắc nét */
-  --primary: #ff4d5e; /* Đỏ chu sa rực rỡ trên nền tối */
-  --china-red: #ff4d5e;
-  --china-red-hover: #ff3347;
-  --china-gold: #f5be38; /* Hoàng kim phát sáng */
-  --china-paper: #16161d; /* Nền giấy tối */
-  --china-ink: #edeae4; /* Mực chữ trong Dark Mode: ngà sáng rõ nét, không bị đen chìm */
-  --china-jade: #38b28a; /* Ngọc bích phát sáng */
+  --background: #0f0f11;
+  --foreground: #f4f4f5;
+  --card: #18181b;
+  --border: #27272a;
+  --muted: #a1a1aa;
+  --primary: #ef4444;
+
+  --china-red: #ef4444;
+  --china-red-hover: #dc2626;
+  --china-gold: #f59e0b;
+  --china-paper: #202024;
+  --china-ink: #f4f4f5;
+  --china-jade: #10b981;
 }
 
-/* =====================================================================
-   GIAO DIỆN TỐI + SỰ KIỆN HALLOWEEN (Đêm Hội Đèn Lồng Huyền Bí)
-   ===================================================================== */
-html.dark.halloween-event-theme,
-.dark.halloween-event-theme,
-html.dark .halloween-event-theme {
-  --background: #110e17; /* Đêm tím than huyền bí */
-  --foreground: #f4eff8;
-  --card: #1a1624; /* Đá cung điện đêm */
-  --border: #382c47; /* Viền mận tím dịu */
-  --muted: #b5aac4;
-  --primary: #ff6a2b; /* Cam bí ngô neon phát sáng */
-  --china-red: #ff6a2b;
-  --china-red-hover: #e65314;
-  --china-gold: #f59e0b; /* Vàng hổ phách */
-  --china-paper: #15121e;
-  --china-ink: #f4eff8; /* Mực chữ ngà sáng */
-  --china-jade: #2fa37e;
-}
-
-/* Hiệu ứng hào quang Halloween */
-html.halloween-event-theme::after {
-  content: "";
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 280px;
-  height: 280px;
-  pointer-events: none;
-  background: radial-gradient(circle at top right, rgba(230, 81, 0, 0.08), transparent 70%);
-  z-index: 35;
-}
-
-html.dark.halloween-event-theme::after {
-  background: radial-gradient(circle at top right, rgba(255, 106, 43, 0.12), transparent 70%);
-}
-
-/* Màu bôi đen chữ theo chủ đề */
-html.halloween-event-theme ::selection {
-  background-color: #e65100;
+html.dark ::selection {
+  background-color: #ef4444;
   color: #ffffff;
 }
 
-html.dark:not(.halloween-event-theme) ::selection {
-  background-color: #ff4d5e;
-  color: #ffffff;
-}
-
-/* =====================================================================
-   DARK MODE UTILITY NATIVE SETUP
-   Sử dụng Tailwind v4 custom-variant dark thuần khiết, không ép !important
-   ===================================================================== */
 html.dark {
   color-scheme: dark;
 }
@@ -120,7 +54,6 @@ html.dark body {
   color: var(--foreground);
 }
 
-/* Đồng bộ biến màu truyền thống khi ở Dark Mode */
 html.dark .text-china-ink,
 .dark .text-china-ink {
   color: var(--foreground);
@@ -141,17 +74,17 @@ html.dark .border-border,
   border-color: var(--border);
 }
 
-html.dark input:not([type="checkbox"]):not([type="radio"]), 
-html.dark textarea, 
+html.dark input:not([type="checkbox"]):not([type="radio"]),
+html.dark textarea,
 html.dark select {
-  background-color: #1a1a24;
-  color: #edeae4;
+  background-color: #18181b;
+  color: #f4f4f5;
   border-color: var(--border);
 }
 
-html.dark input::placeholder, 
+html.dark input::placeholder,
 html.dark textarea::placeholder {
-  color: #8c857d;
+  color: #71717a;
 }
 
 @theme inline {
@@ -171,7 +104,6 @@ html.dark textarea::placeholder {
   --color-china-ink: var(--china-ink);
   --color-china-jade: var(--china-jade);
 
-  /* Font mặc định cho toàn bộ trang: Nunito tròn trịa, chuẩn tiếng Việt */
   --font-sans: var(--font-main);
   --font-serif: var(--font-main);
   --font-chinese: var(--font-chinese);
@@ -188,13 +120,11 @@ html {
   text-rendering: optimizeLegibility;
 }
 
-/* GPU acceleration for interactive cards & animations */
 .gpu-layer {
   transform: translateZ(0);
   backface-visibility: hidden;
 }
 
-/* Render optimization for long lists (skips off-screen layout and paint) */
 .content-visibility-auto {
   content-visibility: auto;
   contain-intrinsic-size: 0 120px;
@@ -209,7 +139,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* CHỈ áp dụng font chữ Trung cho chữ Hán, thẻ có lang="zh", hoặc class .font-chinese / .font-hanzi */
+/* Strictly reserve Chinese font for Hanzi elements */
 .font-chinese,
 .font-hanzi,
 :lang(zh),
@@ -221,14 +151,11 @@ body {
   font-family: var(--font-chinese-sans) !important;
 }
 
-/* ========================================
-   ANIMATIONS
-   ======================================== */
-
+/* Subtle UI transitions */
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
@@ -241,47 +168,10 @@ body {
   to { opacity: 1; }
 }
 
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes countUp {
-  from { opacity: 0; transform: scale(0.5); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-@keyframes gentlePulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-}
-
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-@keyframes floatUp {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-}
-
 @keyframes toastIn {
   from {
     opacity: 0;
-    transform: translateY(10px) scale(0.95);
+    transform: translateY(8px) scale(0.98);
   }
   to {
     opacity: 1;
@@ -289,91 +179,27 @@ body {
   }
 }
 
-@keyframes ripple {
-  0% { transform: scale(0); opacity: 0.5; }
-  100% { transform: scale(4); opacity: 0; }
-}
-
 .animate-fade-in-up {
-  animation: fadeInUp 0.5s ease-out forwards;
+  animation: fadeInUp 0.25s ease-out forwards;
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.4s ease-out forwards;
-}
-
-.animate-slide-in-right {
-  animation: slideInRight 0.5s ease-out forwards;
-}
-
-.animate-count-up {
-  animation: countUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-}
-
-.animate-shimmer {
-  background: linear-gradient(90deg, transparent, rgba(200, 16, 46, 0.08), transparent);
-  background-size: 200% 100%;
-  animation: shimmer 2s ease-in-out infinite;
-}
-
-.animate-gentle-pulse {
-  animation: gentlePulse 3s ease-in-out infinite;
-}
-
-.animate-gradient-shift {
-  background-size: 200% 200%;
-  animation: gradientShift 4s ease infinite;
-}
-
-.animate-float {
-  animation: floatUp 4s ease-in-out infinite;
+  animation: fadeIn 0.2s ease-out forwards;
 }
 
 .animate-toast-in {
-  animation: toastIn 0.3s ease-out forwards;
+  animation: toastIn 0.2s ease-out forwards;
 }
 
-/* Staggered animation delays */
-.delay-100 { animation-delay: 100ms; }
-.delay-200 { animation-delay: 200ms; }
-.delay-300 { animation-delay: 300ms; }
-.delay-400 { animation-delay: 400ms; }
-.delay-500 { animation-delay: 500ms; }
-.delay-600 { animation-delay: 600ms; }
-.delay-700 { animation-delay: 700ms; }
-
-/* Circular Progress */
-.circular-progress {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.circular-progress svg {
-  transform: rotate(-90deg);
-}
-
-.circular-progress .track {
-  stroke: var(--border);
-  fill: none;
-}
-
-.circular-progress .fill {
-  fill: none;
-  stroke-linecap: round;
-  transition: stroke-dashoffset 1s ease-out;
-}
-
-/* Scrollbar styling toàn cục chuẩn mực - loại bỏ vệt thanh cuộn trắng của trình duyệt trên Windows */
+/* Scrollbar styling */
 * {
   scrollbar-color: var(--border) transparent;
   scrollbar-width: thin;
 }
 
 ::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -382,7 +208,7 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background: var(--border);
-  border-radius: 4px;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -390,16 +216,16 @@ body {
 }
 
 html.dark ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.16) !important;
+  background: rgba(255, 255, 255, 0.14) !important;
 }
 
 html.dark ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.28) !important;
+  background: rgba(255, 255, 255, 0.24) !important;
 }
 
 .custom-scrollbar::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
@@ -411,11 +237,6 @@ html.dark ::-webkit-scrollbar-thumb:hover {
   border-radius: 3px;
 }
 
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: var(--muted);
-}
-
-/* Hide scrollbar for horizontal scroll */
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -427,56 +248,4 @@ html.dark ::-webkit-scrollbar-thumb:hover {
 
 .safe-area-pb {
   padding-bottom: max(6px, env(safe-area-inset-bottom));
-}
-
-/* =====================================================================
-   HALLOWEEN SVG CORNER ANIMATIONS
-   ===================================================================== */
-@keyframes spiderSway {
-  0%, 100% {
-    transform: rotate(6deg);
-  }
-  50% {
-    transform: rotate(-6deg);
-  }
-}
-
-@keyframes pumpkinFlicker {
-  0%, 100% {
-    opacity: 0.95;
-    filter: drop-shadow(0 0 4px rgba(254, 240, 138, 0.7));
-  }
-  25% {
-    opacity: 0.8;
-    filter: drop-shadow(0 0 2px rgba(254, 240, 138, 0.5));
-  }
-  50% {
-    opacity: 1;
-    filter: drop-shadow(0 0 8px rgba(254, 240, 138, 0.95));
-  }
-  75% {
-    opacity: 0.85;
-    filter: drop-shadow(0 0 3px rgba(254, 240, 138, 0.6));
-  }
-}
-
-@keyframes batFlutter {
-  0%, 100% {
-    transform: translateY(0) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-5px) rotate(-4deg);
-  }
-}
-
-.spider-sway {
-  animation: spiderSway 4.5s ease-in-out infinite;
-}
-
-.pumpkin-flicker {
-  animation: pumpkinFlicker 2.8s ease-in-out infinite;
-}
-
-.bat-flutter {
-  animation: batFlutter 3.2s ease-in-out infinite;
 }

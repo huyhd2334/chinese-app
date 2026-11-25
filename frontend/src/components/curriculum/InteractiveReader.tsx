@@ -247,7 +247,7 @@ export default function InteractiveReader({
 
               {/* Vietnamese Translation */}
               {showTranslation && readingPassage.vietnamese && (
-                <div className="p-4 sm:p-5 rounded-2xl bg-china-paper dark:bg-[#1a1624] border border-border space-y-1.5">
+                <div className="p-4 sm:p-5 rounded-2xl bg-china-paper dark:bg-white/[0.03] border border-border space-y-1.5">
                   <span className="text-[11px] font-bold text-china-ink/70 uppercase tracking-wider block">
                     Bản dịch tiếng Việt tham khảo:
                   </span>
@@ -274,7 +274,7 @@ export default function InteractiveReader({
             dialogues.map((d, idx) => (
               <div
                 key={d.id || idx}
-                className="flex items-start gap-3.5 p-4 rounded-2xl bg-china-paper/60 dark:bg-[#15121e] border border-border/70 dark:border-[#382c47] hover:bg-china-paper dark:hover:bg-[#1c1828] transition"
+                className="flex items-start gap-3.5 p-4 rounded-2xl bg-china-paper/60 dark:bg-white/[0.03] border border-border/70 hover:bg-china-paper dark:hover:bg-white/[0.06] transition"
               >
                 {d.role && (
                   <div className="px-2.5 py-1.5 rounded-xl bg-china-red/10 text-china-red border border-china-red/20 font-chinese font-bold text-xs shrink-0 whitespace-nowrap" lang="zh">

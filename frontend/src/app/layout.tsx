@@ -2,22 +2,22 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { AuthProvider } from "@/contexts/AuthContext";
 import AuthModal from "@/components/auth/AuthModal";
-import HalloweenWelcomeModal from "@/components/common/HalloweenWelcomeModal";
 import UpgradeModal from "@/components/subscription/UpgradeModal";
 import AppShell from "@/components/common/AppShell";
 import SyncManager from "@/components/common/SyncManager";
 import PwaRegister from "@/components/common/PwaRegister";
-import { Nunito, Noto_Serif_SC } from "next/font/google";
+import { Be_Vietnam_Pro, Noto_Serif_SC } from "next/font/google";
 
-const nunito = Nunito({
+const beVietnamPro = Be_Vietnam_Pro({
   subsets: ["latin", "vietnamese"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
-  variable: "--font-nunito",
+  variable: "--font-sans-ui",
 });
 
 const notoSerifSC = Noto_Serif_SC({
   subsets: ["latin"],
-  weight: ["400", "600", "700", "900"],
+  weight: ["400", "600", "700"],
   display: "swap",
   variable: "--font-noto-serif-sc",
 });
@@ -43,21 +43,20 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="vi" suppressHydrationWarning className={`${nunito.variable} ${notoSerifSC.variable}`}>
+    <html lang="vi" suppressHydrationWarning className={`${beVietnamPro.variable} ${notoSerifSC.variable}`}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
-        <meta name="theme-color" content="#c0392b" />
+        <meta name="theme-color" content="#b91c1c" />
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem("hsk_color_theme");if(t==="dark"){document.documentElement.classList.add("dark");}else{document.documentElement.classList.remove("dark");}var h=localStorage.getItem("hsk_halloween_event_theme");if(h==="on"){document.documentElement.classList.add("halloween-event-theme");}else{document.documentElement.classList.remove("halloween-event-theme");}}catch(e){}})();`,
+            __html: `(function(){try{document.documentElement.classList.remove("halloween-event-theme");localStorage.removeItem("hsk_halloween_event_theme");var t=localStorage.getItem("hsk_color_theme");if(t==="dark"){document.documentElement.classList.add("dark");}else{document.documentElement.classList.remove("dark");}}catch(e){}})();`,
           }}
         />
       </head>
-      <body className="h-dvh overflow-hidden bg-china-paper text-china-ink font-sans selection:bg-china-red selection:text-white antialiased">
+      <body className="h-dvh overflow-hidden bg-background text-foreground font-sans selection:bg-china-red selection:text-white antialiased">
         <AuthProvider>
           <AppShell>{children}</AppShell>
           <AuthModal />
-          <HalloweenWelcomeModal />
           <UpgradeModal />
           <SyncManager />
           <PwaRegister />

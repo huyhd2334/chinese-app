@@ -214,23 +214,23 @@ export default function GrammarPage() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-5xl px-4 md:px-6 py-8 md:py-10 text-china-ink pb-24">
+    <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 py-6 sm:py-8 text-foreground pb-24">
       {/* 1. Header Banner */}
-      <div className="mb-8 border-b border-border/60 pb-6">
-        <div className="flex items-center gap-2 mb-2">
-          <span className="text-xs font-mono font-bold tracking-widest text-china-red uppercase">
-            HSK GRAMMAR SYLLABUS
-          </span>
-          <span className="text-muted/40">•</span>
-          <span className="text-xs text-muted">510 điểm ngữ pháp chuẩn HSK 1 - 6</span>
+      <header className="mb-6 border-b border-border pb-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div className="space-y-1 max-w-2xl">
+          <h1 className="text-xl sm:text-2xl font-bold text-foreground tracking-tight">
+            Sổ tay ngữ pháp HSK
+          </h1>
+          <p className="text-xs sm:text-sm text-muted leading-relaxed">
+            Tra cứu công thức, cách dùng và ví dụ thực tế của 510 điểm ngữ pháp trọng tâm từ HSK 1 đến HSK 6.
+          </p>
         </div>
-        <h1 className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-china-ink tracking-tight">
-          Sổ Tay Ngữ Pháp Tiếng Trung
-        </h1>
-        <p className="mt-2 text-sm text-muted max-w-2xl leading-relaxed">
-          Tra cứu công thức chuẩn, giải thích cấu trúc và luyện tập qua từng câu ví dụ thực tế. Nhấn vào tiêu đề ngữ pháp để vào trang học chi tiết.
-        </p>
-      </div>
+        <div className="text-xs self-start sm:self-auto">
+          <span className="px-3 py-1.5 rounded-lg bg-card border border-border font-medium text-foreground">
+            {grammarList.length} cấu trúc
+          </span>
+        </div>
+      </header>
 
       {/* 2. Search & Filter Bar */}
       <div className="space-y-4 mb-8">
@@ -242,12 +242,12 @@ export default function GrammarPage() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Tìm theo chữ Hán (把, 被, 了...), Pinyin hoặc tên mẫu câu..."
-            className="w-full pl-10 pr-10 py-2.5 bg-card border border-border rounded-lg text-sm text-china-ink placeholder:text-muted/70 focus:outline-none focus:border-china-red focus:ring-1 focus:ring-china-red/30 transition-all"
+            className="w-full pl-10 pr-10 py-2.5 bg-card border border-border rounded-xl text-sm text-foreground placeholder:text-muted/70 focus:outline-none focus:border-china-red transition-colors"
           />
           {searchQuery && (
             <button
               onClick={() => setSearchQuery("")}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-muted hover:text-china-ink px-1"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-muted hover:text-foreground px-1"
             >
               Xóa
             </button>
@@ -255,18 +255,18 @@ export default function GrammarPage() {
         </div>
 
         {/* Quick Search Chips */}
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs text-muted scrollbar-none">
-          <span className="shrink-0 font-medium text-[11px] uppercase tracking-wider text-muted/80 mr-1 flex items-center gap-1">
-            <Sparkles className="w-3 h-3 text-china-red" /> Gợi ý:
+        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs text-muted scrollbar-hide">
+          <span className="shrink-0 font-medium text-muted mr-1">
+            Tra nhanh:
           </span>
           {QUICK_TAGS.map((tag) => (
             <button
               key={tag.query}
               onClick={() => setSearchQuery(tag.query)}
-              className={`px-2.5 py-1 rounded-md whitespace-nowrap transition-colors text-xs ${
+              className={`px-2.5 py-1 rounded-lg whitespace-nowrap transition-colors text-xs cursor-pointer ${
                 searchQuery === tag.query
-                  ? "bg-china-red text-white font-medium"
-                  : "bg-neutral-100 dark:bg-neutral-800 text-muted hover:text-china-ink"
+                  ? "bg-foreground text-background font-semibold"
+                  : "bg-card border border-border text-muted hover:text-foreground"
               }`}
             >
               {tag.label}

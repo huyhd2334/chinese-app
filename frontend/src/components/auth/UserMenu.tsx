@@ -18,9 +18,6 @@ export default function UserMenu({ compact = false }: UserMenuProps) {
     isLoading,
     openAuthModal,
     signOut,
-    openHalloweenModal,
-    isHalloweenTheme,
-    toggleHalloweenTheme,
   } = useAuth()
   const [showDropdown, setShowDropdown] = useState(false)
   const [isPro, setIsPro] = useState(false)
@@ -178,38 +175,6 @@ export default function UserMenu({ compact = false }: UserMenuProps) {
               {/* Dark Mode Toggle */}
               <ThemeToggle variant="menu-row" />
 
-              {/* Halloween Event Toggle */}
-              <div className="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs text-china-ink hover:bg-china-paper transition-colors">
-                <div className="flex items-center gap-2">
-                  <span>🎃</span>
-                  <span className="font-semibold">Sự kiện Halloween</span>
-                </div>
-                <button
-                  type="button"
-                  onClick={toggleHalloweenTheme}
-                  className={`w-8 h-4.5 rounded-full p-0.5 transition-colors cursor-pointer flex items-center ${
-                    isHalloweenTheme ? "bg-amber-500 justify-end" : "bg-neutral-300 justify-start"
-                  }`}
-                  title={isHalloweenTheme ? "Tắt hiệu ứng Halloween" : "Bật hiệu ứng Halloween"}
-                >
-                  <div className="w-3.5 h-3.5 rounded-full bg-white shadow-2xs" />
-                </button>
-              </div>
-
-              {/* Notification Modal Trigger (if event enabled) */}
-              {isHalloweenTheme && (
-                <button
-                  onClick={() => {
-                    setShowDropdown(false)
-                    openHalloweenModal()
-                  }}
-                  className="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-xs text-amber-800 bg-amber-50 hover:bg-amber-100 transition-colors font-bold text-left"
-                >
-                  <span>🎃</span>
-                  <span>Thông báo</span>
-                </button>
-              )}
-
               <button
                 onClick={() => {
                   setShowDropdown(false)
@@ -332,38 +297,6 @@ export default function UserMenu({ compact = false }: UserMenuProps) {
 
                 {/* Dark Mode Toggle */}
                 <ThemeToggle variant="menu-row" />
-
-                {/* Halloween Event Toggle */}
-                <div className="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs text-china-ink hover:bg-china-paper transition-colors">
-                  <div className="flex items-center gap-2">
-                    <span>🎃</span>
-                    <span className="font-semibold">Sự kiện Halloween</span>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={toggleHalloweenTheme}
-                    className={`w-8 h-4.5 rounded-full p-0.5 transition-colors cursor-pointer flex items-center ${
-                      isHalloweenTheme ? "bg-amber-500 justify-end" : "bg-neutral-300 justify-start"
-                    }`}
-                    title={isHalloweenTheme ? "Tắt hiệu ứng Halloween" : "Bật hiệu ứng Halloween"}
-                  >
-                    <div className="w-3.5 h-3.5 rounded-full bg-white shadow-2xs" />
-                  </button>
-                </div>
-
-                {/* Notification Modal (if enabled) */}
-                {isHalloweenTheme && (
-                  <button
-                    onClick={() => {
-                      setShowDropdown(false)
-                      openHalloweenModal()
-                    }}
-                    className="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-xs text-amber-800 bg-amber-50 hover:bg-amber-100 transition-colors font-bold text-left cursor-pointer"
-                  >
-                    <span>🎃</span>
-                    <span>Thông báo</span>
-                  </button>
-                )}
 
                 <button
                   onClick={() => {

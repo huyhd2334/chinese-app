@@ -132,52 +132,34 @@ export default function BonusHubPage() {
     customCollections.reduce((acc, c) => acc + (customCounts[c.slug] || 0), 0)
 
   return (
-    <div className="p-3 sm:p-6 md:p-8 max-w-7xl mx-auto space-y-6 animate-fade-in">
-      
-      {/* 1. Header (Clean & Refined) */}
-      <div className="bg-card rounded-2xl border border-border p-6 sm:p-7 shadow-2xs flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div className="space-y-1">
-          <div className="flex items-center gap-2">
-            <span className="px-2.5 py-0.5 bg-china-red/10 text-china-red text-xs font-bold rounded-md">
-              Mở rộng
-            </span>
-            <h1 className="text-xl sm:text-2xl font-serif font-bold text-china-ink">
-              Kho Từ Vựng Bonus
-            </h1>
-          </div>
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 pb-24 space-y-6">
+      {/* 1. Header */}
+      <header className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-border">
+        <div className="space-y-1 max-w-2xl">
+          <h1 className="text-xl sm:text-2xl font-bold text-foreground tracking-tight">
+            Từ vựng mở rộng &amp; Bộ thẻ cá nhân
+          </h1>
           <p className="text-xs sm:text-sm text-muted">
-            Học từ vựng mở rộng với Flashcard, thư viện tra cứu và tự tạo bộ thẻ học riêng.
+            Ôn luyện từ vựng chuyên đề nâng cao hoặc tự tạo bộ thẻ Flashcard riêng cho nhu cầu học tập của bạn.
           </p>
         </div>
 
-        <div className="flex items-center gap-2 self-start md:self-auto">
-          <div className="px-3 py-1.5 rounded-xl bg-china-paper border border-border text-xs text-muted">
-            Tổng cộng: <span className="font-bold text-china-ink">{totalWords}</span> từ vựng ({DEFAULT_COLLECTIONS.length + customCollections.length} bộ)
-          </div>
+        <div className="flex items-center gap-2.5 self-start md:self-auto">
+          <span className="px-3 py-1.5 rounded-lg bg-card border border-border text-xs text-muted">
+            Tổng: <strong className="font-semibold text-foreground">{totalWords.toLocaleString("vi-VN")} từ</strong> ({DEFAULT_COLLECTIONS.length + customCollections.length} bộ)
+          </span>
+          <button
+            onClick={() => setIsCreateModalOpen(true)}
+            className="px-3.5 py-1.5 rounded-lg bg-china-red hover:bg-china-red-hover text-white text-xs font-semibold transition-colors whitespace-nowrap cursor-pointer"
+          >
+            + Tạo bộ thẻ mới
+          </button>
         </div>
-      </div>
+      </header>
 
       {/* 2. Gallery of Collections */}
       <section className="space-y-4">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-          <div>
-            <h2 className="text-base sm:text-lg font-serif font-bold text-china-ink">
-              Bộ Sưu Tập Thẻ
-            </h2>
-            <p className="text-xs text-muted">
-              Chọn bộ từ vựng để ôn Flashcard hoặc thêm từ mới
-            </p>
-          </div>
-
-          <button
-            onClick={() => setIsCreateModalOpen(true)}
-            className="self-start sm:self-auto px-4 py-2 rounded-xl bg-china-red hover:bg-china-red-hover text-white text-xs sm:text-sm font-semibold transition-all active:scale-95 whitespace-nowrap shadow-xs cursor-pointer"
-          >
-            + Tạo bộ từ vựng mới
-          </button>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           
           {/* Custom User Collections */}
           {customCollections.map((col) => {
@@ -229,7 +211,7 @@ export default function BonusHubPage() {
                   </Link>
                   <Link
                     href={`/bonus/${col.slug}?mode=gallery`}
-                    className="py-2.5 px-4 rounded-xl bg-stone-100 dark:bg-[#201a2e] border border-border dark:border-[#382c47] text-stone-800 dark:text-stone-200 text-xs sm:text-sm font-semibold hover:bg-stone-200 dark:hover:bg-[#2a223c] transition-all text-center active:scale-95 shadow-2xs"
+                    className="py-2.5 px-4 rounded-xl bg-china-paper border border-border text-foreground text-xs sm:text-sm font-semibold hover:bg-border/60 transition-colors text-center"
                   >
                     Xem & Thêm Thẻ
                   </Link>
@@ -278,7 +260,7 @@ export default function BonusHubPage() {
                     {col.previewWords.map((pw, i) => (
                       <div
                         key={i}
-                        className="px-2.5 py-1 bg-china-paper dark:bg-[#1a1a24] border border-border/80 rounded-lg text-xs flex items-center gap-1.5"
+                        className="px-2.5 py-1 bg-china-paper border border-border rounded-lg text-xs flex items-center gap-1.5"
                       >
                         <span className={`font-serif font-semibold text-china-ink dark:text-[#edeae4] ${col.language === "zh" ? "" : "font-sans"}`}>
                           {pw.word}
@@ -299,7 +281,7 @@ export default function BonusHubPage() {
                   </Link>
                   <Link
                     href={`/bonus/${col.slug}?mode=gallery`}
-                    className="py-2.5 px-4 rounded-xl bg-stone-100 dark:bg-[#201a2e] border border-border dark:border-[#382c47] text-stone-800 dark:text-stone-200 text-xs sm:text-sm font-semibold hover:bg-stone-200 dark:hover:bg-[#2a223c] transition-all text-center active:scale-95 shadow-2xs"
+                    className="py-2.5 px-4 rounded-xl bg-china-paper border border-border text-foreground text-xs sm:text-sm font-semibold hover:bg-border/60 transition-colors text-center"
                   >
                     Xem & Thêm Thẻ
                   </Link>
