@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react"
 import Link from "next/link"
 import type { BonusCollection } from "@/types/bonus"
 import BonusCreateCollectionModal from "@/components/bonus/BonusCreateCollectionModal"
+import { LeafVineCornerSvg } from "@/components/roadmap/VineBorders"
 import { useAuth } from "@/contexts/AuthContext"
 import { 
   syncCollectionsWithCloud, 
@@ -134,8 +135,11 @@ export default function BonusHubPage() {
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 pb-24 space-y-6">
       {/* 1. Header */}
-      <header className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-border">
-        <div className="space-y-1 max-w-2xl">
+      <header className="chibi-card relative overflow-hidden bg-card rounded-2xl border-emerald-600/20 dark:border-emerald-500/20 p-5 sm:p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <LeafVineCornerSvg position="top-left" className="top-0 left-0 w-10 h-10" />
+        <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-10 h-10" />
+
+        <div className="space-y-1 max-w-2xl relative z-10">
           <h1 className="text-xl sm:text-2xl font-bold text-foreground tracking-tight">
             Từ vựng mở rộng &amp; Bộ thẻ cá nhân
           </h1>
@@ -144,13 +148,13 @@ export default function BonusHubPage() {
           </p>
         </div>
 
-        <div className="flex items-center gap-2.5 self-start md:self-auto">
-          <span className="px-3 py-1.5 rounded-lg bg-card border border-border text-xs text-muted">
+        <div className="flex items-center gap-2.5 self-start md:self-auto relative z-10">
+          <span className="px-3 py-1.5 rounded-xl bg-china-paper border border-border text-xs text-muted">
             Tổng: <strong className="font-semibold text-foreground">{totalWords.toLocaleString("vi-VN")} từ</strong> ({DEFAULT_COLLECTIONS.length + customCollections.length} bộ)
           </span>
           <button
             onClick={() => setIsCreateModalOpen(true)}
-            className="px-3.5 py-1.5 rounded-lg bg-china-red hover:bg-china-red-hover text-white text-xs font-semibold transition-colors whitespace-nowrap cursor-pointer"
+            className="px-3.5 py-2 rounded-xl bg-china-red hover:bg-china-red-hover text-white text-xs font-semibold transition-all active:translate-y-0.5 shadow-[0_2px_0_0_#991b1b] whitespace-nowrap cursor-pointer"
           >
             + Tạo bộ thẻ mới
           </button>

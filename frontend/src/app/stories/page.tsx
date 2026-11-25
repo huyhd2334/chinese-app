@@ -89,18 +89,27 @@ export default function StoriesPage() {
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6 pb-24 text-foreground">
       {/* Header */}
-      <header className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-border">
-        <div className="space-y-1 max-w-2xl">
-          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">
-            Đọc truyện song ngữ Trung – Việt
-          </h1>
-          <p className="text-xs sm:text-sm text-muted leading-relaxed">
-            Đọc tác phẩm chọn lọc theo chương. Chạm trực tiếp vào bất kỳ từ tiếng Trung nào để xem phiên âm, nghĩa Hán-Việt và lưu vào kho ôn tập SRS.
-          </p>
+      <header className="chibi-card relative overflow-hidden bg-card rounded-2xl border-emerald-600/20 dark:border-emerald-500/20 p-5 sm:p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <LeafVineCornerSvg position="top-left" className="top-0 left-0 w-10 h-10" />
+        <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-10 h-10" />
+        <FoliageEdgeBorder position="top" className="h-2.5 opacity-75" />
+
+        <div className="flex items-center gap-3.5 max-w-2xl relative z-10">
+          <div className="hidden sm:flex w-14 h-14 rounded-2xl bg-china-paper border border-border p-1.5 items-center justify-center shrink-0">
+            <Image src="/chibi-taoist.svg" alt="Tiểu Lu Đọc Truyện" width={48} height={48} className="object-contain" />
+          </div>
+          <div className="space-y-1">
+            <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">
+              Đọc truyện song ngữ Trung – Việt
+            </h1>
+            <p className="text-xs sm:text-sm text-muted leading-relaxed">
+              Đọc tác phẩm chọn lọc theo chương. Chạm trực tiếp vào bất kỳ từ tiếng Trung nào để xem phiên âm, nghĩa Hán-Việt và lưu vào kho ôn tập SRS.
+            </p>
+          </div>
         </div>
 
-        <div className="text-xs self-start md:self-auto">
-          <span className="px-3 py-1.5 rounded-lg bg-card border border-border font-medium text-foreground">
+        <div className="text-xs self-start md:self-auto relative z-10">
+          <span className="px-3 py-1.5 rounded-xl bg-china-paper border border-border font-semibold text-foreground">
             {NOVELS.length} tác phẩm
           </span>
         </div>
@@ -155,8 +164,9 @@ export default function StoriesPage() {
             <div
               key={novel.id}
               onClick={() => setSelectedNovel(novel)}
-              className="group relative bg-card rounded-2xl border border-border hover:border-foreground/30 transition-colors p-5 flex flex-col justify-between space-y-4 cursor-pointer overflow-hidden"
+              className="chibi-card chibi-card-interactive group relative bg-card rounded-2xl border-emerald-600/20 dark:border-emerald-500/20 hover:border-emerald-500/50 p-5 flex flex-col justify-between space-y-4 cursor-pointer overflow-hidden"
             >
+              <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-9 h-9 opacity-80 group-hover:opacity-100 transition-opacity" />
 
               <div className="flex items-start gap-4 relative z-10">
                 {/* Book Cover */}

@@ -21,6 +21,7 @@ import {
   formatStudyHoursShort,
   LessonProgressData
 } from '@/utils/lessonProgress'
+import { LeafVineCornerSvg, FoliageEdgeBorder } from '@/components/roadmap/VineBorders'
 
 export default function BooksDirectoryPage() {
   const [books, setBooks] = useState<BookCourse[]>([])
@@ -81,8 +82,12 @@ export default function BooksDirectoryPage() {
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 pb-24 space-y-6">
       {/* Top Header */}
-      <header className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-border">
-        <div className="space-y-1 max-w-2xl">
+      <header className="chibi-card relative overflow-hidden bg-card rounded-2xl border-emerald-600/20 dark:border-emerald-500/20 p-5 sm:p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <LeafVineCornerSvg position="top-left" className="top-0 left-0 w-10 h-10" />
+        <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-10 h-10" />
+        <FoliageEdgeBorder position="top" className="h-2.5 opacity-75" />
+
+        <div className="space-y-1 max-w-2xl relative z-10">
           <h1 className="text-xl sm:text-2xl font-bold text-foreground tracking-tight">
             Giáo trình chuẩn HSK 3.0
           </h1>
@@ -91,8 +96,8 @@ export default function BooksDirectoryPage() {
           </p>
         </div>
 
-        <div className="flex items-center gap-2 self-start md:self-auto text-xs">
-          <span className="px-3 py-1.5 rounded-lg bg-card border border-border font-medium text-foreground">
+        <div className="flex items-center gap-2 self-start md:self-auto text-xs relative z-10">
+          <span className="px-3 py-1.5 rounded-xl bg-china-paper border border-border font-semibold text-foreground">
             {books.length} cấp độ giáo trình
           </span>
         </div>

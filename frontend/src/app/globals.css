@@ -3,19 +3,19 @@
 @custom-variant dark (&:is(.dark, .dark *));
 
 :root {
-  --background: #fafafa;
-  --foreground: #171717;
+  --background: #fcfbf7;
+  --foreground: #1c1917;
   --card: #ffffff;
-  --border: #e5e5e5;
-  --muted: #737373;
-  --primary: #b91c1c;
+  --border: #e5e0d5;
+  --muted: #6b655e;
+  --primary: #d92638;
 
-  --china-red: #b91c1c;
-  --china-red-hover: #991b1b;
-  --china-gold: #b45309;
-  --china-paper: #f4f4f5;
-  --china-ink: #171717;
-  --china-jade: #047857;
+  --china-red: #d92638;
+  --china-red-hover: #b81d2d;
+  --china-gold: #d97706;
+  --china-paper: #f5f2ea;
+  --china-ink: #1c1917;
+  --china-jade: #059669;
 
   /* Fonts */
   --font-main: var(--font-sans-ui), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -189,6 +189,40 @@ body {
 
 .animate-toast-in {
   animation: toastIn 0.2s ease-out forwards;
+}
+
+@keyframes leafBreeze {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(4deg);
+  }
+}
+
+.vine-leaf-sway {
+  animation: leafBreeze 3.8s ease-in-out infinite;
+}
+
+/* Tactile Chibi Card Style (nổi khối nhẹ kiểu Duolingo / Vườn trúc) */
+.chibi-card {
+  border-width: 1.5px;
+  box-shadow: 0 3px 0 0 rgba(28, 25, 23, 0.05);
+  transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+html.dark .chibi-card {
+  box-shadow: 0 3px 0 0 rgba(0, 0, 0, 0.35);
+}
+
+.chibi-card-interactive:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 0 0 rgba(5, 150, 105, 0.14);
+}
+
+.chibi-card-interactive:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 0 0 rgba(5, 150, 105, 0.1);
 }
 
 /* Scrollbar styling */

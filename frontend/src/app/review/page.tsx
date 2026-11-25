@@ -15,6 +15,7 @@ import {
 } from "@/utils/subscription"
 import ChibiLoading from "@/components/common/ChibiLoading"
 import { ReviewMasteryChart } from "@/components/review/ReviewMasteryChart"
+import { LeafVineCornerSvg } from "@/components/roadmap/VineBorders"
 
 type FilterType = "due" | "new" | "learning" | "review" | "mastered" | "all"
 
@@ -389,20 +390,40 @@ export default function ReviewPage() {
 
       {/* 3. Flashcard Study Stage */}
       {loading && cards.length === 0 ? (
-        <div className="flex min-h-[360px] flex-col items-center justify-center bg-card rounded-2xl border border-border">
-          <div className="w-6 h-6 border-2 border-china-red border-t-transparent rounded-full animate-spin mb-3" />
-          <p className="text-sm text-muted">Đang tải thẻ ôn tập...</p>
+        <div className="chibi-card flex min-h-[360px] flex-col items-center justify-center bg-card rounded-2xl border-emerald-600/20">
+          <ChibiLoading
+            variant="loading"
+            character="loading"
+            size="md"
+            title="Tiểu Lu đang mở thẻ ôn tập..."
+          />
         </div>
       ) : !displayedCards.length ? (
-        <div className="bg-card rounded-2xl border border-border p-10 sm:p-14 text-center space-y-4">
-          <div className="inline-block px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/50 text-emerald-700 dark:text-emerald-400 text-xs font-semibold">
-            Đã hoàn tất
+        <div className="chibi-card relative overflow-hidden bg-card rounded-2xl border-emerald-600/25 p-8 sm:p-12 text-center space-y-4">
+          <LeafVineCornerSvg position="top-left" className="top-0 left-0 w-10 h-10" />
+          <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-10 h-10" />
+          <LeafVineCornerSvg position="bottom-left" className="bottom-0 left-0 w-8 h-8 opacity-80" />
+          <LeafVineCornerSvg position="bottom-right" className="bottom-0 right-0 w-8 h-8 opacity-80" />
+
+          <div className="relative w-32 h-32 mx-auto select-none">
+            <Image
+              src="/chibi-cheer.svg"
+              alt="Tiểu Lu Hoàn Thành"
+              width={128}
+              height={128}
+              priority
+              className="object-contain"
+            />
+          </div>
+
+          <div className="inline-block px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/50 text-emerald-700 dark:text-emerald-400 text-xs font-bold">
+            Hoàn thành xuất sắc!
           </div>
 
           <h2 className="text-xl sm:text-2xl font-bold text-foreground">
             {hskFilter !== "all"
               ? `Không còn thẻ HSK ${hskFilter} nào trong mục này`
-              : "Bạn đã ôn xong toàn bộ thẻ cần ôn hôm nay"}
+              : "Bạn đã ôn xong toàn bộ thẻ cần ôn hôm nay!"}
           </h2>
 
           <p className="text-xs sm:text-sm text-muted max-w-md mx-auto leading-relaxed">
@@ -412,7 +433,7 @@ export default function ReviewPage() {
           <div className="flex flex-wrap gap-2.5 justify-center pt-2">
             <Link
               href="/vocabulary"
-              className="px-4 py-2.5 rounded-xl bg-china-red hover:bg-china-red-hover text-white text-xs sm:text-sm font-semibold transition-colors flex items-center gap-2"
+              className="px-4 py-2.5 rounded-xl bg-china-red hover:bg-china-red-hover text-white text-xs sm:text-sm font-semibold transition-all active:translate-y-0.5 shadow-[0_2px_0_0_#991b1b] flex items-center gap-2"
             >
               <BookOpen className="w-4 h-4" />
               <span>Mở Từ điển HSK</span>
@@ -437,9 +458,25 @@ export default function ReviewPage() {
           </div>
         </div>
       ) : currentCard ? (
-        <div className="rounded-2xl border border-border bg-card overflow-hidden flex flex-col">
+        <div className="chibi-card relative rounded-2xl border-emerald-600/25 dark:border-emerald-500/25 bg-card overflow-visible flex flex-col mt-6">
+          <LeafVineCornerSvg position="top-left" className="top-0 left-0 w-10 h-10" />
+          <LeafVineCornerSvg position="bottom-left" className="bottom-0 left-0 w-8 h-8 opacity-80" />
+          <LeafVineCornerSvg position="bottom-right" className="bottom-0 right-0 w-8 h-8 opacity-80" />
+
+          {/* Tiểu Lu Lấp Ló trên góc phải của thẻ Flashcard */}
+          <div className="absolute -top-7 right-8 sm:right-12 w-16 h-10 z-20 pointer-events-none select-none">
+            <Image
+              src="/chibi-peek.svg"
+              alt="Tiểu Lu lấp ló"
+              width={68}
+              height={44}
+              priority
+              className="object-contain"
+            />
+          </div>
+
           {/* Card Header */}
-          <div className="flex items-center justify-between px-5 sm:px-6 py-3 border-b border-border bg-china-paper/40 dark:bg-white/[0.02]">
+          <div className="flex items-center justify-between px-5 sm:px-6 py-3 border-b border-border bg-china-paper/40 dark:bg-white/[0.02] rounded-t-2xl">
             <div className="flex items-center gap-2 flex-wrap">
               {hskNum && (
                 <span className="px-2.5 py-0.5 bg-card border border-border text-foreground text-xs font-semibold rounded-md">
@@ -553,16 +590,17 @@ export default function ReviewPage() {
             )}
           </div>
 
-          {/* 4 SRS Rating Buttons */}
+          {/* 4 SRS Rating Buttons with Chibi Expressions */}
           {showAnswer && (
-            <div className="border-t border-border bg-china-paper/40 dark:bg-white/[0.02] p-3.5 sm:p-4 animate-fade-in">
+            <div className="border-t border-border bg-china-paper/40 dark:bg-white/[0.02] p-3.5 sm:p-4 rounded-b-2xl animate-fade-in">
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
                 <button
                   type="button"
                   onClick={() => handleResult("again")}
-                  className="flex flex-col items-center justify-center py-2.5 px-3 rounded-xl border border-border bg-card hover:border-red-500 hover:bg-red-50/40 dark:hover:bg-red-950/20 transition-colors cursor-pointer"
+                  className="chibi-card chibi-card-interactive group flex flex-col items-center justify-center py-2.5 px-3 rounded-xl border-border bg-card hover:border-red-500 hover:bg-red-50/40 dark:hover:bg-red-950/20 cursor-pointer"
                 >
-                  <span className="font-semibold text-sm text-red-600 dark:text-red-400">
+                  <Image src="/srs-again.svg" alt="Chưa nhớ" width={34} height={34} className="object-contain mb-1 group-hover:scale-110 transition-transform" />
+                  <span className="font-bold text-xs sm:text-sm text-red-600 dark:text-red-400">
                     Chưa nhớ
                   </span>
                   <span className="text-[11px] text-muted mt-0.5">
@@ -573,9 +611,10 @@ export default function ReviewPage() {
                 <button
                   type="button"
                   onClick={() => handleResult("hard")}
-                  className="flex flex-col items-center justify-center py-2.5 px-3 rounded-xl border border-border bg-card hover:border-amber-500 hover:bg-amber-50/40 dark:hover:bg-amber-950/20 transition-colors cursor-pointer"
+                  className="chibi-card chibi-card-interactive group flex flex-col items-center justify-center py-2.5 px-3 rounded-xl border-border bg-card hover:border-amber-500 hover:bg-amber-50/40 dark:hover:bg-amber-950/20 cursor-pointer"
                 >
-                  <span className="font-semibold text-sm text-amber-600 dark:text-amber-400">
+                  <Image src="/srs-hard.svg" alt="Hơi khó" width={34} height={34} className="object-contain mb-1 group-hover:scale-110 transition-transform" />
+                  <span className="font-bold text-xs sm:text-sm text-amber-600 dark:text-amber-400">
                     Hơi khó
                   </span>
                   <span className="text-[11px] text-muted mt-0.5">
@@ -586,9 +625,10 @@ export default function ReviewPage() {
                 <button
                   type="button"
                   onClick={() => handleResult("good")}
-                  className="flex flex-col items-center justify-center py-2.5 px-3 rounded-xl border border-border bg-card hover:border-emerald-500 hover:bg-emerald-50/40 dark:hover:bg-emerald-950/20 transition-colors cursor-pointer"
+                  className="chibi-card chibi-card-interactive group flex flex-col items-center justify-center py-2.5 px-3 rounded-xl border-border bg-card hover:border-emerald-500 hover:bg-emerald-50/40 dark:hover:bg-emerald-950/20 cursor-pointer"
                 >
-                  <span className="font-semibold text-sm text-emerald-600 dark:text-emerald-400">
+                  <Image src="/srs-good.svg" alt="Nhớ tốt" width={34} height={34} className="object-contain mb-1 group-hover:scale-110 transition-transform" />
+                  <span className="font-bold text-xs sm:text-sm text-emerald-600 dark:text-emerald-400">
                     Nhớ tốt
                   </span>
                   <span className="text-[11px] text-muted mt-0.5">
@@ -599,9 +639,10 @@ export default function ReviewPage() {
                 <button
                   type="button"
                   onClick={() => handleResult("easy")}
-                  className="flex flex-col items-center justify-center py-2.5 px-3 rounded-xl border border-border bg-card hover:border-blue-500 hover:bg-blue-50/40 dark:hover:bg-blue-950/20 transition-colors cursor-pointer"
+                  className="chibi-card chibi-card-interactive group flex flex-col items-center justify-center py-2.5 px-3 rounded-xl border-border bg-card hover:border-blue-500 hover:bg-blue-50/40 dark:hover:bg-blue-950/20 cursor-pointer"
                 >
-                  <span className="font-semibold text-sm text-blue-600 dark:text-blue-400">
+                  <Image src="/srs-easy.svg" alt="Rất dễ" width={34} height={34} className="object-contain mb-1 group-hover:scale-110 transition-transform" />
+                  <span className="font-bold text-xs sm:text-sm text-blue-600 dark:text-blue-400">
                     Rất dễ
                   </span>
                   <span className="text-[11px] text-muted mt-0.5">

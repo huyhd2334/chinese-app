@@ -4,6 +4,7 @@ import { useState, useMemo } from "react"
 import Link from "next/link"
 import { BookOpen, Clock, ArrowRight } from "lucide-react"
 import { ALL_EXAMS } from "@/data/examsManifest"
+import { LeafVineCornerSvg } from "@/components/roadmap/VineBorders"
 
 const LEVELS = [
   { label: "Tất cả", value: "all" },
@@ -27,8 +28,11 @@ export default function ExamsDashboard() {
   return (
     <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 py-6 sm:py-8 pb-24 space-y-6 text-foreground">
       {/* Header */}
-      <header className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-border">
-        <div className="space-y-1 max-w-2xl">
+      <header className="chibi-card relative overflow-hidden bg-card rounded-2xl border-emerald-600/20 dark:border-emerald-500/20 p-5 sm:p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <LeafVineCornerSvg position="top-left" className="top-0 left-0 w-10 h-10" />
+        <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-10 h-10" />
+
+        <div className="space-y-1 max-w-2xl relative z-10">
           <h1 className="text-xl sm:text-2xl font-bold text-foreground tracking-tight">
             Đề thi thử HSK
           </h1>
@@ -37,8 +41,8 @@ export default function ExamsDashboard() {
           </p>
         </div>
 
-        <div className="text-xs self-start md:self-auto">
-          <span className="px-3 py-1.5 rounded-lg bg-card border border-border font-medium text-foreground">
+        <div className="text-xs self-start md:self-auto relative z-10">
+          <span className="px-3 py-1.5 rounded-xl bg-china-paper border border-border font-semibold text-foreground">
             {ALL_EXAMS.length} bộ đề chuẩn
           </span>
         </div>
@@ -69,8 +73,9 @@ export default function ExamsDashboard() {
         {filteredExams.map((exam) => (
           <div
             key={exam.id}
-            className="group rounded-2xl border border-border bg-card p-5 hover:border-foreground/30 transition-colors flex flex-col justify-between gap-5"
+            className="chibi-card chibi-card-interactive group relative overflow-hidden rounded-2xl border-emerald-600/20 dark:border-emerald-500/20 bg-card p-5 hover:border-emerald-500/50 flex flex-col justify-between gap-5"
           >
+            <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-8 h-8 opacity-75 group-hover:opacity-100 transition-opacity" />
             <div className="space-y-4">
               <div className="flex items-center justify-between gap-2">
                 <span className="px-2.5 py-0.5 bg-china-paper text-foreground text-xs font-semibold rounded-md border border-border">

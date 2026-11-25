@@ -69,17 +69,25 @@ export default function ShadowingPage() {
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6 pb-24 text-foreground">
       {/* Header */}
-      <header className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-border">
-        <div className="space-y-1 max-w-2xl">
-          <h1 className="text-xl sm:text-2xl font-bold text-foreground tracking-tight">
-            Luyện nói Shadowing
-          </h1>
-          <p className="text-xs sm:text-sm text-muted leading-relaxed">
-            Luyện phản xạ phát âm và ngữ điệu theo người bản xứ: nghe từng câu hội thoại, bấm nhảy vị trí video và thu âm đối chiếu trực tiếp.
-          </p>
+      <header className="chibi-card relative overflow-hidden bg-card rounded-2xl border-emerald-600/20 dark:border-emerald-500/20 p-5 sm:p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <LeafVineCornerSvg position="top-left" className="top-0 left-0 w-10 h-10" />
+        <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-10 h-10" />
+
+        <div className="flex items-center gap-3.5 max-w-2xl relative z-10">
+          <div className="hidden sm:flex w-14 h-14 rounded-2xl bg-china-paper border border-border p-1.5 items-center justify-center shrink-0">
+            <Image src="/chibi-wuxia.svg" alt="Tiểu Lu Shadowing" width={48} height={48} className="object-contain" />
+          </div>
+          <div className="space-y-1">
+            <h1 className="text-xl sm:text-2xl font-bold text-foreground tracking-tight">
+              Luyện nói Shadowing
+            </h1>
+            <p className="text-xs sm:text-sm text-muted leading-relaxed">
+              Luyện phản xạ phát âm và ngữ điệu theo người bản xứ: nghe từng câu hội thoại, bấm nhảy vị trí video và thu âm đối chiếu trực tiếp.
+            </p>
+          </div>
         </div>
 
-        <div className="flex items-center gap-2 self-start md:self-auto">
+        <div className="flex items-center gap-2 self-start md:self-auto relative z-10">
           {!isPro ? (
             <>
               <span className="px-3 py-1.5 rounded-lg bg-card border border-border text-xs font-medium text-muted">
@@ -148,8 +156,9 @@ export default function ShadowingPage() {
             <div
               key={video.id}
               onClick={() => handleSelectVideo(video)}
-              className="group relative bg-card rounded-2xl border border-border hover:border-foreground/30 transition-colors flex flex-col overflow-hidden cursor-pointer"
+              className="chibi-card chibi-card-interactive group relative bg-card rounded-2xl border-emerald-600/20 dark:border-emerald-500/20 hover:border-emerald-500/50 flex flex-col overflow-hidden cursor-pointer"
             >
+              <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-8 h-8 opacity-85" />
 
               {/* Thumbnail Preview with Play Overlay */}
               <div className="relative aspect-video w-full bg-stone-900 overflow-hidden">

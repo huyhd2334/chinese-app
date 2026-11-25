@@ -30,6 +30,7 @@ import { playChineseAudio } from "@/utils/audioTts"
 import { getShortMeaningVi } from "@/utils/formatMeaning"
 import { RoadmapCard } from "@/components/roadmap/RoadmapCard"
 import { RoadmapWizardModal } from "@/components/roadmap/RoadmapWizardModal"
+import { LeafVineCornerSvg, FoliageEdgeBorder } from "@/components/roadmap/VineBorders"
 import { useAuth } from "@/contexts/AuthContext"
 import { autoSeedWordsForUser } from "@/utils/autoSeedWords"
 import { FREE_REVIEW_LIMIT } from "@/utils/subscription"
@@ -481,15 +482,18 @@ export default function Dashboard() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6 text-foreground">
-      {/* 1. Top Header with Tiểu Lu Mascot */}
-      <header className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-border">
-        <div className="flex items-center gap-3.5">
-          <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-card border border-border p-1.5 flex items-center justify-center shrink-0 select-none">
+      {/* 1. Top Header with Tiểu Lu Mascot & Vine Corners */}
+      <header className="chibi-card relative overflow-hidden bg-card rounded-2xl border-emerald-600/20 dark:border-emerald-500/20 p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <LeafVineCornerSvg position="top-left" className="top-0 left-0 w-9 h-9 sm:w-10 sm:h-10" />
+        <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-9 h-9 sm:w-10 sm:h-10" />
+
+        <div className="flex items-center gap-3.5 relative z-10">
+          <div className="w-14 h-14 sm:w-15 sm:h-15 rounded-2xl bg-china-paper/80 border border-border p-1.5 flex items-center justify-center shrink-0 select-none">
             <Image
               src={isDailyGoalAchieved ? "/chibi-cheer.svg" : "/chibi-loading.svg"}
               alt="Tiểu Lu"
-              width={48}
-              height={48}
+              width={52}
+              height={52}
               priority
               className="object-contain hover:scale-105 transition-transform"
             />
@@ -497,10 +501,10 @@ export default function Dashboard() {
 
           <div className="space-y-1">
             <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">
-              {greeting}{displayName ? `, ${displayName}` : ""}
+              {greeting}{displayName ? `, ${displayName}` : ""}!
             </h1>
             <p className="text-xs sm:text-sm text-muted flex items-center gap-2 flex-wrap">
-              <span className="font-chinese font-semibold text-foreground" lang="zh">
+              <span className="font-chinese font-bold text-china-jade" lang="zh">
                 {proverb.cn}
               </span>
               <span>·</span>
@@ -510,12 +514,12 @@ export default function Dashboard() {
           </div>
         </div>
 
-        <div className="flex items-center gap-2.5 self-start sm:self-center">
+        <div className="flex items-center gap-2.5 self-start sm:self-center relative z-10">
           <div
-            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs font-semibold ${
+            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-bold ${
               streak > 0
-                ? "bg-amber-50 dark:bg-amber-950/30 text-amber-700 dark:text-amber-400 border-amber-200 dark:border-amber-800/50"
-                : "bg-card text-muted border-border"
+                ? "bg-amber-50 dark:bg-amber-950/30 text-amber-700 dark:text-amber-400 border-amber-300 dark:border-amber-800/60"
+                : "bg-china-paper text-muted border-border"
             }`}
           >
             <Flame className={`w-3.5 h-3.5 ${streak > 0 ? "fill-amber-500 text-amber-500" : ""}`} />
@@ -527,9 +531,9 @@ export default function Dashboard() {
             onClick={handleManualSync}
             disabled={isSyncing}
             title={`Ngày âm/chữ Hán: ${chineseDate} · Bấm để đồng bộ ngay`}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-card border border-border hover:bg-china-paper text-xs font-medium text-muted hover:text-foreground transition-colors cursor-pointer disabled:opacity-60"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-china-paper border border-border hover:border-emerald-500/40 text-xs font-semibold text-muted hover:text-foreground transition-colors cursor-pointer disabled:opacity-60"
           >
-            <RotateCw className={`w-3.5 h-3.5 ${isSyncing ? "animate-spin text-china-red" : ""}`} />
+            <RotateCw className={`w-3.5 h-3.5 ${isSyncing ? "animate-spin text-china-jade" : ""}`} />
             <span>{isSyncing ? "Đang đồng bộ..." : "Đồng bộ"}</span>
           </button>
         </div>
@@ -540,8 +544,10 @@ export default function Dashboard() {
         <RoadmapCard onOpenWizard={() => setIsRoadmapWizardOpen(true)} />
       </section>
 
-      {/* 3. Today's Study Checklist with Peeking Tiểu Lu */}
-      <section className="relative bg-card rounded-2xl border border-border p-5 space-y-4 mt-8">
+      {/* 3. Today's Study Checklist with Peeking Tiểu Lu & Warm Vine */}
+      <section className="chibi-card relative bg-card rounded-2xl border-amber-500/25 dark:border-amber-500/20 p-5 space-y-4 mt-8">
+        <LeafVineCornerSvg position="top-left" variant="amber" className="top-0 left-0 w-9 h-9" />
+        <LeafVineCornerSvg position="bottom-right" variant="amber" className="bottom-0 right-0 w-8 h-8 opacity-80" />
         <div className="absolute -top-7 sm:-top-8 right-6 sm:right-10 w-16 sm:w-18 h-10 sm:h-11 z-10 pointer-events-none select-none">
           <Image
             src="/chibi-peek.svg"
@@ -684,30 +690,31 @@ export default function Dashboard() {
         </div>
       </section>
 
-      {/* 4. Core Study Modules with Tiểu Lu Mascots */}
-      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+      {/* 4. Core Study Modules with Tiểu Lu Mascots & Vine Corners */}
+      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <Link
           href="/review"
-          className="group bg-card rounded-2xl border border-border hover:border-foreground/30 p-5 flex flex-col justify-between gap-4 transition-colors"
+          className="chibi-card chibi-card-interactive group relative overflow-hidden bg-card rounded-2xl border-emerald-600/20 dark:border-emerald-500/20 hover:border-emerald-500/50 p-5 flex flex-col justify-between gap-4"
         >
-          <div className="flex items-start justify-between gap-3">
-            <div className="w-12 h-12 rounded-xl bg-china-paper/80 border border-border p-1 flex items-center justify-center shrink-0">
+          <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-9 h-9 opacity-80 group-hover:opacity-100 transition-opacity" />
+          <div className="flex items-start justify-between gap-3 relative z-10">
+            <div className="w-13 h-13 rounded-2xl bg-china-paper border border-border p-1.5 flex items-center justify-center shrink-0">
               <Image
                 src="/chibi-loading.svg"
                 alt="Tiểu Lu Ôn Tập"
-                width={42}
-                height={42}
-                className="object-contain group-hover:scale-105 transition-transform"
+                width={44}
+                height={44}
+                className="object-contain group-hover:scale-110 transition-transform"
               />
             </div>
-            <span className={`text-xs font-semibold ${wordReview > 0 ? "text-china-red" : "text-muted"}`}>
+            <span className={`text-xs font-bold px-2 py-0.5 rounded-full border ${wordReview > 0 ? "bg-red-50 dark:bg-red-950/30 text-china-red border-red-200 dark:border-red-800/50" : "bg-china-paper text-muted border-border"}`}>
               {wordReview > 0 ? `${wordReview} cần ôn` : "Đã xong"}
             </span>
           </div>
-          <div className="space-y-1">
-            <h3 className="text-base font-bold text-foreground group-hover:text-china-red transition-colors flex items-center justify-between">
+          <div className="space-y-1 relative z-10">
+            <h3 className="text-base font-bold text-foreground group-hover:text-china-jade transition-colors flex items-center justify-between">
               <span>Ôn tập SRS</span>
-              <ArrowRight className="w-4 h-4 text-muted group-hover:text-china-red group-hover:translate-x-0.5 transition-all" />
+              <ArrowRight className="w-4 h-4 text-muted group-hover:text-china-jade group-hover:translate-x-0.5 transition-all" />
             </h3>
             <p className="text-xs text-muted leading-relaxed">
               Lật thẻ lặp lại ngắt quãng để ghi nhớ từ vựng dài hạn.
@@ -717,24 +724,27 @@ export default function Dashboard() {
 
         <Link
           href="/books"
-          className="group bg-card rounded-2xl border border-border hover:border-foreground/30 p-5 flex flex-col justify-between gap-4 transition-colors"
+          className="chibi-card chibi-card-interactive group relative overflow-hidden bg-card rounded-2xl border-emerald-600/20 dark:border-emerald-500/20 hover:border-emerald-500/50 p-5 flex flex-col justify-between gap-4"
         >
-          <div className="flex items-start justify-between gap-3">
-            <div className="w-12 h-12 rounded-xl bg-china-paper/80 border border-border p-1 flex items-center justify-center shrink-0">
+          <LeafVineCornerSvg position="top-right" variant="amber" className="top-0 right-0 w-9 h-9 opacity-80 group-hover:opacity-100 transition-opacity" />
+          <div className="flex items-start justify-between gap-3 relative z-10">
+            <div className="w-13 h-13 rounded-2xl bg-china-paper border border-border p-1.5 flex items-center justify-center shrink-0">
               <Image
                 src="/chibi-brush.svg"
                 alt="Tiểu Lu Giáo Trình"
-                width={42}
-                height={42}
-                className="object-contain group-hover:scale-105 transition-transform"
+                width={44}
+                height={44}
+                className="object-contain group-hover:scale-110 transition-transform"
               />
             </div>
-            <span className="text-xs font-medium text-muted">HSK 1–3</span>
+            <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-china-paper border border-border text-foreground">
+              HSK 1–3
+            </span>
           </div>
-          <div className="space-y-1">
-            <h3 className="text-base font-bold text-foreground group-hover:text-china-red transition-colors flex items-center justify-between">
+          <div className="space-y-1 relative z-10">
+            <h3 className="text-base font-bold text-foreground group-hover:text-china-jade transition-colors flex items-center justify-between">
               <span>Giáo trình chuẩn</span>
-              <ArrowRight className="w-4 h-4 text-muted group-hover:text-china-red group-hover:translate-x-0.5 transition-all" />
+              <ArrowRight className="w-4 h-4 text-muted group-hover:text-china-jade group-hover:translate-x-0.5 transition-all" />
             </h3>
             <p className="text-xs text-muted leading-relaxed">
               Hội thoại phân vai có âm thanh, từ vựng và bài tập theo bài.
@@ -744,26 +754,27 @@ export default function Dashboard() {
 
         <Link
           href="/vocabulary"
-          className="group bg-card rounded-2xl border border-border hover:border-foreground/30 p-5 flex flex-col justify-between gap-4 transition-colors"
+          className="chibi-card chibi-card-interactive group relative overflow-hidden bg-card rounded-2xl border-emerald-600/20 dark:border-emerald-500/20 hover:border-emerald-500/50 p-5 flex flex-col justify-between gap-4"
         >
-          <div className="flex items-start justify-between gap-3">
-            <div className="w-12 h-12 rounded-xl bg-china-paper/80 border border-border p-1 flex items-center justify-center shrink-0">
+          <LeafVineCornerSvg position="top-right" variant="blossom" className="top-0 right-0 w-9 h-9 opacity-80 group-hover:opacity-100 transition-opacity" />
+          <div className="flex items-start justify-between gap-3 relative z-10">
+            <div className="w-13 h-13 rounded-2xl bg-china-paper border border-border p-1.5 flex items-center justify-center shrink-0">
               <Image
                 src="/chibi-scholar-gold.svg"
                 alt="Tiểu Lu Từ Điển"
-                width={42}
-                height={42}
-                className="object-contain group-hover:scale-105 transition-transform"
+                width={44}
+                height={44}
+                className="object-contain group-hover:scale-110 transition-transform"
               />
             </div>
-            <span className="text-xs font-medium text-muted">
+            <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-china-paper border border-border text-foreground">
               {wordCount.toLocaleString("vi-VN")} từ
             </span>
           </div>
-          <div className="space-y-1">
-            <h3 className="text-base font-bold text-foreground group-hover:text-china-red transition-colors flex items-center justify-between">
+          <div className="space-y-1 relative z-10">
+            <h3 className="text-base font-bold text-foreground group-hover:text-china-jade transition-colors flex items-center justify-between">
               <span>Từ điển HSK</span>
-              <ArrowRight className="w-4 h-4 text-muted group-hover:text-china-red group-hover:translate-x-0.5 transition-all" />
+              <ArrowRight className="w-4 h-4 text-muted group-hover:text-china-jade group-hover:translate-x-0.5 transition-all" />
             </h3>
             <p className="text-xs text-muted leading-relaxed">
               Tra cứu Hán-Việt, thứ tự nét viết và ví dụ từ HSK 1 đến HSK 7.
@@ -773,24 +784,27 @@ export default function Dashboard() {
 
         <Link
           href="/bonus"
-          className="group bg-card rounded-2xl border border-border hover:border-foreground/30 p-5 flex flex-col justify-between gap-4 transition-colors"
+          className="chibi-card chibi-card-interactive group relative overflow-hidden bg-card rounded-2xl border-emerald-600/20 dark:border-emerald-500/20 hover:border-emerald-500/50 p-5 flex flex-col justify-between gap-4"
         >
-          <div className="flex items-start justify-between gap-3">
-            <div className="w-12 h-12 rounded-xl bg-china-paper/80 border border-border p-1 flex items-center justify-center shrink-0">
+          <LeafVineCornerSvg position="top-right" className="top-0 right-0 w-9 h-9 opacity-80 group-hover:opacity-100 transition-opacity" />
+          <div className="flex items-start justify-between gap-3 relative z-10">
+            <div className="w-13 h-13 rounded-2xl bg-china-paper border border-border p-1.5 flex items-center justify-center shrink-0">
               <Image
                 src="/chibi-cheer.svg"
                 alt="Tiểu Lu Mở Rộng"
-                width={42}
-                height={42}
-                className="object-contain group-hover:scale-105 transition-transform"
+                width={44}
+                height={44}
+                className="object-contain group-hover:scale-110 transition-transform"
               />
             </div>
-            <span className="text-xs font-medium text-muted">Bộ thẻ riêng</span>
+            <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-china-paper border border-border text-foreground">
+              Bộ thẻ riêng
+            </span>
           </div>
-          <div className="space-y-1">
-            <h3 className="text-base font-bold text-foreground group-hover:text-china-red transition-colors flex items-center justify-between">
+          <div className="space-y-1 relative z-10">
+            <h3 className="text-base font-bold text-foreground group-hover:text-china-jade transition-colors flex items-center justify-between">
               <span>Từ mở rộng</span>
-              <ArrowRight className="w-4 h-4 text-muted group-hover:text-china-red group-hover:translate-x-0.5 transition-all" />
+              <ArrowRight className="w-4 h-4 text-muted group-hover:text-china-jade group-hover:translate-x-0.5 transition-all" />
             </h3>
             <p className="text-xs text-muted leading-relaxed">
               Chuyên đề nâng cao và tự tạo bộ thẻ từ vựng cá nhân.
@@ -884,7 +898,9 @@ export default function Dashboard() {
         {/* Right: Word of the Day + 7-Day Activity */}
         <div className="space-y-5 flex flex-col justify-between">
           {dailyWord && (
-            <div className="bg-card rounded-2xl border border-border p-5 space-y-4">
+            <div className="chibi-card relative overflow-hidden bg-card rounded-2xl border-emerald-600/20 dark:border-emerald-500/20 p-5 space-y-4">
+              <LeafVineCornerSvg position="top-right" variant="blossom" className="top-0 right-0 w-9 h-9" />
+              <LeafVineCornerSvg position="bottom-left" className="bottom-0 left-0 w-8 h-8 opacity-75" />
               <div className="flex items-center justify-between">
                 <span className="text-xs font-semibold text-muted">Từ vựng mỗi ngày</span>
                 {dailyWord.hskLevel && dailyWord.hskLevel.length > 0 && (
