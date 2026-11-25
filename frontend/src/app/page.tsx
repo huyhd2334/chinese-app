@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
+import ChibiLoading from "@/components/common/ChibiLoading"
 import { db, type ReviewItem, type Word } from "../../db/database"
 import { importHsk, importListening, importReading } from "../../db/importContent"
 import { reviewRepository } from "../../repositories/reviewRepository"
@@ -466,29 +468,46 @@ export default function Dashboard() {
 
   if (loading) {
     return (
-      <div className="min-h-[70vh] flex flex-col items-center justify-center p-6">
-        <div className="w-6 h-6 border-2 border-china-red border-t-transparent rounded-full animate-spin mb-3" />
-        <p className="text-sm font-medium text-muted">Đang tải dữ liệu học tập...</p>
+      <div className="min-h-[70vh] flex items-center justify-center p-6">
+        <ChibiLoading
+          variant="loading"
+          size="md"
+          title="Tiểu Lu đang mở sách..."
+          description="Đang chuẩn bị từ vựng và tiến độ ôn tập cho bạn nhé!"
+        />
       </div>
     )
   }
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6 text-foreground">
-      {/* 1. Top Header */}
+      {/* 1. Top Header with Tiểu Lu Mascot */}
       <header className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-border">
-        <div className="space-y-1">
-          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">
-            {greeting}{displayName ? `, ${displayName}` : ""}
-          </h1>
-          <p className="text-xs sm:text-sm text-muted flex items-center gap-2 flex-wrap">
-            <span className="font-chinese font-semibold text-foreground" lang="zh">
-              {proverb.cn}
-            </span>
-            <span>·</span>
-            <span>{proverb.pinyin}</span>
-            <span className="hidden md:inline">— {proverb.vi}</span>
-          </p>
+        <div className="flex items-center gap-3.5">
+          <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-card border border-border p-1.5 flex items-center justify-center shrink-0 select-none">
+            <Image
+              src={isDailyGoalAchieved ? "/chibi-cheer.svg" : "/chibi-loading.svg"}
+              alt="Tiểu Lu"
+              width={48}
+              height={48}
+              priority
+              className="object-contain hover:scale-105 transition-transform"
+            />
+          </div>
+
+          <div className="space-y-1">
+            <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">
+              {greeting}{displayName ? `, ${displayName}` : ""}
+            </h1>
+            <p className="text-xs sm:text-sm text-muted flex items-center gap-2 flex-wrap">
+              <span className="font-chinese font-semibold text-foreground" lang="zh">
+                {proverb.cn}
+              </span>
+              <span>·</span>
+              <span>{proverb.pinyin}</span>
+              <span className="hidden md:inline">— {proverb.vi}</span>
+            </p>
+          </div>
         </div>
 
         <div className="flex items-center gap-2.5 self-start sm:self-center">
@@ -521,8 +540,18 @@ export default function Dashboard() {
         <RoadmapCard onOpenWizard={() => setIsRoadmapWizardOpen(true)} />
       </section>
 
-      {/* 3. Today's Study Checklist */}
-      <section className="bg-card rounded-2xl border border-border p-5 space-y-4">
+      {/* 3. Today's Study Checklist with Peeking Tiểu Lu */}
+      <section className="relative bg-card rounded-2xl border border-border p-5 space-y-4 mt-8">
+        <div className="absolute -top-7 sm:-top-8 right-6 sm:right-10 w-16 sm:w-18 h-10 sm:h-11 z-10 pointer-events-none select-none">
+          <Image
+            src="/chibi-peek.svg"
+            alt="Tiểu Lu lấp ló"
+            width={72}
+            height={46}
+            priority
+            className="object-contain"
+          />
+        </div>
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3.5 border-b border-border">
           <div className="flex items-center gap-2.5 flex-wrap">
             <h2 className="text-sm sm:text-base font-bold text-foreground">
@@ -655,15 +684,21 @@ export default function Dashboard() {
         </div>
       </section>
 
-      {/* 4. Core Study Modules */}
+      {/* 4. Core Study Modules with Tiểu Lu Mascots */}
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
         <Link
           href="/review"
           className="group bg-card rounded-2xl border border-border hover:border-foreground/30 p-5 flex flex-col justify-between gap-4 transition-colors"
         >
-          <div className="flex items-center justify-between">
-            <div className="w-9 h-9 rounded-lg bg-china-red/10 text-china-red flex items-center justify-center">
-              <Layers className="w-4 h-4" />
+          <div className="flex items-start justify-between gap-3">
+            <div className="w-12 h-12 rounded-xl bg-china-paper/80 border border-border p-1 flex items-center justify-center shrink-0">
+              <Image
+                src="/chibi-loading.svg"
+                alt="Tiểu Lu Ôn Tập"
+                width={42}
+                height={42}
+                className="object-contain group-hover:scale-105 transition-transform"
+              />
             </div>
             <span className={`text-xs font-semibold ${wordReview > 0 ? "text-china-red" : "text-muted"}`}>
               {wordReview > 0 ? `${wordReview} cần ôn` : "Đã xong"}
@@ -684,9 +719,15 @@ export default function Dashboard() {
           href="/books"
           className="group bg-card rounded-2xl border border-border hover:border-foreground/30 p-5 flex flex-col justify-between gap-4 transition-colors"
         >
-          <div className="flex items-center justify-between">
-            <div className="w-9 h-9 rounded-lg bg-china-paper text-foreground flex items-center justify-center">
-              <BookOpen className="w-4 h-4" />
+          <div className="flex items-start justify-between gap-3">
+            <div className="w-12 h-12 rounded-xl bg-china-paper/80 border border-border p-1 flex items-center justify-center shrink-0">
+              <Image
+                src="/chibi-brush.svg"
+                alt="Tiểu Lu Giáo Trình"
+                width={42}
+                height={42}
+                className="object-contain group-hover:scale-105 transition-transform"
+              />
             </div>
             <span className="text-xs font-medium text-muted">HSK 1–3</span>
           </div>
@@ -705,9 +746,15 @@ export default function Dashboard() {
           href="/vocabulary"
           className="group bg-card rounded-2xl border border-border hover:border-foreground/30 p-5 flex flex-col justify-between gap-4 transition-colors"
         >
-          <div className="flex items-center justify-between">
-            <div className="w-9 h-9 rounded-lg bg-china-paper text-foreground flex items-center justify-center">
-              <ReceiptText className="w-4 h-4" />
+          <div className="flex items-start justify-between gap-3">
+            <div className="w-12 h-12 rounded-xl bg-china-paper/80 border border-border p-1 flex items-center justify-center shrink-0">
+              <Image
+                src="/chibi-scholar-gold.svg"
+                alt="Tiểu Lu Từ Điển"
+                width={42}
+                height={42}
+                className="object-contain group-hover:scale-105 transition-transform"
+              />
             </div>
             <span className="text-xs font-medium text-muted">
               {wordCount.toLocaleString("vi-VN")} từ
@@ -728,9 +775,15 @@ export default function Dashboard() {
           href="/bonus"
           className="group bg-card rounded-2xl border border-border hover:border-foreground/30 p-5 flex flex-col justify-between gap-4 transition-colors"
         >
-          <div className="flex items-center justify-between">
-            <div className="w-9 h-9 rounded-lg bg-china-paper text-foreground flex items-center justify-center">
-              <Library className="w-4 h-4" />
+          <div className="flex items-start justify-between gap-3">
+            <div className="w-12 h-12 rounded-xl bg-china-paper/80 border border-border p-1 flex items-center justify-center shrink-0">
+              <Image
+                src="/chibi-cheer.svg"
+                alt="Tiểu Lu Mở Rộng"
+                width={42}
+                height={42}
+                className="object-contain group-hover:scale-105 transition-transform"
+              />
             </div>
             <span className="text-xs font-medium text-muted">Bộ thẻ riêng</span>
           </div>

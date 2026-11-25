@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { usePathname } from "next/navigation"
 import Link from "next/link"
+import Image from "next/image"
 import styles from "./sideBar.module.css"
 import {
   BookOpen,
@@ -62,8 +63,15 @@ const SideBar = () => {
       <aside className="hidden md:flex flex-col w-16 lg:w-60 shrink-0 border-r border-border px-2.5 lg:px-3.5 pt-5 pb-3.5 bg-card select-none">
         {/* Brand Header */}
         <Link href="/" className="flex items-center gap-2.5 px-1.5 py-1 mb-6 group">
-          <div className="w-8 h-8 rounded-lg bg-china-red text-white flex items-center justify-center shrink-0 font-chinese font-bold text-base shadow-2xs" lang="zh">
-            学
+          <div className="w-9 h-9 rounded-xl bg-china-paper border border-border p-1 flex items-center justify-center shrink-0">
+            <Image
+              src="/chibi-loading.svg"
+              alt="Tiểu Lu"
+              width={28}
+              height={28}
+              priority
+              className="object-contain"
+            />
           </div>
           <div className="hidden lg:flex flex-col leading-tight min-w-0">
             <span className="font-bold text-foreground text-sm tracking-tight truncate">
@@ -137,8 +145,15 @@ const SideBar = () => {
       {/* Mobile Top Brand Bar */}
       <header className="md:hidden sticky top-0 z-30 flex items-center justify-between px-4 py-2.5 bg-card/95 backdrop-blur-md border-b border-border">
         <Link href="/" className="flex items-center gap-2">
-          <div className="w-7 h-7 rounded-lg bg-china-red text-white flex items-center justify-center font-chinese font-bold text-sm" lang="zh">
-            学
+          <div className="w-8 h-8 rounded-xl bg-china-paper border border-border p-1 flex items-center justify-center">
+            <Image
+              src="/chibi-loading.svg"
+              alt="Tiểu Lu"
+              width={24}
+              height={24}
+              priority
+              className="object-contain"
+            />
           </div>
           <span className="font-bold text-sm text-foreground tracking-tight">
             Học Cùng Tiểu Lu
